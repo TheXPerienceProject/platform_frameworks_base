@@ -27,6 +27,12 @@ import com.android.systemui.qs.tiles.AmbientDisplayTile
 import com.android.systemui.qs.tiles.HeadsUpTile
 import com.android.systemui.qs.tiles.SoundTile
 import com.android.systemui.qs.tiles.SyncTile
+import com.android.systemui.qs.tiles.UsbTetherTile
+
+import com.android.systemui.qs.tiles.base.shared.model.QSTileConfig;
+import com.android.systemui.qs.tiles.base.shared.model.QSTilePolicy;
+import com.android.systemui.qs.tiles.base.shared.model.QSTileUIConfig;
+import com.android.systemui.res.R
 
 @Module
 interface XperienceModule {
@@ -56,6 +62,11 @@ interface XperienceModule {
     @StringKey(SyncTile.TILE_SPEC)
     fun bindSyncTile(syncTile: SyncTile): QSTileImpl<*>
 
+    /** Inject UsbTetherTile into tileMap in QSModule */
+    @Binds
+    @IntoMap
+    @StringKey(UsbTetherTile.TILE_SPEC)
+    fun bindUsbTetherTile(usbTetherTile: UsbTetherTile): QSTileImpl<*>
 
     companion object {
 
@@ -117,5 +128,19 @@ interface XperienceModule {
                 instanceId = uiEventLogger.getNewInstanceId(),
                 category = TileCategory.CONNECTIVITY
 
-    } //companion
+       @Provides
+        @IntoMap
+        @StringKey(UsbTetherTile.TILE_SPEC)
+        fun provideUsbTetherConfig(uiEventLogger: QsEventLogger): QSTileConfig {
+            return QSTileConfig(
+                tileSpec = TileSpec.create(UsbTetherTile.TILE_SPEC),
+                uiConfig = QSTileUIConfig.Resource(
+                    iconRes = R.drawable.ic_qs_usb_tether,
+                    labelRes = R.string.quick_settings_usb_tether_label
+                ),
+                instanceId = uiEventLogger.getNewInstanceId(),
+                category = TileCategory.UTILITIES
+            )
+        }
+    }
 }
