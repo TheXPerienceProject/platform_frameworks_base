@@ -7263,7 +7263,6 @@ public class Intent implements Parcelable, Cloneable {
     @FlaggedApi(com.android.eyedropper.Flags.FLAG_ENABLE_EYE_DROPPER_API)
     public static final String EXTRA_COLOR = "android.intent.extra.COLOR";
 
-
     /**
      * Optional boolean extra indicating if the system contacts picker should be invoked
      * with {@link #ACTION_PICK}, if data field is set as one of:
@@ -7284,6 +7283,14 @@ public class Intent implements Parcelable, Cloneable {
     @FlaggedApi(android.content.flags.Flags.FLAG_ENABLE_SYSTEM_CONTACTS_PICKER)
     public static final String EXTRA_USE_SYSTEM_CONTACTS_PICKER =
             "android.intent.extra.USE_SYSTEM_CONTACTS_PICKER";
+    /**
+     * Broadcast action: notify the system that the user has performed a gesture on the screen
+     * to launch the camera. Broadcast should be protected to receivers holding the
+     * {@link Manifest.permission#STATUS_BAR_SERVICE} permission.
+     * @hide
+     */
+    public static final String ACTION_SCREEN_CAMERA_GESTURE =
+            "android.intent.action.SCREEN_CAMERA_GESTURE";
 
     // ---------------------------------------------------------------------
     // ---------------------------------------------------------------------
