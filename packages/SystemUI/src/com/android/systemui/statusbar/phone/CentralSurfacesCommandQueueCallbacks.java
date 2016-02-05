@@ -372,7 +372,6 @@ public class CentralSurfacesCommandQueueCallbacks implements CommandQueue.Callba
                     "com.android.systemui:CAMERA_GESTURE");
         }
 
-
         if (source != StatusBarManager.CAMERA_LAUNCH_SOURCE_SCREEN_GESTURE) {
             vibrateForCameraGesture();
         }

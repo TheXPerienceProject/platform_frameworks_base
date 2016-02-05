@@ -1988,7 +1988,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
                 // This gets executed before we will show Keyguard, so post it in order that the
                 // state is correct.
                 mMainExecutor.execute(() -> mCommandQueueCallbacks.onCameraLaunchGestureDetected(
-                        mLastCameraLaunchSource));
+                        StatusBarManager.CAMERA_LAUNCH_SOURCE_SCREEN_GESTURE));
             }
             Trace.endSection();
         }
