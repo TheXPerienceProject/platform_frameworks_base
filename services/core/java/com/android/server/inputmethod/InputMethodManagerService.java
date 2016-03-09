@@ -187,6 +187,8 @@ import com.android.server.statusbar.StatusBarManagerInternal;
 import com.android.server.utils.PriorityDump;
 import com.android.server.wm.WindowManagerInternal;
 
+import com.android.internal.derp.hardware.LineageHardwareManager;
+
 import java.io.FileDescriptor;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -405,6 +407,8 @@ public final class InputMethodManagerService implements IInputMethodManagerImpl.
     @Nullable
     @MultiUserUnawareField
     Future<?> mImeDrawsImeNavBarResLazyInitFuture;
+
+    private LineageHardwareManager mLineageHardware;
 
     private final ImeTracing.ServiceDumper mDumper = new ImeTracing.ServiceDumper() {
         /**
@@ -758,6 +762,16 @@ public final class InputMethodManagerService implements IInputMethodManagerImpl.
                         Settings.System.HIGH_TOUCH_POLLING_RATE_ENABLE),
                         false, this, userId);
             }
+            if (mLineageHardware.isSupported(
+                    LineageHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY)) {
+                resolver.registerContentObserver(Settings.System.getUriFor(
+                        Settings.System.HIGH_TOUCH_SENSITIVITY_ENABLE),
+                        false, this, userId);
+            }
+            if (mLineageHardware.isSupported(LineageHardwareManager.FEATURE_TOUCH_HOVERING)) {
+                resolver.registerContentObserver(Settings.Secure.getUriFor(
+                        Settings.Secure.FEATURE_TOUCH_HOVERING), false, this, userId);
+            }
             mRegistered = true;
         }
 
@@ -771,6 +785,10 @@ public final class InputMethodManagerService implements IInputMethodManagerImpl.
                     STYLUS_HANDWRITING_ENABLED);
             final Uri highTouchPollingRateUri = Settings.System.getUriFor(
                     Settings.System.HIGH_TOUCH_POLLING_RATE_ENABLE);
+            final Uri touchSensitivityUri = Settings.System.getUriFor(
+                    Settings.System.HIGH_TOUCH_SENSITIVITY_ENABLE);
+            final Uri touchHoveringUri = Settings.Secure.getUriFor(
+                    Settings.Secure.FEATURE_TOUCH_HOVERING);
             synchronized (ImfLock.class) {
                 if (showImeUri.equals(uri)) {
                     mMenuController.updateKeyboardFromSettingsLocked();
@@ -794,6 +812,10 @@ public final class InputMethodManagerService implements IInputMethodManagerImpl.
                             .invalidateLocalConnectionlessStylusHandwritingAvailabilityCaches();
                 } else if (highTouchPollingRateUri.equals(uri)) {
                     updateTouchPollingRate();
+                } else if (touchSensitivityUri.equals(uri)) {
+                    updateTouchSensitivity();
+                } else if (touchHoveringUri.equals(uri)) {
+                    updateTouchHovering();
                 } else {
                     boolean enabledChanged = false;
                     String newEnabled = InputMethodSettingsRepository.get(mCurrentUserId)
@@ -1489,7 +1511,9 @@ public final class InputMethodManagerService implements IInputMethodManagerImpl.
                     newSettings.getEnabledInputMethodList());
         }
 
+        updateTouchHovering();
         updateTouchPollingRate();
+        updateTouchSensitivity();
 
         if (DEBUG) {
             Slog.d(TAG, "Switching user stage 3/3. newUserId=" + newUserId
