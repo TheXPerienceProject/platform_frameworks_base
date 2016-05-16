@@ -36,6 +36,7 @@ import com.android.systemui.qs.logging.QSLogger;
 import com.android.systemui.res.R;
 import com.android.systemui.statusbar.policy.SplitShadeStateController;
 import com.android.systemui.util.leak.RotationUtils;
+import com.android.systemui.tuner.TunerService;
 
 import kotlinx.coroutines.flow.StateFlow;
 
@@ -54,9 +55,11 @@ public class QuickQSPanelController extends QSPanelControllerBase<QuickQSPanel> 
     private final Provider<Boolean> mUsingCollapsedLandscapeMediaProvider;
 
     private final MediaCarouselInteractor mMediaCarouselInteractor;
+    
+    private final TunerService mTunerService;
 
     @Inject
-    QuickQSPanelController(QuickQSPanel view, QSHost qsHost,
+    QuickQSPanelController(QuickQSPanel view, QSHost qsHost, TunerService tunerService,
             QSCustomizerController qsCustomizerController,
             @Named(QS_USING_MEDIA_PLAYER) boolean usingMediaPlayer,
             @Named(QUICK_QS_PANEL) MediaHost mediaHost,
@@ -72,6 +75,7 @@ public class QuickQSPanelController extends QSPanelControllerBase<QuickQSPanel> 
                 longPressEffectProvider);
         mUsingCollapsedLandscapeMediaProvider = usingCollapsedLandscapeMediaProvider;
         mMediaCarouselInteractor = mediaCarouselInteractor;
+        mTunerService = tunerService;
     }
 
     @Override
@@ -107,6 +111,9 @@ public class QuickQSPanelController extends QSPanelControllerBase<QuickQSPanel> 
     @Override
     protected void onViewAttached() {
         super.onViewAttached();
+        mTunerService.addTunable(mView, QSPanel.QS_TILE_ANIMATION_STYLE);
+        mTunerService.addTunable(mView, QSPanel.QS_TILE_ANIMATION_DURATION);
+        mTunerService.addTunable(mView, QSPanel.QS_TILE_ANIMATION_INTERPOLATOR);
     }
 
     @Override
