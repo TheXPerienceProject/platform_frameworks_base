@@ -19,6 +19,7 @@ package com.android.server.policy.keyguard;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.os.RemoteException;
+import android.os.SystemProperties;
 import android.util.Slog;
 
 import com.android.internal.policy.IKeyguardService;
