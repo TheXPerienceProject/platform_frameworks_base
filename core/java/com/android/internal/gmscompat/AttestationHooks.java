@@ -44,9 +44,6 @@ public final class AttestationHooks {
     private static final String SAMSUNG = "com.samsung.android.";
     private static final String DATA_FILE = "gms_certified_props.json";
 
-    private static final boolean SPOOF_GMS =
-            SystemProperties.getBoolean("persist.sys.spoof.gms", true);
-
     private static final ComponentName GMS_ADD_ACCOUNT_ACTIVITY =
             ComponentName.unflattenFromString(
                     "com.google.android.gms/.auth.uiflows.minutemaid.MinuteMaidActivity");
@@ -92,7 +89,7 @@ public final class AttestationHooks {
             return;
         }
 
-        if (SPOOF_GMS && PACKAGE_GMS.equals(packageName)) {
+        if (PACKAGE_GMS.equals(packageName)) {
             setBuildField("TIME", String.valueOf(System.currentTimeMillis()));
             if (PROCESS_UNSTABLE.equals(processName)) {
                 sProcessName = processName;
