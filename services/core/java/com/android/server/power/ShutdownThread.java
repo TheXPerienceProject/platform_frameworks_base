@@ -96,7 +96,7 @@ public final class ShutdownThread extends Thread {
 // QTI_END: 2018-05-23: Core: ShutdownThread: Add support to wait for oem subsystem shutdown
 
     // length of vibration before shutting down
-    @VisibleForTesting static final int DEFAULT_SHUTDOWN_VIBRATE_MS = 500;
+    @VisibleForTesting static final int DEFAULT_SHUTDOWN_VIBRATE_MS = 250;
 
     // state tracking
     private static final Object sIsStartedGuard = new Object();
