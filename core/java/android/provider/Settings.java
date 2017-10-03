@@ -6375,6 +6375,39 @@ public final class Settings {
         public static final String AUTO_BRIGHTNESS_ONE_SHOT = "auto_brightness_one_shot";
 
         /**
+<<<<<<< HEAD
+=======
+         * Whether to show the clock in the right or left position or show it in the
+         * center
+         * 0: show the clock in the left position (LTR)
+         * 1: show the clock in the center
+         * 2: show the clock in the right position (LTR)
+         * default: 0
+         * 
+         * @hide
+         */
+        public static final String STATUS_BAR_CLOCK = "status_bar_clock";
+
+        /**
+         * Display style of AM/PM next to clock in status bar
+         * 0: No display (Gingerbread/ICS stock)
+         * 1: Small display (Froyo stock)
+         * 2: Normal display (Eclair stock)
+         * default: 0
+         * 
+         * @hide
+         */
+        public static final String STATUS_BAR_AM_PM = "status_bar_am_pm";
+
+        /**
+         *  Enable statusbar double tap gesture on to put device to sleep
+         *  0 = 0ff, 1 = on
+         * @hide
+         */
+        public static final String DOUBLE_TAP_SLEEP_GESTURE = "double_tap_sleep_gesture";
+
+        /**
+>>>>>>> 848a70ad9573 (SystemUI: Add double tap to sleep gesture)
          * IMPORTANT: If you add a new public settings you also have to add it to
          * PUBLIC_SETTINGS below. If the new setting is hidden you have to add
          * it to PRIVATE_SETTINGS below. Also add a validator that can validate
