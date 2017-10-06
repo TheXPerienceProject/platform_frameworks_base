@@ -359,6 +359,7 @@ public class LocalBluetoothProfileManager {
             }
 
 // QTI_END: 2018-03-22: Bluetooth: Sync Preference in UI for new cached device
+
             CachedBluetoothDevice cachedDevice = mDeviceManager.findDevice(device);
             if (cachedDevice == null) {
                 Log.w(TAG, "StateChangedHandler found new device: " + device);
