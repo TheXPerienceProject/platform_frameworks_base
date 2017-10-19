@@ -550,6 +550,7 @@ android_library {
         "keepanno-annotations",
         "ims-common",
     ],
+    additional_manifests: ["XPerienceManifest.xml"],
 
     javacflags: [
         "-Adagger.fastInit=enabled",
