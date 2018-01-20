@@ -216,4 +216,17 @@
     <string name="ax_dynamic_bar_call">Call</string>
     <string name="ax_dynamic_bar_kill_app">Kill app</string>
 
+    <!-- Advanced restart menu -->
+    <string name="global_action_restart_more">Restart…</string>
+    <string name="global_action_restart_system">System</string>
+    <string name="global_action_restart_recovery">Recovery</string>
+    <string name="global_action_restart_bootloader">Bootloader</string>
+    <string name="global_action_restart_download">Download</string>
+    <string name="global_action_restart_fastboot">Fastbootd</string>
+    <string name="global_action_restart_progress">Restarting…</string>
+    <string name="global_action_restart_recovery_progress">Restarting to recovery mode…</string>
+    <string name="global_action_restart_bootloader_progress">Restarting to bootloader mode…</string>
+    <string name="global_action_restart_download_progress">Restarting to download mode…</string>
+    <string name="global_action_restart_fastboot_progress">Restarting to fastbootd mode…</string>
+
 </resources>
