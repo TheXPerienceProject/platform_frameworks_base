@@ -522,5 +522,6 @@ public class SecureSettingsValidators {
                 new InclusiveIntegerRangeValidator(0, 1));
         VALIDATORS.put(Secure.HAPTIC_EFFECTS_PROFILE, ANY_STRING_VALIDATOR);
         VALIDATORS.put(Secure.KEYBOX_DATA, ANY_STRING_VALIDATOR);
+	VALIDATORS.put(Secure.ADVANCED_REBOOT, BOOLEAN_VALIDATOR);
     }
 }
