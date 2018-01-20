@@ -13018,6 +13018,12 @@ public final class Settings {
          */
         public static final String BERRY_BLACK_THEME = "berry_black_theme";
 
+        /**
+         * Whether to include options in power menu for rebooting into recovery or bootloader
+         * @hide
+         */
+        public static final String ADVANCED_REBOOT = "advanced_reboot";
+
     }
 
     /**
