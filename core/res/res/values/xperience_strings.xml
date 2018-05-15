@@ -8,4 +8,9 @@
     <!-- Pocket mode -->
     <string name="pocket_mode_active">Pocket Mode is active</string>
     <string name="pocket_mode_hint">Long press anywhere to disable pocket mode.\nOr remove anything, which is covering the red part.</string>
+
+    <!-- Alert slider proc nodes paths. -->
+    <string name="alert_slider_state_path"></string>
+    <string name="alert_slider_uevent_match_path"></string>
+
 </resources>
