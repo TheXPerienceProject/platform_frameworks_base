@@ -43,4 +43,18 @@ public final class LineageContextConstants {
      */
     public static final String LINEAGE_HARDWARE_SERVICE = "lineagehardware";
 
+    /**
+     * Update power menu (GlobalActions)
+     *
+     * @hide
+     */
+    public static final String LINEAGE_GLOBAL_ACTIONS_SERVICE = "lineageglobalactions";
+
+    /**
+     * Manages display color adjustments
+     *
+     * @hide
+     */
+    public static final String LINEAGE_LIVEDISPLAY_SERVICE = "lineagelivedisplay";
+
 }
