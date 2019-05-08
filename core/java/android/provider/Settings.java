@@ -6575,6 +6575,12 @@ public final class Settings {
         public static final String QS_BT_SHOW_DIALOG = "qs_bt_show_dialog";
 
         /**
+         * Swipe to screenshot
+         * @hide
+         */
+        public static final String SWIPE_TO_SCREENSHOT = "swipe_to_screenshot";
+
+        /**
          * Keys we no longer back up under the current schema, but want to continue to
          * process when restoring historical backup datasets.
          *
@@ -6720,6 +6726,8 @@ public final class Settings {
             PRIVATE_SETTINGS.add(CALL_CONNECTED_TONE_ENABLED);
 // QTI_END: 2020-05-15: Telephony: FR30706: Add a playing tone setting.
             PRIVATE_SETTINGS.add(MOUSE_SCROLLING_SPEED);
+            // Evolution X additions
+            PRIVATE_SETTINGS.add(SWIPE_TO_SCREENSHOT);
         }
 
         /**
