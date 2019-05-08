@@ -6514,6 +6514,12 @@ public final class Settings {
         public static final String SCREEN_OFF_ANIMATION = "screen_off_animation";
 
         /**
+         * Swipe to screenshot
+         * @hide
+         */
+        public static final String SWIPE_TO_SCREENSHOT = "swipe_to_screenshot";
+
+        /**
          * Keys we no longer back up under the current schema, but want to continue to
          * process when restoring historical backup datasets.
          *
@@ -6650,6 +6656,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(DEFAULT_DEVICE_FONT_SCALE);
             PRIVATE_SETTINGS.add(TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK);
             PRIVATE_SETTINGS.add(AUTO_BRIGHTNESS_ONE_SHOT);
+            PRIVATE_SETTINGS.add(SWIPE_TO_SCREENSHOT);
         }
 
         /**
