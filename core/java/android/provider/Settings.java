@@ -6681,6 +6681,14 @@ public final class Settings {
         public static final String HIGH_TOUCH_POLLING_RATE_ENABLE =
                 "high_touch_polling_rate_enable";
 
+	/**
+         * Whether allowing pocket service to register sensors and dispatch informations.
+         *   0 = disabled
+         *   1 = enabled
+         * @hide
+         */
+        public static final String POCKET_JUDGE = "pocket_judge";
+
         /**
          * Keys we no longer back up under the current schema, but want to continue to
          * process when restoring historical backup datasets.
