@@ -1750,3 +1750,13 @@ UnflaggedApi: mx.xperience.optimizer.IOptimizerService.Stub#asInterface(android.
 UnflaggedApi: mx.xperience.optimizer.IOptimizerService.Stub#onTransact(int, android.os.Parcel, android.os.Parcel, int):
     New API must be flagged with @FlaggedApi: method mx.xperience.optimizer.IOptimizerService.Stub.onTransact(int,android.os.Parcel,android.os.Parcel,int)
 
+UnflaggedApi: android.widget.WallpaperView:
+    New API must be flagged with @FlaggedApi: class android.widget.WallpaperView
+UnflaggedApi: android.widget.WallpaperView#WallpaperView(android.content.Context):
+    New API must be flagged with @FlaggedApi: constructor android.widget.WallpaperView(android.content.Context)
+UnflaggedApi: android.widget.WallpaperView#WallpaperView(android.content.Context, android.util.AttributeSet):
+    New API must be flagged with @FlaggedApi: constructor android.widget.WallpaperView(android.content.Context,android.util.AttributeSet)
+UnflaggedApi: android.widget.WallpaperView#WallpaperView(android.content.Context, android.util.AttributeSet, int):
+    New API must be flagged with @FlaggedApi: constructor android.widget.WallpaperView(android.content.Context,android.util.AttributeSet,int)
+UnflaggedApi: android.widget.WallpaperView#onSizeChanged(int, int, int, int):
+    New API must be flagged with @FlaggedApi: method android.widget.WallpaperView.onSizeChanged(int,int,int,int)
