@@ -13307,6 +13307,12 @@ public final class Settings {
         @Readable
         public static final String KEYBOX_DATA_TIMESTAMP = "keybox_data_timestamp";
 
+	/**
+         * Whether to pulse ambient on new music tracks
+         * @hide
+         */
+        public static final String PULSE_ON_NEW_TRACKS = "pulse_on_new_tracks";
+
         /**
          * Keys we no longer back up under the current schema, but want to continue to
          * process when restoring historical backup datasets.
