@@ -24,6 +24,7 @@ import com.android.systemui.qs.tileimpl.QSTileImpl
 import com.android.systemui.qs.tiles.AmbientDisplayTile
 import com.android.systemui.qs.tiles.AODTile
 import com.android.systemui.qs.tiles.CaffeineTile
+import com.android.systemui.qs.tiles.PowerShareTile
 import com.android.systemui.qs.tiles.UsbTetherTile
 import com.android.systemui.qs.tiles.base.shared.model.QSTileConfig
 import com.android.systemui.qs.tiles.base.shared.model.QSTileUIConfig
@@ -61,6 +62,12 @@ interface XperienceModule {
     @StringKey(HeadsUpTile.TILE_SPEC)
     fun bindHeadsUpTile(headsUpTile: HeadsUpTile): QSTileImpl<*>
 
+    /** Inject PowerShareTile into tileMap in QSModule */
+    @Binds
+    @IntoMap
+    @StringKey(PowerShareTile.TILE_SPEC)
+    fun bindPowerShareTile(powerShareTile: PowerShareTile): QSTileImpl<*>
+
     /** Inject UsbTetherTile into tileMap in QSModule */
     @Binds
     @IntoMap
@@ -73,6 +80,7 @@ interface XperienceModule {
         const val CAFFEINE_TILE_SPEC = "caffeine"
 	const val HEADS_UP_TILE_SPEC = "heads_up"
         const val USB_TETHER_TILE_SPEC = "usb_tether"
+        const val POWER_SHARE_TILE_SPEC = "power_share"
 
         @Provides
         @IntoMap
@@ -133,6 +141,23 @@ interface XperienceModule {
                 instanceId = uiEventLogger.getNewInstanceId(),
                 category = TileCategory.ACCESSIBILITY,
             )
+
+	@Provides
+        @IntoMap
+        @StringKey(POWER_SHARE_TILE_SPEC)
+        fun providePowerShareConfig(uiEventLogger: QsEventLogger): QSTileConfig  =
+            QSTileConfig(
+                tileSpec = TileSpec.create(POWER_SHARE_TILE_SPEC),
+                uiConfig =
+                    QSTileUIConfig.Resource(
+                        iconRes = R.drawable.ic_qs_powershare,
+                        labelRes = R.string.quick_settings_powershare_enabled_label  
+                    ),
+                instanceId = uiEventLogger.getNewInstanceId(),
+                category = TileCategory.UTILITIES
+            )
+        }
+
         @Provides
         @IntoMap
         @StringKey(USB_TETHER_TILE_SPEC)
