@@ -13144,6 +13144,12 @@ public final class Settings {
          */
         public static final String BERRY_BLACK_THEME = "berry_black_theme";
 
+
+	/**
+         * boolean value. toggles swipe up hint in gestural nav mode
+         * @hide
+         */
+        public static final String NAVIGATION_BAR_HINT = "navigation_bar_hint";
     }
 
     /**
