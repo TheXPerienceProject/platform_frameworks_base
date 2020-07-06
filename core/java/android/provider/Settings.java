@@ -6436,6 +6436,12 @@ public final class Settings {
         public static final String NETWORK_TRAFFIC_HIDEARROW = "network_traffic_hidearrow";
 
         /**
+         * Whether StatusBar icons should use app icon
+         * @hide
+         */
+        public static final String STATUSBAR_COLORED_ICONS = "statusbar_colored_icons";
+
+        /**
          * Keys we no longer back up under the current schema, but want to continue to
          * process when restoring historical backup datasets.
          *
