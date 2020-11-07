@@ -245,11 +245,11 @@ interface IStatusBarService
     /** Shows rear display educational dialog */
     void showRearDisplayDialog(int currentBaseState);
 
+    /** XPerience additions. */
+    void toggleCameraFlash();
+
     /**
      * Starts the default assistant app.
      */
     void startAssist(in Bundle args);
-
-    /** XPerience additions. */
-    void toggleCameraFlash();
 }
