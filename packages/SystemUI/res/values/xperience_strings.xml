@@ -149,4 +149,8 @@
 
     <!-- QS button to enable adaptive brightness -->
     <string name="accessibility_adaptive_brightness">Adaptive brightness</string>
+
+    <!-- Screen record -->
+    <string name="screenrecord_lowquality_label">Lower quality</string>
+    <string name="screenrecord_lowquality_summary">For smaller file size</string>
 </resources>
