@@ -93,4 +93,17 @@
 
     <!-- Default line spacing multiplier between hours and minutes of the keyguard clock-->
     <java-symbol type="dimen" format="float" name="keyguard_clock_line_spacing_scale" />
+
+    <java-symbol type="array" name="config_launcherComponents" />
+    <java-symbol type="array" name="config_launcherPackages" />
+
+    <!-- Whitelist of package names to bypass foreground service type validation -->
+    <java-symbol type="array" name="config_fgsTypeValidationBypassPackages"/>
+
+    <!-- Whitelist of package names to bypass alarm manager validation -->
+    <java-symbol type="array" name="config_alarmManagerValidationBypassPackages"/>
+
+    <!-- Whitelist of package names to bypass broadcast reciever validation -->
+    <java-symbol type="array" name="config_broadcaseReceiverValidationBypassPackages"/>
+
 </resources>
