@@ -6756,6 +6756,12 @@ public final class Settings {
         public static final String RECENTS_LOCKED_TASKS = "recents_locked_tasks";
 
         /**
+         * Stores the array name of the values currently used for SpoofBuildGms
+         * @hide
+         */
+        public static final String PPU_SPOOF_BUILD_GMS_ARRAY = "ppu_spoof_build_gms_array";
+
+        /**
          * Keys we no longer back up under the current schema, but want to continue to
          * process when restoring historical backup datasets.
          *
