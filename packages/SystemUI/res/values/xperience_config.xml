@@ -21,4 +21,7 @@
 
     <!-- Interval between subsequent shifting of statusbar and navbar contents, in seconds -->
     <integer name="config_systemBarBurnInProtectionShiftInterval">60</integer>
+
+    <!-- If not zero, limits the internal screen recorder's framerate to the set value. -->
+    <integer name="config_screenRecorderMaxFramerate">0</integer>
 </resources>
