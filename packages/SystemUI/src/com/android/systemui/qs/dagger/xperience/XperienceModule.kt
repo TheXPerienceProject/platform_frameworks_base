@@ -35,6 +35,7 @@ import com.android.systemui.qs.tiles.CPUInfoTile
 import com.android.systemui.qs.tiles.FPSInfoTile
 import com.android.systemui.qs.tiles.PowerShareTile
 import com.android.systemui.qs.tiles.HeadsUpTile
+import com.android.systemui.qs.tiles.SleepModeTile
 import com.android.systemui.qs.tiles.SoundTile
 import com.android.systemui.qs.tiles.SyncTile
 import com.android.systemui.qs.tiles.UsbTetherTile
@@ -76,6 +77,12 @@ interface XperienceModule {
     @IntoMap
     @StringKey(PowerShareTile.TILE_SPEC)
     fun bindPowerShareTile(powerShareTile: PowerShareTile): QSTileImpl<*>
+
+    /** Inject SleepModeTile into tileMap in QSModule */
+    @Binds
+    @IntoMap
+    @StringKey(SleepModeTile.TILE_SPEC)
+    fun bindSleepModeTile(sleepModeTile: SleepModeTile): QSTileImpl<*>
 
     /** Inject SoundTile into tileMap in QSModule */
     @Binds
