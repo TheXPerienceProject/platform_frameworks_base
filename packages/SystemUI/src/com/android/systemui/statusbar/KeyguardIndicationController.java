@@ -246,6 +246,11 @@ public class KeyguardIndicationController {
 
     private int mCurrentDivider;
 
+    private boolean mHasDashCharger;
+    private boolean mHasWarpCharger;
+    private boolean mHasVoocCharger;
+    private boolean mHasSuperVoocCharger;
+
     private KeyguardUpdateMonitorCallback mUpdateMonitorCallback;
 
     private boolean mDozing;
@@ -412,6 +417,15 @@ public class KeyguardIndicationController {
                 TAG,
                 mHandler
         );
+
+        mHasDashCharger = mContext.getResources().getBoolean(
+                com.android.internal.R.bool.config_hasDashCharger);
+        mHasWarpCharger = mContext.getResources().getBoolean(
+                com.android.internal.R.bool.config_hasWarpCharger);
+        mHasVoocCharger = mContext.getResources().getBoolean(
+                com.android.internal.R.bool.config_hasVoocCharger);
+        mHasSuperVoocCharger = mContext.getResources().getBoolean(
+                com.android.internal.R.bool.config_hasSuperVoocCharger);
     }
 
     /** Call this after construction to finish setting up the instance. */
@@ -1250,6 +1264,29 @@ public class KeyguardIndicationController {
         int chargingId;
         if (mPowerPluggedInWired) {
             switch (mChargingSpeed) {
+                case BatteryStatus.CHARGING_OEM:
+                    if (mHasDashCharger) {
+                        chargingId = hasChargingTime
+                                ? R.string.keyguard_indication_dash_charging_time
+                                : R.string.keyguard_plugged_in_dash_charging;
+                    } else if (mHasWarpCharger) {
+                        chargingId = hasChargingTime
+                                ? R.string.keyguard_indication_warp_charging_time
+                                : R.string.keyguard_plugged_in_warp_charging;
+                    } else if (mHasVoocCharger) {
+                        chargingId = hasChargingTime
+                                ? R.string.keyguard_indication_vooc_charging_time
+                                : R.string.keyguard_plugged_in_vooc_charging;
+                    } else if (mHasSuperVoocCharger) {
+                        chargingId = hasChargingTime
+                                ? R.string.keyguard_indication_supervooc_charging_time
+                                : R.string.keyguard_plugged_in_supervooc_charging;
+                    } else {
+                        chargingId = hasChargingTime
+                                ? R.string.keyguard_indication_turbo_power_time
+                                : R.string.keyguard_plugged_in_turbo_charging;
+                    }
+                    break;
                 case BatteryStatus.CHARGING_FAST:
                     chargingId = hasChargingTime
                             ? R.string.keyguard_indication_charging_time_fast
