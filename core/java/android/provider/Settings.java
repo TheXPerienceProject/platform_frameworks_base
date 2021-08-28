@@ -6664,6 +6664,11 @@ public final class Settings {
         public static final String SWIPE_TO_SCREENSHOT = "swipe_to_screenshot";
 
         /**
+         * @hide
+         */
+        public static final String RECENTS_LOCKED_TASKS = "recents_locked_tasks";
+
+        /**
          * GameSpace: List of added games by user
          * @hide
          */
