@@ -35,6 +35,8 @@ import static com.android.tradeinmode.flags.Flags.enableTradeInMode;
 import android.annotation.NonNull;
 import android.annotation.StringRes;
 import android.app.ActivityThread;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.AppCompatCallbacks;
 import android.app.ApplicationErrorReport;
 import android.app.INotificationManager;
