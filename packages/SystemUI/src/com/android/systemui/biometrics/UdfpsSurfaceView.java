@@ -74,7 +74,7 @@ public class UdfpsSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 
         mSensorPaint = new Paint(0 /* flags */);
         mSensorPaint.setAntiAlias(true);
-        mSensorPaint.setARGB(255, 255, 255, 255);
+        mSensorPaint.setColor(context.getColor(R.color.config_udfpsColor));
         mSensorPaint.setStyle(Paint.Style.FILL);
 
         mUdfpsIconPressed = context.getDrawable(R.drawable.udfps_icon_pressed);
@@ -141,6 +141,13 @@ public class UdfpsSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         Canvas canvas = null;
         try {
             canvas = mHolder.lockCanvas();
+            mUdfpsIconPressed.setBounds(
+                    Math.round(sensorRect.left),
+                    Math.round(sensorRect.top),
+                    Math.round(sensorRect.right),
+                    Math.round(sensorRect.bottom)
+            );
+            mUdfpsIconPressed.draw(canvas);
             canvas.drawOval(sensorRect, mSensorPaint);
         } finally {
             // Make sure the surface is never left in a bad state.
