@@ -147,4 +147,7 @@
          charging enabled status regardless of the current status. -->
     <bool name="config_chargingControlToggleSetAlways">false</bool>
 
+    <!-- Whether devices suports in-display fingerprint when screen is off -->
+    <bool name="config_supportScreenOffUdfps">false</bool>
+
 </resources>
