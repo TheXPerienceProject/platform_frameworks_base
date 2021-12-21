@@ -37,4 +37,8 @@
     <dimen name="nowplaying_icon_padding_compact">8dp</dimen>
     <dimen name="nowplaying_icon_padding_normal">16dp</dimen>
     <dimen name="nowplaying_title_artist_gap">6dp</dimen>
+
+    <!-- Udfps fingerprint animation -->
+    <dimen name="udfps_animation_size">280dp</dimen>
+    <dimen name="udfps_animation_offset">0dp</dimen>
 </resources>
