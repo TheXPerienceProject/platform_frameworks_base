@@ -13728,6 +13728,16 @@ public final class Settings {
         public static final String EXTRA_DIM_AUTO_TIME = "extra_dim_auto_time";
 
         /**
+         * @hide
+         */
+        public static final String UDFPS_ANIM = "udfps_anim";
+
+        /**
+         * @hide
+         */
+        public static final String UDFPS_ANIM_STYLE = "udfps_anim_style";
+
+        /**
          * These entries are considered common between the personal and the managed profile,
          * since the managed profile doesn't get to change them.
          */
