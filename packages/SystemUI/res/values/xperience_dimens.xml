@@ -55,4 +55,8 @@
 
     <!-- SmartSPace shit-->
     <dimen name="enhanced_smartspace_height">104dp</dimen>
+
+    <!-- Udfps fingerprint animation -->
+    <dimen name="udfps_animation_size">280dp</dimen>
+    <dimen name="udfps_animation_offset">0dp</dimen>
 </resources>
