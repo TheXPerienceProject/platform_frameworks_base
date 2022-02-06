@@ -107,4 +107,7 @@
 
     <!-- Name of the VoWiFi status bar icon. -->
     <string name="status_bar_vowifi">Wi-Fi calling (VoWiFi)</string>
+
+    <!-- Label for UI element which allows to use lens on screenshot [CHAR LIMIT=30] -->
+    <string name="screenshot_lens_label" translatable="false">Lens</string>
 </resources>
