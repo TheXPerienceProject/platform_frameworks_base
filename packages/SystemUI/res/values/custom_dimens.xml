@@ -64,7 +64,7 @@
     <dimen name="chip_corner_radius">28dp</dimen>
     <dimen name="status_bar_clock_chip_tb_padding">0dp</dimen>
     <dimen name="status_bar_clock_chip_lr_padding">8dp</dimen>
-    
+
     <!-- Ambient Music -->
     <dimen name="ambient_indication_icon_size">20.0dip</dimen>
     <dimen name="ambient_indication_note_icon_size">14.0dip</dimen>
@@ -74,4 +74,15 @@
     <dimen name="dock_promo_padding">48.0dip</dimen>
     <dimen name="dock_top_logo_margin">6.0dip</dimen>
     <dimen name="dock_top_logo_padding">8.0dip</dimen>
+    
+    <!-- QQS Brightness slider -->
+    <dimen name="qqs_top_brightness_margin_top">4dp</dimen>
+    <dimen name="qqs_top_brightness_margin_bottom">8dp</dimen>
+    <dimen name="qqs_bottom_brightness_margin_top">8dp</dimen>
+    <dimen name="qqs_bottom_brightness_margin_bottom">4dp</dimen>
+    <!-- QS Brightness slider -->
+    <dimen name="qs_top_brightness_margin_top">4dp</dimen>
+    <dimen name="qs_top_brightness_margin_bottom">8dp</dimen>
+    <dimen name="qs_bottom_brightness_margin_top">8dp</dimen>
+    <dimen name="qs_bottom_brightness_margin_bottom">4dp</dimen>
 </resources>
