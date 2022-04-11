@@ -298,7 +298,7 @@ public class NavigationBarControllerImplTest extends SysuiTestCase {
 
     @Test
     public void testShouldRenderTaskbar_taskbarRenderedOnTabletOrUnfolded() {
-        mNavigationBarController.mIsLargeScreen = true;
+        mNavigationBarController.mTaskbarShowing = true;
         mNavigationBarController.mIsPhone = false;
         assertTrue(mNavigationBarController.supportsTaskbar());
     }
@@ -307,7 +307,7 @@ public class NavigationBarControllerImplTest extends SysuiTestCase {
     public void testShouldRenderTaskbar_taskbarRenderedInFoldedState() {
         assumeTrue(enableTaskbarNavbarUnification());
 
-        mNavigationBarController.mIsLargeScreen = false;
+        mNavigationBarController.mTaskbarShowing = false;
         mNavigationBarController.mIsPhone = false;
         assertTrue(mNavigationBarController.supportsTaskbar());
     }
