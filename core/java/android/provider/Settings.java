@@ -13746,6 +13746,12 @@ public final class Settings {
                 "otp_redaction_lock_time";
 
         /**
+         * String to contain power menu actions
+         * @hide
+         */
+        public static final String POWER_MENU_ACTIONS = "power_menu_actions";
+
+        /**
          * Haptic effects profile to be used
          * @hide
          */
