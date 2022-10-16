@@ -25,6 +25,7 @@ import com.android.systemui.qs.tiles.CPUInfoTile
 import com.android.systemui.qs.tiles.OnTheGoTile
 import com.android.systemui.qs.tiles.PowerShareTile
 import com.android.systemui.qs.tiles.NfcTile
+import com.android.systemui.qs.tiles.WeatherTile
 import com.android.systemui.qs.tiles.base.shared.model.QSTileConfig;
 import com.android.systemui.qs.tiles.base.shared.model.QSTilePolicy;
 import com.android.systemui.qs.tiles.base.shared.model.QSTileUIConfig;
@@ -62,6 +63,12 @@ interface XPerienceModule {
     @IntoMap
     @StringKey(PowerShareTile.TILE_SPEC)
     fun bindPowerShareTile(powerShareTile: PowerShareTile): QSTileImpl<*>
+
+    /** Inject WeatherTile into tileMap in QSModule */
+    @Binds
+    @IntoMap
+    @StringKey(WeatherTile.TILE_SPEC)
+    fun bindWeatherTile(weatherTile: WeatherTile): QSTileImpl<*>
 
     companion object {
         @Provides
