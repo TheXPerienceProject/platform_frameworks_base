@@ -19,6 +19,16 @@ import android.provider.Settings;
 import lineageos.providers.LineageSettings;
 
 public class RisingSettingsConstants {
+    private static final String PREF_CHROMA_FACTOR ="monet_engine_chroma_factor";
+    private static final String PREF_LUMINANCE_FACTOR ="monet_engine_luminance_factor";
+    private static final String PREF_TINT_BACKGROUND ="monet_engine_tint_background";
+    private static final String PREF_CUSTOM_ACCENT_COLOR ="monet_engine_accent_color";
+    private static final String PREF_CUSTOM_BG_COLOR ="monet_engine_bg_color";
+    private static final String PREF_OVERRIDE_COLOR_ACCENT ="monet_engine_color_override_accent";
+    private static final String PREF_OVERRIDE_BGCOLOR ="monet_engine_override_bg_color";
+    private static final String PREF_THEME_STYLE = "monet_engine_theme_style";
+    private static final String PREF_COLOR_SOURCE = "monet_engine_color_source";
+    private static final String PREF_WHOLE_PALETTE = "monet_engine_whole_palette";
     public static final String CLOCK_STYLE = "clock_style";
     public static final String VOLUME_STYLE = "custom_volume_styles";
     public static final String STATUSBAR_CLOCK_CHIP = Settings.System.STATUSBAR_CLOCK_CHIP;
@@ -52,7 +62,17 @@ public class RisingSettingsConstants {
     };
     
     public static final String[] SECURE_SETTINGS_KEYS = {
-        CLOCK_STYLE
+        CLOCK_STYLE,
+        PREF_CHROMA_FACTOR,
+        PREF_LUMINANCE_FACTOR,
+        PREF_TINT_BACKGROUND,
+        PREF_CUSTOM_ACCENT_COLOR,
+        PREF_CUSTOM_BG_COLOR,
+        PREF_OVERRIDE_COLOR_ACCENT,
+        PREF_OVERRIDE_BGCOLOR,
+        PREF_THEME_STYLE,
+        PREF_COLOR_SOURCE,
+        PREF_WHOLE_PALETTE
     };
     
     public static final String[] SYSTEM_SETTINGS_NOTIFY_ONLY_KEYS = {
