@@ -85,6 +85,7 @@ phony {
         "NoCutoutOverlay",
         "NotesRoleEnabledOverlay",
         "NotchBarKillerLeftOverlay",
+        "VShapedNotch",
         "NotchBarKillerOverlay",
         "preinstalled-packages-platform-overlays.xml",
     ],
