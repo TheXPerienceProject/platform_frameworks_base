@@ -106,4 +106,6 @@
     <!-- Whitelist of package names to bypass broadcast receiver validation -->
     <java-symbol type="array" name="config_broadcastReceiverValidationBypassPackages"/>
 
+    <!-- Boost Framework -->
+    <java-symbol type="bool" name="config_supportsBoostFramework" />
 </resources>
