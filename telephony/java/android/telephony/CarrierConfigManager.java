@@ -11767,7 +11767,7 @@ public class CarrierConfigManager {
         sDefaults.putBoolean(KEY_USE_SMS_CALLBACK_MODE_BOOL, false);
 // QTI_END: 2021-03-02: AndroidCore: IMS: Add new carrier config.
         sDefaults.putBoolean(KEY_VONR_SETTING_VISIBILITY_BOOL, true);
-        sDefaults.putBoolean(KEY_VONR_ENABLED_BOOL, false);
+        sDefaults.putBoolean(KEY_VONR_ENABLED_BOOL, true);
         sDefaults.putBoolean(KEY_VONR_ON_BY_DEFAULT_BOOL, true);
         sDefaults.putIntArray(KEY_SUPPORTED_PREMIUM_CAPABILITIES_INT_ARRAY, new int[0]);
         sDefaults.putLong(KEY_PREMIUM_CAPABILITY_NOTIFICATION_DISPLAY_TIMEOUT_MILLIS_LONG,
