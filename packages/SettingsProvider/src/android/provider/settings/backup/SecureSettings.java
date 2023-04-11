@@ -328,5 +328,7 @@ public class SecureSettings {
         Settings.Secure.IDENTITY_CHECK_NOTIFICATION_VIEW_DETAILS_CLICKED,
         Settings.Secure.NOTIFICATION_BUNDLES_ALWAYS_EXPAND,
         Settings.Secure.HAPTIC_EFFECTS_PROFILE,
+        Settings.Secure.DOZE_DOUBLE_TAP_GESTURE_AMBIENT,
+        Settings.Secure.DOZE_PICK_UP_GESTURE_AMBIENT
     };
 }
