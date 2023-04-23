@@ -29,6 +29,10 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceScreen;
 
+import java.util.ArrayDeque;
+
+import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
+
 import com.android.systemui.Dependency;
 import com.android.systemui.demomode.DemoModeController;
 import com.android.systemui.fragments.FragmentService;
@@ -46,6 +50,7 @@ public class TunerActivity extends Activity implements
     private final DemoModeController mDemoModeController;
     private final TunerService mTunerService;
     private final GlobalSettings mGlobalSettings;
+    private final ArrayDeque<String> titleStack = new ArrayDeque<>();
 
     @Inject
     TunerActivity(
@@ -99,7 +104,22 @@ public class TunerActivity extends Activity implements
 
     @Override
     public void onBackPressed() {
-        if (!getFragmentManager().popBackStackImmediate()) {
+        if (getFragmentManager().popBackStackImmediate()) {
+            String title = titleStack.poll();
+            if (title != null) {
+                setTitle(title);
+            }
+            try {
+                Fragment f = getFragmentManager().findFragmentById(R.id.content_frame);
+                Fragment fragment = (Fragment) f.getClass().newInstance();
+                fragment.setArguments(f.getArguments());
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.content_frame, fragment);
+                transaction.commit();
+            } catch (InstantiationException | IllegalAccessException e) {
+                Log.d("TunerActivity", "Problem launching fragment", e);
+            }
+        } else {
             super.onBackPressed();
         }
     }
@@ -113,6 +133,7 @@ public class TunerActivity extends Activity implements
             b.putString(PreferenceFragment.ARG_PREFERENCE_ROOT, pref.getKey());
             fragment.setArguments(b);
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            titleStack.push(getTitle().toString());
             setTitle(pref.getTitle());
             transaction.replace(R.id.content_frame, fragment);
             transaction.addToBackStack("PreferenceFragment");
