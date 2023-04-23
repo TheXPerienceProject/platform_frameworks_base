@@ -20,6 +20,8 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 
+import java.util.ArrayDeque;
+
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceScreen;
