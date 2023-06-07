@@ -308,6 +308,8 @@ public class SecureSettings {
         Settings.Secure.TORCH_DOUBLE_TAP_POWER_GESTURE_ENABLED,
         Settings.Secure.TORCH_LONG_PRESS_POWER,
         Settings.Secure.DC_DIM_AUTO_MODE,
-        Settings.Secure.DC_DIM_AUTO_TIME
+        Settings.Secure.DC_DIM_AUTO_TIME,
+        Settings.Secure.EXTRA_DIM_AUTO_MODE,
+        Settings.Secure.EXTRA_DIM_AUTO_TIME
     };
 }

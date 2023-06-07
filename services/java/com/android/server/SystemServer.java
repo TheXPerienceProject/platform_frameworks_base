@@ -1893,6 +1893,12 @@ public final class SystemServer implements Dumpable {
                 mSystemServiceManager.startService(AutoDCDimService.class);
                 t.traceEnd();
             }
+
+            if (context.getResources().getBoolean(R.bool.config_reduceBrightColorsAvailable)) {
+                t.traceBegin("AutoDimService");
+                mSystemServiceManager.startService(AutoDimService.class);
+                t.traceEnd();
+            }
         } catch (Throwable e) {
             Slog.e("System", "******************************************");
             Slog.e("System", "************ Failure starting core service");
