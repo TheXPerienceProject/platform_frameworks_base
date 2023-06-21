@@ -237,8 +237,13 @@ constructor(
                     shakeAnimator.doOnEnd { view.translationX = 0f }
                     shakeAnimator.start()
 
-                    vibratorHelper?.vibrate(KeyguardBottomAreaVibrations.Shake)
-                    logger.logQuickAffordanceTapped(viewModel.configKey)
+                    vibratorHelper?.vibrate(
+                        if (KeyguardBottomAreaVibrations.areAllPrimitivesSupported) {
+                            KeyguardBottomAreaVibrations.Shake
+                        } else {
+                            KeyguardBottomAreaVibrations.ShakeAlt
+                        })
+                   logger.logQuickAffordanceTapped(viewModel.configKey)
                 }
                 view.onLongClickListener =
                     OnLongClickListener(falsingManager, viewModel, vibratorHelper, onTouchListener)
@@ -317,9 +322,17 @@ constructor(
                 )
                 vibratorHelper?.vibrate(
                     if (viewModel.isActivated) {
-                        KeyguardBottomAreaVibrations.Activated
+                        if (KeyguardBottomAreaVibrations.areAllPrimitivesSupported) {
+                            KeyguardBottomAreaVibrations.Activated
+                        } else {
+                            KeyguardBottomAreaVibrations.ActivatedAlt
+                        }
                     } else {
-                        KeyguardBottomAreaVibrations.Deactivated
+                        if (KeyguardBottomAreaVibrations.areAllPrimitivesSupported) {
+                            KeyguardBottomAreaVibrations.Deactivated
+                        } else {
+                            KeyguardBottomAreaVibrations.DeactivatedAlt
+                        }
                     }
                 )
             }
