@@ -39,6 +39,7 @@ import static android.content.Intent.ACTION_PACKAGE_ADDED;
 import static android.content.Intent.ACTION_UID_REMOVED;
 import static android.content.Intent.ACTION_USER_ADDED;
 import static android.content.Intent.ACTION_USER_REMOVED;
+import static android.content.Intent.EXTRA_REPLACING;
 import static android.content.Intent.EXTRA_UID;
 import static android.content.pm.PackageManager.MATCH_ANY_USER;
 import static android.content.pm.PackageManager.MATCH_DIRECT_BOOT_AWARE;
@@ -1385,6 +1386,11 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
 
             final int uid = intent.getIntExtra(EXTRA_UID, -1);
             if (uid == -1) return;
+
+            if (intent.getBooleanExtra(EXTRA_REPLACING, false)) {
+                if (LOGV) Slog.v(TAG, "Uid: " + uid + " is not fully removed, skip");
+                return;
+            }
 
             // remove any policy and update rules to clean up
             if (LOGV) Slog.v(TAG, "ACTION_UID_REMOVED for uid=" + uid);
