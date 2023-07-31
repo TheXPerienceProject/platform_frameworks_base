@@ -13590,11 +13590,46 @@ public final class Settings {
          */
         public static final String PRIVATE_SPACE_AUTO_LOCK = "private_space_auto_lock";
 
+       /**
+         * Indicates whether DC dimming turns on automatically
+         * 0 = disabled (default)
+         * 1 = from sunset to sunrise
+         * 2 = custom time
+         * 3 = from sunset till a time
+         * 4 = from a time till sunrise
+         * @hide
+         */
+        @Readable
+        public static final String DC_DIM_AUTO_MODE = "dc_dim_auto_mode";
+
+        /**
+         * The custom time extra dim should be on at
+         * Only relevant when {@link DC_DIM_AUTO_MODE} is set to 2 and above
+         * 0 = Disabled (default)
+         * format: HH:mm,HH:mm (since,till)
+         * @hide
+         */
+        @Readable
+        public static final String DC_DIM_AUTO_TIME = "dc_dim_auto_time";
+
+        /**
+         * Indicates whether extra dim turns on automatically
+         * 0 = disabled (default)
+         * 1 = from sunset to sunrise
+         * 2 = custom time
+         * 3 = from sunset till a time
+         * 4 = from a time till sunrise
+         * @hide
+         */
+        @Readable
+        public static final String EXTRA_DIM_AUTO_MODE = "extra_dim_auto_mode";
+
         /**
          * Toggle for enabling stylus pointer icon. Pointer icons for styluses will only be be shown
          * when this is enabled. Enabling this alone won't enable the stylus pointer;
-         * config_enableStylusPointerIcon needs to be true as well.
-         *
+         * config_enableStylusPointerIcon needs to be true as well
+         * 0 = Disabled (default)
+         * format: HH:mm,HH:mm (since,till)
          * @hide
          */
         @Readable

@@ -164,4 +164,7 @@
     <java-symbol type="string" name="config_batterymeterLandBoltPath" />
     <java-symbol type="string" name="config_batterymeterLandPowersavePath" />
     <java-symbol type="string" name="config_batterymeterLandErrorPerimeterPath" />
+
+    <!-- Absolute path of the DC dimming node -->
+    <java-symbol type="string" name="config_dcdNodePath" />
 </resources>

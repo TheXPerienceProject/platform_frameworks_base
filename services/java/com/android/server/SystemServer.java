@@ -175,6 +175,8 @@ import com.android.server.credentials.CredentialManagerService;
 import com.android.server.criticalevents.CriticalEventLog;
 import com.android.server.devicepolicy.DevicePolicyManagerService;
 import com.android.server.devicestate.DeviceStateManagerService;
+import com.android.server.display.AutoDCDimService;
+import com.android.server.display.AutoDimService;
 import com.android.server.display.DisplayManagerService;
 import com.android.server.display.FreeformService;
 import com.android.server.display.color.ColorDisplayService;
@@ -1885,6 +1887,12 @@ public final class SystemServer implements Dumpable {
                 t.traceEnd();
             }
 
+            final String dcdNodePath = context.getResources().getString(R.string.config_dcdNodePath);
+            if (dcdNodePath != null && !dcdNodePath.isEmpty()) {
+                t.traceBegin("AutoDCDimService");
+                mSystemServiceManager.startService(AutoDCDimService.class);
+                t.traceEnd();
+            }
         } catch (Throwable e) {
             Slog.e("System", "******************************************");
             Slog.e("System", "************ Failure starting core service");
