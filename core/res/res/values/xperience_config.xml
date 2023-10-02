@@ -29,4 +29,7 @@
     <!-- Whether to allow process with media UID to access CameraServiceProxy -->
     <bool name="config_allowMediaUidForCameraServiceProxy">false</bool>
 
+    <!-- Default values for status bar DT2S gesture -->
+     <bool name="config_dt2sGestureAvailable">true</bool>
+     <bool name="config_dt2sGestureEnabledByDefault">true</bool>
 </resources>
