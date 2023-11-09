@@ -23,12 +23,19 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import dagger.multibindings.StringKey
 
+import com.android.systemui.qs.tiles.AmbientDisplayTile
 import com.android.systemui.qs.tiles.HeadsUpTile
 import com.android.systemui.qs.tiles.SyncTile
 
 @Module
 interface XperienceModule {
 
+
+    /** Inject AmbientDisplayTile into tileMap in QSModule */
+    @Binds
+    @IntoMap
+    @StringKey(AmbientDisplayTile.TILE_SPEC)
+    fun bindAmbientDisplayTile(ambientDisplayTile: AmbientDisplayTile): QSTileImpl<*>
 
     /** Inject HeadsUpTile into tileMap in QSModule */
     @Binds
@@ -44,6 +51,21 @@ interface XperienceModule {
 
 
     companion object {
+
+        @Provides
+        @IntoMap
+        @StringKey(AmbientDisplayTile.TILE_SPEC)
+        fun provideAmbientDisplayConfig(uiEventLogger: QsEventLogger): QSTileConfig {
+            return QSTileConfig(
+                tileSpec = TileSpec.create(AmbientDisplayTile.TILE_SPEC),
+                uiConfig = QSTileUIConfig.Resource(
+                    iconRes = R.drawable.ic_qs_ambient_display,
+                    labelRes = R.string.quick_settings_ambient_display_label
+                ),
+                instanceId = uiEventLogger.getNewInstanceId(),
+                category = TileCategory.DISPLAY
+            )
+        }
 
         @Provides
         @IntoMap
