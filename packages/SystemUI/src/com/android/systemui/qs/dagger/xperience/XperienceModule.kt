@@ -24,6 +24,7 @@ import dagger.multibindings.IntoMap
 import dagger.multibindings.StringKey
 
 import com.android.systemui.qs.tiles.HeadsUpTile
+import com.android.systemui.qs.tiles.SyncTile
 
 @Module
 interface XperienceModule {
@@ -35,10 +36,16 @@ interface XperienceModule {
     @StringKey(HeadsUpTile.TILE_SPEC)
     fun bindHeadsUpTile(headsUpTile: HeadsUpTile): QSTileImpl<*>
 
+    /** Inject SyncTile into tileMap in QSModule */
+    @Binds
+    @IntoMap
+    @StringKey(SyncTile.TILE_SPEC)
+    fun bindSyncTile(syncTile: SyncTile): QSTileImpl<*>
+
 
     companion object {
 
-	@Provides
+        @Provides
         @IntoMap
         @StringKey(HeadsUpTile.TILE_SPEC)
         fun provideHeadsUpConfig(uiEventLogger: QsEventLogger): QSTileConfig {
@@ -52,5 +59,19 @@ interface XperienceModule {
                 category = TileCategory.DISPLAY
             )
         }
-    }
+
+        @Provides
+        @IntoMap
+        @StringKey(SyncTile.TILE_SPEC)
+        fun provideSyncConfig(uiEventLogger: QsEventLogger): QSTileConfig {
+            return QSTileConfig(
+                tileSpec = TileSpec.create(SyncTile.TILE_SPEC),
+                uiConfig = QSTileUIConfig.Resource(
+                    iconRes = R.drawable.ic_qs_sync,
+                    labelRes = R.string.quick_settings_sync_label
+                ),
+                instanceId = uiEventLogger.getNewInstanceId(),
+                category = TileCategory.CONNECTIVITY
+
+    } //companion
 }
