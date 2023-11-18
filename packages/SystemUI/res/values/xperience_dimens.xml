@@ -14,4 +14,7 @@
     <!-- HD calling icon -->
     <dimen name="signal_icon_viewport_size">24dp</dimen>
 
+    <!-- FPS Info tile -->
+    <dimen name="fps_info_text_padding">4dp</dimen>
+
 </resources>
