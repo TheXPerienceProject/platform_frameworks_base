@@ -20,6 +20,7 @@ import com.android.systemui.qs.QsEventLogger
 import com.android.systemui.qs.pipeline.shared.TileSpec
 import com.android.systemui.qs.shared.model.TileCategory
 import com.android.systemui.qs.tileimpl.QSTileImpl
+import com.android.systemui.qs.tiles.CPUInfoTile
 import com.android.systemui.qs.tiles.OnTheGoTile
 import com.android.systemui.qs.tiles.NfcTile
 import com.android.systemui.qs.tiles.base.shared.model.QSTileConfig;
@@ -42,6 +43,12 @@ interface XPerienceModule {
     @StringKey(OnTheGoTile.TILE_SPEC)
     fun bindOnTheGoTile(onTheGoTile: OnTheGoTile): QSTileImpl<*>
 
+    /** Inject CPUInfoTile into tileMap in QSModule */
+    @Binds
+    @IntoMap
+    @StringKey(CPUInfoTile.TILE_SPEC)
+    fun CPUInfoTile(cpuInfoTile: CPUInfoTile): QSTileImpl<*>
+
     companion object {
         @Provides
         @IntoMap
@@ -55,6 +62,21 @@ interface XPerienceModule {
                 ),
                 instanceId = uiEventLogger.getNewInstanceId(),
                 category = TileCategory.CONNECTIVITY
+            )
+        }
+
+       @Provides
+        @IntoMap
+        @StringKey(CPUInfoTile.TILE_SPEC)
+        fun provideCPUInfoConfig(uiEventLogger: QsEventLogger): QSTileConfig {
+            return QSTileConfig(
+                tileSpec = TileSpec.create(CPUInfoTile.TILE_SPEC),
+                uiConfig = QSTileUIConfig.Resource(
+                    iconRes = R.drawable.ic_qs_cpu_info,
+                    labelRes = R.string.quick_settings_cpuinfo_label
+                ),
+                instanceId = uiEventLogger.getNewInstanceId(),
+                category = TileCategory.UTILITIES
             )
         }
     }
