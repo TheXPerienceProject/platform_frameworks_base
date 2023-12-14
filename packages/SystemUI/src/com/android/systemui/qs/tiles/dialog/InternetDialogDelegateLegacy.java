@@ -391,6 +391,7 @@ public class InternetDialogDelegateLegacy implements
         mHotspotLayout.setOnClickListener(null);
         mHotspotToggle.setOnClickListener(null);
         mMobileNetworkLayout.setOnLongClickListener(null);
+        mMobileDataToggle.setOnClickListener(null);
         mConnectedWifListLayout.setOnClickListener(null);
         if (mSecondaryMobileNetworkLayout != null) {
             mSecondaryMobileNetworkLayout.setOnClickListener(null);
