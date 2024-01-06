@@ -291,6 +291,8 @@ import com.android.internal.util.Preconditions;
 
 import mx.xperience.display.IRefreshRateManagerService;
 import mx.xperience.display.RefreshRateManager;
+import mx.xperience.view.DisplayResolutionManager;
+import mx.xperience.view.IDisplayResolutionManagerService;
 
 import java.util.Map;
 import java.util.Objects;
@@ -1812,6 +1814,15 @@ public final class SystemServiceRegistry {
                         return new IntrusionDetectionManager(service);
                     }
                 });
+
+        registerService(Context.DISPLAY_RESOLUTION_MANAGER_SERVICE, DisplayResolutionManager.class,
+                new CachedServiceFetcher<DisplayResolutionManager>() {
+            @Override
+            public DisplayResolutionManager createService(ContextImpl ctx) {
+                IBinder binder = ServiceManager.getService(Context.DISPLAY_RESOLUTION_MANAGER_SERVICE);
+                IDisplayResolutionManagerService service = IDisplayResolutionManagerService.Stub.asInterface(binder);
+                return new DisplayResolutionManager(ctx.getOuterContext(), service);
+            }});
 
         registerService(Context.REFRESH_RATE_MANAGER_SERVICE, RefreshRateManager.class,
                 new CachedServiceFetcher<RefreshRateManager>() {
