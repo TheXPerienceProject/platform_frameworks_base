@@ -338,6 +338,8 @@ import java.util.concurrent.Future;
 // LineageHardware
 import com.android.server.xperience.LineageHardwareService;
 
+import com.android.server.XperienceSystemExService;
+
 /**
  * Entry point to {@code system_server}.
  */
@@ -1761,6 +1763,10 @@ public final class SystemServer implements Dumpable {
 
             t.traceBegin("WindowManagerServiceOnInitReady");
             wm.onInitReady();
+            t.traceEnd();
+
+            t.traceBegin("StartXperienceSystemExService");
+            mSystemServiceManager.startService(XperienceSystemExService.class);
             t.traceEnd();
 
             // Start receiving calls from SensorManager services. Start in a separate thread

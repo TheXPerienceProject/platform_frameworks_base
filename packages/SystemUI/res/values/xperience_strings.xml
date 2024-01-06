@@ -80,4 +80,7 @@
     <!-- AI Assistant affordance [CHAR LIMIT=32] -->
     <string name="accessibility_assistant_button">Ai Assistant</string>
 
+    <!-- Refresh rate QS tile -->
+    <string name="refresh_rate_tile_label">Refresh rate</string>
+    <string name="refresh_rate_unknown">Unknown</string>
 </resources>
