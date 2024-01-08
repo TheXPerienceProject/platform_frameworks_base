@@ -107,6 +107,7 @@ import com.android.systemui.statusbar.phone.StatusBarKeyguardViewManager;
 import com.android.systemui.statusbar.policy.CastController;
 import com.android.systemui.statusbar.policy.KeyguardStateController;
 import com.android.systemui.statusbar.policy.SplitShadeStateController;
+import com.android.systemui.tuner.TunerService;
 import com.android.systemui.util.LargeScreenUtils;
 import com.android.systemui.util.ScrimUtils;
 import com.android.systemui.util.kotlin.JavaAdapter;
@@ -177,6 +178,7 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
     private final AccessibilityManager mAccessibilityManager;
     private final MetricsLogger mMetricsLogger;
     private final Resources mResources;
+    private final TunerService mTunerService;
 
     /** Whether the notifications are displayed full width (no margins on the side). */
     private boolean mIsFullWidth;
@@ -361,7 +363,8 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
             SplitShadeStateController splitShadeStateController,
             Lazy<CommunalTransitionViewModel> communalTransitionViewModelLazy,
             Lazy<LargeScreenHeaderHelper> largeScreenHeaderHelperLazy,
-            WindowManagerProvider windowManagerProvider
+            WindowManagerProvider windowManagerProvider,
+            TunerService tunerService
     ) {
         SceneContainerFlag.assertInLegacyMode();
         mPanelViewControllerLazy = panelViewControllerLazy;
@@ -409,6 +412,7 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
         mActiveNotificationsInteractor = activeNotificationsInteractor;
         mCommunalTransitionViewModelLazy = communalTransitionViewModelLazy;
         mJavaAdapter = javaAdapter;
+        mTunerService = tunerService;
 
         mLockscreenShadeTransitionController.addCallback(new LockscreenShadeTransitionCallback());
         dumpManager.registerDumpable(this);
@@ -2229,7 +2233,8 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
     }
 
     /** */
-    public final class QsFragmentListener implements FragmentHostManager.FragmentListener {
+    public final class QsFragmentListener implements FragmentHostManager.FragmentListener,
+            TunerService.Tunable {
 
         private int mLastDisplayIdWithMediaVisibilityChange = Display.DEFAULT_DISPLAY;
 
@@ -2306,6 +2311,7 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
         /** */
         @Override
         public void onFragmentViewDestroyed(String tag, Fragment fragment) {
+            mTunerService.removeTunable(this);
             // Manual handling of fragment lifecycle is only required because this bridges
             // non-fragment and fragment code. Once we are using a fragment for the notification
             // panel, mQs will not need to be null cause it will be tied to the same lifecycle.
