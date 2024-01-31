@@ -56,4 +56,7 @@
     <dimen name="dock_promo_padding">48.0dip</dimen>
     <dimen name="dock_top_logo_margin">6.0dip</dimen>
     <dimen name="dock_top_logo_padding">8.0dip</dimen>
+
+    <!-- HD calling icon -->
+    <dimen name="signal_icon_viewport_size">24dp</dimen>
 </resources>
