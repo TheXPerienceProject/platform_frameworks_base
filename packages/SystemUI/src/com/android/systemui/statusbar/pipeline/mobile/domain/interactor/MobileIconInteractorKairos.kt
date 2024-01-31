@@ -124,6 +124,21 @@ interface MobileIconInteractorKairos {
     /** See [MobileIconsInteractor.isForceHidden]. */
     val isForceHidden: State<Boolean>
 
+    /** See [MobileIconsInteractor.isRoamingForceHidden]. */
+    val isRoamingForceHidden: State<Boolean>
+
+    /** True when VoLTE/VONR available */
+    val isMobileHd: State<Boolean>
+
+    /** See [MobileIconsInteractor.isMobileHdForceHidden]. */
+    val isMobileHdForceHidden: State<Boolean>
+
+    /** True when VoWifi available */
+    val isVoWifi: State<Boolean>
+
+    /** See [MobileIconsInteractor.isVoWifiForceHidden]. */
+    val isVoWifiForceHidden: State<Boolean>
+
     /** See [MobileConnectionRepository.isAllowedDuringAirplaneMode]. */
     val isAllowedDuringAirplaneMode: State<Boolean>
 
@@ -143,6 +158,9 @@ class MobileIconInteractorKairosImpl(
     defaultMobileIconGroup: State<MobileIconGroup>,
     isDefaultConnectionFailed: State<Boolean>,
     override val isForceHidden: State<Boolean>,
+    override val isRoamingForceHidden: State<Boolean>,
+    override val isMobileHdForceHidden: State<Boolean>,
+    override val isVoWifiForceHidden: State<Boolean>,
     private val connectionRepository: MobileConnectionRepositoryKairos,
     private val context: Context,
     private val carrierIdOverrides: MobileIconCarrierIdOverrides =
@@ -325,19 +343,28 @@ class MobileIconInteractorKairosImpl(
     // See b/346904529 for details
     private val satelliteShownLevel: State<Int> = connectionRepository.satelliteLevel
 
+    private val showRoaming: State<Boolean> =
+        combine(isRoaming, isRoamingForceHidden) { roaming, hidden -> roaming && !hidden }
+
     private val cellularIcon: State<SignalIconModel.Cellular> =
         combine(
-            cellularShownLevel,
-            numberOfLevels,
-            showExclamationMark,
-            carrierNetworkChangeActive,
-        ) { cellularShownLevel, numberOfLevels, showExclamationMark, carrierNetworkChange ->
-            SignalIconModel.Cellular(
+            combine(
                 cellularShownLevel,
                 numberOfLevels,
                 showExclamationMark,
-                carrierNetworkChange,
-            )
+                carrierNetworkChangeActive,
+            ) { level, numLevels, showEx, carrierChange ->
+                SignalIconModel.Cellular(
+                    level = level,
+                    numberOfLevels = numLevels,
+                    showExclamationMark = showEx,
+                    carrierNetworkChange = carrierChange,
+                    showRoaming = false,
+                )
+            },
+            showRoaming,
+        ) { icon, roaming ->
+            icon.copy(showRoaming = roaming)
         }
 
     private val satelliteIcon: State<SignalIconModel.Satellite> =
@@ -372,4 +399,12 @@ class MobileIconInteractorKairosImpl(
                     )
                 }
             }
+
+    override val isMobileHd: State<Boolean> =
+        connectionRepository.imsState
+            .map { it.isHdVoiceCapable() }
+
+    override val isVoWifi: State<Boolean> =
+        connectionRepository.imsState
+            .map { it.isVoWifiAvailable() }
 }
