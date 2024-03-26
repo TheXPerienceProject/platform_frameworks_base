@@ -319,6 +319,8 @@ import com.android.server.xperience.health.HealthInterfaceService;
 
 import dalvik.system.VMRuntime;
 
+import mx.xperience.server.XperienceServicesStarter;
+
 import java.io.File;
 import java.io.FileDescriptor;
 import java.io.IOException;
@@ -3251,6 +3253,9 @@ public final class SystemServer implements Dumpable {
         t.traceBegin("HealthConnectManagerService");
         mSystemServiceManager.startService(HEALTHCONNECT_MANAGER_SERVICE_CLASS);
         t.traceEnd();
+
+        XperienceServicesStarter xperienceServiceStarter = new XperienceServicesStarter(mSystemServiceManager);
+        xperienceServiceStarter.startAllServices();
 
         if (mPackageManager.hasSystemFeature(PackageManager.FEATURE_DEVICE_LOCK)) {
             t.traceBegin("DeviceLockService");
