@@ -447,6 +447,8 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
     private final ShadeSurface mShadeSurface;
     private final ShadeLogger mShadeLogger;
 
+    protected GameSpaceManager mGameSpaceManager;
+
     // settings
     private QSPanelController mQSPanelController;
     private final QuickSettingsController mQsController;
@@ -469,8 +471,6 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
     private final UserTracker mUserTracker;
     private final Provider<FingerprintManager> mFingerprintManager;
     private final ActivityStarter mActivityStarter;
-
-    private GameSpaceManager mGameSpaceManager;
 
     private final DisplayMetrics mDisplayMetrics;
 
@@ -1460,11 +1460,6 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
         filter.addAction(Intent.ACTION_SCREEN_OFF);
         mBroadcastDispatcher.registerReceiver(mBroadcastReceiver, filter, null, UserHandle.ALL);
         mGameSpaceManager.observe();
-    }
-
-    @Override
-    public GameSpaceManager getGameSpaceManager() {
-        return mGameSpaceManager;
     }
 
     @Override
@@ -3022,6 +3017,11 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
     }
 
     // End Extra BaseStatusBarMethods.
+
+    @Override
+    public GameSpaceManager getGameSpaceManager() {
+        return mGameSpaceManager;
+    }
 
     boolean isTransientShown() {
         return mStatusBarModeRepository.getDefaultDisplay().isTransientShown().getValue();

@@ -329,6 +329,8 @@ public interface CentralSurfaces extends Dumpable, LifecycleOwner, CoreStartable
      */
     void handleCommunalHubTouch(MotionEvent event);
 
+    GameSpaceManager getGameSpaceManager();
+
     public static class KeyboardShortcutsMessage {
         final int mDeviceId;
 
@@ -351,5 +353,4 @@ public interface CentralSurfaces extends Dumpable, LifecycleOwner, CoreStartable
 
     void setBlockedGesturalNavigation(boolean blocked);
 
-    GameSpaceManager getGameSpaceManager();
 }

@@ -177,7 +177,6 @@ public class StatusBarNotificationActivityStarter implements NotificationActivit
             MetricsLogger metricsLogger,
             StatusBarNotificationActivityStarterLogger logger,
             OnUserInteractionCallback onUserInteractionCallback,
-            CentralSurfaces centralSurfaces,
             NotificationPresenter presenter,
             PanelExpansionInteractor panelExpansionInteractor,
             NotificationShadeWindowController notificationShadeWindowController,
@@ -186,7 +185,8 @@ public class StatusBarNotificationActivityStarter implements NotificationActivit
             NotificationLaunchAnimatorControllerProvider notificationAnimationProvider,
             LaunchFullScreenIntentProvider launchFullScreenIntentProvider,
             PowerInteractor powerInteractor,
-            UserTracker userTracker) {
+            UserTracker userTracker,
+            CentralSurfaces centralSurfaces) {
         mContext = context;
         mDisplayId = displayId;
         mMainThreadHandler = mainThreadHandler;
@@ -213,13 +213,13 @@ public class StatusBarNotificationActivityStarter implements NotificationActivit
         mShadeAnimationInteractor = shadeAnimationInteractor;
         mMetricsLogger = metricsLogger;
         mLogger = logger;
-        mCentralSurfaces = centralSurfaces;
         mOnUserInteractionCallback = onUserInteractionCallback;
         mPresenter = presenter;
         mActivityTransitionAnimator = activityTransitionAnimator;
         mNotificationAnimationProvider = notificationAnimationProvider;
         mPowerInteractor = powerInteractor;
         mUserTracker = userTracker;
+        mCentralSurfaces = centralSurfaces;
 
         launchFullScreenIntentProvider.registerListener(entry -> launchFullScreenIntent(entry));
     }
