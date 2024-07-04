@@ -173,6 +173,22 @@ public class ThemeOverlayController implements CoreStartable, Dumpable {
     // Determines if we should ignore THEME_CUSTOMIZATION_OVERLAY_PACKAGES setting changes.
     private boolean mSkipSettingChange;
 
+    private final ConfigurationListener mConfigurationListener =
+            new ConfigurationListener() {
+                @Override
+                public void onThemeChanged() {
+                    setBootColorProps();
+                }
+
+                @Override
+                public void onUiModeChanged() {
+                    if (mSecureSettings.getInt(Settings.Secure.BERRY_BLACK_THEME, 0) == 1) {
+                        Log.i(TAG, "Re-applying theme on UI change");
+                        reevaluateSystemTheme(true /* forceReload */);
+                    }
+                }
+            };
+
     private final DeviceProvisionedListener mDeviceProvisionedListener =
             new DeviceProvisionedListener() {
                 @Override
