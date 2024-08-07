@@ -246,6 +246,7 @@ import com.android.systemui.util.kotlin.JavaAdapter;
 import com.android.systemui.utils.windowmanager.WindowManagerProvider;
 import com.android.systemui.volume.VolumeComponent;
 import com.android.systemui.wallet.controller.QuickAccessWalletController;
+import com.android.systemui.xperience.RebootSuggestion;
 import com.android.wm.shell.bubbles.Bubbles;
 import com.android.wm.shell.startingsurface.SplashscreenContentDrawer;
 import com.android.wm.shell.startingsurface.StartingSurface;
@@ -453,6 +454,8 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
     private final StatusBarHideIconsForBouncerManager mStatusBarHideIconsForBouncerManager;
 
     private final WallpaperDepthUtils mWallpaperDepthUtils;
+
+    private final RebootSuggestion mRebootSuggestion;
 
     /** Controller for the Shade. */
     private final ShadeSurface mShadeSurface;
@@ -896,6 +899,9 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
         NTForbiddenSwipeDownQSController.Companion.init(mContext, mKeyguardStateController);
 
         mWallpaperDepthUtils = WallpaperDepthUtils.getInstance(mContext);
+
+	mRebootSuggestion = new RebootSuggestion(mContext);
+
     }
 
     private void initBubbles(Bubbles bubbles) {
