@@ -158,6 +158,7 @@ import com.android.server.criticalevents.CriticalEventLog;
 import com.android.server.devicepolicy.DevicePolicyManagerService;
 import com.android.server.devicestate.DeviceStateManagerService;
 import com.android.server.display.DisplayManagerService;
+import com.android.server.display.FreeformService;
 import com.android.server.display.color.ColorDisplayService;
 import com.android.server.dreams.DreamManagerService;
 import com.android.server.emergency.EmergencyAffordanceService;
@@ -2592,6 +2593,10 @@ public final class SystemServer implements Dumpable {
                 mSystemServiceManager.startService(AdaptiveAuthService.class);
                 t.traceEnd();
             }
+
+            t.traceBegin("FreeformService");
+            mSystemServiceManager.startService(FreeformService.class);
+            t.traceEnd();
 
             if (!isWatch) {
                 // We don't run this on watches as there are no plans to use the data logged
