@@ -5,7 +5,7 @@
 -->
 <resources>
 
-  <string name="pocket_mode_active">Pocket Mode is active</string>
-  <string name="pocket_mode_hint">Long press anywhere to disable pocket mode.</string>
-
+    <!-- Pocket mode -->
+    <string name="pocket_mode_active">Pocket Mode is active</string>
+    <string name="pocket_mode_hint">Long press anywhere to disable pocket mode.\nOr remove anything, which is covering the red part.</string>
 </resources>
