@@ -3873,7 +3873,8 @@ public class WindowManagerService extends IWindowManager.Stub
             if (mDisplayReady) {
                 final int forcedDensity = getForcedDisplayDensityForUserLocked(newUserId);
                 final int targetDensity = forcedDensity != 0
-                        ? forcedDensity : displayContent.getInitialDisplayDensity();
+                        ? forcedDensity : WindowManagerServiceExt.getInstance()
+                                .getDensityWithScale(displayContent.getInitialDisplayDensity());
                 displayContent.setForcedDensity(targetDensity, UserHandle.USER_CURRENT);
             }
         }
@@ -6240,7 +6241,8 @@ public class WindowManagerService extends IWindowManager.Stub
         synchronized (mGlobalLock) {
             final DisplayContent displayContent = mRoot.getDisplayContent(displayId);
             if (displayContent != null && displayContent.hasAccess(Binder.getCallingUid())) {
-                return displayContent.getInitialDisplayDensity();
+		return WindowManagerServiceExt.getInstance()
+                        .getDensityWithScale(displayContent.getInitialDisplayDensity());
             }
 
             DisplayInfo info = mDisplayManagerInternal.getDisplayInfo(displayId);
@@ -6331,7 +6333,9 @@ public class WindowManagerService extends IWindowManager.Stub
                 // Clear forced display density
                 final DisplayContent displayContent = mRoot.getDisplayContent(displayId);
                 if (displayContent != null) {
-	            displayContent.setForcedDensity(density, targetUserId);
+		    displayContent.setForcedDensity(WindowManagerServiceExt.getInstance()
+                        .getDensityWithScale(displayContent.getInitialDisplayDensity()),
+                        callingUserId);
                     return;
                 }
 
