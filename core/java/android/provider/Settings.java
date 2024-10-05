@@ -6554,6 +6554,12 @@ public final class Settings {
         public static final String ON_THE_GO_CAMERA = "on_the_go_camera";
 
         /**
+         * Whether to show Bluetooth dialog or toggle bluetooth using Bluetooth tile
+         * @hide
+         */
+        public static final String QS_BT_SHOW_DIALOG = "qs_bt_show_dialog";
+
+        /**
          * Keys we no longer back up under the current schema, but want to continue to
          * process when restoring historical backup datasets.
          *
