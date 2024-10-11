@@ -116,4 +116,13 @@
          the sensor embedded in the power key and listening all the time
          causes a poor experience. -->
     <java-symbol type="bool" name="config_fingerprintWakeAndUnlock" />
+
+    <!-- Pocket mode -->
+    <java-symbol type="layout" name="pocket_mode_layout" />
+    <java-symbol type="drawable" name="prevent_mode_img" />
+    <java-symbol type="id" name="pocket_mode_phone_image" />
+    <java-symbol type="id" name="pocket_mode_active_message" />
+    <java-symbol type="id" name="pocket_mode_hint_message" />
+    <java-symbol type="string" name="pocket_mode_active" />
+    <java-symbol type="string" name="pocket_mode_hint" />
 </resources>
