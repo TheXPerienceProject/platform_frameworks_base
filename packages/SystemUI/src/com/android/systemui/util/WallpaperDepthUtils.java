@@ -157,7 +157,7 @@ public class WallpaperDepthUtils {
         return mLockScreenSubject != null && isDWallpaperEnabled() && !mDozing
                 && mScrimController.getState().toString().equals("KEYGUARD")
                 && mContext.getResources().getConfiguration().orientation
-                != Configuration.ORIENTATION_LANDSCAPE && !MediaArtUtils.getInstance(mContext).albumArtVisible();
+                != Configuration.ORIENTATION_LANDSCAPE;
     }
 
     public void updateDepthWallpaperVisibility() {

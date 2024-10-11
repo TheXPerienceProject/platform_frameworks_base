@@ -94,7 +94,6 @@ constructor(
             smartspaceSection,
             aodBurnInSection,
             clockSection,
-            keyguardSliceViewSection,
             nowBarSection,
             infoWidgetsSection,
             keyguardClockStyleSection,

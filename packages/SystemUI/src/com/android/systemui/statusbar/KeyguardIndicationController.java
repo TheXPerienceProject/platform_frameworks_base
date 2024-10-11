@@ -1276,10 +1276,16 @@ public class KeyguardIndicationController {
         boolean nowBarEnabled = Settings.System.getIntForUser(mContext.getContentResolver(),
             "keyguard_now_bar_enabled", 0, UserHandle.USER_CURRENT) == 1;
 
+        if (nowBarEnabled) {
+            String percentage = NumberFormat.getPercentInstance().format(mBatteryLevel / 100f);
+            return percentage;
+        }
+
         String batteryInfo = "";
         boolean showbatteryInfo = Settings.System.getIntForUser(mContext.getContentResolver(),
             Settings.System.LOCKSCREEN_BATTERY_INFO, 1, UserHandle.USER_CURRENT) == 1;
-         if (showbatteryInfo) {
+        
+        if (showbatteryInfo) {
             if (mChargingCurrent >= mCurrentDivider * 1000) {
                 batteryInfo = String.format("%.1f" , (mChargingCurrent / mCurrentDivider / 1000)) + "A";
             } else if (mChargingCurrent > 0) {
@@ -1303,6 +1309,7 @@ public class KeyguardIndicationController {
         }
 
         String percentage = NumberFormat.getPercentInstance().format(mBatteryLevel / 100f);
+
         if (hasChargingTime) {
             String chargingTimeFormatted = Formatter.formatShortElapsedTimeRoundingUpToMinutes(
                     mContext, mChargingTimeRemaining);
@@ -1312,10 +1319,6 @@ public class KeyguardIndicationController {
         } else {
             String chargingText =  mContext.getResources().getString(chargingId, percentage);
             return chargingText + batteryInfo;
-        }
-
-        if (nowBarEnabled) {
-            return percentage;
         }
 
     }

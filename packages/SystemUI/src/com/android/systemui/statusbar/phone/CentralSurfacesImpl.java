@@ -82,6 +82,8 @@ import android.view.IWindowManager;
 import android.view.MotionEvent;
 import android.view.ThreadedRenderer;
 import android.view.View;
+import android.view.ViewConfiguration;
+import android.view.ViewGroup;
 import android.view.WindowInsets;
 import android.view.WindowManager;
 import android.view.WindowManagerGlobal;
@@ -1136,6 +1138,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
                 (requestTopUi, componentTag) -> mMainExecutor.execute(() ->
                         mNotificationShadeWindowController.setRequestTopUi(
                                 requestTopUi, componentTag))));
+        ViewGroup parentView = getNotifContainerParentView();
         View placeholder = parentView.findViewById(R.id.depth_wallpaper_placeholder);
         View depthWallpaperView = mWallpaperDepthUtils.getDepthWallpaperView();
         if (placeholder != null) {
@@ -1145,7 +1148,12 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
         }
     }
     
-    
+    private ViewGroup getNotifContainerParentView() {
+        ViewGroup rootView = (ViewGroup) getNotificationShadeWindowView().findViewById(R.id.scrim_behind).getParent();
+        ViewGroup targetView = rootView.findViewById(R.id.notification_container_parent);
+        return targetView;
+    }
+
     @VisibleForTesting
     /** Registers listeners/callbacks with external dependencies. */
     void registerCallbacks() {

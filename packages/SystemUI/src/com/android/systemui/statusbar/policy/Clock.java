@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.icu.lang.UCharacter;
 import android.icu.text.DateTimePatternGenerator;
@@ -31,6 +32,7 @@ import android.os.Handler;
 import android.os.Parcelable;
 import android.os.SystemClock;
 import android.os.UserHandle;
+import android.provider.Settings;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
@@ -83,6 +85,8 @@ public class Clock extends TextView implements
     private static final String VISIBLE_BY_USER = "visible_by_user";
     private static final String SHOW_SECONDS = "show_seconds";
     private static final String VISIBILITY = "visibility";
+    private static final String STATUSBAR_CLOCK_CHIP =
+            "system:" + Settings.System.STATUSBAR_CLOCK_CHIP;
 
     private final UserTracker mUserTracker;
     private final CommandQueue mCommandQueue;
@@ -90,6 +94,7 @@ public class Clock extends TextView implements
 
     private boolean mClockVisibleByPolicy = true;
     private boolean mClockVisibleByUser = true;
+    private boolean mClockBgOn;
 
     private boolean mAttached;
     private boolean mScreenReceiverRegistered;
@@ -200,7 +205,8 @@ public class Clock extends TextView implements
             mBroadcastDispatcher.registerReceiverWithHandler(mIntentReceiver, filter,
                     Dependency.get(Dependency.TIME_TICK_HANDLER), UserHandle.ALL);
             Dependency.get(TunerService.class).addTunable(this, CLOCK_SECONDS,
-                    StatusBarIconController.ICON_HIDE_LIST);
+                    StatusBarIconController.ICON_HIDE_LIST,
+                    STATUSBAR_CLOCK_CHIP);
             mCommandQueue.addCallback(this);
             mUserTracker.addCallback(mUserChangedCallback, mContext.getMainExecutor());
             mCurrentUserId = mUserTracker.getUserId();
@@ -338,6 +344,9 @@ public class Clock extends TextView implements
                                 .contains("clock"));
                 updateClockVisibility();
             }
+        } else if (STATUSBAR_CLOCK_CHIP.equals(key)) {
+             mClockBgOn =
+                        TunerService.parseIntegerSwitch(newValue, false);
         }
     }
 
@@ -359,7 +368,7 @@ public class Clock extends TextView implements
     @Override
     public void onDarkChanged(ArrayList<Rect> areas, float darkIntensity, int tint) {
         mNonAdaptedColor = DarkIconDispatcher.getTint(areas, this, tint);
-        setTextColor(mNonAdaptedColor);
+        setTextColor(mClockBgOn ? Color.WHITE : mNonAdaptedColor);
     }
 
     // Update text color based when shade scrim changes color.
