@@ -155,5 +155,8 @@
     <string name="usb_use_tethering">USB tethering</string>
     <string name="usb_use_MIDI" translatable="false">MIDI</string>
     <string name="usb_use">Use USB for</string>
+
+    <!-- Clock Weather -->
+    <string name="clock_ide_weather_data_unavailable">null</string>
 </resources>
 
