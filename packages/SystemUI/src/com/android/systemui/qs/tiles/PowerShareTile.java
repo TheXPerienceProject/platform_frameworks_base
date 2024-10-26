@@ -45,7 +45,7 @@ import com.android.systemui.statusbar.policy.BatteryController;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 
-import vendor.lineage.powershare.V1_0.IPowerShare;
+import vendor.xperience.powershare.V1_0.IPowerShare;
 
 import java.util.NoSuchElementException;
 
@@ -208,7 +208,7 @@ public class PowerShareTile extends QSTileImpl<BooleanState>
 
     @Override
     public int getMetricsCategory() {
-        return MetricsEvent.DERP;
+        return MetricsEvent.RAINBOW_UNICORN;
     }
 
     @Override
