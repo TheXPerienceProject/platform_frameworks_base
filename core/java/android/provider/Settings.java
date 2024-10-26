@@ -6304,11 +6304,6 @@ public final class Settings {
                 "torch_long_press_power_timeout";
 
         /**
-         * @hide
-         */
-        public static final String ENABLE_TASKBAR = "enable_taskbar";
-
-        /**
          * Whether auto brightness is applied one shot when screen is turned on
          * @hide
          */
