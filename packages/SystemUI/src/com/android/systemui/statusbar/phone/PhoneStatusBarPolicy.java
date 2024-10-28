@@ -85,6 +85,7 @@ import com.android.systemui.statusbar.policy.UserInfoController;
 import com.android.systemui.statusbar.policy.ZenModeController;
 import com.android.systemui.statusbar.policy.domain.interactor.ZenModeInteractor;
 import com.android.systemui.statusbar.policy.domain.model.ZenModeInfo;
+import com.android.systemui.tuner.TunerService;
 import com.android.systemui.util.RingerModeTracker;
 import com.android.systemui.util.kotlin.JavaAdapter;
 import com.android.systemui.util.time.DateFormatUtil;
@@ -110,7 +111,8 @@ public class PhoneStatusBarPolicy
                 KeyguardStateController.Callback,
                 PrivacyItemController.Callback,
                 LocationController.LocationChangeCallback,
-                RecordingController.RecordingStateChangeCallback {
+                RecordingController.RecordingStateChangeCallback,
+                TunerService.Tunable {
     private static final String TAG = "PhoneStatusBarPolicy";
     private static final boolean DEBUG = Log.isLoggable(TAG, Log.DEBUG);
 
