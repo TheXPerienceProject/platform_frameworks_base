@@ -31,6 +31,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Rect;
@@ -41,6 +42,7 @@ import android.os.Handler;
 import android.util.Size;
 import android.util.Log;
 import android.view.Choreographer;
+import android.view.Display;
 import android.view.SurfaceControl;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -48,6 +50,7 @@ import android.window.WindowContainerTransaction;
 
 import com.android.launcher3.icons.BaseIconFactory;
 import com.android.launcher3.icons.IconProvider;
+import com.android.internal.policy.ScreenDecorationsUtils;
 import com.android.wm.shell.R;
 import com.android.wm.shell.ShellTaskOrganizer;
 import com.android.wm.shell.common.DisplayController;
@@ -214,6 +217,7 @@ public class CaptionWindowDecoration extends WindowDecoration<WindowDecorLinearL
         mRelayoutParams.mShadowRadiusId = shadowRadiusID;
         mRelayoutParams.mApplyStartTransactionOnDraw = applyStartTransactionOnDraw;
         mRelayoutParams.mSetTaskPositionAndCrop = setTaskCropAndPosition;
+        mRelayoutParams.mCornerRadius = getCornerRadius();
 
         relayout(mRelayoutParams, startT, finishT, wct, oldRootView, mResult);
         // After this line, mTaskInfo is up-to-date and should be used instead of taskInfo
@@ -256,6 +260,20 @@ public class CaptionWindowDecoration extends WindowDecoration<WindowDecorLinearL
         mDragResizeListener.setGeometry(new DragResizeWindowGeometry(0 /* taskCornerRadius */,
                 new Size(mResult.mWidth, mResult.mHeight), getResizeEdgeHandleSize(res),
                 getFineResizeCornerSize(res), getLargeResizeCornerSize(res)), touchSlop);
+    }
+
+    private int getCornerRadius() {
+        final Display display = mDisplayController.getDisplay(mTaskInfo.displayId);
+        // Show rounded corners only on the internal display as we can't get rounded corners for
+        // external displays.
+        if (display.getType() != Display.TYPE_INTERNAL) {
+            return 0;
+        }
+        final TypedArray ta = mContext.obtainStyledAttributes(
+                new int[]{android.R.attr.dialogCornerRadius});
+        final int cornerRadius = ta.getDimensionPixelSize(0, 0);
+        ta.recycle();
+        return cornerRadius;
     }
 
     /**
