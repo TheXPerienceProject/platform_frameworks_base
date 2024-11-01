@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2024 The XPerience Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Name of the clock in status bar [CHAR LIMIT=30] -->
+    <!-- Custom QS tiles -->
+    <!-- Ambient display QS tile -->
+    <string name="quick_settings_ambient_display_label">Környezeti kijelző</string>
+    <string name="accessibility_quick_settings_ambient_display_off">Környezeti kijelző ki.</string>
+    <string name="accessibility_quick_settings_ambient_display_on">Környezeti kijelző be.</string>
+    <!-- AOD QS tile -->
+    <!-- Caffeine QS tile -->
+    <string name="quick_settings_caffeine_label">Koffein</string>
+    <string name="accessibility_quick_settings_caffeine_off">Koffein ki.</string>
+    <string name="accessibility_quick_settings_caffeine_on">Koffein be.</string>
+    <!-- Heads up QS tile -->
+    <string name="quick_settings_heads_up_label">Lebegő értesítések</string>
+    <string name="accessibility_quick_settings_heads_up_off">Lebegő értesítések ki.</string>
+    <string name="accessibility_quick_settings_heads_up_on">Lebegő értesítések be.</string>
+    <!-- PowerShare QS tile -->
+    <string name="quick_settings_powershare_label">Akkumegosztás</string>
+    <string name="quick_settings_powershare_off_powersave_label">Akkumegosztás ki\nAkkumulátorkímélő mód</string>
+    <string name="quick_settings_powershare_off_low_battery_label">Akkumegosztás ki\nAlacsony akkuszint</string>
+    <string name="quick_settings_powershare_enabled_label">Az Akkumegosztás engedélyezett</string>
+    <!-- Sync QS tile -->
+    <!-- USB tethering QS tile -->
+    <string name="quick_settings_usb_tether_label">USB-megosztás</string>
+    <!-- Name of the nfc status bar icon. -->
+    <!-- Accessibility label for nfc icon (not shown on screen) [CHAR LIMIT=NONE] -->
+    <!-- Status bar -->
+    <!-- Label for area where tiles can be added to the qs panel -->
+    <!-- Label for the area where tiles can be dragged in to remove -->
+    <!-- Label for UI element which allows deleting the screenshot [CHAR LIMIT=30] -->
+    <string name="screenshot_delete_label">Törlés</string>
+    <!-- Content description indicating that tapping the element will allow deleting the screenshot [CHAR LIMIT=NONE] -->
+    <string name="screenshot_delete_description">Képernyőkép-törlés</string>
+    <!-- Status bar network traffic monitor strings -->
+    <!-- Text to use when the number in a notification info is too large -->
+</resources>
