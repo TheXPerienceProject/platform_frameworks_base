@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2024 The XPerience Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Name of the clock in status bar [CHAR LIMIT=30] -->
+    <!-- Custom QS tiles -->
+    <!-- Ambient display QS tile -->
+    <string name="quick_settings_ambient_display_label">Actieve display</string>
+    <string name="accessibility_quick_settings_ambient_display_off">Actieve display uit.</string>
+    <string name="accessibility_quick_settings_ambient_display_on">Actieve display uit.</string>
+    <!-- AOD QS tile -->
+    <!-- Caffeine QS tile -->
+    <string name="quick_settings_caffeine_label">Cafeïne</string>
+    <string name="accessibility_quick_settings_caffeine_off">Cafeïne uit.</string>
+    <string name="accessibility_quick_settings_caffeine_on">Cafeïne aan.</string>
+    <!-- Heads up QS tile -->
+    <!-- PowerShare QS tile -->
+    <!-- Sync QS tile -->
+    <!-- USB tethering QS tile -->
+    <!-- Name of the nfc status bar icon. -->
+    <!-- Accessibility label for nfc icon (not shown on screen) [CHAR LIMIT=NONE] -->
+    <!-- Status bar -->
+    <!-- Label for area where tiles can be added to the qs panel -->
+    <!-- Label for the area where tiles can be dragged in to remove -->
+    <!-- Label for UI element which allows deleting the screenshot [CHAR LIMIT=30] -->
+    <!-- Content description indicating that tapping the element will allow deleting the screenshot [CHAR LIMIT=NONE] -->
+    <!-- Status bar network traffic monitor strings -->
+    <!-- Text to use when the number in a notification info is too large -->
+</resources>
