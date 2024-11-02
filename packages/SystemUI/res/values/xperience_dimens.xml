@@ -24,4 +24,14 @@
 
     <!-- Screen Record -->
     <dimen name="screenrecord_dot_size">48dp</dimen>
+
+    <!-- Ambient Music -->
+    <dimen name="ambient_indication_icon_size">20.0dip</dimen>
+    <dimen name="ambient_indication_note_icon_size">14.0dip</dimen>
+    <dimen name="ambient_text_shadow_radius">1.5dip</dimen>
+    <dimen name="dock_logo_min_size">48.0dip</dimen>
+    <dimen name="dock_photo_diff">48.0dip</dimen>
+    <dimen name="dock_promo_padding">48.0dip</dimen>
+    <dimen name="dock_top_logo_margin">6.0dip</dimen>
+    <dimen name="dock_top_logo_padding">8.0dip</dimen>
 </resources>
