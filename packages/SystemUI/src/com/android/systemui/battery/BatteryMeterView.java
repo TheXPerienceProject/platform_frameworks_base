@@ -91,10 +91,54 @@ public class BatteryMeterView extends LinearLayout implements DarkReceiver {
     public static final int BATTERY_STYLE_TEXT = 2;
     public static final int BATTERY_STYLE_LANDSCAPE = 3;
     public static final int BATTERY_STYLE_RLANDSCAPE = 4;
+    public static final int BATTERY_STYLE_FULL_CIRCLE = 5;
+    public static final int BATTERY_STYLE_LANDSCAPE_IOS15 = 6;
+    public static final int BATTERY_STYLE_LANDSCAPE_IOS16 = 7;
+    public static final int BATTERY_STYLE_LANDSCAPE_BUDDY = 8;
+    public static final int BATTERY_STYLE_LANDSCAPE_LINE = 9;
+    public static final int BATTERY_STYLE_LANDSCAPE_MUSKU = 10;
+    public static final int BATTERY_STYLE_LANDSCAPE_PILL = 11;
+    public static final int BATTERY_STYLE_LANDSCAPE_SIGNAL = 12;
+    public static final int BATTERY_STYLE_RLANDSCAPE_STYLE_A = 13;
+    public static final int BATTERY_STYLE_LANDSCAPE_STYLE_A = 14;
+    public static final int BATTERY_STYLE_RLANDSCAPE_STYLE_B = 15;
+    public static final int BATTERY_STYLE_LANDSCAPE_STYLE_B = 16;
+    public static final int BATTERY_STYLE_LANDSCAPE_ORIGAMI = 17;
+    public static final int BATTERY_STYLE_LANDSCAPE_MIUI_PILL = 18;
+    public static final int BATTERY_STYLE_LANDSCAPE_SIMPLY = 19;
+    public static final int BATTERY_STYLE_LANDSCAPE_NENINE = 20;
+    public static final int BATTERY_STYLE_LANDSCAPE_COLOROS = 21;
+    public static final int BATTERY_STYLE_LANDSCAPE_LOVE = 22;
+    public static final int BATTERY_STYLE_LANDSCAPE_STRIP = 23;
+    public static final int BATTERY_STYLE_LANDSCAPE_IOS_OUTLINE = 24;
+    public static final int BATTERY_STYLE_LANDSCAPE_RULER = 25;
+    public static final int BATTERY_STYLE_LANDSCAPE_WINDOWS = 26;
 
     private final CircleBatteryDrawable mCircleDrawable;
+    private final FullCircleBatteryDrawable mFullCircleDrawable;
     private final LandscapeBatteryDrawable mLandscapeDrawable;
     private final RLandscapeBatteryDrawable mRLandscapeDrawable;
+    private final LandscapeBatteryDrawableiOS15 mLandscapeDrawableiOS15;
+    private final LandscapeBatteryDrawableiOS16 mLandscapeDrawableiOS16;
+    private final RLandscapeBatteryDrawableStyleA mRLandscapeDrawableStyleA;
+    private final LandscapeBatteryDrawableStyleA mLandscapeDrawableStyleA;
+    private final RLandscapeBatteryDrawableStyleB mRLandscapeDrawableStyleB;
+    private final LandscapeBatteryDrawableStyleB mLandscapeDrawableStyleB;
+    private final LandscapeBatteryDrawableBuddy mLandscapeDrawableBuddy;
+    private final LandscapeBatteryDrawableLine mLandscapeDrawableLine;
+    private final LandscapeBatteryDrawableMusku mLandscapeDrawableMusku;
+    private final LandscapeBatteryDrawablePill mLandscapeDrawablePill;
+    private final LandscapeBatteryDrawableSignal mLandscapeDrawableSignal;
+    private final LandscapeBatteryDrawableOrigami mLandscapeDrawableOrigami;
+    private final LandscapeBatteryDrawableMiUIPill mLandscapeDrawableMiUIPill;
+    private final LandscapeBatteryA mLandscapeBatteryA;
+    private final LandscapeBatteryB mLandscapeBatteryB;
+    private final LandscapeBatteryC mLandscapeBatteryC;
+    private final LandscapeBatteryD mLandscapeBatteryD;
+    private final LandscapeBatteryJ mLandscapeBatteryJ;
+    private final LandscapeBatteryM mLandscapeBatteryM;
+    private final LandscapeBatteryN mLandscapeBatteryN;
+    private final LandscapeBatteryO mLandscapeBatteryO;
     private final AccessorizedBatteryDrawable mDrawable;
     private AccessorizedBatteryDrawable mThemedDrawable;
     private ImageView mBatteryIconView;
@@ -152,6 +196,7 @@ public class BatteryMeterView extends LinearLayout implements DarkReceiver {
         atts.recycle();
 
         mCircleDrawable = new CircleBatteryDrawable(context, frameColor);
+        mFullCircleDrawable = new FullCircleBatteryDrawable(context, frameColor);
         mLandscapeDrawable = new LandscapeBatteryDrawable(context, frameColor);
         mRLandscapeDrawable = new RLandscapeBatteryDrawable(context, frameColor);
         mDrawable = new AccessorizedBatteryDrawable(context, frameColor);
@@ -160,7 +205,29 @@ public class BatteryMeterView extends LinearLayout implements DarkReceiver {
             BATTERY_STYLE_PORTRAIT, mDrawable,
             BATTERY_STYLE_CIRCLE, mCircleDrawable,
             BATTERY_STYLE_LANDSCAPE, mLandscapeDrawable,
-            BATTERY_STYLE_RLANDSCAPE, mRLandscapeDrawable
+            BATTERY_STYLE_RLANDSCAPE, mRLandscapeDrawable,
+            BATTERY_STYLE_FULL_CIRCLE, mFullCircleDrawable,
+            BATTERY_STYLE_LANDSCAPE_IOS15,mLandscapeDrawableiOS15,
+            BATTERY_STYLE_LANDSCAPE_IOS16,mLandscapeDrawableiOS16,
+            BATTERY_STYLE_RLANDSCAPE_STYLE_A,mRLandscapeDrawableStyleA,
+            BATTERY_STYLE_LANDSCAPE_STYLE_A,mLandscapeDrawableStyleA,
+            BATTERY_STYLE_RLANDSCAPE_STYLE_B,mRLandscapeDrawableStyleB,
+            BATTERY_STYLE_LANDSCAPE_STYLE_B,mLandscapeDrawableStyleB,
+            BATTERY_STYLE_LANDSCAPE_BUDDY,mLandscapeDrawableBuddy,
+            BATTERY_STYLE_LANDSCAPE_LINE,mLandscapeDrawableLine,
+            BATTERY_STYLE_LANDSCAPE_MUSKU,mLandscapeDrawableMusku,
+            BATTERY_STYLE_LANDSCAPE_PILL,mLandscapeDrawablePill,
+            BATTERY_STYLE_LANDSCAPE_SIGNAL,mLandscapeDrawableSignal,
+            BATTERY_STYLE_LANDSCAPE_ORIGAMI,mLandscapeDrawableOrigami,
+            BATTERY_STYLE_LANDSCAPE_MIUI_PILL,mLandscapeDrawableMiUIPill,
+            BATTERY_STYLE_LANDSCAPE_SIMPLY,mLandscapeBatteryA,
+            BATTERY_STYLE_LANDSCAPE_NENINE,mLandscapeBatteryB,
+            BATTERY_STYLE_LANDSCAPE_COLOROS,mLandscapeBatteryC,
+            BATTERY_STYLE_LANDSCAPE_LOVE,mLandscapeBatteryD,
+            BATTERY_STYLE_LANDSCAPE_STRIP,mLandscapeBatteryJ,
+            BATTERY_STYLE_LANDSCAPE_IOS_OUTLINE,mLandscapeBatteryM,
+            BATTERY_STYLE_LANDSCAPE_RULER,mLandscapeBatteryN,
+            BATTERY_STYLE_LANDSCAPE_WINDOWS,mLandscapeBatteryO
         ));
 
         setupLayoutTransition();
@@ -730,13 +797,65 @@ public class BatteryMeterView extends LinearLayout implements DarkReceiver {
         float mainBatteryWidth = (
                 res.getDimensionPixelSize(R.dimen.status_bar_battery_icon_width)) * iconScaleFactor;
 
-        if (mBatteryStyle == BATTERY_STYLE_CIRCLE) {
+        if (mBatteryStyle == BATTERY_STYLE_CIRCLE || mBatteryStyle == BATTERY_STYLE_FULL_CIRCLE) {
             mainBatteryWidth = res.getDimensionPixelSize(R.dimen.status_bar_battery_icon_circle_width)
                     * iconScaleFactor;
-        } else if (mBatteryStyle == BATTERY_STYLE_LANDSCAPE || mBatteryStyle == BATTERY_STYLE_RLANDSCAPE) {
+        } else if (mBatteryStyle == BATTERY_STYLE_LANDSCAPE || mBatteryStyle == BATTERY_STYLE_RLANDSCAPE || mBatteryStyle == BATTERY_STYLE_RLANDSCAPE_STYLE_A || mBatteryStyle == BATTERY_STYLE_LANDSCAPE_STYLE_A || mBatteryStyle == BATTERY_STYLE_RLANDSCAPE_STYLE_B || mBatteryStyle == BATTERY_STYLE_LANDSCAPE_STYLE_B) {
             mainBatteryHeight = res.getDimensionPixelSize(R.dimen.status_bar_battery_icon_height_landscape)
                     * iconScaleFactor;
             mainBatteryWidth = res.getDimensionPixelSize(R.dimen.status_bar_battery_icon_width_landscape)
+                    * iconScaleFactor;
+        } else if (mBatteryStyle == BATTERY_STYLE_LANDSCAPE_IOS15) {
+            mainBatteryHeight = res.getDimensionPixelSize(R.dimen.status_bar_battery_icon_height_landscape_ios15)
+                    * iconScaleFactor;
+            mainBatteryWidth = res.getDimensionPixelSize(R.dimen.status_bar_battery_icon_width_landscape_ios15)
+                    * iconScaleFactor;
+        } else if (mBatteryStyle == BATTERY_STYLE_LANDSCAPE_IOS16) {
+            mainBatteryHeight = res.getDimensionPixelSize(R.dimen.status_bar_battery_icon_height_landscape_ios16)
+                    * iconScaleFactor;
+            mainBatteryWidth = res.getDimensionPixelSize(R.dimen.status_bar_battery_icon_width_landscape_ios16)
+                    * iconScaleFactor;
+        } else if (mBatteryStyle == BATTERY_STYLE_LANDSCAPE_SIGNAL) {
+            mainBatteryHeight = res.getDimensionPixelSize(R.dimen.status_bar_battery_icon_height_landscape_signal)
+                    * iconScaleFactor;
+            mainBatteryWidth = res.getDimensionPixelSize(R.dimen.status_bar_battery_icon_width_landscape_signal)
+                    * iconScaleFactor;
+        } else if (mBatteryStyle == BATTERY_STYLE_LANDSCAPE_LINE) {
+            mainBatteryHeight = res.getDimensionPixelSize(R.dimen.status_bar_battery_icon_height_landscape_line)
+                    * iconScaleFactor;
+            mainBatteryWidth = res.getDimensionPixelSize(R.dimen.status_bar_battery_icon_width_landscape_line)
+                    * iconScaleFactor;
+        } else if (mBatteryStyle == BATTERY_STYLE_LANDSCAPE_PILL || mBatteryStyle == BATTERY_STYLE_LANDSCAPE_MUSKU) {
+            mainBatteryHeight = res.getDimensionPixelSize(R.dimen.status_bar_battery_icon_height_landscape_pill_musku)
+                    * iconScaleFactor;
+            mainBatteryWidth = res.getDimensionPixelSize(R.dimen.status_bar_battery_icon_width_landscape_pill_musku)
+                    * iconScaleFactor;
+        } else if (mBatteryStyle == BATTERY_STYLE_LANDSCAPE_BUDDY) {
+            mainBatteryHeight = res.getDimensionPixelSize(R.dimen.status_bar_battery_icon_height_landscape_buddy)
+                    * iconScaleFactor;
+            mainBatteryWidth = res.getDimensionPixelSize(R.dimen.status_bar_battery_icon_width_landscape_buddy)
+                    * iconScaleFactor;
+        } else if (mBatteryStyle == BATTERY_STYLE_LANDSCAPE_ORIGAMI) {
+            mainBatteryHeight = res.getDimensionPixelSize(R.dimen.status_bar_battery_icon_height_landscape_origami)
+                    * iconScaleFactor;
+            mainBatteryWidth = res.getDimensionPixelSize(R.dimen.status_bar_battery_icon_width_landscape_origami)
+                    * iconScaleFactor;
+        } else if (mBatteryStyle == BATTERY_STYLE_LANDSCAPE_MIUI_PILL) {
+            mainBatteryHeight = res.getDimensionPixelSize(R.dimen.status_bar_battery_icon_height_landscape_miui_pill)
+                    * iconScaleFactor;
+            mainBatteryWidth = res.getDimensionPixelSize(R.dimen.status_bar_battery_icon_width_landscape_miui_pill)
+                    * iconScaleFactor;
+        } else if (mBatteryStyle == BATTERY_STYLE_LANDSCAPE_SIMPLY ||
+                	mBatteryStyle == BATTERY_STYLE_LANDSCAPE_NENINE ||
+                	mBatteryStyle == BATTERY_STYLE_LANDSCAPE_COLOROS ||
+                	mBatteryStyle == BATTERY_STYLE_LANDSCAPE_LOVE ||
+                	mBatteryStyle == BATTERY_STYLE_LANDSCAPE_STRIP ||
+                	mBatteryStyle == BATTERY_STYLE_LANDSCAPE_IOS_OUTLINE ||
+                	mBatteryStyle == BATTERY_STYLE_LANDSCAPE_RULER ||
+                	mBatteryStyle == BATTERY_STYLE_LANDSCAPE_WINDOWS) {
+            mainBatteryHeight = res.getDimensionPixelSize(R.dimen.status_bar_battery_icon_height_landscape_a_o)
+                    * iconScaleFactor;
+            mainBatteryWidth = res.getDimensionPixelSize(R.dimen.status_bar_battery_icon_width_landscape_a_o)
                     * iconScaleFactor;
         }
 
