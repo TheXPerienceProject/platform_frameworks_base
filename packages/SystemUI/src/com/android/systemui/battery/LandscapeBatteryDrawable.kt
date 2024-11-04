@@ -17,6 +17,7 @@
 package com.android.systemui.battery
 
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.BlendMode
 import android.graphics.Canvas
 import android.graphics.Color

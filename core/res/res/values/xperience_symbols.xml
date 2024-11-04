@@ -54,6 +54,7 @@
     <java-symbol type="string" name="config_batterymeterLandErrorPerimeterPathiOS16" />
 
     <!-- More battery styles -->
+    <java-symbol type="string" name="config_landscapeBatteryPerimeterPathA" />
     <java-symbol type="string" name="config_batterymeterLandPerimeterPathBuddy" />
     <java-symbol type="string" name="config_batterymeterLandFillMaskBuddy" />
     <java-symbol type="string" name="config_batterymeterLandBoltPathBuddy" />

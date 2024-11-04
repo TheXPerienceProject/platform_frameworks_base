@@ -16,20 +16,10 @@
 package com.android.systemui.battery
 
 import android.content.Context
-import android.graphics.BlendMode
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.ColorFilter
-import android.graphics.LinearGradient
-import android.graphics.Matrix
-import android.graphics.Paint
-import android.graphics.Path
-import android.graphics.PixelFormat
-import android.graphics.Rect
-import android.graphics.RectF
-import android.graphics.Shader
-import android.graphics.Typeface
+import android.content.res.Resources
+import android.graphics.*
 import android.graphics.drawable.Drawable
+
 import android.util.PathParser
 import android.util.TypedValue
 
@@ -111,9 +101,9 @@ open class LandscapeBatteryA(
     open var criticalLevel: Int = context.resources.getInteger(
             com.android.internal.R.integer.config_criticalBatteryWarningLevel)
 
-    var charging = false
-    var powerSaveEnabled = false
-    var showPercent = false
+    private var charging = false
+    private var powerSaveEnabled = false
+    private var showPercent = false
 
     var customChargingIcon = false
         set(value) {
@@ -142,17 +132,24 @@ open class LandscapeBatteryA(
     override fun getShowPercent(): Boolean {
         return showPercent
     }
+
     override fun setShowPercent(show: Boolean) {
         showPercent = show
         postInvalidate()
     }
-    override fun getBatteryLevel(): Int {
-        return batteryLevel
+
+    /**
+     * Set the fill level
+     */
+    override fun setBatteryLevel(l: Int) {
+        // invertFillIcon = if (l >= 67) true else if (l <= 33) false else invertFillIcon
+        batteryLevel = l
+        levelColor = batteryColorForLevel(batteryLevel)
+        invalidateSelf()
     }
 
-    override fun setBatteryLevel(level: Int) {
-        batteryLevel = level
-        postInvalidate()
+    override fun getBatteryLevel(): Int {
+        return batteryLevel
     }
 
     public open fun customizeBatteryDrawable(
@@ -524,21 +521,7 @@ open class LandscapeBatteryA(
         return intrinsicWidth
     }
 
-    /**
-     * Set the fill level
-     */
-    public open fun setBatteryLevel(l: Int) {
-        // invertFillIcon = if (l >= 67) true else if (l <= 33) false else invertFillIcon
-        batteryLevel = l
-        levelColor = batteryColorForLevel(batteryLevel)
-        invalidateSelf()
-    }
-
-    public fun getBatteryLevel(): Int {
-        return batteryLevel
-    }
-
-    override fun onBoundsChange(bounds: Rect?) {
+    override fun onBoundsChange(bounds: Rect) {
         super.onBoundsChange(bounds)
         updateSize()
     }
@@ -596,6 +579,7 @@ open class LandscapeBatteryA(
     }
 
     private fun loadPaths() {
+
         val pathString = context.resources.getString(
                R.string.config_landscapeBatteryPerimeterPathA)
         perimeterPath.set(PathParser.createPathFromPathData(pathString))
@@ -603,6 +587,7 @@ open class LandscapeBatteryA(
 
         val errorPathString = context.resources.getString(
                 R.string.config_landscapeBatteryErrorPerimeterPathA)
+
         errorPerimeterPath.set(PathParser.createPathFromPathData(errorPathString))
         errorPerimeterPath.computeBounds(RectF(), true)
 
@@ -619,7 +604,6 @@ open class LandscapeBatteryA(
         val plusPathString = context.resources.getString(
                 R.string.config_landscapeBatteryPowersavePathA)
         plusPath.set(PathParser.createPathFromPathData(plusPathString))
-
         dualTone = context.resources.getBoolean(
                 com.android.internal.R.bool.config_batterymeterDualTone)
     }

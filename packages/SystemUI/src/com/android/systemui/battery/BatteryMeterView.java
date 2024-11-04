@@ -201,34 +201,114 @@ public class BatteryMeterView extends LinearLayout implements DarkReceiver {
         mRLandscapeDrawable = new RLandscapeBatteryDrawable(context, frameColor);
         mDrawable = new AccessorizedBatteryDrawable(context, frameColor);
 
-        mStyleMap = new HashMap<>(Map.of(
-            BATTERY_STYLE_PORTRAIT, mDrawable,
-            BATTERY_STYLE_CIRCLE, mCircleDrawable,
-            BATTERY_STYLE_LANDSCAPE, mLandscapeDrawable,
-            BATTERY_STYLE_RLANDSCAPE, mRLandscapeDrawable,
-            BATTERY_STYLE_FULL_CIRCLE, mFullCircleDrawable,
-            BATTERY_STYLE_LANDSCAPE_IOS15,mLandscapeDrawableiOS15,
-            BATTERY_STYLE_LANDSCAPE_IOS16,mLandscapeDrawableiOS16,
-            BATTERY_STYLE_RLANDSCAPE_STYLE_A,mRLandscapeDrawableStyleA,
-            BATTERY_STYLE_LANDSCAPE_STYLE_A,mLandscapeDrawableStyleA,
-            BATTERY_STYLE_RLANDSCAPE_STYLE_B,mRLandscapeDrawableStyleB,
-            BATTERY_STYLE_LANDSCAPE_STYLE_B,mLandscapeDrawableStyleB,
-            BATTERY_STYLE_LANDSCAPE_BUDDY,mLandscapeDrawableBuddy,
-            BATTERY_STYLE_LANDSCAPE_LINE,mLandscapeDrawableLine,
-            BATTERY_STYLE_LANDSCAPE_MUSKU,mLandscapeDrawableMusku,
-            BATTERY_STYLE_LANDSCAPE_PILL,mLandscapeDrawablePill,
-            BATTERY_STYLE_LANDSCAPE_SIGNAL,mLandscapeDrawableSignal,
-            BATTERY_STYLE_LANDSCAPE_ORIGAMI,mLandscapeDrawableOrigami,
-            BATTERY_STYLE_LANDSCAPE_MIUI_PILL,mLandscapeDrawableMiUIPill,
-            BATTERY_STYLE_LANDSCAPE_SIMPLY,mLandscapeBatteryA,
-            BATTERY_STYLE_LANDSCAPE_NENINE,mLandscapeBatteryB,
-            BATTERY_STYLE_LANDSCAPE_COLOROS,mLandscapeBatteryC,
-            BATTERY_STYLE_LANDSCAPE_LOVE,mLandscapeBatteryD,
-            BATTERY_STYLE_LANDSCAPE_STRIP,mLandscapeBatteryJ,
-            BATTERY_STYLE_LANDSCAPE_IOS_OUTLINE,mLandscapeBatteryM,
-            BATTERY_STYLE_LANDSCAPE_RULER,mLandscapeBatteryN,
-            BATTERY_STYLE_LANDSCAPE_WINDOWS,mLandscapeBatteryO
-        ));
+        mLandscapeDrawableiOS15 = new LandscapeBatteryDrawableiOS15(context, frameColor);
+        mLandscapeDrawableiOS16 = new LandscapeBatteryDrawableiOS16(context, frameColor);
+        mRLandscapeDrawableStyleA = new RLandscapeBatteryDrawableStyleA(context, frameColor);
+        mLandscapeDrawableStyleA = new LandscapeBatteryDrawableStyleA(context, frameColor);
+        mRLandscapeDrawableStyleB = new RLandscapeBatteryDrawableStyleB(context, frameColor);
+        mLandscapeDrawableStyleB = new LandscapeBatteryDrawableStyleB(context, frameColor);
+        mLandscapeDrawableBuddy = new LandscapeBatteryDrawableBuddy(context, frameColor);
+        mLandscapeDrawableLine = new LandscapeBatteryDrawableLine(context, frameColor);
+        mLandscapeDrawableMusku = new LandscapeBatteryDrawableMusku(context, frameColor);
+        mLandscapeDrawablePill = new LandscapeBatteryDrawablePill(context, frameColor);
+        mLandscapeDrawableSignal = new LandscapeBatteryDrawableSignal(context, frameColor);
+        mLandscapeDrawableOrigami = new LandscapeBatteryDrawableOrigami(context, frameColor);
+        mLandscapeDrawableMiUIPill = new LandscapeBatteryDrawableMiUIPill(context, frameColor);
+        mLandscapeBatteryA = new LandscapeBatteryA(context, frameColor);
+        mLandscapeBatteryB = new LandscapeBatteryB(context, frameColor);
+        mLandscapeBatteryC = new LandscapeBatteryC(context, frameColor);
+        mLandscapeBatteryD = new LandscapeBatteryD(context, frameColor);
+        mLandscapeBatteryJ = new LandscapeBatteryJ(context, frameColor);
+        mLandscapeBatteryM = new LandscapeBatteryM(context, frameColor);
+        mLandscapeBatteryN = new LandscapeBatteryN(context, frameColor);
+        mLandscapeBatteryO = new LandscapeBatteryO(context, frameColor);
+
+        mStyleMap = new HashMap<>();
+        for (int i = 0; i < 27; i++) {
+            switch (i) {
+                case BATTERY_STYLE_PORTRAIT:
+                    mStyleMap.put(i, mDrawable);
+                    break;
+                case BATTERY_STYLE_CIRCLE:
+                    mStyleMap.put(i, mCircleDrawable);
+                    break;
+                case BATTERY_STYLE_LANDSCAPE:
+                    mStyleMap.put(i, mLandscapeDrawable);
+                    break;
+                case BATTERY_STYLE_RLANDSCAPE:
+                    mStyleMap.put(i, mRLandscapeDrawable);
+                    break;
+                case BATTERY_STYLE_FULL_CIRCLE:
+                    mStyleMap.put(i, mFullCircleDrawable);
+                    break;
+                case BATTERY_STYLE_LANDSCAPE_IOS15:
+                    mStyleMap.put(i, mLandscapeDrawableiOS15);
+                    break;
+                case BATTERY_STYLE_LANDSCAPE_IOS16:
+                    mStyleMap.put(i, mLandscapeDrawableiOS16);
+                    break;
+                case BATTERY_STYLE_RLANDSCAPE_STYLE_A:
+                    mStyleMap.put(i, mRLandscapeDrawableStyleA);
+                    break;
+                case BATTERY_STYLE_LANDSCAPE_STYLE_A:
+                    mStyleMap.put(i, mLandscapeDrawableStyleA);
+                    break;
+                case BATTERY_STYLE_RLANDSCAPE_STYLE_B:
+                    mStyleMap.put(i, mRLandscapeDrawableStyleB);
+                    break;
+                case BATTERY_STYLE_LANDSCAPE_STYLE_B:
+                    mStyleMap.put(i, mLandscapeDrawableStyleB);
+                    break;
+                case BATTERY_STYLE_LANDSCAPE_BUDDY:
+                    mStyleMap.put(i, mLandscapeDrawableBuddy);
+                    break;
+                case BATTERY_STYLE_LANDSCAPE_LINE:
+                    mStyleMap.put(i, mLandscapeDrawableLine);
+                    break;
+                case BATTERY_STYLE_LANDSCAPE_MUSKU:
+                    mStyleMap.put(i, mLandscapeDrawableMusku);
+                    break;
+                case BATTERY_STYLE_LANDSCAPE_PILL:
+                    mStyleMap.put(i, mLandscapeDrawablePill);
+                    break;
+                case BATTERY_STYLE_LANDSCAPE_SIGNAL:
+                    mStyleMap.put(i, mLandscapeDrawableSignal);
+                    break;
+                case BATTERY_STYLE_LANDSCAPE_ORIGAMI:
+                    mStyleMap.put(i, mLandscapeDrawableOrigami);
+                    break;
+                case BATTERY_STYLE_LANDSCAPE_MIUI_PILL:
+                    mStyleMap.put(i, mLandscapeDrawableMiUIPill);
+                    break;
+                case BATTERY_STYLE_LANDSCAPE_SIMPLY:
+                    mStyleMap.put(i, mLandscapeBatteryA);
+                    break;
+                case BATTERY_STYLE_LANDSCAPE_NENINE:
+                    mStyleMap.put(i, mLandscapeBatteryB);
+                    break;
+                case BATTERY_STYLE_LANDSCAPE_COLOROS:
+                    mStyleMap.put(i, mLandscapeBatteryC);
+                    break;
+                case BATTERY_STYLE_LANDSCAPE_LOVE:
+                    mStyleMap.put(i, mLandscapeBatteryD);
+                    break;
+                case BATTERY_STYLE_LANDSCAPE_STRIP:
+                    mStyleMap.put(i, mLandscapeBatteryJ);
+                    break;
+                case BATTERY_STYLE_LANDSCAPE_IOS_OUTLINE:
+                    mStyleMap.put(i, mLandscapeBatteryM);
+                    break;
+                case BATTERY_STYLE_LANDSCAPE_RULER:
+                    mStyleMap.put(i, mLandscapeBatteryN);
+                    break;
+                case BATTERY_STYLE_LANDSCAPE_WINDOWS:
+                    mStyleMap.put(i, mLandscapeBatteryO);
+                    break;
+                default:
+                    mStyleMap.put(i, mDrawable);
+                    break;
+            }
+        }
 
         setupLayoutTransition();
 
@@ -918,6 +998,8 @@ public class BatteryMeterView extends LinearLayout implements DarkReceiver {
             updateColors(mForegroundColor, mBackgroundColor, mSingleToneColor);
             onBatteryLevelChanged(mLevel, mPluggedIn);
             onPowerSaveChanged(mPowerSaveEnabled);
+        } else if (style.equals(BATTERY_STYLE_TEXT)){;
+            mBatteryIconView.setImageDrawable(null);
         }
         updateShowPercent();
         updatePercentText();
