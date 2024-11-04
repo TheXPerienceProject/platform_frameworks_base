@@ -16,6 +16,7 @@
 package com.android.systemui.battery
 
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.*
 import android.graphics.drawable.Drawable
 
@@ -92,9 +93,9 @@ open class LandscapeBatteryDrawableOrigami(
         invalidateSelf()
     }
 
-    var charging = false
-    var powerSaveEnabled = false
-    var showPercent = true
+    private var charging = false
+    private var powerSaveEnabled = false
+    private var showPercent = false
 
     override fun getCharging(): Boolean {
         return charging
@@ -126,14 +127,14 @@ open class LandscapeBatteryDrawableOrigami(
     /**
      * Set the fill level
      */
-    public fun setBatteryLevel(l: Int) {
+    override fun setBatteryLevel(l: Int) {
         invertFillIcon = if (l >= 67) true else if (l <= 33) false else invertFillIcon
         batteryLevel = l
         levelColor = batteryColorForLevel(batteryLevel)
         invalidateSelf()
     }
 
-    public fun getBatteryLevel(): Int {
+    override fun getBatteryLevel(): Int {
         return batteryLevel
     }
 

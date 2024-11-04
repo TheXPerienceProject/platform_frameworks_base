@@ -16,6 +16,7 @@
 package com.android.systemui.battery
 
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.BlendMode
 import android.graphics.Canvas
 import android.graphics.Color
@@ -113,9 +114,10 @@ open class LandscapeBatteryN(
     open var criticalLevel: Int = context.resources.getInteger(
             com.android.internal.R.integer.config_criticalBatteryWarningLevel)
 
-    var charging = false
-    var powerSaveEnabled = false
-    var showPercent = false
+    private var charging = false
+    private var powerSaveEnabled = false
+    private var showPercent = false
+
     var customChargingIcon = false
         set(value) {
             field = value
@@ -152,14 +154,14 @@ open class LandscapeBatteryN(
     /**
      * Set the fill level
      */
-    public open fun setBatteryLevel(l: Int) {
+    override fun setBatteryLevel(l: Int) {
         // invertFillIcon = if (l >= 67) true else if (l <= 33) false else invertFillIcon
         batteryLevel = l
         levelColor = batteryColorForLevel(batteryLevel)
         invalidateSelf()
     }
 
-    public fun getBatteryLevel(): Int {
+    override fun getBatteryLevel(): Int {
         return batteryLevel
     }
 
@@ -542,7 +544,7 @@ open class LandscapeBatteryN(
         return intrinsicWidth
     }
 
-    override fun onBoundsChange(bounds: Rect?) {
+    override fun onBoundsChange(bounds: Rect) {
         super.onBoundsChange(bounds)
         updateSize()
     }
@@ -573,11 +575,6 @@ open class LandscapeBatteryN(
         levelColor = batteryColorForLevel(batteryLevel)
 
         invalidateSelf()
-    }
-
-    private fun postInvalidate() {
-        unscheduleSelf(invalidateRunnable)
-        scheduleSelf(invalidateRunnable, 0)
     }
 
     private fun updateSize() {
