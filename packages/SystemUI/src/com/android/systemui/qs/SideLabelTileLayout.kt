@@ -44,7 +44,7 @@ open class SideLabelTileLayout(
                 context.resources.getInteger(
                         R.integer.small_land_lockscreen_quick_settings_max_rows)
                 } else {
-                    context.resources.getInteger(R.integer.quick_settings_max_rows)
+                    context.resources.getInteger(R.integer.quick_settings_max_rows_custom)
                 }
         }
     }

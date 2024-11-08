@@ -833,8 +833,6 @@ public class QSPanel extends LinearLayout {
         int getNumVisibleTiles();
 
         default void setLogger(QSLogger qsLogger) { }
-
-        void updateSettings();
     }
 
     interface OnConfigurationChangedListener {

@@ -377,9 +377,4 @@ public class TileLayout extends ViewGroup implements QSTileLayout {
         info.setCollectionInfo(
                 new AccessibilityNodeInfo.CollectionInfo(mRecords.size(), 1, false));
     }
-
-    @Override
-    public void updateSettings() {
-        requestLayout();
-    }
 }
