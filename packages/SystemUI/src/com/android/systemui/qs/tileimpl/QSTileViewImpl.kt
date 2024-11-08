@@ -100,7 +100,6 @@ constructor(
         private const val OVERLAY_NAME = "overlay"
         const val UNAVAILABLE_ALPHA = 0.3f
         const val ACTIVE_ALPHA = 0.2f
-        const val INACTIVE_ALPHA = 0.8f
         @VisibleForTesting internal const val TILE_STATE_RES_PREFIX = "tile_states_"
         @VisibleForTesting internal const val LONG_PRESS_EFFECT_WIDTH_SCALE = 1.1f
         @VisibleForTesting internal const val LONG_PRESS_EFFECT_HEIGHT_SCALE = 1.2f
@@ -139,8 +138,7 @@ constructor(
 
     private val colorActive = Utils.getColorAttrDefaultColor(context, R.attr.shadeActive)
     private val colorOffstate = Utils.getColorAttrDefaultColor(context, R.attr.shadeInactive) 
-    private val colorInactive = if (isA11Style) Utils.applyAlpha(INACTIVE_ALPHA, colorOffstate)
-            else colorOffstate
+    private val colorInactive = colorOffstate
     private val colorUnavailable = Utils.getColorAttrDefaultColor(context, R.attr.shadeDisabled)
 
     private val overlayColorActive =
@@ -180,8 +178,8 @@ constructor(
         Utils.getColorAttrDefaultColor(context, R.attr.outline)
 
     // QS Style 2
-    private val colorActiveAlpha = Utils.applyAlpha(ACTIVE_ALPHA, Utils.getColorAttrDefaultColor(context, com.android.internal.R.attr.colorAccent))
-    private val colorInactiveAlpha = resources.getColor(R.color.qs_translucent_bg)
+    private val colorActiveAlpha = Utils.applyAlpha(ACTIVE_ALPHA, Utils.getColorAttrDefaultColor(context, R.attr.shadeActive))
+    private val colorInactiveAlpha = Utils.applyAlpha(0.8f, colorInactive)
 
     // QS Style 3
     private var randomColor: Random = Random()
