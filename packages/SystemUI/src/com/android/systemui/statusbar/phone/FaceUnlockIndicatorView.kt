@@ -22,6 +22,7 @@ import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
 import android.content.Context
 import android.content.res.ColorStateList
+import android.content.res.Configuration
 import android.graphics.Color
 import android.os.VibrationEffect
 import android.os.Vibrator
@@ -34,6 +35,7 @@ import androidx.core.animation.doOnEnd
 
 import com.android.systemui.Dependency
 import com.android.systemui.plugins.statusbar.StatusBarStateController
+import com.android.systemui.statusbar.policy.ConfigurationController
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.android.systemui.res.R
 
@@ -56,6 +58,17 @@ class FaceUnlockIndicatorView @JvmOverloads constructor(
     private val animations = listOf(failureShakeAnimation, dismissAnimation, scanningAnimation, successAnimation, startAnimation)
     private var mDozing = false
     private val statusBarStateController: StatusBarStateController = Dependency.get(StatusBarStateController::class.java)
+    private val configurationController: ConfigurationController = Dependency.get(ConfigurationController::class.java)
+    private var isNightMode = false
+
+    private val configurationListener = object : ConfigurationController.ConfigurationListener {
+        override fun onUiModeChanged() {
+            updateColor()
+        }
+        override fun onThemeChanged() {
+            updateColor()
+        }
+    }
 
     companion object {
         private var instance: FaceUnlockIndicatorView? = null
@@ -92,24 +105,40 @@ class FaceUnlockIndicatorView @JvmOverloads constructor(
         }
     }
 
-    init {
-        statusBarStateController.addCallback(statusBarStateListener)
-        statusBarStateListener.onDozingChanged(statusBarStateController.isDozing())
-        visibility = View.GONE
-        updateFaceIconState()
-    }
-
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         setInstance(this)
+        statusBarStateController.addCallback(statusBarStateListener)
+        configurationController.addCallback(configurationListener)
+        statusBarStateListener.onDozingChanged(statusBarStateController.isDozing())
+        visibility = View.GONE
+        updateFaceIconState()
         updateColor()
     }
 
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        statusBarStateController.removeCallback(statusBarStateListener)
+        configurationController.removeCallback(configurationListener)
+        cancelAllAnimations()
+        clearAnimationListeners()
+    }
+
     fun updateColor() {
+        isNightMode = (context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
         iconPadding = context.resources.getDimensionPixelSize(R.dimen.face_unlock_indicator_icon_padding)
         iconSize = context.resources.getDimensionPixelSize(R.dimen.face_unlock_indicator_icon_size)
-        iconTint = ColorStateList.valueOf(context.getColor(R.color.island_title_color))
-        backgroundTintList = ColorStateList.valueOf(context.getColor(R.color.island_background_color))
+        iconTint = ColorStateList.valueOf(
+            context.getColor(
+                if (isNightMode) R.color.island_title_color_dark else R.color.island_title_color_light
+            )
+        )
+        backgroundTintList = ColorStateList.valueOf(
+            context.getColor(
+                if (isNightMode) R.color.island_background_color_dark else R.color.island_background_color_light
+            )
+        )
+        setTextColor(iconTint)
     }
 
     fun setState(state: State) {
@@ -192,6 +221,12 @@ class FaceUnlockIndicatorView @JvmOverloads constructor(
 
     private fun cancelAllAnimations() {
         animations.forEach { it.cancel() }
+    }
+
+    private fun clearAnimationListeners() {
+        animations.forEach { animator ->
+            animator.removeAllListeners()
+        }
     }
 
     private fun handleAnimationForState(state: State) {
