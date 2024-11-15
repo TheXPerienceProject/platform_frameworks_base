@@ -575,7 +575,6 @@ public class ScrimController implements ViewTreeObserver.OnPreDrawListener, Dump
 
         final ScrimState oldState = mState;
         mState = state;
-        MediaArtUtils.getInstance(mScrimBehind.getContext()).setScrimControllerState(mState.toString());
         Trace.traceCounter(Trace.TRACE_TAG_APP, "scrim_state", mState.ordinal());
 
         if (mCallback != null) {
