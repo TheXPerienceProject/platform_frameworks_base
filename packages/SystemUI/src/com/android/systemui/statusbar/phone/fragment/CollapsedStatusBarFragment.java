@@ -106,8 +106,6 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
 
     private static final String STATUS_BAR_SHOW_VIBRATE_ICON =
             Settings.Secure.STATUS_BAR_SHOW_VIBRATE_ICON;
-    private static final String STATUSBAR_CLOCK_CHIP =
-            "system:" + Settings.System.STATUSBAR_CLOCK_CHIP;
 
     public static final String TAG = "CollapsedStatusBarFragment";
     private static final String EXTRA_PANEL_STATE = "panel_state";
@@ -161,9 +159,6 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     private final DemoModeController mDemoModeController;
 
     private ClockController mClockController;
-    private int mSbClockBgStyle;
-    private int[] mClockPaddingStartArray = new int[3];
-    private int[] mClockPaddingEndArray = new int[3];
 
     private List<String> mBlockedIcons = new ArrayList<>();
     private Map<Startable, Startable.State> mStartableStates = new ArrayMap<>();
@@ -450,7 +445,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         mAnimationScheduler.addCallback(this);
 
         mTunerService.addTunable(this, STATUS_BAR_SHOW_VIBRATE_ICON);
-        mTunerService.addTunable(this, STATUSBAR_CLOCK_CHIP);
+        updateStatusBarClock();
     }
 
     @Override
@@ -480,9 +475,6 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
             }
         }
         
-        mClockPaddingStartArray = null;
-        mClockPaddingEndArray = null;
-        
         unRegisterCallbacks();
     }
     
@@ -505,17 +497,19 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                         TunerService.parseIntegerSwitch(newValue, true);
                 updateBlockedIcons();
                 break;
-            case STATUSBAR_CLOCK_CHIP:
-                mSbClockBgStyle = 
-                        TunerService.parseInteger(newValue, 0);
-                updateStatusBarClock();
-                break;
             default:
                 break;
          }
     }
 
     private void updateStatusBarClock() {
+        int sbClockBgStyle = Settings.System.getIntForUser(
+            getContext().getContentResolver(),
+            Settings.System.STATUSBAR_CLOCK_CHIP,
+            0,
+            android.os.UserHandle.USER_CURRENT
+        );
+        if (sbClockBgStyle == 0) return;
         int[] clockBackgrounds = {
             R.drawable.sb_date_bg1,
             R.drawable.sb_date_bg2,
@@ -534,37 +528,13 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         for (int i = 0; i < clockViews.length; i++) {
             View clockView = clockViews[i];
             if (clockView == null) continue;
-            ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) clockView.getLayoutParams();
             TextView textView = (TextView) clockView;
-            if (mSbClockBgStyle > 0) {
-                mClockPaddingStartArray[i] = clockView.getPaddingStart();
-                mClockPaddingEndArray[i] = clockView.getPaddingEnd();
-                android.graphics.drawable.Drawable backgroundDrawable = getContext().getDrawable(clockBackgrounds[mSbClockBgStyle - 1]);
-                int chipTopBottomPadding = getResources().getDimensionPixelSize(R.dimen.status_bar_clock_chip_tb_padding);
-                int chipLeftRightPadding = getResources().getDimensionPixelSize(R.dimen.status_bar_clock_chip_lr_padding);
-                clockView.setPadding(chipLeftRightPadding, chipTopBottomPadding, chipLeftRightPadding, chipTopBottomPadding);
-                layoutParams.setMarginStart(mClockPaddingStartArray[i]);
-                layoutParams.setMarginEnd(mClockPaddingEndArray[i]);
-                if (clockView instanceof TextView) {
-                    textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                }
-                clockView.setBackground(backgroundDrawable);
-            } else {
-                clockView.setBackground(null);
-                layoutParams.setMarginStart(0);
-                layoutParams.setMarginEnd(0);
-                clockView.setPaddingRelative(mClockPaddingStartArray[i], 0, mClockPaddingEndArray[i], 0);
-                if (clockView instanceof TextView) {
-                    if (textView.getId() == R.id.clock) {
-                        textView.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
-                    } else if (textView.getId() == R.id.clock_center) {
-                        textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    } else if (textView.getId() == R.id.clock_right) {
-                        textView.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
-                    }
-                }
-            }
-            clockView.setLayoutParams(layoutParams);
+            android.graphics.drawable.Drawable backgroundDrawable = getContext().getDrawable(clockBackgrounds[sbClockBgStyle - 1]);
+            int chipTopBottomPadding = getResources().getDimensionPixelSize(R.dimen.status_bar_clock_chip_tb_padding);
+            int chipLeftRightPadding = getResources().getDimensionPixelSize(R.dimen.status_bar_clock_chip_lr_padding);
+            clockView.setPadding(chipLeftRightPadding, chipTopBottomPadding, chipLeftRightPadding, chipTopBottomPadding);
+            textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            clockView.setBackground(backgroundDrawable);
         }
     }
 
