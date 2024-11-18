@@ -78,6 +78,7 @@ public class TunerServiceImpl extends TunerService {
     private final Observer mObserver = new Observer();
     // Map of Uris we listen on to their settings keys.
     private final ArrayMap<Uri, String> mListeningUris = new ArrayMap<>();
+    private final ArrayMap<Uri, Set<Tunable>> mTunableUriMap = new ArrayMap<>();
     // Map of settings keys to the listener.
     private final ConcurrentHashMap<String, Set<Tunable>> mTunableLookup =
             new ConcurrentHashMap<>();
@@ -222,12 +223,21 @@ public class TunerServiceImpl extends TunerService {
 
     @Override
     public void removeTunable(Tunable tunable) {
-        for (Set<Tunable> list : mTunableLookup.values()) {
-            list.remove(tunable);
+        mTunableLookup.values().forEach(list -> list.remove(tunable));
+        synchronized (this) {
+            mTunableUriMap.entrySet().removeIf(entry -> {
+                Set<Tunable> tunables = entry.getValue();
+                boolean removed = tunables != null && tunables.remove(tunable);
+                if (removed && tunables.isEmpty()) {
+                    mListeningUris.remove(entry.getKey());
+                }
+                return removed;
+            });
         }
         if (LeakDetector.ENABLED) {
             mTunables.remove(tunable);
         }
+        reregisterAll();
     }
 
     protected void reregisterAll() {
