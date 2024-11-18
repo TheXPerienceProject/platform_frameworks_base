@@ -6315,12 +6315,14 @@ public final class Settings {
         /**
          * Action to perform when three fingers swipe action is detected.
          * (See KEY_THREE_FINGERS_SWIPE_ACTION for valid values)
+	 * @hide
          */
         public static final String KEY_THREE_FINGERS_SWIPE_ACTION = "three_fingers_swipe_action";
 
         /**
          * Action to perform when three fingers long press action is detected.
          * (See KEY_THREE_FINGERS_LONG_PRESS_ACTION for valid values)
+         * @hide
          */
         public static final String KEY_THREE_FINGERS_LONG_PRESS_ACTION = "three_finger_long_press_action";
 

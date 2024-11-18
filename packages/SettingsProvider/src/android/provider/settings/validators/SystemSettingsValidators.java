@@ -266,7 +266,7 @@ public class SystemSettingsValidators {
         VALIDATORS.put(System.QS_SHOW_BATTERY_ESTIMATE, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.STATUS_BAR_BATTERY_STYLE, new InclusiveIntegerRangeValidator(0, 27));
         VALIDATORS.put(System.SHOW_BATTERY_PERCENT_INSIDE, BOOLEAN_VALIDATOR);
-	VALIDATORS.put(System.KEY_THREE_FINGERS_LONG_PRESS_ACTION, new InclusiveIntegerRangeValidator(0, 17);
-        VALIDATORS.put(System.KEY_THREE_FINGERS_SWIPE_ACTION, new InclusiveIntegerRangeValidator(0, 17);
+	VALIDATORS.put(System.KEY_THREE_FINGERS_LONG_PRESS_ACTION, new InclusiveIntegerRangeValidator(0, 17));
+        VALIDATORS.put(System.KEY_THREE_FINGERS_SWIPE_ACTION, new InclusiveIntegerRangeValidator(0, 17));
     }
 }
