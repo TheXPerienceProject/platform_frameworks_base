@@ -17,16 +17,17 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
 
+import com.android.internal.jank.InteractionJankMonitor
+
+import com.android.systemui.Dependency
+import com.android.systemui.animation.Expandable
+import com.android.systemui.animation.DialogCuj
+import com.android.systemui.animation.DialogTransitionAnimator
+import com.android.systemui.media.dialog.MediaOutputDialogManager
+
 class LockScreenWidgets(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
 
     private val mViewController: LockScreenWidgetsController? = LockScreenWidgetsController(this)
-
-    override fun onVisibilityChanged(changedView: View, visibility: Int) {
-        super.onVisibilityChanged(changedView, visibility)
-        if (visibility == VISIBLE && isAttachedToWindow) {
-            mViewController?.updateMediaController()
-        }
-    }
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
@@ -42,4 +43,25 @@ class LockScreenWidgets(context: Context, attrs: AttributeSet) : LinearLayout(co
         super.onFinishInflate()
         mViewController?.initViews()
     }
+
+    fun showMediaDialog(view: View, lastMediaPackage: String) {
+        val packageName = lastMediaPackage.takeIf { it.isNotEmpty() } ?: return
+        Dependency.get(MediaOutputDialogManager::class.java)
+            .createAndShowWithController(
+                packageName,
+                true,
+                Expandable.fromView(view).dialogController()
+            )
+    }
+
+    private fun Expandable.dialogController(): DialogTransitionAnimator.Controller? {
+        return dialogTransitionController(
+            cuj =
+                DialogCuj(
+                    InteractionJankMonitor.CUJ_SHADE_DIALOG_OPEN,
+                    MediaOutputDialogManager.INTERACTION_JANK_TAG
+                )
+        )
+    }
+
 }

@@ -23,16 +23,13 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.ColorStateList;
+import android.database.ContentObserver;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.hardware.camera2.CameraManager;
 import android.media.AudioManager;
 import android.media.MediaMetadata;
-import android.media.session.MediaController;
-import android.media.session.MediaSession;
-import android.media.session.MediaSessionManager;
-import android.media.session.PlaybackState;
 import android.media.session.MediaSessionLegacyHelper;
 import android.os.Bundle;
 import android.os.Handler;
@@ -61,7 +58,6 @@ import com.android.systemui.Dependency;
 import com.android.systemui.animation.Expandable;
 import com.android.systemui.animation.view.LaunchableImageView;
 import com.android.systemui.animation.view.LaunchableFAB;
-import com.android.systemui.media.dialog.MediaOutputDialogManager;
 import com.android.systemui.plugins.ActivityStarter;
 import com.android.systemui.plugins.statusbar.StatusBarStateController;
 import com.android.systemui.bluetooth.qsdialog.BluetoothTileDialogViewModel;
@@ -77,7 +73,7 @@ import com.android.systemui.statusbar.connectivity.NetworkController;
 import com.android.systemui.statusbar.connectivity.SignalCallback;
 import com.android.systemui.statusbar.connectivity.MobileDataIndicators;
 import com.android.systemui.statusbar.connectivity.WifiIndicators;
-import com.android.systemui.tuner.TunerService;
+import com.android.systemui.util.MediaSessionManagerHelper;
 import com.android.internal.util.android.VibrationUtils;
 
 import java.util.ArrayList;
@@ -86,16 +82,16 @@ import java.util.List;
 
 import com.android.internal.util.android.OmniJawsClient;
 
-public class LockScreenWidgetsController implements TunerService.Tunable, OmniJawsClient.OmniJawsObserver {
+public class LockScreenWidgetsController implements OmniJawsClient.OmniJawsObserver, MediaSessionManagerHelper.MediaMetadataListener {
 
     private static final String LOCKSCREEN_WIDGETS_ENABLED =
-            "system:lockscreen_widgets_enabled";
+            "lockscreen_widgets_enabled";
 
     private static final String LOCKSCREEN_WIDGETS =
-            "system:lockscreen_widgets";
+            "lockscreen_widgets";
 
     private static final String LOCKSCREEN_WIDGETS_EXTRAS =
-            "system:lockscreen_widgets_extras";
+            "lockscreen_widgets_extras";
 
     private static final int[] MAIN_WIDGETS_VIEW_IDS = {
             R.id.main_kg_item_placeholder1,
@@ -137,10 +133,11 @@ public class LockScreenWidgetsController implements TunerService.Tunable, OmniJa
     private final DataUsageController mDataController;
     private final FlashlightController mFlashlightController;
     private final InternetDialogManager mInternetDialogManager;
-    private final MediaOutputDialogManager mMediaOutputDialogManager;
     private final NetworkController mNetworkController;
     private final StatusBarStateController mStatusBarStateController;
-    private final TunerService mTunerService;
+    private final MediaSessionManagerHelper mMediaSessionManagerHelper;
+    private final LockscreenWidgetsObserver mLockscreenWidgetsObserver;
+    private final ActivityLauncherUtils mActivityLauncherUtils;
 
     protected final CellSignalCallback mCellSignalCallback = new CellSignalCallback();
     protected final WifiSignalCallback mWifiSignalCallback = new WifiSignalCallback();
@@ -165,8 +162,6 @@ public class LockScreenWidgetsController implements TunerService.Tunable, OmniJa
     private String mWidgetImagePath;
 
     private AudioManager mAudioManager;
-    private MediaController mController;
-    private MediaMetadata mMediaMetadata;
     private String mLastTrackTitle = null;
 
     private boolean mDozing;
@@ -176,29 +171,12 @@ public class LockScreenWidgetsController implements TunerService.Tunable, OmniJa
     private boolean mIsLongPress = false;
 
     private boolean mLockscreenWidgetsEnabled;
-    private final Runnable mMediaUpdater;
-
-    private ActivityLauncherUtils mActivityLauncherUtils;
-
-    private final MediaController.Callback mMediaCallback = new MediaController.Callback() {
-        @Override
-        public void onPlaybackStateChanged(@NonNull PlaybackState state) {
-            updateMediaController();
-        }
-        @Override
-        public void onMetadataChanged(MediaMetadata metadata) {
-            super.onMetadataChanged(metadata);
-            mMediaMetadata = metadata;
-            updateMediaController();
-        }
-    };
 
     final ConfigurationListener mConfigurationListener = new ConfigurationListener() {
         @Override
         public void onUiModeChanged() {
             updateWidgetViews();
         }
-
         @Override
         public void onThemeChanged() {
             updateWidgetViews();
@@ -216,18 +194,16 @@ public class LockScreenWidgetsController implements TunerService.Tunable, OmniJa
         mConfigurationController = Dependency.get(ConfigurationController.class);
         mFlashlightController = Dependency.get(FlashlightController.class);
         mInternetDialogManager = Dependency.get(InternetDialogManager.class);
-        mMediaOutputDialogManager = Dependency.get(MediaOutputDialogManager.class);
         mStatusBarStateController = Dependency.get(StatusBarStateController.class);
         mBluetoothController = Dependency.get(BluetoothController.class);
         mNetworkController = Dependency.get(NetworkController.class);
         mDataController = mNetworkController.getMobileDataController();
+        mMediaSessionManagerHelper = MediaSessionManagerHelper.Companion.getInstance(mContext);
 
         mActivityLauncherUtils = new ActivityLauncherUtils(mContext);
-        
-        mTunerService = Dependency.get(TunerService.class);
 
-        mTunerService.addTunable(this, LOCKSCREEN_WIDGETS_ENABLED, 
-            LOCKSCREEN_WIDGETS, LOCKSCREEN_WIDGETS_EXTRAS);
+        mLockscreenWidgetsObserver = new LockscreenWidgetsObserver();
+        mLockscreenWidgetsObserver.observe();
 
         mAudioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
         mCameraManager = (CameraManager) mContext.getSystemService(Context.CAMERA_SERVICE);
@@ -244,23 +220,12 @@ public class LockScreenWidgetsController implements TunerService.Tunable, OmniJa
         
         IntentFilter ringerFilter = new IntentFilter(AudioManager.INTERNAL_RINGER_MODE_CHANGED_ACTION);
         mContext.registerReceiver(mRingerModeReceiver, ringerFilter);
-
-        mMediaUpdater = new Runnable() {
-            @Override
-            public void run() {
-                updateMediaController();
-                mHandler.postDelayed(this, 1000);
-            }
-        };
-
-        updateMediaController();
     }
 
     private final StatusBarStateController.StateListener mStatusBarStateListener =
             new StatusBarStateController.StateListener() {
         @Override
         public void onStateChanged(int newState) {}
-
         @Override
         public void onDozingChanged(boolean dozing) {
             if (mDozing == dozing) {
@@ -273,17 +238,14 @@ public class LockScreenWidgetsController implements TunerService.Tunable, OmniJa
 
     private final FlashlightController.FlashlightListener mFlashlightCallback =
             new FlashlightController.FlashlightListener() {
-
         @Override
         public void onFlashlightChanged(boolean enabled) {
             isFlashOn = enabled;
             updateTorchButtonState();
         }
-
         @Override
         public void onFlashlightError() {
         }
-
         @Override
         public void onFlashlightAvailabilityChanged(boolean available) {
             isFlashOn = mFlashlightController.isEnabled() && available;
@@ -314,7 +276,9 @@ public class LockScreenWidgetsController implements TunerService.Tunable, OmniJa
         mConfigurationController.addCallback(mConfigurationListener);
         mStatusBarStateController.addCallback(mStatusBarStateListener);
         mStatusBarStateListener.onDozingChanged(mStatusBarStateController.isDozing());
+        mMediaSessionManagerHelper.addMediaMetadataListener(this);
         updateWidgetViews();
+        updateMediaPlaybackState();
     }
     
     public void unregisterCallbacks() {
@@ -335,13 +299,10 @@ public class LockScreenWidgetsController implements TunerService.Tunable, OmniJa
         }
         mConfigurationController.removeCallback(mConfigurationListener);
         mStatusBarStateController.removeCallback(mStatusBarStateListener);
-        if (mController != null) {
-            mController.unregisterCallback(mMediaCallback);
-            mController = null;
-        }
         mContext.unregisterReceiver(mRingerModeReceiver);
-        mTunerService.removeTunable(this);
+        mLockscreenWidgetsObserver.unobserve();
         mHandler.removeCallbacksAndMessages(null);
+        mMediaSessionManagerHelper.removeMediaMetadataListener(this);
     }
     
     public void initViews() {
@@ -355,32 +316,6 @@ public class LockScreenWidgetsController implements TunerService.Tunable, OmniJa
         }
         mIsInflated = true;
         updateWidgetViews();
-    }
-    
-    @Override
-    public void onTuningChanged(String key, String newValue) {
-        switch (key) {
-            case LOCKSCREEN_WIDGETS_ENABLED:
-                mLockscreenWidgetsEnabled = TunerService.parseIntegerSwitch(newValue, false);
-                updateWidgetViews();
-                break;
-            case LOCKSCREEN_WIDGETS:
-                mMainLockscreenWidgetsList = newValue;
-                if (mMainLockscreenWidgetsList != null) {
-                    mMainWidgetsList = Arrays.asList(mMainLockscreenWidgetsList.split(","));
-                }
-                updateWidgetViews();
-                break;
-            case LOCKSCREEN_WIDGETS_EXTRAS:
-                mSecondaryLockscreenWidgetsList = newValue;
-                if (mSecondaryLockscreenWidgetsList != null) {
-                    mSecondaryWidgetsList = Arrays.asList(mSecondaryLockscreenWidgetsList.split(","));
-                }
-                updateWidgetViews();
-                break;
-            default:
-                break;
-        }
     }
     
     public void updateWidgetViews() {
@@ -414,7 +349,6 @@ public class LockScreenWidgetsController implements TunerService.Tunable, OmniJa
             }
         }
         updateContainerVisibility();
-        updateMediaController();
     }
 
     private void updateMainWidgetResources(LaunchableFAB efab, boolean active) {
@@ -567,11 +501,9 @@ public class LockScreenWidgetsController implements TunerService.Tunable, OmniJa
                     if (diffX > 0) {
                         dispatchMediaKeyWithWakeLockToMediaSession(KeyEvent.KEYCODE_MEDIA_PREVIOUS);
                         VibrationUtils.triggerVibration(mContext, 2);
-                        updateMediaController();
                     } else {
                         dispatchMediaKeyWithWakeLockToMediaSession(KeyEvent.KEYCODE_MEDIA_NEXT);
                         VibrationUtils.triggerVibration(mContext, 2);
-                        updateMediaController();
                     }
                     return true;
                 }
@@ -624,31 +556,27 @@ public class LockScreenWidgetsController implements TunerService.Tunable, OmniJa
             efab.setTextColor(tintColor);
         }
     }
-    
-    public void updateMediaState() {
-        updateMediaPlaybackState();
-        mHandler.postDelayed(() -> {
-            updateMediaPlaybackState();
-        }, 250);
-    }
 
     private void toggleMediaPlaybackState() {
-        if (isMediaPlaying()) {
-            mHandler.removeCallbacks(mMediaUpdater);
+        if (mMediaSessionManagerHelper.isMediaPlaying()) {
             dispatchMediaKeyWithWakeLockToMediaSession(KeyEvent.KEYCODE_MEDIA_PAUSE);
-            updateMediaController();
         } else {
-            mMediaUpdater.run();
             dispatchMediaKeyWithWakeLockToMediaSession(KeyEvent.KEYCODE_MEDIA_PLAY);
         }
     }
     
     private void showMediaDialog(View view) {
-        updateMediaController();
-        if (!isMediaPlaying()) return;
-        mHandler.post(() -> 
-            mMediaOutputDialogManager.createAndShow(mController.getPackageName(), true, view, UserHandle.of(UserHandle.USER_CURRENT), null));
-        VibrationUtils.triggerVibration(mContext, 2);
+        String lastMediaPkg = getLastUsedMedia();
+        if (TextUtils.isEmpty(lastMediaPkg)) return; // Return if null or empty
+        mHandler.post(() -> {
+            ((LockScreenWidgets) mView).showMediaDialog(view, lastMediaPkg);
+            VibrationUtils.triggerVibration(mContext, 2); // Trigger vibration
+        });
+    }
+    
+    private String getLastUsedMedia() {
+        return Settings.System.getString(mContext.getContentResolver(),
+                    "media_session_last_package_name");
     }
 
     private void dispatchMediaKeyWithWakeLockToMediaSession(final int keycode) {
@@ -659,16 +587,20 @@ public class LockScreenWidgetsController implements TunerService.Tunable, OmniJa
         helper.sendMediaButtonEvent(event, true);
         event = KeyEvent.changeAction(event, KeyEvent.ACTION_UP);
         helper.sendMediaButtonEvent(event, true);
+        mHandler.postDelayed(() -> {
+            updateMediaPlaybackState();
+        }, 250);
     }
 
     private void updateMediaPlaybackState() {
-        boolean isPlaying = isMediaPlaying();
+        boolean isPlaying = mMediaSessionManagerHelper.isMediaPlaying();
         int stateIcon = isPlaying ? R.drawable.ic_media_pause : R.drawable.ic_media_play;
         if (mediaButton != null) {
             mediaButton.setImageResource(stateIcon);
             setButtonActiveState(mediaButton, null, isPlaying);
         }
         if (mediaButtonFab != null) {
+            MediaMetadata mMediaMetadata = mMediaSessionManagerHelper.getMediaMetadata();
             String trackTitle = mMediaMetadata != null ? mMediaMetadata.getString(MediaMetadata.METADATA_KEY_TITLE) : "";
             if (!TextUtils.isEmpty(trackTitle) && mLastTrackTitle != trackTitle) {
                 mLastTrackTitle = trackTitle;
@@ -678,11 +610,6 @@ public class LockScreenWidgetsController implements TunerService.Tunable, OmniJa
             mediaButtonFab.setText(canShowTrackTitle ? mLastTrackTitle : mContext.getResources().getString(R.string.controls_media_button_play));
             setButtonActiveState(null, mediaButtonFab, isPlaying);
         }
-    }
-    
-    private boolean isMediaPlaying() {
-        return isMediaControllerAvailable() 
-            && PlaybackState.STATE_PLAYING == getMediaControllerPlaybackState(mController);
     }
 
     private void toggleFlashlight() {
@@ -889,22 +816,6 @@ public class LockScreenWidgetsController implements TunerService.Tunable, OmniJa
         }
     }
     
-    private boolean sameSessions(MediaController a, MediaController b) {
-        if (a == b) return true;
-        if (a == null) return false;
-        return a.controlsSameSession(b);
-    }
-
-    private int getMediaControllerPlaybackState(MediaController controller) {
-        if (controller != null) {
-            final PlaybackState playbackState = controller.getPlaybackState();
-            if (playbackState != null) {
-                return playbackState.getState();
-            }
-        }
-        return PlaybackState.STATE_NONE;
-    }
-    
     public void enableWeatherUpdates() {
         if (mWeatherClient != null) {
             mWeatherClient.addObserver(this);
@@ -981,69 +892,65 @@ public class LockScreenWidgetsController implements TunerService.Tunable, OmniJa
             }
         } catch(Exception e) {}
     }
-
-    private boolean isMediaControllerAvailable() {
-        final MediaController mediaController = getActiveLocalMediaController();
-        return mediaController != null && !TextUtils.isEmpty(mediaController.getPackageName());
-    }
-    
-    private MediaController getActiveLocalMediaController() {
-        MediaSessionManager mediaSessionManager =
-                mContext.getSystemService(MediaSessionManager.class);
-        MediaController localController = null;
-        final List<String> remoteMediaSessionLists = new ArrayList<>();
-        for (MediaController controller : mediaSessionManager.getActiveSessions(null)) {
-            final MediaController.PlaybackInfo pi = controller.getPlaybackInfo();
-            if (pi == null) {
-                continue;
-            }
-            final PlaybackState playbackState = controller.getPlaybackState();
-            if (playbackState == null) {
-                continue;
-            }
-            if (playbackState.getState() != PlaybackState.STATE_PLAYING) {
-                continue;
-            }
-            if (pi.getPlaybackType() == MediaController.PlaybackInfo.PLAYBACK_TYPE_REMOTE) {
-                if (localController != null
-                        && TextUtils.equals(
-                                localController.getPackageName(), controller.getPackageName())) {
-                    localController = null;
-                }
-                if (!remoteMediaSessionLists.contains(controller.getPackageName())) {
-                    remoteMediaSessionLists.add(controller.getPackageName());
-                }
-                continue;
-            }
-            if (pi.getPlaybackType() == MediaController.PlaybackInfo.PLAYBACK_TYPE_LOCAL) {
-                if (localController == null
-                        && !remoteMediaSessionLists.contains(controller.getPackageName())) {
-                    localController = controller;
-                }
-            }
-        }
-        return localController;
-    }
-    
+        
     private boolean isWidgetEnabled(String widget) {
         return (mMainLockscreenWidgetsList != null 
             && !mMainLockscreenWidgetsList.contains(widget)) 
         	|| (mSecondaryLockscreenWidgetsList != null 
         	&& !mSecondaryLockscreenWidgetsList.contains(widget));
     }
-
-    public void updateMediaController() {
-        if (!isWidgetEnabled("media")) return;
-        MediaController localController = getActiveLocalMediaController();
-        if (localController != null && !sameSessions(mController, localController)) {
-            if (mController != null) {
-                mController.unregisterCallback(mMediaCallback);
-                mController = null;
-            }
-            mController = localController;
-            mController.registerCallback(mMediaCallback);
-        }
-        mMediaMetadata = isMediaControllerAvailable() ? mController.getMetadata() : null;
-        updateMediaState();
+    
+    @Override
+    public void onMediaMetadataChanged() {
+        updateMediaPlaybackState();
     }
+
+    @Override
+    public void onPlaybackStateChanged() {
+        updateMediaPlaybackState();
+    }
+    
+    private class LockscreenWidgetsObserver extends ContentObserver {
+        public LockscreenWidgetsObserver() {
+            super(null);
+        }
+        @Override
+        public void onChange(boolean selfChange) {
+            super.onChange(selfChange);
+            updateSettings();
+        }
+        void observe() {
+            mContext.getContentResolver().registerContentObserver(
+                    Settings.System.getUriFor(LOCKSCREEN_WIDGETS_ENABLED), 
+                    false, 
+                    this);
+            mContext.getContentResolver().registerContentObserver(
+                    Settings.System.getUriFor(LOCKSCREEN_WIDGETS), 
+                    false, 
+                    this);
+            mContext.getContentResolver().registerContentObserver(
+                    Settings.System.getUriFor(LOCKSCREEN_WIDGETS_EXTRAS), 
+                    false, 
+                    this);
+            updateSettings();
+        }
+        void unobserve() {
+            mContext.getContentResolver().unregisterContentObserver(this);
+        }
+        void updateSettings() {
+            mLockscreenWidgetsEnabled = Settings.System.getInt(mContext.getContentResolver(), 
+                             LOCKSCREEN_WIDGETS_ENABLED, 0) == 1;
+            mMainLockscreenWidgetsList = Settings.System.getString(mContext.getContentResolver(), 
+                           LOCKSCREEN_WIDGETS);
+            mSecondaryLockscreenWidgetsList = Settings.System.getString(mContext.getContentResolver(), 
+                           LOCKSCREEN_WIDGETS_EXTRAS);
+            if (mMainLockscreenWidgetsList != null) {
+                mMainWidgetsList = Arrays.asList(mMainLockscreenWidgetsList.split(","));
+            }
+            if (mSecondaryLockscreenWidgetsList != null) {
+                mSecondaryWidgetsList = Arrays.asList(mSecondaryLockscreenWidgetsList.split(","));
+            }
+            updateWidgetViews();
+        }
+    };
 }
