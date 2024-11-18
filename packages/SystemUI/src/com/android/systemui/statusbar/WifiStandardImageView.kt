@@ -36,7 +36,7 @@ class WifiStandardImageView @JvmOverloads constructor(
     private val connectivityManager: ConnectivityManager by lazy { context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager }
     private val wifiManager: WifiManager by lazy { context.applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager }
     private var networkCallback: ConnectivityManager.NetworkCallback? = null
-    private var wifiStandardEnabled = false
+    private var wifiStandardEnabled = true
     private var isRegistered = false
 
     init {
@@ -58,7 +58,7 @@ class WifiStandardImageView @JvmOverloads constructor(
         val contentObserver = object: ContentObserver(null) {
             override fun onChange(selfChange: Boolean) {
                 wifiStandardEnabled = Settings.Secure.getIntForUser(context.contentResolver,
-                        SHOW_WIFI_STANDARD_ICON, 0, UserHandle.USER_CURRENT) == 1
+                        SHOW_WIFI_STANDARD_ICON, 1, UserHandle.USER_CURRENT) == 1
                 if (wifiStandardEnabled) {
                     showWifiStandard()
                 } else {
