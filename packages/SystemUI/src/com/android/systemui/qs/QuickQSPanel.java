@@ -67,7 +67,7 @@ public class QuickQSPanel extends QSPanel {
 
     @Override
     protected boolean mediaNeedsTopMargin() {
-        return true;
+        return !TileUtils.isCompactQSMediaPlayerEnforced(mContext);
     }
 
     @Override
