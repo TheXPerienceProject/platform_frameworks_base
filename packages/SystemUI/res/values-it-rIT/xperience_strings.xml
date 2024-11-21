@@ -28,4 +28,20 @@
     <string name="screenshot_delete_description">Elimina screenshot</string>
     <!-- Status bar network traffic monitor strings -->
     <!-- Text to use when the number in a notification info is too large -->
+    <!-- Label for notification action to delete a screen recording file [CHAR LIMIT=35] -->
+    <string name="screenrecord_delete_label">Elimina</string>
+    <!-- A toast message shown after successfully deleting a screen recording [CHAR LIMIT=NONE] -->
+    <string name="screenrecord_delete_description">Registrazione eliminata</string>
+    <!-- Screen record -->
+    <!-- WiFi standard numbering on statusbar -->
+    <!-- Data usage info in QS footer -->
+    <string name="usage_data">usato oggi</string>
+    <string name="usage_data_default_suffix">Dati</string>
+    <string name="usage_wifi_default_suffix">Wi-Fi</string>
+    <!-- Text while recognizing face -->
+    <string name="face_unlock_recognizing">Riconoscimento faccia...</string>
+    <!-- Name of the roaming status bar icon. -->
+    <string name="status_bar_roaming">Indicatore roaming</string>
+    <!-- Name of the HD calling status bar icon. -->
+    <!-- Name of the VoWiFi status bar icon. -->
 </resources>

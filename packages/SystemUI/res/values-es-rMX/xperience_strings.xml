@@ -49,4 +49,33 @@
     <string name="screenshot_delete_description">Eliminar captura de pantalla</string>
     <!-- Status bar network traffic monitor strings -->
     <!-- Text to use when the number in a notification info is too large -->
+    <!-- Label for notification action to delete a screen recording file [CHAR LIMIT=35] -->
+    <string name="screenrecord_delete_label">Eliminar</string>
+    <!-- A toast message shown after successfully deleting a screen recording [CHAR LIMIT=NONE] -->
+    <string name="screenrecord_delete_description">Grabacion de pantalla borrada</string>
+    <!-- Screen record -->
+    <string name="screenrecord_stopdot_label">Mostrar punto para detener</string>
+    <string name="screenrecord_stopdot_summary">Pulsación larga para moverlo</string>
+    <string name="screenrecord_lowquality_label">Baja calidad</string>
+    <string name="screenrecord_lowquality_summary">Para archivo más pequeño</string>
+    <string name="screenrecord_longer_timeout_switch_label">Límite de tamaño de archivo mayor</string>
+    <string name="screenrecord_longer_timeout_switch_summary">Limitar tamaño de grabación a 15 GB</string>
+    <string name="screenrecord_skip_time_label">Saltar temporizador</string>
+    <string name="screenrecord_skip_time_summary">Elimina la espera de 3 segundos</string>
+    <string name="screenrecord_hevc_switch_label">Codificación HEVC</string>
+    <string name="screenrecord_hevc_switch_summary">Usa el codificador HEVC más eficiente</string>
+    <!-- WiFi standard numbering on statusbar -->
+    <string name="status_bar_wifi_standard">Número estándar Wi-Fi</string>
+    <!-- Data usage info in QS footer -->
+    <string name="usage_data">Usado hoy</string>
+    <string name="usage_data_default_suffix">Datos</string>
+    <string name="usage_wifi_default_suffix">Wi-Fi</string>
+    <!-- Text while recognizing face -->
+    <string name="face_unlock_recognizing">Reconociendo rostro...</string>
+    <!-- Name of the roaming status bar icon. -->
+    <string name="status_bar_roaming">Indicador de itinerancia</string>
+    <!-- Name of the HD calling status bar icon. -->
+    <string name="status_bar_hd_calling">Llamada HD (VoLTE/VoNR)</string>
+    <!-- Name of the VoWiFi status bar icon. -->
+    <string name="status_bar_vowifi">Llamada Wi-Fi (VoWiFi)</string>
 </resources>
