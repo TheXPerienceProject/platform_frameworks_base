@@ -34,6 +34,7 @@
     <!-- USB tethering QS tile -->
     <string name="quick_settings_usb_tether_label">USB-megosztás</string>
     <!-- Name of the nfc status bar icon. -->
+    <string name="status_bar_nfc">NFC</string>
     <!-- Accessibility label for nfc icon (not shown on screen) [CHAR LIMIT=NONE] -->
     <string name="accessibility_status_bar_nfc">NFC</string>
     <!-- Status bar -->
@@ -53,7 +54,18 @@
     <!-- A toast message shown after successfully deleting a screen recording [CHAR LIMIT=NONE] -->
     <string name="screenrecord_delete_description">A képernyővideó törölve</string>
     <!-- Screen record -->
+    <string name="screenrecord_stopdot_label">Látható leállítógomb</string>
+    <string name="screenrecord_stopdot_summary">Áthelyezéshez nyomja hosszan</string>
+    <string name="screenrecord_lowquality_label">Gyengébb minőség</string>
+    <string name="screenrecord_lowquality_summary">...a kisebb fájlméretért</string>
+    <string name="screenrecord_longer_timeout_switch_label">Nagyobb felső határ</string>
+    <string name="screenrecord_longer_timeout_switch_summary">Max.15GB felvételi fájlméret</string>
+    <string name="screenrecord_skip_time_label">Nincs késleltetés</string>
+    <string name="screenrecord_skip_time_summary">Eltávolítja a 3 másodperces várakozást</string>
+    <string name="screenrecord_hevc_switch_label">HEVC-kódolás</string>
+    <string name="screenrecord_hevc_switch_summary">Használja a hatékonyabb HEVC-kódolót</string>
     <!-- WiFi standard numbering on statusbar -->
+    <string name="status_bar_wifi_standard">A Wi-Fi-szabvány száma</string>
     <!-- Data usage info in QS footer -->
     <string name="usage_data">ma felhasználva</string>
     <string name="usage_data_default_suffix">Mobiladat</string>
@@ -63,5 +75,7 @@
     <!-- Name of the roaming status bar icon. -->
     <string name="status_bar_roaming">Barangoláskijelző</string>
     <!-- Name of the HD calling status bar icon. -->
+    <string name="status_bar_hd_calling">HD-hívás (VoLTE/VoNR)</string>
     <!-- Name of the VoWiFi status bar icon. -->
+    <string name="status_bar_vowifi">WiFi-hívás (VoWiFi)</string>
 </resources>
