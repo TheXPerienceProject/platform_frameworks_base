@@ -1867,7 +1867,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     };
 
     private void handleScreenShot(@WindowManager.ScreenshotSource int source) {
-        mDefaultDisplayPolicy.takeScreenshot(TAKE_SCREENSHOT_FULLSCREEN, source);
         if (!mPocketModeService.isOverlayShowing()) {
             mDefaultDisplayPolicy.takeScreenshot(TAKE_SCREENSHOT_FULLSCREEN, source);
         }
