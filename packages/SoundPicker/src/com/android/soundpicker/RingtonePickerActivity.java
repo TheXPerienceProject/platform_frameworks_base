@@ -257,12 +257,10 @@ public final class RingtonePickerActivity extends AlertActivity implements
             }
         } else {
             Locale currentLocale = Locale.getDefault();
-            if ("ja".equals(currentLocale.getLanguage())) {
-                // avoid escaping on Japanese language, this results to broken text
-                p.mTitle = p.mTitle.toString();
-            } else {
-                // Make sure intents don't inject HTML elements.
+            if ("en".equals(currentLocale.getLanguage())) {
                 p.mTitle = Html.escapeHtml(p.mTitle.toString());
+            } else {
+                p.mTitle = p.mTitle.toString();
             }
         }
 
