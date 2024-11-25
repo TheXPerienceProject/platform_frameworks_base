@@ -3465,4 +3465,20 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
     public void wakeUpDeviceifDozing() {
         mPowerInteractor.wakeUpIfDozing("AMBIENT MUSIC", PowerManager.WAKE_REASON_GESTURE);
     }
+    
+    public void collapseShade() {
+        if (mShadeController != null) {
+            mShadeController.collapseShade();
+        }
+    }
+    public void postAnimateCollapsePanels() {
+        if (mShadeController != null) {
+            mShadeController.animateCollapseShade();
+        }
+    }
+    public void animateExpandNotificationsPanel() {
+        if (mCommandQueueCallbacks != null) {
+            mCommandQueueCallbacks.animateExpandNotificationsPanel();
+        }
+    }
 }
