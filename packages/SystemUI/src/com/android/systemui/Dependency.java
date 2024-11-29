@@ -42,6 +42,7 @@ import com.android.systemui.plugins.statusbar.StatusBarStateController;
 import com.android.systemui.recents.OverviewProxyService;
 import com.android.systemui.settings.UserTracker;
 import com.android.systemui.statusbar.CommandQueue;
+import com.android.systemui.statusbar.NotificationListener;
 import com.android.systemui.statusbar.NotificationMediaManager;
 import com.android.systemui.statusbar.notification.collection.render.GroupExpansionManager;
 import com.android.systemui.statusbar.notification.collection.render.GroupMembershipManager;
@@ -176,6 +177,7 @@ public class Dependency {
     @Inject Lazy<BluetoothTileDialogViewModel> mBluetoothTileDialogViewModel;
     @Inject Lazy<QSImpl> mQSImpl;
     @Inject Lazy<ScrimController> mScrimController;
+    @Inject Lazy<NotificationListener> mNotificationListener;
 
     @Inject
     public Dependency() {
@@ -233,6 +235,7 @@ public class Dependency {
         mProviders.put(ActivityStarter.class, mActivityStarter::get);
         mProviders.put(QSImpl.class, mQSImpl::get);
         mProviders.put(ScrimController.class, mScrimController::get);
+        mProviders.put(NotificationListener.class, mNotificationListener::get);
 
         Dependency.setInstance(this);
     }
