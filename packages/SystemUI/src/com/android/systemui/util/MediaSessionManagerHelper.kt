@@ -78,19 +78,25 @@ class MediaSessionManagerHelper private constructor(private val context: Context
     }
     
     fun updateMediaColors() {
-        val bitmap = getMediaMetadata()?.getBitmap(MediaMetadata.METADATA_KEY_ALBUM_ART)
+        val metadata = getMediaMetadata()
+        val bitmap = metadata?.getBitmap(MediaMetadata.METADATA_KEY_ALBUM_ART)
+            ?: metadata?.getBitmap(MediaMetadata.METADATA_KEY_ART)
+            ?: metadata?.getBitmap(MediaMetadata.METADATA_KEY_DISPLAY_ICON)
+        
         val wallpaperColors = bitmap?.let { WallpaperColors.fromBitmap(it) }
-        if (wallpaperColors == null || wallpaperColors.equals(mWallpaperColors)) return
+        if (wallpaperColors == null || wallpaperColors == mWallpaperColors) return
+
         val config = context.resources.configuration
         val currentNightMode = config.uiMode and Configuration.UI_MODE_NIGHT_MASK
         val isDarkThemeOn = currentNightMode == Configuration.UI_MODE_NIGHT_YES
-        
+
         val mCurrentColorScheme = ColorScheme(wallpaperColors, isDarkThemeOn)
         val newMediaArtColor = if (isDarkThemeOn) {
             mCurrentColorScheme.accent1.s100
         } else {
             mCurrentColorScheme.accent1.s800
         }
+
         if (currMediaArtColor != newMediaArtColor) {
             currMediaArtColor = newMediaArtColor
             mWallpaperColors = wallpaperColors
@@ -155,31 +161,42 @@ class MediaSessionManagerHelper private constructor(private val context: Context
             activeController?.unregisterCallback(mediaControllerCallback)
             activeController = localController
             activeController?.registerCallback(mediaControllerCallback)
-            mediaMetadata = activeController?.metadata
             notifyListeners()
         }
     }
 
-    fun getActiveLocalMediaController(): MediaController? {
-        val controllers = mediaSessionManager.getActiveSessions(null) ?: return null
-        val remoteMediaSessionLists = mutableListOf<String>()
+    private fun getActiveLocalMediaController(): MediaController? {
         var localController: MediaController? = null
-        for (controller in controllers) {
-            val playbackInfo = controller.playbackInfo ?: continue
-            val playbackState = controller.playbackState ?: continue
-            if (playbackState.state != PlaybackState.STATE_PLAYING) continue
-            if (playbackInfo.playbackType == MediaController.PlaybackInfo.PLAYBACK_TYPE_REMOTE) {
-                if (localController?.packageName == controller.packageName) {
-                    localController = null
+        val remoteMediaSessionLists = mutableListOf<String>()
+        if (mediaSessionManager != null) {
+            for (controller in mediaSessionManager.getActiveSessions(null)) {
+                val playbackInfo = controller.playbackInfo
+                if (playbackInfo == null) {
+                    // do nothing
+                    continue
                 }
-                if (!remoteMediaSessionLists.contains(controller.packageName)) {
-                    remoteMediaSessionLists.add(controller.packageName)
+                val playbackState = controller.playbackState
+                if (playbackState == null) {
+                    // do nothing
+                    continue
                 }
-                continue
-            }
-            if (playbackInfo.playbackType == MediaController.PlaybackInfo.PLAYBACK_TYPE_LOCAL) {
-                if (localController == null && !remoteMediaSessionLists.contains(controller.packageName)) {
-                    localController = controller
+                if (playbackState.state != PlaybackState.STATE_PLAYING) {
+                    // do nothing
+                    continue
+                }
+                if (playbackInfo.playbackType == MediaController.PlaybackInfo.PLAYBACK_TYPE_REMOTE) {
+                    if (localController != null && localController.packageName == controller.packageName) {
+                        localController = null
+                    }
+                    if (!remoteMediaSessionLists.contains(controller.packageName)) {
+                        remoteMediaSessionLists.add(controller.packageName)
+                    }
+                    continue
+                }
+                if (playbackInfo.playbackType == MediaController.PlaybackInfo.PLAYBACK_TYPE_LOCAL) {
+                    if (localController == null && !remoteMediaSessionLists.contains(controller.packageName)) {
+                        localController = controller
+                    }
                 }
             }
         }
@@ -187,7 +204,7 @@ class MediaSessionManagerHelper private constructor(private val context: Context
     }
 
     fun getMediaMetadata(): MediaMetadata? {
-        return mediaMetadata
+        return getActiveLocalMediaController()?.metadata
     }
     
     fun getMediaColor(): Int {
@@ -201,7 +218,7 @@ class MediaSessionManagerHelper private constructor(private val context: Context
 
     fun isMediaPlaying(): Boolean {
         return isMediaControllerAvailable() &&
-            getMediaControllerPlaybackState(activeController) == PlaybackState.STATE_PLAYING
+            getMediaControllerPlaybackState(getActiveLocalMediaController()) == PlaybackState.STATE_PLAYING
     }
 
     private fun getMediaControllerPlaybackState(controller: MediaController?): Int {
@@ -210,7 +227,7 @@ class MediaSessionManagerHelper private constructor(private val context: Context
 
     private fun sameSessions(a: MediaController?, b: MediaController?): Boolean {
         if (a == b) return true
-        if (a == null || b == null) return false
+        if (a == null) return false
         return a.controlsSameSession(b)
     }
 
