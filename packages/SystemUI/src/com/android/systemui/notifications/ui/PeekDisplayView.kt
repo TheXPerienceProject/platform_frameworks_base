@@ -260,7 +260,7 @@ class PeekDisplayView @JvmOverloads constructor(
             ?.setDuration(200L)
             ?.setInterpolator(android.view.animation.AccelerateInterpolator())
             ?.withEndAction {
-                notificationCard?.visibility = View.INVISIBLE
+                notificationCard?.visibility = View.GONE
                 currentDisplayedNotification = null
             }
             ?.start()
