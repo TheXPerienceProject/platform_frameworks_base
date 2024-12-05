@@ -92,6 +92,9 @@ public class LockScreenWidgetsController implements OmniJawsClient.OmniJawsObser
 
     private static final String LOCKSCREEN_WIDGETS_EXTRAS =
             "lockscreen_widgets_extras";
+            
+    private static final String LOCKSCREEN_WIDGETS_STYLE =
+            "lockscreen_widgets_style";
 
     private static final int[] MAIN_WIDGETS_VIEW_IDS = {
             R.id.main_kg_item_placeholder1,
@@ -171,6 +174,7 @@ public class LockScreenWidgetsController implements OmniJawsClient.OmniJawsObser
     private boolean mIsLongPress = false;
 
     private boolean mLockscreenWidgetsEnabled;
+    private int mThemeStyle = 0;
 
     final ConfigurationListener mConfigurationListener = new ConfigurationListener() {
         @Override
@@ -390,7 +394,19 @@ public class LockScreenWidgetsController implements OmniJawsClient.OmniJawsObser
     
     private void updateWidgetsResources(LaunchableImageView iv) {
         if (iv == null) return;
-        iv.setBackgroundResource(R.drawable.lockscreen_widget_background_circle);
+        final int themeStyle = mThemeStyle;
+        int bgRes;
+        switch (themeStyle) {
+            case 0:
+            default:
+                bgRes = R.drawable.lockscreen_widget_background_circle;
+                break;
+            case 1:
+            case 2:
+                bgRes = R.drawable.lockscreen_widget_background_square;
+                break;
+        }
+        iv.setBackgroundResource(bgRes);
         setButtonActiveState(iv, null, false);
     }
 
@@ -531,12 +547,22 @@ public class LockScreenWidgetsController implements OmniJawsClient.OmniJawsObser
     private void setButtonActiveState(LaunchableImageView iv, LaunchableFAB efab, boolean active) {
         int bgTint;
         int tintColor;
-        if (active) {
-            bgTint = isNightMode() ? mDarkColorActive : mLightColorActive;
-            tintColor = isNightMode() ? mDarkColor : mLightColor;
+        if (mThemeStyle == 2) {
+            if (active) {
+                bgTint = Utils.applyAlpha(0.3f, mDarkColorActive);
+                tintColor = mDarkColorActive;
+            } else {
+                bgTint = Utils.applyAlpha(0.3f, Color.WHITE);
+                tintColor = Color.WHITE;
+            }
         } else {
-            bgTint = isNightMode() ? mDarkColor : mLightColor;
-            tintColor = isNightMode() ? mLightColor : mDarkColor;
+            if (active) {
+                bgTint = isNightMode() ? mDarkColorActive : mLightColorActive;
+                tintColor = isNightMode() ? mDarkColor : mLightColor;
+            } else {
+                bgTint = isNightMode() ? mDarkColor : mLightColor;
+                tintColor = isNightMode() ? mLightColor : mDarkColor;
+            }
         }
         if (iv != null) {
             iv.setBackgroundTintList(ColorStateList.valueOf(bgTint));
@@ -932,6 +958,10 @@ public class LockScreenWidgetsController implements OmniJawsClient.OmniJawsObser
                     Settings.System.getUriFor(LOCKSCREEN_WIDGETS_EXTRAS), 
                     false, 
                     this);
+            mContext.getContentResolver().registerContentObserver(
+                    Settings.System.getUriFor(LOCKSCREEN_WIDGETS_STYLE), 
+                    false, 
+                    this);
             updateSettings();
         }
         void unobserve() {
@@ -944,6 +974,8 @@ public class LockScreenWidgetsController implements OmniJawsClient.OmniJawsObser
                            LOCKSCREEN_WIDGETS);
             mSecondaryLockscreenWidgetsList = Settings.System.getString(mContext.getContentResolver(), 
                            LOCKSCREEN_WIDGETS_EXTRAS);
+            mThemeStyle = Settings.System.getInt(mContext.getContentResolver(), 
+                           LOCKSCREEN_WIDGETS_STYLE, 0);
             if (mMainLockscreenWidgetsList != null) {
                 mMainWidgetsList = Arrays.asList(mMainLockscreenWidgetsList.split(","));
             }
