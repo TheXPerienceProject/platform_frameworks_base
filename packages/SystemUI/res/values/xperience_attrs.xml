@@ -10,4 +10,7 @@
     <color name="progress_background_color">#33FFFFFF</color>
     <color name="action_chip_background_color">#33000000</color>
 
+    <declare-styleable name="ProgressImageView">
+        <attr name="typeface" format="string" />
+    </declare-styleable>
 </resources>
