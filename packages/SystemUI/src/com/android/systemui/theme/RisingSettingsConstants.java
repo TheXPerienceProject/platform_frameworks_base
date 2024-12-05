@@ -58,7 +58,8 @@ public class RisingSettingsConstants {
         QS_TILE_VERTICAL_LAYOUT,
         LOCKSCREEN_WIDGETS_ENABLED,
         LOCKSCREEN_WIDGETS,
-        LOCKSCREEN_WIDGETS_EXTRAS
+        LOCKSCREEN_WIDGETS_EXTRAS,
+        "qs_widgets_enabled"
     };
     
     public static final String[] SECURE_SETTINGS_KEYS = {
