@@ -20,6 +20,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.database.ContentObserver
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.net.Uri
@@ -33,7 +34,6 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 
@@ -67,7 +67,7 @@ class PeekDisplayView @JvmOverloads constructor(
     private var notificationSummary: TextView? = null
     private var notificationHeader: TextView? = null
     private var overflowText: TextView? = null
-    private var clearAllButton: ImageButton? = null
+    private var clearAllButton: ImageView? = null
     private var minimizeButton: ImageView? = null
     private var dismissButton: ImageView? = null
     private var clearAllHandler: Handler = Handler()
@@ -328,14 +328,11 @@ class PeekDisplayView @JvmOverloads constructor(
         val surfaceColor = ColorUtils.getSurfaceColor(context)
         val primaryColor = ColorUtils.getPrimaryColor(context)
         notificationCard?.setCardBackgroundColor(surfaceColor)
-        clearAllButton?.backgroundTintList = ColorStateList.valueOf(surfaceColor)
         notificationTitle?.setTextColor(primaryColor)
         notificationSummary?.setTextColor(ColorUtils.getSecondaryColor(context))
         notificationHeader?.setTextColor(primaryColor)
-        overflowText?.setTextColor(surfaceColor)
         minimizeButton?.imageTintList = ColorStateList.valueOf(primaryColor)
         dismissButton?.imageTintList = ColorStateList.valueOf(primaryColor)
-        clearAllButton?.imageTintList = ColorStateList.valueOf(primaryColor)
         notificationAdapter.notifyDataSetChanged()
         notificationShelf?.invalidate()
     }
@@ -364,11 +361,8 @@ class PeekDisplayView @JvmOverloads constructor(
                 layoutParams = RecyclerView.LayoutParams(iconSize, iconSize).apply {
                     marginEnd = parent.context.resources.getDimensionPixelSize(R.dimen.peek_display_notification_icon_margin_end)
                 }
-                background = createBackgroundDrawable(ColorUtils.getSurfaceColor(parent.context))
-                val padding = parent.context.resources.getDimensionPixelSize(R.dimen.peek_notification_icon_padding)
-                setPadding(padding, padding, padding, padding)
                 isClickable = true
-                imageTintList = ColorStateList.valueOf(ColorUtils.getPrimaryColor(parent.context))
+                imageTintList = ColorStateList.valueOf(Color.WHITE)
             }
             return NotificationViewHolder(iconView)
         }
@@ -378,35 +372,12 @@ class PeekDisplayView @JvmOverloads constructor(
             val context = holder.iconView.context
             val iconDrawable = NotificationUtils.resolveSmallIcon(notification, context)
             holder.iconView.setImageDrawable(iconDrawable)
-            val isSelected = selectedPosition == position
-            val newColor = if (isSelected) ColorUtils.getActiveColor(context) else ColorUtils.getSurfaceColor(context)
-            val newTint = if (isSelected) ColorUtils.getSurfaceColor(context) else ColorUtils.getPrimaryColor(context)
-            holder.iconView.imageTintList = ColorStateList.valueOf(newTint)
-            holder.iconView.background = createBackgroundDrawable(newColor)
             holder.iconView.setOnClickListener {
-                if (isSelected) {
-                    selectedPosition = RecyclerView.NO_POSITION
-                    notifyItemChanged(position)
-                    hideNotificationCard()
-                } else {
-                    val prevSelectedPosition = selectedPosition
-                    selectedPosition = position
-                    notifyItemChanged(prevSelectedPosition)
-                    notifyItemChanged(position)
-                    toggleNotificationDetails(notification)
-                }
+                toggleNotificationDetails(notification)
             }
         }
 
         override fun getItemCount(): Int = notifications.size
-
-        private fun createBackgroundDrawable(color: Int): GradientDrawable {
-            return GradientDrawable().apply {
-                shape = GradientDrawable.OVAL
-                setColor(color)
-                cornerRadius = resources.getDimension(R.dimen.peek_notification_icon_corner_radius)
-            }
-        }
 
         inner class NotificationViewHolder(val iconView: ImageView) : RecyclerView.ViewHolder(iconView)
     }
