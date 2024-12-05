@@ -59,6 +59,7 @@ public class RisingSettingsConstants {
         LOCKSCREEN_WIDGETS_ENABLED,
         LOCKSCREEN_WIDGETS,
         LOCKSCREEN_WIDGETS_EXTRAS,
+        "lockscreen_widgets_style",
         "qs_widgets_enabled"
     };
     
