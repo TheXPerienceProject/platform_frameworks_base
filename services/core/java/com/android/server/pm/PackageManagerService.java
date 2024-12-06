@@ -4244,10 +4244,7 @@ public class PackageManagerService implements PackageSender, TestUtilityService 
         final int livingUserCount = livingUsers.size();
         for (int i = 0; i < livingUserCount; i++) {
             final int userId = livingUsers.get(i).id;
-            final boolean isPermissionUpgradeNeeded = !Objects.equals(
-                    mPermissionManager.getDefaultPermissionGrantFingerprint(userId),
-                    Build.VERSION.INCREMENTAL);
-            if (isPermissionUpgradeNeeded) {
+            if (mIsUpgrade) {
                 grantPermissionsUserIds = ArrayUtils.appendInt(
                         grantPermissionsUserIds, userId);
             }
@@ -4449,10 +4446,7 @@ public class PackageManagerService implements PackageSender, TestUtilityService 
             mPermissionManager.writeLegacyPermissionStateTEMP();
             mSettings.readPermissionStateForUserSyncLPr(userId);
             mPermissionManager.readLegacyPermissionStateTEMP();
-            final boolean isPermissionUpgradeNeeded = !Objects.equals(
-                    mPermissionManager.getDefaultPermissionGrantFingerprint(userId),
-                    Build.VERSION.INCREMENTAL);
-            return isPermissionUpgradeNeeded;
+            return mIsUpgrade;
         }
     }
 
@@ -7017,7 +7011,7 @@ public class PackageManagerService implements PackageSender, TestUtilityService 
         @Override
         @SuppressWarnings("GuardedBy")
         public boolean isPermissionUpgradeNeeded(int userId) {
-            return mSettings.isPermissionUpgradeNeeded(userId);
+            return mIsUpgrade;
         }
 
         @Override
