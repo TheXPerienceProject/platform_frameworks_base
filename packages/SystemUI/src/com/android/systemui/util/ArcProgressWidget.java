@@ -15,13 +15,23 @@ import android.util.TypedValue;
 import androidx.annotation.Nullable;
 
 public class ArcProgressWidget {
-    public static Bitmap generateBitmap(Context context, int percentage, String textInside, int textInsideSizePx, @Nullable String textBottom, int textBottomSizePx) {
-        return generateBitmap(context, percentage, textInside, textInsideSizePx, null, 28, textBottom, textBottomSizePx);
+    public static Bitmap generateBitmap(Context context, int percentage, String textInside, int textInsideSizePx, @Nullable String textBottom, int textBottomSizePx, @Nullable String tf) {
+        return generateBitmap(context, percentage, textInside, textInsideSizePx, null, 28, textBottom, textBottomSizePx, tf);
     }
-    public static Bitmap generateBitmap(Context context, int percentage, String textInside, int textInsideSizePx, @Nullable Drawable iconDrawable, int iconSizePx) {
-        return generateBitmap(context, percentage, textInside, textInsideSizePx, iconDrawable, iconSizePx, "Usage", 28);
+
+    public static Bitmap generateBitmap(Context context, int percentage, String textInside, int textInsideSizePx, @Nullable Drawable iconDrawable, int iconSizePx, @Nullable String tf) {
+        return generateBitmap(context, percentage, textInside, textInsideSizePx, iconDrawable, iconSizePx, "Usage", 28, tf);
     }
-    public static Bitmap generateBitmap(Context context, int percentage, String textInside, int textInsideSizePx, @Nullable Drawable iconDrawable, int iconSizePx, @Nullable String textBottom, int textBottomSizePx) {
+
+    public static Bitmap generateBitmap(Context context, 
+            int percentage, 
+            String textInside, 
+            int textInsideSizePx, 
+            @Nullable Drawable iconDrawable, 
+            int iconSizePx, 
+            @Nullable String textBottom, 
+            int textBottomSizePx, 
+            @Nullable String tf) {
         int width = 400;
         int height = 400;
         int stroke = 40;
@@ -44,12 +54,16 @@ public class ArcProgressWidget {
         canvas.drawArc(arc, minAngle, maxAngle, false, paint);
         paint.setColor(Color.WHITE);
         canvas.drawArc(arc, minAngle, ((float) maxAngle / 100) * percentage, false, paint);
-        mTextPaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+        if (tf != null) {
+            mTextPaint.setTypeface(Typeface.create(tf, Typeface.BOLD));
+        } else {
+            mTextPaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+        }
         canvas.drawText(textInside, (float) bitmap.getWidth() / 2, (bitmap.getHeight() - mTextPaint.ascent() * 0.7f) / 2, mTextPaint);
         if (iconDrawable != null) {
             int size = dp2px(context, iconSizePx);
             int left = (bitmap.getWidth() - size) / 2;
-            int top = bitmap.getHeight() - (int) (size / 1.3) - (stroke + padding);
+            int top = bitmap.getHeight() - (int) (size / 1.3) - (stroke + padding) - dp2px(context, 4);
             int right = left + size;
             int bottom = top + size;
             iconDrawable.setBounds(left, top, right, bottom);

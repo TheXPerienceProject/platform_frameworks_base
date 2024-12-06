@@ -46,6 +46,7 @@ class ProgressImageView @JvmOverloads constructor(
     private var batteryTemperature = -1
     private var updateJob: Job? = null
     private var receiverRegistered = false
+    private var typeface: String? = null
     
     private val batteryReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
@@ -73,6 +74,9 @@ class ProgressImageView @JvmOverloads constructor(
     }
 
     init {
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ProgressImageView, defStyleAttr, 0)
+        typeface = typedArray.getString(R.styleable.ProgressImageView_typeface)
+        typedArray.recycle()
         when (id) {
             R.id.battery_progress -> progressType = ProgressType.BATTERY
             R.id.memory_progress -> progressType = ProgressType.MEMORY
@@ -97,6 +101,7 @@ class ProgressImageView @JvmOverloads constructor(
         }
         startProgressUpdates()
         updateVisibility()
+        updateProgress()
     }
 
     override fun onDetachedFromWindow() {
@@ -151,7 +156,8 @@ class ProgressImageView @JvmOverloads constructor(
             progressText,
             40,
             icon,
-            36
+            36,
+            typeface
         )
         setImageBitmap(widgetBitmap)
     }

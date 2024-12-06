@@ -15,7 +15,8 @@
         android:adjustViewBounds="true"
         android:alpha="0.9"
         android:src="@drawable/arc_progress"
-        systemui:tint="@android:color/white" />
+        systemui:tint="@android:color/white"
+        systemui:typeface="@*android:string/config_clockFontFamily" />
 
     <com.android.systemui.util.ProgressImageView
         android:layout_marginTop="12dp"
@@ -27,7 +28,8 @@
         android:adjustViewBounds="true"
         android:alpha="0.9"
         android:src="@drawable/arc_progress"
-        systemui:tint="@android:color/white" />
+        systemui:tint="@android:color/white"
+        systemui:typeface="@*android:string/config_clockFontFamily" />
 
     <com.android.systemui.util.ProgressImageView
         android:layout_marginTop="12dp"
@@ -39,7 +41,8 @@
         android:adjustViewBounds="true"
         android:alpha="0.9"
         android:src="@drawable/arc_progress"
-        systemui:tint="@android:color/white" />
+        systemui:tint="@android:color/white"
+        systemui:typeface="@*android:string/config_clockFontFamily" />
 
     <com.android.systemui.util.ProgressImageView
         android:layout_marginTop="12dp"
@@ -50,6 +53,7 @@
         android:adjustViewBounds="true"
         android:alpha="0.9"
         android:src="@drawable/arc_progress"
-        systemui:tint="@android:color/white" />
+        systemui:tint="@android:color/white"
+        systemui:typeface="@*android:string/config_clockFontFamily" />
 
 </LinearLayout>
