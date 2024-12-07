@@ -72,6 +72,7 @@ class PeekDisplayView @JvmOverloads constructor(
     private var dismissButton: ImageView? = null
     private var clearAllHandler: Handler = Handler()
     private var currentDisplayedNotification: StatusBarNotification? = null
+    private var currentRankingMap: NotificationListenerService.RankingMap? = null
 
     private val notificationAdapter: NotificationAdapter = NotificationAdapter()
 
@@ -79,6 +80,7 @@ class PeekDisplayView @JvmOverloads constructor(
     private val configurationController: ConfigurationController = Dependency.get(ConfigurationController::class.java)
     private val notificationListener: NotificationListener = Dependency.get(NotificationListener::class.java)
 
+    private var allowPrivateNotifications = true
     private var isPeekDisplayEnabled = false
     private var showOverflow = false
     private var mDozing = false
@@ -162,8 +164,12 @@ class PeekDisplayView @JvmOverloads constructor(
     fun updateNotificationShelf(notificationList: List<StatusBarNotification>) {
         val sortedNotifications = notificationList.sortedByDescending { it.postTime }
         val filteredNotifications = sortedNotifications.filter { sbn ->
+            val ranking = currentRankingMap?.getRawRankingObject(sbn.key)
+            val shouldFilterSensitiveNotifications = !allowPrivateNotifications && (ranking?.hasSensitiveContent() == true)
             val (title, content) = NotificationUtils.resolveNotificationContent(sbn)
-            !sbn.isOngoing() && (sbn.notification.flags and Notification.FLAG_FOREGROUND_SERVICE == 0) && 
+            !sbn.isOngoing() && 
+            (sbn.notification.flags and Notification.FLAG_FOREGROUND_SERVICE == 0) && 
+            !shouldFilterSensitiveNotifications &&
             (title.isNotBlank() || content.isNotBlank())
         }
         if (filteredNotifications.isNotEmpty()) {
@@ -273,6 +279,7 @@ class PeekDisplayView @JvmOverloads constructor(
         if (sbn.isOngoing() || (sbn.notification.flags and Notification.FLAG_FOREGROUND_SERVICE != 0)) {
             return
         }
+        currentRankingMap = rankingMap
         updateNotificationShelf(notificationListener.getActiveNotifications().toList())
     }
 
@@ -281,6 +288,7 @@ class PeekDisplayView @JvmOverloads constructor(
         rankingMap: NotificationListenerService.RankingMap,
         reason: Int
     ) {
+        currentRankingMap = rankingMap
         updateNotificationShelf(notificationListener.getActiveNotifications().toList())
     }
     
@@ -288,10 +296,13 @@ class PeekDisplayView @JvmOverloads constructor(
         sbn: StatusBarNotification,
         rankingMap: NotificationListenerService.RankingMap
     ) {
+        currentRankingMap = rankingMap
         updateNotificationShelf(notificationListener.getActiveNotifications().toList())
     }
 
-    override fun onNotificationRankingUpdate(rankingMap: NotificationListenerService.RankingMap) {}
+    override fun onNotificationRankingUpdate(rankingMap: NotificationListenerService.RankingMap) {
+        currentRankingMap = rankingMap
+    }
     override fun onNotificationsInitialized() {}
 
     override fun onUiModeChanged() {
@@ -307,9 +318,12 @@ class PeekDisplayView @JvmOverloads constructor(
         configurationController.addCallback(this)
         context.contentResolver.registerContentObserver(
             Settings.Secure.getUriFor("peek_display_notifications"), false, settingsObserver)
+        context.contentResolver.registerContentObserver(
+            Settings.Secure.getUriFor(
+                Settings.Secure.LOCK_SCREEN_ALLOW_PRIVATE_NOTIFICATIONS), 
+                false, settingsObserver)
         updatePeekDisplayState()
         updateViewColors()
-        updateNotificationShelf(notificationListener.getActiveNotifications().toList())
     }
 
     override fun onDetachedFromWindow() {
@@ -319,9 +333,18 @@ class PeekDisplayView @JvmOverloads constructor(
     }
 
     private fun updatePeekDisplayState() {
+        allowPrivateNotifications = Settings.Secure.getIntForUser(
+                    context.contentResolver,
+                    Settings.Secure.LOCK_SCREEN_ALLOW_PRIVATE_NOTIFICATIONS,
+                    1,
+                    UserHandle.USER_CURRENT
+                ) == 1
         isPeekDisplayEnabled = Settings.Secure.getIntForUser(context.contentResolver,
             "peek_display_notifications", 0, UserHandle.USER_CURRENT) == 1
         visibility = if (isPeekDisplayEnabled) View.VISIBLE else View.GONE
+        if (isPeekDisplayEnabled) {
+            updateNotificationShelf(notificationListener.getActiveNotifications().toList())
+        }
     }
 
     private fun updateViewColors() {
