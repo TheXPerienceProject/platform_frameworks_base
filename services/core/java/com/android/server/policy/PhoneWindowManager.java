@@ -2610,7 +2610,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         filter = new IntentFilter();
         filter.addAction(ACTION_TORCH_OFF);
         mContext.registerReceiver(torchReceiver, filter);
-      }
+      
 
         final String[] deviceKeyHandlerLibs = res.getStringArray(
                 com.android.internal.R.array.config_deviceKeyHandlerLibs);
