@@ -7,6 +7,6 @@
     <string name="weather_data_unavailable">Data Unavailable</string>
     <string name="omnijaws_weather">OmniJaws</string>
     <string name="quick_settings_data_label">Mobile data</string>
-    <string name="quick_settings_ringer_label">Vibrate mode</string>
+    <string name="quick_settings_ringer_label">Ringer mode</string>
     <string name="torch_active">Torch Active</string>
 </resources>

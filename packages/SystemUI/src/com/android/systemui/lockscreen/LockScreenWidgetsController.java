@@ -67,6 +67,7 @@ import com.android.systemui.statusbar.policy.BluetoothController.Callback;
 import com.android.systemui.statusbar.policy.ConfigurationController;
 import com.android.systemui.statusbar.policy.ConfigurationController.ConfigurationListener;
 import com.android.systemui.statusbar.policy.FlashlightController;
+import com.android.systemui.statusbar.policy.HotspotController;
 import com.android.systemui.statusbar.connectivity.AccessPointController;
 import com.android.systemui.statusbar.connectivity.IconState;
 import com.android.systemui.statusbar.connectivity.NetworkController;
@@ -118,6 +119,8 @@ public class LockScreenWidgetsController implements OmniJawsClient.OmniJawsObser
     public static final int TORCH_RES_INACTIVE = R.drawable.ic_flashlight_off;
     public static final int WIFI_ACTIVE = R.drawable.ic_wifi_24;
     public static final int WIFI_INACTIVE = R.drawable.ic_wifi_off_24;
+    public static final int HOTSPOT_ACTIVE = R.drawable.qs_hotspot_icon_on;
+    public static final int HOTSPOT_INACTIVE = R.drawable.qs_hotspot_icon_off;
 
     public static final int BT_LABEL_INACTIVE = R.string.quick_settings_bluetooth_label;
     public static final int DATA_LABEL_INACTIVE = R.string.quick_settings_data_label;
@@ -125,6 +128,7 @@ public class LockScreenWidgetsController implements OmniJawsClient.OmniJawsObser
     public static final int TORCH_LABEL_ACTIVE = R.string.torch_active;
     public static final int TORCH_LABEL_INACTIVE = R.string.quick_settings_flashlight_label;
     public static final int WIFI_LABEL_INACTIVE = R.string.quick_settings_wifi_label;
+    public static final int HOTSPOT_LABEL = R.string.accessibility_status_bar_hotspot;
 
     private OmniJawsClient mWeatherClient;
     private OmniJawsClient.WeatherInfo mWeatherInfo;
@@ -141,15 +145,19 @@ public class LockScreenWidgetsController implements OmniJawsClient.OmniJawsObser
     private final MediaSessionManagerHelper mMediaSessionManagerHelper;
     private final LockscreenWidgetsObserver mLockscreenWidgetsObserver;
     private final ActivityLauncherUtils mActivityLauncherUtils;
+    private final HotspotController mHotspotController;
 
     protected final CellSignalCallback mCellSignalCallback = new CellSignalCallback();
     protected final WifiSignalCallback mWifiSignalCallback = new WifiSignalCallback();
+    private final HotspotCallback mHotspotCallback = new HotspotCallback();
+    
+    private boolean mIsHotspotEnabled = false;
 
     private Context mContext;
     private LaunchableImageView mWidget1, mWidget2, mWidget3, mWidget4, mediaButton, torchButton, weatherButton;
-    private LaunchableFAB mediaButtonFab, torchButtonFab, weatherButtonFab;
+    private LaunchableFAB mediaButtonFab, torchButtonFab, weatherButtonFab, hotspotButtonFab;
     private LaunchableFAB wifiButtonFab, dataButtonFab, ringerButtonFab, btButtonFab;
-    private LaunchableImageView wifiButton, dataButton, ringerButton, btButton;
+    private LaunchableImageView wifiButton, dataButton, ringerButton, btButton, hotspotButton;
     private int mDarkColor, mDarkColorActive, mLightColor, mLightColorActive;
 
     private CameraManager mCameraManager;
@@ -202,6 +210,7 @@ public class LockScreenWidgetsController implements OmniJawsClient.OmniJawsObser
         mBluetoothController = Dependency.get(BluetoothController.class);
         mNetworkController = Dependency.get(NetworkController.class);
         mDataController = mNetworkController.getMobileDataController();
+        mHotspotController = Dependency.get(HotspotController.class);
         mMediaSessionManagerHelper = MediaSessionManagerHelper.Companion.getInstance(mContext);
 
         mActivityLauncherUtils = new ActivityLauncherUtils(mContext);
@@ -265,6 +274,9 @@ public class LockScreenWidgetsController implements OmniJawsClient.OmniJawsObser
     }
     
     public void registerCallbacks() {
+        if (isWidgetEnabled("hotspot")) {
+            mHotspotController.addCallback(mHotspotCallback);
+        }
         if (isWidgetEnabled("wifi")) {
             mNetworkController.addCallback(mWifiSignalCallback);
         }
@@ -300,6 +312,9 @@ public class LockScreenWidgetsController implements OmniJawsClient.OmniJawsObser
         }
         if (isWidgetEnabled("torch")) {
             mFlashlightController.removeCallback(mFlashlightCallback);
+        }
+        if (isWidgetEnabled("hotspot")) {
+            mHotspotController.removeCallback(mHotspotCallback);
         }
         mConfigurationController.removeCallback(mConfigurationListener);
         mStatusBarStateController.removeCallback(mStatusBarStateListener);
@@ -484,6 +499,17 @@ public class LockScreenWidgetsController implements OmniJawsClient.OmniJawsObser
                 if (efab != null) weatherButtonFab = efab;
                 setUpWidgetResources(iv, efab, v -> mActivityLauncherUtils.launchWeatherApp(), R.drawable.ic_weather, R.string.weather_data_unavailable);
                 enableWeatherUpdates();
+                break;
+            case "hotspot":
+                if (iv != null) {
+                    hotspotButton = iv;
+                    hotspotButton.setOnLongClickListener(v -> { showBluetoothDialog(v); return true; });
+                }
+                if (efab != null) {
+                    hotspotButtonFab = efab;
+                    hotspotButton.setOnLongClickListener(v -> { showInternetDialog(v); return true; });
+                }
+                setUpWidgetResources(iv, efab, v -> toggleHotspot(), HOTSPOT_INACTIVE, HOTSPOT_LABEL);
                 break;
             default:
                 break;
@@ -985,4 +1011,30 @@ public class LockScreenWidgetsController implements OmniJawsClient.OmniJawsObser
             updateWidgetViews();
         }
     };
+
+    private void updateHotspotState() {
+        if (!isWidgetEnabled("hotspot")) return;
+        if (hotspotButton == null && hotspotButtonFab == null) return;
+        String hotspotString = mContext.getResources().getString(HOTSPOT_LABEL);
+        updateTileButtonState(hotspotButton, hotspotButtonFab, mIsHotspotEnabled, 
+            HOTSPOT_ACTIVE, HOTSPOT_INACTIVE, hotspotString, hotspotString);
+    }
+
+    private void toggleHotspot() {
+        mHotspotController.setHotspotEnabled(!mIsHotspotEnabled);
+        updateHotspotState();
+        mHandler.postDelayed(() -> {
+            updateHotspotState();
+        }, 250);
+    }
+    
+    private final class HotspotCallback implements HotspotController.Callback {
+        @Override
+        public void onHotspotChanged(boolean enabled, int numDevices) {
+            mIsHotspotEnabled = enabled;
+            updateHotspotState();
+        }
+        @Override
+        public void onHotspotAvailabilityChanged(boolean available) {}
+    }
 }

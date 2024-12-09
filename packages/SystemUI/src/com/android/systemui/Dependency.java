@@ -54,6 +54,7 @@ import com.android.systemui.statusbar.phone.StatusBarContentInsetsProvider;
 import com.android.systemui.statusbar.phone.SystemUIDialogManager;
 import com.android.systemui.statusbar.policy.BluetoothController;
 import com.android.systemui.statusbar.policy.DeviceProvisionedController;
+import com.android.systemui.statusbar.policy.HotspotController;
 import com.android.systemui.statusbar.policy.KeyguardStateController;
 import com.android.systemui.statusbar.window.StatusBarWindowController;
 import com.android.systemui.tuner.TunablePadding.TunablePaddingService;
@@ -178,6 +179,7 @@ public class Dependency {
     @Inject Lazy<QSImpl> mQSImpl;
     @Inject Lazy<ScrimController> mScrimController;
     @Inject Lazy<NotificationListener> mNotificationListener;
+    @Inject Lazy<HotspotController> mHotspotController;
 
     @Inject
     public Dependency() {
@@ -236,6 +238,7 @@ public class Dependency {
         mProviders.put(QSImpl.class, mQSImpl::get);
         mProviders.put(ScrimController.class, mScrimController::get);
         mProviders.put(NotificationListener.class, mNotificationListener::get);
+        mProviders.put(HotspotController.class, mHotspotController::get);
 
         Dependency.setInstance(this);
     }
