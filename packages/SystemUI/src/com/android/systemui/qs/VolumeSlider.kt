@@ -49,6 +49,7 @@ class VolumeSlider(context: Context, attrs: AttributeSet? = null) : VerticalSlid
         super.onFinishInflate()
         volumeIcon = findViewById(R.id.qs_controls_volume_slider_icon)
         volumeIcon?.bringToFront()
+        setIconView(volumeIcon)
         updateProgressRect()
     }
 
@@ -56,6 +57,7 @@ class VolumeSlider(context: Context, attrs: AttributeSet? = null) : VerticalSlid
         super.onAttachedToWindow()
         val filter = IntentFilter(AudioManager.VOLUME_CHANGED_ACTION)
         context.registerReceiver(volumeChangeReceiver, filter)
+        setSliderHapticKey("volume_slider_haptics_intensity", 1)
         updateVolumeProgress()
     }
 
@@ -75,9 +77,6 @@ class VolumeSlider(context: Context, attrs: AttributeSet? = null) : VerticalSlid
             override fun onUserSwipe() {
                 isUserAdjusting = true
                 setVolumeFromProgress()
-                val volHapticsIntensity = Settings.System.getIntForUser(context.getContentResolver(),
-                        "volume_slider_haptics_intensity", 1, UserHandle.USER_CURRENT)
-                performSliderHaptics(volHapticsIntensity)
             }
         })
     }
@@ -87,9 +86,7 @@ class VolumeSlider(context: Context, attrs: AttributeSet? = null) : VerticalSlid
         val currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC)
         val newProgress = (currentVolume * 100 / maxVolume)
         setSliderProgress(newProgress)
-        progressRect.top = (1 - newProgress / 100f) * measuredHeight
-        volumeIcon?.let { updateIconTint(it) }
-        invalidate()
+        updateProgressRect()
     }
     
     private fun setVolumeFromProgress() {
@@ -109,15 +106,5 @@ class VolumeSlider(context: Context, attrs: AttributeSet? = null) : VerticalSlid
             audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, 0)
         }
         updateVolumeProgress()
-    }
-
-    override fun updateProgressRect() {
-        super.updateProgressRect()
-        volumeIcon?.let { updateIconTint(it) }
-    }
-
-    override fun updateSliderPaint() {
-        super.updateSliderPaint()
-        volumeIcon?.let { updateIconTint(it) }
     }
 }

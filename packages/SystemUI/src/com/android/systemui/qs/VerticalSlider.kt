@@ -15,6 +15,8 @@
  */
 package com.android.systemui.qs
 
+import android.animation.ValueAnimator
+import android.view.animation.DecelerateInterpolator
 import android.content.Context
 import android.content.res.Configuration
 import android.content.res.ColorStateList
@@ -46,11 +48,16 @@ interface UserInteractionListener {
 
 open class VerticalSlider(context: Context, attrs: AttributeSet? = null) : CardView(context, attrs) {
 
+    private var iconView: ImageView? = null
+    private var hapticsKey: String = ""
+    private var hapticDefValue: Int = 0
+    private var progressAnimator: ValueAnimator? = null
+
     private val listeners: MutableList<UserInteractionListener> = mutableListOf()
     
     private val horizontalSwipeThreshold = context.resources.getDimensionPixelSize(R.dimen.qs_slider_swipe_threshold_dp)
 
-    private val longPressTimeout = 800
+    private val longPressTimeout = ViewConfiguration.DEFAULT_LONG_PRESS_TIMEOUT
     private val longPressHandler = Handler()
     private val longPressRunnable: Runnable = Runnable {
         doLongPressAction()
@@ -99,6 +106,7 @@ open class VerticalSlider(context: Context, attrs: AttributeSet? = null) : CardV
                     startLongPressDetection(event)
                     lastX = event.x
                     lastY = event.y
+                    progressAnimator?.cancel()
                     lastProgress = progress
                     requestDisallowInterceptTouchEventFromParentsAndRoot(true)
                     false
@@ -113,18 +121,19 @@ open class VerticalSlider(context: Context, attrs: AttributeSet? = null) : CardV
                         if (isLongPress(event, deltaX, deltaY)) {
                             isLongPressDetected = true
                             doLongPressAction()
+                            return@setOnTouchListener true
                         } else {
                             cancelLongPressDetection()
                             val progressDelta = ((lastY - event.y) * 100 / measuredHeight.toFloat()).toInt()
                             progress = (lastProgress + progressDelta).coerceIn(0, 100)
                             notifyListenersUserSwipe()
+                            performSliderHaptics()
                         }
                     }
                     true
                 }
                 MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                     notifyListenersUserInteractionEnd()
-                    cancelLongPressDetection()
                     true
                 }
                 else -> false
@@ -138,8 +147,16 @@ open class VerticalSlider(context: Context, attrs: AttributeSet? = null) : CardV
         setLayerType(View.LAYER_TYPE_HARDWARE, null)
         updateSliderPaint()
     }
+    
+    fun setSliderHapticKey(key: String, defValue: Int) {
+        hapticsKey = key
+        hapticDefValue = defValue
+    }
 
-    fun performSliderHaptics(intensity: Int) {
+    fun performSliderHaptics() {
+        if (hapticsKey.isEmpty()) return
+        val intensity = Settings.System.getIntForUser(context.getContentResolver(),
+                hapticsKey, hapticDefValue, UserHandle.USER_CURRENT)
         if (intensity == 0) return
         val currentTime = System.currentTimeMillis()
         if (currentTime - lastVibrateTime >= SLIDER_HAPTICS_TIMEOUT) {
@@ -157,7 +174,7 @@ open class VerticalSlider(context: Context, attrs: AttributeSet? = null) : CardV
             listeners.forEach { it.onLongPress() }
             VibrationUtils.triggerVibration(context, 4)
             actionPerformed = true
-            isLongPressDetected = false
+            cancelLongPressDetection()
         }
     }
 
@@ -265,10 +282,15 @@ open class VerticalSlider(context: Context, attrs: AttributeSet? = null) : CardV
             else R.color.qs_controls_container_bg_color_light
         )
         layoutPaint.alpha = (backgroundAlpha * 255).toInt()
+        updateIconTint()
         invalidate()
     }
+    
+    fun setIconView(iv: ImageView?) {
+        iconView = iv
+    }
 
-    fun updateIconTint(view: ImageView?) {
+    fun updateIconTint() {
         val emptyThreshold = 20 // 20% of 100
         val isEmpty = progress <= emptyThreshold
         val iconColorRes = when {
@@ -280,7 +302,7 @@ open class VerticalSlider(context: Context, attrs: AttributeSet? = null) : CardV
                 else R.color.qs_controls_active_color_dark
         }
         val color = context.getResources().getColor(iconColorRes)
-        view?.setColorFilter(color, PorterDuff.Mode.SRC_IN)
+        iconView?.setColorFilter(color, PorterDuff.Mode.SRC_IN)
     }
     
     fun setSliderProgress(sliderProgress: Int) {
@@ -288,14 +310,26 @@ open class VerticalSlider(context: Context, attrs: AttributeSet? = null) : CardV
     }
 
     protected open fun updateProgressRect() {
-        val calculatedProgress = progress / 100f
-        val newTop = (1 - calculatedProgress) * measuredHeight
-        if (abs(newTop - progressRect.top) > measuredHeight * threshold) {
-            progressRect.top = newTop
-        } else {
-            progressRect.top += (newTop - progressRect.top) * 0.1f
+        if (progress == lastProgress) return
+        progressAnimator?.cancel()
+        if (progressAnimator == null || !progressAnimator!!.isRunning) {
+            progressAnimator = ValueAnimator.ofInt(lastProgress, progress)
+            progressAnimator?.apply {
+                duration = 80
+                interpolator = DecelerateInterpolator()
+                addUpdateListener { animator ->
+                    val animatedValue = animator.animatedValue as Int
+                    progress = animatedValue
+                    lastProgress = animatedValue
+                    val calculatedProgress = progress / 100f
+                    val newTop = (1 - calculatedProgress) * measuredHeight
+                    progressRect.top = newTop
+                    updateIconTint()
+                    invalidate()
+                }
+                start()
+            }
         }
-        invalidate()
     }
 
     private fun requestDisallowInterceptTouchEventFromParentsAndRoot(disallowIntercept: Boolean) {
