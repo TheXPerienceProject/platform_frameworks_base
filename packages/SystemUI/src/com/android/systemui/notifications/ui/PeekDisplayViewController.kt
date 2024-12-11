@@ -88,6 +88,7 @@ class PeekDisplayViewController private constructor() :
         mDozing = dozing
         if (mDozing) {
             hidePeekDisplayView()
+            mPeekDisplayView.resetNotificationShelf()
         } else {
             showPeekDisplayView()
         }

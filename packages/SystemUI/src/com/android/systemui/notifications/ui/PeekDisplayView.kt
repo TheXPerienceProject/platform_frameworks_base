@@ -68,6 +68,8 @@ class PeekDisplayView @JvmOverloads constructor(
     private var clearAllHandler: Handler = Handler()
     private var currentDisplayedNotification: StatusBarNotification? = null
     public var currentRankingMap: NotificationListenerService.RankingMap? = null
+    private var lastFilteredNotifications: List<StatusBarNotification> = emptyList()
+    private var lastLayoutWidth: Int = ViewGroup.LayoutParams.WRAP_CONTENT
 
     private val notificationAdapter: NotificationAdapter = NotificationAdapter()
 
@@ -149,7 +151,6 @@ class PeekDisplayView @JvmOverloads constructor(
     }
 
     fun updateNotificationShelf(notificationList: List<StatusBarNotification>) {
-        notificationAdapter.clearSelection()
         val sortedNotifications = notificationList.sortedByDescending { it.postTime }
         val filteredNotifications = sortedNotifications.filter { sbn ->
             val ranking = currentRankingMap?.getRawRankingObject(sbn.key)
@@ -162,6 +163,11 @@ class PeekDisplayView @JvmOverloads constructor(
             !shouldFilterSensitiveNotifications &&
             (title.isNotBlank() || content.isNotBlank())
         }
+        if (filteredNotifications == lastFilteredNotifications) {
+            return
+        }
+        lastFilteredNotifications = filteredNotifications
+        notificationAdapter.clearSelection()
         if (filteredNotifications.isNotEmpty()) {
             notificationAdapter.submitList(filteredNotifications)
             notificationShelf?.visibility = View.VISIBLE
@@ -170,13 +176,17 @@ class PeekDisplayView @JvmOverloads constructor(
         }
         val iconSize = context.resources.getDimensionPixelSize(R.dimen.peek_display_notification_icon_size)
         val iconMarginEnd = context.resources.getDimensionPixelSize(R.dimen.peek_display_notification_icon_margin_end)
-        val layoutParams = notificationShelf?.layoutParams as? ViewGroup.LayoutParams
-        if (filteredNotifications.size <= 4) {
-            layoutParams?.width = ViewGroup.LayoutParams.WRAP_CONTENT
+        val newWidth = if (filteredNotifications.size <= 4) {
+            ViewGroup.LayoutParams.WRAP_CONTENT
         } else {
-            layoutParams?.width = (4 * iconSize) + (4 * iconMarginEnd)
+            (4 * iconSize) + (4 * iconMarginEnd)
         }
-        notificationShelf?.layoutParams = layoutParams
+        if (newWidth != lastLayoutWidth) {
+            val layoutParams = notificationShelf?.layoutParams as? ViewGroup.LayoutParams
+            layoutParams?.width = newWidth
+            notificationShelf?.layoutParams = layoutParams
+            lastLayoutWidth = newWidth
+        }
         showOverflow = (filteredNotifications.size > 4)
         overflowText?.visibility = if (showOverflow) View.VISIBLE else View.GONE
         clearAllButton?.visibility = View.GONE
@@ -247,9 +257,13 @@ class PeekDisplayView @JvmOverloads constructor(
             activityStarter.startActivity(it, true)
         }
     }
+    
+    fun resetNotificationShelf() {
+        notificationAdapter.clearSelection()
+        notificationShelf?.scrollToPosition(0)
+    }
 
     fun hideNotificationCard() {
-        notificationAdapter.clearSelection()
         notificationCard?.animate()
             ?.scaleX(0.8f)
             ?.scaleY(0.8f)
