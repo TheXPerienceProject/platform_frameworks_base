@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/peek_notification_card_height"
         android:layout_margin="16dp"
-        android:visibility="gone"
+        android:visibility="invisible"
         android:clickable="true"
         app:layout_constraintTop_toTopOf="parent"
         app:cardElevation="8dp"
