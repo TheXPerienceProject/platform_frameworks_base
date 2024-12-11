@@ -468,6 +468,7 @@ public abstract class SystemUIModule {
         return userTracker::getUserId;
     }
 
+    @Provides
     @SysUISingleton
     static KeyguardSmartspaceController provideKeyguardSmartspaceController(FeatureFlags featureFlags,
             KeyguardZenAlarmViewController keyguardZenAlarmViewController, KeyguardMediaViewController keyguardMediaViewController) {
