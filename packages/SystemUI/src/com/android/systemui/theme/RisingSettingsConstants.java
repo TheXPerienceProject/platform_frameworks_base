@@ -74,7 +74,8 @@ public class RisingSettingsConstants {
         PREF_OVERRIDE_BGCOLOR,
         PREF_THEME_STYLE,
         PREF_COLOR_SOURCE,
-        PREF_WHOLE_PALETTE
+        PREF_WHOLE_PALETTE,
+        "peek_display_style"
     };
     
     public static final String[] SYSTEM_SETTINGS_NOTIFY_ONLY_KEYS = {

@@ -66,6 +66,8 @@ class PeekDisplayViewController private constructor() :
         statusBarStateController.addCallback(this)
         onDozingChanged(statusBarStateController.isDozing())
         mContext.contentResolver.registerContentObserver(
+            Settings.Secure.getUriFor("peek_display_style"), false, settingsObserver)
+        mContext.contentResolver.registerContentObserver(
             Settings.Secure.getUriFor("peek_display_notifications"), false, settingsObserver)
         mContext.contentResolver.registerContentObserver(
             Settings.Secure.getUriFor(
