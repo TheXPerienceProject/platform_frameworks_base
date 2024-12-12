@@ -16,7 +16,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
    <string name="pocket_mode_active">Pocket Mode is active</string>
-   <string name="pocket_mode_hint">Long press the screen or the power button to disable Pocket mode.</string>
+   <string name="pocket_mode_hint">Long press the screen or the power\nbutton to disable Pocket mode.</string>
    <!-- Settings Restart -->
    <string name="settings_restart_title">Settings restart required</string>
    <string name="settings_restart_message">For all changes to take effect, a Settings app restart is required. Restart Settings app now?</string>
