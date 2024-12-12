@@ -15,7 +15,10 @@
  */
 package com.android.systemui.notifications.ui
 
+import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.database.ContentObserver
 import android.net.Uri
 import android.provider.Settings
@@ -31,10 +34,8 @@ import com.android.systemui.statusbar.NotificationListener
 
 class PeekDisplayViewController private constructor() : 
     ConfigurationController.ConfigurationListener,
-    StatusBarStateController.StateListener,
     NotificationListener.NotificationHandler {
 
-    private lateinit var mView: View
     private lateinit var mPeekDisplayView: PeekDisplayView
     private lateinit var mContext: Context
 
@@ -51,10 +52,33 @@ class PeekDisplayViewController private constructor() :
         }
     }
 
-    fun setPeekDisplayView(view: View) {
-        mView = view
-        mPeekDisplayView = mView as PeekDisplayView
-        mContext = mView.context
+    private val screenReceiver: BroadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            when (intent.action) {
+                Intent.ACTION_SCREEN_ON -> showPeekDisplayView()
+                Intent.ACTION_SCREEN_OFF -> hidePeekDisplayView()
+            }
+        }
+    }
+
+    private val statusBarStateListener = object : StatusBarStateController.StateListener {
+        override fun onStateChanged(newState: Int) {}
+        override fun onDozingChanged(dozing: Boolean) {
+            if (mDozing == dozing) {
+                return
+            }
+            mDozing = dozing
+            if (mDozing) {
+                hidePeekDisplayView()
+            } else {
+                showPeekDisplayView()
+            }
+        }
+    }
+
+    fun setPeekDisplayView(view: PeekDisplayView) {
+        mPeekDisplayView = view as PeekDisplayView
+        mContext = mPeekDisplayView.context
     }
 
     fun registerCallbacks() {
@@ -63,8 +87,8 @@ class PeekDisplayViewController private constructor() :
             mNotifListenerRegistered = true
         }
         configurationController.addCallback(this)
-        statusBarStateController.addCallback(this)
-        onDozingChanged(statusBarStateController.isDozing())
+        statusBarStateController.addCallback(statusBarStateListener)
+        statusBarStateListener.onDozingChanged(statusBarStateController.isDozing())
         mContext.contentResolver.registerContentObserver(
             Settings.Secure.getUriFor("peek_display_style"), false, settingsObserver)
         mContext.contentResolver.registerContentObserver(
@@ -73,27 +97,18 @@ class PeekDisplayViewController private constructor() :
             Settings.Secure.getUriFor(
                 Settings.Secure.LOCK_SCREEN_ALLOW_PRIVATE_NOTIFICATIONS), 
                 false, settingsObserver)
+        val filter = IntentFilter().apply {
+            addAction(Intent.ACTION_SCREEN_ON)
+            addAction(Intent.ACTION_SCREEN_OFF)
+        }
+        mContext.registerReceiver(screenReceiver, filter, Context.RECEIVER_EXPORTED)
     }
 
     fun unregisterCallbacks() {
         configurationController.removeCallback(this)
-        statusBarStateController.removeCallback(this)
+        statusBarStateController.removeCallback(statusBarStateListener)
         mContext.contentResolver.unregisterContentObserver(settingsObserver)
-    }
-
-    override fun onStateChanged(newState: Int) {}
-
-    override fun onDozingChanged(dozing: Boolean) {
-        if (mDozing == dozing) {
-            return
-        }
-        mDozing = dozing
-        if (mDozing) {
-            hidePeekDisplayView()
-            mPeekDisplayView.resetNotificationShelf()
-        } else {
-            showPeekDisplayView()
-        }
+        mContext.unregisterReceiver(screenReceiver)
     }
 
     override fun onUiModeChanged() {
@@ -135,13 +150,14 @@ class PeekDisplayViewController private constructor() :
     override fun onNotificationsInitialized() {}
 
     fun hidePeekDisplayView() {
-        mView.visibility = View.GONE
+        mPeekDisplayView.visibility = View.GONE
         mPeekDisplayView.hideNotificationCard()
+        mPeekDisplayView.resetNotificationShelf()
     }
 
     fun showPeekDisplayView() {
-        if (!mPeekDisplayView.isPeekDisplayEnabled) return
-        mView.visibility = View.VISIBLE
+        if (!mPeekDisplayView.isPeekDisplayEnabled || mDozing) return
+        mPeekDisplayView.visibility = View.VISIBLE
     }
     
     companion object {
