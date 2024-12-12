@@ -86,7 +86,9 @@ class VolumeSlider(context: Context, attrs: AttributeSet? = null) : VerticalSlid
         val currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC)
         val newProgress = (currentVolume * 100 / maxVolume)
         setSliderProgress(newProgress)
-        updateProgressRect()
+        progressRect.top = (1 - newProgress / 100f) * measuredHeight
+        updateIconTint()
+        invalidate()
     }
     
     private fun setVolumeFromProgress() {

@@ -15,8 +15,6 @@
  */
 package com.android.systemui.qs
 
-import android.animation.ValueAnimator
-import android.view.animation.DecelerateInterpolator
 import android.content.Context
 import android.content.res.Configuration
 import android.content.res.ColorStateList
@@ -51,7 +49,6 @@ open class VerticalSlider(context: Context, attrs: AttributeSet? = null) : CardV
     private var iconView: ImageView? = null
     private var hapticsKey: String = ""
     private var hapticDefValue: Int = 0
-    private var progressAnimator: ValueAnimator? = null
 
     private val listeners: MutableList<UserInteractionListener> = mutableListOf()
     
@@ -106,7 +103,6 @@ open class VerticalSlider(context: Context, attrs: AttributeSet? = null) : CardV
                     startLongPressDetection(event)
                     lastX = event.x
                     lastY = event.y
-                    progressAnimator?.cancel()
                     lastProgress = progress
                     requestDisallowInterceptTouchEventFromParentsAndRoot(true)
                     false
@@ -134,6 +130,7 @@ open class VerticalSlider(context: Context, attrs: AttributeSet? = null) : CardV
                 }
                 MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                     notifyListenersUserInteractionEnd()
+                    cancelLongPressDetection()
                     true
                 }
                 else -> false
@@ -310,26 +307,15 @@ open class VerticalSlider(context: Context, attrs: AttributeSet? = null) : CardV
     }
 
     protected open fun updateProgressRect() {
-        if (progress == lastProgress) return
-        progressAnimator?.cancel()
-        if (progressAnimator == null || !progressAnimator!!.isRunning) {
-            progressAnimator = ValueAnimator.ofInt(lastProgress, progress)
-            progressAnimator?.apply {
-                duration = 80
-                interpolator = DecelerateInterpolator()
-                addUpdateListener { animator ->
-                    val animatedValue = animator.animatedValue as Int
-                    progress = animatedValue
-                    lastProgress = animatedValue
-                    val calculatedProgress = progress / 100f
-                    val newTop = (1 - calculatedProgress) * measuredHeight
-                    progressRect.top = newTop
-                    updateIconTint()
-                    invalidate()
-                }
-                start()
-            }
+        val calculatedProgress = progress / 100f
+        val newTop = (1 - calculatedProgress) * measuredHeight
+        if (abs(newTop - progressRect.top) > measuredHeight * threshold) {
+            progressRect.top = newTop
+        } else {
+            progressRect.top += (newTop - progressRect.top) * 0.1f
         }
+        updateIconTint()
+        invalidate()
     }
 
     private fun requestDisallowInterceptTouchEventFromParentsAndRoot(disallowIntercept: Boolean) {

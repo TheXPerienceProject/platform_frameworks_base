@@ -128,7 +128,9 @@ class BrightnessSlider(context: Context, attrs: AttributeSet? = null) :
     private fun setBrightnessFromSystem() {
         val newProgress = (getCurrentBrightness() * 100).roundToInt()
         setSliderProgress(newProgress)
-        updateProgressRect()
+        progressRect.top = (1 - newProgress / 100f) * measuredHeight
+        updateIconTint()
+        invalidate()
     }
 
     private fun toggleBrightnessMode() {
