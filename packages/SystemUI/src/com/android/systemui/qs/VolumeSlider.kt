@@ -26,11 +26,18 @@ import android.os.UserHandle
 import android.provider.Settings
 import android.util.AttributeSet
 import android.widget.ImageView
+
 import com.android.systemui.res.R
+
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.launch
 
 class VolumeSlider(context: Context, attrs: AttributeSet? = null) : VerticalSlider(context, attrs) {
     private val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
     private var volumeIcon: ImageView? = null
+    private val scope = CoroutineScope(Dispatchers.IO)
     private val handler = Handler()
     private var isUserAdjusting = false
     private val volumeChangeReceiver = object : BroadcastReceiver() {
@@ -93,12 +100,18 @@ class VolumeSlider(context: Context, attrs: AttributeSet? = null) : VerticalSlid
     
     private fun setVolumeFromProgress() {
         val maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
-        val volume = progress * maxVolume / 100
-        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, volume, 0)
-        setSliderProgress((volume * 100 / maxVolume))
-        updateProgressRect()
+        val volume = (progress * maxVolume / 100).toInt()
+        scope.launch {
+            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, volume, 0)
+            withContext(Dispatchers.Main) {
+                if (progress > 93) {
+                    setSliderProgress(100)
+                }
+                updateProgressRect()
+            }
+        }
     }
-    
+
     private fun toggleMute() {
         val maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
         val currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC)
