@@ -158,5 +158,9 @@
 
     <!-- Clock Weather -->
     <string name="clock_ide_weather_data_unavailable">null</string>
+
+    <!-- Now bar -->
+    <string name="nowbar_no_media">No media playing</string>
+    <string name="nowbar_unknown_title">Unknown title</string>
 </resources>
 
