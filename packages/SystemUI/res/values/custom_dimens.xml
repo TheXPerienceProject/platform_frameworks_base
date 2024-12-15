@@ -139,4 +139,8 @@
 
     <!-- Maximum vertical offset of navigation bar for burn-in protection -->
     <dimen name="navigation_bar_burn_in_offset_max_y">8dp</dimen>
+    
+    <!-- Now bar -->
+    <dimen name="nowbar_album_art_size">48dp</dimen>
+    <dimen name="nowbar_media_buttons_size">28dp</dimen>
 </resources>

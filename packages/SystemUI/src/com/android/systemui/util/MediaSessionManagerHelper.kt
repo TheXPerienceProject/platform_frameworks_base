@@ -18,14 +18,27 @@ package com.android.systemui.util
 import android.app.WallpaperColors
 import android.content.Context
 import android.content.res.Configuration
+import android.graphics.Bitmap
 import android.media.MediaMetadata
 import android.media.session.MediaController
+import android.media.session.MediaSessionLegacyHelper
 import android.media.session.MediaSessionManager
 import android.media.session.PlaybackState
+import android.os.SystemClock
 import android.provider.Settings
 import android.text.TextUtils
+import android.view.KeyEvent
+import android.view.View
 
+import com.android.internal.jank.InteractionJankMonitor
+
+import com.android.systemui.Dependency
+import com.android.systemui.animation.DialogCuj
+import com.android.systemui.animation.DialogTransitionAnimator
+import com.android.systemui.animation.Expandable
 import com.android.systemui.monet.ColorScheme
+import com.android.systemui.media.dialog.MediaOutputDialogManager
+import com.android.systemui.lockscreen.ActivityLauncherUtils
 
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.Main
@@ -40,11 +53,13 @@ class MediaSessionManagerHelper private constructor(private val context: Context
 
     private var lastSavedPackageName: String? = null
     private val mediaSessionManager: MediaSessionManager = context.getSystemService(MediaSessionManager::class.java)!!
+    private val activityLauncherUtils: ActivityLauncherUtils = ActivityLauncherUtils(context)
     private var activeController: MediaController? = null
     private val listeners: MutableSet<MediaMetadataListener> = mutableSetOf()
     private var mediaMetadata: MediaMetadata? = null
     private var currMediaArtColor: Int = 0
     private var mWallpaperColors: WallpaperColors? = null
+    private var mCurrentColorScheme: ColorScheme? = null
 
     private val mediaControllerCallback = object : MediaController.Callback() {
         override fun onMetadataChanged(metadata: MediaMetadata?) {
@@ -90,18 +105,23 @@ class MediaSessionManagerHelper private constructor(private val context: Context
         val currentNightMode = config.uiMode and Configuration.UI_MODE_NIGHT_MASK
         val isDarkThemeOn = currentNightMode == Configuration.UI_MODE_NIGHT_YES
 
-        val mCurrentColorScheme = ColorScheme(wallpaperColors, isDarkThemeOn)
+        val colorScheme = ColorScheme(wallpaperColors, isDarkThemeOn)
         val newMediaArtColor = if (isDarkThemeOn) {
-            mCurrentColorScheme.accent1.s100
+            colorScheme.accent1.s100
         } else {
-            mCurrentColorScheme.accent1.s800
+            colorScheme.accent1.s800
         }
 
         if (currMediaArtColor != newMediaArtColor) {
             currMediaArtColor = newMediaArtColor
+            mCurrentColorScheme = colorScheme
             mWallpaperColors = wallpaperColors
             notifyListeners { it.onMediaColorsChanged() }
         }
+    }
+
+    fun getColorScheme(): ColorScheme? {
+        return mCurrentColorScheme
     }
 
     fun addMediaMetadataListener(listener: MediaMetadataListener?) {
@@ -202,6 +222,15 @@ class MediaSessionManagerHelper private constructor(private val context: Context
         }
         return localController
     }
+    
+    fun getMediaBitmap(): Bitmap? {
+        val metadata = getMediaMetadata()
+        return metadata?.let {
+            it.getBitmap(MediaMetadata.METADATA_KEY_ALBUM_ART)
+                ?: it.getBitmap(MediaMetadata.METADATA_KEY_ART)
+                ?: it.getBitmap(MediaMetadata.METADATA_KEY_DISPLAY_ICON)
+        }
+    }
 
     fun getMediaMetadata(): MediaMetadata? {
         return getActiveLocalMediaController()?.metadata
@@ -229,6 +258,62 @@ class MediaSessionManagerHelper private constructor(private val context: Context
         if (a == b) return true
         if (a == null) return false
         return a.controlsSameSession(b)
+    }
+
+    private fun dispatchMediaKeyWithWakeLockToMediaSession(keycode: Int) {
+        val helper = MediaSessionLegacyHelper.getHelper(context) ?: return
+        var event = KeyEvent(
+            SystemClock.uptimeMillis(),
+            SystemClock.uptimeMillis(),
+            KeyEvent.ACTION_DOWN,
+            keycode,
+            0
+        )
+        helper.sendMediaButtonEvent(event, true)
+        event = KeyEvent.changeAction(event, KeyEvent.ACTION_UP)
+        helper.sendMediaButtonEvent(event, true)
+    }
+
+    fun prevSong() {
+        dispatchMediaKeyWithWakeLockToMediaSession(KeyEvent.KEYCODE_MEDIA_PREVIOUS)
+    }
+
+    fun nextSong() {
+        dispatchMediaKeyWithWakeLockToMediaSession(KeyEvent.KEYCODE_MEDIA_NEXT)
+    }
+
+    fun toggleMediaPlaybackState() {
+        if (isMediaPlaying()) {
+            dispatchMediaKeyWithWakeLockToMediaSession(KeyEvent.KEYCODE_MEDIA_PAUSE)
+        } else {
+            dispatchMediaKeyWithWakeLockToMediaSession(KeyEvent.KEYCODE_MEDIA_PLAY)
+        }
+    }
+    
+    fun showMediaDialog(view: View) {
+        val packageName = lastSavedPackageName?.takeIf { it.isNotEmpty() } ?: return
+        Dependency.get(MediaOutputDialogManager::class.java)
+            .createAndShowWithController(
+                packageName,
+                true,
+                Expandable.fromView(view).dialogController()
+            )
+    }
+
+    fun launchMediaApp() {
+        lastSavedPackageName?.takeIf { it.isNotEmpty() }?.let {
+            activityLauncherUtils.launchMediaPlayerApp(it)
+        }
+    }
+    
+    private fun Expandable.dialogController(): DialogTransitionAnimator.Controller? {
+        return dialogTransitionController(
+            cuj =
+                DialogCuj(
+                    InteractionJankMonitor.CUJ_SHADE_DIALOG_OPEN,
+                    MediaOutputDialogManager.INTERACTION_JANK_TAG
+                )
+        )
     }
 
     companion object {
