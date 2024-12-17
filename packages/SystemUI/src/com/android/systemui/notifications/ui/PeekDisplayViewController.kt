@@ -43,7 +43,7 @@ class PeekDisplayViewController private constructor() :
     private val statusBarStateController: StatusBarStateController = Dependency.get(StatusBarStateController::class.java)
 
     private var mDozing = false
-    private var mNotifListenerRegistered = false
+    private var mCallbacksRegistered = false
 
     private val settingsObserver: ContentObserver = object : ContentObserver(null) {
         override fun onChange(selfChange: Boolean, uri: Uri?) {
@@ -82,10 +82,8 @@ class PeekDisplayViewController private constructor() :
     }
 
     fun registerCallbacks() {
-        if (!mNotifListenerRegistered) {
-            mPeekDisplayView.notificationListener.addNotificationHandler(this)
-            mNotifListenerRegistered = true
-        }
+        if (mCallbacksRegistered) return;
+        mPeekDisplayView.notificationListener.addNotificationHandler(this)
         configurationController.addCallback(this)
         statusBarStateController.addCallback(statusBarStateListener)
         statusBarStateListener.onDozingChanged(statusBarStateController.isDozing())
@@ -102,13 +100,17 @@ class PeekDisplayViewController private constructor() :
             addAction(Intent.ACTION_SCREEN_OFF)
         }
         mContext.registerReceiver(screenReceiver, filter, Context.RECEIVER_EXPORTED)
+        mCallbacksRegistered = true
     }
 
     fun unregisterCallbacks() {
+        if (!mCallbacksRegistered) return;
+        mPeekDisplayView.notificationListener.removeNotificationHandler(this)
         configurationController.removeCallback(this)
         statusBarStateController.removeCallback(statusBarStateListener)
         mContext.contentResolver.unregisterContentObserver(settingsObserver)
         mContext.unregisterReceiver(screenReceiver)
+        mCallbacksRegistered = false;
     }
 
     override fun onUiModeChanged() {
