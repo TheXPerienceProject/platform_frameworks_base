@@ -41,6 +41,8 @@ public class RisingThemeController {
     private final Handler mBackgroundHandler;
     private final Context mContext;
 
+    private Runnable mDebounceRunnable;
+
     public RisingThemeController(Context context, Handler backgroundHandler) {
         this.mContext = context;
         this.mContentResolver = mContext.getContentResolver();
@@ -102,10 +104,15 @@ public class RisingThemeController {
                     if (isDeviceSetupComplete()) {
                         toast.show();
                     }
-                    if (reevaluateSystemThemeCallback != null) {
-                        mBackgroundHandler.postDelayed(() -> reevaluateSystemThemeCallback.run(),
-                                isDeviceSetupComplete() ? toast.getDuration() + 1250 : 0);
+                    if (mDebounceRunnable != null) {
+                        mBackgroundHandler.removeCallbacks(mDebounceRunnable);
                     }
+                    mDebounceRunnable = () -> {
+                        if (reevaluateSystemThemeCallback != null) {
+                            mBackgroundHandler.post(() -> reevaluateSystemThemeCallback.run());
+                        }
+                    };
+                    mBackgroundHandler.postDelayed(mDebounceRunnable, 1000);
                 }
             };
             mContentResolver.registerContentObserver(uri, false, contentObserver);
