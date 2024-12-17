@@ -356,8 +356,8 @@ constructor(
     }
 
     fun updateResources() {
-        val labelSize = if (isA11Style || vertical) 12f else 14f
-        val secondaryLabelSize = if (isA11Style || vertical) 10f else 12f
+        val labelSize = com.android.systemui.qs.TileUtils.getTileLabelSize(context, if (isA11Style || vertical) 12f else 14f)
+        val secondaryLabelSize = com.android.systemui.qs.TileUtils.getTileSummarySize(context, if (isA11Style || vertical) 10f else 12f)
         label.setTextSize(TypedValue.COMPLEX_UNIT_SP, labelSize)
         secondaryLabel.setTextSize(TypedValue.COMPLEX_UNIT_SP, secondaryLabelSize)
 
