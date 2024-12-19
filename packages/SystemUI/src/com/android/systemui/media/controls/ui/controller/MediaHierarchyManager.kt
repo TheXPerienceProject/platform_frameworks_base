@@ -130,6 +130,8 @@ constructor(
         secureSettings.getUriFor(Settings.Secure.MEDIA_CONTROLS_LOCK_SCREEN)
     private val nowBarUri =
         systemSettings.getUriFor("keyguard_now_bar_enabled")
+    private val peekDisplayUri =
+        systemSettings.getUriFor("peek_display_expanded")
 
     /**
      * Whether we "skip" QQS during panel expansion.
@@ -606,9 +608,14 @@ constructor(
         val settingsObserver: ContentObserver =
             object : ContentObserver(handler) {
                 override fun onChange(selfChange: Boolean, uri: Uri?) {
-                    if (uri == lockScreenMediaPlayerUri || uri == nowBarUri) {
+                    if (uri == lockScreenMediaPlayerUri || uri == nowBarUri || uri == peekDisplayUri) {
                         val isNowBarEnabled = systemSettings.getBoolForUser(
                                 "keyguard_now_bar_enabled",
+                                false,
+                                UserHandle.USER_CURRENT
+                            )
+                        val isPeekDisplayExpanded = systemSettings.getBoolForUser(
+                                "peek_display_expanded",
                                 false,
                                 UserHandle.USER_CURRENT
                             )
@@ -617,7 +624,7 @@ constructor(
                                 true,
                                 UserHandle.USER_CURRENT
                             )
-                        allowMediaPlayerOnLockScreen = lsControlsEnabled && !isNowBarEnabled
+                        allowMediaPlayerOnLockScreen = lsControlsEnabled && !isNowBarEnabled && !isPeekDisplayExpanded
                     }
                 }
             }

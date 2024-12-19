@@ -391,6 +391,7 @@ constructor(
                 listenForAnyStateToLockscreenTransition(this)
                 listenForLockscreenSettingChanges(this)
                 listenForNowBarChanges(this)
+                listenForPeekDisplayExpansionChanges(this)
 
                 if (!mediaFlags.isSceneContainerEnabled()) return@repeatOnLifecycle
                 listenForMediaItemsChanges(this)
@@ -719,6 +720,21 @@ constructor(
                 }
         }
     }
+    
+    @VisibleForTesting
+    internal fun listenForPeekDisplayExpansionChanges(scope: CoroutineScope): Job {
+        return scope.launch {
+            systemSettings
+                .observerFlow(UserHandle.USER_ALL, "peek_display_expanded")
+                .onStart { emit(Unit) }
+                .map { getMediaLockScreenSetting() }
+                .distinctUntilChanged()
+                .collectLatest {
+                    allowMediaPlayerOnLockScreen = it
+                    updateHostVisibility()
+                }
+        }
+    }
 
     private fun listenForMediaItemsChanges(scope: CoroutineScope): Job {
         return scope.launch {
@@ -859,7 +875,12 @@ constructor(
                 false,
                 UserHandle.USER_CURRENT
             )
-            isMediaControlsEnabled && !isNowBarEnabled
+            val isPeekDisplayExpanded = systemSettings.getBoolForUser(
+                "peek_display_expanded",
+                false,
+                UserHandle.USER_CURRENT
+            )
+            isMediaControlsEnabled && !isNowBarEnabled && !isPeekDisplayExpanded
         }
     }
 

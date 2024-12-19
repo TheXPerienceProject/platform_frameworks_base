@@ -56,6 +56,9 @@ class PeekDisplayView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
+    private var PEEK_DISPLAY_LOCATION_TOP = 0
+    private var PEEK_DISPLAY_LOCATION_BOTTOM = 1
+
     private var notificationShelf: RecyclerView? = null
     private var notificationCard: CardView? = null
     private var notificationIcon: ImageView? = null
@@ -82,6 +85,7 @@ class PeekDisplayView @JvmOverloads constructor(
     private var isMinimalStyleEnabled = false
     public var isPeekDisplayEnabled = false
     private var showOverflow = false
+    public var peekDisplayLocation = PEEK_DISPLAY_LOCATION_BOTTOM
 
     init {
         val layout = if (id == R.id.peek_display_top) R.layout.peek_display_top 
@@ -239,6 +243,7 @@ class PeekDisplayView @JvmOverloads constructor(
                 ?.setDuration(300L)
                 ?.setInterpolator(android.view.animation.AccelerateDecelerateInterpolator())
                 ?.start()
+            Settings.System.putIntForUser(context.contentResolver, "peek_display_expanded", 1, UserHandle.USER_CURRENT)
         }
     }
     
@@ -278,10 +283,11 @@ class PeekDisplayView @JvmOverloads constructor(
             ?.setDuration(200L)
             ?.setInterpolator(android.view.animation.AccelerateInterpolator())
             ?.withEndAction {
-                notificationCard?.visibility = View.INVISIBLE
+                notificationCard?.visibility = if (peekDisplayLocation == PEEK_DISPLAY_LOCATION_TOP) View.GONE else View.INVISIBLE
                 currentDisplayedNotification = null
             }
             ?.start()
+            Settings.System.putIntForUser(context.contentResolver, "peek_display_expanded", 0, UserHandle.USER_CURRENT)
     }
 
     override fun onAttachedToWindow() {
@@ -307,6 +313,8 @@ class PeekDisplayView @JvmOverloads constructor(
             "peek_display_style", 0, UserHandle.USER_CURRENT) == 1
         isPeekDisplayEnabled = Settings.Secure.getIntForUser(context.contentResolver,
             "peek_display_notifications", 0, UserHandle.USER_CURRENT) == 1
+        peekDisplayLocation = Settings.Secure.getIntForUser(context.contentResolver,
+            "peek_display_location", PEEK_DISPLAY_LOCATION_BOTTOM, UserHandle.USER_CURRENT)
         visibility = if (isPeekDisplayEnabled) View.VISIBLE else View.GONE
         if (isPeekDisplayEnabled) {
             updateNotificationShelf(notificationListener.getActiveNotifications().toList())
