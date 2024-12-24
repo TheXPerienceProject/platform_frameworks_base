@@ -32,7 +32,7 @@ import com.android.systemui.statusbar.policy.ConfigurationController
 import com.android.systemui.statusbar.policy.ConfigurationController.ConfigurationListener
 import com.android.systemui.statusbar.NotificationListener
 
-class PeekDisplayViewController private constructor() : 
+class PeekDisplayViewController private constructor() :
     ConfigurationController.ConfigurationListener,
     NotificationListener.NotificationHandler {
 
@@ -44,6 +44,7 @@ class PeekDisplayViewController private constructor() :
 
     private var mDozing = false
     private var mCallbacksRegistered = false
+    private var mScreenReceiverRegistered = false
 
     private val settingsObserver: ContentObserver = object : ContentObserver(null) {
         override fun onChange(selfChange: Boolean, uri: Uri?) {
@@ -82,7 +83,7 @@ class PeekDisplayViewController private constructor() :
     }
 
     fun registerCallbacks() {
-        if (mCallbacksRegistered) return;
+        if (mCallbacksRegistered) return
         mPeekDisplayView.notificationListener.addNotificationHandler(this)
         configurationController.addCallback(this)
         statusBarStateController.addCallback(statusBarStateListener)
@@ -93,30 +94,42 @@ class PeekDisplayViewController private constructor() :
             Settings.Secure.getUriFor("peek_display_notifications"), false, settingsObserver)
         mContext.contentResolver.registerContentObserver(
             Settings.Secure.getUriFor(
-                Settings.Secure.LOCK_SCREEN_ALLOW_PRIVATE_NOTIFICATIONS), 
+                Settings.Secure.LOCK_SCREEN_ALLOW_PRIVATE_NOTIFICATIONS),
                 false, settingsObserver)
         val filter = IntentFilter().apply {
             addAction(Intent.ACTION_SCREEN_ON)
             addAction(Intent.ACTION_SCREEN_OFF)
         }
         mContext.registerReceiver(screenReceiver, filter, Context.RECEIVER_EXPORTED)
+        mScreenReceiverRegistered = true
         mCallbacksRegistered = true
     }
 
     fun unregisterCallbacks() {
-        if (!mCallbacksRegistered) return;
+        if (!mCallbacksRegistered) return
         mPeekDisplayView.notificationListener.removeNotificationHandler(this)
         configurationController.removeCallback(this)
         statusBarStateController.removeCallback(statusBarStateListener)
         mContext.contentResolver.unregisterContentObserver(settingsObserver)
-        mContext.unregisterReceiver(screenReceiver)
-        mCallbacksRegistered = false;
+        if (mScreenReceiverRegistered) {
+            try {
+                mContext.unregisterReceiver(screenReceiver)
+            } catch (e: IllegalArgumentException) {
+                android.util.Log.w(
+                    "PeekDisplayViewController",
+                    "screenReceiver was not registered or already unregistered."
+                )
+            } finally {
+                mScreenReceiverRegistered = false
+            }
+        }
+        mCallbacksRegistered = false
     }
 
     override fun onUiModeChanged() {
         mPeekDisplayView.updateViewColors()
     }
-    
+
     override fun onThemeChanged() {
         mPeekDisplayView.updateViewColors()
     }
@@ -137,7 +150,7 @@ class PeekDisplayViewController private constructor() :
         mPeekDisplayView.currentRankingMap = rankingMap
         mPeekDisplayView.updateNotificationShelf(mPeekDisplayView.notificationListener.getActiveNotifications().toList())
     }
-    
+
     override fun onNotificationRemoved(
         sbn: StatusBarNotification,
         rankingMap: NotificationListenerService.RankingMap
@@ -161,7 +174,7 @@ class PeekDisplayViewController private constructor() :
         if (!mPeekDisplayView.isPeekDisplayEnabled || mDozing) return
         mPeekDisplayView.visibility = View.VISIBLE
     }
-    
+
     companion object {
         @Volatile
         private var instance: PeekDisplayViewController? = null
