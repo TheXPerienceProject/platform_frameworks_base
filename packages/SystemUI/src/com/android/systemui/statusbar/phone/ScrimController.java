@@ -1198,7 +1198,7 @@ public class ScrimController implements ViewTreeObserver.OnPreDrawListener, Dump
         setOrAdaptCurrentAnimation(mScrimInFront);
         dispatchBackScrimState(mScrimBehind.getViewAlpha());
 
-        com.android.systemui.util.WallpaperDepthUtils.getInstance(mScrimBehind.getContext()).updateDepthWallpaper();
+        com.android.systemui.util.ScrimUtils.getInstance(mScrimBehind.getContext()).onScrimDispatched();
     }
 
     /**
