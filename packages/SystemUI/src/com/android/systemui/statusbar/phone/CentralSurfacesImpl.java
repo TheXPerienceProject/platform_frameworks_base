@@ -2676,8 +2676,6 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
             }
 
             DejankUtils.stopDetectingBlockingIpcs(tag);
-
-            mWallpaperDepthUtils.updateDepthWallpaperVisibility();
         }
 
         @Override
@@ -2701,6 +2699,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
                 }
             });
             DejankUtils.stopDetectingBlockingIpcs(tag);
+            com.android.systemui.util.ScrimUtils.getInstance(mContext).onScreenStateChange();
         }
 
         /**
