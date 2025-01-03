@@ -74,7 +74,6 @@ public class SystemImpl implements SystemInterface {
 
         int numFallbackPackages = 0;
         int numAvailableByDefaultPackages = 0;
-        Context mContext = AppGlobals.getInitialApplication();
         XmlResourceParser parser = null;
         List<WebViewProviderInfo> webViewProviders = new ArrayList<WebViewProviderInfo>();
         List<String> webviewPackages = new ArrayList<>();
