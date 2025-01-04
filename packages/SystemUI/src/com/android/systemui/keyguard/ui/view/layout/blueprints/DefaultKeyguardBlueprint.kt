@@ -38,6 +38,7 @@ import com.android.systemui.keyguard.ui.view.layout.sections.DefaultDeviceEntryS
 import com.android.systemui.keyguard.ui.view.layout.sections.DefaultEmergencyButtonSection
 // QTI_END: 2025-02-09: Android_UI: SystemUI: Refactor Emergency button on keyguard
 import com.android.systemui.keyguard.ui.view.layout.sections.DefaultIndicationAreaSection
+import com.android.systemui.keyguard.ui.view.layout.sections.DefaultIndicationAreaTopSection
 import com.android.systemui.keyguard.ui.view.layout.sections.DefaultNotificationStackScrollLayoutSection
 import com.android.systemui.keyguard.ui.view.layout.sections.DefaultSettingsPopupMenuSection
 import com.android.systemui.keyguard.ui.view.layout.sections.DefaultShortcutsSection
@@ -80,6 +81,7 @@ constructor(
 // QTI_BEGIN: 2025-02-09: Android_UI: SystemUI: Refactor Emergency button on keyguard
     defaultEmergencyButtonSection: DefaultEmergencyButtonSection,
 // QTI_END: 2025-02-09: Android_UI: SystemUI: Refactor Emergency button on keyguard
+    defaultIndicationAreaTopSection: DefaultIndicationAreaTopSection,
 ) : KeyguardBlueprint {
     override val id: String = DEFAULT
 
@@ -87,6 +89,7 @@ constructor(
         listOfNotNull(
             accessibilityActionsSection,
             defaultIndicationAreaSection,
+            defaultIndicationAreaTopSection,
             defaultShortcutsSection,
             defaultAmbientIndicationAreaSection.getOrNull(),
             defaultSettingsPopupMenuSection,
