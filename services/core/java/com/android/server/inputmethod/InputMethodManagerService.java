@@ -486,19 +486,19 @@ public final class InputMethodManagerService implements IInputMethodManagerImpl.
             ContentResolver resolver = mContext.getContentResolver();
             if (mLineageHardware.isSupported(
                     LineageHardwareManager.FEATURE_HIGH_TOUCH_POLLING_RATE)) {
-                resolver.registerContentObserverAsUser(LineageSettings.System.getUriFor(
-                        LineageSettings.System.HIGH_TOUCH_POLLING_RATE_ENABLE),
+                resolver.registerContentObserverAsUser(Settings.System.getUriFor(
+                        Settings.System.HIGH_TOUCH_POLLING_RATE_ENABLE),
                         false, this, UserHandle.ALL);
             }
             if (mLineageHardware.isSupported(
                     LineageHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY)) {
-                resolver.registerContentObserverAsUser(LineageSettings.System.getUriFor(
-                        LineageSettings.System.HIGH_TOUCH_SENSITIVITY_ENABLE),
+                resolver.registerContentObserverAsUser(Settings.System.getUriFor(
+                        Settings.System.HIGH_TOUCH_SENSITIVITY_ENABLE),
                         false, this, UserHandle.ALL);
             }
             if (mLineageHardware.isSupported(LineageHardwareManager.FEATURE_TOUCH_HOVERING)) {
-                resolver.registerContentObserverAsUser(LineageSettings.Secure.getUriFor(
-                        LineageSettings.Secure.FEATURE_TOUCH_HOVERING),
+                resolver.registerContentObserverAsUser(Settings.Secure.getUriFor(
+                        Settings.Secure.FEATURE_TOUCH_HOVERING),
                         false, this, UserHandle.ALL);
             }
         }
@@ -510,12 +510,12 @@ public final class InputMethodManagerService implements IInputMethodManagerImpl.
         }
 
         private void onChangeInternal(@NonNull Uri uri, @UserIdInt int userId) {
-            final Uri highTouchPollingRateUri = LineageSettings.System.getUriFor(
-                    LineageSettings.System.HIGH_TOUCH_POLLING_RATE_ENABLE);
-            final Uri touchSensitivityUri = LineageSettings.System.getUriFor(
-                    LineageSettings.System.HIGH_TOUCH_SENSITIVITY_ENABLE);
-            final Uri touchHoveringUri = LineageSettings.Secure.getUriFor(
-                    LineageSettings.Secure.FEATURE_TOUCH_HOVERING);
+            final Uri highTouchPollingRateUri = Settings.System.getUriFor(
+                    Settings.System.HIGH_TOUCH_POLLING_RATE_ENABLE);
+            final Uri touchSensitivityUri = Settings.System.getUriFor(
+                    Settings.System.HIGH_TOUCH_SENSITIVITY_ENABLE);
+            final Uri touchHoveringUri = Settings.Secure.getUriFor(
+                    Settings.Secure.FEATURE_TOUCH_HOVERING);
             synchronized (ImfLock.class) {
                 if (!mConcurrentMultiUserModeEnabled && mCurrentImeUserId != userId) {
                     return;
