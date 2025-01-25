@@ -632,9 +632,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     boolean mPendingMetaAction;
     boolean mPendingCapsLockToggle;
 
-    private ThreeFingersSwipeListener mThreeFingersListener;
-    private boolean mThreeFingerListenerRegistered;
-
     // support for activating the lock screen while the screen is on
     private HashSet<Integer> mAllowLockscreenWhenOnDisplays = new HashSet<>();
     int mLockScreenTimeout;
@@ -3023,11 +3020,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         if (mDoubleTapOnHomeBehavior < DOUBLE_TAP_HOME_NOTHING ||
                 mDoubleTapOnHomeBehavior > DOUBLE_TAP_HOME_PIP_MENU) {
             mDoubleTapOnHomeBehavior = DOUBLE_TAP_HOME_NOTHING;
-        }
-
-        if (mThreeFingersListener != null && !mThreeFingerListenerRegistered) {
-            mWindowManagerFuncs.registerPointerEventListener(mThreeFingersListener, DEFAULT_DISPLAY);
-            mThreeFingerListenerRegistered = true;
         }
 
         mShortPressOnWindowBehavior = SHORT_PRESS_WINDOW_NOTHING;
@@ -6450,39 +6442,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         if (mVrManagerInternal != null) {
             mVrManagerInternal.addPersistentVrModeStateListener(mPersistentVrModeListener);
         }
-
-        mThreeFingersListener = new ThreeFingersSwipeListener(mContext, new ThreeFingersSwipeListener.Callbacks() {
-            @Override
-            public void onSwipeThreeFingers() {
-                Action threeFingersSwipeAction = Action.fromSettings(mContext.getContentResolver(),
-                        LineageSettings.System.KEY_THREE_FINGERS_SWIPE_ACTION,
-                        Action.fromIntSafe(12));
-                if (threeFingersSwipeAction == Action.NOTHING)
-                    return;
-                long now = SystemClock.uptimeMillis();
-                KeyEvent event = new KeyEvent(now, now, KeyEvent.ACTION_DOWN,
-                        KeyEvent.KEYCODE_SYSRQ, 0, 0, KeyCharacterMap.VIRTUAL_KEYBOARD, 0,
-                        KeyEvent.FLAG_FROM_SYSTEM, InputDevice.SOURCE_TOUCHSCREEN);
-                performKeyAction(threeFingersSwipeAction, event);
-                performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, false,
-                        "Three Fingers Swipe");
-            }
-            @Override
-            public void onLongPressThreeFingers() {
-                Action threeFingersLongPressAction = Action.fromSettings(mContext.getContentResolver(),
-                        LineageSettings.System.KEY_THREE_FINGERS_LONG_PRESS_ACTION,
-                        Action.NOTHING);
-                if (threeFingersLongPressAction == Action.NOTHING)
-                    return;
-                long now = SystemClock.uptimeMillis();
-                KeyEvent event = new KeyEvent(now, now, KeyEvent.ACTION_DOWN,
-                        KeyEvent.KEYCODE_SYSRQ, 0, 0, KeyCharacterMap.VIRTUAL_KEYBOARD, 0,
-                        KeyEvent.FLAG_FROM_SYSTEM, InputDevice.SOURCE_TOUCHSCREEN);
-                performKeyAction(threeFingersLongPressAction, event);
-                performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, false,
-                        "Three Fingers Long Press");
-            }
-        });
 
         readCameraLensCoverState();
         updateUiMode();
