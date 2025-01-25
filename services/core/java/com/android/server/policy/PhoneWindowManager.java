@@ -235,7 +235,6 @@ import com.android.internal.policy.PhoneWindow;
 import com.android.internal.policy.TransitionAnimation;
 import com.android.internal.statusbar.IStatusBarService;
 import com.android.internal.widget.LockPatternUtils;
-import com.android.internal.xpe.util.DeviceKeysConstants;
 import com.android.server.AccessibilityManagerInternal;
 import com.android.server.ExtconStateObserver;
 import com.android.server.ExtconUEventObserver;
@@ -6456,7 +6455,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             @Override
             public void onSwipeThreeFingers() {
                 Action threeFingersSwipeAction = Action.fromSettings(mContext.getContentResolver(),
-                        Settings.System.KEY_THREE_FINGERS_SWIPE_ACTION,
+                        LineageSettings.System.KEY_THREE_FINGERS_SWIPE_ACTION,
                         Action.fromIntSafe(12));
                 if (threeFingersSwipeAction == Action.NOTHING)
                     return;
@@ -6471,7 +6470,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             @Override
             public void onLongPressThreeFingers() {
                 Action threeFingersLongPressAction = Action.fromSettings(mContext.getContentResolver(),
-                        Settings.System.KEY_THREE_FINGERS_LONG_PRESS_ACTION,
+                        LineageSettings.System.KEY_THREE_FINGERS_LONG_PRESS_ACTION,
                         Action.NOTHING);
                 if (threeFingersLongPressAction == Action.NOTHING)
                     return;
