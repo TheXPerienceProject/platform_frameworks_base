@@ -24,7 +24,6 @@ import android.widget.RemoteViews.RemoteView;
 
 import com.android.internal.R;
 
-
 /**
  * <p>
  * A radio button is a two-states button that can be either checked or

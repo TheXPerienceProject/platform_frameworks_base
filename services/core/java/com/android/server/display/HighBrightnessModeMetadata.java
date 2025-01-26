@@ -18,7 +18,6 @@ package com.android.server.display;
 
 import java.util.ArrayDeque;
 
-
 /**
  * Represents High Brightness Mode metadata associated
  * with a specific internal physical display.

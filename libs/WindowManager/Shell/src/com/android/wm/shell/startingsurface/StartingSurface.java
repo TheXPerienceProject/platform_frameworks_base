@@ -18,6 +18,7 @@ package com.android.wm.shell.startingsurface;
 
 import android.app.TaskInfo;
 import android.graphics.Color;
+
 /**
  * Interface to engage starting window feature.
  */

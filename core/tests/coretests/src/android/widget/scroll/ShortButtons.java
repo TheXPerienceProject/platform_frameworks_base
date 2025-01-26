@@ -16,9 +16,9 @@
 
 package android.widget.scroll;
 
-import android.widget.ScrollViewScenario;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ScrollViewScenario;
 
 /**
  * A series of short buttons, some of which are embedded within another

@@ -16,9 +16,6 @@
 
 package com.android.mediaframeworktest.helpers;
 
-import com.android.ex.camera2.pos.AutoFocusStateMachine;
-import com.android.ex.camera2.pos.AutoFocusStateMachine.AutoFocusStateListener;
-
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
 import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
@@ -31,6 +28,9 @@ import android.hardware.camera2.params.MeteringRectangle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.Surface;
+
+import com.android.ex.camera2.pos.AutoFocusStateMachine;
+import com.android.ex.camera2.pos.AutoFocusStateMachine.AutoFocusStateListener;
 
 /**
  * A focuser utility class to assist camera to do auto focus.

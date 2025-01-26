@@ -2,10 +2,13 @@ package com.google.android.systemui.smartspace.logging;
 
 import android.os.Debug;
 import android.util.Log;
+
 import com.android.systemui.shared.system.SysUiStatsLog;
 import com.android.systemui.smartspace.nano.SmartspaceProto;
+
 import com.google.android.systemui.smartspace.EventEnum;
 import com.google.protobuf.nano.MessageNano;
+
 import java.util.ArrayList;
 import java.util.List;
 

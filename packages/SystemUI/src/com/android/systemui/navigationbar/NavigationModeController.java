@@ -24,7 +24,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.om.IOverlayManager;
 import android.content.pm.PackageManager;
-import android.content.res.ApkAssets;
 import android.os.PatternMatcher;
 import android.os.RemoteException;
 import android.os.ServiceManager;

@@ -16,9 +16,9 @@
 
 package android.test.suitebuilder;
 
-import java.util.List;
-
 import junit.framework.TestCase;
+
+import java.util.List;
 
 /**
  * Unit tests for {@link TestGrouping}

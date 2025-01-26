@@ -1,8 +1,9 @@
 
 package com.android.mediaframeworktest.integration;
 
-import static org.junit.Assert.assertNotNull;
 import static android.system.OsConstants.*;
+
+import static org.junit.Assert.assertNotNull;
 
 import android.content.Context;
 import android.content.pm.FeatureInfo;

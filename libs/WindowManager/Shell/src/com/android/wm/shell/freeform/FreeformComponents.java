@@ -16,10 +16,8 @@
 
 package com.android.wm.shell.freeform;
 
-import static android.content.pm.PackageManager.FEATURE_FREEFORM_WINDOW_MANAGEMENT;
 
 import android.content.Context;
-import android.provider.Settings;
 
 import com.android.wm.shell.ShellTaskOrganizer;
 import com.android.wm.shell.transition.Transitions;

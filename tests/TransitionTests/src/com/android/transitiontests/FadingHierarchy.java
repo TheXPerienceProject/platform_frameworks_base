@@ -17,9 +17,9 @@ package com.android.transitiontests;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.transition.TransitionManager;
 import android.view.View;
 import android.view.ViewGroup;
-import android.transition.TransitionManager;
 import android.widget.Button;
 
 public class FadingHierarchy extends Activity {

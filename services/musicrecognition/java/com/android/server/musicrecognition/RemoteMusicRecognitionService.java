@@ -33,7 +33,6 @@ import com.android.server.musicrecognition.MusicRecognitionManagerPerUserService
 
 import java.util.concurrent.CompletableFuture;
 
-
 /** Remote connection to an instance of {@link MusicRecognitionService}. */
 public class RemoteMusicRecognitionService extends
         AbstractMultiplePendingRequestsRemoteService<RemoteMusicRecognitionService,

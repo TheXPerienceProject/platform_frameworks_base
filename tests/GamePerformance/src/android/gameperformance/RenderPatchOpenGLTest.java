@@ -15,14 +15,13 @@
  */
 package android.gameperformance;
 
+import android.annotation.NonNull;
+import android.opengl.GLES20;
+import android.opengl.Matrix;
+
 import java.util.List;
 
 import javax.microedition.khronos.opengles.GL;
-
-import android.annotation.NonNull;
-import android.content.Context;
-import android.opengl.GLES20;
-import android.opengl.Matrix;
 
 /**
  * Base class for all OpenGL based tests that use RenderPatch as a base.

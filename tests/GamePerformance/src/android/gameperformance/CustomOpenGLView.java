@@ -15,18 +15,18 @@
  */
 package android.gameperformance;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
-
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.content.Context;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
 
 public class CustomOpenGLView extends GLSurfaceView {
     public final static String TAG = "CustomOpenGLView";

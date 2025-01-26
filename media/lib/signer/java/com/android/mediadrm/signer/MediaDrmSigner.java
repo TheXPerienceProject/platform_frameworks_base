@@ -16,8 +16,8 @@
 
 package com.android.mediadrm.signer;
 
-import android.media.MediaDrm;
 import android.media.DeniedByServerException;
+import android.media.MediaDrm;
 
 /**
  * Provides certificate request generation, response handling and

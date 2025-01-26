@@ -191,7 +191,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Consumer;
 
-
 /**
  * Manages attached displays.
  * <p>

@@ -16,14 +16,6 @@
 
 package com.android.test.layout;
 
-import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-
 import static android.view.Gravity.BOTTOM;
 import static android.view.Gravity.CENTER;
 import static android.view.Gravity.FILL;
@@ -31,6 +23,14 @@ import static android.view.Gravity.LEFT;
 import static android.view.Gravity.NO_GRAVITY;
 import static android.view.Gravity.RIGHT;
 import static android.view.Gravity.TOP;
+
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 
 public abstract class AbstractLayoutTest extends Activity {
 

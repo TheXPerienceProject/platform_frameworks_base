@@ -18,12 +18,10 @@ package android.hardware.camera2.params;
 
 import android.annotation.LongDef;
 import android.annotation.NonNull;
-
 import android.hardware.camera2.CameraMetadata;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;

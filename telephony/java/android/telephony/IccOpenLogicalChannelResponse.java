@@ -19,7 +19,6 @@ package android.telephony;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-
 /**
  * Response to the {@link TelephonyManager#iccOpenLogicalChannel} command.
  */

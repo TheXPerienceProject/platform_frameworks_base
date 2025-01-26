@@ -18,11 +18,9 @@ package android.media.audiofx;
 
 import android.media.AudioTrack;
 import android.media.MediaPlayer;
-import android.media.audiofx.AudioEffect;
 import android.util.Log;
 
 import java.util.StringTokenizer;
-
 
 /**
  * LoudnessEnhancer is an audio effect for increasing audio loudness.

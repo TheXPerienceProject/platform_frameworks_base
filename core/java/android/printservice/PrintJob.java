@@ -25,10 +25,7 @@ import android.content.Context;
 import android.os.RemoteException;
 import android.print.PrintJobId;
 import android.print.PrintJobInfo;
-import android.text.TextUtils;
 import android.util.Log;
-
-import com.android.internal.util.Preconditions;
 
 /**
  * This class represents a print job from the perspective of a print

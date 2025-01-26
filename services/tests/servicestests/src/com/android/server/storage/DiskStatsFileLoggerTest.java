@@ -16,10 +16,14 @@
 
 package com.android.server.storage;
 
+import static com.google.common.truth.Truth.assertThat;
+
 import android.content.pm.PackageStats;
 import android.test.AndroidTestCase;
 import android.util.ArraySet;
+
 import libcore.io.IoUtils;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Before;
@@ -31,8 +35,6 @@ import org.junit.runners.JUnit4;
 
 import java.io.File;
 import java.util.ArrayList;
-
-import static com.google.common.truth.Truth.assertThat;
 
 @RunWith(JUnit4.class)
 public class DiskStatsFileLoggerTest extends AndroidTestCase {

@@ -25,7 +25,6 @@ import org.junit.Test;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
-
 /**
  * Tests for {@link SystemServiceManager}.
  */

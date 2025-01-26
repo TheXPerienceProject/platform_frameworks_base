@@ -16,11 +16,11 @@
 
 package com.android.accessorydisplay.source;
 
-import com.android.accessorydisplay.common.Logger;
-import com.android.accessorydisplay.common.Transport;
-
 import android.hardware.usb.UsbAccessory;
 import android.os.ParcelFileDescriptor;
+
+import com.android.accessorydisplay.common.Logger;
+import com.android.accessorydisplay.common.Transport;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

@@ -6,9 +6,9 @@ import android.app.smartspace.uitemplatedata.BaseTemplateData;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
+
 import com.google.android.systemui.smartspace.InstanceId;
-import com.google.android.systemui.smartspace.logging.BcSmartspaceCardMetadataLoggingInfo;
-import com.google.android.systemui.smartspace.logging.BcSmartspaceSubcardLoggingInfo;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -16,7 +16,6 @@
 package com.android.server.content;
 
 import android.content.IContentService;
-import android.content.Intent;
 import android.os.RemoteException;
 import android.os.ShellCommand;
 

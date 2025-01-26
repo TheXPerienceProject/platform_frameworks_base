@@ -25,10 +25,8 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.test.mock.MockApplication;
-import android.view.Window;
 import android.util.Log;
-
-
+import android.view.Window;
 
 /**
  * This class provides isolated testing of a single activity.  The activity under test will

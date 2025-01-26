@@ -32,11 +32,11 @@ import static android.view.KeyEvent.KEYCODE_META_LEFT;
 import static android.view.KeyEvent.KEYCODE_N;
 import static android.view.KeyEvent.KEYCODE_P;
 import static android.view.KeyEvent.KEYCODE_S;
+import static android.view.KeyEvent.KEYCODE_SCREENSHOT;
 import static android.view.KeyEvent.KEYCODE_SHIFT_LEFT;
 import static android.view.KeyEvent.KEYCODE_SLASH;
 import static android.view.KeyEvent.KEYCODE_SPACE;
 import static android.view.KeyEvent.KEYCODE_TAB;
-import static android.view.KeyEvent.KEYCODE_SCREENSHOT;
 import static android.view.KeyEvent.KEYCODE_U;
 import static android.view.KeyEvent.KEYCODE_Z;
 

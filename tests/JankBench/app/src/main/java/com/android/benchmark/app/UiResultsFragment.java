@@ -19,24 +19,18 @@ package com.android.benchmark.app;
 import android.annotation.TargetApi;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.ListFragment;
-import android.util.Log;
 import android.view.FrameMetrics;
 import android.widget.SimpleAdapter;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.ListFragment;
+
 import com.android.benchmark.R;
-import com.android.benchmark.registry.BenchmarkGroup;
-import com.android.benchmark.registry.BenchmarkRegistry;
 import com.android.benchmark.results.GlobalResultsStore;
 import com.android.benchmark.results.UiBenchmarkResult;
 
 import org.apache.commons.math.stat.descriptive.SummaryStatistics;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.net.URI;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;

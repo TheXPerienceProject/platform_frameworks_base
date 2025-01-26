@@ -16,7 +16,6 @@
 
 package com.android.internal.widget;
 
-import android.app.ActivityManager;
 import android.app.Notification;
 import android.view.View;
 

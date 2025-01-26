@@ -24,7 +24,6 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
-
 /**
  * TimeReceiver will listen for any messages containing a timestamp by starting a BroadcastReceiver
  * which listens for Intents with the SendTime.ACTION_SEND_TIME action.

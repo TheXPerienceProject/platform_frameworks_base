@@ -18,6 +18,7 @@ package android.text.style;
 
 import android.graphics.MaskFilter;
 import android.text.TextPaint;
+
 /**
  * Span that allows setting a {@link MaskFilter} to the text it's attached to.
  * <p>

@@ -9,7 +9,9 @@ import android.icu.text.DisplayContext;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.util.AttributeSet;
+
 import com.android.systemui.bcsmartspace.R;
+
 import java.util.Locale;
 import java.util.Objects;
 

@@ -19,7 +19,6 @@ package android.media.tv.tuner.filter;
 import android.annotation.BytesLong;
 import android.annotation.SystemApi;
 
-
 /**
  * Filter event sent from {@link Filter} objects for TS record data.
  *

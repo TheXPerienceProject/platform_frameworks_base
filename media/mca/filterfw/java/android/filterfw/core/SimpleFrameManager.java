@@ -17,13 +17,6 @@
 
 package android.filterfw.core;
 
-import android.filterfw.core.Frame;
-import android.filterfw.core.FrameFormat;
-import android.filterfw.core.FrameManager;
-import android.filterfw.core.GLFrame;
-import android.filterfw.core.NativeFrame;
-import android.filterfw.core.SimpleFrame;
-import android.filterfw.core.VertexFrame;
 
 /**
  * @hide

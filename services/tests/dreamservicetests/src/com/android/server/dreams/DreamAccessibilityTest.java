@@ -17,14 +17,13 @@
 package com.android.server.dreams;
 
 
+import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.argThat;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
-
 
 import android.content.Context;
 import android.content.res.Resources;

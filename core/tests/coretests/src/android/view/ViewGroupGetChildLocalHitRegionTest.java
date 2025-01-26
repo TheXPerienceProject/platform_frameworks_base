@@ -18,7 +18,6 @@ package android.view;
 
 import static com.google.common.truth.Truth.assertThat;
 
-
 import android.graphics.Matrix;
 import android.graphics.Region;
 import android.platform.test.annotations.Presubmit;

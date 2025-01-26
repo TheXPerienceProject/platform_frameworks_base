@@ -59,7 +59,6 @@ import org.robolectric.RobolectricTestRunner;
 
 import java.io.ByteArrayInputStream;
 
-
 @RunWith(RobolectricTestRunner.class)
 public class IllustrationPreferenceTest {
 

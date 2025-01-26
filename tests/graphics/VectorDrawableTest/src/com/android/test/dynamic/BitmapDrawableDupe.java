@@ -14,13 +14,11 @@
 package com.android.test.dynamic;
 
 import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 import java.text.DecimalFormat;
 

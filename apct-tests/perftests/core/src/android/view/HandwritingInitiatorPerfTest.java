@@ -23,7 +23,6 @@ import static android.view.MotionEvent.TOOL_TYPE_FINGER;
 import static android.view.MotionEvent.TOOL_TYPE_STYLUS;
 import static android.view.inputmethod.Flags.initiationWithoutInputConnection;
 
-
 import static org.junit.Assume.assumeFalse;
 
 import android.app.Instrumentation;

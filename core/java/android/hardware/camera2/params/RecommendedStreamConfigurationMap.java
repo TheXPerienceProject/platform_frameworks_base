@@ -34,7 +34,6 @@ import android.view.Surface;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Set;

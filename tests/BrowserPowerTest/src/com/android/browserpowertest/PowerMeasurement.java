@@ -16,12 +16,13 @@
 
 package com.android.browserpowertest;
 
-import android.content.Intent;
 import android.app.Instrumentation;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
+
 import junit.framework.*;
 
 public class PowerMeasurement extends ActivityInstrumentationTestCase2<PowerTestActivity> {

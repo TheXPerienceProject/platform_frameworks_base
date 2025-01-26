@@ -16,13 +16,13 @@
 
 package android.graphics;
 
-import com.android.internal.annotations.GuardedBy;
-
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.os.Parcel;
 import android.os.Process;
 import android.util.ArrayMap;
+
+import com.android.internal.annotations.GuardedBy;
 
 import java.util.ArrayList;
 

@@ -19,10 +19,10 @@ package android.widget.listview;
 import static android.util.ListItemFactory.Slot;
 
 import android.util.ListItemFactory;
-import android.widget.ListScenario;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListScenario;
 
 public class ListButtonsDiagonalAcrossItems extends ListScenario {
 

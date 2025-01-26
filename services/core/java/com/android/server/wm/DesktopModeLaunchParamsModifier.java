@@ -28,6 +28,7 @@ import android.content.pm.ActivityInfo;
 import android.util.Slog;
 
 import com.android.server.wm.LaunchParamsController.LaunchParamsModifier;
+
 /**
  * The class that defines default launch params for tasks in desktop mode
  */

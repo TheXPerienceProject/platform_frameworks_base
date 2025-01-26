@@ -18,14 +18,14 @@ package com.android.transitiontests;
 import android.app.Activity;
 import android.os.Bundle;
 import android.transition.ChangeBounds;
+import android.transition.ChangeText;
+import android.transition.Fade;
+import android.transition.Scene;
+import android.transition.TransitionManager;
+import android.transition.TransitionSet;
 import android.view.View;
 import android.view.ViewGroup;
-import android.transition.Scene;
 import android.widget.Button;
-import android.transition.Fade;
-import android.transition.ChangeText;
-import android.transition.TransitionSet;
-import android.transition.TransitionManager;
 
 public class ClippingText extends Activity {
 

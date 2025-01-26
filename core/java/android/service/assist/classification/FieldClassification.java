@@ -23,7 +23,6 @@ import android.os.Parcelable;
 import android.util.ArraySet;
 import android.view.autofill.AutofillId;
 
-
 import com.android.internal.util.DataClass;
 
 import java.util.ArrayList;

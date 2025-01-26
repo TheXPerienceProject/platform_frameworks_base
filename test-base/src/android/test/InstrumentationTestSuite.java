@@ -18,9 +18,9 @@ package android.test;
 
 import android.app.Instrumentation;
 
-import junit.framework.TestSuite;
 import junit.framework.Test;
 import junit.framework.TestResult;
+import junit.framework.TestSuite;
 
 /**
  * A {@link junit.framework.TestSuite} that injects {@link android.app.Instrumentation} into

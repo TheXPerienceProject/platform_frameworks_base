@@ -16,7 +16,6 @@
 
 package com.android.systemui.qs;
 
-import android.annotation.NonNull;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.util.AttributeSet;
@@ -27,8 +26,8 @@ import android.widget.LinearLayout;
 import com.android.internal.logging.UiEventLogger;
 import com.android.systemui.FontSizeUtils;
 import com.android.systemui.plugins.qs.QSTile;
-import com.android.systemui.res.R;
 import com.android.systemui.qs.logging.QSLogger;
+import com.android.systemui.res.R;
 import com.android.systemui.tuner.TunerService;
 
 /**

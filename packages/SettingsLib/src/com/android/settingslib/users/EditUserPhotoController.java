@@ -31,8 +31,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.android.internal.util.UserIcons;
-import com.android.settingslib.drawable.CircleFramedDrawable;
 import com.android.settingslib.R;
+import com.android.settingslib.drawable.CircleFramedDrawable;
 import com.android.settingslib.utils.ThreadUtils;
 
 import com.google.common.util.concurrent.FutureCallback;

@@ -18,7 +18,6 @@ package android.webkit;
 
 import android.annotation.SystemApi;
 
-
 /**
  * Public class for handling JavaScript prompt requests. The WebChromeClient will receive a
  * {@link WebChromeClient#onJsPrompt(WebView, String, String, String, JsPromptResult)} call with a

@@ -20,24 +20,19 @@ import static android.hardware.usb.UsbManager.GADGET_HAL_V2_0;
 import static com.android.server.usb.UsbDeviceManager.logAndPrint;
 import static com.android.server.usb.UsbDeviceManager.logAndPrintException;
 
-import android.annotation.Nullable;
-import android.hardware.usb.gadget.IUsbGadget;
-import android.hardware.usb.gadget.IUsbGadgetCallback;
 import android.hardware.usb.Status;
 import android.hardware.usb.UsbManager.UsbGadgetHalVersion;
-import android.os.ServiceManager;
-import android.os.IBinder;
+import android.hardware.usb.gadget.IUsbGadget;
+import android.hardware.usb.gadget.IUsbGadgetCallback;
 import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.util.Log;
-import android.util.LongSparseArray;
 import android.util.Slog;
 
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.util.IndentingPrintWriter;
 import com.android.server.usb.UsbDeviceManager;
 
-import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 

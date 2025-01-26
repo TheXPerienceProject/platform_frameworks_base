@@ -15,17 +15,13 @@
  */
 package android.hardware.camera2.params;
 
-import android.annotation.NonNull;
-import android.annotation.Nullable;
+import static com.android.internal.util.Preconditions.*;
 
+import android.annotation.NonNull;
 import android.graphics.ImageFormat;
 import android.graphics.ImageFormat.Format;
 import android.graphics.PixelFormat;
-import android.hardware.camera2.params.MultiResolutionStreamInfo;
-import android.hardware.camera2.params.StreamConfigurationMap;
 import android.hardware.camera2.utils.HashCodeHelpers;
-
-import android.util.Size;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,11 +29,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.List;
-import java.util.Set;
-
-import static com.android.internal.util.Preconditions.*;
+import java.util.Map;
 
 /**
  * Immutable class to store the information of the multi-resolution streams supported by

@@ -29,7 +29,6 @@ import android.widget.TextView;
 import com.android.internal.R;
 import com.android.internal.widget.AccountViewAdapter.AccountElements;
 
-
 /**
  * An LinearLayout view, to show Accounts elements.
  */

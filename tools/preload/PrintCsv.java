@@ -15,15 +15,10 @@
  */
 
 import java.io.IOException;
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
-import java.io.BufferedInputStream;
-import java.io.Writer;
 import java.io.PrintStream;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.TreeSet;
 import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Prints raw information in CSV format.

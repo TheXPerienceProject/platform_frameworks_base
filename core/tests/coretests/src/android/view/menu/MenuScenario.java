@@ -18,10 +18,10 @@ package android.view.menu;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.ListScenario;
 import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListScenario;
 
 /**
  * Utility base class for creating various Menu scenarios. Configurable by the

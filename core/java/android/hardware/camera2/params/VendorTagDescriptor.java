@@ -18,7 +18,6 @@ package android.hardware.camera2.params;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
 
 /**
  * A class for describing the vendor tags declared by a camera HAL module.

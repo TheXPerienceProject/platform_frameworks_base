@@ -18,9 +18,9 @@ package com.android.server.coverage;
 
 import android.os.Binder;
 import android.os.ParcelFileDescriptor;
+import android.os.ResultReceiver;
 import android.os.ShellCallback;
 import android.os.ShellCommand;
-import android.os.ResultReceiver;
 
 import org.jacoco.agent.rt.RT;
 

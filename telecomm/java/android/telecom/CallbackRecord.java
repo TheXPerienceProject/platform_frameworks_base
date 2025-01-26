@@ -18,7 +18,6 @@ package android.telecom;
 
 import android.os.Handler;
 
-
 /**
  * This class is used to associate a generic callback of type T with a handler to which commands and
  * status updates will be delivered to.

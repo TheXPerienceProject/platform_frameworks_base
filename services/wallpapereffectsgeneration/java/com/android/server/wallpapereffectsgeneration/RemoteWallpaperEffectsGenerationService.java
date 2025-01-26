@@ -25,7 +25,6 @@ import android.text.format.DateUtils;
 
 import com.android.internal.infra.AbstractMultiplePendingRequestsRemoteService;
 
-
 /**
  * Proxy to the
  * {@link android.service.wallpapereffectsgeneration.WallpaperEffectsGenerationService}

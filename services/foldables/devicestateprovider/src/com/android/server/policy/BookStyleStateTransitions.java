@@ -16,8 +16,8 @@
 
 package com.android.server.policy;
 
-import com.android.server.policy.BookStylePreferredScreenCalculator.PreferredScreen;
 import com.android.server.policy.BookStylePreferredScreenCalculator.HingeAngle;
+import com.android.server.policy.BookStylePreferredScreenCalculator.PreferredScreen;
 import com.android.server.policy.BookStylePreferredScreenCalculator.StateTransition;
 
 import java.util.ArrayList;

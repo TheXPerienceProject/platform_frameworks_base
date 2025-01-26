@@ -15,11 +15,11 @@
  */
 package com.android.systemui.battery;
 
+import static android.provider.Settings.System.QS_SHOW_BATTERY_ESTIMATE;
 import static android.provider.Settings.System.SHOW_BATTERY_PERCENT;
 import static android.provider.Settings.System.SHOW_BATTERY_PERCENT_CHARGING;
-import static android.provider.Settings.System.QS_SHOW_BATTERY_ESTIMATE;
-import static android.provider.Settings.System.STATUS_BAR_BATTERY_STYLE;
 import static android.provider.Settings.System.SHOW_BATTERY_PERCENT_INSIDE;
+import static android.provider.Settings.System.STATUS_BAR_BATTERY_STYLE;
 
 import static com.android.settingslib.flags.Flags.newStatusBarIcons;
 import static com.android.systemui.DejankUtils.whitelistIpcs;
@@ -55,7 +55,6 @@ import androidx.annotation.StyleRes;
 import androidx.annotation.VisibleForTesting;
 
 import com.android.app.animation.Interpolators;
-
 import com.android.systemui.DualToneHandler;
 import com.android.systemui.battery.unified.BatteryColors;
 import com.android.systemui.battery.unified.BatteryDrawableState;
@@ -71,7 +70,6 @@ import java.lang.annotation.Retention;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class BatteryMeterView extends LinearLayout implements DarkReceiver {
 

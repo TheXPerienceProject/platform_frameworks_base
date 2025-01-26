@@ -17,22 +17,11 @@
 package com.android.soundpooltest;
 
 import android.app.Activity;
-import android.widget.LinearLayout;
-import android.os.Bundle;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.KeyEvent;
-import android.media.AudioSystem;
 import android.media.AudioManager;
+import android.media.AudioSystem;
 import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
+import android.os.Bundle;
 import android.util.Log;
-import java.util.HashMap;
-import java.lang.Math;
-
-import com.android.soundpooltest.R;
 
 public class SoundPoolTest extends Activity
 {

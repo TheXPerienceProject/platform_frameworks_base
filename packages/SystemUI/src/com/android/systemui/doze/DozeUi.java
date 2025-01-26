@@ -16,9 +16,9 @@
 
 package com.android.systemui.doze;
 
+import static com.android.systemui.Flags.dozeuiSchedulingAlarmsBackgroundExecution;
 import static com.android.systemui.doze.DozeMachine.State.DOZE;
 import static com.android.systemui.doze.DozeMachine.State.DOZE_AOD_PAUSED;
-import static com.android.systemui.Flags.dozeuiSchedulingAlarmsBackgroundExecution;
 
 import android.app.AlarmManager;
 import android.content.Context;

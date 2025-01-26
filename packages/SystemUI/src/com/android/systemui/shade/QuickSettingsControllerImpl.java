@@ -38,7 +38,6 @@ import android.database.ContentObserver;
 import android.graphics.Insets;
 import android.graphics.Rect;
 import android.graphics.Region;
-import android.os.Handler;
 import android.provider.Settings;
 import android.util.IndentingPrintWriter;
 import android.util.Log;

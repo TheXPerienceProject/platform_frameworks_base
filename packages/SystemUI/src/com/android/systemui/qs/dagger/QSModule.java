@@ -27,11 +27,11 @@ import com.android.systemui.qs.tiles.di.QSTilesModule;
 import com.android.systemui.qs.ui.adapter.QSSceneAdapter;
 import com.android.systemui.qs.ui.adapter.QSSceneAdapterImpl;
 
-import java.util.Map;
-
 import dagger.Binds;
 import dagger.Module;
 import dagger.multibindings.Multibinds;
+
+import java.util.Map;
 
 /**
  * Module for QS dependencies

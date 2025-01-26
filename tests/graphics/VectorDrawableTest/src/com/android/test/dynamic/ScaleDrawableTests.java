@@ -16,10 +16,10 @@ package com.android.test.dynamic;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 @SuppressWarnings({"UnusedDeclaration"})
 public class ScaleDrawableTests extends Activity {

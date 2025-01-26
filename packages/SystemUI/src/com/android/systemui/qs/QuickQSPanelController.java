@@ -35,14 +35,14 @@ import com.android.systemui.qs.customize.QSCustomizerController;
 import com.android.systemui.qs.dagger.QSScope;
 import com.android.systemui.qs.logging.QSLogger;
 import com.android.systemui.res.R;
-import com.android.systemui.settings.brightness.BrightnessController;
-import com.android.systemui.settings.brightness.BrightnessSliderController;
 import com.android.systemui.scene.shared.flag.SceneContainerFlag;
-import com.android.systemui.statusbar.policy.SplitShadeStateController;
-import com.android.systemui.util.leak.RotationUtils;
+import com.android.systemui.settings.brightness.BrightnessController;
 import com.android.systemui.settings.brightness.BrightnessMirrorHandler;
+import com.android.systemui.settings.brightness.BrightnessSliderController;
 import com.android.systemui.settings.brightness.MirrorController;
+import com.android.systemui.statusbar.policy.SplitShadeStateController;
 import com.android.systemui.tuner.TunerService;
+import com.android.systemui.util.leak.RotationUtils;
 
 import kotlinx.coroutines.flow.StateFlow;
 
@@ -52,7 +52,6 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Provider;
-
 
 /** Controller for {@link QuickQSPanel}. */
 @QSScope

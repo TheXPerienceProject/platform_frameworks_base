@@ -27,7 +27,6 @@ import android.speech.tts.ITextToSpeechSessionCallback;
 
 import com.android.server.infra.AbstractMasterSystemService;
 
-
 /**
  * A service that  allows secured synthesizing of text to speech audio. Upon request creates a
  * session

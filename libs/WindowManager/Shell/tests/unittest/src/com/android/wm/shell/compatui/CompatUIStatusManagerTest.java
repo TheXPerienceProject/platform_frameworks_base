@@ -25,7 +25,6 @@ import androidx.test.filters.SmallTest;
 
 import com.android.wm.shell.ShellTestCase;
 
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

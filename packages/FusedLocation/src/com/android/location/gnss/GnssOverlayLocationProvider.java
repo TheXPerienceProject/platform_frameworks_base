@@ -31,7 +31,6 @@ import android.location.provider.ProviderRequest;
 import android.os.Bundle;
 import android.util.SparseArray;
 
-
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.util.ConcurrentUtils;
 

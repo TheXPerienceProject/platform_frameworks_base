@@ -15,9 +15,6 @@
  */
 package android.gameperformance;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -28,6 +25,9 @@ import android.os.Trace;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Minimal SurfaceView that sends buffer on request.

@@ -16,7 +16,6 @@
 
 package android.app;
 
-import android.app.SearchManager;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.Intent;

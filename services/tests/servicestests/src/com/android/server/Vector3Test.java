@@ -18,9 +18,6 @@ package com.android.server;
 
 import android.test.AndroidTestCase;
 
-import java.lang.Exception;
-import java.lang.Math;
-
 /**
  * Tests for {@link com.android.server.AnyMotionDetector.Vector3}
  */

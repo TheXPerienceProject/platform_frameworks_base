@@ -32,8 +32,6 @@ import android.service.notification.NotificationListenerService;
 import android.service.notification.NotificationStats;
 import android.util.Log;
 
-import com.android.internal.config.sysui.SystemUiSystemPropertiesFlags;
-import com.android.internal.config.sysui.SystemUiSystemPropertiesFlags.NotificationFlags;
 import com.android.internal.logging.InstanceId;
 import com.android.internal.logging.UiEvent;
 import com.android.internal.logging.UiEventLogger;

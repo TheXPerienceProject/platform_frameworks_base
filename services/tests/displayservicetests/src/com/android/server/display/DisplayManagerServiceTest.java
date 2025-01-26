@@ -153,10 +153,10 @@ import com.android.server.lights.LightsManager;
 import com.android.server.sensors.SensorManagerInternal;
 import com.android.server.wm.WindowManagerInternal;
 
-import com.google.common.truth.Expect;
-
 import libcore.junit.util.compat.CoreCompatChangeRule.DisableCompatChanges;
 import libcore.junit.util.compat.CoreCompatChangeRule.EnableCompatChanges;
+
+import com.google.common.truth.Expect;
 
 import org.junit.Assume;
 import org.junit.Before;

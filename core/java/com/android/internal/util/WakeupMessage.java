@@ -23,7 +23,7 @@ import android.os.Message;
 
 import com.android.internal.annotations.VisibleForTesting;
 
- /**
+/**
  * An AlarmListener that sends the specified message to a Handler and keeps the system awake until
  * the message is processed.
  *

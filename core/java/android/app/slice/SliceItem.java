@@ -35,7 +35,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.util.Arrays;
 import java.util.List;
 
-
 /**
  * A SliceItem is a single unit in the tree structure of a {@link Slice}.
  *

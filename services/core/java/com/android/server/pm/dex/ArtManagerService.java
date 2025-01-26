@@ -37,13 +37,11 @@ import android.os.Process;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemProperties;
-import android.util.ArrayMap;
 import android.util.Log;
 import android.util.Slog;
 
 import com.android.internal.os.BackgroundThread;
 import com.android.internal.os.RoSystemProperties;
-import com.android.internal.util.ArrayUtils;
 import com.android.internal.util.Preconditions;
 import com.android.server.LocalServices;
 import com.android.server.art.ArtManagerLocal;
@@ -53,7 +51,6 @@ import com.android.server.pm.PackageManagerLocal;
 import com.android.server.pm.PackageManagerService;
 import com.android.server.pm.PackageManagerServiceCompilerMapping;
 import com.android.server.pm.PackageManagerServiceUtils;
-import com.android.server.pm.pkg.AndroidPackage;
 
 import dalvik.system.DexFile;
 import dalvik.system.VMRuntime;

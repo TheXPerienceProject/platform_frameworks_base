@@ -17,13 +17,12 @@ package com.android.transitiontests;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.transition.Fade;
+import android.transition.Scene;
+import android.transition.TransitionManager;
 import android.view.View;
 import android.view.ViewGroup;
-import android.transition.Scene;
 import android.widget.Button;
-import android.transition.Fade;
-import android.transition.TransitionManager;
-
 
 public class FadingTest extends Activity {
 

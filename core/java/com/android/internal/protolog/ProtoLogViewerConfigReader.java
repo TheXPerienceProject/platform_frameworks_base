@@ -4,9 +4,9 @@ import static android.internal.perfetto.protos.Protolog.ProtoLogViewerConfig.GRO
 import static android.internal.perfetto.protos.Protolog.ProtoLogViewerConfig.Group.ID;
 import static android.internal.perfetto.protos.Protolog.ProtoLogViewerConfig.Group.NAME;
 import static android.internal.perfetto.protos.Protolog.ProtoLogViewerConfig.MESSAGES;
+import static android.internal.perfetto.protos.Protolog.ProtoLogViewerConfig.MessageData.GROUP_ID;
 import static android.internal.perfetto.protos.Protolog.ProtoLogViewerConfig.MessageData.MESSAGE;
 import static android.internal.perfetto.protos.Protolog.ProtoLogViewerConfig.MessageData.MESSAGE_ID;
-import static android.internal.perfetto.protos.Protolog.ProtoLogViewerConfig.MessageData.GROUP_ID;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;

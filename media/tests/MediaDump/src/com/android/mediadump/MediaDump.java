@@ -18,7 +18,6 @@ package com.android.mediadump;
 
 import android.app.TabActivity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TabHost;
 

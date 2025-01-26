@@ -20,9 +20,6 @@ package android.filterfw.core;
 import java.util.Random;
 import java.util.Vector;
 
-import android.filterfw.core.Filter;
-import android.filterfw.core.Scheduler;
-
 /**
  * @hide
  */

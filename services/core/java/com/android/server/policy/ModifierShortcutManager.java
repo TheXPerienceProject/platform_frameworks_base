@@ -16,8 +16,8 @@
 
 package com.android.server.policy;
 
-import static com.android.server.flags.Flags.modifierShortcutManagerMultiuser;
 import static com.android.hardware.input.Flags.modifierShortcutManagerRefactor;
+import static com.android.server.flags.Flags.modifierShortcutManagerMultiuser;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;

@@ -20,8 +20,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import java.util.function.BooleanSupplier;
+
 import java.util.List;
+import java.util.function.BooleanSupplier;
 
 /**
  * The adapter used for the list within the global actions dialog, taking into account whether the

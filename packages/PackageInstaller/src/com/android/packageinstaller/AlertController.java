@@ -44,8 +44,6 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.android.packageinstaller.R;
-
 import java.lang.ref.WeakReference;
 
 public class AlertController {

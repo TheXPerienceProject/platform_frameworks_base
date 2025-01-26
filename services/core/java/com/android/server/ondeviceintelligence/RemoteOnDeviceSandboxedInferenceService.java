@@ -30,7 +30,6 @@ import com.android.internal.infra.ServiceConnector;
 
 import java.util.concurrent.TimeUnit;
 
-
 /**
  * Manages the connection to the remote on-device sand boxed inference service. Also, handles
  * unbinding

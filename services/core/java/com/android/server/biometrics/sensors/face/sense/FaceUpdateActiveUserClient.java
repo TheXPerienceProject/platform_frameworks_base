@@ -19,7 +19,6 @@ package com.android.server.biometrics.sensors.face.sense;
 
 import android.annotation.NonNull;
 import android.content.Context;
-import android.os.Environment;
 import android.os.RemoteException;
 import android.util.Slog;
 
@@ -29,11 +28,10 @@ import com.android.server.biometrics.log.BiometricLogger;
 import com.android.server.biometrics.sensors.ClientMonitorCallback;
 import com.android.server.biometrics.sensors.HalClientMonitor;
 
-import java.io.File;
+import vendor.aospa.biometrics.face.ISenseService;
+
 import java.util.Map;
 import java.util.function.Supplier;
-
-import vendor.aospa.biometrics.face.ISenseService;
 
 public class FaceUpdateActiveUserClient extends HalClientMonitor<ISenseService> {
     private static final String TAG = "FaceUpdateActiveUserClient";

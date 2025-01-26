@@ -32,6 +32,7 @@ import android.app.ILocalWallpaperColorConsumer;
 import android.app.WallpaperColors;
 import android.graphics.RectF;
 import android.os.IBinder;
+import android.util.ArraySet;
 
 import androidx.test.runner.AndroidJUnit4;
 
@@ -41,10 +42,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
-import android.util.ArraySet;
 import java.util.List;
 import java.util.function.Consumer;
-
 
 @RunWith(AndroidJUnit4.class)
 public class LocalColorRepositoryTest {

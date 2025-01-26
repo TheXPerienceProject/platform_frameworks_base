@@ -27,10 +27,8 @@ import static org.mockito.Mockito.when;
 
 import android.app.NotificationHistory;
 import android.app.NotificationHistory.HistoricalNotification;
-import android.content.Context;
 import android.graphics.drawable.Icon;
 import android.os.Handler;
-import android.os.UserHandle;
 import android.util.AtomicFile;
 
 import androidx.test.InstrumentationRegistry;

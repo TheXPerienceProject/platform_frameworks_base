@@ -39,7 +39,6 @@ package android.renderscript;
 
 import android.compat.annotation.UnsupportedAppUsage;
 
-
 /**
  * @hide
  * @deprecated in API 16

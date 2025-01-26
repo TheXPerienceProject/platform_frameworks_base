@@ -15,7 +15,6 @@
  */
 package android.hardware.camera2.params;
 
-import android.annotation.FlaggedApi;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.SuppressLint;
@@ -24,8 +23,6 @@ import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraExtensionCharacteristics.Extension;
 import android.hardware.camera2.CameraExtensionSession;
 import android.media.ImageReader;
-
-import com.android.internal.camera.flags.Flags;
 
 import java.util.List;
 import java.util.concurrent.Executor;

@@ -27,7 +27,6 @@ import android.os.IBinder;
 import android.util.Log;
 import android.util.proto.ProtoOutputStream;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 

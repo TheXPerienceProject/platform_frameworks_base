@@ -23,7 +23,6 @@ import static android.app.NotificationManager.IMPORTANCE_MIN;
 import static android.text.TextUtils.formatSimple;
 
 import android.annotation.NonNull;
-import android.app.NotificationManager;
 import android.content.Context;
 import android.service.notification.RankingHelperProto;
 import android.util.ArrayMap;

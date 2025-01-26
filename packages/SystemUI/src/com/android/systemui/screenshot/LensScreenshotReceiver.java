@@ -29,9 +29,7 @@ import android.os.Process;
 import android.os.UserHandle;
 
 import com.android.internal.util.android.Utils;
-
 import com.android.systemui.dagger.qualifiers.Background;
-import com.android.systemui.res.R;
 
 import java.util.concurrent.Executor;
 

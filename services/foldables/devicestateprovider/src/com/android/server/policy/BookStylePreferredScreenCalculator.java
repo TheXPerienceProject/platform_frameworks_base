@@ -22,7 +22,6 @@ import android.os.Build;
 import android.util.Dumpable;
 import android.util.Slog;
 
-
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.Objects;

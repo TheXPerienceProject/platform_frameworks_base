@@ -18,6 +18,8 @@ package com.android.server.backup;
 
 import static com.google.common.truth.Truth.assertThat;
 
+import static org.testng.Assert.expectThrows;
+
 import android.annotation.UserIdInt;
 import android.os.UserHandle;
 import android.platform.test.annotations.Presubmit;
@@ -26,7 +28,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-import static org.testng.Assert.expectThrows;
 
 @RunWith(RobolectricTestRunner.class)
 @Presubmit

@@ -23,7 +23,6 @@ import android.os.ServiceManager;
 import android.os.SystemClock;
 import android.util.Log;
 
-
 /**
  * @hide
  */

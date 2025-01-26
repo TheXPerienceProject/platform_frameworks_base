@@ -20,6 +20,7 @@ package org.apache.http.conn.ssl;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import javax.security.auth.x500.X500Principal;
 
 /**

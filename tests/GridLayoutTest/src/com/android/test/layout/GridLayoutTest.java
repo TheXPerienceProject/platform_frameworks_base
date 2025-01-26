@@ -16,15 +16,15 @@
 
 package com.android.test.layout;
 
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.GridLayout;
-
 import static android.widget.GridLayout.Spec;
 import static android.widget.GridLayout.UNDEFINED;
 import static android.widget.GridLayout.VERTICAL;
 import static android.widget.GridLayout.spec;
+
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.GridLayout;
 
 public class GridLayoutTest extends AbstractLayoutTest {
     public ViewGroup create(Context context) {

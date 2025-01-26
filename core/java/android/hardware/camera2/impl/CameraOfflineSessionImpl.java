@@ -16,11 +16,12 @@
 
 package android.hardware.camera2.impl;
 
+import static com.android.internal.util.Preconditions.*;
+
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraDevice;
-import android.hardware.camera2.CameraManager;
 import android.hardware.camera2.CameraOfflineSession;
 import android.hardware.camera2.CameraOfflineSession.CameraOfflineSessionCallback;
 import android.hardware.camera2.CaptureFailure;
@@ -45,10 +46,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.Executor;
-
-import static com.android.internal.util.Preconditions.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class CameraOfflineSessionImpl extends CameraOfflineSession
         implements IBinder.DeathRecipient {

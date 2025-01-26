@@ -20,7 +20,6 @@ import android.hardware.hdmi.HdmiDeviceInfo;
 import android.hardware.hdmi.IHdmiControlCallback;
 import android.util.Slog;
 
-
 /**
  * Feature action that handles System Audio initiated by TV devices.
  */

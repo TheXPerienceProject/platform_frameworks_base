@@ -23,12 +23,10 @@ import android.util.proto.ProtoOutputStream;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.util.HexDump;
-import com.android.service.NetworkWatchlistReportProto;
 import com.android.service.NetworkWatchlistAppResultProto;
+import com.android.service.NetworkWatchlistReportProto;
 
 import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 

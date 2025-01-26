@@ -22,43 +22,38 @@ import static android.hardware.usb.UsbOperationInternal.USB_OPERATION_SUCCESS;
 import static com.android.server.usb.UsbPortManager.logAndPrint;
 import static com.android.server.usb.UsbPortManager.logAndPrintException;
 
-import android.annotation.Nullable;
+import android.hardware.usb.AltModeData;
+import android.hardware.usb.AltModeData.DisplayPortAltModeData;
 import android.hardware.usb.ContaminantProtectionStatus;
+import android.hardware.usb.DisplayPortAltModeInfo;
+import android.hardware.usb.DisplayPortAltModePinAssignment;
 import android.hardware.usb.IUsb;
+import android.hardware.usb.IUsbCallback;
 import android.hardware.usb.IUsbOperationInternal;
+import android.hardware.usb.PortMode;
+import android.hardware.usb.PortRole;
+import android.hardware.usb.PortStatus;
+import android.hardware.usb.Status;
 import android.hardware.usb.UsbManager.UsbHalVersion;
 import android.hardware.usb.UsbPort;
 import android.hardware.usb.UsbPortStatus;
-import android.hardware.usb.PortMode;
-import android.hardware.usb.Status;
-import android.hardware.usb.IUsbCallback;
-import android.hardware.usb.PortRole;
-import android.hardware.usb.PortStatus;
-import android.hardware.usb.ComplianceWarning;
-import android.hardware.usb.DisplayPortAltModeInfo;
-import android.hardware.usb.AltModeData;
-import android.hardware.usb.AltModeData.DisplayPortAltModeData;
-import android.hardware.usb.DisplayPortAltModePinAssignment;
 import android.hardware.usb.flags.Flags;
-import android.os.Build;
-import android.os.ServiceManager;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.util.IntArray;
 import android.util.Log;
 import android.util.LongSparseArray;
-import android.util.Slog;
 
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.util.IndentingPrintWriter;
 import com.android.server.usb.UsbPortManager;
-import com.android.server.usb.hal.port.RawPortInfo;
 
-import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Objects;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Implements the methods to interact with AIDL USB HAL.

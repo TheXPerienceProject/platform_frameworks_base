@@ -19,6 +19,7 @@ package com.android.server.soundtrigger;
 import static com.android.server.soundtrigger.DeviceStateHandler.SoundTriggerDeviceState;
 import static com.android.server.soundtrigger.SoundTriggerEvent.SessionEvent.Type;
 import static com.android.server.utils.EventLogger.Event.ALOGW;
+
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.content.Context;
@@ -37,23 +38,15 @@ import android.hardware.soundtrigger.SoundTrigger.RecognitionConfig;
 import android.hardware.soundtrigger.SoundTrigger.RecognitionEvent;
 import android.hardware.soundtrigger.SoundTrigger.SoundModel;
 import android.hardware.soundtrigger.SoundTriggerModule;
-import android.os.Binder;
-import android.os.DeadObjectException;
-import android.os.Handler;
 import android.os.IBinder;
-import android.os.Looper;
-import android.os.Message;
 import android.os.RemoteException;
 import android.util.Slog;
 
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.logging.MetricsLogger;
 import com.android.server.soundtrigger.SoundTriggerEvent.SessionEvent;
-import com.android.server.utils.EventLogger.Event;
 import com.android.server.utils.EventLogger;
 
-import java.io.FileDescriptor;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;

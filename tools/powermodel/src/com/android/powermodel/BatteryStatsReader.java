@@ -16,9 +16,10 @@
 
 package com.android.powermodel;
 
-import java.io.InputStream;
-import java.io.IOException;
 import com.android.powermodel.component.ModemBatteryStatsReader;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 public class BatteryStatsReader {
     /**

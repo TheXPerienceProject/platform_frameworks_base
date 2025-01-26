@@ -16,15 +16,10 @@
 
 package com.android.internal.statusbar;
 
-import android.os.Message;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
-
-import java.util.ArrayDeque;
-import java.util.Collection;
 
 public class NotificationVisibility implements Parcelable {
     private static final String TAG = "NoViz";

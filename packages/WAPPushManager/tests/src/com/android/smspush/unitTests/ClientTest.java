@@ -33,9 +33,7 @@ import android.widget.RadioButton;
 
 import com.android.internal.telephony.IWapPushManager;
 import com.android.internal.telephony.WapPushManagerParams;
-import com.android.internal.telephony.WapPushOverSms;
 import com.android.internal.util.HexDump;
-import com.android.smspush.WapPushManager;
 
 /**
  * WapPushManager test application

@@ -16,8 +16,6 @@
 
 package com.android.server.wm;
 
-import com.android.internal.R;
-
 import android.app.Dialog;
 import android.content.Context;
 import android.util.TypedValue;
@@ -25,6 +23,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.android.internal.R;
 
 public final class LaunchWarningWindow extends Dialog {
     public LaunchWarningWindow(Context context, ActivityRecord cur, ActivityRecord next) {

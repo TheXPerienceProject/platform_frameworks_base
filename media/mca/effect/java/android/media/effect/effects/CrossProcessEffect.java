@@ -17,9 +17,9 @@
 
 package android.media.effect.effects;
 
+import android.filterpacks.imageproc.CrossProcessFilter;
 import android.media.effect.EffectContext;
 import android.media.effect.SingleFilterEffect;
-import android.filterpacks.imageproc.CrossProcessFilter;
 
 /**
  * @hide

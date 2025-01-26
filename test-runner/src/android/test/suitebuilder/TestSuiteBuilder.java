@@ -16,23 +16,25 @@
 
 package android.test.suitebuilder;
 
+import static android.test.suitebuilder.TestGrouping.SORT_BY_FULLY_QUALIFIED_NAME;
+import static android.test.suitebuilder.TestPredicates.REJECT_SUPPRESSED;
+
 import android.content.Context;
 import android.test.AndroidTestRunner;
 import android.test.TestCaseUtil;
 import android.util.Log;
+
 import com.android.internal.util.Predicate;
-import static android.test.suitebuilder.TestGrouping.SORT_BY_FULLY_QUALIFIED_NAME;
-import static android.test.suitebuilder.TestPredicates.REJECT_SUPPRESSED;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-import java.util.List;
-import java.util.Set;
-import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Build suites based on a combination of included packages, excluded packages,

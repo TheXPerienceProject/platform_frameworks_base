@@ -17,8 +17,8 @@
 package android.widget.listview.focus;
 
 import android.test.ActivityInstrumentationTestCase;
-import android.widget.InternalSelectionView;
 import android.view.KeyEvent;
+import android.widget.InternalSelectionView;
 import android.widget.ListView;
 import android.widget.listview.AdjacentListsWithAdjacentISVsInside;
 

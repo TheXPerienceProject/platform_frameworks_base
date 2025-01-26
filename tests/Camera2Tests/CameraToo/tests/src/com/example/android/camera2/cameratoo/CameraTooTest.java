@@ -25,6 +25,8 @@ import android.media.Image;
 import android.os.Environment;
 import android.util.Size;
 
+import org.junit.Test;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -35,9 +37,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
-
-import com.example.android.camera2.cameratoo.CameraTooActivity;
-import org.junit.Test;
 
 public class CameraTooTest {
     private <T> void assertComparatorEq(T lhs, T rhs, Comparator<T> rel) {

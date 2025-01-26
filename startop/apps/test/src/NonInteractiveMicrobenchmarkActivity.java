@@ -16,25 +16,13 @@
 
 package com.android.startop.test;
 
+import android.app.Activity;
+import android.os.Bundle;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
-
-import android.app.Activity;
-import android.app.ActivityManager;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.GridLayout;
-import android.widget.TextView;
 
 public class NonInteractiveMicrobenchmarkActivity extends Activity {
     ArrayList<CharSequence> benchmarkNames = new ArrayList();

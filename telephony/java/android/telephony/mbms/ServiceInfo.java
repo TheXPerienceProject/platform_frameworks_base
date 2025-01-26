@@ -17,10 +17,7 @@
 package android.telephony.mbms;
 
 import android.annotation.NonNull;
-import android.annotation.Nullable;
 import android.os.Parcel;
-import android.os.Parcelable;
-import android.text.TextUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;

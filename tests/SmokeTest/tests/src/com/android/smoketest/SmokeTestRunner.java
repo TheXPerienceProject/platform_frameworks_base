@@ -16,8 +16,6 @@
 
 package com.android.smoketest;
 
-import android.app.ActivityManager;
-import android.app.ActivityManager.ProcessErrorStateInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.test.InstrumentationTestRunner;

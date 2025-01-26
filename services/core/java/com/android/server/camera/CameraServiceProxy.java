@@ -18,9 +18,9 @@ package com.android.server.camera;
 import static android.content.pm.ActivityInfo.RESIZE_MODE_UNRESIZEABLE;
 import static android.os.Build.VERSION_CODES.M;
 
-import static com.android.internal.util.FrameworkStatsLog.CAMERA_FEATURE_COMBINATION_QUERY_EVENT__STATUS_CODE__OK;
 import static com.android.internal.util.FrameworkStatsLog.CAMERA_FEATURE_COMBINATION_QUERY_EVENT__STATUS_CODE__ERROR_ILLEGAL_ARGUMENT;
 import static com.android.internal.util.FrameworkStatsLog.CAMERA_FEATURE_COMBINATION_QUERY_EVENT__STATUS_CODE__ERROR_INVALID_OPERATION;
+import static com.android.internal.util.FrameworkStatsLog.CAMERA_FEATURE_COMBINATION_QUERY_EVENT__STATUS_CODE__OK;
 
 import android.annotation.IntDef;
 import android.annotation.NonNull;

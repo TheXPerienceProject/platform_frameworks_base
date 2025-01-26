@@ -31,12 +31,12 @@ import static android.app.usage.UsageEvents.Event.KEYGUARD_SHOWN;
 import static android.app.usage.UsageEvents.Event.LOCUS_ID_SET;
 import static android.app.usage.UsageEvents.Event.NOTIFICATION_INTERRUPTION;
 import static android.app.usage.UsageEvents.Event.ROLLOVER_FOREGROUND_SERVICE;
-import static android.app.usage.UsageEvents.Event.USER_INTERACTION;
 import static android.app.usage.UsageEvents.Event.SCREEN_INTERACTIVE;
 import static android.app.usage.UsageEvents.Event.SCREEN_NON_INTERACTIVE;
 import static android.app.usage.UsageEvents.Event.SHORTCUT_INVOCATION;
 import static android.app.usage.UsageEvents.Event.STANDBY_BUCKET_CHANGED;
 import static android.app.usage.UsageEvents.Event.SYSTEM_INTERACTION;
+import static android.app.usage.UsageEvents.Event.USER_INTERACTION;
 
 import android.app.usage.ConfigurationStats;
 import android.app.usage.EventList;

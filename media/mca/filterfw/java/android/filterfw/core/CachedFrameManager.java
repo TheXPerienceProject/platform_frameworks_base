@@ -17,9 +17,6 @@
 
 package android.filterfw.core;
 
-import android.filterfw.core.Frame;
-import android.filterfw.core.FrameFormat;
-import android.filterfw.core.SimpleFrameManager;
 
 import java.util.Map;
 import java.util.SortedMap;

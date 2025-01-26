@@ -22,8 +22,6 @@ import android.provider.DeviceConfig;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.util.IndentingPrintWriter;
 
-import java.util.Optional;
-
 /**
  * TextClassifier specific settings.
  *

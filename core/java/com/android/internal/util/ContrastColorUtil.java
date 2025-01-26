@@ -41,8 +41,6 @@ import android.text.style.TextAppearanceSpan;
 import android.util.Log;
 import android.util.Pair;
 
-import com.android.internal.annotations.VisibleForTesting;
-
 import java.util.Arrays;
 import java.util.WeakHashMap;
 

@@ -20,7 +20,6 @@ import static com.android.server.am.ActivityManagerDebugConfig.TAG_AM;
 import static com.android.server.am.ActivityManagerDebugConfig.TAG_WITH_CLASS_NAME;
 
 import android.content.pm.ApplicationInfo;
-import android.os.Process;
 import android.os.SystemClock;
 import android.os.Trace;
 import android.util.ArraySet;

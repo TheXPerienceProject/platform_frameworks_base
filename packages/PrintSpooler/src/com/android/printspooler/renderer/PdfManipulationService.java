@@ -33,9 +33,12 @@ import android.print.PrintAttributes;
 import android.print.PrintAttributes.Margins;
 import android.util.Log;
 import android.view.View;
-import com.android.printspooler.util.PageRangeUtils;
-import libcore.io.IoUtils;
+
 import com.android.printspooler.util.BitmapSerializeUtils;
+import com.android.printspooler.util.PageRangeUtils;
+
+import libcore.io.IoUtils;
+
 import java.io.IOException;
 
 /**

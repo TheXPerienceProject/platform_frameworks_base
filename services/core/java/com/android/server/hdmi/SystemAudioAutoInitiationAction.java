@@ -18,7 +18,6 @@ package com.android.server.hdmi;
 
 import android.hardware.hdmi.HdmiControlManager;
 import android.hardware.tv.cec.V1_0.SendMessageResult;
-import android.util.Slog;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.server.hdmi.HdmiControlService.SendMessageCallback;

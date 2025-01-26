@@ -18,8 +18,6 @@ package android.os;
 
 import android.annotation.NonNull;
 import android.annotation.SystemApi;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.util.IntArray;
 
 import java.util.ArrayList;

@@ -28,6 +28,7 @@ import org.robolectric.annotation.Implements;
 
 import java.util.HashMap;
 import java.util.Map;
+
 /** Shadow class of {@link PermissionChecker}. */
 @Implements(PermissionChecker.class)
 public class ShadowPermissionChecker {

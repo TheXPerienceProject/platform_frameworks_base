@@ -18,10 +18,10 @@ package com.android.server.backup;
 
 import static junit.framework.Assert.assertTrue;
 
+import android.platform.test.annotations.Presubmit;
+
 import androidx.test.InstrumentationRegistry;
 import androidx.test.runner.AndroidJUnit4;
-
-import android.platform.test.annotations.Presubmit;
 
 import org.junit.Before;
 import org.junit.Rule;

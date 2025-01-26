@@ -15,21 +15,21 @@
  */
 package com.android.transitiontests;
 
+import static android.widget.LinearLayout.LayoutParams;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.transition.ChangeBounds;
+import android.transition.ChangeText;
+import android.transition.Crossfade;
+import android.transition.Transition;
+import android.transition.TransitionManager;
+import android.transition.TransitionSet;
 import android.view.View;
 import android.view.ViewGroup;
-import android.transition.Crossfade;
-import android.transition.ChangeText;
-import android.transition.Transition;
-import android.transition.TransitionSet;
-import android.transition.TransitionManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import static android.widget.LinearLayout.LayoutParams;
 
 public class CrossfadeMultiple extends Activity {
     ViewGroup mSceneRoot;

@@ -31,7 +31,6 @@ import android.view.MenuItem;
 import android.webkit.WebView;
 import android.widget.Toast;
 
-import com.example.android.networkusage.R;
 import com.example.android.networkusage.StackOverflowXmlParser.Entry;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -44,7 +43,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
-
 
 /**
  * Main Activity for the sample application.

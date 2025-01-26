@@ -16,11 +16,11 @@
 
 package com.android.localtransport;
 
-import android.util.KeyValueSettingObserver;
 import android.content.ContentResolver;
 import android.os.Handler;
 import android.provider.Settings;
 import android.util.KeyValueListParser;
+import android.util.KeyValueSettingObserver;
 
 public class LocalTransportParameters extends KeyValueSettingObserver {
     private static final String TAG = "LocalTransportParams";

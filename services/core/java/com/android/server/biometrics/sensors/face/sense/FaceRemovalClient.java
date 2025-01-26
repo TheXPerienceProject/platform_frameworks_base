@@ -30,10 +30,10 @@ import com.android.server.biometrics.sensors.BiometricUtils;
 import com.android.server.biometrics.sensors.ClientMonitorCallbackConverter;
 import com.android.server.biometrics.sensors.RemovalClient;
 
+import vendor.aospa.biometrics.face.ISenseService;
+
 import java.util.Map;
 import java.util.function.Supplier;
-
-import vendor.aospa.biometrics.face.ISenseService;
 
 class FaceRemovalClient extends RemovalClient<Face, ISenseService> {
     private static final String TAG = "FaceRemovalClient";

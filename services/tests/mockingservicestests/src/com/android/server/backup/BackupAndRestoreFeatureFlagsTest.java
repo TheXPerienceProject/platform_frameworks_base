@@ -16,15 +16,14 @@
 
 package com.android.server.backup;
 
+import static com.google.common.truth.Truth.assertThat;
+
 import android.platform.test.annotations.Presubmit;
 import android.provider.DeviceConfig;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.android.modules.utils.testing.TestableDeviceConfig;
-
-import static com.google.common.truth.Truth.assertThat;
-
 
 import org.junit.Rule;
 import org.junit.Test;

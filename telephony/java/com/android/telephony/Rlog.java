@@ -16,7 +16,6 @@
 package com.android.telephony;
 
 import android.net.Uri;
-import android.os.Build;
 import android.telecom.PhoneAccount;
 import android.telephony.PhoneNumberUtils;
 import android.text.TextUtils;

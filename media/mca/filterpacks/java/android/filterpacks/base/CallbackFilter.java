@@ -25,8 +25,6 @@ import android.filterfw.core.GenerateFinalPort;
 import android.os.Handler;
 import android.os.Looper;
 
-import java.lang.Runnable;
-
 /**
  * @hide
  */

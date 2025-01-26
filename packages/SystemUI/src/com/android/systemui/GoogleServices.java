@@ -19,18 +19,15 @@ package com.android.systemui;
 import android.app.AlarmManager;
 import android.content.Context;
 
+import com.android.systemui.ambientmusic.AmbientIndicationContainer;
+import com.android.systemui.ambientmusic.AmbientIndicationService;
 import com.android.systemui.res.R;
 import com.android.systemui.statusbar.phone.CentralSurfaces;
 import com.android.systemui.util.wakelock.DelayedWakeLock;
 
-import com.android.systemui.ambientmusic.AmbientIndicationContainer;
-import com.android.systemui.ambientmusic.AmbientIndicationService;
-
 import java.util.ArrayList;
 
 import javax.inject.Inject;
-
-import dagger.Lazy;
 
 public class GoogleServices extends VendorServices {
     private final Context mContext;

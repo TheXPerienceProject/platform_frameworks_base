@@ -19,6 +19,7 @@ package com.android.printservice.recommendation.plugin.hp;
 import android.net.nsd.NsdManager;
 import android.net.nsd.NsdServiceInfo;
 import android.util.Pair;
+
 import com.android.printservice.recommendation.util.NsdResolveQueue;
 
 import java.util.LinkedList;

@@ -19,6 +19,7 @@ package android.hardware.usb;
 import android.annotation.Nullable;
 import android.os.Parcel;
 import android.os.Parcelable;
+
 import com.android.internal.util.Preconditions;
 
 /**

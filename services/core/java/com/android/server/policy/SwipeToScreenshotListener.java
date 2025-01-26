@@ -19,8 +19,8 @@ package com.android.server.policy;
 import android.content.Context;
 import android.os.SystemProperties;
 import android.provider.Settings;
-import android.util.Log;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.WindowManagerPolicyConstants.PointerEventListener;
 

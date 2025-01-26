@@ -44,7 +44,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-
 /**
  * The class responsible for running AccessibilityChecks on cached nodes and caching the results for
  * logging. Results are cached and capped to limit the logging frequency and size.

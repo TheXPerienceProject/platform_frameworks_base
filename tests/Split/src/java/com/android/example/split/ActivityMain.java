@@ -18,7 +18,6 @@ package com.android.example.split;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.TextView;
 
 public class ActivityMain extends Activity {
     @Override

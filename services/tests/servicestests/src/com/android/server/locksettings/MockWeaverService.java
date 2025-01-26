@@ -4,16 +4,10 @@ import android.hardware.weaver.V1_0.IWeaver;
 import android.hardware.weaver.V1_0.WeaverConfig;
 import android.hardware.weaver.V1_0.WeaverReadResponse;
 import android.hardware.weaver.V1_0.WeaverStatus;
-import android.hidl.base.V1_0.DebugInfo;
-import android.os.IHwBinder;
-import android.os.IHwBinder.DeathRecipient;
 import android.os.RemoteException;
 import android.util.Pair;
 
-import android.util.Log;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class MockWeaverService extends IWeaver.Stub {
 

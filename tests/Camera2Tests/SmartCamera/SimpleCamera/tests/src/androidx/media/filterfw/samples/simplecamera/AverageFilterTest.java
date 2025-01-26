@@ -21,7 +21,6 @@ import androidx.media.filterfw.FrameValue;
 import androidx.media.filterfw.MffContext;
 import androidx.media.filterfw.MffFilterTestCase;
 
-
 public class AverageFilterTest extends MffFilterTestCase {
 
     @Override

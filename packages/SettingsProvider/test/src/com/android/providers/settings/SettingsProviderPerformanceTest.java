@@ -22,6 +22,7 @@ import static junit.framework.Assert.assertTrue;
 import android.os.SystemClock;
 import android.os.UserHandle;
 import android.util.Log;
+
 import org.junit.Test;
 
 /**

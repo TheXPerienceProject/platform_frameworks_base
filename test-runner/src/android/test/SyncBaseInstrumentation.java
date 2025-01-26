@@ -16,12 +16,12 @@
 
 package android.test;
 
+import android.accounts.Account;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.net.Uri;
-import android.accounts.Account;
 
 /**
  * If you would like to test sync a single provider with an

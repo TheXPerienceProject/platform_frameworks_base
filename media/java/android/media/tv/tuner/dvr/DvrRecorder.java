@@ -33,7 +33,6 @@ import com.android.internal.util.FrameworkStatsLog;
 
 import java.util.concurrent.Executor;
 
-
 /**
  * Digital Video Record (DVR) recorder class which provides record control on Demux's output buffer.
  *

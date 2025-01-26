@@ -24,7 +24,6 @@ import android.os.Parcelable;
 
 import com.android.internal.util.DataClass;
 
-
 /**
  * This class represents a request to an autofill service to convert the credential manager response
  * to a dataset.

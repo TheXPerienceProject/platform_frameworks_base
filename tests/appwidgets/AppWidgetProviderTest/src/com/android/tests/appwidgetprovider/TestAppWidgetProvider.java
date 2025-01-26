@@ -16,11 +16,11 @@
 
 package com.android.tests.appwidgetprovider;
 
+import android.appwidget.AppWidgetManager;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.appwidget.AppWidgetManager;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;

@@ -19,7 +19,6 @@ import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.ArrayMap;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 

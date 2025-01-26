@@ -16,22 +16,22 @@
 
 package android.gesture;
 
-import android.util.Log;
+import static android.gesture.GestureConstants.LOG_TAG;
+
 import android.os.SystemClock;
+import android.util.Log;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.io.DataOutputStream;
 import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
 import java.util.Map;
-
-import static android.gesture.GestureConstants.LOG_TAG;
+import java.util.Set;
 
 /**
  * GestureLibrary maintains gesture examples and makes predictions on a new

@@ -15,18 +15,13 @@
  */
 package android.hardware.camera2.impl;
 
-import android.os.Binder;
+import static com.android.internal.util.Preconditions.*;
+
 import android.hardware.camera2.CameraCaptureSession;
-import android.hardware.camera2.CameraDevice;
-import android.hardware.camera2.CaptureFailure;
-import android.hardware.camera2.CaptureRequest;
-import android.hardware.camera2.CaptureResult;
-import android.hardware.camera2.TotalCaptureResult;
+import android.os.Binder;
 import android.view.Surface;
 
 import java.util.concurrent.Executor;
-
-import static com.android.internal.util.Preconditions.*;
 
 /**
  * Proxy out invocations to the camera2 API callbacks into a {@link Dispatchable}.

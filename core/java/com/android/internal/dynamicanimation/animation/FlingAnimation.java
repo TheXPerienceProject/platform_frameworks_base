@@ -16,6 +16,7 @@
 package com.android.internal.dynamicanimation.animation;
 
 import android.annotation.FloatRange;
+
 /**
  * <p>Fling animation is an animation that continues an initial momentum (most often from gesture
  * velocity) and gradually slows down. The fling animation will come to a stop when the velocity of

@@ -46,13 +46,13 @@ import android.view.SurfaceControl;
 import android.view.SurfaceHolder;
 import android.view.animation.AnimationUtils;
 
+import sun.misc.Cleaner;
+
 import java.io.File;
 import java.io.FileDescriptor;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.concurrent.Executor;
-
-import sun.misc.Cleaner;
 
 /**
  * <p>Creates an instance of a hardware-accelerated renderer. This is used to render a scene built

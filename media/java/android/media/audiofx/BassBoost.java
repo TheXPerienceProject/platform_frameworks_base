@@ -16,11 +16,9 @@
 
 package android.media.audiofx;
 
-import android.media.audiofx.AudioEffect;
 import android.util.Log;
 
 import java.util.StringTokenizer;
-
 
 /**
  * Bass boost is an audio effect to boost or amplify low frequencies of the sound. It is comparable

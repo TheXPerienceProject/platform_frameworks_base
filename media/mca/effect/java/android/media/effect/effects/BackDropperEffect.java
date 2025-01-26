@@ -18,12 +18,11 @@ package android.media.effect.effects;
 
 import android.filterfw.core.Filter;
 import android.filterfw.core.OneShotScheduler;
-import android.media.effect.EffectContext;
-import android.media.effect.FilterGraphEffect;
-import android.media.effect.EffectUpdateListener;
-
 import android.filterpacks.videoproc.BackDropperFilter;
 import android.filterpacks.videoproc.BackDropperFilter.LearningDoneListener;
+import android.media.effect.EffectContext;
+import android.media.effect.EffectUpdateListener;
+import android.media.effect.FilterGraphEffect;
 
 /**
  * Background replacement Effect.

@@ -16,12 +16,6 @@
 
 package com.android.internal.widget;
 
-import android.annotation.NonNull;
-import android.annotation.Nullable;
-import android.util.ArrayMap;
-import android.util.LongSparseArray;
-import android.util.Pools;
-
 import static com.android.internal.widget.RecyclerView.ItemAnimator.ItemHolderInfo;
 import static com.android.internal.widget.RecyclerView.ViewHolder;
 import static com.android.internal.widget.ViewInfoStore.InfoRecord.FLAG_APPEAR;
@@ -31,6 +25,12 @@ import static com.android.internal.widget.ViewInfoStore.InfoRecord.FLAG_DISAPPEA
 import static com.android.internal.widget.ViewInfoStore.InfoRecord.FLAG_POST;
 import static com.android.internal.widget.ViewInfoStore.InfoRecord.FLAG_PRE;
 import static com.android.internal.widget.ViewInfoStore.InfoRecord.FLAG_PRE_AND_POST;
+
+import android.annotation.NonNull;
+import android.annotation.Nullable;
+import android.util.ArrayMap;
+import android.util.LongSparseArray;
+import android.util.Pools;
 
 import com.android.internal.annotations.VisibleForTesting;
 

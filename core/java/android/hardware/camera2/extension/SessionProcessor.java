@@ -16,7 +16,6 @@
 
 package android.hardware.camera2.extension;
 
-import android.annotation.FlaggedApi;
 import android.annotation.NonNull;
 import android.annotation.SystemApi;
 import android.hardware.camera2.CameraCharacteristics;
@@ -30,8 +29,6 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.RemoteException;
 import android.util.Log;
-
-import com.android.internal.camera.flags.Flags;
 
 import java.util.ArrayList;
 import java.util.Map;

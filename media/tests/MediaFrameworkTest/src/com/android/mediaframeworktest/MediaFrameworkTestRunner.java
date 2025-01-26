@@ -39,7 +39,6 @@ import com.android.mediaframeworktest.functional.mediarecorder.MediaRecorderTest
 
 import junit.framework.TestSuite;
 
-
 /**
  * Instrumentation Test Runner for all MediaPlayer tests.
  *

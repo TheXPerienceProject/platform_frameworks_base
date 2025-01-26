@@ -17,12 +17,9 @@
 package com.google.android.test.cameraprewarm;
 
 import android.app.Activity;
-import android.graphics.Camera;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowManager;
-
-import com.google.android.test.cameraprewarm.R;
 
 public class SecureCameraActivity extends Activity {
 

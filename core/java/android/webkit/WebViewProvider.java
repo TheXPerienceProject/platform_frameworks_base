@@ -59,7 +59,6 @@ import android.webkit.WebView.HitTestResult;
 import android.webkit.WebView.PictureListener;
 import android.webkit.WebView.VisualStateCallback;
 
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.util.List;

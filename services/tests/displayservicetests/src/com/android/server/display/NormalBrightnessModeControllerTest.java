@@ -27,14 +27,14 @@ import com.android.server.display.DisplayDeviceConfig.BrightnessLimitMapType;
 
 import com.google.common.collect.ImmutableMap;
 
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
 
 @SmallTest
 @RunWith(JUnitParamsRunner.class)

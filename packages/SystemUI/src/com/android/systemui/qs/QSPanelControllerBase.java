@@ -62,7 +62,6 @@ import java.util.stream.Collectors;
 
 import javax.inject.Provider;
 
-
 /**
  * Controller for QSPanel views.
  *

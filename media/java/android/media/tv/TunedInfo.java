@@ -31,7 +31,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.Objects;
 
-
 /**
  * Contains information about a {@link TvInputService.Session} that is currently tuned to a channel
  * or pass-through input.

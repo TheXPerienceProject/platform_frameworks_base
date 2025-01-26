@@ -13,9 +13,9 @@
  */
 package com.android.test.uibench.leanback;
 
-import androidx.fragment.app.FragmentActivity;
-import android.app.Activity;
 import android.os.Bundle;
+
+import androidx.fragment.app.FragmentActivity;
 
 public class BrowseActivity extends FragmentActivity {
     @Override

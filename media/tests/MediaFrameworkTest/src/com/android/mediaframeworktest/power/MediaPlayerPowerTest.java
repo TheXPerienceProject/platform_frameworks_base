@@ -16,14 +16,12 @@
 
 package com.android.mediaframeworktest.power;
 
-import com.android.mediaframeworktest.MediaFrameworkTest;
-import com.android.mediaframeworktest.MediaNames;
 import android.media.MediaPlayer;
 import android.os.Environment;
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
 
-import java.io.File;
+import com.android.mediaframeworktest.MediaFrameworkTest;
 
 /**
  * Junit / Instrumentation test case for the power measurment the media player

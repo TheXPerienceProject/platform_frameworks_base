@@ -21,12 +21,12 @@ import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import parcelables.EmptyParcelable;
 import parcelables.GenericDataParcelable;
 import parcelables.SingleDataParcelable;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ReadUtils {
     public static int MAX_LEN = 1000000;

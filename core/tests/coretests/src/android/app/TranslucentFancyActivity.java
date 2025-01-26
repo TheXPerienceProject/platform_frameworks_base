@@ -16,12 +16,10 @@
 
 package android.app;
 
-import com.android.frameworks.coretests.R;
-
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.WindowManager;
 
+import com.android.frameworks.coretests.R;
 
 /**
  * <h3>Fancy Translucent Activity</h3>

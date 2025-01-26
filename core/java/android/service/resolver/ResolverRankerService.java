@@ -19,17 +19,14 @@ package android.service.resolver;
 import android.annotation.SdkConstant;
 import android.annotation.SystemApi;
 import android.app.Service;
-import android.content.ComponentName;
 import android.content.Intent;
-import android.os.IBinder;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.IBinder;
 import android.os.RemoteException;
-import android.service.resolver.ResolverTarget;
 import android.util.Log;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * A service to rank apps according to usage stats of apps, when the system is resolving targets for

@@ -21,8 +21,6 @@ import android.annotation.IntDef;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 
-import com.android.internal.annotations.VisibleForTesting;
-
 import dalvik.annotation.optimization.FastNative;
 
 import java.io.Closeable;

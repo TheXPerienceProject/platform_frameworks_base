@@ -17,10 +17,11 @@
 package android.security.net.config;
 
 import android.util.ArraySet;
-import java.security.cert.X509Certificate;
-import java.util.Set;
 
 import com.android.org.conscrypt.TrustedCertificateIndex;
+
+import java.security.cert.X509Certificate;
+import java.util.Set;
 
 /** @hide */
 public class TestCertificateSource implements CertificateSource {

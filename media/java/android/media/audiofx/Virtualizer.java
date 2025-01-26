@@ -19,7 +19,6 @@ package android.media.audiofx;
 import android.annotation.IntDef;
 import android.media.AudioDeviceInfo;
 import android.media.AudioFormat;
-import android.media.audiofx.AudioEffect;
 import android.util.Log;
 
 import java.lang.annotation.Retention;
@@ -27,7 +26,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.StringTokenizer;
-
 
 /**
  * An audio virtualizer is a general name for an effect to spatialize audio channels. The exact

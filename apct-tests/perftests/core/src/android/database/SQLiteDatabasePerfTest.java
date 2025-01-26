@@ -25,17 +25,20 @@ import android.database.sqlite.SQLiteDatabase;
 import android.perftests.utils.BenchmarkState;
 import android.perftests.utils.PerfStatusReporter;
 import android.util.Log;
+
 import androidx.test.InstrumentationRegistry;
 import androidx.test.filters.LargeTest;
 import androidx.test.runner.AndroidJUnit4;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Random;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Performance tests for typical CRUD operations and loading rows into the Cursor

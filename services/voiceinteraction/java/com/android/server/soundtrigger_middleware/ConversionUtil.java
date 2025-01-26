@@ -44,8 +44,6 @@ import android.os.HidlMemory;
 import android.os.HidlMemoryUtil;
 import android.os.ParcelFileDescriptor;
 
-import java.io.FileDescriptor;
-import java.io.IOException;
 import java.util.regex.Matcher;
 
 /**

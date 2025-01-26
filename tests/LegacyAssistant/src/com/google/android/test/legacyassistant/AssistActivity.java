@@ -18,7 +18,6 @@ package com.google.android.test.legacyassistant;
 
 import android.app.Activity;
 import android.os.Bundle;
-import com.google.android.test.legacyassistant.R;
 
 public class AssistActivity extends Activity {
 

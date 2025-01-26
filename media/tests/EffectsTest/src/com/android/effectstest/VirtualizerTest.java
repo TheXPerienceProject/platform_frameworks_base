@@ -17,29 +17,22 @@
 package com.android.effectstest;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
+import android.media.audiofx.AudioEffect;
+import android.media.audiofx.Virtualizer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.View.OnClickListener;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.EditText;
-import android.widget.SeekBar;
-import android.widget.ToggleButton;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import java.nio.ByteOrder;
-import java.nio.ByteBuffer;
-import java.util.HashMap;
-import java.util.Map;
+import android.widget.EditText;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.ToggleButton;
 
-import android.media.audiofx.Virtualizer;
-import android.media.audiofx.AudioEffect;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.util.HashMap;
 
 public class VirtualizerTest extends Activity implements OnCheckedChangeListener {
 

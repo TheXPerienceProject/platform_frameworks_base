@@ -27,7 +27,6 @@ import com.android.internal.security.VerityUtils;
 import java.io.File;
 import java.io.IOException;
 
-
 /**
  * In-process API for server side FileIntegrity related infrastructure.
  *

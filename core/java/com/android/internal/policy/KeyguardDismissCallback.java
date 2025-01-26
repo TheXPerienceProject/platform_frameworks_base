@@ -17,7 +17,6 @@
 package com.android.internal.policy;
 
 import android.os.RemoteException;
-import com.android.internal.policy.IKeyguardDismissCallback;
 
 /**
  * @hide

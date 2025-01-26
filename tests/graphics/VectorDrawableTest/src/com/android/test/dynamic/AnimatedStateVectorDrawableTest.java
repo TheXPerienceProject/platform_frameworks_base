@@ -15,10 +15,7 @@
 package com.android.test.dynamic;
 
 import android.app.Activity;
-import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.GridLayout;
 import android.widget.ScrollView;

@@ -17,8 +17,8 @@
 package com.android.server.policy;
 
 import static android.os.PowerManager.WAKE_REASON_CAMERA_LAUNCH;
-import static android.os.PowerManager.WAKE_REASON_LID;
 import static android.os.PowerManager.WAKE_REASON_GESTURE;
+import static android.os.PowerManager.WAKE_REASON_LID;
 import static android.os.PowerManager.WAKE_REASON_POWER_BUTTON;
 import static android.os.PowerManager.WAKE_REASON_WAKE_KEY;
 import static android.os.PowerManager.WAKE_REASON_WAKE_MOTION;
@@ -28,12 +28,12 @@ import static android.view.KeyEvent.KEYCODE_HOME;
 import static android.view.KeyEvent.KEYCODE_POWER;
 import static android.view.KeyEvent.KEYCODE_STEM_PRIMARY;
 
-import static com.android.internal.R.bool.config_allowTheaterModeWakeFromKey;
-import static com.android.internal.R.bool.config_allowTheaterModeWakeFromPowerKey;
-import static com.android.internal.R.bool.config_allowTheaterModeWakeFromMotion;
 import static com.android.internal.R.bool.config_allowTheaterModeWakeFromCameraLens;
-import static com.android.internal.R.bool.config_allowTheaterModeWakeFromLidSwitch;
 import static com.android.internal.R.bool.config_allowTheaterModeWakeFromGesture;
+import static com.android.internal.R.bool.config_allowTheaterModeWakeFromKey;
+import static com.android.internal.R.bool.config_allowTheaterModeWakeFromLidSwitch;
+import static com.android.internal.R.bool.config_allowTheaterModeWakeFromMotion;
+import static com.android.internal.R.bool.config_allowTheaterModeWakeFromPowerKey;
 import static com.android.server.policy.Flags.FLAG_SUPPORT_INPUT_WAKEUP_DELEGATE;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -73,6 +73,7 @@ import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
 import java.util.function.BooleanSupplier;
+
 /**
  * Test class for {@link WindowWakeUpPolicy}.
  *

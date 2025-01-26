@@ -18,19 +18,12 @@ package com.android.test.soundtrigger;
 
 import android.annotation.Nullable;
 import android.content.Context;
-import android.hardware.soundtrigger.SoundTrigger.RecognitionEvent;
 import android.hardware.soundtrigger.SoundTrigger.GenericSoundModel;
 import android.media.soundtrigger.SoundTriggerDetector;
 import android.media.soundtrigger.SoundTriggerManager;
-import android.os.RemoteException;
-import android.os.ServiceManager;
-import android.os.ParcelUuid;
 import android.util.Log;
 
-import com.android.internal.app.ISoundTriggerService;
-
 import java.lang.reflect.Method;
-import java.lang.RuntimeException;
 import java.util.UUID;
 
 /**

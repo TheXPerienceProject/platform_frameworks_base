@@ -16,12 +16,12 @@
 
 package com.android.accessorydisplay.sink;
 
-import com.android.accessorydisplay.common.Logger;
-import com.android.accessorydisplay.common.Transport;
-
 import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbEndpoint;
+
+import com.android.accessorydisplay.common.Logger;
+import com.android.accessorydisplay.common.Transport;
 
 import java.io.IOException;
 

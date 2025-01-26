@@ -24,7 +24,6 @@ import android.os.Parcelable;
 
 import java.util.Objects;
 
-
 /**
  * Configurations to create virtual keyboard.
  *

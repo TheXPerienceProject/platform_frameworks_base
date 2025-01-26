@@ -17,12 +17,8 @@
 package com.android.test.hwui;
 
 import android.app.Activity;
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.TextView;
 
 @SuppressWarnings({"UnusedDeclaration"})

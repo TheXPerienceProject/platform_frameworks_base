@@ -18,6 +18,7 @@ package androidx.media.filterfw;
 
 import android.util.Log;
 import android.view.View;
+
 import androidx.media.filterpacks.base.BranchFilter;
 import androidx.media.filterpacks.base.FrameSlotSource;
 import androidx.media.filterpacks.base.FrameSlotTarget;

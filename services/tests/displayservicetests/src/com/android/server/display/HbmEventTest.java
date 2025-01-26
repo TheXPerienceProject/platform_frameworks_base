@@ -18,7 +18,6 @@ package com.android.server.display;
 
 import static org.junit.Assert.assertEquals;
 
-
 import androidx.test.filters.SmallTest;
 import androidx.test.runner.AndroidJUnit4;
 

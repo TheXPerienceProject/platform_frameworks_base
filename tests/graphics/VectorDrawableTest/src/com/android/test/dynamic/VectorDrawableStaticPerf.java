@@ -13,14 +13,6 @@
  */
 package com.android.test.dynamic;
 
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.drawable.VectorDrawable;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Button;
-import android.widget.GridLayout;
 
 @SuppressWarnings({"UnusedDeclaration"})
 public class VectorDrawableStaticPerf extends VectorDrawablePerformance {

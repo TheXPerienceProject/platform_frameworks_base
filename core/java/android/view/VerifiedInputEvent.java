@@ -27,7 +27,6 @@ import android.os.Parcelable;
 
 import java.lang.annotation.Retention;
 
-
 /**
  * Base class for verified events.
  * Verified events contain the subset of an InputEvent that the system can verify.

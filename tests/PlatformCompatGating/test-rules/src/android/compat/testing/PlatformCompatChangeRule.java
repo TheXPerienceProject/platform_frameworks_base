@@ -27,7 +27,6 @@ import android.os.ServiceManager;
 
 import androidx.test.platform.app.InstrumentationRegistry;
 
-
 import com.android.internal.compat.CompatibilityChangeConfig;
 import com.android.internal.compat.IPlatformCompat;
 

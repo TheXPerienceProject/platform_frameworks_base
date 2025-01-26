@@ -17,6 +17,7 @@
 package com.android.internal.http.multipart;
 
 import junit.framework.TestCase;
+
 import org.apache.http.Header;
 import org.apache.http.util.EncodingUtils;
 

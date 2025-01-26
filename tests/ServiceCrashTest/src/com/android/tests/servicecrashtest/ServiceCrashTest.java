@@ -16,7 +16,6 @@
 
 package com.android.tests.servicecrashtest;
 
-import android.app.UiAutomation;
 import android.content.Context;
 import android.content.Intent;
 import android.os.RemoteException;

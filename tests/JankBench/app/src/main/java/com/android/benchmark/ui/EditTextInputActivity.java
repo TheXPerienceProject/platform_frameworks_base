@@ -18,10 +18,11 @@ package com.android.benchmark.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.widget.EditText;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.benchmark.R;
 import com.android.benchmark.ui.automation.Automator;

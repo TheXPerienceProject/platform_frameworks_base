@@ -33,7 +33,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.ref.WeakReference;
 import java.util.Objects;
 
-
 /**
  * Abstract base class for Attention service.
  *

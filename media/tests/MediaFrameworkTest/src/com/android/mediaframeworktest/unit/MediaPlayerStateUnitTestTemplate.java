@@ -16,12 +16,13 @@
 
 package com.android.mediaframeworktest.unit;
 
-import android.util.Log;
-import android.os.Looper;
-import android.os.Handler;
-import android.os.Message;
 import android.media.MediaPlayer;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.test.AndroidTestCase;
+import android.util.Log;
+
 import com.android.mediaframeworktest.MediaNames;
 
 /**

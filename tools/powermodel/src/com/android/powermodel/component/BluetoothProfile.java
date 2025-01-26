@@ -16,10 +16,8 @@
 
 package com.android.powermodel.component;
 
-import java.util.Arrays;
 
 import com.android.powermodel.ComponentProfile;
-import com.android.powermodel.ParseException;
 
 public class BluetoothProfile extends ComponentProfile {
     public float idleMa;

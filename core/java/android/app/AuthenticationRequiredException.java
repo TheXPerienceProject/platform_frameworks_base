@@ -16,8 +16,6 @@
 
 package android.app;
 
-import android.content.ContentProvider;
-import android.content.ContentResolver;
 import android.os.Parcel;
 import android.os.Parcelable;
 

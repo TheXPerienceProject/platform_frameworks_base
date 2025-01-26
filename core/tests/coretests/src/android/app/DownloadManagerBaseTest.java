@@ -38,10 +38,10 @@ import android.util.Log;
 
 import androidx.test.uiautomator.UiDevice;
 
+import libcore.io.Streams;
+
 import com.google.mockwebserver.MockResponse;
 import com.google.mockwebserver.MockWebServer;
-
-import libcore.io.Streams;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

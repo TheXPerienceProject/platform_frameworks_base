@@ -19,25 +19,12 @@ package com.android.server.xpe;
 import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
-import android.os.RemoteCallbackList;
-import android.os.RemoteException;
 import android.os.UserHandle;
 import android.util.Log;
-import android.util.Range;
-
-import com.android.server.LocalServices;
-import com.android.server.SystemService;
-
-import com.android.internal.xpe.hardware.ILineageHardwareService;
-import com.android.internal.xpe.hardware.LineageHardwareManager;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import com.android.internal.xpe.app.LineageContextConstants;
-
+import com.android.internal.xpe.hardware.ILineageHardwareService;
+import com.android.server.SystemService;
 
 /** @hide */
 public class LineageHardwareService extends SystemService {

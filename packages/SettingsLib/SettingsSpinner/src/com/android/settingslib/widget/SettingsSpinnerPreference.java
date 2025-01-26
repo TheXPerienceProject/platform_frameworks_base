@@ -25,6 +25,7 @@ import android.widget.Spinner;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceClickListener;
 import androidx.preference.PreferenceViewHolder;
+
 import com.android.settingslib.widget.spinner.R;
 
 /**

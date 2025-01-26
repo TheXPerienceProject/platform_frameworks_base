@@ -18,6 +18,7 @@
 package androidx.media.filterfw.samples.simplecamera;
 
 import android.util.Log;
+
 import androidx.media.filterfw.Filter;
 import androidx.media.filterfw.FrameType;
 import androidx.media.filterfw.FrameValue;
@@ -25,7 +26,6 @@ import androidx.media.filterfw.MffContext;
 import androidx.media.filterfw.OutputPort;
 import androidx.media.filterfw.Signature;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class FloatArrayToStrFilter extends Filter {

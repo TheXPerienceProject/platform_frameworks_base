@@ -32,7 +32,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-
 /**
  * A basic {@link AbstractResolverComparator} implementation that sorts items into the same order as
  * they appeared in the list provided to {@link #doCompute(List)}. "Unknown" items that didn't

@@ -13,8 +13,6 @@
  */
 package android.windowanimationjank;
 
-import java.util.Random;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.ViewTreeObserver.OnPreDrawListener;
@@ -23,6 +21,8 @@ import android.widget.RadioButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+
+import java.util.Random;
 
 /*
  * Activity with arbitrary number of random UI elements, refresh itself constantly.

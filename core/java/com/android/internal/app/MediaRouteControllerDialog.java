@@ -16,8 +16,6 @@
 
 package com.android.internal.app;
 
-import com.android.internal.R;
-
 import android.app.AlertDialog;
 import android.app.MediaRouteActionProvider;
 import android.app.MediaRouteButton;
@@ -38,6 +36,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
+
+import com.android.internal.R;
 
 /**
  * This class implements the route controller dialog for {@link MediaRouter}.

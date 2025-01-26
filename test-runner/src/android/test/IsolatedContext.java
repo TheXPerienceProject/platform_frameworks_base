@@ -35,7 +35,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
 
-
 /**
  * A mock context which prevents its users from talking to the rest of the device while
  * stubbing enough methods to satify code that tries to talk to other packages.

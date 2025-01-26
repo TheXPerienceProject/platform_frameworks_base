@@ -16,7 +16,6 @@
 
 package com.android.settingslib.net;
 
-import java.util.concurrent.TimeUnit;
 
 /**
  * Usage data in a billing cycle for a specific Uid.

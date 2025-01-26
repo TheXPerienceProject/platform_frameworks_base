@@ -19,7 +19,6 @@ package android.service.chooser;
 
 import android.annotation.Nullable;
 import android.content.ComponentName;
-import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.drawable.Icon;
 import android.os.Bundle;

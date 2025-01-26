@@ -15,10 +15,10 @@
  */
 package android.gameperformance;
 
+import android.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import android.annotation.NonNull;
 
 /**
  * Test that measures maximum amount of triangles can be rasterized keeping FPS close to the device

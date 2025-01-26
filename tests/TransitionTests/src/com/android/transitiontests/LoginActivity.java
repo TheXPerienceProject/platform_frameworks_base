@@ -17,17 +17,16 @@ package com.android.transitiontests;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.transition.Scene;
-import android.widget.TextView;
 import android.transition.Fade;
 import android.transition.Recolor;
+import android.transition.Scene;
 import android.transition.Slide;
 import android.transition.Transition;
-import android.transition.TransitionSet;
 import android.transition.TransitionManager;
-
+import android.transition.TransitionSet;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class LoginActivity extends Activity {
     ViewGroup mSceneRoot;

@@ -16,12 +16,13 @@
 
 package com.android.powermodel.component;
 
-import java.util.ArrayList;
-import java.util.List;
 import com.android.powermodel.AttributionKey;
 import com.android.powermodel.ComponentActivity;
 import com.android.powermodel.RawBatteryStats;
 import com.android.powermodel.SpecialApp;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModemBatteryStatsReader {
     private ModemBatteryStatsReader() {

@@ -28,8 +28,6 @@ import com.android.server.pm.pkg.PackageStateInternal;
 
 import java.io.File;
 
-
-
 // TODO: Move to .parsing sub-package
 @VisibleForTesting
 public interface PackageAbiHelper {

@@ -16,18 +16,19 @@
 
 package android.gesture;
 
+import static android.gesture.GestureConstants.*;
+
 import android.annotation.NonNull;
 import android.annotation.RawRes;
+import android.content.Context;
 import android.os.ParcelFileDescriptor;
 import android.util.Log;
-import static android.gesture.GestureConstants.*;
-import android.content.Context;
 
 import java.io.File;
 import java.io.FileDescriptor;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 

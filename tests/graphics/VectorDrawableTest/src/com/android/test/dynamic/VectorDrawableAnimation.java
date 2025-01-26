@@ -14,7 +14,6 @@
 
 package com.android.test.dynamic;
 
-import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;

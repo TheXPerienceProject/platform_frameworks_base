@@ -16,7 +16,6 @@
 
 package com.android.accessorydisplay.common;
 
-import com.android.accessorydisplay.common.Transport;
 
 import android.content.Context;
 import android.os.Looper;

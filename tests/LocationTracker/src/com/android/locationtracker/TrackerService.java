@@ -16,8 +16,6 @@
 
 package com.android.locationtracker;
 
-import com.android.locationtracker.data.TrackerDataHelper;
-
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -42,6 +40,8 @@ import android.telephony.cdma.CdmaCellLocation;
 import android.telephony.gsm.GsmCellLocation;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.android.locationtracker.data.TrackerDataHelper;
 
 import java.util.ArrayList;
 import java.util.HashSet;

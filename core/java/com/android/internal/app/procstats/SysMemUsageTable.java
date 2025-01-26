@@ -16,30 +16,19 @@
 
 package com.android.internal.app.procstats;
 
-import android.util.DebugUtils;
-
 import static com.android.internal.app.procstats.ProcessStats.STATE_COUNT;
 import static com.android.internal.app.procstats.ProcessStats.STATE_NOTHING;
-import static com.android.internal.app.procstats.ProcessStats.SYS_MEM_USAGE_SAMPLE_COUNT;
 import static com.android.internal.app.procstats.ProcessStats.SYS_MEM_USAGE_CACHED_MINIMUM;
-import static com.android.internal.app.procstats.ProcessStats.SYS_MEM_USAGE_CACHED_AVERAGE;
-import static com.android.internal.app.procstats.ProcessStats.SYS_MEM_USAGE_CACHED_MAXIMUM;
-import static com.android.internal.app.procstats.ProcessStats.SYS_MEM_USAGE_FREE_MINIMUM;
-import static com.android.internal.app.procstats.ProcessStats.SYS_MEM_USAGE_FREE_AVERAGE;
-import static com.android.internal.app.procstats.ProcessStats.SYS_MEM_USAGE_FREE_MAXIMUM;
-import static com.android.internal.app.procstats.ProcessStats.SYS_MEM_USAGE_ZRAM_MINIMUM;
-import static com.android.internal.app.procstats.ProcessStats.SYS_MEM_USAGE_ZRAM_AVERAGE;
-import static com.android.internal.app.procstats.ProcessStats.SYS_MEM_USAGE_ZRAM_MAXIMUM;
-import static com.android.internal.app.procstats.ProcessStats.SYS_MEM_USAGE_KERNEL_MINIMUM;
-import static com.android.internal.app.procstats.ProcessStats.SYS_MEM_USAGE_KERNEL_AVERAGE;
-import static com.android.internal.app.procstats.ProcessStats.SYS_MEM_USAGE_KERNEL_MAXIMUM;
-import static com.android.internal.app.procstats.ProcessStats.SYS_MEM_USAGE_NATIVE_MINIMUM;
-import static com.android.internal.app.procstats.ProcessStats.SYS_MEM_USAGE_NATIVE_AVERAGE;
-import static com.android.internal.app.procstats.ProcessStats.SYS_MEM_USAGE_NATIVE_MAXIMUM;
 import static com.android.internal.app.procstats.ProcessStats.SYS_MEM_USAGE_COUNT;
+import static com.android.internal.app.procstats.ProcessStats.SYS_MEM_USAGE_FREE_MINIMUM;
+import static com.android.internal.app.procstats.ProcessStats.SYS_MEM_USAGE_KERNEL_MINIMUM;
+import static com.android.internal.app.procstats.ProcessStats.SYS_MEM_USAGE_NATIVE_MINIMUM;
+import static com.android.internal.app.procstats.ProcessStats.SYS_MEM_USAGE_SAMPLE_COUNT;
+import static com.android.internal.app.procstats.ProcessStats.SYS_MEM_USAGE_ZRAM_MINIMUM;
+
+import android.util.DebugUtils;
 
 import java.io.PrintWriter;
-
 
 /**
  * Class to accumulate system mem usage data.

@@ -17,9 +17,9 @@
 
 package android.media.effect.effects;
 
+import android.filterpacks.imageproc.SepiaFilter;
 import android.media.effect.EffectContext;
 import android.media.effect.SingleFilterEffect;
-import android.filterpacks.imageproc.SepiaFilter;
 
 /**
  * @hide

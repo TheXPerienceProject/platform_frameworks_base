@@ -17,6 +17,7 @@
 package com.android.wm.shell;
 
 import static android.view.Display.DEFAULT_DISPLAY;
+
 import static org.junit.Assume.assumeTrue;
 
 import android.content.Context;

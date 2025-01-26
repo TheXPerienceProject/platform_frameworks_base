@@ -16,16 +16,17 @@
 
 package android.security.net.config;
 
+import android.util.ArrayMap;
+
 import com.android.org.conscrypt.TrustManagerImpl;
 
-import android.util.ArrayMap;
 import java.io.IOException;
 import java.net.Socket;
-import java.security.cert.CertificateException;
-import java.security.cert.X509Certificate;
 import java.security.GeneralSecurityException;
 import java.security.KeyStore;
 import java.security.MessageDigest;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;

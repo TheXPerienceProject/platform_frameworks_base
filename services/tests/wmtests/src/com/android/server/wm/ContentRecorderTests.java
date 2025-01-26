@@ -66,7 +66,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-
 /**
  * Tests for the {@link ContentRecorder} class.
  *

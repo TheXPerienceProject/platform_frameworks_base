@@ -20,6 +20,10 @@ package android.util.jar;
 import android.util.apk.ApkSignatureSchemeV2Verifier;
 import android.util.apk.ApkSignatureSchemeV3Verifier;
 
+import sun.security.jca.Providers;
+import sun.security.pkcs.PKCS7;
+import sun.security.pkcs.SignerInfo;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
@@ -38,10 +42,6 @@ import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.jar.Attributes;
 import java.util.jar.JarFile;
-
-import sun.security.jca.Providers;
-import sun.security.pkcs.PKCS7;
-import sun.security.pkcs.SignerInfo;
 
 /**
  * Non-public class used by {@link JarFile} and {@link JarInputStream} to manage

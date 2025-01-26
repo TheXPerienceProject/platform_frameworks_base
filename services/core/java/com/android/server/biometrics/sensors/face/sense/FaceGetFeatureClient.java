@@ -31,9 +31,9 @@ import com.android.server.biometrics.sensors.ClientMonitorCallback;
 import com.android.server.biometrics.sensors.ClientMonitorCallbackConverter;
 import com.android.server.biometrics.sensors.HalClientMonitor;
 
-import java.util.function.Supplier;
-
 import vendor.aospa.biometrics.face.ISenseService;
+
+import java.util.function.Supplier;
 
 public class FaceGetFeatureClient extends HalClientMonitor<ISenseService> {
 

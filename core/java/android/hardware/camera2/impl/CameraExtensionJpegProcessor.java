@@ -36,8 +36,6 @@ import android.os.RemoteException;
 import android.util.Log;
 import android.view.Surface;
 
-import com.android.internal.camera.flags.Flags;
-
 import java.nio.ByteBuffer;
 import java.util.HashSet;
 import java.util.Iterator;

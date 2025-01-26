@@ -26,7 +26,6 @@ import androidx.annotation.Nullable;
 
 import com.android.settingslib.enterprise.ActionDisabledLearnMoreButtonLauncher.ResolveActivityChecker;
 
-
 /**
  * An {@link ActionDisabledByAdminController} to be used with managed devices.
  */

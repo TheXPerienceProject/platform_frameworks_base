@@ -16,17 +16,17 @@
 
 package com.android.mediaframeworktest;
 
-import android.media.MediaRecorder;
-import android.media.EncoderCapabilities;
-import android.media.EncoderCapabilities.VideoEncoderCap;
-import android.media.EncoderCapabilities.AudioEncoderCap;
 import android.media.DecoderCapabilities;
-import android.media.DecoderCapabilities.VideoDecoder;
 import android.media.DecoderCapabilities.AudioDecoder;
-
+import android.media.DecoderCapabilities.VideoDecoder;
+import android.media.EncoderCapabilities;
+import android.media.EncoderCapabilities.AudioEncoderCap;
+import android.media.EncoderCapabilities.VideoEncoderCap;
+import android.media.MediaRecorder;
 import android.os.SystemProperties;
-import java.util.List;
+
 import java.util.HashMap;
+import java.util.List;
 
 public class MediaProfileReader
 {

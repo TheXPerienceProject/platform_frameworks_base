@@ -17,7 +17,6 @@
 
 package android.filterfw.core;
 
-import android.filterfw.core.Frame;
 
 /**
  * @hide

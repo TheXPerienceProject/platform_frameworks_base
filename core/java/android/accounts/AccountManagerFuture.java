@@ -15,8 +15,8 @@
  */
 package android.accounts;
 
-import java.util.concurrent.TimeUnit;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * A <tt>AccountManagerFuture</tt> represents the result of an asynchronous

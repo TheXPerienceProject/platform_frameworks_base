@@ -16,6 +16,8 @@
 
 package com.android.internal.widget;
 
+import static com.google.common.truth.Truth.assertThat;
+
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -31,8 +33,6 @@ import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.android.frameworks.coretests.R;
-
-import static com.google.common.truth.Truth.assertThat;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

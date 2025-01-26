@@ -16,8 +16,6 @@
 
 package com.android.accessorydisplay.sink;
 
-import com.android.accessorydisplay.common.Logger;
-
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -30,21 +28,17 @@ import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbEndpoint;
 import android.hardware.usb.UsbInterface;
 import android.hardware.usb.UsbManager;
-import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaFormat;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.view.Surface;
-import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.android.accessorydisplay.common.Logger;
+
 import java.nio.ByteBuffer;
-import java.util.LinkedList;
 import java.util.Map;
 
 public class SinkActivity extends Activity {

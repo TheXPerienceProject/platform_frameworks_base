@@ -21,9 +21,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.HeaderViewListAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.HeaderViewListAdapter;
 
 import java.util.ArrayList;
 import java.util.function.Predicate;

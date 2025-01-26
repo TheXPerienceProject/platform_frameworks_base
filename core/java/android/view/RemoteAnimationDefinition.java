@@ -18,8 +18,8 @@ package android.view;
 
 import static android.app.WindowConfiguration.ACTIVITY_TYPE_UNDEFINED;
 
-import android.annotation.Nullable;
 import android.annotation.NonNull;
+import android.annotation.Nullable;
 import android.app.WindowConfiguration.ActivityType;
 import android.compat.annotation.UnsupportedAppUsage;
 import android.os.IBinder;

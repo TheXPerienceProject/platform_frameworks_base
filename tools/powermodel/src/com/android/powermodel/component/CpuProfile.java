@@ -16,11 +16,11 @@
 
 package com.android.powermodel.component;
 
-import java.util.Arrays;
-import java.util.HashMap;
-
 import com.android.powermodel.ComponentProfile;
 import com.android.powermodel.ParseException;
+
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class CpuProfile extends ComponentProfile {
     public float suspendMa;

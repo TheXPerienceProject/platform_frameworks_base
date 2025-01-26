@@ -18,7 +18,6 @@ package android.content.res;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
-
 import android.app.AppProtoEnums;
 import android.os.Handler;
 import android.os.Looper;

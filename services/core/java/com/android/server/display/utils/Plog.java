@@ -17,8 +17,6 @@
 package com.android.server.display.utils;
 
 
-import java.lang.StringBuilder;
-import java.lang.System;
 
 import android.util.Slog;
 

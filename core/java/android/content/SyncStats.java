@@ -16,8 +16,8 @@
 
 package android.content;
 
-import android.os.Parcelable;
 import android.os.Parcel;
+import android.os.Parcelable;
 
 /**
  * Used to record various statistics about the result of a sync operation. The SyncManager

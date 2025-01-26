@@ -29,7 +29,6 @@ import org.junit.Test;
 import org.junit.rules.TestRule;
 import org.junit.runner.RunWith;
 
-
 /**
  * Test for @Config field extraction and validation.
  */

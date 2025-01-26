@@ -27,9 +27,9 @@ import com.android.server.biometrics.log.BiometricContext;
 import com.android.server.biometrics.log.BiometricLogger;
 import com.android.server.biometrics.sensors.RevokeChallengeClient;
 
-import java.util.function.Supplier;
-
 import vendor.aospa.biometrics.face.ISenseService;
+
+import java.util.function.Supplier;
 
 public class FaceRevokeChallengeClient extends RevokeChallengeClient<ISenseService> {
 

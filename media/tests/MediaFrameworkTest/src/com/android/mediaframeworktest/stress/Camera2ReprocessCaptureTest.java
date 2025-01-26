@@ -16,10 +16,18 @@
 
 package com.android.mediaframeworktest.stress;
 
-import com.android.ex.camera2.blocking.BlockingSessionCallback;
-import com.android.mediaframeworktest.Camera2SurfaceViewTestCase;
-import com.android.mediaframeworktest.helpers.CameraTestUtils;
-import com.android.mediaframeworktest.helpers.StaticMetadata;
+import static com.android.mediaframeworktest.helpers.CameraTestUtils.EXIF_TEST_DATA;
+import static com.android.mediaframeworktest.helpers.CameraTestUtils.SESSION_CLOSE_TIMEOUT_MS;
+import static com.android.mediaframeworktest.helpers.CameraTestUtils.SimpleCaptureCallback;
+import static com.android.mediaframeworktest.helpers.CameraTestUtils.SimpleImageReaderListener;
+import static com.android.mediaframeworktest.helpers.CameraTestUtils.SimpleImageWriterListener;
+import static com.android.mediaframeworktest.helpers.CameraTestUtils.configureReprocessableCameraSession;
+import static com.android.mediaframeworktest.helpers.CameraTestUtils.dumpFile;
+import static com.android.mediaframeworktest.helpers.CameraTestUtils.getAscendingOrderSizes;
+import static com.android.mediaframeworktest.helpers.CameraTestUtils.getDataFromImage;
+import static com.android.mediaframeworktest.helpers.CameraTestUtils.makeImageReader;
+import static com.android.mediaframeworktest.helpers.CameraTestUtils.setJpegKeys;
+import static com.android.mediaframeworktest.helpers.CameraTestUtils.verifyJpegKeys;
 
 import android.graphics.ImageFormat;
 import android.hardware.camera2.CameraDevice;
@@ -35,22 +43,14 @@ import android.util.Log;
 import android.util.Size;
 import android.view.Surface;
 
+import com.android.ex.camera2.blocking.BlockingSessionCallback;
+import com.android.mediaframeworktest.Camera2SurfaceViewTestCase;
+import com.android.mediaframeworktest.helpers.CameraTestUtils;
+import com.android.mediaframeworktest.helpers.StaticMetadata;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static com.android.mediaframeworktest.helpers.CameraTestUtils.EXIF_TEST_DATA;
-import static com.android.mediaframeworktest.helpers.CameraTestUtils.SESSION_CLOSE_TIMEOUT_MS;
-import static com.android.mediaframeworktest.helpers.CameraTestUtils.SimpleCaptureCallback;
-import static com.android.mediaframeworktest.helpers.CameraTestUtils.SimpleImageReaderListener;
-import static com.android.mediaframeworktest.helpers.CameraTestUtils.SimpleImageWriterListener;
-import static com.android.mediaframeworktest.helpers.CameraTestUtils.configureReprocessableCameraSession;
-import static com.android.mediaframeworktest.helpers.CameraTestUtils.dumpFile;
-import static com.android.mediaframeworktest.helpers.CameraTestUtils.getAscendingOrderSizes;
-import static com.android.mediaframeworktest.helpers.CameraTestUtils.getDataFromImage;
-import static com.android.mediaframeworktest.helpers.CameraTestUtils.makeImageReader;
-import static com.android.mediaframeworktest.helpers.CameraTestUtils.setJpegKeys;
-import static com.android.mediaframeworktest.helpers.CameraTestUtils.verifyJpegKeys;
 
 /**
  * <p>Tests for Reprocess API.</p>

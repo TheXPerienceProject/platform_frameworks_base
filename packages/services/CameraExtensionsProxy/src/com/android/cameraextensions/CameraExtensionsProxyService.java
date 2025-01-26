@@ -15,6 +15,7 @@
  */
 package com.android.cameraextensions;
 
+import android.annotation.NonNull;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -79,8 +80,6 @@ import android.util.Range;
 import android.util.Size;
 import android.view.Surface;
 
-import android.annotation.NonNull;
-import android.annotation.Nullable;
 import androidx.camera.extensions.impl.AutoImageCaptureExtenderImpl;
 import androidx.camera.extensions.impl.AutoPreviewExtenderImpl;
 import androidx.camera.extensions.impl.BeautyImageCaptureExtenderImpl;
@@ -99,7 +98,6 @@ import androidx.camera.extensions.impl.PreviewExtenderImpl;
 import androidx.camera.extensions.impl.PreviewExtenderImpl.ProcessorType;
 import androidx.camera.extensions.impl.PreviewImageProcessorImpl;
 import androidx.camera.extensions.impl.ProcessResultImpl;
-import androidx.camera.extensions.impl.ProcessorImpl;
 import androidx.camera.extensions.impl.RequestUpdateProcessorImpl;
 import androidx.camera.extensions.impl.advanced.AdvancedExtenderImpl;
 import androidx.camera.extensions.impl.advanced.AutoAdvancedExtenderImpl;
@@ -107,7 +105,6 @@ import androidx.camera.extensions.impl.advanced.BeautyAdvancedExtenderImpl;
 import androidx.camera.extensions.impl.advanced.BokehAdvancedExtenderImpl;
 import androidx.camera.extensions.impl.advanced.Camera2OutputConfigImpl;
 import androidx.camera.extensions.impl.advanced.Camera2SessionConfigImpl;
-import androidx.camera.extensions.impl.advanced.EyesFreeVideographyAdvancedExtenderImpl;
 import androidx.camera.extensions.impl.advanced.HdrAdvancedExtenderImpl;
 import androidx.camera.extensions.impl.advanced.ImageProcessorImpl;
 import androidx.camera.extensions.impl.advanced.ImageReaderOutputConfigImpl;
@@ -119,11 +116,8 @@ import androidx.camera.extensions.impl.advanced.RequestProcessorImpl;
 import androidx.camera.extensions.impl.advanced.SessionProcessorImpl;
 import androidx.camera.extensions.impl.advanced.SurfaceOutputConfigImpl;
 
-import com.android.internal.camera.flags.Flags;
-
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

@@ -15,7 +15,6 @@
  */
 package android.util;
 
-import android.util.FloatMath;
 
 public class FloatMathBenchmark {
 

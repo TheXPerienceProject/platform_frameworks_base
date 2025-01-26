@@ -24,7 +24,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.hardware.soundtrigger.SoundTrigger.RecognitionEvent;
-import android.hardware.soundtrigger.SoundTrigger.GenericSoundModel;
 import android.media.AudioAttributes;
 import android.media.AudioFormat;
 import android.media.AudioManager;
@@ -47,7 +46,6 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Random;
 import java.util.UUID;
-
 
 public class SoundTriggerTestService extends Service {
     private static final String TAG = "SoundTriggerTestSrv";

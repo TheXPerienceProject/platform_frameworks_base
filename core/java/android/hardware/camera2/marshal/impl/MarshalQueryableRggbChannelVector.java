@@ -15,15 +15,15 @@
  */
 package android.hardware.camera2.marshal.impl;
 
-import android.hardware.camera2.marshal.Marshaler;
+import static android.hardware.camera2.impl.CameraMetadataNative.*;
+import static android.hardware.camera2.marshal.MarshalHelpers.*;
+
 import android.hardware.camera2.marshal.MarshalQueryable;
+import android.hardware.camera2.marshal.Marshaler;
 import android.hardware.camera2.params.RggbChannelVector;
 import android.hardware.camera2.utils.TypeReference;
 
 import java.nio.ByteBuffer;
-
-import static android.hardware.camera2.impl.CameraMetadataNative.*;
-import static android.hardware.camera2.marshal.MarshalHelpers.*;
 
 /**
  * Marshal {@link RggbChannelVector} to/from {@link #TYPE_FLOAT} {@code x 4}

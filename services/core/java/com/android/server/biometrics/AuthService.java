@@ -73,8 +73,8 @@ import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.util.ArrayUtils;
 import com.android.server.SystemService;
 import com.android.server.biometrics.sensors.face.FaceService;
-import com.android.server.biometrics.sensors.fingerprint.FingerprintService;
 import com.android.server.biometrics.sensors.face.sense.SenseUtils;
+import com.android.server.biometrics.sensors.fingerprint.FingerprintService;
 import com.android.server.companion.virtual.VirtualDeviceManagerInternal;
 
 import java.util.ArrayList;

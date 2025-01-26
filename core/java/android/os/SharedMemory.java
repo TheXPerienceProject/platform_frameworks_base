@@ -27,14 +27,14 @@ import dalvik.system.VMRuntime;
 
 import libcore.io.IoUtils;
 
+import sun.misc.Cleaner;
+
 import java.io.Closeable;
 import java.io.FileDescriptor;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.DirectByteBuffer;
 import java.nio.NioUtils;
-
-import sun.misc.Cleaner;
 
 /**
  * SharedMemory enables the creation, mapping, and protection control over anonymous shared memory.

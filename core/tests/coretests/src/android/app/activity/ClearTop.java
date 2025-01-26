@@ -19,7 +19,6 @@ package android.app.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 public class ClearTop extends Activity {
     public static final String WAIT_CLEAR_TASK = "waitClearTask";

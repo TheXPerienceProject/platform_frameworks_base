@@ -20,13 +20,14 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.graphics.SurfaceTexture;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.TextureView;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.test.uibench.opengl.ImageFlipRenderThread;
 

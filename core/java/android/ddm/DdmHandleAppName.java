@@ -26,7 +26,6 @@ import org.apache.harmony.dalvik.ddmc.DdmServer;
 
 import java.nio.ByteBuffer;
 
-
 /**
  * Track our app name.  We don't (currently) handle any inbound packets.
  */

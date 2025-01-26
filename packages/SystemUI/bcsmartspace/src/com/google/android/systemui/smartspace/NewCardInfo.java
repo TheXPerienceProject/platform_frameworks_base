@@ -10,7 +10,9 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
+
 import com.android.systemui.smartspace.nano.SmartspaceProto;
+
 import java.io.ByteArrayOutputStream;
 
 public final class NewCardInfo {

@@ -24,7 +24,6 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Handler;
 import android.os.IBinder;
-import android.os.IBinder.DeathRecipient;
 import android.os.IInterface;
 import android.os.RemoteException;
 import android.os.SystemClock;
@@ -32,8 +31,8 @@ import android.os.UserHandle;
 import android.util.Slog;
 
 import java.text.SimpleDateFormat;
-import java.util.Objects;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * Manages the lifecycle of an application-provided service bound from system server.

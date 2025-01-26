@@ -46,7 +46,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
 /**
  * AbsSeekBar extends the capabilities of ProgressBar by adding a draggable thumb.
  */

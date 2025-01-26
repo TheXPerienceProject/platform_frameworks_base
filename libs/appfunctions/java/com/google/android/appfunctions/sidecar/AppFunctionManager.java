@@ -24,7 +24,6 @@ import java.util.Objects;
 import java.util.concurrent.Executor;
 import java.util.function.Consumer;
 
-
 /**
  * Provides app functions related functionalities.
  *

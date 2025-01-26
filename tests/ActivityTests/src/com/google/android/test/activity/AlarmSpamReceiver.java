@@ -19,8 +19,6 @@ package com.google.android.test.activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.UserHandle;
 import android.util.Log;
 
 public class AlarmSpamReceiver extends BroadcastReceiver {

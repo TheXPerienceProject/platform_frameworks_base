@@ -26,12 +26,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+
 import com.android.packageinstaller.R;
 import com.android.packageinstaller.v2.model.InstallSuccess;
 import com.android.packageinstaller.v2.ui.InstallActionListener;
+
 import java.util.List;
 
 /**

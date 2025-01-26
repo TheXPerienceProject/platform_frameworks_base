@@ -16,20 +16,21 @@
 
 package com.android.powermodel;
 
-import java.io.InputStream;
-
-import com.android.powermodel.component.CpuProfile;
 import com.android.powermodel.component.AudioProfile;
 import com.android.powermodel.component.BluetoothProfile;
 import com.android.powermodel.component.CameraProfile;
+import com.android.powermodel.component.CpuProfile;
 import com.android.powermodel.component.FlashlightProfile;
 import com.android.powermodel.component.GpsProfile;
 import com.android.powermodel.component.ModemProfile;
 import com.android.powermodel.component.ScreenProfile;
 import com.android.powermodel.component.VideoProfile;
 import com.android.powermodel.component.WifiProfile;
+
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.io.InputStream;
 
 /*
  * Additional tests needed:

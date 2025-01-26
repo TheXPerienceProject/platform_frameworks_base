@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.util.Log;
 
-import com.android.internal.util.Preconditions;
-
 import java.security.GeneralSecurityException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;

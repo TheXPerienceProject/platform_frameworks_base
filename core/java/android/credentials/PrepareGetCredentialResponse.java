@@ -33,7 +33,6 @@ import android.util.Log;
 
 import java.util.concurrent.Executor;
 
-
 /**
  * A response object that prefetches user app credentials and provides metadata about them. It can
  * then be used to issue the full credential retrieval flow via the

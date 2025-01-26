@@ -20,7 +20,6 @@ import android.util.Slog;
 
 import com.android.server.LocalServices;
 import com.android.server.policy.WindowManagerPolicy.WindowManagerFuncs;
-import com.android.server.policy.GlobalActionsProvider;
 
 class GlobalActions implements GlobalActionsProvider.GlobalActionsListener {
 

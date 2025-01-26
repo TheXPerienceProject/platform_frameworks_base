@@ -17,6 +17,7 @@
 package com.android.packageinstaller;
 
 import static android.content.pm.Flags.usePiaV2;
+
 import static com.android.packageinstaller.PackageUtil.getMaxTargetSdkVersionForUid;
 
 import android.Manifest;
@@ -39,8 +40,11 @@ import android.os.UserManager;
 import android.text.TextUtils;
 import android.util.EventLog;
 import android.util.Log;
+
 import androidx.annotation.Nullable;
+
 import com.android.packageinstaller.v2.ui.InstallLaunch;
+
 import java.util.Arrays;
 
 /**

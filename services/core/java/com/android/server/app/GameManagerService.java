@@ -19,8 +19,8 @@ package com.android.server.app;
 import static android.content.Intent.ACTION_PACKAGE_ADDED;
 import static android.content.Intent.ACTION_PACKAGE_REMOVED;
 import static android.content.Intent.EXTRA_REPLACING;
-import static android.server.app.Flags.gameDefaultFrameRate;
 import static android.server.app.Flags.disableGameModeWhenAppTop;
+import static android.server.app.Flags.gameDefaultFrameRate;
 
 import static com.android.internal.R.styleable.GameModeConfig_allowGameAngleDriver;
 import static com.android.internal.R.styleable.GameModeConfig_allowGameDownscaling;

@@ -15,9 +15,9 @@
  */
 package com.android.server.pm;
 
+import static android.content.UriRelativeFilter.FRAGMENT;
 import static android.content.UriRelativeFilter.PATH;
 import static android.content.UriRelativeFilter.QUERY;
-import static android.content.UriRelativeFilter.FRAGMENT;
 import static android.content.UriRelativeFilterGroup.ACTION_ALLOW;
 import static android.content.UriRelativeFilterGroup.ACTION_BLOCK;
 import static android.os.PatternMatcher.PATTERN_ADVANCED_GLOB;

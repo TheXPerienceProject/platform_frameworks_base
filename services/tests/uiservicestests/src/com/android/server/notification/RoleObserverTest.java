@@ -53,7 +53,6 @@ import android.os.UserHandle;
 import android.os.UserManager;
 import android.permission.PermissionManager;
 import android.telecom.TelecomManager;
-import android.telephony.TelephonyManager;
 import android.testing.AndroidTestingRunner;
 import android.testing.TestableLooper;
 import android.testing.TestableLooper.RunWithLooper;

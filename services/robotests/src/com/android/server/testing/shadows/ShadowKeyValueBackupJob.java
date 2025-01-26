@@ -19,7 +19,6 @@ package com.android.server.testing.shadows;
 import android.content.Context;
 import android.os.Binder;
 
-import com.android.server.backup.BackupManagerConstants;
 import com.android.server.backup.KeyValueBackupJob;
 import com.android.server.backup.UserBackupManagerService;
 

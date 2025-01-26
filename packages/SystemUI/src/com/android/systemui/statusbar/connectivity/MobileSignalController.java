@@ -17,15 +17,14 @@ package com.android.systemui.statusbar.connectivity;
 
 import static android.telephony.TelephonyManager.UNKNOWN_CARRIER_ID;
 
-import android.content.Context;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.database.ContentObserver;
 import android.net.NetworkCapabilities;
-import android.net.Uri;
 import android.os.Handler;
-import android.os.UserHandle;
 import android.os.Looper;
+import android.os.UserHandle;
 import android.provider.Settings;
 import android.provider.Settings.Global;
 import android.telephony.CellSignalStrength;

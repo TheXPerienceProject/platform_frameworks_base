@@ -16,14 +16,11 @@
 
 package com.android.internal.app;
 
-import android.content.ComponentName;
 import android.content.pm.ResolveInfo;
 
 import com.android.internal.app.chooser.TargetInfo;
 
-import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
 
 /**
  * Basic {@link ResolverComparatorModel} implementation that sorts according to a pre-defined (or

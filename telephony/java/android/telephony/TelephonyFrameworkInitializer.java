@@ -34,7 +34,6 @@ import android.telephony.satellite.SatelliteManager;
 import com.android.internal.telephony.flags.Flags;
 import com.android.internal.util.Preconditions;
 
-
 /**
  * Class for performing registration for all telephony services.
  *

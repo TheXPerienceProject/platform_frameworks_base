@@ -17,8 +17,6 @@
 package com.android.internal.view.menu;
 
 
-import com.android.internal.view.menu.MenuBuilder.ItemInvoker;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
@@ -26,6 +24,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+
+import com.android.internal.view.menu.MenuBuilder.ItemInvoker;
 
 /**
  * The expanded menu view is a list-like menu with all of the available menu items.  It is opened

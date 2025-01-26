@@ -48,7 +48,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.CountDownLatch;
 
-
 /**
  * This class is the partly implemented service for injecting Shared Connectivity networks into the
  * Wi-Fi Pickers and other relevant UI surfaces.

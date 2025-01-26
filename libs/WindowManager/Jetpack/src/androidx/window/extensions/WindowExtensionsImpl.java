@@ -43,7 +43,6 @@ import com.android.window.flags.Flags;
 
 import java.util.Objects;
 
-
 /**
  * The reference implementation of {@link WindowExtensions} that implements the latest WindowManager
  * Extensions APIs.

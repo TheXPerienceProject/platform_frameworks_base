@@ -20,10 +20,10 @@ import static android.view.SurfaceControl.JankData.JANK_APP_DEADLINE_MISSED;
 import static android.view.SurfaceControl.JankData.JANK_NONE;
 import static android.view.SurfaceControl.JankData.JANK_SURFACEFLINGER_DEADLINE_MISSED;
 
-import static com.android.internal.jank.FrameTracker.SurfaceControlWrapper;
-import static com.android.internal.jank.FrameTracker.ViewRootWrapper;
 import static com.android.internal.jank.Cuj.CUJ_NOTIFICATION_SHADE_EXPAND_COLLAPSE;
 import static com.android.internal.jank.Cuj.CUJ_WALLPAPER_TRANSITION;
+import static com.android.internal.jank.FrameTracker.SurfaceControlWrapper;
+import static com.android.internal.jank.FrameTracker.ViewRootWrapper;
 import static com.android.internal.util.FrameworkStatsLog.UI_INTERACTION_FRAME_INFO_REPORTED;
 
 import static com.google.common.truth.Truth.assertThat;

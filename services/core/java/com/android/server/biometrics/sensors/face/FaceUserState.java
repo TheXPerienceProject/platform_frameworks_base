@@ -31,7 +31,6 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
 /**
  * Class managing the set of faces per user across device reboots.
  * @hide

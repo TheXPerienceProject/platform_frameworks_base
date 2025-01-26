@@ -43,7 +43,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ScheduledExecutorService;
 
-
 class EventHistoryImpl implements EventHistory {
 
     private static final long MAX_EVENTS_AGE = 4L * DateUtils.HOUR_IN_MILLIS;

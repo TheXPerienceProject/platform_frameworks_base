@@ -28,7 +28,6 @@ import android.util.Log;
 import java.util.Collections;
 import java.util.List;
 
-
 /**
  * A helper class to extract prominent colors from an image.
  *

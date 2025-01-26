@@ -17,8 +17,8 @@
 
 package androidx.media.filterpacks.performance;
 
-import android.util.Log;
 import android.os.SystemClock;
+import android.util.Log;
 
 import androidx.media.filterfw.*;
 

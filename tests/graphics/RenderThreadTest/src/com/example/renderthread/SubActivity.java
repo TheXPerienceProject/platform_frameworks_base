@@ -18,7 +18,6 @@ package com.example.renderthread;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.Process;
 import android.os.SystemClock;
 import android.view.View;
 import android.view.ViewGroup;

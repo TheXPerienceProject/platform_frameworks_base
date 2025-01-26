@@ -18,8 +18,8 @@
 package com.android.frameworks.coretests;
 
 import android.app.Activity;
-import android.widget.TextView;
 import android.os.Bundle;
+import android.widget.TextView;
 
 public class OpenFromApkActivity extends Activity {
     @Override

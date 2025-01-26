@@ -18,7 +18,6 @@ package android.graphics.drawable;
 
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
-import android.graphics.drawable.Drawable;
 import android.graphics.Picture;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;

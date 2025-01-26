@@ -22,8 +22,8 @@ import android.service.notification.StatusBarNotification;
 import android.util.Slog;
 
 import com.android.internal.annotations.VisibleForTesting;
-import com.android.server.biometrics.sensors.BiometricNotificationUtils;
 import com.android.server.biometrics.log.BiometricFrameworkStatsLogger;
+import com.android.server.biometrics.sensors.BiometricNotificationUtils;
 
 /**
  * A class that logs metric info related to the posting/dismissal of Biometric FRR notifications.

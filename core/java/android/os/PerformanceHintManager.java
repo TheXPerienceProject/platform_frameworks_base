@@ -32,7 +32,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.ref.Reference;
 import java.util.Objects;
 
-
 /** The PerformanceHintManager allows apps to send performance hint to system. */
 @SystemService(Context.PERFORMANCE_HINT_SERVICE)
 public final class PerformanceHintManager {

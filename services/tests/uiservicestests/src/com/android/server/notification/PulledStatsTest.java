@@ -18,13 +18,11 @@ package com.android.server.notification;
 import static com.android.server.notification.NotificationManagerService.REPORT_REMOTE_VIEWS;
 
 import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNotSame;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import android.service.notification.nano.NotificationRemoteViewsProto;
-import android.test.MoreAsserts;
 import android.util.proto.ProtoOutputStream;
 
 import androidx.test.filters.SmallTest;

@@ -19,9 +19,9 @@ package android.test;
 import android.content.ContentProvider;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.test.mock.MockContext;
-import android.test.mock.MockContentResolver;
 import android.database.DatabaseUtils;
+import android.test.mock.MockContentResolver;
+import android.test.mock.MockContext;
 
 /**
  * If you would like to test a single content provider with an

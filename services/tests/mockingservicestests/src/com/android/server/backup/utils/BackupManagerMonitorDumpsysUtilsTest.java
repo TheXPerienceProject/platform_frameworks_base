@@ -18,15 +18,17 @@ package com.android.server.backup.utils;
 
 import static org.junit.Assert.assertTrue;
 import static org.testng.AssertJUnit.assertFalse;
+
 import android.app.backup.BackupAnnotations;
 import android.app.backup.BackupManagerMonitor;
 import android.os.Bundle;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
+
 import java.io.File;
-import java.io.FileWriter;
 
 public class BackupManagerMonitorDumpsysUtilsTest {
     private long mRetentionPeriod;

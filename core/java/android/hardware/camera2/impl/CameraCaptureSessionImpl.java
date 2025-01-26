@@ -15,6 +15,10 @@
  */
 package android.hardware.camera2.impl;
 
+import static android.hardware.camera2.impl.CameraDeviceImpl.checkHandler;
+
+import static com.android.internal.util.Preconditions.*;
+
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
 import android.hardware.camera2.CameraDevice;
@@ -35,9 +39,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.Executor;
-
-import static android.hardware.camera2.impl.CameraDeviceImpl.checkHandler;
-import static com.android.internal.util.Preconditions.*;
 
 public class CameraCaptureSessionImpl extends CameraCaptureSession
         implements CameraCaptureSessionCore {

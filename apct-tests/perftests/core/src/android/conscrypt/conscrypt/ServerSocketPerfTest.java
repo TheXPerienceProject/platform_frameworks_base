@@ -16,10 +16,21 @@
 
 package android.conscrypt;
 
-import org.conscrypt.ChannelType;
-import static org.conscrypt.TestUtils.getCommonProtocolSuites;
 import static org.conscrypt.TestUtils.newTextMessage;
 import static org.junit.Assert.assertEquals;
+
+import android.conscrypt.ServerEndpoint.MessageProcessor;
+import android.perftests.utils.BenchmarkState;
+import android.perftests.utils.PerfStatusReporter;
+
+import androidx.test.filters.LargeTest;
+
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
+
+import org.conscrypt.ChannelType;
+import org.junit.Rule;
+import org.junit.runner.RunWith;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -33,19 +44,6 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
-
-import android.conscrypt.ServerEndpoint.MessageProcessor;
-
-import android.perftests.utils.BenchmarkState;
-import android.perftests.utils.PerfStatusReporter;
-import androidx.test.filters.LargeTest;
-
-import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
-
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 
 /**
  * Benchmark for comparing performance of server socket implementations.

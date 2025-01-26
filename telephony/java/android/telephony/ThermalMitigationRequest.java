@@ -25,7 +25,6 @@ import android.os.Parcelable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-
 /**
  * Class stores information related to the type of data throttling request to be sent to {@link
  * TelephonyManager#sendThermalMitigationRequest(ThermalMitigationResult)}.

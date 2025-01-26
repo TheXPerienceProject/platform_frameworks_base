@@ -16,16 +16,19 @@
 
 package android.test.suitebuilder;
 
-import com.android.internal.util.Predicate;
 import static android.test.suitebuilder.ListTestCaseNames.getTestCaseNames;
+
 import android.test.suitebuilder.examples.OuterTest;
-import android.test.suitebuilder.examples.suppress.SuppressedTest;
 import android.test.suitebuilder.examples.error.ErrorTest;
 import android.test.suitebuilder.examples.error.FailingTest;
 import android.test.suitebuilder.examples.nested.Level1Test;
 import android.test.suitebuilder.examples.nested.nested.Level2Test;
 import android.test.suitebuilder.examples.simple.SimpleTest;
 import android.test.suitebuilder.examples.subclass.SubclassTest;
+import android.test.suitebuilder.examples.suppress.SuppressedTest;
+
+import com.android.internal.util.Predicate;
+
 import junit.framework.AssertionFailedError;
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -36,7 +39,6 @@ import junit.framework.TestSuite;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 
 public class TestSuiteBuilderTest extends TestCase {
 

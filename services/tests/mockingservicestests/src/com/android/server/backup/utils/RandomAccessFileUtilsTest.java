@@ -16,12 +16,12 @@
 
 package com.android.server.backup.utils;
 
+import static com.google.common.truth.Truth.assertThat;
+
 import android.platform.test.annotations.Presubmit;
 
 import androidx.test.filters.SmallTest;
 import androidx.test.runner.AndroidJUnit4;
-
-import static com.google.common.truth.Truth.assertThat;
 
 import org.junit.After;
 import org.junit.Before;

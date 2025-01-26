@@ -17,6 +17,10 @@
 
 package com.android.test.hwui;
 
+import static android.view.View.LAYER_TYPE_HARDWARE;
+import static android.view.View.LAYER_TYPE_SOFTWARE;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -27,10 +31,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-
-import static android.view.View.LAYER_TYPE_HARDWARE;
-import static android.view.View.LAYER_TYPE_SOFTWARE;
-import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 @SuppressWarnings({"UnusedDeclaration"})
 public class DisplayListLayersActivity extends Activity {

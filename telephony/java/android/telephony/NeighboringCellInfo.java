@@ -29,7 +29,6 @@ import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-
 /**
  * Represents the neighboring cell information, including
  * Received Signal Strength and Cell ID location.

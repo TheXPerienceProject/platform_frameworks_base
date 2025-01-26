@@ -26,7 +26,6 @@ import com.android.internal.telephony.RILConstants;
 
 import java.util.Locale;
 
-
 /**
  * Object to indicate the phone radio type and access technology.
  *

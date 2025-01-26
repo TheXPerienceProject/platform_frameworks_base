@@ -17,10 +17,9 @@
 package android.media.tv.tuner.frontend;
 
 import android.annotation.IntDef;
-import android.annotation.IntRange;
-import android.annotation.NonNull;
 import android.annotation.SystemApi;
 import android.media.tv.tuner.frontend.FrontendStatus.FrontendStatusType;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 

@@ -16,10 +16,6 @@
 
 package com.android.accessorydisplay.source;
 
-import com.android.accessorydisplay.common.Protocol;
-import com.android.accessorydisplay.common.Service;
-import com.android.accessorydisplay.common.Transport;
-
 import android.content.Context;
 import android.hardware.display.DisplayManager;
 import android.hardware.display.VirtualDisplay;
@@ -31,6 +27,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.Display;
 import android.view.Surface;
+
+import com.android.accessorydisplay.common.Protocol;
+import com.android.accessorydisplay.common.Service;
+import com.android.accessorydisplay.common.Transport;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;

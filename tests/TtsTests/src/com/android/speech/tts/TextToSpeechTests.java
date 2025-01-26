@@ -22,17 +22,18 @@ import android.speech.tts.TextToSpeech;
 import android.test.InstrumentationTestCase;
 
 import com.android.speech.tts.MockableTextToSpeechService.IDelegate;
+
+import junit.framework.Assert;
+
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 import org.mockito.internal.stubbing.StubberImpl;
 import org.mockito.invocation.InvocationOnMock;
+import org.mockito.quality.Strictness;
 import org.mockito.stubbing.Answer;
 import org.mockito.stubbing.Stubber;
-import org.mockito.quality.Strictness;
-import junit.framework.Assert;
 
 import java.util.Locale;
-import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 

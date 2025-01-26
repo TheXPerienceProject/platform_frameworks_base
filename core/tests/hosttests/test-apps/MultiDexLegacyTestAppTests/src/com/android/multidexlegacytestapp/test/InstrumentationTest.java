@@ -16,8 +16,10 @@
 package com.android.multidexlegacytestapp.test;
 
 import android.test.InstrumentationTestCase;
+
 import com.android.multidexlegacytestapp.manymethods.Big001;
 import com.android.multidexlegacytestapp.manymethods.Big079;
+
 import junit.framework.Assert;
 
 /**

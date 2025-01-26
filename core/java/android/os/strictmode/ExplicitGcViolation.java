@@ -15,7 +15,6 @@
  */
 package android.os.strictmode;
 
-import android.annotation.TestApi;
 
 /**
  * See #{@link android.os.StrictMode.ThreadPolicy.Builder#detectExplicitGc()}.

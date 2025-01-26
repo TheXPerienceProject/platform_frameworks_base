@@ -54,7 +54,6 @@ import android.credentials.GetCredentialException;
 import android.credentials.GetCredentialResponse;
 import android.graphics.Rect;
 import android.metrics.LogMaker;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -104,6 +103,8 @@ import com.android.internal.util.SyncResultReceiver;
 
 import org.xmlpull.v1.XmlPullParserException;
 
+import sun.misc.Cleaner;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Serializable;
@@ -118,8 +119,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
-
-import sun.misc.Cleaner;
 
 //TODO: use java.lang.ref.Cleaner once Android supports Java 9
 

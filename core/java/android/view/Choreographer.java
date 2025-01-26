@@ -16,9 +16,9 @@
 
 package android.view;
 
-import static android.view.flags.Flags.FLAG_EXPECTED_PRESENTATION_TIME_API;
 import static android.view.DisplayEventReceiver.VSYNC_SOURCE_APP;
 import static android.view.DisplayEventReceiver.VSYNC_SOURCE_SURFACE_FLINGER;
+import static android.view.flags.Flags.FLAG_EXPECTED_PRESENTATION_TIME_API;
 
 import android.annotation.FlaggedApi;
 import android.annotation.NonNull;

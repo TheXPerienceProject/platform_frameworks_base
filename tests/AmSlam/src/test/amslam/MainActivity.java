@@ -19,17 +19,13 @@ package test.amslam;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.SystemClock;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
+import android.os.SystemClock;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
-import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class MainActivity extends Activity implements PongReceiver.PingPongResponseListener {
     private static final String TAG = "AmSlam";

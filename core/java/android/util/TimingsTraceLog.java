@@ -17,7 +17,6 @@
 package android.util;
 
 import android.annotation.NonNull;
-import android.os.Build;
 import android.os.SystemClock;
 import android.os.Trace;
 

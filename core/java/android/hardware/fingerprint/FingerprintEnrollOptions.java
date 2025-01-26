@@ -18,7 +18,6 @@ package android.hardware.fingerprint;
 
 import android.os.Parcelable;
 
-
 import com.android.internal.util.DataClass;
 
 /**

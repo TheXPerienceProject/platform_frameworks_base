@@ -56,7 +56,6 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.List;
 
-
 /**
  * Tests for {@link ExternalDisplayStatsService}
  * Run: atest ExternalDisplayStatsServiceTest

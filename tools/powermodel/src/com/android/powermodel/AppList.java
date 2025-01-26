@@ -16,12 +16,12 @@
 
 package com.android.powermodel;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 
 class AppList<APP extends AppInfo> {
     private ImmutableList<APP> mAllApps;

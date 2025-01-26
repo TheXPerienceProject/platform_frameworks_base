@@ -17,12 +17,9 @@
 package android.media.permission;
 
 import android.annotation.NonNull;
-import android.annotation.Nullable;
-import android.app.ActivityThread;
 import android.content.Context;
 import android.content.PermissionChecker;
 import android.os.Binder;
-import android.os.Process;
 
 import java.util.Objects;
 

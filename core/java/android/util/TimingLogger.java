@@ -16,9 +16,9 @@
 
 package android.util;
 
-import java.util.ArrayList;
-
 import android.os.SystemClock;
+
+import java.util.ArrayList;
 
 /**
  * A utility class to help log timings splits throughout a method call.

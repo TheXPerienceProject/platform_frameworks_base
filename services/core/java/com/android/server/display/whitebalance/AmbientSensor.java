@@ -25,7 +25,6 @@ import android.hardware.SensorManager;
 import android.os.Handler;
 import android.util.Slog;
 
-import com.android.internal.util.Preconditions;
 import com.android.server.display.utils.History;
 
 import java.io.PrintWriter;

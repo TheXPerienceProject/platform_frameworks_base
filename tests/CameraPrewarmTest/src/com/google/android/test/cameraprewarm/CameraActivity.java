@@ -20,8 +20,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.google.android.test.cameraprewarm.R;
-
 public class CameraActivity extends Activity {
 
     public final static String TAG = "PrewarmTest";

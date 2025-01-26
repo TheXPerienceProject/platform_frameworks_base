@@ -16,10 +16,9 @@
 package android.conscrypt;
 
 import org.conscrypt.TestUtils;
-import java.security.Security;
+
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLEngine;
-
 
 /**
  * Factory for {@link SSLEngine} instances.

@@ -35,7 +35,6 @@ import java.io.FileDescriptor;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
 
-
 /**
  * The SoundPool class manages and plays audio resources for applications.
  *

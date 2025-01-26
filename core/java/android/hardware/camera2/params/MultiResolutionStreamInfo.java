@@ -16,8 +16,8 @@
 
 package android.hardware.camera2.params;
 
-import android.annotation.NonNull;
 import android.annotation.IntRange;
+import android.annotation.NonNull;
 
 import java.util.Objects;
 

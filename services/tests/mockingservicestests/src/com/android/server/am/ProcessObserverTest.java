@@ -31,7 +31,6 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 
 import android.app.ActivityManagerInternal;
-import android.app.IApplicationThread;
 import android.app.IProcessObserver;
 import android.app.usage.UsageStatsManagerInternal;
 import android.content.ComponentName;
@@ -64,7 +63,6 @@ import org.mockito.MockitoAnnotations;
 
 import java.io.File;
 import java.util.Arrays;
-
 
 /**
  * Tests to verify that process events are dispatched to process observers.

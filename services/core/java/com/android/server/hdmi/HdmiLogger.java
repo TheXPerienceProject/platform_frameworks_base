@@ -18,9 +18,9 @@ package com.android.server.hdmi;
 
 import android.annotation.Nullable;
 import android.os.SystemClock;
+import android.util.Log;
 import android.util.Pair;
 import android.util.Slog;
-import android.util.Log;
 
 import java.util.HashMap;
 

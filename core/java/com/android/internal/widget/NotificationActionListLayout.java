@@ -16,8 +16,8 @@
 
 package com.android.internal.widget;
 
-import static android.app.Notification.CallStyle.DEBUG_NEW_ACTION_LAYOUT;
 import static android.app.Flags.evenlyDividedCallStyleActionLayout;
+import static android.app.Notification.CallStyle.DEBUG_NEW_ACTION_LAYOUT;
 
 import android.annotation.DimenRes;
 import android.app.Notification;

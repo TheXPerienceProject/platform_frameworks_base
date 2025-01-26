@@ -164,7 +164,6 @@ import android.os.SystemProperties;
 import android.os.TelephonyServiceManager;
 import android.os.Trace;
 import android.os.UserHandle;
-import android.os.UserManager;
 import android.permission.IPermissionManager;
 import android.provider.BlockedNumberContract;
 import android.provider.CalendarContract;

@@ -15,11 +15,10 @@
  */
 package android.core;
 
-import android.test.AndroidTestCase;
-import org.apache.http.util.CharArrayBuffer;
-
 import android.net.http.Headers;
-import android.util.Log;
+import android.test.AndroidTestCase;
+
+import org.apache.http.util.CharArrayBuffer;
 
 public class HttpHeaderTest extends AndroidTestCase {
 

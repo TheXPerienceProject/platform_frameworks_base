@@ -16,16 +16,16 @@
 
 package android.net.http;
 
+import com.android.org.conscrypt.TrustManagerImpl;
+
+import junit.framework.TestCase;
+
 import java.security.KeyStore;
 import java.security.cert.X509Certificate;
 
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
-
-import junit.framework.TestCase;
-
-import com.android.org.conscrypt.TrustManagerImpl;
 
 public class X509TrustManagerExtensionsTest extends TestCase {
 

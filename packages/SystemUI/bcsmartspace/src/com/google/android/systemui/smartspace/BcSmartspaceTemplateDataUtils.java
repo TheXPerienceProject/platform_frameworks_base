@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.android.systemui.bcsmartspace.R;
 
 public final class BcSmartspaceTemplateDataUtils {

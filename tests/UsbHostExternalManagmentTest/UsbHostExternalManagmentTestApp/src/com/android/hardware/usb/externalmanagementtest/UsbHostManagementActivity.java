@@ -25,10 +25,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.hardware.usb.UsbDevice;
-import android.hardware.usb.UsbDeviceConnection;
-import android.hardware.usb.UsbInterface;
 import android.hardware.usb.UsbManager;
-import android.net.nsd.NsdManager.DiscoveryListener;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,10 +35,8 @@ import android.widget.TextView;
 
 import com.android.hardware.usb.externalmanagementtest.UsbDeviceStateController.AoapSwitchRequest;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
 
 public class UsbHostManagementActivity extends Activity
         implements UsbDeviceStateController.UsbDeviceStateListener {

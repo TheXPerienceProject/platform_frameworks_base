@@ -21,7 +21,6 @@ import static com.android.systemui.classifier.Classifier.QS_SWIPE_SIDE;
 
 import static com.google.common.truth.Truth.assertThat;
 
-
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.SmallTest;
 

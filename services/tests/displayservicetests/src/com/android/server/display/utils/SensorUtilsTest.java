@@ -32,6 +32,9 @@ import androidx.test.filters.SmallTest;
 import com.android.internal.annotations.Keep;
 import com.android.server.display.config.SensorData;
 
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,9 +43,6 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.Collections;
 import java.util.List;
-
-import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
 
 @SmallTest
 @RunWith(JUnitParamsRunner.class)

@@ -15,12 +15,13 @@
  */
 package android.hardware.camera2.marshal;
 
+import static android.hardware.camera2.marshal.MarshalHelpers.*;
+
+import static com.android.internal.util.Preconditions.*;
+
 import android.hardware.camera2.utils.TypeReference;
 
 import java.nio.ByteBuffer;
-
-import static android.hardware.camera2.marshal.MarshalHelpers.*;
-import static com.android.internal.util.Preconditions.*;
 
 /**
  * Base class to marshal data to/from managed/native metadata byte buffers.

@@ -16,11 +16,12 @@
 
 package android.graphics;
 
-import com.android.graphics.flags.Flags;
-
 import android.annotation.FlaggedApi;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+
+import com.android.graphics.flags.Flags;
+
 import java.io.OutputStream;
 
 /**

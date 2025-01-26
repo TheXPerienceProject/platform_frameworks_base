@@ -21,7 +21,6 @@ import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-
 /** Class for UCE status codes.
  *  @hide */
 public class StatusCode implements Parcelable {

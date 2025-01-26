@@ -16,8 +16,8 @@
 
 package android.surfaceflinger;
 
-import static android.server.wm.CtsWindowInfoUtils.waitForWindowOnTop;
 import static android.provider.Settings.Secure.IMMERSIVE_MODE_CONFIRMATIONS;
+import static android.server.wm.CtsWindowInfoUtils.waitForWindowOnTop;
 
 import android.app.Instrumentation;
 import android.content.ContentResolver;

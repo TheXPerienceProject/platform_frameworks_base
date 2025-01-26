@@ -29,7 +29,6 @@ import static android.service.notification.SystemZenRules.PACKAGE_ANDROID;
 import static android.service.notification.ZenAdapters.peopleTypeToPrioritySenders;
 import static android.service.notification.ZenAdapters.prioritySendersToPeopleType;
 import static android.service.notification.ZenAdapters.zenPolicyConversationSendersToNotificationPolicy;
-import static android.service.notification.ZenModeConfig.EventInfo.REPLY_YES_OR_MAYBE;
 import static android.service.notification.ZenPolicy.PEOPLE_TYPE_STARRED;
 import static android.service.notification.ZenPolicy.PRIORITY_CATEGORY_ALARMS;
 import static android.service.notification.ZenPolicy.PRIORITY_CATEGORY_CALLS;

@@ -28,7 +28,6 @@ import android.content.om.OverlayIdentifier;
 import android.content.om.OverlayInfo;
 import android.content.om.OverlayManager;
 import android.content.om.OverlayManagerTransaction;
-import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.UserHandle;
 

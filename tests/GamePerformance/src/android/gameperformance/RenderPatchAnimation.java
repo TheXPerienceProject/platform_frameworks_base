@@ -15,10 +15,10 @@
  */
 package android.gameperformance;
 
-import java.util.Random;
-
 import android.annotation.NonNull;
 import android.opengl.Matrix;
+
+import java.util.Random;
 
 /**
  * Class that performs bouncing animation for RenderPatch on the screen.

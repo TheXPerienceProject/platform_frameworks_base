@@ -23,7 +23,6 @@ import android.test.AndroidTestCase;
 import android.util.Pair;
 import android.util.Xml;
 
-import com.android.internal.util.FastXmlSerializer;
 import com.android.modules.utils.TypedXmlSerializer;
 
 import org.junit.Before;

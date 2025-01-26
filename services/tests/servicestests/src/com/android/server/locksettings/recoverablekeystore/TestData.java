@@ -16,19 +16,15 @@
 
 package com.android.server.locksettings.recoverablekeystore;
 
-import static com.google.common.truth.Truth.assertThat;
 
-import com.android.server.locksettings.recoverablekeystore.certificate.CertUtils;
 
 import java.io.ByteArrayInputStream;
-import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.KeyFactory;
 import java.security.PrivateKey;
 import java.security.PublicKey;
-import java.security.cert.CertificateFactory;
 import java.security.cert.CertPath;
-import java.security.spec.ECPrivateKeySpec;
+import java.security.cert.CertificateFactory;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.Base64;
 

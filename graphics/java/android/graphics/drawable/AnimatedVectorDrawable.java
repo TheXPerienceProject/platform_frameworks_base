@@ -67,7 +67,6 @@ import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
-
 /**
  * This class animates properties of a {@link android.graphics.drawable.VectorDrawable} with
  * animations defined using {@link android.animation.ObjectAnimator} or

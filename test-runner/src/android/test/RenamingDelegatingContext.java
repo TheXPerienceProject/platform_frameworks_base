@@ -16,9 +16,9 @@
 
 package android.test;
 
+import android.content.ContentProvider;
 import android.content.Context;
 import android.content.ContextWrapper;
-import android.content.ContentProvider;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.test.mock.MockContentProvider;
@@ -30,9 +30,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.nio.file.attribute.PosixFilePermission;
-import java.nio.file.attribute.PosixFilePermissions;
 import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.Set;

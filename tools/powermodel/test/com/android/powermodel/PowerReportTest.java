@@ -16,15 +16,14 @@
 
 package com.android.powermodel;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import org.junit.Test;
-import org.junit.Assert;
-
 import com.android.powermodel.component.ModemAppPower;
 import com.android.powermodel.component.ModemRemainderPower;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.io.InputStream;
+import java.util.List;
 
 /**
  * Tests {@link PowerReport}.

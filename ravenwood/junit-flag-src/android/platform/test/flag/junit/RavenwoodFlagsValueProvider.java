@@ -16,8 +16,6 @@
 
 package android.platform.test.flag.junit;
 
-import android.platform.test.flag.junit.CheckFlagsRule;
-import android.platform.test.flag.junit.IFlagsValueProvider;
 
 /**
  * Offer to create {@link CheckFlagsRule} instances that are useful on the Ravenwood deviceless

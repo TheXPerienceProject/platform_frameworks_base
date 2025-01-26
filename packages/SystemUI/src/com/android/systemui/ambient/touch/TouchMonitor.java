@@ -67,7 +67,6 @@ import java.util.stream.Collectors;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-
 /**
  * {@link TouchMonitor} is responsible for monitoring touches and gestures over the
  * dream overlay and redirecting them to a set of listeners. This monitor is in charge of figuring

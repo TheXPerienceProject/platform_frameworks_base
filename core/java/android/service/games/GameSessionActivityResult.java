@@ -24,7 +24,6 @@ import android.os.Parcelable;
 
 import com.android.internal.annotations.VisibleForTesting;
 
-
 /** @hide */
 @VisibleForTesting
 public final class GameSessionActivityResult implements Parcelable {

@@ -20,9 +20,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.TypedValue;
-import android.view.accessibility.AccessibilityEvent;
 import android.view.KeyEvent;
+import android.view.accessibility.AccessibilityEvent;
 import android.widget.ListView;
+
 import com.android.internal.app.AlertController;
 
 /** A dialog that lists the given Action items to be user selectable. */

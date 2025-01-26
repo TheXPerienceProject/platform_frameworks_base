@@ -19,10 +19,10 @@ package android.app.activity;
 import static android.content.ComponentCallbacks2.TRIM_MEMORY_BACKGROUND;
 import static android.content.Context.OVERRIDABLE_COMPONENT_CALLBACKS;
 
+import static libcore.junit.util.compat.CoreCompatChangeRule.DisableCompatChanges;
+
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assertWithMessage;
-
-import static libcore.junit.util.compat.CoreCompatChangeRule.DisableCompatChanges;
 
 import android.app.Activity;
 import android.app.WindowConfiguration;

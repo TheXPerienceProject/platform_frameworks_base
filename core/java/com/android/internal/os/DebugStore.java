@@ -27,7 +27,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-
 /**
  * The DebugStore class provides methods for recording various debug events related to service
  * lifecycle, broadcast receivers and others.

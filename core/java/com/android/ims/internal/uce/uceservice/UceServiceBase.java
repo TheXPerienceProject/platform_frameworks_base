@@ -16,14 +16,13 @@
 
 package com.android.ims.internal.uce;
 
-import com.android.ims.internal.uce.uceservice.IUceService;
-import com.android.ims.internal.uce.uceservice.IUceListener;
-import com.android.ims.internal.uce.common.StatusCode;
 import com.android.ims.internal.uce.common.UceLong;
 import com.android.ims.internal.uce.options.IOptionsListener;
 import com.android.ims.internal.uce.options.IOptionsService;
-import com.android.ims.internal.uce.presence.IPresenceService;
 import com.android.ims.internal.uce.presence.IPresenceListener;
+import com.android.ims.internal.uce.presence.IPresenceService;
+import com.android.ims.internal.uce.uceservice.IUceListener;
+import com.android.ims.internal.uce.uceservice.IUceService;
 
 /**
  * Sub IUceService interface. To enable forward compatability

@@ -19,10 +19,10 @@ package com.android.commands.uinput;
 import android.annotation.Nullable;
 import android.util.SparseArray;
 
+import src.com.android.commands.uinput.InputAbsInfo;
+
 import java.util.Arrays;
 import java.util.Objects;
-
-import src.com.android.commands.uinput.InputAbsInfo;
 
 /**
  * An event is a JSON file defined action event to instruct uinput to perform a command like

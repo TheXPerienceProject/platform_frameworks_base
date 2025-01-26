@@ -18,12 +18,7 @@ package android.media;
 
 import android.annotation.NonNull;
 import android.annotation.SystemApi;
-import android.media.VolumeShaper;
 import android.os.RemoteException;
-import android.util.Log;
-
-import java.lang.IllegalArgumentException;
-import java.util.Objects;
 
 /**
  * Class to remotely control a player.

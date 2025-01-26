@@ -24,7 +24,6 @@ import android.view.WindowManager;
 
 import com.android.internal.R;
 
-
 public class NASLearnMoreActivity extends Activity {
 
     @Override

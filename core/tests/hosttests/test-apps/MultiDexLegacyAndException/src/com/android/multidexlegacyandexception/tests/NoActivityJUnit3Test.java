@@ -16,6 +16,7 @@
 package com.android.multidexlegacyandexception.tests;
 
 import android.test.InstrumentationTestCase;
+
 import com.android.multidexlegacyandexception.CaughtOnlyByIntermediateException;
 import com.android.multidexlegacyandexception.CaughtOnlyException;
 import com.android.multidexlegacyandexception.ExceptionInMainDex;
@@ -28,6 +29,7 @@ import com.android.multidexlegacyandexception.MiniIntermediateClass;
 import com.android.multidexlegacyandexception.SuperExceptionInMainDex;
 import com.android.multidexlegacyandexception.SuperExceptionInSecondaryDex;
 import com.android.multidexlegacyandexception.TestApplication;
+
 import junit.framework.Assert;
 
 /**

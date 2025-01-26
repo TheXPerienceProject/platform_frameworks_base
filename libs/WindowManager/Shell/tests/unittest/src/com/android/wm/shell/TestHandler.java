@@ -20,7 +20,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 
-
 /**
  * Basic test handler that immediately executes anything that is posted on it.
  */

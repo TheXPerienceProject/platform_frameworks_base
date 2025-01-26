@@ -26,7 +26,6 @@ import android.os.Parcelable;
 
 import java.util.Objects;
 
-
 /**
  * A data class representing the shared connectivity settings state.
  *

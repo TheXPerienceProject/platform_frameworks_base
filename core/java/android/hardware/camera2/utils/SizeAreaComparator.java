@@ -16,13 +16,13 @@
 
 package android.hardware.camera2.utils;
 
+import static com.android.internal.util.Preconditions.*;
+
 import android.util.Size;
 
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import static com.android.internal.util.Preconditions.*;
 
 /**
  * Comparator for {@link Size} objects by the area.

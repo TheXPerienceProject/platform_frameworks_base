@@ -23,8 +23,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.android.packageinstaller.R;
-
 /**
  * An extension of LinearLayout that automatically switches to vertical
  * orientation when it can't fit its child views horizontally.

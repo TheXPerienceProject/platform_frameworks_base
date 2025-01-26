@@ -63,6 +63,9 @@ import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.security.VerityUtils;
 import com.android.server.pm.pkg.AndroidPackage;
 
+import sun.security.pkcs.PKCS7;
+import sun.security.pkcs.SignerInfo;
+
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -89,9 +92,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import sun.security.pkcs.PKCS7;
-import sun.security.pkcs.SignerInfo;
 
 /**
  * Provides checksums for APK.

@@ -16,7 +16,6 @@
 
 package com.android.internal.xpe.app;
 
-import android.annotation.SdkConstant;
 
 /**
  * @hide

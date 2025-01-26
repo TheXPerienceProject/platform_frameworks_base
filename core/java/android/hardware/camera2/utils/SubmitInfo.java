@@ -15,9 +15,9 @@
  */
 package android.hardware.camera2.utils;
 
+import android.hardware.camera2.ICameraDeviceUser;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.hardware.camera2.ICameraDeviceUser;
 
 /**
  * The status information returned for a successful capture request submission.

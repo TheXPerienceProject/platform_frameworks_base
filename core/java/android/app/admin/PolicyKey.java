@@ -22,10 +22,10 @@ import android.annotation.SuppressLint;
 import android.annotation.SystemApi;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 
 import com.android.modules.utils.TypedXmlPullParser;
 import com.android.modules.utils.TypedXmlSerializer;
-import android.util.Log;
 
 import org.xmlpull.v1.XmlPullParserException;
 

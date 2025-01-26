@@ -24,6 +24,7 @@ import android.util.Log;
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
+
 import org.junit.Test;
 import org.junit.runner.Description;
 import org.junit.runner.JUnitCore;
@@ -39,7 +40,6 @@ import java.lang.annotation.Target;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.function.BiConsumer;
-
 
 /**
  * Base class for tests to make sure {@link RavenwoodAwareTestRunner} produces expected callbacks

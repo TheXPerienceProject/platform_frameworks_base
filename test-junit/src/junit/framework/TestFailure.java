@@ -3,7 +3,6 @@ package junit.framework;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-
 /**
  * A <code>TestFailure</code> collects a failed test together with
  * the caught exception.

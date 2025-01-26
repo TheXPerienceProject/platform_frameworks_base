@@ -16,8 +16,9 @@
 package com.android.test.uibench;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.webkit.WebView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ScrollableWebViewActivity extends AppCompatActivity {
     static String sHtml = "<body style=\"height:10000px;"

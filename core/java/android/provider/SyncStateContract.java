@@ -16,13 +16,13 @@
 
 package android.provider;
 
-import android.net.Uri;
+import android.accounts.Account;
 import android.content.ContentProviderClient;
-import android.content.ContentValues;
 import android.content.ContentProviderOperation;
 import android.content.ContentUris;
-import android.accounts.Account;
+import android.content.ContentValues;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.RemoteException;
 import android.util.Pair;
 

@@ -18,8 +18,8 @@ package android.widget.focus;
 
 import android.graphics.Rect;
 import android.test.InstrumentationTestCase;
-import android.widget.InternalSelectionView;
 import android.view.KeyEvent;
+import android.widget.InternalSelectionView;
 import android.widget.ListView;
 
 import androidx.test.filters.LargeTest;

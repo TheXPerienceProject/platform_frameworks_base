@@ -85,7 +85,6 @@ import android.content.Intent;
 import android.content.PermissionChecker;
 import android.content.pm.IPackageManager;
 import android.content.pm.PackageManager;
-import android.content.pm.PackagePartitions;
 import android.content.pm.UserInfo;
 import android.content.pm.UserProperties;
 import android.os.BatteryStats;

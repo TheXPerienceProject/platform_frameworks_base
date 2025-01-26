@@ -18,8 +18,8 @@ package com.android.server.backup;
 
 import android.annotation.NonNull;
 import android.annotation.UserIdInt;
-import android.app.backup.BackupRestoreEventLogger.BackupRestoreError;
 import android.app.backup.BackupRestoreEventLogger.BackupRestoreDataType;
+import android.app.backup.BackupRestoreEventLogger.BackupRestoreError;
 import android.app.backup.BlobBackupHelper;
 import android.util.Slog;
 

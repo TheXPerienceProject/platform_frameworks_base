@@ -18,7 +18,6 @@ package com.android.internal.util.function;
 
 import java.util.function.Consumer;
 
-
 /**
  * A 12-argument {@link Consumer}
  *

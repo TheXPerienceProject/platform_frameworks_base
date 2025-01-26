@@ -20,12 +20,12 @@ import android.os.Build;
 import android.os.Parcel;
 import android.util.EventLog;
 import android.util.Slog;
+
+import com.android.internal.util.GrowingArrayUtils;
+
 import libcore.util.EmptyArray;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-
-import com.android.internal.util.GrowingArrayUtils;
 
 /**
  * Class that contains a set of tables mapping byte ids to long values.

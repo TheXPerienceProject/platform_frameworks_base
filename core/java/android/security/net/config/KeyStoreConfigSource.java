@@ -17,8 +17,8 @@
 package android.security.net.config;
 
 import android.util.Pair;
+
 import java.security.KeyStore;
-import java.security.KeyStoreException;
 import java.util.Set;
 
 /**

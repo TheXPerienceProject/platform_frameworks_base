@@ -29,8 +29,8 @@ import static com.android.server.hdmi.HdmiControlService.INITIATED_BY_WAKE_UP_ME
 import static com.android.server.hdmi.HdmiControlService.STANDBY_SCREEN_OFF;
 import static com.android.server.hdmi.HdmiControlService.WAKE_UP_SCREEN_ON;
 import static com.android.server.hdmi.RequestActiveSourceAction.TIMEOUT_WAIT_FOR_LAUNCHERX_API_CALL_MS;
-import static com.android.server.hdmi.RoutingControlAction.TIMEOUT_ROUTING_INFORMATION_MS;
 import static com.android.server.hdmi.RequestSadAction.RETRY_COUNTER_MAX;
+import static com.android.server.hdmi.RoutingControlAction.TIMEOUT_ROUTING_INFORMATION_MS;
 
 import static com.google.common.truth.Truth.assertThat;
 

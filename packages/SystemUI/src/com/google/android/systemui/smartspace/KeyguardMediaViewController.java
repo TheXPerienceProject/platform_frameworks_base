@@ -17,10 +17,10 @@ import com.android.systemui.settings.UserTracker;
 import com.android.systemui.statusbar.NotificationMediaManager;
 import com.android.systemui.util.concurrency.DelayableExecutor;
 
-import javax.inject.Inject;
-
 import kotlin.Unit;
 import kotlin.jvm.internal.Intrinsics;
+
+import javax.inject.Inject;
 
 /* compiled from: KeyguardMediaViewController.kt */
 @SysUISingleton

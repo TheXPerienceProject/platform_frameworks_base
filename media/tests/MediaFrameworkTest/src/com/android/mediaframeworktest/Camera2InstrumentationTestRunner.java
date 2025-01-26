@@ -16,15 +16,15 @@
 
 package com.android.mediaframeworktest;
 
+import android.test.InstrumentationTestRunner;
+import android.test.InstrumentationTestSuite;
+
 import com.android.mediaframeworktest.stress.Camera2CaptureRequestTest;
 import com.android.mediaframeworktest.stress.Camera2RecordingTest;
 import com.android.mediaframeworktest.stress.Camera2ReprocessCaptureTest;
 import com.android.mediaframeworktest.stress.Camera2StillCaptureTest;
 
 import junit.framework.TestSuite;
-
-import android.test.InstrumentationTestRunner;
-import android.test.InstrumentationTestSuite;
 
 /**
  * This is Camera2 framework test runner to execute the specified test classes if no target class

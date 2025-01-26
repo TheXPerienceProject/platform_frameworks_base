@@ -45,7 +45,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.Objects;
 
-
 /**
  * An encapsulation of various parameters for requesting location via {@link LocationManager}.
  */

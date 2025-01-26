@@ -39,11 +39,11 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 
+import libcore.io.Streams;
+
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
-
-import libcore.io.Streams;
 
 import java.io.File;
 import java.io.FileOutputStream;

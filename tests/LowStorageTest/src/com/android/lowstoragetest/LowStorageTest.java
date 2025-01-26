@@ -18,18 +18,17 @@ package com.android.lowstoragetest;
 
 import android.app.Activity;
 import android.content.Context;
-
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StatFs;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+
 import java.io.File;
 import java.io.FileOutputStream;
-import android.widget.TextView;
-import android.widget.Button;
 
 public class LowStorageTest extends Activity {
     static final String TAG = "DiskFullTest";

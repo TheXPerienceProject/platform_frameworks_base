@@ -35,7 +35,6 @@ import android.widget.RemoteViews.RemoteView;
 
 import com.android.internal.R;
 
-
 /**
  * <p>This class is used to create a multiple-exclusion scope for a set of radio
  * buttons. Checking one radio button that belongs to a radio group unchecks

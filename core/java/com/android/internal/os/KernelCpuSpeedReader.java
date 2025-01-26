@@ -15,10 +15,10 @@
  */
 package com.android.internal.os;
 
-import android.system.Os;
-import android.text.TextUtils;
 import android.os.StrictMode;
+import android.system.Os;
 import android.system.OsConstants;
+import android.text.TextUtils;
 import android.util.Slog;
 
 import java.io.BufferedReader;

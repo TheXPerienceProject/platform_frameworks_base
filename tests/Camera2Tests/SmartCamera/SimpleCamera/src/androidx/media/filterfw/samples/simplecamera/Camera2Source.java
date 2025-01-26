@@ -20,13 +20,12 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.ImageFormat;
 import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraCaptureSession;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraDevice;
-import android.hardware.camera2.CameraCaptureSession;
 import android.hardware.camera2.CameraManager;
 import android.hardware.camera2.CaptureFailure;
 import android.hardware.camera2.CaptureRequest;
-import android.hardware.camera2.CaptureResult;
 import android.hardware.camera2.TotalCaptureResult;
 import android.os.Handler;
 import android.renderscript.Allocation;
@@ -36,9 +35,7 @@ import android.renderscript.ScriptIntrinsicYuvToRGB;
 import android.renderscript.Type;
 import android.util.Log;
 import android.view.Surface;
-import com.android.ex.camera2.blocking.BlockingCameraManager;
-import com.android.ex.camera2.blocking.BlockingCameraManager.BlockingOpenException;
-import com.android.ex.camera2.blocking.BlockingSessionCallback;
+
 import androidx.media.filterfw.Filter;
 import androidx.media.filterfw.Frame;
 import androidx.media.filterfw.FrameImage2D;
@@ -47,6 +44,10 @@ import androidx.media.filterfw.FrameValue;
 import androidx.media.filterfw.MffContext;
 import androidx.media.filterfw.OutputPort;
 import androidx.media.filterfw.Signature;
+
+import com.android.ex.camera2.blocking.BlockingCameraManager;
+import com.android.ex.camera2.blocking.BlockingCameraManager.BlockingOpenException;
+import com.android.ex.camera2.blocking.BlockingSessionCallback;
 
 import java.util.ArrayList;
 import java.util.List;

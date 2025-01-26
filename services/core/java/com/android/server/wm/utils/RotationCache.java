@@ -18,8 +18,6 @@ package com.android.server.wm.utils;
 
 import android.util.SparseArray;
 
-import java.util.Arrays;
-
 /**
  * Caches the result of a rotation-dependent computation.
  *

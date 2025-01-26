@@ -27,8 +27,10 @@ import androidx.annotation.Nullable;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
-import java.util.Arrays;
 import com.android.settingslib.widget.preference.barchart.R;
+
+import java.util.Arrays;
+
 /**
  * This BarChartPreference shows up to four bar views in this preference at most.
  *

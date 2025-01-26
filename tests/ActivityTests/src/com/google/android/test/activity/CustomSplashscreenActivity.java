@@ -18,7 +18,6 @@ package com.google.android.test.activity;
 
 import android.annotation.Nullable;
 import android.app.Activity;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.SystemClock;
 

@@ -28,7 +28,6 @@ import android.util.ArraySet;
 
 import java.util.Map;
 
-
 /**
  * State for an app for a specific user, such as installed/enabled.
  *

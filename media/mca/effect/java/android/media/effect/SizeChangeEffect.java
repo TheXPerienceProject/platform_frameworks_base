@@ -17,7 +17,6 @@
 package android.media.effect;
 
 import android.filterfw.core.Frame;
-import android.media.effect.EffectContext;
 
 /**
  * Effect subclass for effects based on a single Filter with output size differnet

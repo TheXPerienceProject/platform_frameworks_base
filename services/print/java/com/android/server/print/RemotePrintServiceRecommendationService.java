@@ -16,6 +16,10 @@
 
 package com.android.server.print;
 
+import static android.content.pm.PackageManager.GET_META_DATA;
+import static android.content.pm.PackageManager.GET_SERVICES;
+import static android.content.pm.PackageManager.MATCH_DEBUG_TRIAGED_MISSING;
+
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.content.ComponentName;
@@ -31,14 +35,11 @@ import android.printservice.recommendation.IRecommendationService;
 import android.printservice.recommendation.IRecommendationServiceCallbacks;
 import android.printservice.recommendation.RecommendationInfo;
 import android.util.Log;
+
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.util.Preconditions;
 
 import java.util.List;
-
-import static android.content.pm.PackageManager.GET_META_DATA;
-import static android.content.pm.PackageManager.GET_SERVICES;
-import static android.content.pm.PackageManager.MATCH_DEBUG_TRIAGED_MISSING;
 
 /**
  * Connection to a remote print service recommendation service.

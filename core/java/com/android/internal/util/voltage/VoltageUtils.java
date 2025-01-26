@@ -18,16 +18,16 @@ package com.android.internal.util.voltage;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.res.Resources;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
-import android.hardware.input.InputManager;
 import android.hardware.fingerprint.FingerprintManager;
+import android.hardware.input.InputManager;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
@@ -35,7 +35,6 @@ import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.RemoteException;
-import android.graphics.Color;
 import android.os.ServiceManager;
 import android.os.SystemClock;
 import android.telephony.TelephonyManager;
@@ -44,10 +43,8 @@ import android.view.InputDevice;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 
-import com.android.internal.R;
 import com.android.internal.statusbar.IStatusBarService;
 
-import java.util.List;
 import java.util.Locale;
 
 public class VoltageUtils {

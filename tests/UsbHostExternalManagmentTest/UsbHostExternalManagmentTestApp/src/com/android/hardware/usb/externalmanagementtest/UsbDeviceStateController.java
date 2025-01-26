@@ -28,9 +28,9 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
-import java.util.LinkedList;
-
 import dalvik.system.CloseGuard;
+
+import java.util.LinkedList;
 
 public class UsbDeviceStateController {
 

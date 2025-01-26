@@ -15,11 +15,8 @@
  */
 package com.android.framework.externallocallpermstestapp;
 
-import android.app.Activity;
-import android.os.Bundle;
 
 import junit.framework.TestCase;
-
 
 public class ExternalLocAllPermsTest extends TestCase {
     /**

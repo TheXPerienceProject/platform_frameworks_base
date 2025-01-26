@@ -16,12 +16,13 @@
 
 package com.android.powermodel;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import org.junit.Assert;
-import org.junit.Test;
 
 /**
  * Tests {@link PowerProfile}

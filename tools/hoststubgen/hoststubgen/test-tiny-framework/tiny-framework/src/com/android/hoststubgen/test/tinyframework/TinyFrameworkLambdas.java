@@ -20,7 +20,6 @@ import android.hosttest.annotation.HostSideTestStaticInitializerKeep;
 
 import java.util.function.Supplier;
 
-
 /**
  * In this class, we explicitly mark each member as "stub". (rather than using WholeClassStub)
  *

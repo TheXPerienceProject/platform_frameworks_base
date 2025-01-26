@@ -49,7 +49,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManagerInternal;
 import android.content.pm.ResolveInfo;
-import android.content.pm.UserProperties;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;

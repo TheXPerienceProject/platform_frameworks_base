@@ -16,6 +16,8 @@
 
 package com.android.internal.os;
 
+import com.android.internal.annotations.VisibleForTesting;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
@@ -27,8 +29,6 @@ import java.nio.charset.CoderResult;
 import java.nio.charset.CodingErrorAction;
 import java.util.Formatter;
 import java.util.Locale;
-
-import com.android.internal.annotations.VisibleForTesting;
 
 /**
  * A print stream which logs output line by line.

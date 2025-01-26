@@ -18,12 +18,12 @@ package com.android.ims.internal.uce.common;
 
 import android.compat.annotation.UnsupportedAppUsage;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Bundle;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
 /** Class for capability discovery information.
  *  @hide */

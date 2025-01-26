@@ -21,7 +21,6 @@ import android.test.InstrumentationTestSuite;
 
 import junit.framework.TestSuite;
 
-
 /**
  * Instrumentation Test Runner for all browser power tests.
  *

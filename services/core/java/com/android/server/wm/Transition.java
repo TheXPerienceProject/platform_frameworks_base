@@ -113,8 +113,8 @@ import com.android.internal.policy.TransitionAnimation;
 import com.android.internal.protolog.ProtoLog;
 import com.android.internal.protolog.ProtoLogGroup;
 import com.android.internal.util.function.pooled.PooledLambda;
-import com.android.server.inputmethod.InputMethodManagerInternal;
 import com.android.server.LocalServices;
+import com.android.server.inputmethod.InputMethodManagerInternal;
 import com.android.server.statusbar.StatusBarManagerInternal;
 import com.android.window.flags.Flags;
 

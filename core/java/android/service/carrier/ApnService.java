@@ -26,8 +26,6 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 
-import android.service.carrier.IApnSourceService;
-
 import java.util.List;
 
 /**

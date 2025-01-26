@@ -22,7 +22,6 @@ import android.content.Intent;
 import android.os.UserHandle;
 import android.os.image.DynamicSystemClient;
 
-
 /**
  * A BoardcastReceiver waiting for ACTION_BOOT_COMPLETED and ask
  * the service to display a notification if we are currently running

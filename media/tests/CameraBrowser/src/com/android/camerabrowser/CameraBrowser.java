@@ -17,7 +17,6 @@
 package com.android.camerabrowser;
 
 import android.app.ListActivity;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.mtp.MtpDevice;
@@ -34,7 +33,7 @@ import android.widget.TwoLineListItem;
 
 import java.util.List;
 
- /**
+/**
  * A list view displaying all connected cameras.
  */
 public class CameraBrowser extends ListActivity implements MtpClient.Listener {

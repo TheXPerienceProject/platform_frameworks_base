@@ -20,8 +20,8 @@ import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.TestApi;
 import android.compat.annotation.UnsupportedAppUsage;
-import android.os.Build;
 import android.os.BadParcelableException;
+import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 

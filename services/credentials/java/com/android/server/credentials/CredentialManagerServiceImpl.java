@@ -34,7 +34,6 @@ import com.android.server.infra.AbstractPerUserSystemService;
 import java.util.List;
 import java.util.Set;
 
-
 /**
  * Per-user, per remote service implementation of {@link CredentialManagerService}
  */

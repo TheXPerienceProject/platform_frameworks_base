@@ -18,7 +18,6 @@ package com.android.benchmark.ui.automation;
 
 import androidx.annotation.IntDef;
 
-import java.io.DataInput;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.util.Arrays;

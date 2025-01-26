@@ -16,44 +16,40 @@
 
 package com.android.server.storage;
 
-import android.app.usage.StorageStats;
-import android.app.usage.StorageStatsManager;
-import android.content.pm.UserInfo;
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.IPackageStatsObserver;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageStats;
-import android.os.UserHandle;
-import android.os.UserManager;
-import android.os.storage.VolumeInfo;
-import android.test.AndroidTestCase;
-import android.util.ArrayMap;
-import android.util.Log;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
-
 import static com.google.common.truth.Truth.assertThat;
+
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.when;
+
+import android.app.usage.StorageStats;
+import android.app.usage.StorageStatsManager;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageStats;
+import android.content.pm.UserInfo;
+import android.os.UserHandle;
+import android.os.UserManager;
+import android.os.storage.VolumeInfo;
+import android.test.AndroidTestCase;
+import android.util.ArrayMap;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.invocation.InvocationOnMock;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @RunWith(JUnit4.class)
 public class AppCollectorTest extends AndroidTestCase {

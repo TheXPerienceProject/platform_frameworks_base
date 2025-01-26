@@ -16,8 +16,8 @@
 
 package com.android.server;
 
-import static android.app.Flags.modesApi;
 import static android.app.Flags.enableNightModeBinderCache;
+import static android.app.Flags.modesApi;
 import static android.app.UiModeManager.ContrastUtils.CONTRAST_DEFAULT_VALUE;
 import static android.app.UiModeManager.DEFAULT_PRIORITY;
 import static android.app.UiModeManager.MODE_ATTENTION_THEME_OVERLAY_OFF;

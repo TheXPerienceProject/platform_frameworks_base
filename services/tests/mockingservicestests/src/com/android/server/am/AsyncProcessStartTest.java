@@ -32,7 +32,6 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 
 import android.app.ActivityManagerInternal;
-import android.app.IApplicationThread;
 import android.app.usage.UsageStatsManagerInternal;
 import android.content.ComponentName;
 import android.content.Context;
@@ -64,7 +63,6 @@ import org.mockito.MockitoAnnotations;
 
 import java.io.File;
 import java.util.Arrays;
-
 
 /**
  * Tests to verify process starts are completed or timeout correctly

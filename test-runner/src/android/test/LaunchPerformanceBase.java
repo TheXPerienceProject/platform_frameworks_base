@@ -20,7 +20,6 @@ import android.app.Instrumentation;
 import android.content.Intent;
 import android.os.Bundle;
 
-
 /**
  * Base class for all launch performance Instrumentation classes.
  */

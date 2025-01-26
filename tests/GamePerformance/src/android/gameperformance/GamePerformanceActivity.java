@@ -15,14 +15,14 @@
  */
 package android.gameperformance;
 
-import java.util.concurrent.CountDownLatch;
-
 import android.app.Activity;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
+
+import java.util.concurrent.CountDownLatch;
 
 /**
  * Minimal activity that holds different types of views.

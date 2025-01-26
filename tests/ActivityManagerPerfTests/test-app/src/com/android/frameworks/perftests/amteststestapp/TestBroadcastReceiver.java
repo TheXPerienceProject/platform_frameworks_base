@@ -19,7 +19,6 @@ package com.android.frameworks.perftests.amteststestapp;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import com.android.frameworks.perftests.am.util.Constants;
 import com.android.frameworks.perftests.am.util.Utils;

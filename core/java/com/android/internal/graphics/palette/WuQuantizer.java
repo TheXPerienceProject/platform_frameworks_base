@@ -27,7 +27,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-
 /**
  * Wu's quantization algorithm is a box-cut quantizer that minimizes variance. It takes longer to
  * run than, say, median color cut, but provides the highest quality results currently known.

@@ -16,11 +16,10 @@
 
 package com.android.powermodel;
 
-import java.util.HashMap;
-
-import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
+
+import java.util.HashMap;
 
 public class AppActivity extends AppInfo {
 

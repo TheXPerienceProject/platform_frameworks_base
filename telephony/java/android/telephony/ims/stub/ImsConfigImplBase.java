@@ -49,7 +49,6 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Supplier;
 
-
 /**
  * Controls the modification of IMS specific configurations. For more information on the supported
  * IMS configuration constants, see {@link ImsConfig}.

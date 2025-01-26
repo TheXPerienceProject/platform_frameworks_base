@@ -30,7 +30,6 @@ import androidx.annotation.Nullable;
 
 import com.android.settingslib.RestrictedLockUtils;
 
-
 final class SupervisedDeviceActionDisabledByAdminController
         extends BaseActionDisabledByAdminController {
     private static final String TAG = "SupervisedDeviceActionDisabledByAdminController";

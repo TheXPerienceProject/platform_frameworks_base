@@ -22,7 +22,6 @@ import android.compat.annotation.UnsupportedAppUsage;
 
 import java.text.BreakIterator;
 
-
 /**
  * Utility class for manipulating cursors and selections in CharSequences.
  * A cursor is a selection where the start and end are at the same offset.

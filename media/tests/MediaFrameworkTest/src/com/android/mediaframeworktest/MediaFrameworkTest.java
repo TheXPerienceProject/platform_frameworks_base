@@ -20,34 +20,19 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
-import android.graphics.Color;
+import android.graphics.Bitmap;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.PowerManager;
-import android.provider.Downloads;
 import android.util.Log;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.Menu;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View.OnClickListener;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.MediaController;
-import android.widget.VideoView;
-import com.android.mediaframeworktest.MediaNames;
-
-import android.graphics.Bitmap;
 import android.widget.ImageView;
+import android.widget.MediaController;
 
-import java.io.File;
-import java.io.FileDescriptor;
 import java.net.InetAddress;
-
 
 public class MediaFrameworkTest extends Activity implements SurfaceHolder.Callback {
 

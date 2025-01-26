@@ -20,7 +20,6 @@ import android.annotation.FlaggedApi;
 
 import com.android.internal.telephony.flags.Flags;
 
-
 /**
  * A callback class for monitoring satellite communication allowed state changed events.
  *

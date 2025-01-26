@@ -46,7 +46,6 @@ import com.android.internal.annotations.VisibleForTesting;
 
 import java.util.Locale;
 
-
 /**
  * Looks up caller information for the given phone number.
  *

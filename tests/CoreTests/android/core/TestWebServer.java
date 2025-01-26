@@ -19,7 +19,6 @@ package android.core;
 import android.util.Log;
 
 import java.io.*;
-import java.lang.Thread;
 import java.net.*;
 import java.util.*;
 

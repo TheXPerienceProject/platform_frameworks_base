@@ -16,7 +16,6 @@
 package com.android.onemedia;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.media.MediaMetadata;
 import android.media.session.MediaSession;
@@ -24,17 +23,14 @@ import android.media.session.MediaSession.QueueItem;
 import android.media.session.MediaSessionManager;
 import android.media.session.PlaybackState;
 import android.os.Bundle;
-import android.os.RemoteException;
 import android.os.SystemClock;
 import android.util.Log;
-import android.view.KeyEvent;
 
 import com.android.onemedia.playback.LocalRenderer;
 import com.android.onemedia.playback.Renderer;
 import com.android.onemedia.playback.RequestUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class PlayerSession {
     private static final String TAG = "PlayerSession";

@@ -17,7 +17,6 @@
 package android.media;
 
 import android.annotation.NonNull;
-import android.media.VolumeShaper.Configuration;
 
 /**
  * {@code VolumeAutomation} defines an interface for automatic volume control

@@ -53,7 +53,6 @@ import org.mockito.Mockito;
 import org.mockito.MockitoSession;
 import org.mockito.quality.Strictness;
 
-
 /** Unit tests for {@link GameServiceController}. */
 @RunWith(AndroidJUnit4.class)
 @SmallTest

@@ -27,7 +27,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
-
 /**
  * Reads /proc/uid_io/stats which has the line format:
  *

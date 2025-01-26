@@ -16,9 +16,9 @@
 
 package android.widget.scroll;
 
+import android.widget.Button;
 import android.widget.InternalSelectionView;
 import android.widget.ScrollViewScenario;
-import android.widget.Button;
 
 /**
  * A button above a tall internal selection view, wrapped in a scroll view.

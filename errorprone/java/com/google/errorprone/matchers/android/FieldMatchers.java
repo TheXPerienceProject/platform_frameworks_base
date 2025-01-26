@@ -23,6 +23,7 @@ import com.sun.source.tree.ExpressionTree;
 import com.sun.source.tree.ImportTree;
 import com.sun.tools.javac.code.Symbol;
 import com.sun.tools.javac.code.Symbol.ClassSymbol;
+
 import javax.annotation.Nullable;
 
 // TODO(glorioso): this likely wants to be a fluent interface like MethodMatchers.

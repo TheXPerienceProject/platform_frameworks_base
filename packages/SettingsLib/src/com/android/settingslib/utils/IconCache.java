@@ -23,7 +23,6 @@ import android.graphics.drawable.Icon;
 import androidx.annotation.VisibleForTesting;
 import androidx.collection.ArrayMap;
 
-
 /**
  * Icon cache to avoid multiple loads on the same icon.
  */

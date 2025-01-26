@@ -16,7 +16,6 @@
 
 package android.hardware.camera2.extension;
 
-import android.annotation.FlaggedApi;
 import android.annotation.NonNull;
 import android.annotation.SystemApi;
 import android.hardware.camera2.CameraAccessException;
@@ -29,8 +28,6 @@ import android.hardware.camera2.impl.CaptureCallback;
 import android.util.Log;
 import android.util.Pair;
 import android.util.Size;
-
-import com.android.internal.camera.flags.Flags;
 
 import java.util.ArrayList;
 import java.util.HashMap;

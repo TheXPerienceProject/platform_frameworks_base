@@ -19,8 +19,8 @@ package com.android.server.tv;
 import static android.media.AudioManager.DEVICE_NONE;
 import static android.media.tv.TvInputManager.INPUT_STATE_CONNECTED;
 import static android.media.tv.TvInputManager.INPUT_STATE_CONNECTED_STANDBY;
-import static android.media.tv.flags.Flags.tifUnbindInactiveTis;
 import static android.media.tv.flags.Flags.kidsModeTvdbSharing;
+import static android.media.tv.flags.Flags.tifUnbindInactiveTis;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;

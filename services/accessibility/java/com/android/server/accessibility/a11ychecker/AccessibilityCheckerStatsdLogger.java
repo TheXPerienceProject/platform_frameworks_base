@@ -21,7 +21,6 @@ import android.util.Slog;
 
 import java.util.Set;
 
-
 /**
  * Wraps the StatsdLogger for AccessibilityCheckResultReported.
  *

@@ -16,9 +16,9 @@
 
 package android.media.effect.effects;
 
+import android.filterpacks.imageproc.DocumentaryFilter;
 import android.media.effect.EffectContext;
 import android.media.effect.SingleFilterEffect;
-import android.filterpacks.imageproc.DocumentaryFilter;
 
 /**
  * @hide

@@ -22,7 +22,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import android.graphics.Color;
 import android.os.Binder;
 import android.os.Bundle;
 import android.platform.test.annotations.IgnoreUnderRavenwood;

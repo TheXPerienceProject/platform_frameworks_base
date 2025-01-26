@@ -17,10 +17,10 @@
 package com.android.soundpicker;
 
 import android.content.Context;
+import android.util.AttributeSet;
 import android.widget.Checkable;
 import android.widget.CheckedTextView;
 import android.widget.RelativeLayout;
-import android.util.AttributeSet;
 
 /**
  * The {@link CheckedListItem} is a layout item that represents a ringtone, and is used in

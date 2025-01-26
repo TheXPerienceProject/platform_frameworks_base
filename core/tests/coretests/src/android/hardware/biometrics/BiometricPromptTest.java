@@ -49,7 +49,6 @@ import org.mockito.junit.MockitoRule;
 import java.util.Random;
 import java.util.concurrent.Executor;
 
-
 @Presubmit
 @RunWith(MockitoJUnitRunner.class)
 public class BiometricPromptTest {

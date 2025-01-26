@@ -24,11 +24,8 @@ import android.util.Xml;
 import com.android.modules.utils.TypedXmlSerializer;
 import com.android.server.integrity.model.RuleMetadata;
 
-import org.xmlpull.v1.XmlSerializer;
-
 import java.io.IOException;
 import java.io.OutputStream;
-import java.nio.charset.StandardCharsets;
 
 /** Helper class for writing rule metadata. */
 public class RuleMetadataSerializer {

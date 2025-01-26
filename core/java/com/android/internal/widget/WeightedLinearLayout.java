@@ -16,14 +16,15 @@
 
 package com.android.internal.widget;
 
+import static android.view.View.MeasureSpec.*;
+
+import static com.android.internal.R.*;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.LinearLayout;
-
-import static android.view.View.MeasureSpec.*;
-import static com.android.internal.R.*;
 
 /**
  * A special layout when measured in AT_MOST will take up a given percentage of

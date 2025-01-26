@@ -15,14 +15,13 @@
  */
 package com.android.hardware.usb.externalmanagementtest;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-
-import android.content.Context;
 import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbInterface;
 import android.hardware.usb.UsbManager;
 import android.text.TextUtils;
+
+import java.util.HashMap;
+import java.util.LinkedList;
 
 public class UsbUtil {
     public static final String ADB_INTERFACE_NAME = "ADB Interface";

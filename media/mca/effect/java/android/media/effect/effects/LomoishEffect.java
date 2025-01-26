@@ -16,9 +16,9 @@
 
 package android.media.effect.effects;
 
+import android.filterpacks.imageproc.LomoishFilter;
 import android.media.effect.EffectContext;
 import android.media.effect.SingleFilterEffect;
-import android.filterpacks.imageproc.LomoishFilter;
 
 /**
  * @hide

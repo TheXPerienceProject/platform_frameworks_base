@@ -28,7 +28,6 @@ import android.graphics.PixelFormat;
 import android.hardware.HardwareBuffer;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.os.SystemProperties;
-import android.text.TextUtils;
 import android.util.Range;
 import android.util.Size;
 import android.view.Surface;

@@ -28,7 +28,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-
 public class HitRectBug extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState)

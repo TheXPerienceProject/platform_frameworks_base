@@ -21,10 +21,10 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.pm.ProviderInfo;
 import android.content.res.Resources;
-import android.test.mock.MockContentProvider;
-import android.test.mock.MockContext;
-import android.test.mock.MockContentResolver;
 import android.database.DatabaseUtils;
+import android.test.mock.MockContentProvider;
+import android.test.mock.MockContentResolver;
+import android.test.mock.MockContext;
 
 import java.io.File;
 

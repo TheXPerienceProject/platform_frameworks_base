@@ -30,7 +30,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
-
 public class SurfaceControlViewHostTest extends Activity implements SurfaceHolder.Callback{
     SurfaceView mView;
     SurfaceControlViewHost mVr;

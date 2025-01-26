@@ -19,9 +19,6 @@ package android.filterfw.core;
 
 import java.util.Set;
 
-import android.filterfw.core.Filter;
-import android.filterfw.core.Scheduler;
-
 /**
  * @hide
  */

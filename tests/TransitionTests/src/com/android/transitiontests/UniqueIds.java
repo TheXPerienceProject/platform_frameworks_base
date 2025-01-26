@@ -17,15 +17,14 @@ package com.android.transitiontests;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.transition.Scene;
+import android.transition.Transition;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.transition.Scene;
-import android.transition.Transition;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.transition.TransitionManager;
-
 
 import java.util.HashMap;
 

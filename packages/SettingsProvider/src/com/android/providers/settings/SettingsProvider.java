@@ -126,9 +126,9 @@ import com.android.internal.os.BackgroundThread;
 import com.android.internal.util.FrameworkStatsLog;
 import com.android.providers.settings.SettingsState.Setting;
 
-import com.google.android.collect.Sets;
-
 import libcore.util.HexEncoding;
+
+import com.google.android.collect.Sets;
 
 import java.io.File;
 import java.io.FileDescriptor;

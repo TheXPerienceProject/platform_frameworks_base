@@ -30,7 +30,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 class ConfigurationProcessor {
     private static final String TAG = "ConfigurationProcessor";
 

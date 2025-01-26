@@ -22,7 +22,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
 public class Demo0 extends Activity {
 
     private static final int SEARCH_SCREEN = 0;

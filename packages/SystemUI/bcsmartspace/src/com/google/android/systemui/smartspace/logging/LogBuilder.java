@@ -1,6 +1,7 @@
 package com.google.android.systemui.smartspace.logging;
 
 import android.util.Log;
+
 import java.io.PrintWriter;
 
 public class LogBuilder {

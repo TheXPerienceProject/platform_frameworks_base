@@ -50,7 +50,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /** {@hide} */
 final public class IpConnectivityEventBuilder {
     private IpConnectivityEventBuilder() {

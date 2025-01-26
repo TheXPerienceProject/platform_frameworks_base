@@ -18,7 +18,6 @@ package android.renderscript;
 
 import android.compat.annotation.UnsupportedAppUsage;
 
-
 /**
  * Class for exposing the native RenderScript rs_matrix4x4 type back to the Android system.
  *

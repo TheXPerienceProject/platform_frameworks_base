@@ -16,10 +16,9 @@
 
 package android.graphics.text;
 
-import static com.android.text.flags.Flags.FLAG_USE_BOUNDS_FOR_WIDTH;
 import static com.android.text.flags.Flags.FLAG_LETTER_SPACING_JUSTIFICATION;
 import static com.android.text.flags.Flags.FLAG_MISSING_GETTER_APIS;
-
+import static com.android.text.flags.Flags.FLAG_USE_BOUNDS_FOR_WIDTH;
 
 import android.annotation.FlaggedApi;
 import android.annotation.FloatRange;

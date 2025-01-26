@@ -21,8 +21,8 @@ import static android.app.ondeviceintelligence.flags.Flags.FLAG_ENABLE_ON_DEVICE
 import android.annotation.FlaggedApi;
 import android.annotation.NonNull;
 import android.annotation.SystemApi;
-import android.os.Bundle;
 import android.app.ondeviceintelligence.OnDeviceIntelligenceManager.ResponseParams;
+import android.os.Bundle;
 
 /**
  * Streaming variant of {@link ProcessingCallback} to populate response while processing a given

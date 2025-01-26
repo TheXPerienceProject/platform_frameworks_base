@@ -29,7 +29,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.time.Instant;
 
-
 /**
  * Represents a detected ambient event. Each event has a type, start time, end time,
  * plus some optional data.

@@ -16,11 +16,9 @@
 
 package android.media.audiofx;
 
-import android.media.audiofx.AudioEffect;
 import android.util.Log;
 
 import java.util.StringTokenizer;
-
 
 /**
  * An Equalizer is used to alter the frequency response of a particular music source or of the main

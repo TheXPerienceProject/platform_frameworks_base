@@ -1,18 +1,18 @@
 
 package junit.textui;
 
-import java.io.PrintStream;
-// android-changed
-// The following line was removed for compatibility with Android libraries.
-// import java.text.NumberFormat;
-import java.util.Enumeration;
-
 import junit.framework.AssertionFailedError;
 import junit.framework.Test;
 import junit.framework.TestFailure;
 import junit.framework.TestListener;
 import junit.framework.TestResult;
 import junit.runner.BaseTestRunner;
+
+import java.io.PrintStream;
+// android-changed
+// The following line was removed for compatibility with Android libraries.
+// import java.text.NumberFormat;
+import java.util.Enumeration;
 
 public class ResultPrinter implements TestListener {
 	PrintStream fWriter;

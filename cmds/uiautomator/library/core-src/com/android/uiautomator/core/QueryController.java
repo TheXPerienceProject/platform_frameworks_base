@@ -21,7 +21,6 @@ import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 
-
 /**
  * The QueryController main purpose is to translate a {@link UiSelector} selectors to
  * {@link AccessibilityNodeInfo}. This is all this controller does.

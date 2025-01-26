@@ -20,7 +20,6 @@ import android.annotation.IntDef;
 import android.annotation.NonNull;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.telephony.RadioAccessSpecifier;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

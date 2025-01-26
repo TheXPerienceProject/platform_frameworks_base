@@ -26,7 +26,6 @@ import android.util.Log;
 
 import com.android.internal.util.AsyncChannel;
 
-
 /**
  * Provides an AsyncChannel interface that implements the connection initiating half of a
  * bidirectional channel as described in {@link com.android.internal.util.AsyncChannel}.

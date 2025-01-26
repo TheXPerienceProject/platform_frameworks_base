@@ -16,8 +16,8 @@
 
 package com.android.server.smartspace;
 
-import static android.Manifest.permission.MANAGE_SMARTSPACE;
 import static android.Manifest.permission.ACCESS_SMARTSPACE;
+import static android.Manifest.permission.MANAGE_SMARTSPACE;
 import static android.app.ActivityManagerInternal.ALLOW_NON_FULL;
 import static android.content.Context.SMARTSPACE_SERVICE;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;

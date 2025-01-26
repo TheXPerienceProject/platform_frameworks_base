@@ -23,8 +23,6 @@ import android.net.Uri;
 import android.util.ArrayMap;
 import android.util.ArraySet;
 
-import com.google.android.collect.Maps;
-
 import java.util.Map;
 
 /**

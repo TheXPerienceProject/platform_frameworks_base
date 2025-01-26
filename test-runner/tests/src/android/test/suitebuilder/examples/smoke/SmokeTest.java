@@ -17,6 +17,7 @@
 package android.test.suitebuilder.examples.smoke;
 
 import android.test.suitebuilder.annotation.Smoke;
+
 import junit.framework.TestCase;
 
 @Smoke

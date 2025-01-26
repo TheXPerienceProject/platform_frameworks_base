@@ -24,8 +24,10 @@ import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Message;
+import android.text.Layout.Alignment;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.text.style.CharacterStyle;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
@@ -33,9 +35,7 @@ import android.text.style.SubscriptSpan;
 import android.text.style.SuperscriptSpan;
 import android.text.style.UnderlineSpan;
 import android.util.AttributeSet;
-import android.text.Layout.Alignment;
 import android.util.Log;
-import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +43,8 @@ import android.view.accessibility.CaptioningManager;
 import android.view.accessibility.CaptioningManager.CaptionStyle;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.android.internal.widget.SubtitleView;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
@@ -52,8 +54,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Vector;
-
-import com.android.internal.widget.SubtitleView;
 
 /** @hide */
 public class Cea708CaptionRenderer extends SubtitleController.Renderer {

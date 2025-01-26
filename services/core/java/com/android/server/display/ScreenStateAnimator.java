@@ -17,9 +17,9 @@
 
 package com.android.server.display;
 
-import java.io.PrintWriter;
-
 import android.content.Context;
+
+import java.io.PrintWriter;
 
 /** @hide */
 public interface ScreenStateAnimator {

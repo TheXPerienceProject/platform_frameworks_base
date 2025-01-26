@@ -12,6 +12,7 @@ import android.graphics.RenderNode;
 import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.InsetDrawable;
+
 import com.android.internal.graphics.ColorUtils;
 import com.android.systemui.bcsmartspace.R;
 

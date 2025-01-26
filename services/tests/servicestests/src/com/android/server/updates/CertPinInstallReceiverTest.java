@@ -16,34 +16,27 @@
 
 package com.android.server.updates;
 
-import com.android.internal.util.HexDump;
-
-import android.content.Context;
 import android.content.Intent;
-import android.test.AndroidTestCase;
 import android.provider.Settings;
+import android.test.AndroidTestCase;
 import android.util.Base64;
 import android.util.Log;
 
+import com.android.internal.util.HexDump;
+
+import libcore.io.IoUtils;
+
+import java.io.*;
 import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.InputStream;
-import java.security.cert.CertificateFactory;
-import java.security.cert.Certificate;
-import java.security.cert.X509Certificate;
+import java.security.KeyFactory;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.Signature;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
 import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.KeyFactory;
-import java.util.HashSet;
-import java.io.*;
-import libcore.io.IoUtils;
 
 /**
  * Tests for {@link com.android.server.CertPinInstallReceiver}

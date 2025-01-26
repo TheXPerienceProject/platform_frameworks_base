@@ -16,16 +16,15 @@
 
 package com.android.server.am;
 
-import android.os.BatteryStats;
 import static android.os.BatteryStats.STATS_SINCE_CHARGED;
+
+import android.os.BatteryStats;
 import android.os.PowerManager;
 import android.os.SystemClock;
-import android.os.health.HealthKeys;
-import android.os.health.HealthStatsParceler;
 import android.os.health.HealthStatsWriter;
 import android.os.health.PackageHealthStats;
-import android.os.health.ProcessHealthStats;
 import android.os.health.PidHealthStats;
+import android.os.health.ProcessHealthStats;
 import android.os.health.ServiceHealthStats;
 import android.os.health.TimerStat;
 import android.os.health.UidHealthStats;

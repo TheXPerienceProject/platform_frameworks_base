@@ -35,13 +35,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Queue;
-
 import platform.test.runner.parameterized.Parameter;
 import platform.test.runner.parameterized.ParameterizedAndroidJunit4;
 import platform.test.runner.parameterized.Parameters;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Queue;
 
 /**
  * Parameterized unit test for Events.logEvent.

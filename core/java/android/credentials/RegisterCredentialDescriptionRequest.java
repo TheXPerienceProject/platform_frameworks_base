@@ -31,7 +31,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-
 /**
  * A request to register a {@link ComponentName} that contains an actively provisioned
  * {@link Credential} represented by a {@link CredentialDescription}.

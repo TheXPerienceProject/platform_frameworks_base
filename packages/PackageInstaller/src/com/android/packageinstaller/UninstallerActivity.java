@@ -47,15 +47,17 @@ import android.os.Process;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
+
+import com.android.packageinstaller.common.EventResultPersister;
+import com.android.packageinstaller.common.UninstallEventReceiver;
 import com.android.packageinstaller.handheld.ErrorDialogFragment;
 import com.android.packageinstaller.handheld.UninstallAlertDialogFragment;
 import com.android.packageinstaller.television.ErrorFragment;
 import com.android.packageinstaller.television.UninstallAlertFragment;
 import com.android.packageinstaller.television.UninstallAppProgress;
-import com.android.packageinstaller.common.EventResultPersister;
-import com.android.packageinstaller.common.UninstallEventReceiver;
 import com.android.packageinstaller.v2.ui.UninstallLaunch;
 
 import java.util.List;

@@ -24,7 +24,6 @@ import android.hardware.hdmi.IHdmiControlCallback;
 import android.hardware.tv.cec.V1_0.SendMessageResult;
 import android.util.Slog;
 
-
 /**
  * Feature action that queries the power status of other device. This action is initiated via
  * {@link HdmiPlaybackClient#queryDisplayStatus(DisplayStatusCallback)} from the Android system

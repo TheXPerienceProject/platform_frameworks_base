@@ -19,6 +19,7 @@ package com.android.server.hdmi;
 import android.hardware.hdmi.HdmiControlManager;
 import android.hardware.hdmi.IHdmiControlCallback;
 import android.util.Slog;
+
 import com.android.internal.annotations.VisibleForTesting;
 
 /**

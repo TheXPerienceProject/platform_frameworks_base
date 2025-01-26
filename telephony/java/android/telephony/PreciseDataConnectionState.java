@@ -36,7 +36,6 @@ import android.telephony.Annotation.DataFailureCause;
 import android.telephony.Annotation.DataState;
 import android.telephony.Annotation.NetworkType;
 import android.telephony.data.ApnSetting;
-import android.telephony.data.DataCallResponse;
 import android.telephony.data.Qos;
 
 import com.android.internal.telephony.flags.Flags;
@@ -45,7 +44,6 @@ import com.android.internal.telephony.util.TelephonyUtils;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.Objects;
-
 
 /**
  * Contains precise data connection state.

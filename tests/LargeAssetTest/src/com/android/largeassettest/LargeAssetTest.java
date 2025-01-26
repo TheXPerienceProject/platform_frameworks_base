@@ -17,7 +17,6 @@
 package com.android.largeassettest;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -26,8 +25,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.io.InputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Skeleton to test large-asset handling.  The asset in question is one million

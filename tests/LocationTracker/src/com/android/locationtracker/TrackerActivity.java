@@ -16,10 +16,6 @@
 
 package com.android.locationtracker;
 
-import com.android.locationtracker.data.DateUtils;
-import com.android.locationtracker.data.TrackerDataHelper;
-import com.android.locationtracker.data.TrackerListHelper;
-
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
@@ -34,6 +30,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import com.android.locationtracker.data.DateUtils;
+import com.android.locationtracker.data.TrackerDataHelper;
+import com.android.locationtracker.data.TrackerListHelper;
 
 import java.io.BufferedWriter;
 import java.io.File;

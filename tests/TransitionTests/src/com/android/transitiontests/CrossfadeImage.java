@@ -17,14 +17,14 @@ package com.android.transitiontests;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.transition.Crossfade;
 import android.transition.ChangeBounds;
+import android.transition.Crossfade;
 import android.transition.Scene;
 import android.transition.Transition;
-import android.transition.TransitionSet;
 import android.transition.TransitionManager;
+import android.transition.TransitionSet;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
 public class CrossfadeImage extends Activity {

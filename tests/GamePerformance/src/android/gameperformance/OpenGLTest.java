@@ -15,11 +15,11 @@
  */
 package android.gameperformance;
 
-import javax.microedition.khronos.opengles.GL;
-import javax.microedition.khronos.opengles.GL10;
-
 import android.annotation.NonNull;
 import android.gameperformance.CustomOpenGLView.FrameDrawer;
+
+import javax.microedition.khronos.opengles.GL;
+import javax.microedition.khronos.opengles.GL10;
 
 /**
  * Base class for all OpenGL based tests.

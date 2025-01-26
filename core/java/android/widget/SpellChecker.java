@@ -40,7 +40,6 @@ import com.android.internal.util.GrowingArrayUtils;
 import java.text.BreakIterator;
 import java.util.Locale;
 
-
 /**
  * Helper class for TextView. Bridge between the TextView and the Dictionary service.
  *

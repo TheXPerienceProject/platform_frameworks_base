@@ -21,14 +21,14 @@ import static com.google.common.truth.Truth.assertThat;
 import static org.testng.Assert.assertThrows;
 import static org.testng.Assert.expectThrows;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 import androidx.test.filters.SmallTest;
 import androidx.test.runner.AndroidJUnit4;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.w3c.dom.Element;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
 
 import java.io.InputStream;
 import java.security.KeyPairGenerator;

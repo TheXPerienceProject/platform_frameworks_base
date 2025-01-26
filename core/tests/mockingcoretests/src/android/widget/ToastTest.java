@@ -53,7 +53,6 @@ import org.junit.runner.RunWith;
 import org.mockito.MockitoSession;
 import org.mockito.quality.Strictness;
 
-
 /**
  * ToastTest tests {@link Toast}.
  */

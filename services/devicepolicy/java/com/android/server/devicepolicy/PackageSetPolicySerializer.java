@@ -18,8 +18,8 @@ package com.android.server.devicepolicy;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
-import android.app.admin.PolicyValue;
 import android.app.admin.PackageSetPolicyValue;
+import android.app.admin.PolicyValue;
 import android.util.Log;
 
 import com.android.modules.utils.TypedXmlPullParser;
