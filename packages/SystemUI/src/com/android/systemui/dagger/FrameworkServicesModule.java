@@ -824,6 +824,8 @@ public class FrameworkServicesModule {
 
     }
 
+    @Provides
+    @Singleton
     static ImsManager provideImsManager(Context context) {
         return context.getSystemService(ImsManager.class);
     }
