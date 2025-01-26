@@ -369,7 +369,7 @@ public class UdfpsController implements DozeReceiver, Dumpable {
                     return;
                 }
                 if (vendorCode == mUdfpsVendorCode) {
-                    if (mContext.getResources().getBoolean(R.bool.config_pulseOnFingerDown)) {
+                    if (mContext.getResources().getBoolean(com.android.systemui.res.R.bool.config_pulseOnFingerDown)) {
                         mContext.sendBroadcastAsUser(new Intent(PULSE_ACTION),
                                 new UserHandle(UserHandle.USER_CURRENT));
                     } else {
