@@ -95,7 +95,7 @@ object ActionIntentCreator {
     fun createLens(rawUri: Uri, context: Context): PendingIntent {
         return PendingIntent.getBroadcast(context, rawUri.toString().hashCode(),
                 Intent(context, LensScreenshotReceiver::class.java)
-                        .putExtra(LegacyScreenshotController.SCREENSHOT_URI_ID, rawUri.toString())
+                        .putExtra(ScreenshotController.SCREENSHOT_URI_ID, rawUri.toString())
                         .addFlags(Intent.FLAG_RECEIVER_FOREGROUND),
                         (PendingIntent.FLAG_CANCEL_CURRENT
                         or PendingIntent.FLAG_ONE_SHOT
