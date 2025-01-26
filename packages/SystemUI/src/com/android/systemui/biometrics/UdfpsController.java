@@ -20,13 +20,15 @@ import static android.app.StatusBarManager.SESSION_BIOMETRIC_PROMPT;
 import static android.app.StatusBarManager.SESSION_KEYGUARD;
 import static android.hardware.biometrics.BiometricFingerprintConstants.FINGERPRINT_ACQUIRED_GOOD;
 import static android.hardware.biometrics.BiometricFingerprintConstants.FINGERPRINT_ACQUIRED_START;
-import static android.hardware.biometrics.BiometricFingerprintConstants.FINGERPRINT_ACQUIRED_VENDOR;
 import static android.hardware.biometrics.BiometricRequestConstants.REASON_AUTH_BP;
 import static android.hardware.biometrics.BiometricRequestConstants.REASON_AUTH_KEYGUARD;
 import static android.hardware.biometrics.BiometricRequestConstants.REASON_ENROLL_ENROLLING;
 import static android.hardware.biometrics.BiometricRequestConstants.REASON_ENROLL_FIND_SENSOR;
 
 import static com.android.internal.util.LatencyTracker.ACTION_UDFPS_ILLUMINATE;
+
+import static android.hardware.biometrics.BiometricFingerprintConstants.FINGERPRINT_ACQUIRED_VENDOR;
+
 import static com.android.internal.util.Preconditions.checkNotNull;
 import static com.android.systemui.classifier.Classifier.UDFPS_AUTHENTICATION;
 
@@ -359,6 +361,9 @@ public class UdfpsController implements DozeReceiver, Dumpable {
                         return;
                     }
                     mAcquiredReceived = true;
+                    final View view = mOverlay.getTouchOverlay();
+                    unconfigureDisplay(view);
+                    tryAodSendFingerUp();
                 });
             } else {
                 boolean acquiredVendor = acquiredInfo == FINGERPRINT_ACQUIRED_VENDOR;
@@ -940,7 +945,6 @@ public class UdfpsController implements DozeReceiver, Dumpable {
         } else {
             if (view != null) {
                 UdfpsView udfpsView = (UdfpsView) view;
-                cancelAodSendFingerUpAction();
                 if (udfpsView.isDisplayConfigured()) {
                     udfpsView.unconfigureDisplay();
                 }
@@ -1115,15 +1119,7 @@ public class UdfpsController implements DozeReceiver, Dumpable {
                     + " current: " + mOverlay.getRequestId());
             return;
         }
-        
-        final View view = mOverlay.getTouchOverlay();
-
-        if (view != null && view.getViewRootImpl() != null) {
-            view.getViewRootImpl().notifyRendererOfExpensiveFrame();
-        }
-
         if (isOptical()) {
-            onAodInterrupt((int) x, (int) y, major, minor);
             mLatencyTracker.onActionStart(ACTION_UDFPS_ILLUMINATE);
         }
         // Refresh screen timeout and boost process priority if possible.
@@ -1140,6 +1136,7 @@ public class UdfpsController implements DozeReceiver, Dumpable {
                 minor, major, orientation, time, gestureStart, isAod);
         Trace.endAsyncSection("UdfpsController.e2e.onPointerDown", 0);
 
+        final View view = mOverlay.getTouchOverlay();
         if (view != null && isOptical()) {
             if (mIgnoreRefreshRate) {
                 dispatchOnUiReady(requestId);
@@ -1156,10 +1153,6 @@ public class UdfpsController implements DozeReceiver, Dumpable {
             for (Callback cb : mCallbacks) {
                 cb.onFingerDown();
             }
-        }
-
-        if (view != null && view.getViewRootImpl() != null) {
-            view.getViewRootImpl().notifyRendererOfExpensiveFrame();
         }
     }
 
