@@ -14,6 +14,8 @@
 
 package com.android.systemui.qs;
 
+import static com.android.wm.shell.shared.animation.Interpolators.SLOWDOWN_INTERPOLATOR;
+
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
 import android.annotation.NonNull;
@@ -591,7 +593,7 @@ public class QSAnimator implements QSHost.Callback, PagedTileLayout.PageListener
                     .addFloat(qqsBrightness, "translationY", 0, translationY)
                     .setInterpolator(mQSExpansionPathInterpolator.getYInterpolator())
                     .setInterpolator(mQuickQSPanelController.mMediaHost.getVisible() ?
-                            Interpolators.ALPHA_OUT : com.android.wm.shell.animation.Interpolators.SLOWDOWN_INTERPOLATOR)
+                            Interpolators.ALPHA_OUT : SLOWDOWN_INTERPOLATOR)
                     .build();
         } else if (qsBrightness != null) {
             // The brightness slider's visible bottom edge must maintain a constant margin from the
