@@ -16,6 +16,7 @@
 
 package com.android.systemui.screenshot
 
+import android.app.PendingIntent
 import android.content.ClipData
 import android.content.ClipDescription
 import android.content.ComponentName
