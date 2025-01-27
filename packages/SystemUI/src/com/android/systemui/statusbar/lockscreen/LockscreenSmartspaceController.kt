@@ -415,7 +415,17 @@ constructor(
 
         ssView.setIntentStarter(object : BcSmartspaceDataPlugin.IntentStarter {
             override fun startIntent(view: View, intent: Intent, showOnLockscreen: Boolean) {
-                activityStarter.postStartActivityDismissingKeyguard(intent, 0)
+                if (showOnLockscreen) {
+                    activityStarter.startActivity(
+                            intent,
+                            true, /* dismissShade */
+                            // launch animator - looks bad with the transparent smartspace bg
+                            null,
+                            true
+                    )
+                } else {
+                    activityStarter.postStartActivityDismissingKeyguard(intent, 0)
+                }
             }
 
             override fun startPendingIntent(
@@ -423,7 +433,15 @@ constructor(
                     pi: PendingIntent,
                     showOnLockscreen: Boolean
             ) {
-                activityStarter.postStartActivityDismissingKeyguard(pi)
+                if (showOnLockscreen) {
+                    val options = ActivityOptions.makeBasic()
+                            .setPendingIntentBackgroundActivityStartMode(
+                                    ActivityOptions.MODE_BACKGROUND_ACTIVITY_START_ALLOWED)
+                            .toBundle()
+                    pi.send(options)
+                } else {
+                    activityStarter.postStartActivityDismissingKeyguard(pi)
+                }
             }
         })
         ssView.setFalsingManager(falsingManager)
