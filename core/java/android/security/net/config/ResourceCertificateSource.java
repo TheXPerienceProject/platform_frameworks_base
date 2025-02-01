@@ -18,11 +18,7 @@ package android.security.net.config;
 
 import android.content.Context;
 import android.util.ArraySet;
-
-import com.android.org.conscrypt.TrustedCertificateIndex;
-
 import libcore.io.IoUtils;
-
 import java.io.InputStream;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
@@ -31,6 +27,8 @@ import java.security.cert.X509Certificate;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
+
+import com.android.org.conscrypt.TrustedCertificateIndex;
 
 /**
  * {@link CertificateSource} based on certificates contained in an application resource file.

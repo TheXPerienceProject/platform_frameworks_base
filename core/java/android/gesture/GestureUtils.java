@@ -16,15 +16,15 @@
 
 package android.gesture;
 
-import static android.gesture.GestureConstants.*;
-
 import android.graphics.RectF;
 import android.util.Log;
 
-import java.io.Closeable;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.io.Closeable;
+import java.io.IOException;
+
+import static android.gesture.GestureConstants.*;
 
 /**
  * Utility functions for gesture processing & analysis, including methods for:

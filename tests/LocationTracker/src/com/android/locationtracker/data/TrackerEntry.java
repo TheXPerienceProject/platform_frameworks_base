@@ -20,6 +20,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.location.Location;
 
+
 /**
  * Class that holds a tracker entry. An entry can be either a valid location, or
  * a simple log msg

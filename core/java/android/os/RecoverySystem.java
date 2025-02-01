@@ -46,9 +46,6 @@ import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Display;
 
-import sun.security.pkcs.PKCS7;
-import sun.security.pkcs.SignerInfo;
-
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -74,6 +71,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
+
+import sun.security.pkcs.PKCS7;
+import sun.security.pkcs.SignerInfo;
 
 /**
  * RecoverySystem contains methods for interacting with the Android

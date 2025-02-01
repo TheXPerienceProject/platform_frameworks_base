@@ -18,18 +18,19 @@
 package android.media.filterfw.samples;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.filterfw.GraphEnvironment;
-import android.filterfw.core.GraphRunner;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Environment;
-import android.view.KeyEvent;
-import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.SurfaceView;
+import android.view.KeyEvent;
 import android.widget.Button;
+import android.filterfw.GraphEnvironment;
+import android.filterfw.core.GraphRunner;
+import android.filterpacks.videosink.MediaEncoderFilter;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.content.Intent;
 
 public class CameraEffectsRecordingSample extends Activity {
 

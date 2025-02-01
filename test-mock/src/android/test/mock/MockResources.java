@@ -16,18 +16,18 @@
 
 package android.test.mock;
 
-import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
-import android.content.res.ColorStateList;
-import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.content.res.ColorStateList;
 import android.content.res.XmlResourceParser;
-import android.graphics.Movie;
-import android.graphics.drawable.Drawable;
-import android.util.AttributeSet;
+import android.content.res.AssetFileDescriptor;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
+import android.util.AttributeSet;
+import android.graphics.drawable.Drawable;
+import android.graphics.Movie;
 
 import java.io.InputStream;
 

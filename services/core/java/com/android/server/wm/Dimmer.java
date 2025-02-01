@@ -31,6 +31,7 @@ import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.protolog.ProtoLog;
 import com.android.window.flags.Flags;
 
+
 /**
  * Utility class for use by a WindowContainer implementation to add "DimLayer" support, that is
  * black layers of varying opacity at various Z-levels which create the effect of a Dim.

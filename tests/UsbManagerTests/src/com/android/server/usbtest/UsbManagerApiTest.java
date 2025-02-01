@@ -23,10 +23,11 @@ import androidx.test.InstrumentationRegistry;
 import androidx.test.filters.SmallTest;
 import androidx.test.runner.AndroidJUnit4;
 
-import com.android.server.usblib.UsbManagerTestLib;
-
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import com.android.server.usblib.UsbManagerTestLib;
 
 /**
  * Unit tests for {@link android.hardware.usb.UsbManager}.

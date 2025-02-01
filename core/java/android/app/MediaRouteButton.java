@@ -16,6 +16,9 @@
 
 package android.app;
 
+import com.android.internal.R;
+import com.android.internal.app.MediaRouteDialogPresenter;
+
 import android.annotation.NonNull;
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -29,9 +32,6 @@ import android.media.MediaRouter.RouteInfo;
 import android.util.AttributeSet;
 import android.view.SoundEffectConstants;
 import android.view.View;
-
-import com.android.internal.R;
-import com.android.internal.app.MediaRouteDialogPresenter;
 
 public class MediaRouteButton extends View {
     private final MediaRouter mRouter;

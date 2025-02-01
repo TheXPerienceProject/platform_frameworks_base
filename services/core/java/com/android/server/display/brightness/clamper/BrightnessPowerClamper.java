@@ -47,6 +47,7 @@ import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
+
 class BrightnessPowerClamper extends
         BrightnessClamper<BrightnessPowerClamper.PowerData> {
 

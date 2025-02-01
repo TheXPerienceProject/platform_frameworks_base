@@ -30,6 +30,7 @@ import android.os.RemoteException;
 import android.util.Slog;
 
 import com.android.server.biometrics.sensors.BaseClientMonitor;
+import com.android.server.biometrics.sensors.BiometricStateCallback;
 import com.android.server.biometrics.sensors.ClientMonitorCallback;
 import com.android.server.biometrics.sensors.face.FaceUtils;
 

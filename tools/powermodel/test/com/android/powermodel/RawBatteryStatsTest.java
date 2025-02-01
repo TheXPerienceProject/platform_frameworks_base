@@ -16,13 +16,12 @@
 
 package com.android.powermodel;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import org.junit.Test;
+import org.junit.Assert;
 
 /**
  * Tests {@link RawBatteryStats}.

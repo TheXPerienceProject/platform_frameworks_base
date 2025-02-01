@@ -17,6 +17,7 @@
 package android.media;
 
 import android.content.Context;
+import android.media.SoundPool;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.os.ServiceManager;

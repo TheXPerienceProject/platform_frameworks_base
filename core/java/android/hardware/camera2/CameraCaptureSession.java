@@ -19,6 +19,7 @@ package android.hardware.camera2;
 import android.annotation.CallbackExecutor;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.hardware.camera2.CameraOfflineSession;
 import android.hardware.camera2.CameraOfflineSession.CameraOfflineSessionCallback;
 import android.hardware.camera2.params.OutputConfiguration;
 import android.os.Handler;

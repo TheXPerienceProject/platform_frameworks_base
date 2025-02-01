@@ -17,22 +17,30 @@
 package com.android.effectstest;
 
 import android.app.Activity;
-import android.media.audiofx.AudioEffect;
-import android.media.audiofx.Equalizer;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.View.OnClickListener;
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.EditText;
 import android.widget.SeekBar;
-import android.widget.TextView;
 import android.widget.ToggleButton;
-
-import java.nio.ByteBuffer;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import java.nio.ByteOrder;
+import java.nio.ByteBuffer;
 import java.util.HashMap;
+import java.util.Map;
+
+
+import android.media.audiofx.Equalizer;
+import android.media.audiofx.AudioEffect;
 
 public class EqualizerTest extends Activity implements OnCheckedChangeListener {
 

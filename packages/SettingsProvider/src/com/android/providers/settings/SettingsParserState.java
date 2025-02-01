@@ -1,5 +1,7 @@
 package com.android.providers.settings;
 
+import android.provider.Settings;
+import android.util.Log;
 
 class SettingsParserState {
     private final int type;

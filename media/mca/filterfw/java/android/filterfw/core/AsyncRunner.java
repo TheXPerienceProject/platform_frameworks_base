@@ -18,6 +18,7 @@
 package android.filterfw.core;
 
 import android.os.AsyncTask;
+
 import android.util.Log;
 
 /**

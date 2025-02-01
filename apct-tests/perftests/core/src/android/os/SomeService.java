@@ -2,7 +2,6 @@ package android.os;
 
 import android.app.Service;
 import android.content.Intent;
-
 import java.io.File;
 import java.io.IOException;
 

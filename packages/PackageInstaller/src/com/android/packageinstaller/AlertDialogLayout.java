@@ -28,6 +28,8 @@ import androidx.annotation.AttrRes;
 import androidx.annotation.Nullable;
 import androidx.annotation.StyleRes;
 
+import com.android.packageinstaller.R;
+
 /**
  * Special implementation of linear layout that's capable of laying out alert
  * dialog components.

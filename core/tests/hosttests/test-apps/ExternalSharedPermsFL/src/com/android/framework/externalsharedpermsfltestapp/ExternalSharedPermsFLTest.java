@@ -16,10 +16,11 @@
 package com.android.framework.externalsharedpermsfltestapp;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Bundle;
+
 import android.test.InstrumentationTestCase;
 
 public class ExternalSharedPermsFLTest extends InstrumentationTestCase

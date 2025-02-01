@@ -17,6 +17,7 @@
 package com.android.server.am;
 
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -25,6 +26,7 @@ import android.app.IApplicationThread;
 import androidx.test.filters.SmallTest;
 
 import org.junit.Test;
+
 
 /**
  * Tests to verify that the ApplicationThreadDeferred properly defers binder calls to paused

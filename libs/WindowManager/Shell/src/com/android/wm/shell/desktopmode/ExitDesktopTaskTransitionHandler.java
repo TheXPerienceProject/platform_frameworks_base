@@ -54,6 +54,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+
 /**
  * The {@link Transitions.TransitionHandler} that handles transitions for desktop mode tasks
  * entering and exiting freeform.

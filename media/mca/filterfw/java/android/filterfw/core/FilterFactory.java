@@ -17,11 +17,14 @@
 
 package android.filterfw.core;
 
+import android.filterfw.core.Filter;
 import android.util.Log;
 
 import dalvik.system.PathClassLoader;
 
 import java.lang.reflect.Constructor;
+import java.lang.ClassLoader;
+import java.lang.Thread;
 import java.util.HashSet;
 
 /**

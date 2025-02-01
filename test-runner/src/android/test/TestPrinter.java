@@ -17,7 +17,6 @@
 package android.test;
 
 import android.util.Log;
-
 import junit.framework.Test;
 import junit.framework.TestListener;
 

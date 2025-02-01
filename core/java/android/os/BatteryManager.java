@@ -16,8 +16,8 @@
 
 package android.os;
 
-import static android.os.Flags.FLAG_BATTERY_PART_STATUS_API;
 import static android.os.Flags.FLAG_STATE_OF_HEALTH_PUBLIC;
+import static android.os.Flags.FLAG_BATTERY_PART_STATUS_API;
 
 import android.Manifest.permission;
 import android.annotation.FlaggedApi;

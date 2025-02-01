@@ -18,13 +18,15 @@ package com.android.internal.util;
 
 import static org.junit.Assert.*;
 
-import android.util.SparseArray;
-
+import com.android.internal.util.MessageUtils;
 import androidx.test.filters.SmallTest;
 import androidx.test.runner.AndroidJUnit4;
 
+import android.util.SparseArray;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
 
 class A {
     // Should not see these.

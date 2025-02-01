@@ -20,6 +20,7 @@ import android.annotation.NonNull;
 import android.os.Binder;
 import android.os.Process;
 import android.os.ShellCommand;
+import android.text.TextUtils;
 import android.util.Slog;
 
 import java.io.PrintWriter;

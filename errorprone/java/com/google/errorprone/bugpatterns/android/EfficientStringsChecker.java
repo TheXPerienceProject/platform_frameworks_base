@@ -52,6 +52,7 @@ import com.sun.tools.javac.code.Symbol.VarSymbol;
 import com.sun.tools.javac.code.Type;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.lang.model.element.Modifier;
 

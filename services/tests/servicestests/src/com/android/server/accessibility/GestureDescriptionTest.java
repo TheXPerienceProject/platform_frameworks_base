@@ -16,8 +16,6 @@
 
 package com.android.server.accessibility;
 
-import static junit.framework.TestCase.assertEquals;
-
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.everyItem;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -28,13 +26,14 @@ import android.accessibilityservice.GestureDescription.MotionEventGenerator;
 import android.accessibilityservice.GestureDescription.StrokeDescription;
 import android.graphics.Path;
 import android.graphics.PointF;
-
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 import org.junit.Test;
 
 import java.util.List;
+
+import static junit.framework.TestCase.assertEquals;
 
 /**
  * Tests for GestureDescription

@@ -21,7 +21,6 @@ import android.graphics.Rect;
 import android.hardware.Camera;
 import android.hardware.Camera.Face;
 import android.util.Log;
-
 import androidx.media.filterfw.Filter;
 import androidx.media.filterfw.Frame;
 import androidx.media.filterfw.FrameImage2D;

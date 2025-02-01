@@ -20,8 +20,8 @@ package com.android.server.crashrecovery;
 
 import static com.google.common.truth.Truth.assertThat;
 
-import static org.junit.Assert.fail;
 import static org.mockito.quality.Strictness.LENIENT;
+import static org.junit.Assert.fail;
 
 import android.content.Context;
 import android.os.Environment;
@@ -45,6 +45,7 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+
 
 /**
  * Test CrashRecovery Utils.

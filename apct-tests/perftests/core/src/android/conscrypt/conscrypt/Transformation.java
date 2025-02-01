@@ -16,14 +16,12 @@
 
 package android.conscrypt;
 
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-
 import java.security.Key;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
-
 import javax.crypto.KeyGenerator;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 /**
  * Supported cipher transformations.

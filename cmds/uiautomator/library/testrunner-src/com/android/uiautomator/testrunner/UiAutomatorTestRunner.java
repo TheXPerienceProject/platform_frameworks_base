@@ -33,6 +33,13 @@ import com.android.uiautomator.core.Tracer;
 import com.android.uiautomator.core.UiAutomationShellWrapper;
 import com.android.uiautomator.core.UiDevice;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.lang.Thread.UncaughtExceptionHandler;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
+
 import junit.framework.AssertionFailedError;
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -40,13 +47,6 @@ import junit.framework.TestListener;
 import junit.framework.TestResult;
 import junit.runner.BaseTestRunner;
 import junit.textui.ResultPrinter;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.lang.Thread.UncaughtExceptionHandler;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @hide

@@ -61,6 +61,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoSession;
 import org.mockito.quality.Strictness;
 
+
 /**
  * Unit tests for the {@link GameServiceProviderSelectorImpl}.
  */

@@ -28,9 +28,10 @@ import com.android.server.biometrics.log.BiometricLogger;
 import com.android.server.biometrics.sensors.ClientMonitorCallback;
 import com.android.server.biometrics.sensors.HalClientMonitor;
 
-import vendor.aospa.biometrics.face.ISenseService;
-
+import java.util.ArrayList;
 import java.util.function.Supplier;
+
+import vendor.aospa.biometrics.face.ISenseService;
 
 public class FaceResetLockoutClient extends HalClientMonitor<ISenseService> {
 

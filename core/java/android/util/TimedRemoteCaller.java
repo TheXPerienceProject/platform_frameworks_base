@@ -17,7 +17,6 @@
 package android.util;
 
 import android.os.SystemClock;
-
 import com.android.internal.annotations.GuardedBy;
 
 import java.util.concurrent.TimeoutException;

@@ -15,14 +15,14 @@
  */
 package android.hardware.camera2.marshal.impl;
 
-import static android.hardware.camera2.marshal.MarshalHelpers.getPrimitiveTypeClass;
-import static android.hardware.camera2.marshal.MarshalHelpers.isUnwrappedPrimitiveClass;
-
+import android.hardware.camera2.marshal.Marshaler;
 import android.hardware.camera2.marshal.MarshalQueryable;
 import android.hardware.camera2.marshal.MarshalRegistry;
-import android.hardware.camera2.marshal.Marshaler;
 import android.hardware.camera2.utils.TypeReference;
 import android.util.Log;
+
+import static android.hardware.camera2.marshal.MarshalHelpers.isUnwrappedPrimitiveClass;
+import static android.hardware.camera2.marshal.MarshalHelpers.getPrimitiveTypeClass;
 
 import java.lang.reflect.Array;
 import java.nio.ByteBuffer;

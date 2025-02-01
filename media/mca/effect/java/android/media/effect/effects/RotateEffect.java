@@ -17,9 +17,9 @@
 
 package android.media.effect.effects;
 
-import android.filterpacks.imageproc.RotateFilter;
 import android.media.effect.EffectContext;
 import android.media.effect.SizeChangeEffect;
+import android.filterpacks.imageproc.RotateFilter;
 
 /**
  * @hide

@@ -16,8 +16,8 @@
 package com.android.test.split.feature.one;
 
 import android.app.Activity;
-import android.os.Bundle;
 import android.widget.TextView;
+import android.os.Bundle;
 
 public class One extends Activity {
 

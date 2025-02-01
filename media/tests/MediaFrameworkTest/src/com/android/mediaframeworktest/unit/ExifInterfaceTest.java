@@ -16,22 +16,19 @@
 
 package com.android.mediaframeworktest.unit;
 
+import com.android.mediaframeworktest.R;
+
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.ExifInterface;
 import android.os.Environment;
 import android.os.FileUtils;
+import android.test.AndroidTestCase;
+import android.util.Log;
 import android.system.ErrnoException;
 import android.system.Os;
 import android.system.OsConstants;
-import android.test.AndroidTestCase;
-import android.util.Log;
-
-import com.android.mediaframeworktest.R;
-
-import libcore.io.IoUtils;
-import libcore.io.Streams;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
@@ -39,9 +36,13 @@ import java.io.File;
 import java.io.FileDescriptor;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Objects;
+
+import libcore.io.IoUtils;
+import libcore.io.Streams;
 
 public class ExifInterfaceTest extends AndroidTestCase {
     private static final String TAG = ExifInterface.class.getSimpleName();

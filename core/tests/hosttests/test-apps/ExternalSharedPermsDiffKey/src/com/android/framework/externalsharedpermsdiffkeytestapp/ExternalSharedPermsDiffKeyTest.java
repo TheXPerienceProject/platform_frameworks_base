@@ -17,10 +17,11 @@ package com.android.framework.externalsharedpermsdiffkeytestapp;
 
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
+import android.os.Bundle;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Bundle;
+
 import android.test.InstrumentationTestCase;
 
 public class ExternalSharedPermsDiffKeyTest extends InstrumentationTestCase

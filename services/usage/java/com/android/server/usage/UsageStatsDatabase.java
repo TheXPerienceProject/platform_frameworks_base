@@ -32,8 +32,8 @@ import android.util.Slog;
 import android.util.SparseArray;
 import android.util.TimeUtils;
 
-import com.android.internal.annotations.GuardedBy;
 import com.android.internal.annotations.VisibleForTesting;
+import com.android.internal.annotations.GuardedBy;
 import com.android.internal.util.ArrayUtils;
 import com.android.internal.util.IndentingPrintWriter;
 

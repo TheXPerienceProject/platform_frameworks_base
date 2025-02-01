@@ -16,10 +16,10 @@
 
 package com.android.accessorydisplay.source.presentation;
 
-import android.opengl.GLSurfaceView;
-
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
+
+import android.opengl.GLSurfaceView;
 
 /**
  * Render a pair of tumbling cubes.

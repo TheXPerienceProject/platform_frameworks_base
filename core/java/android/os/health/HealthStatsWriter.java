@@ -21,6 +21,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.ArrayMap;
 
+import java.util.Map;
+
 /**
  * Class to write the health stats data into a parcel, so it can then be
  * retrieved via a {@link HealthStats} object.

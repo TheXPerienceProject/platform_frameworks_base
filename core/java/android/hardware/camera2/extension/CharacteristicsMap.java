@@ -16,11 +16,14 @@
 
 package android.hardware.camera2.extension;
 
+import android.annotation.FlaggedApi;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.SystemApi;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.impl.CameraMetadataNative;
+
+import com.android.internal.camera.flags.Flags;
 
 import java.util.HashMap;
 import java.util.Map;

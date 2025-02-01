@@ -18,7 +18,6 @@ package android.security.net.config;
 
 import android.os.Environment;
 import android.os.UserHandle;
-
 import java.io.File;
 
 /**

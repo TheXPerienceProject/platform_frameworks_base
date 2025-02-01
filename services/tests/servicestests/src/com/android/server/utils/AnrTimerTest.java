@@ -21,9 +21,9 @@ import static com.google.common.truth.Truth.assertThat;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.platform.test.annotations.Presubmit;
 import android.util.Log;
 
+import android.platform.test.annotations.Presubmit;
 import androidx.test.filters.SmallTest;
 
 import com.android.internal.annotations.GuardedBy;

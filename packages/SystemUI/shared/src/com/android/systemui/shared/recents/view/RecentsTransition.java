@@ -15,6 +15,9 @@
  */
 package com.android.systemui.shared.recents.view;
 
+import android.app.ActivityOptions;
+import android.app.ActivityOptions.OnAnimationStartedListener;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.GraphicBuffer;

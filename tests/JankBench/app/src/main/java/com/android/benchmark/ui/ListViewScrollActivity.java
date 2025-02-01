@@ -18,17 +18,18 @@ package com.android.benchmark.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import androidx.appcompat.app.ActionBar;
 import android.view.FrameMetrics;
+import android.view.MotionEvent;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListAdapter;
-
-import androidx.appcompat.app.ActionBar;
 
 import com.android.benchmark.R;
 import com.android.benchmark.ui.automation.Automator;
 import com.android.benchmark.ui.automation.Interaction;
 
+import java.io.File;
 import java.util.List;
 
 public class ListViewScrollActivity extends ListActivityBase {

@@ -15,17 +15,17 @@
  */
 package com.android.transitiontests;
 
-import static android.widget.LinearLayout.LayoutParams;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.transition.ChangeBounds;
-import android.transition.Transition;
-import android.transition.TransitionManager;
-import android.transition.TransitionSet;
 import android.view.View;
 import android.view.ViewGroup;
+import android.transition.Transition;
+import android.transition.TransitionSet;
+import android.transition.TransitionManager;
 import android.widget.Button;
+
+import static android.widget.LinearLayout.LayoutParams;
 
 public class HierarchicalMove extends Activity {
 

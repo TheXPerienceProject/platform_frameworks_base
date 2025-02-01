@@ -16,6 +16,7 @@
 
 package android.hardware.camera2.extension;
 
+import android.annotation.FlaggedApi;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.SystemApi;
@@ -28,6 +29,7 @@ import android.os.RemoteException;
 import android.util.Log;
 
 import com.android.internal.annotations.GuardedBy;
+import com.android.internal.camera.flags.Flags;
 
 interface CameraUsageTracker {
     void startCameraOperation();

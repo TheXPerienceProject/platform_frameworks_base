@@ -18,15 +18,29 @@ package com.android.effectstest;
 
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
-import android.media.MediaPlayer;
+import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
+import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.View.OnClickListener;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.SeekBar;
+import android.widget.ToggleButton;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
-
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import java.nio.ByteOrder;
+import java.nio.ByteBuffer;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SimplePlayer implements OnClickListener {
 

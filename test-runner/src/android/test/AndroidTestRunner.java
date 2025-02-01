@@ -19,6 +19,7 @@ package android.test;
 import android.app.Instrumentation;
 import android.content.Context;
 
+import java.util.ArrayList;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestListener;
@@ -28,7 +29,6 @@ import junit.runner.BaseTestRunner;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

@@ -22,17 +22,19 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.hardware.usb.UsbAccessory;
-import android.hardware.usb.UsbManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.ParcelFileDescriptor;
-import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import android.hardware.usb.UsbManager;
+import android.hardware.usb.UsbAccessory;
 
 import java.io.FileDescriptor;
 import java.io.FileInputStream;

@@ -18,8 +18,8 @@ package com.android.smoketest;
 
 import android.app.ActivityManager;
 import android.app.ActivityManager.ProcessErrorStateInfo;
-import android.content.ComponentName;
 import android.content.Context;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;

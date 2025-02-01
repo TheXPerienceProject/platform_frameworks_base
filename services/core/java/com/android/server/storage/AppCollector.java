@@ -33,6 +33,7 @@ import android.os.storage.VolumeInfo;
 import android.util.Log;
 
 import com.android.internal.os.BackgroundThread;
+import com.android.internal.util.Preconditions;
 
 import java.io.IOException;
 import java.util.ArrayList;

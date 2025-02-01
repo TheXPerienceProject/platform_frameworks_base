@@ -15,11 +15,6 @@
  */
 package android.view.autofill;
 
-import static android.view.autofill.AutofillManager.AutofillCallback.EVENT_INPUT_HIDDEN;
-import static android.view.autofill.AutofillManager.AutofillCallback.EVENT_INPUT_SHOWN;
-import static android.view.autofill.AutofillManager.AutofillCallback.EVENT_INPUT_UNAVAILABLE;
-
-import android.util.Log;
 import android.view.View;
 import android.view.autofill.AutofillManager.AutofillCallback;
 
@@ -29,7 +24,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
+
+import static android.view.autofill.AutofillManager.AutofillCallback.EVENT_INPUT_HIDDEN;
+import static android.view.autofill.AutofillManager.AutofillCallback.EVENT_INPUT_SHOWN;
+import static android.view.autofill.AutofillManager.AutofillCallback.EVENT_INPUT_UNAVAILABLE;
+
+import android.os.CancellationSignal;
+import android.service.autofill.FillCallback;
+import android.service.autofill.FillRequest;
+import android.util.Log;
 
 /**
  * Custom {@link AutofillCallback} used to recover events during tests.

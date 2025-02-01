@@ -19,7 +19,6 @@ package com.android.server.app;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.os.SystemProperties;
-
 /**
  * Wrapper interface to access {@link SystemProperties}.
  *

@@ -24,7 +24,6 @@ import android.os.IBinder;
 import android.os.ServiceManager;
 
 import com.android.net.module.util.PermissionUtils;
-
 /**
  * Constants and utilities for client code communicating with the network stack service.
  * @hide

@@ -19,6 +19,7 @@ package com.android.server.updates;
 import android.content.Context;
 import android.content.Intent;
 import android.net.NetworkWatchlistManager;
+import android.os.RemoteException;
 import android.util.Slog;
 
 public class NetworkWatchlistInstallReceiver extends ConfigUpdateInstallReceiver {

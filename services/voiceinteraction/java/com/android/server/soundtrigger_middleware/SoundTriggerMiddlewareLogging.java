@@ -71,6 +71,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
 
+
 /**
  * An ISoundTriggerMiddlewareService decorator, which adds logging of all API calls (and
  * callbacks).

@@ -16,8 +16,8 @@
 
 package com.android.systemui.flags;
 
-import static com.android.systemui.Flags.classicFlagsMultiUser;
 import static com.android.systemui.Flags.exampleFlag;
+import static com.android.systemui.Flags.classicFlagsMultiUser;
 import static com.android.systemui.Flags.sysuiTeamfood;
 import static com.android.systemui.flags.FlagManager.ACTION_GET_FLAGS;
 import static com.android.systemui.flags.FlagManager.ACTION_SET_FLAG;

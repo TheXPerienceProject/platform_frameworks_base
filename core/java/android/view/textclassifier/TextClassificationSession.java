@@ -23,10 +23,10 @@ import android.view.textclassifier.SelectionEvent.InvocationMethod;
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.util.Preconditions;
 
-import sun.misc.Cleaner;
-
 import java.util.Objects;
 import java.util.function.Supplier;
+
+import sun.misc.Cleaner;
 
 /**
  * Session-aware TextClassifier.

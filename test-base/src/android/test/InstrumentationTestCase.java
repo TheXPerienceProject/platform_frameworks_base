@@ -23,12 +23,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 
-import junit.framework.TestCase;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+
+import junit.framework.TestCase;
 
 /**
  * A test case that has access to {@link Instrumentation}.

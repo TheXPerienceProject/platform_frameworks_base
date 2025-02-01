@@ -21,6 +21,8 @@ import static android.app.Flags.FLAG_PINNER_SERVICE_CLIENT_API;
 import android.annotation.FlaggedApi;
 import android.annotation.NonNull;
 import android.annotation.TestApi;
+import android.app.pinner.IPinnerService;
+import android.app.pinner.PinnedFileStat;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.os.ServiceManager;

@@ -16,6 +16,7 @@
 
 package com.android.internal.policy;
 
+import static android.provider.Settings.Global.DEVELOPMENT_FORCE_RESIZABLE_ACTIVITIES;
 import static android.provider.Settings.Global.DEVELOPMENT_RENDER_SHADOWS_IN_COMPOSITOR;
 import static android.view.View.SYSTEM_UI_LAYOUT_FLAGS;
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;

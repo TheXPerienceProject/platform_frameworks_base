@@ -16,16 +16,16 @@
 
 package android.graphics.drawable;
 
-import android.annotation.NonNull;
-import android.content.res.Resources;
-import android.content.res.Resources.Theme;
-import android.content.res.TypedArray;
-import android.util.AttributeSet;
+import java.io.IOException;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
-import java.io.IOException;
+import android.annotation.NonNull;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.content.res.Resources.Theme;
+import android.util.AttributeSet;
 
 /**
  * A resource that manages a number of alternate Drawables, each assigned a maximum numerical value.

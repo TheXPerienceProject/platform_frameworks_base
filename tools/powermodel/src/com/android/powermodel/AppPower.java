@@ -16,10 +16,10 @@
 
 package com.android.powermodel;
 
-import com.google.common.collect.ImmutableMap;
-
 import java.util.HashMap;
 import java.util.Set;
+
+import com.google.common.collect.ImmutableMap;
 
 public class AppPower extends AppInfo {
     private ImmutableMap<Component, ComponentPower> mComponents;

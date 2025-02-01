@@ -17,11 +17,11 @@
 package android.app.activity;
 
 import android.app.Activity;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.os.MessageQueue;
+import android.os.Bundle;
 
 public class TestedActivity extends Activity
 {

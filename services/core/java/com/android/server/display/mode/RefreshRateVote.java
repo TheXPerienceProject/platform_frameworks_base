@@ -20,6 +20,7 @@ import android.annotation.NonNull;
 
 import java.util.Objects;
 
+
 /**
  * Information about the refresh rate frame rate ranges DM would like to set the display to.
  */

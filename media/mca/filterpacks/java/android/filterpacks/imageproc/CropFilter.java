@@ -25,9 +25,9 @@ import android.filterfw.core.GenerateFieldPort;
 import android.filterfw.core.MutableFrameFormat;
 import android.filterfw.core.Program;
 import android.filterfw.core.ShaderProgram;
+import android.filterfw.geometry.Quad;
 import android.filterfw.format.ImageFormat;
 import android.filterfw.format.ObjectFormat;
-import android.filterfw.geometry.Quad;
 
 /**
  * @hide

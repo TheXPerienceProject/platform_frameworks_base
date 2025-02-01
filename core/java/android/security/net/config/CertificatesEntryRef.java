@@ -17,7 +17,6 @@
 package android.security.net.config;
 
 import android.util.ArraySet;
-
 import java.security.cert.X509Certificate;
 import java.util.Set;
 

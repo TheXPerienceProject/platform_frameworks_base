@@ -17,9 +17,9 @@
 package android.widget.listview;
 
 import android.util.ListItemFactory;
+import android.widget.ListScenario;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListScenario;
 
 /**
  * A list where each item is tall with buttons that are farther apart than the screen

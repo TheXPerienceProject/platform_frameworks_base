@@ -16,12 +16,13 @@
 
 package com.android.mediaframeworktest;
 
-import android.test.InstrumentationTestRunner;
-import android.test.InstrumentationTestSuite;
-
 import com.android.mediaframeworktest.power.MediaPlayerPowerTest;
 
 import junit.framework.TestSuite;
+
+import android.test.InstrumentationTestRunner;
+import android.test.InstrumentationTestSuite;
+
 
 /**
  * Instrumentation Test Runner for all MediaPlayer tests.

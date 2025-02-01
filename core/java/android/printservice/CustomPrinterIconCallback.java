@@ -23,6 +23,7 @@ import android.os.RemoteException;
 import android.print.PrinterId;
 import android.util.Log;
 
+
 /**
  * Callback for {@link PrinterDiscoverySession#onRequestCustomPrinterIcon}.
  */

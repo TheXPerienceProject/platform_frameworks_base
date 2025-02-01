@@ -22,9 +22,10 @@ import static android.service.ondeviceintelligence.OnDeviceSandboxedInferenceSer
 import static android.service.ondeviceintelligence.OnDeviceSandboxedInferenceService.REGISTER_MODEL_UPDATE_CALLBACK_BUNDLE_KEY;
 
 import static com.android.server.ondeviceintelligence.BundleUtil.sanitizeInferenceParams;
-import static com.android.server.ondeviceintelligence.BundleUtil.sanitizeStateParams;
 import static com.android.server.ondeviceintelligence.BundleUtil.validatePfdReadOnly;
+import static com.android.server.ondeviceintelligence.BundleUtil.sanitizeStateParams;
 import static com.android.server.ondeviceintelligence.BundleUtil.wrapWithValidation;
+
 
 import android.Manifest;
 import android.annotation.NonNull;

@@ -30,10 +30,10 @@ import com.android.internal.os.SomeArgs;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import src.com.android.commands.uinput.InputAbsInfo;
-
 import java.io.IOException;
 import java.io.OutputStream;
+
+import src.com.android.commands.uinput.InputAbsInfo;
 
 /**
  * Device class defines uinput device interfaces of device operations, for device open, close,

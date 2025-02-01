@@ -16,13 +16,12 @@
 
 package android.core;
 
-import android.net.http.*;
-import android.util.Log;
-
-import org.apache.http.protocol.HTTP;
-
 import java.util.ArrayList;
 import java.util.Map;
+
+import org.apache.http.protocol.HTTP;
+import android.util.Log;
+import android.net.http.*;
 
 /**
  * Implements EventHandler and provides test functionality to validate

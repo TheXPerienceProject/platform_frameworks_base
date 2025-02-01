@@ -17,11 +17,11 @@
 package android.widget.listview;
 
 import android.os.Bundle;
+import android.widget.ListScenario;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ListScenario;
 
 /**
  * List of 1,000 items used to test calls to setSelection() in touch mode.

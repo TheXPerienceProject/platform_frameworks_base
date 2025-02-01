@@ -18,13 +18,14 @@ package com.android.transitiontests;
 import android.app.Activity;
 import android.os.Bundle;
 import android.transition.ChangeBounds;
+import android.view.View;
+import android.view.ViewGroup;
 import android.transition.Fade;
 import android.transition.Recolor;
 import android.transition.Scene;
-import android.transition.TransitionManager;
 import android.transition.TransitionSet;
-import android.view.View;
-import android.view.ViewGroup;
+import android.transition.TransitionManager;
+
 
 public class Demo3 extends Activity {
     ViewGroup mSceneRoot;

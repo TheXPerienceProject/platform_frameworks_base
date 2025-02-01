@@ -17,6 +17,8 @@
 package android.database.sqlite;
 
 import android.annotation.NonNull;
+import com.android.internal.annotations.GuardedBy;
+
 import android.database.Cursor;
 import android.database.CursorWindow;
 import android.database.DatabaseUtils;
@@ -32,9 +34,7 @@ import android.util.Log;
 import android.util.LruCache;
 import android.util.Pair;
 import android.util.Printer;
-
 import com.android.internal.util.RingBuffer;
-
 import dalvik.system.BlockGuard;
 import dalvik.system.CloseGuard;
 
@@ -48,6 +48,7 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
 import java.util.function.BinaryOperator;

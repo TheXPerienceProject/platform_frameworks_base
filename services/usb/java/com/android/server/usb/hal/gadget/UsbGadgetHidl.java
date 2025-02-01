@@ -15,14 +15,23 @@
  */
 package com.android.server.usb.hal.gadget;
 
+import static android.hardware.usb.UsbManager.GADGET_HAL_NOT_SUPPORTED;
+import static android.hardware.usb.UsbManager.GADGET_HAL_V1_0;
+import static android.hardware.usb.UsbManager.GADGET_HAL_V1_1;
+import static android.hardware.usb.UsbManager.GADGET_HAL_V1_2;
 
 import static com.android.server.usb.UsbDeviceManager.logAndPrint;
 import static com.android.server.usb.UsbDeviceManager.logAndPrintException;
 
-import android.hardware.usb.UsbManager;
-import android.hardware.usb.UsbManager.UsbGadgetHalVersion;
+import android.annotation.Nullable;
+import android.hardware.usb.gadget.V1_0.Status;
 import android.hardware.usb.gadget.V1_0.IUsbGadget;
 import android.hardware.usb.gadget.V1_2.IUsbGadgetCallback;
+import android.hardware.usb.gadget.V1_2.UsbSpeed;
+import android.hardware.usb.UsbAccessory;
+import android.hardware.usb.UsbManager;
+import android.hardware.usb.UsbManager.UsbGadgetHalVersion;
+import android.hardware.usb.UsbManager.UsbHalVersion;
 import android.hidl.manager.V1_0.IServiceManager;
 import android.hidl.manager.V1_0.IServiceNotification;
 import android.os.IHwBinder;
@@ -33,9 +42,9 @@ import com.android.internal.annotations.GuardedBy;
 import com.android.internal.util.IndentingPrintWriter;
 import com.android.server.usb.UsbDeviceManager;
 
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Objects;
-
 /**
  *
  */

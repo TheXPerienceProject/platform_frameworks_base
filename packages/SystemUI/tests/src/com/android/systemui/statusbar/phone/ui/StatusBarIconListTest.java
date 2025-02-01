@@ -30,6 +30,7 @@ import androidx.test.runner.AndroidJUnit4;
 
 import com.android.systemui.SysuiTestCase;
 import com.android.systemui.statusbar.phone.StatusBarIconHolder;
+import com.android.systemui.statusbar.phone.ui.StatusBarIconList;
 import com.android.systemui.statusbar.phone.ui.StatusBarIconList.Slot;
 
 import org.junit.Test;

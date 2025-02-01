@@ -43,6 +43,7 @@ import com.android.server.biometrics.sensors.fingerprint.FingerprintUtils;
 import java.util.ArrayList;
 import java.util.function.Consumer;
 
+
 /**
  * Response handler for the {@link ISessionCallback} HAL AIDL interface.
  */

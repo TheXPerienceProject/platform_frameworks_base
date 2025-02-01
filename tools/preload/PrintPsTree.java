@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.FileInputStream;
 import java.io.ObjectInputStream;
+import java.io.BufferedInputStream;
 
 /**
  * Prints raw information in CSV format.

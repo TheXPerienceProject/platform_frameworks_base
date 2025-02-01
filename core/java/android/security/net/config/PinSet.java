@@ -17,7 +17,6 @@
 package android.security.net.config;
 
 import android.util.ArraySet;
-
 import java.util.Collections;
 import java.util.Set;
 

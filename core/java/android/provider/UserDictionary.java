@@ -16,13 +16,13 @@
 
 package android.provider;
 
+import java.util.Locale;
+
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.net.Uri;
 import android.text.TextUtils;
-
-import java.util.Locale;
 
 /**
  * A provider of user defined words for input methods to use for predictive text input.

@@ -19,6 +19,7 @@ package com.android.test.uibench;
 import static android.view.WindowInsetsAnimation.Callback.DISPATCH_MODE_STOP;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.WindowInsets;
 import android.view.WindowInsetsAnimation;
 import android.widget.EditText;

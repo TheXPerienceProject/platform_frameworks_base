@@ -23,6 +23,7 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * Contains information on all available Nfc
  * antennas on an Android device as well as information

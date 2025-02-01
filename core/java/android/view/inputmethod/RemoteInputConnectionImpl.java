@@ -28,6 +28,7 @@ import static java.lang.annotation.RetentionPolicy.SOURCE;
 import android.annotation.AnyThread;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.annotation.UiThread;
 import android.app.UriGrantsManager;
 import android.content.ContentProvider;
 import android.content.Intent;

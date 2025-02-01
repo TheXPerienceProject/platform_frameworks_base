@@ -17,7 +17,7 @@
 package android.os;
 
 import android.util.Log;
-
+import android.util.Size;
 import com.android.internal.util.FastPrintWriter;
 
 import java.io.FileOutputStream;

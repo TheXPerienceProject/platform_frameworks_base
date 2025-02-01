@@ -16,15 +16,16 @@
 
 package android.inputmethodservice;
 
-import android.annotation.FractionRes;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.annotation.FractionRes;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowInsets;
 import android.widget.LinearLayout;
 
 /**

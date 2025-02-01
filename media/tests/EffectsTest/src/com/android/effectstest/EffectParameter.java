@@ -16,9 +16,11 @@
 
 package com.android.effectstest;
 
+import android.os.Bundle;
 import android.util.Log;
-import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.SeekBar;
+
 
 abstract class EffectParameter implements SeekBar.OnSeekBarChangeListener {
 

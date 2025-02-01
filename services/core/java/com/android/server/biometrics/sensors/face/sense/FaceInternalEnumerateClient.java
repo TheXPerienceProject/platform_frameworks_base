@@ -30,10 +30,10 @@ import com.android.server.biometrics.log.BiometricLogger;
 import com.android.server.biometrics.sensors.BiometricUtils;
 import com.android.server.biometrics.sensors.InternalEnumerateClient;
 
-import vendor.aospa.biometrics.face.ISenseService;
-
 import java.util.List;
 import java.util.function.Supplier;
+
+import vendor.aospa.biometrics.face.ISenseService;
 
 class FaceInternalEnumerateClient extends InternalEnumerateClient<ISenseService> {
     private static final String TAG = "FaceInternalEnumerateClient";

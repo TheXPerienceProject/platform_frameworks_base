@@ -23,11 +23,10 @@ import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbDeviceConnection;
 import android.os.CancellationSignal;
 import android.os.ParcelFileDescriptor;
-import android.os.UserManager;
 
+import android.os.UserManager;
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.util.Preconditions;
-
 import dalvik.system.CloseGuard;
 
 import java.io.IOException;

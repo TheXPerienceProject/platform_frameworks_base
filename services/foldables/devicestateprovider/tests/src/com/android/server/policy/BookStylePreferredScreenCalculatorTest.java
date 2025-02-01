@@ -23,8 +23,8 @@ import static com.google.common.truth.Truth.assertWithMessage;
 
 import android.testing.AndroidTestingRunner;
 
-import com.android.server.policy.BookStylePreferredScreenCalculator.HingeAngle;
 import com.android.server.policy.BookStylePreferredScreenCalculator.PreferredScreen;
+import com.android.server.policy.BookStylePreferredScreenCalculator.HingeAngle;
 
 import com.google.common.collect.Lists;
 

@@ -22,9 +22,7 @@ import android.os.UEventObserver;
 import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.Slog;
-
 import com.android.internal.annotations.GuardedBy;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;

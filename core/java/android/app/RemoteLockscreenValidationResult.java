@@ -25,7 +25,6 @@ import android.os.Parcelable;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-
 /**
  * Result of lock screen credentials verification.
  *

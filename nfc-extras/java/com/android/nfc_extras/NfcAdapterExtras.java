@@ -16,15 +16,15 @@
 
 package com.android.nfc_extras;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+
 import android.content.Context;
 import android.nfc.INfcAdapterExtras;
 import android.nfc.NfcAdapter;
 import android.os.RemoteException;
 import android.util.Log;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.HashMap;
 
 /**
  * Provides additional methods on an {@link NfcAdapter} for Card Emulation

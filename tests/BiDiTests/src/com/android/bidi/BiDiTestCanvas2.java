@@ -21,6 +21,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SeekBar;
+
+import static com.android.bidi.BiDiTestConstants.FONT_MAX_SIZE;
+import static com.android.bidi.BiDiTestConstants.FONT_MIN_SIZE;
 
 public class BiDiTestCanvas2 extends Fragment {
 

@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
+import java.io.Serializable;
 
 /**
  * An operation with a duration. Could represent a class load or initialization.

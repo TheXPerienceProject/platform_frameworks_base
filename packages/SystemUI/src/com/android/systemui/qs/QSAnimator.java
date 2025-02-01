@@ -40,14 +40,14 @@ import com.android.systemui.qs.tileimpl.HeightOverrideable;
 import com.android.systemui.tuner.TunerService;
 import com.android.systemui.util.concurrency.DelayableExecutor;
 
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 /**
  * Performs the animated transition between the QQS and QS views.

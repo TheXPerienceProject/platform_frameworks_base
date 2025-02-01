@@ -18,6 +18,7 @@ package com.android.internal.util;
 
 import static junit.framework.Assert.assertEquals;
 
+
 import android.platform.test.annotations.DisabledOnRavenwood;
 import android.platform.test.ravenwood.RavenwoodRule;
 

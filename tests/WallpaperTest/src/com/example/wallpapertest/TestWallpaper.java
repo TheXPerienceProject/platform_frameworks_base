@@ -16,13 +16,19 @@
 
 package com.example.wallpapertest;
 
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.os.Handler;
 import android.service.wallpaper.WallpaperService;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.Paint;
+import android.graphics.Color;
+import android.graphics.RectF;
 import android.text.TextPaint;
 import android.view.SurfaceHolder;
+import android.content.res.XmlResourceParser;
+
+import android.os.Handler;
+import android.util.Log;
+
 import android.view.WindowInsets;
 
 public class TestWallpaper extends WallpaperService {

@@ -18,9 +18,9 @@ package com.android.server.accessibility;
 
 import static com.android.server.accessibility.AbstractAccessibilityServiceConnection.DISPLAY_TYPE_DEFAULT;
 import static com.android.server.accessibility.AccessibilityWindowManagerWithAccessibilityWindowTest.DisplayIdMatcher.displayId;
-import static com.android.server.accessibility.AccessibilityWindowManagerWithAccessibilityWindowTest.EventWindowIdMatcher.eventWindowId;
-import static com.android.server.accessibility.AccessibilityWindowManagerWithAccessibilityWindowTest.WindowChangesMatcher.a11yWindowChanges;
 import static com.android.server.accessibility.AccessibilityWindowManagerWithAccessibilityWindowTest.WindowIdMatcher.windowId;
+import static com.android.server.accessibility.AccessibilityWindowManagerWithAccessibilityWindowTest.WindowChangesMatcher.a11yWindowChanges;
+import static com.android.server.accessibility.AccessibilityWindowManagerWithAccessibilityWindowTest.EventWindowIdMatcher.eventWindowId;
 
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertNotNull;

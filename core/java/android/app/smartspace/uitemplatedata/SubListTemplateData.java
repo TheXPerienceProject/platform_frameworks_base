@@ -25,6 +25,7 @@ import android.os.Parcel;
 import java.util.List;
 import java.util.Objects;
 
+
 /**
  * Holds all the relevant data needed to render a Smartspace card with the sub-list Ui Template.
  *

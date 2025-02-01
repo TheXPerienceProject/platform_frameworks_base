@@ -17,8 +17,6 @@
 package com.android.internal.app.procstats;
 
 
-import static com.android.internal.app.procstats.ProcessStats.STATE_NOTHING;
-
 import android.os.Parcel;
 import android.os.SystemClock;
 import android.service.procstats.PackageServiceOperationStatsProto;
@@ -27,6 +25,8 @@ import android.service.procstats.ProcessStatsEnums;
 import android.util.Slog;
 import android.util.TimeUtils;
 import android.util.proto.ProtoOutputStream;
+
+import static com.android.internal.app.procstats.ProcessStats.STATE_NOTHING;
 
 import java.io.PrintWriter;
 

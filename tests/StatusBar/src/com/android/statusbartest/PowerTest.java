@@ -16,14 +16,14 @@
 
 package com.android.statusbartest;
 
-import android.content.ComponentName;
-import android.content.pm.PackageManager;
 import android.os.Binder;
-import android.os.Handler;
 import android.os.IBinder;
 import android.os.IPowerManager;
-import android.os.PowerManager;
+import android.content.ComponentName;
+import android.content.pm.PackageManager;
+import android.os.Handler;
 import android.os.ServiceManager;
+import android.os.PowerManager;
 
 public class PowerTest extends TestActivity
 {

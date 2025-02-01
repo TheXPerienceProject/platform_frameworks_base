@@ -44,6 +44,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
+
 public class ThermalManagerServiceMockingTest {
     @Mock private IThermal mAidlHalMock;
     private Binder mAidlBinder = new Binder();

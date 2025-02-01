@@ -52,6 +52,7 @@ import android.util.ArrayMap;
 import android.util.IntArray;
 import android.util.Pair;
 import android.util.Slog;
+import android.view.Display;
 import android.view.RemoteAnimationTarget;
 import android.view.SurfaceControl;
 import android.window.PictureInPictureSurfaceTransaction;

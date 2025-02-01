@@ -50,6 +50,7 @@ import java.io.OutputStream;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
+
 /**
  * Handles per-user requests received by
  * {@link MusicRecognitionManagerService}. Opens an audio stream from the

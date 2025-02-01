@@ -17,6 +17,7 @@
 package android.database.sqlite;
 
 import android.annotation.NonNull;
+
 import android.compat.annotation.UnsupportedAppUsage;
 import android.database.CursorWindow;
 import android.database.DatabaseUtils;

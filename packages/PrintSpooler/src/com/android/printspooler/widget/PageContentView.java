@@ -19,14 +19,13 @@ package com.android.printspooler.widget;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.print.PrintAttributes.Margins;
 import android.print.PrintAttributes.MediaSize;
+import android.print.PrintAttributes.Margins;
 import android.util.AttributeSet;
 import android.view.View;
-
 import com.android.printspooler.model.PageContentRepository;
-import com.android.printspooler.model.PageContentRepository.PageContentProvider;
 import com.android.printspooler.model.PageContentRepository.RenderSpec;
+import com.android.printspooler.model.PageContentRepository.PageContentProvider;
 
 /**
  * This class represents a page in the print preview list. The width of the page

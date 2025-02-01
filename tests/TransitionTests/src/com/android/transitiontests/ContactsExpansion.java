@@ -19,18 +19,18 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.transition.ChangeBounds;
-import android.transition.Crossfade;
-import android.transition.Fade;
-import android.transition.Rotate;
-import android.transition.Scene;
-import android.transition.Transition;
-import android.transition.TransitionManager;
-import android.transition.TransitionSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.transition.Fade;
+import android.transition.Scene;
+import android.transition.Transition;
+import android.transition.TransitionSet;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.transition.Crossfade;
+import android.transition.Rotate;
+import android.transition.TransitionManager;
 
 public class ContactsExpansion extends Activity {
 

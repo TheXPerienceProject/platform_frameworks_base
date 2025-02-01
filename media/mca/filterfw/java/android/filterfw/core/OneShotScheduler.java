@@ -17,6 +17,8 @@
 
 package android.filterfw.core;
 
+import android.filterfw.core.Filter;
+import android.filterfw.core.RoundRobinScheduler;
 import android.util.Log;
 
 import java.util.HashMap;

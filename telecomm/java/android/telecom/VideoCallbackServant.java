@@ -16,12 +16,12 @@
 
 package android.telecom;
 
+import com.android.internal.os.SomeArgs;
+import com.android.internal.telecom.IVideoCallback;
+
 import android.os.Handler;
 import android.os.Message;
 import android.os.RemoteException;
-
-import com.android.internal.os.SomeArgs;
-import com.android.internal.telecom.IVideoCallback;
 
 /**
  * A component that provides an RPC servant implementation of {@link IVideoCallback},

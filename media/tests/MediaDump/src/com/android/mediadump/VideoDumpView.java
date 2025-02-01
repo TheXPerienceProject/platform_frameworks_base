@@ -16,32 +16,44 @@
 
 package com.android.mediadump;
 
-import android.content.Context;
-import android.graphics.SurfaceTexture;
-import android.media.MediaPlayer;
-import android.opengl.GLES20;
-import android.opengl.GLSurfaceView;
-import android.opengl.Matrix;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.Surface;
-import android.view.View;
-import android.widget.MediaController;
-import android.widget.MediaController.MediaPlayerControl;
-
+import java.io.IOException;
+import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.FilenameFilter;
-import java.io.IOException;
+import java.io.FileOutputStream;
+import java.io.File;
+
+import java.lang.Integer;
+import java.lang.Math;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.IntBuffer;
 import java.util.Properties;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.pm.ActivityInfo;
+import android.graphics.SurfaceTexture;
+import android.media.MediaPlayer;
+import android.opengl.GLES20;
+import android.opengl.GLSurfaceView;
+import android.opengl.GLUtils;
+import android.opengl.Matrix;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.view.Surface;
+import android.view.SurfaceHolder;
+import android.view.View;
+import android.widget.MediaController;
+import android.widget.MediaController.MediaPlayerControl;
 
 /**
  * A view to play a video, specified by VideoDumpConfig.VIDEO_URI, and dump the screen

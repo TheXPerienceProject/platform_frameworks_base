@@ -25,6 +25,7 @@ import android.os.Parcelable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+
 /**
  * Class stores information related to the type of data throttling request. Must be populated as
  * field in {@link ThermalMitigationRequest} for sending of thermal mitigation request at {@link

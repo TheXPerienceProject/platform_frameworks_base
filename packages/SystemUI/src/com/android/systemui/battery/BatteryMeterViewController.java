@@ -16,11 +16,11 @@
 package com.android.systemui.battery;
 
 import static android.provider.Settings.Global.BATTERY_ESTIMATES_LAST_UPDATE_TIME;
-import static android.provider.Settings.System.QS_SHOW_BATTERY_ESTIMATE;
 import static android.provider.Settings.System.SHOW_BATTERY_PERCENT;
 import static android.provider.Settings.System.SHOW_BATTERY_PERCENT_CHARGING;
-import static android.provider.Settings.System.SHOW_BATTERY_PERCENT_INSIDE;
+import static android.provider.Settings.System.QS_SHOW_BATTERY_ESTIMATE;
 import static android.provider.Settings.System.STATUS_BAR_BATTERY_STYLE;
+import static android.provider.Settings.System.SHOW_BATTERY_PERCENT_INSIDE;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -29,6 +29,7 @@ import android.net.Uri;
 import android.os.Handler;
 import android.os.HandlerExecutor;
 import android.provider.Settings;
+import android.text.TextUtils;
 import android.util.ArraySet;
 import android.view.View;
 

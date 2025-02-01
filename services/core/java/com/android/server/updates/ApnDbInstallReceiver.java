@@ -17,6 +17,7 @@
 package com.android.server.updates;
 
 import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;

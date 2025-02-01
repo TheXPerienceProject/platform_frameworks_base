@@ -19,8 +19,6 @@ package com.android.commands.uinput;
 import android.annotation.Nullable;
 import android.util.SparseArray;
 
-import src.com.android.commands.uinput.InputAbsInfo;
-
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.io.Reader;
@@ -31,6 +29,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
+
+import src.com.android.commands.uinput.InputAbsInfo;
 
 /**
  * Parser for the <a href="https://gitlab.freedesktop.org/libevdev/evemu">FreeDesktop evemu</a>

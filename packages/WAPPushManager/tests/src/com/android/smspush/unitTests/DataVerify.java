@@ -22,6 +22,8 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 
+import com.android.internal.util.HexDump;
+
 /**
  * To verify that receiver application receives correct body data.
  */

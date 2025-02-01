@@ -18,26 +18,25 @@ package android.conscrypt;
 
 import android.perftests.utils.BenchmarkState;
 import android.perftests.utils.PerfStatusReporter;
-
 import androidx.test.filters.LargeTest;
+
+import org.conscrypt.TestUtils;
+
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.security.Key;
+import java.security.NoSuchAlgorithmException;
+import javax.crypto.Cipher;
+import javax.crypto.NoSuchPaddingException;
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 
-import org.conscrypt.TestUtils;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import java.nio.ByteBuffer;
-import java.security.Key;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-import javax.crypto.Cipher;
-import javax.crypto.NoSuchPaddingException;
 
 /**
  * Benchmark for comparing cipher encrypt performance.

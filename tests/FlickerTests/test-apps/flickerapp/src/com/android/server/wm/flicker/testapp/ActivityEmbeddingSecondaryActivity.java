@@ -17,8 +17,8 @@
 package com.android.server.wm.flicker.testapp;
 
 import android.app.Activity;
-import android.app.PictureInPictureParams;
 import android.content.Intent;
+import android.app.PictureInPictureParams;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;

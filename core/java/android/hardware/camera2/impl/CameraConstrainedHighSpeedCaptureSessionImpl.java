@@ -15,8 +15,6 @@
  */
 package android.hardware.camera2.impl;
 
-import static com.android.internal.util.Preconditions.*;
-
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
 import android.hardware.camera2.CameraCharacteristics;
@@ -29,10 +27,10 @@ import android.hardware.camera2.CaptureRequest;
 import android.hardware.camera2.params.OutputConfiguration;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.hardware.camera2.utils.SurfaceUtils;
-import android.os.ConditionVariable;
 import android.os.Handler;
-import android.util.Log;
+import android.os.ConditionVariable;
 import android.util.Range;
+import android.util.Log;
 import android.view.Surface;
 
 import java.util.ArrayList;
@@ -42,6 +40,8 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.Executor;
+
+import static com.android.internal.util.Preconditions.*;
 
 /**
  * Standard implementation of CameraConstrainedHighSpeedCaptureSession.

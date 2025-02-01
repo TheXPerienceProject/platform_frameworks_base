@@ -24,7 +24,6 @@ import android.media.MediaCodecInfo.CodecCapabilities;
 import android.media.MediaCodecList;
 import android.media.MediaFormat;
 import android.util.SparseIntArray;
-
 import androidx.media.filterfw.ColorSpace;
 import androidx.media.filterfw.Frame;
 import androidx.media.filterfw.FrameImage2D;

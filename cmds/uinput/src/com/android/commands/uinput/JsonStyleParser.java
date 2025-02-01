@@ -21,8 +21,6 @@ import android.util.JsonToken;
 import android.util.Log;
 import android.util.SparseArray;
 
-import src.com.android.commands.uinput.InputAbsInfo;
-
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
@@ -31,6 +29,8 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.IntStream;
+
+import src.com.android.commands.uinput.InputAbsInfo;
 
 /**
  * A class that parses the JSON-like event format described in the README to build {@link Event}s.

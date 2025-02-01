@@ -15,16 +15,16 @@
  */
 package android.hardware.camera2.marshal.impl;
 
-import static android.hardware.camera2.impl.CameraMetadataNative.*;
-import static android.hardware.camera2.marshal.MarshalHelpers.*;
-
-import android.hardware.camera2.marshal.MarshalQueryable;
 import android.hardware.camera2.marshal.Marshaler;
+import android.hardware.camera2.marshal.MarshalQueryable;
 import android.hardware.camera2.utils.TypeReference;
 import android.util.Log;
 
 import java.nio.ByteBuffer;
 import java.util.HashMap;
+
+import static android.hardware.camera2.impl.CameraMetadataNative.*;
+import static android.hardware.camera2.marshal.MarshalHelpers.*;
 
 /**
  * Marshal any simple enum (0-arg constructors only) into/from either

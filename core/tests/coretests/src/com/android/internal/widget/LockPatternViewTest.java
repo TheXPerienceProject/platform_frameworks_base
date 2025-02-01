@@ -16,20 +16,32 @@
 
 package com.android.internal.widget;
 
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+
+import android.content.Context;
+
+import androidx.test.annotation.UiThreadTest;
+
+import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toolbar;
+
 
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
-
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.View;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 import androidx.test.InstrumentationRegistry;
-import androidx.test.annotation.UiThreadTest;
 import androidx.test.filters.SmallTest;
 import androidx.test.rule.UiThreadTestRule;
 
@@ -39,9 +51,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.mockito.ArgumentCaptor;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
+import com.android.internal.R;
 
 import java.util.Arrays;
 import java.util.Collection;

@@ -97,6 +97,7 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.text.style.TextAppearanceSpan;
 import android.util.Pair;
+import android.util.Slog;
 import android.widget.RemoteViews;
 
 import androidx.test.InstrumentationRegistry;
@@ -106,9 +107,9 @@ import androidx.test.filters.SmallTest;
 import com.android.internal.R;
 import com.android.internal.util.ContrastColorUtil;
 
-import libcore.junit.util.compat.CoreCompatChangeRule;
-
 import junit.framework.Assert;
+
+import libcore.junit.util.compat.CoreCompatChangeRule;
 
 import org.junit.Before;
 import org.junit.Ignore;

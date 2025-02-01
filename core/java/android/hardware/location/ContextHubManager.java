@@ -31,6 +31,7 @@ import android.app.ActivityThread;
 import android.app.PendingIntent;
 import android.chre.flags.Flags;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.contexthub.ErrorCode;
 import android.os.Handler;

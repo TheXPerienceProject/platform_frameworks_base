@@ -16,7 +16,11 @@
 
 package android.telephony.mbms;
 
+import android.annotation.IntDef;
 import android.telephony.MbmsDownloadSession;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 /**
  * A optional listener class used by download clients to track progress. Apps should extend this

@@ -18,6 +18,7 @@ package com.android.settingslib.widget;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.res.Resources;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;

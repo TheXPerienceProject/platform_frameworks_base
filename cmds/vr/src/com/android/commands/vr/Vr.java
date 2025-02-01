@@ -20,8 +20,8 @@ import android.app.Vr2dDisplayProperties;
 import android.content.Context;
 import android.os.RemoteException;
 import android.os.ServiceManager;
-import android.service.vr.IVrManager;
 
+import android.service.vr.IVrManager;
 import com.android.internal.os.BaseCommand;
 
 import java.io.PrintStream;

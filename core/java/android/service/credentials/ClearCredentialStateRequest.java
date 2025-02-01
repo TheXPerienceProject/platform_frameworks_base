@@ -24,7 +24,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.android.internal.util.AnnotationValidations;
-
 /**
  * A request class for clearing a user's credential state.
  * Providers must clear the credential state when they receive this request.

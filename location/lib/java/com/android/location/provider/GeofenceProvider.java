@@ -18,8 +18,9 @@ package com.android.location.provider;
 
 import android.hardware.location.GeofenceHardware;
 import android.hardware.location.IGeofenceHardware;
-import android.location.IGeofenceProvider;
 import android.os.IBinder;
+
+import android.location.IGeofenceProvider;
 
 /**
  * Base class for geofence providers implemented as unbundled services.

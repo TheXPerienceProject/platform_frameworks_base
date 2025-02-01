@@ -19,11 +19,14 @@ package com.android.camerabrowser;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.mtp.MtpConstants;
+import android.mtp.MtpDevice;
 import android.mtp.MtpObjectInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +37,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-/**
+ /**
  * A list view displaying all objects within a container (folder or storage unit).
  */
 public class ObjectBrowser extends ListActivity {

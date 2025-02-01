@@ -30,11 +30,11 @@ import com.android.server.biometrics.sensors.InternalCleanupClient;
 import com.android.server.biometrics.sensors.InternalEnumerateClient;
 import com.android.server.biometrics.sensors.RemovalClient;
 
-import vendor.aospa.biometrics.face.ISenseService;
-
 import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
+
+import vendor.aospa.biometrics.face.ISenseService;
 
 class FaceInternalCleanupClient extends InternalCleanupClient<Face, ISenseService> {
 

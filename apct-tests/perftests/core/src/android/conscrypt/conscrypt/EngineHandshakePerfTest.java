@@ -32,27 +32,25 @@
 
 package android.conscrypt;
 
-import android.perftests.utils.BenchmarkState;
-import android.perftests.utils.PerfStatusReporter;
-
-import androidx.test.filters.LargeTest;
-
-import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
-
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
 import javax.net.ssl.SSLEngine;
 import javax.net.ssl.SSLEngineResult;
 import javax.net.ssl.SSLEngineResult.HandshakeStatus;
 import javax.net.ssl.SSLException;
+
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
+
+import android.perftests.utils.BenchmarkState;
+import android.perftests.utils.PerfStatusReporter;
+import androidx.test.filters.LargeTest;
+
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 /**
  * Benchmark comparing handshake performance of various engine implementations to conscrypt.

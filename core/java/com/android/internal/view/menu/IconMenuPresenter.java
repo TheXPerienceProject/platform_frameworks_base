@@ -15,6 +15,8 @@
  */
 package com.android.internal.view.menu;
 
+import com.android.internal.view.menu.MenuView.ItemView;
+
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.content.Context;
@@ -25,8 +27,6 @@ import android.view.ContextThemeWrapper;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.android.internal.view.menu.MenuView.ItemView;
 
 import java.util.ArrayList;
 

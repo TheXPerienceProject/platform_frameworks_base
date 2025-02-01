@@ -16,19 +16,19 @@
 
 package com.android.server.camera;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+
 import static com.google.common.truth.Truth.assertThat;
+
+import androidx.test.InstrumentationRegistry;
 
 import android.content.Context;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraMetadata;
 import android.view.Display;
 import android.view.Surface;
-
-import androidx.test.InstrumentationRegistry;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
 import java.util.Map;
 

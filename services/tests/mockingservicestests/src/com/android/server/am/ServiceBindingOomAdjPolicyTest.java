@@ -50,6 +50,7 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+import android.app.IApplicationThread;
 import android.app.IServiceConnection;
 import android.app.usage.UsageStatsManagerInternal;
 import android.content.ComponentName;

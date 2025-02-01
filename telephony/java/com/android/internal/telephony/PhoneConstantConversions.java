@@ -18,6 +18,8 @@ package com.android.internal.telephony;
 
 import android.telephony.TelephonyManager;
 
+import com.android.internal.telephony.PhoneConstants;
+
 public class PhoneConstantConversions {
     /**
      * Convert the {@link PhoneConstants.State} enum into the TelephonyManager.CALL_STATE_*

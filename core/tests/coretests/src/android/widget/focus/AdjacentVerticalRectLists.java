@@ -18,8 +18,8 @@ package android.widget.focus;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.ViewGroup;
 import android.widget.InternalSelectionView;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 /**

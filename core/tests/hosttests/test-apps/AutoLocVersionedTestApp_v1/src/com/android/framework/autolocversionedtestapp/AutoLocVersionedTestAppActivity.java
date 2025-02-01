@@ -16,6 +16,7 @@
 package com.android.framework.autolocversionedtestapp;
 
 import android.app.Activity;
+import android.os.Bundle;
 
 /**
  * Empty activity, not needed for this test

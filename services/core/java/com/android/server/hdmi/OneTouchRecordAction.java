@@ -24,7 +24,6 @@ import static android.hardware.hdmi.HdmiControlManager.ONE_TOUCH_RECORD_RECORDIN
 
 import android.hardware.tv.cec.V1_0.SendMessageResult;
 import android.util.Slog;
-
 import com.android.server.hdmi.HdmiControlService.SendMessageCallback;
 
 /**

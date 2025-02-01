@@ -15,13 +15,13 @@
  */
 package android.gameperformance;
 
-import android.annotation.NonNull;
-import android.opengl.GLES20;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.microedition.khronos.opengles.GL;
+
+import android.annotation.NonNull;
+import android.opengl.GLES20;
 
 /**
  * Tests that verifies maximum fill rate per frame can be used to keep FPS close to the device

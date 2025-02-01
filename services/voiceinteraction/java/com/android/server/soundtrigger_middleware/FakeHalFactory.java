@@ -22,7 +22,9 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Slog;
 
+import com.android.internal.annotations.GuardedBy;
 import com.android.server.soundtrigger_middleware.FakeSoundTriggerHal.ExecutorHolder;
+
 
 /**
  * Alternate HAL factory which constructs {@link FakeSoundTriggerHal} with addition hooks to

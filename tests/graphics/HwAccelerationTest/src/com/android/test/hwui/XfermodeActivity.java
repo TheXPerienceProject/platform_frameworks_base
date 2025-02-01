@@ -16,8 +16,6 @@
 
 package com.android.test.hwui;
 
-import static android.graphics.PorterDuff.Mode;
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -26,6 +24,8 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.os.Bundle;
 import android.view.View;
+
+import static android.graphics.PorterDuff.Mode;
 
 @SuppressWarnings({"UnusedDeclaration"})
 public class XfermodeActivity extends Activity {

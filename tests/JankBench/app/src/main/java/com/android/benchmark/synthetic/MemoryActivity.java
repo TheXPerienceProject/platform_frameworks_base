@@ -28,6 +28,9 @@ import android.widget.TextView;
 import com.android.benchmark.R;
 import com.android.benchmark.app.PerfTimeline;
 
+import junit.framework.Test;
+
+
 public class MemoryActivity extends Activity {
     private TextView mTextStatus;
     private TextView mTextMin;

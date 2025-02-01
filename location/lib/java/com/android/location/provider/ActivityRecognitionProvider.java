@@ -16,11 +16,11 @@
 
 package com.android.location.provider;
 
+import com.android.internal.util.Preconditions;
+
 import android.hardware.location.IActivityRecognitionHardware;
 import android.hardware.location.IActivityRecognitionHardwareSink;
 import android.os.RemoteException;
-
-import com.android.internal.util.Preconditions;
 
 import java.util.ArrayList;
 import java.util.Collection;

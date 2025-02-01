@@ -18,6 +18,7 @@ package android.app.usage;
 
 import android.annotation.SystemApi;
 import android.app.Service;
+import android.app.usage.ICacheQuotaService;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;

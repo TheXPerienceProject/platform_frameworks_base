@@ -18,10 +18,10 @@ package com.android.server.policy;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.os.UserManager;
-
-import com.android.internal.R;
 import com.android.internal.globalactions.LongPressAction;
 import com.android.internal.globalactions.SinglePressAction;
+import com.android.internal.R;
+import com.android.server.policy.WindowManagerPolicy;
 
 public final class RestartAction extends SinglePressAction implements LongPressAction {
     private final Context mContext;

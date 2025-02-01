@@ -19,10 +19,11 @@ package com.android.server.autofill;
 import static com.android.server.autofill.Helper.sDebug;
 
 import android.util.Slog;
+import android.util.SparseArray;
 
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.atomic.AtomicInteger;
 
 // Helper class containing various methods to deal with FillRequest Ids.
 // For authentication flows, there needs to be a way to know whether to retrieve the Fill

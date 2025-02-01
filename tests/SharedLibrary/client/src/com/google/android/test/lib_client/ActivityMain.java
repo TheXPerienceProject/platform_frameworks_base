@@ -18,7 +18,6 @@ package com.google.android.test.lib_client;
 
 import android.app.Activity;
 import android.os.Bundle;
-
 import com.google.android.test.shared_library.SharedLibraryMain;
 
 public class ActivityMain extends Activity {

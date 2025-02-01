@@ -30,9 +30,6 @@ import com.android.internal.annotations.Keep;
 import com.android.internal.display.BrightnessSynchronizer;
 import com.android.server.display.DisplayDeviceConfig;
 
-import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -40,6 +37,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.function.Function;
+
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
 
 @SmallTest
 @RunWith(JUnitParamsRunner.class)

@@ -17,14 +17,14 @@
 package com.android.test.hwui;
 
 
-import static android.widget.LinearLayout.LayoutParams;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import static android.widget.LinearLayout.LayoutParams;
 
 public class GlyphCacheActivity extends Activity {
 

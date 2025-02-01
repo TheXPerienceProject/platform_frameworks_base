@@ -17,8 +17,8 @@
 package com.android.server.devicepolicy;
 
 import android.annotation.NonNull;
-import android.app.admin.PackageSetPolicyValue;
 import android.app.admin.PolicyValue;
+import android.app.admin.PackageSetPolicyValue;
 import android.app.admin.StringSetUnion;
 
 import java.util.HashSet;

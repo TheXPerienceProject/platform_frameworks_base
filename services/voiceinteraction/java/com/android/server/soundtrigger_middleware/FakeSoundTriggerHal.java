@@ -54,6 +54,7 @@ import java.util.NoSuchElementException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+
 /**
  * Fake HAL implementation, which offers injection via
  * {@link ISoundTriggerInjection}.

@@ -17,7 +17,6 @@
 package androidx.media.filterfw.samples.simplecamera;
 
 import android.util.Log;
-
 import androidx.media.filterfw.Filter;
 import androidx.media.filterfw.FrameBuffer2D;
 import androidx.media.filterfw.FrameImage2D;
@@ -26,6 +25,7 @@ import androidx.media.filterfw.FrameValue;
 import androidx.media.filterfw.MffContext;
 import androidx.media.filterfw.OutputPort;
 import androidx.media.filterfw.Signature;
+
 
 public class IfElseFilter extends Filter {
 

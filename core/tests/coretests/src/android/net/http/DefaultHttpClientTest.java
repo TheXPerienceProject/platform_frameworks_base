@@ -16,16 +16,17 @@
 
 package android.net.http;
 
-import static com.google.mockwebserver.SocketPolicy.DISCONNECT_AT_END;
-import static com.google.mockwebserver.SocketPolicy.SHUTDOWN_INPUT_AT_END;
-import static com.google.mockwebserver.SocketPolicy.SHUTDOWN_OUTPUT_AT_END;
-
 import com.google.mockwebserver.MockResponse;
 import com.google.mockwebserver.MockWebServer;
 import com.google.mockwebserver.SocketPolicy;
-
+import static com.google.mockwebserver.SocketPolicy.DISCONNECT_AT_END;
+import static com.google.mockwebserver.SocketPolicy.SHUTDOWN_INPUT_AT_END;
+import static com.google.mockwebserver.SocketPolicy.SHUTDOWN_OUTPUT_AT_END;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringWriter;
 import junit.framework.TestCase;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.auth.AuthenticationException;
 import org.apache.http.auth.UsernamePasswordCredentials;
@@ -33,11 +34,6 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.auth.DigestScheme;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicHeader;
-
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringWriter;
 
 /**
  * Tests for various regressions and problems with DefaultHttpClient. This is

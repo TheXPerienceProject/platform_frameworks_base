@@ -17,9 +17,8 @@
 package com.android.benchmark.ui.automation;
 
 import android.os.SystemClock;
-import android.view.MotionEvent;
-
 import androidx.annotation.IntDef;
+import android.view.MotionEvent;
 
 import java.util.ArrayList;
 import java.util.List;

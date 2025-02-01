@@ -18,10 +18,10 @@ package com.android.server.ondeviceintelligence;
 
 import static com.google.common.truth.Truth.assertThat;
 
-import android.app.ondeviceintelligence.InferenceInfo;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.service.ondeviceintelligence.OnDeviceSandboxedInferenceService;
+import android.app.ondeviceintelligence.InferenceInfo;
 import android.util.Base64;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -32,6 +32,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.io.IOException;
 import java.util.List;
 
 @RunWith(AndroidJUnit4.class)

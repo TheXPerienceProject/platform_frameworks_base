@@ -16,14 +16,14 @@
 
 package android.text.util;
 
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.util.Patterns;
-
 import com.google.caliper.AfterExperiment;
 import com.google.caliper.BeforeExperiment;
 import com.google.caliper.Benchmark;
 import com.google.caliper.Param;
+
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.util.Patterns;
 
 import java.util.regex.Pattern;
 

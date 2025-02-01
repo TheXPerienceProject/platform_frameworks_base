@@ -16,7 +16,9 @@
 package com.android.tests.UidImportanceHelper;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 /**
  * This is an empty activity for testing the UID policy of media transcoding service.

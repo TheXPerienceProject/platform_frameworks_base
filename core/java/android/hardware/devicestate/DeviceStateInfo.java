@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.concurrent.Executor;
 
+
 /**
  * Information about the state of the device.
  *

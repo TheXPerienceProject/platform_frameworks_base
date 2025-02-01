@@ -40,6 +40,7 @@ import android.provider.Settings;
 import android.service.vr.IVrManager;
 import android.service.vr.IVrStateCallbacks;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.util.Slog;
 
 import androidx.annotation.NonNull;

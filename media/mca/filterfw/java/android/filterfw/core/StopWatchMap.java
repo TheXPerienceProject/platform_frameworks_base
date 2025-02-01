@@ -18,7 +18,6 @@ package android.filterfw.core;
 
 import android.os.SystemClock;
 import android.util.Log;
-
 import java.util.HashMap;
 
 /**

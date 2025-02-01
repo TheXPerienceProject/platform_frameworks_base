@@ -23,6 +23,7 @@ import android.content.pm.ActivityInfo.Config;
 import android.content.res.Resources.Theme;
 import android.content.res.Resources.ThemeKey;
 import android.ravenwood.annotation.RavenwoodKeepWholeClass;
+import android.util.ArrayMap;
 import android.util.LongSparseArray;
 
 import java.lang.ref.WeakReference;

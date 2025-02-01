@@ -21,6 +21,9 @@ import android.annotation.NonNull;
 import android.annotation.SystemApi;
 import android.annotation.WorkerThread;
 import android.content.res.AssetFileDescriptor;
+import android.os.IUpdateEngine;
+import android.os.IUpdateEngineCallback;
+import android.os.RemoteException;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

@@ -15,6 +15,7 @@
  */
 
 package android.os;
+import android.os.RemoteException;
 
 /**
  * The object you are calling has died, because its hosting process

@@ -16,9 +16,11 @@
 
 package com.android.powermodel;
 
-import com.google.common.collect.ImmutableMap;
-
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
+import com.google.common.collect.ImmutableMap;
 
 /**
  * PowerReport contains the summary of all power used on a device

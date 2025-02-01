@@ -23,6 +23,7 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.TextView;
 
+import com.android.packageinstaller.R;
 /**
  * Used by dialogs to change the font size and number of lines to try to fit
  * the text to the available space.

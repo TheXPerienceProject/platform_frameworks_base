@@ -22,6 +22,7 @@ import android.view.View;
 
 import com.android.internal.util.DataClass;
 
+
 /**
  * Information for the virtual view to the autofill framework.
  */

@@ -22,10 +22,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
-
 import com.android.packageinstaller.R;
 import com.android.packageinstaller.v2.model.InstallStage;
 import com.android.packageinstaller.v2.ui.InstallActionListener;

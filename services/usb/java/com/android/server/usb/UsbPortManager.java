@@ -16,8 +16,10 @@
 
 package com.android.server.usb;
 
-import static android.hardware.usb.UsbOperationInternal.USB_OPERATION_ERROR_INTERNAL;
 import static android.hardware.usb.UsbOperationInternal.USB_OPERATION_ERROR_PORT_MISMATCH;
+import static android.hardware.usb.UsbOperationInternal.USB_OPERATION_ERROR_INTERNAL;
+import static android.hardware.usb.UsbPortStatus.CONTAMINANT_DETECTION_NOT_SUPPORTED;
+import static android.hardware.usb.UsbPortStatus.CONTAMINANT_PROTECTION_NONE;
 import static android.hardware.usb.UsbPortStatus.DATA_ROLE_DEVICE;
 import static android.hardware.usb.UsbPortStatus.DATA_ROLE_HOST;
 import static android.hardware.usb.UsbPortStatus.MODE_DFP;
@@ -25,15 +27,15 @@ import static android.hardware.usb.UsbPortStatus.MODE_DUAL;
 import static android.hardware.usb.UsbPortStatus.MODE_UFP;
 import static android.hardware.usb.UsbPortStatus.POWER_ROLE_SINK;
 import static android.hardware.usb.UsbPortStatus.POWER_ROLE_SOURCE;
+import static com.android.server.usb.hal.port.UsbPortHal.HAL_POWER_ROLE_SOURCE;
+import static com.android.server.usb.hal.port.UsbPortHal.HAL_POWER_ROLE_SINK;
+import static com.android.server.usb.hal.port.UsbPortHal.HAL_DATA_ROLE_HOST;
+import static com.android.server.usb.hal.port.UsbPortHal.HAL_DATA_ROLE_DEVICE;
+import static com.android.server.usb.hal.port.UsbPortHal.HAL_MODE_DFP;
+import static com.android.server.usb.hal.port.UsbPortHal.HAL_MODE_UFP;
 
 import static com.android.internal.usb.DumpUtils.writePort;
 import static com.android.internal.usb.DumpUtils.writePortStatus;
-import static com.android.server.usb.hal.port.UsbPortHal.HAL_DATA_ROLE_DEVICE;
-import static com.android.server.usb.hal.port.UsbPortHal.HAL_DATA_ROLE_HOST;
-import static com.android.server.usb.hal.port.UsbPortHal.HAL_MODE_DFP;
-import static com.android.server.usb.hal.port.UsbPortHal.HAL_MODE_UFP;
-import static com.android.server.usb.hal.port.UsbPortHal.HAL_POWER_ROLE_SINK;
-import static com.android.server.usb.hal.port.UsbPortHal.HAL_POWER_ROLE_SOURCE;
 
 import android.Manifest;
 import android.annotation.NonNull;
@@ -44,17 +46,30 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.hardware.usb.DisplayPortAltModeInfo;
 import android.hardware.usb.IDisplayPortAltModeInfoListener;
 import android.hardware.usb.IUsbOperationInternal;
 import android.hardware.usb.ParcelableUsbPort;
 import android.hardware.usb.UsbManager;
 import android.hardware.usb.UsbPort;
 import android.hardware.usb.UsbPortStatus;
+import android.hardware.usb.DisplayPortAltModeInfo;
+import android.hardware.usb.V1_0.IUsb;
+import android.hardware.usb.V1_0.PortRole;
+import android.hardware.usb.V1_0.PortRoleType;
+import android.hardware.usb.V1_0.Status;
+import android.hardware.usb.V1_1.PortStatus_1_1;
+import android.hardware.usb.V1_2.IUsbCallback;
+import android.hardware.usb.V1_2.PortStatus;
+import android.hidl.manager.V1_0.IServiceManager;
+import android.hidl.manager.V1_0.IServiceNotification;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.HwBinder;
 import android.os.IBinder;
+import android.os.IInterface;
 import android.os.Message;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.os.RemoteException;
 import android.os.SystemClock;
 import android.os.UserHandle;
@@ -66,6 +81,7 @@ import android.util.IntArray;
 import android.util.Log;
 import android.util.Slog;
 
+import com.android.internal.annotations.GuardedBy;
 import com.android.internal.messages.nano.SystemMessageProto.SystemMessage;
 import com.android.internal.notification.SystemNotificationChannels;
 import com.android.internal.util.FrameworkStatsLog;
@@ -76,9 +92,12 @@ import com.android.server.usb.hal.port.RawPortInfo;
 import com.android.server.usb.hal.port.UsbPortHal;
 import com.android.server.usb.hal.port.UsbPortHalInstance;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.NoSuchElementException;
 import java.util.Objects;
+import java.util.concurrent.Executor;
 
 /**
  * Allows trusted components to control the properties of physical USB ports

@@ -27,13 +27,13 @@ import android.os.ParcelFileDescriptor;
 import android.os.RemoteException;
 import android.util.Log;
 
-import com.android.internal.backup.IObbBackupService;
-
 import java.io.File;
 import java.io.FileDescriptor;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import com.android.internal.backup.IObbBackupService;
 
 /**
  * Service that the Backup Manager Services delegates OBB backup/restore operations to,

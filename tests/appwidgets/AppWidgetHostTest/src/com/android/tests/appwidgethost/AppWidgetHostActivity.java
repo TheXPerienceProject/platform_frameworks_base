@@ -17,14 +17,14 @@
 package com.android.tests.appwidgethost;
 
 import android.app.Activity;
-import android.appwidget.AppWidgetHost;
-import android.appwidget.AppWidgetHostView;
-import android.appwidget.AppWidgetManager;
-import android.appwidget.AppWidgetProviderInfo;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.appwidget.AppWidgetHost;
+import android.appwidget.AppWidgetHostView;
+import android.appwidget.AppWidgetProviderInfo;
+import android.appwidget.AppWidgetManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;

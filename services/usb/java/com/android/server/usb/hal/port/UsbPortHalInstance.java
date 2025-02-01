@@ -17,11 +17,12 @@ package com.android.server.usb.hal.port;
 
 import static com.android.server.usb.UsbPortManager.logAndPrint;
 
-import android.util.Log;
-
 import com.android.internal.util.IndentingPrintWriter;
+import com.android.server.usb.hal.port.UsbPortHidl;
+import com.android.server.usb.hal.port.UsbPortAidl;
 import com.android.server.usb.UsbPortManager;
 
+import android.util.Log;
 /**
  * Helper class that queries the underlying hal layer to populate UsbPortHal instance.
  */

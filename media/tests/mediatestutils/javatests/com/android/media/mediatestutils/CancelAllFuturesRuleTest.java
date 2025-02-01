@@ -18,19 +18,20 @@ package com.android.media.mediatestutils;
 
 import static com.google.common.truth.Truth.assertThat;
 
-import org.junit.Rule;
-import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
+import org.junit.runners.model.Statement;
+import org.junit.Rule;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import org.junit.runners.model.Statement;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
+
 
 @RunWith(JUnit4.class)
 public class CancelAllFuturesRuleTest {

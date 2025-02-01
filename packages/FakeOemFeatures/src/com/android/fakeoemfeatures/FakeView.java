@@ -16,14 +16,14 @@
 
 package com.android.fakeoemfeatures;
 
+import java.util.Random;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
-
-import java.util.Random;
 
 /**
  * Fake view to emulate stuff an OEM may want to do.

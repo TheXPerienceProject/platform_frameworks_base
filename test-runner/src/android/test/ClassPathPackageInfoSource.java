@@ -17,7 +17,6 @@
 package android.test;
 
 import android.util.Log;
-
 import dalvik.system.DexFile;
 
 import java.io.File;

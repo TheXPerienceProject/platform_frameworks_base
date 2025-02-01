@@ -16,14 +16,14 @@
 
 package android.hardware.camera2.utils;
 
-import static com.android.internal.util.Preconditions.*;
-
 import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.hardware.camera2.CaptureRequest;
 import android.util.Rational;
 import android.util.Size;
+
+import static com.android.internal.util.Preconditions.*;
 
 /**
  * Various assortment of params utilities.

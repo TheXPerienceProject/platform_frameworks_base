@@ -18,7 +18,6 @@ package com.android.packageinstaller.television;
 
 import android.app.Activity;
 import android.os.Bundle;
-
 import androidx.leanback.app.GuidedStepFragment;
 import androidx.leanback.widget.GuidanceStylist;
 import androidx.leanback.widget.GuidedAction;

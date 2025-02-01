@@ -16,8 +16,8 @@
 
 package com.android.server.hdmi;
 
-import static com.android.server.hdmi.HdmiCecFeatureAction.DELAY_GIVE_AUDIO_STATUS;
 import static com.android.server.hdmi.HdmiCecKeycode.CEC_KEYCODE_VOLUME_UP;
+import static com.android.server.hdmi.HdmiCecFeatureAction.DELAY_GIVE_AUDIO_STATUS;
 
 import static com.google.common.truth.Truth.assertThat;
 

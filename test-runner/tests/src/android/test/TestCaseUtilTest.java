@@ -16,12 +16,12 @@
 
 package android.test;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 public class TestCaseUtilTest extends TestCase {

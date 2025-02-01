@@ -16,8 +16,8 @@
 
 package android.tracing.perfetto;
 
-import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.annotation.NonNull;
 import android.util.proto.ProtoInputStream;
 
 /**

@@ -19,6 +19,7 @@ package com.android.systemui.statusbar.notification.collection.notifcollection;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.android.systemui.statusbar.notification.collection.NotifPipeline;
 import com.android.systemui.statusbar.notification.collection.NotificationEntry;
 
 import java.util.Collection;

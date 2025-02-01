@@ -17,7 +17,6 @@
 package android.testing;
 
 import junit.framework.Assert;
-
 import java.util.concurrent.Callable;
 
 public abstract class PollingCheck {

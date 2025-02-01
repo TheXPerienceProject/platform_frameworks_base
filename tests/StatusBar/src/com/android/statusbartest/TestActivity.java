@@ -17,11 +17,21 @@
 package com.android.statusbartest;
 
 import android.app.ListActivity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.widget.ArrayAdapter;
+import android.view.View;
 import android.widget.ListView;
+import android.content.Intent;
+import android.os.Vibrator;
+import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
+import android.net.Uri;
+import android.os.SystemClock;
+import android.widget.RemoteViews;
+import android.widget.Toast;
+import android.os.PowerManager;
 
 public abstract class TestActivity extends ListActivity
 {

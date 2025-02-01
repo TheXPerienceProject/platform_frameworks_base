@@ -17,9 +17,9 @@
 package android.widget.listview;
 
 import android.util.ListItemFactory;
+import android.widget.ListScenario;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListScenario;
 
 /**
  * A list where the items may befocusable, but the second item isn't actually focusabe.

@@ -20,6 +20,7 @@ import android.app.Service;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.media.midi.IBluetoothMidiService;
+import android.media.midi.MidiManager;
 import android.os.IBinder;
 import android.util.Log;
 

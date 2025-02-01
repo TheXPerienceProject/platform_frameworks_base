@@ -19,6 +19,7 @@ import android.annotation.CheckResult;
 import android.content.pm.ApplicationInfo;
 
 import com.android.internal.pm.parsing.pkg.AndroidPackageLegacyUtils;
+import com.android.internal.pm.pkg.parsing.ParsingPackageUtils;
 import com.android.server.pm.pkg.AndroidPackage;
 
 public class AppInfoUtils {

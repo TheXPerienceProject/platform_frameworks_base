@@ -16,12 +16,12 @@
 
 package android.app.activity;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.BroadcastReceiver;
+import android.os.RemoteException;
 import android.os.IBinder;
 import android.os.Parcel;
-import android.os.RemoteException;
 
 public class RemoteReceiver extends BroadcastReceiver
 {

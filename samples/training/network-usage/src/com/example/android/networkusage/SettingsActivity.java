@@ -18,6 +18,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+import com.example.android.networkusage.R;
 
 /**
  * This preference activity has in its manifest declaration an intent filter for

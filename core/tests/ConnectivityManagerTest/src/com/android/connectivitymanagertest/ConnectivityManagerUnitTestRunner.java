@@ -18,7 +18,6 @@ package com.android.connectivitymanagertest;
 
 import android.test.InstrumentationTestRunner;
 import android.test.InstrumentationTestSuite;
-
 import com.android.connectivitymanagertest.unit.WifiClientTest;
 
 import junit.framework.TestSuite;

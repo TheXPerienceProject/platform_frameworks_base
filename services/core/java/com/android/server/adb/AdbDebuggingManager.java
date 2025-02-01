@@ -42,6 +42,7 @@ import android.debug.AdbManager;
 import android.debug.AdbNotifications;
 import android.debug.AdbProtoEnums;
 import android.debug.AdbTransportType;
+import android.debug.IAdbTransport;
 import android.debug.PairDevice;
 import android.net.ConnectivityManager;
 import android.net.LocalSocket;

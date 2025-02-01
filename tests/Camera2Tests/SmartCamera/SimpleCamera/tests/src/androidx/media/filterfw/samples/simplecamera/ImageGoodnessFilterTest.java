@@ -22,6 +22,9 @@ import androidx.media.filterfw.FrameValue;
 import androidx.media.filterfw.MffContext;
 import androidx.media.filterfw.MffFilterTestCase;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
+
 public class ImageGoodnessFilterTest extends MffFilterTestCase {
 
     String AWFUL_STRING = "Awful Picture";

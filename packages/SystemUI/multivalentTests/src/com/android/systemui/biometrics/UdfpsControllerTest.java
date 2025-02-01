@@ -120,6 +120,8 @@ import com.android.systemui.util.time.SystemClock;
 
 import dagger.Lazy;
 
+import javax.inject.Provider;
+
 import kotlinx.coroutines.CoroutineScope;
 
 import org.junit.Before;
@@ -135,8 +137,6 @@ import org.mockito.junit.MockitoRule;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.inject.Provider;
 
 @SmallTest
 @RunWith(AndroidJUnit4.class)

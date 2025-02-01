@@ -16,6 +16,7 @@
 
 package com.android.server.biometrics.sensors.iris;
 
+import static android.Manifest.permission.USE_BIOMETRIC_INTERNAL;
 import static android.hardware.biometrics.BiometricAuthenticator.TYPE_IRIS;
 
 import android.annotation.NonNull;

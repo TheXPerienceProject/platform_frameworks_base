@@ -24,7 +24,9 @@ import android.os.ServiceManager;
 import android.util.Log;
 
 import com.android.internal.annotations.VisibleForTesting;
+
 import com.android.internal.xpe.app.LineageContextConstants;
+import com.android.internal.xpe.hardware.HIDLHelper;
 
 import vendor.xperience.touch.V1_0.IGloveMode;
 import vendor.xperience.touch.V1_0.IHighTouchPollingRate;
@@ -32,6 +34,8 @@ import vendor.xperience.touch.V1_0.IKeyDisabler;
 import vendor.xperience.touch.V1_0.IStylusMode;
 import vendor.xperience.touch.V1_0.ITouchscreenGesture;
 
+import java.io.UnsupportedEncodingException;
+import java.lang.IllegalArgumentException;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.HashMap;

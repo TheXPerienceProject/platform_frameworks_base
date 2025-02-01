@@ -18,16 +18,16 @@ package android.app;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import java.util.List;
 import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnCreateContextMenuListener;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.SimpleCursorTreeAdapter;
 import android.widget.SimpleExpandableListAdapter;
 
-import java.util.List;
 import java.util.Map;
 
 /**

@@ -16,23 +16,34 @@
 
 package com.android.statusbartest;
 
+import java.util.GregorianCalendar;
+
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Vibrator;
 import android.os.Handler;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import android.util.Log;
+import android.net.Uri;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
-
-import java.util.GregorianCalendar;
+import android.widget.RemoteViews;
+import android.os.PowerManager;
 
 public class NotificationBuilderTest extends Activity
 {

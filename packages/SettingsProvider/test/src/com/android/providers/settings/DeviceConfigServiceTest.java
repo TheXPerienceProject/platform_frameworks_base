@@ -29,9 +29,9 @@ import android.provider.Settings;
 import androidx.test.InstrumentationRegistry;
 import androidx.test.runner.AndroidJUnit4;
 
-import libcore.io.Streams;
-
 import com.google.common.io.CharStreams;
+
+import libcore.io.Streams;
 
 import org.junit.After;
 import org.junit.Before;

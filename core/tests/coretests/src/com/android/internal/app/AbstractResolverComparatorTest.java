@@ -18,6 +18,7 @@ package com.android.internal.app;
 
 import static junit.framework.Assert.assertEquals;
 
+import android.app.Instrumentation;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;

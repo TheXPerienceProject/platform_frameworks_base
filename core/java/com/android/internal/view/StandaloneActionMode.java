@@ -15,6 +15,11 @@
  */
 package com.android.internal.view;
 
+import com.android.internal.view.menu.MenuBuilder;
+import com.android.internal.view.menu.MenuPopupHelper;
+import com.android.internal.view.menu.SubMenuBuilder;
+import com.android.internal.widget.ActionBarContextView;
+
 import android.content.Context;
 import android.view.ActionMode;
 import android.view.Menu;
@@ -22,11 +27,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
-
-import com.android.internal.view.menu.MenuBuilder;
-import com.android.internal.view.menu.MenuPopupHelper;
-import com.android.internal.view.menu.SubMenuBuilder;
-import com.android.internal.widget.ActionBarContextView;
 
 import java.lang.ref.WeakReference;
 

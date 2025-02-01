@@ -16,6 +16,9 @@
 
 package android.renderscript;
 
+import java.nio.ByteBuffer;
+import java.util.HashMap;
+
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -23,9 +26,6 @@ import android.graphics.Canvas;
 import android.os.Trace;
 import android.util.Log;
 import android.view.Surface;
-
-import java.nio.ByteBuffer;
-import java.util.HashMap;
 
 /**
  * <p> This class provides the primary method through which data is passed to

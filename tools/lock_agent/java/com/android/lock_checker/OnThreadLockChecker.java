@@ -29,6 +29,7 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
+
 class OnThreadLockChecker implements LockHook.LockChecker {
     private static final String TAG = "LockCheckOnThread";
 

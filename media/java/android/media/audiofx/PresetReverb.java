@@ -16,7 +16,9 @@
 
 package android.media.audiofx;
 
+import android.media.audiofx.AudioEffect;
 import java.util.StringTokenizer;
+
 
 /**
  * A sound generated within a room travels in many directions. The listener first hears the

@@ -23,6 +23,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.IntentSender;
 import android.content.pm.PackageInstaller;
+import android.content.res.Resources;
 import android.util.Log;
 
 import org.junit.Assert;

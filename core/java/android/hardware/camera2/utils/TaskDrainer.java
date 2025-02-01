@@ -15,13 +15,13 @@
  */
 package android.hardware.camera2.utils;
 
-import static com.android.internal.util.Preconditions.*;
-
 import android.util.Log;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.Executor;
+
+import static com.android.internal.util.Preconditions.*;
 
 /**
  * Keep track of multiple concurrent tasks starting and finishing by their key;

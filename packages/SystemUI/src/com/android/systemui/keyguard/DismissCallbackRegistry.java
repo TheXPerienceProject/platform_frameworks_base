@@ -17,7 +17,6 @@
 package com.android.systemui.keyguard;
 
 import android.util.Log;
-
 import com.android.internal.policy.IKeyguardDismissCallback;
 import com.android.systemui.dagger.SysUISingleton;
 import com.android.systemui.dagger.qualifiers.UiBackground;

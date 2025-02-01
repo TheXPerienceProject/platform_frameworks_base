@@ -21,20 +21,19 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.ParcelFileDescriptor;
 import android.print.PageRange;
-import android.print.PrintAttributes.Margins;
 import android.print.PrintAttributes.MediaSize;
+import android.print.PrintAttributes.Margins;
 import android.print.PrintDocumentInfo;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.view.View;
-
 import com.android.internal.os.SomeArgs;
 import com.android.printspooler.R;
 import com.android.printspooler.model.MutexFileProvider;
-import com.android.printspooler.widget.EmbeddedContentContainer;
 import com.android.printspooler.widget.PrintContentView;
+import com.android.printspooler.widget.EmbeddedContentContainer;
 import com.android.printspooler.widget.PrintOptionsLayout;
 
 import java.io.File;

@@ -15,12 +15,11 @@
  */
 package com.android.test.uibench.recyclerview;
 
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import androidx.recyclerview.widget.RecyclerView;
 
 public class RvArrayAdapter extends RecyclerView.Adapter<RvArrayAdapter.ViewHolder> {
     private String[] mDataSet;

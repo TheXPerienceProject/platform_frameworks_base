@@ -16,7 +16,7 @@
 
 package com.android.server.display.brightness.clamper;
 
-import static com.android.server.display.DisplayDeviceConfig.DEFAULT_ID;
+import static  com.android.server.display.DisplayDeviceConfig.DEFAULT_ID;
 import static com.android.server.display.brightness.clamper.BrightnessClamperController.ClamperChangeListener;
 
 import android.annotation.NonNull;
@@ -50,6 +50,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.Function;
+
 
 class BrightnessThermalModifier implements BrightnessStateModifier,
         BrightnessClamperController.DisplayDeviceDataListener,

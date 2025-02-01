@@ -24,7 +24,6 @@ import android.accounts.OnAccountsUpdateListener;
 import android.accounts.OperationCanceledException;
 import android.content.Context;
 import android.os.Handler;
-
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 

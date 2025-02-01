@@ -16,7 +16,6 @@
 
 package android.media;
 
-import static android.media.MediaCodec.GetFlag;
 import static android.media.Utils.intersectSortedDistinctRanges;
 import static android.media.Utils.sortDistinctRanges;
 import static android.media.codec.Flags.FLAG_DYNAMIC_COLOR_ASPECTS;
@@ -24,6 +23,7 @@ import static android.media.codec.Flags.FLAG_HLG_EDITING;
 import static android.media.codec.Flags.FLAG_IN_PROCESS_SW_AUDIO_CODEC;
 import static android.media.codec.Flags.FLAG_NULL_OUTPUT_SURFACE;
 import static android.media.codec.Flags.FLAG_REGION_OF_INTEREST;
+import static android.media.MediaCodec.GetFlag;
 
 import android.annotation.FlaggedApi;
 import android.annotation.IntDef;

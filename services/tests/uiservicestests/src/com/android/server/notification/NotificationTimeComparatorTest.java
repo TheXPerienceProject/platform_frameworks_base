@@ -15,24 +15,33 @@
  */
 package com.android.server.notification;
 
+import static android.app.Notification.CATEGORY_MESSAGE;
+import static android.app.NotificationManager.IMPORTANCE_DEFAULT;
+import static android.app.NotificationManager.IMPORTANCE_HIGH;
+import static android.app.NotificationManager.IMPORTANCE_LOW;
+import static android.app.NotificationManager.IMPORTANCE_MIN;
 import static android.platform.test.flag.junit.SetFlagsRule.DefaultInitValueType.DEVICE_DEFAULT;
-
 import static com.google.common.truth.Truth.assertThat;
-
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.PendingIntent;
+import android.app.Person;
+import android.graphics.Color;
+import android.media.session.MediaSession;
 import android.platform.test.annotations.EnableFlags;
 import android.platform.test.flag.junit.SetFlagsRule;
-
+import android.service.notification.StatusBarNotification;
 import androidx.test.filters.SmallTest;
 import androidx.test.runner.AndroidJUnit4;
-
 import com.android.server.UiServiceTestCase;
-
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
 import java.util.Collections;

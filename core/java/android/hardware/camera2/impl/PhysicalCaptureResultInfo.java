@@ -15,6 +15,7 @@
  */
 package android.hardware.camera2.impl;
 
+import android.hardware.camera2.impl.CameraMetadataNative;
 
 import android.os.Parcel;
 import android.os.Parcelable;

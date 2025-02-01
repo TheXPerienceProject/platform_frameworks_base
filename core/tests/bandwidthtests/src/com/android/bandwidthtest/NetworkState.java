@@ -19,8 +19,8 @@ package com.android.bandwidthtest;
 import android.net.NetworkInfo.State;
 import android.util.Log;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Data structure to keep track of the network state transitions.

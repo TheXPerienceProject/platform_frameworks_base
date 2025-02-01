@@ -21,7 +21,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.android.internal.util.DataClass;
-
 /**
  * This class represents a motion sensor for input devices.
  *

@@ -18,9 +18,9 @@ package android.widget.gridview;
 
 import android.graphics.drawable.PaintDrawable;
 import android.os.Bundle;
+import android.widget.GridScenario;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridScenario;
 import android.widget.TextView;
 
 public class GridSimple extends GridScenario {

@@ -6,8 +6,8 @@ import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.when;
 
 import android.app.AppOpsManager;
-import android.app.AppOpsManager.AttributedOpEntry;
 import android.app.AppOpsManager.OpEntry;
+import android.app.AppOpsManager.AttributedOpEntry;
 import android.app.AppOpsManager.PackageOps;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;

@@ -20,16 +20,22 @@ package com.android.server.biometrics.sensors.face.sense;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.content.Context;
+import android.hardware.biometrics.face.V1_0.FaceError;
+import android.hardware.biometrics.face.V1_0.OptionalBool;
+import android.hardware.biometrics.face.V1_0.OptionalUint64;
+import android.hardware.biometrics.face.V1_0.Status;
 import android.hardware.face.Face;
 import android.os.RemoteException;
 import android.util.Slog;
 
 import com.android.server.biometrics.sensors.face.FaceUtils;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import vendor.aospa.biometrics.face.ISenseService;
 import vendor.aospa.biometrics.face.ISenseServiceReceiver;
-
-import java.util.List;
 
 public class TestHal extends ISenseService.Stub {
     private static final String TAG = "face.hidl.TestHal";

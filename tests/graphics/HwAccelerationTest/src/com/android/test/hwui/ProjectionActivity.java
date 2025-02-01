@@ -1,13 +1,14 @@
 package com.android.test.hwui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.graphics.RenderNode;
 import android.os.Bundle;
+
+import android.app.Activity;
 import android.util.AttributeSet;
+import android.graphics.RenderNode;
 import android.view.View;
 
 public class ProjectionActivity extends Activity {

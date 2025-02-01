@@ -17,7 +17,6 @@
 package android.gesture;
 
 import android.annotation.ColorInt;
-import android.annotation.Widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -25,13 +24,13 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AnimationUtils;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.FrameLayout;
-
+import android.os.SystemClock;
+import android.annotation.Widget;
 import com.android.internal.R;
 
 import java.util.ArrayList;

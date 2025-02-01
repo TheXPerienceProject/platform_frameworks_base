@@ -40,6 +40,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+
 @SmallTest
 public class DeviceStateToLayoutMapTest {
     private DeviceStateToLayoutMap mDeviceStateToLayoutMap;

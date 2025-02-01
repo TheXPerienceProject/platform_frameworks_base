@@ -18,16 +18,18 @@ package android.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDiskIOException;
 import android.database.sqlite.SQLiteDatabaseCorruptException;
+
 import android.database.sqlite.SQLiteException;
 import android.test.AndroidTestCase;
 import android.util.Log;
 
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class DatabaseErrorHandlerTest extends AndroidTestCase {
 

@@ -16,19 +16,6 @@
 
 package com.android.bidi;
 
-import static android.text.InputType.TYPE_CLASS_TEXT;
-import static android.text.InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS;
-import static android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD;
-import static android.widget.GridLayout.ALIGN_BOUNDS;
-import static android.widget.GridLayout.BASELINE;
-import static android.widget.GridLayout.CENTER;
-import static android.widget.GridLayout.FILL;
-import static android.widget.GridLayout.LEFT;
-import static android.widget.GridLayout.RIGHT;
-import static android.widget.GridLayout.START;
-import static android.widget.GridLayout.Spec;
-import static android.widget.GridLayout.spec;
-
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
@@ -41,6 +28,19 @@ import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.Space;
 import android.widget.TextView;
+
+import static android.text.InputType.TYPE_CLASS_TEXT;
+import static android.text.InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS;
+import static android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD;
+import static android.widget.GridLayout.ALIGN_BOUNDS;
+import static android.widget.GridLayout.BASELINE;
+import static android.widget.GridLayout.CENTER;
+import static android.widget.GridLayout.FILL;
+import static android.widget.GridLayout.LEFT;
+import static android.widget.GridLayout.RIGHT;
+import static android.widget.GridLayout.START;
+import static android.widget.GridLayout.Spec;
+import static android.widget.GridLayout.spec;
 
 public class BiDiTestGridLayoutCodeLtr extends Fragment {
 

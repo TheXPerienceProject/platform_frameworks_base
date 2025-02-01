@@ -18,11 +18,6 @@ package com.android.internal.widget;
 
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.platform.test.annotations.EnableFlags;
@@ -32,11 +27,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.flags.Flags;
 
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * Tests for {@link ViewGroupFader}.

@@ -36,10 +36,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.List;
+
 import platform.test.runner.parameterized.ParameterizedAndroidJunit4;
 import platform.test.runner.parameterized.Parameters;
 
-import java.util.List;
 
 @SmallTest
 @RunWith(ParameterizedAndroidJunit4.class)

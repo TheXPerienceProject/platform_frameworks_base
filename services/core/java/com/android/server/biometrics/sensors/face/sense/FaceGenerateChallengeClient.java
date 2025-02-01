@@ -31,11 +31,11 @@ import com.android.server.biometrics.sensors.ClientMonitorCallback;
 import com.android.server.biometrics.sensors.ClientMonitorCallbackConverter;
 import com.android.server.biometrics.sensors.GenerateChallengeClient;
 
-import vendor.aospa.biometrics.face.ISenseService;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
+
+import vendor.aospa.biometrics.face.ISenseService;
 
 public class FaceGenerateChallengeClient extends GenerateChallengeClient<ISenseService> {
 

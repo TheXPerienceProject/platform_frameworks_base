@@ -36,11 +36,12 @@ import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.InitializationError;
 import org.junit.runners.model.Statement;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import platform.test.runner.parameterized.ParameterizedAndroidJunit4;
 import platform.test.runner.parameterized.Parameters;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Tests to make sure {@link RavenwoodAwareTestRunner} produces expected callbacks in various

@@ -27,6 +27,7 @@ import android.util.Log;
 
 import com.android.internal.util.DataClass;
 
+
 /**
  * An attestation profile defining the security requirements for verifying the attestation of a
  * remote compute environment.

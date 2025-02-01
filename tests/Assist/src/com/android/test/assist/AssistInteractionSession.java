@@ -18,6 +18,7 @@ package com.android.test.assist;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
+import android.app.VoiceInteractor;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;

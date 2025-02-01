@@ -26,6 +26,8 @@ import com.android.benchmark.registry.BenchmarkRegistry;
 import com.android.benchmark.ui.automation.Automator;
 import com.android.benchmark.ui.automation.Interaction;
 
+import java.io.File;
+
 public class TextScrollActivity extends ListActivityBase {
 
     public static final String EXTRA_HIT_RATE = ".TextScrollActivity.EXTRA_HIT_RATE";

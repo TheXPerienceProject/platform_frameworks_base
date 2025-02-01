@@ -19,8 +19,8 @@ package com.android.internal.telephony;
 import android.compat.annotation.UnsupportedAppUsage;
 import android.content.res.Resources;
 import android.os.Build;
-import android.text.TextUtils;
 import android.util.Log;
+import android.text.TextUtils;
 import android.util.SparseIntArray;
 
 import com.android.internal.R;

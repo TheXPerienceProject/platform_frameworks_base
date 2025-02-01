@@ -16,7 +16,6 @@
 package com.android.server;
 
 import static androidx.test.InstrumentationRegistry.getContext;
-
 import static com.android.dx.mockito.inline.extended.ExtendedMockito.doAnswer;
 import static com.android.dx.mockito.inline.extended.ExtendedMockito.doNothing;
 import static com.android.dx.mockito.inline.extended.ExtendedMockito.doReturn;
@@ -42,7 +41,6 @@ import static com.android.server.DeviceIdleController.STATE_QUICK_DOZE_DELAY;
 import static com.android.server.DeviceIdleController.STATE_SENSING;
 import static com.android.server.DeviceIdleController.lightStateToString;
 import static com.android.server.DeviceIdleController.stateToString;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

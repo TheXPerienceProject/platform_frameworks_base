@@ -16,6 +16,8 @@
 
 package android.provider;
 
+import com.android.internal.R;
+
 import android.annotation.SdkConstant;
 import android.annotation.SdkConstant.SdkConstantType;
 import android.content.ContentResolver;
@@ -29,8 +31,6 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ImageView;
-
-import com.android.internal.R;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;

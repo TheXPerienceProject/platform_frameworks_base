@@ -17,7 +17,6 @@
 package com.android.server.notification;
 
 import android.content.Context;
-
 import com.android.internal.compat.IPlatformCompat;
 
 /**

@@ -20,10 +20,10 @@ import static android.util.ListItemFactory.Slot;
 
 import android.content.Context;
 import android.util.ListItemFactory;
+import android.widget.ListScenario;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ListScenario;
 
 public class ListHorizontalFocusWithinItemWins extends ListScenario {
 

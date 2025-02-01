@@ -22,6 +22,7 @@ import android.util.SparseArray;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+
 /**
  * This class represents the current state of the GPS engine and is used in conjunction with {@link
  * GpsStatus.Listener}.

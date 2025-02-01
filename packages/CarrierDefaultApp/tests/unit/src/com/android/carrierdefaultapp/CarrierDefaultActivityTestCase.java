@@ -17,10 +17,16 @@
 package com.android.carrierdefaultapp;
 
 import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.test.ActivityUnitTestCase;
+import android.util.Log;
 
 import org.mockito.MockitoAnnotations;
+
+import java.util.HashMap;
 
 public class CarrierDefaultActivityTestCase<T extends Activity> extends ActivityUnitTestCase<T> {
 

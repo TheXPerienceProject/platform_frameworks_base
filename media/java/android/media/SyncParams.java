@@ -16,10 +16,10 @@
 
 package android.media;
 
-import android.annotation.IntDef;
-
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+
+import android.annotation.IntDef;
 
 /**
  * Structure for common A/V sync params.

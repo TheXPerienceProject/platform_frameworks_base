@@ -16,14 +16,14 @@
 
 package android.location;
 
-import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+
+import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 /**
  * A class representing an Address, that is, a set of Strings describing a location.

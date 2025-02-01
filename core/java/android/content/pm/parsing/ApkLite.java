@@ -20,6 +20,7 @@ import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.content.pm.ArchivedPackageParcel;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.pm.SigningDetails;
 import android.content.pm.VerifierInfo;
 

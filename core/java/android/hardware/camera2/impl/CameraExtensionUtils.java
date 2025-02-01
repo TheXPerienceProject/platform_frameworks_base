@@ -34,6 +34,8 @@ import android.util.Log;
 import android.util.Size;
 import android.view.Surface;
 
+import com.android.internal.camera.flags.Flags;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

@@ -15,8 +15,14 @@
  */
 package com.android.server.usb.hal.gadget;
 
+import android.annotation.IntDef;
+import android.hardware.usb.gadget.IUsbGadgetCallback;
+import android.hardware.usb.IUsbOperationInternal;
 import android.hardware.usb.UsbManager.UsbHalVersion;
 import android.os.RemoteException;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.String;
 
 /**
  * @hide

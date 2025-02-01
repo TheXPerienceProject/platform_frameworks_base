@@ -22,7 +22,9 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 
 /**
  * Helper for {@link android.os.Binder#dump(java.io.FileDescriptor, String[])} that supports the

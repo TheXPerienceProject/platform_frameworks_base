@@ -16,6 +16,7 @@ package com.android.test.dynamic;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.drawable.AnimatedVectorDrawable;
+import android.graphics.drawable.VectorDrawable;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -30,6 +31,7 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+
 
 @SuppressWarnings({"UnusedDeclaration"})
 public class AnimatedVectorDrawableDupPerf extends Activity {

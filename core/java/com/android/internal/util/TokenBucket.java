@@ -16,10 +16,10 @@
 
 package com.android.internal.util;
 
+import android.os.SystemClock;
+
 import static com.android.internal.util.Preconditions.checkArgumentNonnegative;
 import static com.android.internal.util.Preconditions.checkArgumentPositive;
-
-import android.os.SystemClock;
 
 /**
  * A class useful for rate-limiting or throttling that stores and distributes tokens.

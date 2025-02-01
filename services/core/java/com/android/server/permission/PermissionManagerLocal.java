@@ -17,7 +17,6 @@
 package com.android.server.permission;
 
 import android.annotation.TestApi;
-
 import com.android.internal.annotations.Keep;
 
 /**

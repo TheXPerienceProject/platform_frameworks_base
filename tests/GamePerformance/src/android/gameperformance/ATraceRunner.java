@@ -15,15 +15,15 @@
  */
 package android.gameperformance;
 
-import android.app.Instrumentation;
-import android.os.AsyncTask;
-import android.os.ParcelFileDescriptor;
-import android.util.Log;
-
 import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
+import android.app.Instrumentation;
+import android.os.AsyncTask;
+import android.os.ParcelFileDescriptor;
+import android.util.Log;
 
 /**
  * Helper that runs atrace command for required duration and category. Results are read from

@@ -16,10 +16,10 @@
 
 package com.android.powermodel.component;
 
+import java.util.Arrays;
+
 import com.android.powermodel.ComponentProfile;
 import com.android.powermodel.ParseException;
-
-import java.util.Arrays;
 
 public class GpsProfile extends ComponentProfile {
     public float onMa;

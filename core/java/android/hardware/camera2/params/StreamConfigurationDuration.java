@@ -16,14 +16,13 @@
 
 package android.hardware.camera2.params;
 
+import static com.android.internal.util.Preconditions.*;
 import static android.hardware.camera2.params.StreamConfigurationMap.checkArgumentFormatInternal;
 
-import static com.android.internal.util.Preconditions.*;
-
 import android.graphics.ImageFormat;
-import android.graphics.PixelFormat;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.utils.HashCodeHelpers;
+import android.graphics.PixelFormat;
 import android.util.Size;
 
 /**

@@ -39,9 +39,9 @@ import static android.os.Process.ROOT_UID;
 import static android.os.Process.SYSTEM_UID;
 import static android.os.Process.myUid;
 
+import static com.android.internal.util.XmlUtils.writeBooleanAttribute;
 import static com.android.internal.util.FrameworkStatsLog.CONTENT_OR_FILE_URI_EVENT_REPORTED;
 import static com.android.internal.util.FrameworkStatsLog.CONTENT_OR_FILE_URI_EVENT_REPORTED__EVENT_TYPE__CONTENT_URI_WITHOUT_CALLER_READ_PERMISSION;
-import static com.android.internal.util.XmlUtils.writeBooleanAttribute;
 import static com.android.server.uri.UriGrantsManagerService.H.PERSIST_URI_GRANTS_MSG;
 
 import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
@@ -99,10 +99,10 @@ import com.android.server.LocalServices;
 import com.android.server.SystemService;
 import com.android.server.SystemServiceManager;
 
-import libcore.io.IoUtils;
-
 import com.google.android.collect.Lists;
 import com.google.android.collect.Maps;
+
+import libcore.io.IoUtils;
 
 import org.xmlpull.v1.XmlPullParserException;
 

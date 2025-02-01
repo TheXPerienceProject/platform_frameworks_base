@@ -31,6 +31,7 @@ import com.android.wm.shell.common.split.SplitScreenUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+
 /** Tests for {@link com.android.wm.shell.common.split.SplitScreenUtils} */
 @SmallTest
 @RunWith(AndroidJUnit4.class)

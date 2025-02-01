@@ -24,6 +24,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+
 /**
  * An easy adapter that creates views defined in an XML file. You can specify
  * the XML file that defines the appearance of the views.

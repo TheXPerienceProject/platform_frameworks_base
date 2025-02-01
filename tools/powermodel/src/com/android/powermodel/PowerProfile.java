@@ -16,6 +16,22 @@
 
 package com.android.powermodel;
 
+import java.io.InputStream;
+import java.io.IOException;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import org.xml.sax.Attributes;
+import org.xml.sax.Locator;
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
+import org.xml.sax.helpers.DefaultHandler;
+
 import com.android.powermodel.component.AudioProfile;
 import com.android.powermodel.component.BluetoothProfile;
 import com.android.powermodel.component.CameraProfile;
@@ -27,23 +43,6 @@ import com.android.powermodel.component.ScreenProfile;
 import com.android.powermodel.component.VideoProfile;
 import com.android.powermodel.component.WifiProfile;
 import com.android.powermodel.util.Conversion;
-
-import org.xml.sax.Attributes;
-import org.xml.sax.Locator;
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
-import org.xml.sax.helpers.DefaultHandler;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 
 public class PowerProfile {
 

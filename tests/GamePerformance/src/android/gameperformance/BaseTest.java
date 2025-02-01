@@ -15,12 +15,12 @@
  */
 package android.gameperformance;
 
+import java.text.DecimalFormat;
+import java.util.concurrent.TimeUnit;
+
 import android.annotation.NonNull;
 import android.content.Context;
 import android.util.Log;
-
-import java.text.DecimalFormat;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Base class for a test that performs bisection to determine maximum

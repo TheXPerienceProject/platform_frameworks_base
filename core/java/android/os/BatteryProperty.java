@@ -15,6 +15,8 @@
 
 package android.os;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 
 /**
  * Battery properties that may be queried using

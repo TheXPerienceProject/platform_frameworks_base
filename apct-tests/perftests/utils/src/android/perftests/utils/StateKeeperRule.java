@@ -16,6 +16,7 @@
 
 package android.perftests.utils;
 
+import androidx.annotation.NonNull;
 
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;

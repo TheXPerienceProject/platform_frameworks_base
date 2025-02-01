@@ -18,7 +18,6 @@ package com.android.mediaframeworktest;
 
 import android.test.InstrumentationTestRunner;
 import android.test.InstrumentationTestSuite;
-
 import com.android.mediaframeworktest.unit.*;
 
 import junit.framework.TestSuite;

@@ -23,7 +23,6 @@ import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 /**

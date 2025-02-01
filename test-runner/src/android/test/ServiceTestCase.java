@@ -22,8 +22,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.test.mock.MockApplication;
-import android.test.mock.MockService;
 
+import android.test.mock.MockService;
 import java.util.Random;
 
 /**

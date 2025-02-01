@@ -21,6 +21,8 @@ import static android.provider.Settings.Secure.QS_TILES;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.ContentObserver;
@@ -30,8 +32,9 @@ import android.telephony.SubscriptionManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.android.settingslib.wifi.WifiStatusTracker;
+import com.android.systemui.dagger.qualifiers.Main;
 import com.android.systemui.plugins.ActivityStarter;
 import com.android.systemui.plugins.FalsingManager;
 import com.android.systemui.qs.dagger.QSScope;
@@ -45,8 +48,9 @@ import com.android.systemui.tuner.TunerService;
 import com.android.systemui.util.ViewController;
 import com.android.systemui.util.settings.GlobalSettings;
 
-import java.util.Arrays;
+import com.android.settingslib.wifi.WifiStatusTracker;
 
+import java.util.Arrays;
 import javax.inject.Inject;
 
 /**

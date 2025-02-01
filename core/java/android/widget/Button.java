@@ -16,8 +16,8 @@
 
 package android.widget;
 
-import static android.view.flags.Flags.FLAG_ENABLE_ARROW_ICON_ON_HOVER_WHEN_CLICKABLE;
 import static android.view.flags.Flags.enableArrowIconOnHoverWhenClickable;
+import static android.view.flags.Flags.FLAG_ENABLE_ARROW_ICON_ON_HOVER_WHEN_CLICKABLE;
 
 import android.annotation.FlaggedApi;
 import android.content.Context;

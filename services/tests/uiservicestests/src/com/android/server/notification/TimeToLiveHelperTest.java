@@ -16,9 +16,7 @@
 package com.android.server.notification;
 
 import static com.android.server.notification.TimeToLiveHelper.EXTRA_KEY;
-
 import static com.google.common.truth.Truth.assertThat;
-
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.eq;
@@ -33,12 +31,12 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.SystemClock;
 import android.os.UserHandle;
 import android.service.notification.StatusBarNotification;
-
+import android.testing.TestableLooper;
 import androidx.test.filters.SmallTest;
 import androidx.test.runner.AndroidJUnit4;
-
 import com.android.server.UiServiceTestCase;
 import com.android.server.pm.PackageManagerService;
 
@@ -46,9 +44,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.quality.Strictness;
 
 @SmallTest
 @RunWith(AndroidJUnit4.class)

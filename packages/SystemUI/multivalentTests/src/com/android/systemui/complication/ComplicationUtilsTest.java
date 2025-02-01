@@ -29,6 +29,7 @@ import static com.android.systemui.complication.ComplicationUtils.convertComplic
 
 import static com.google.common.truth.Truth.assertThat;
 
+
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.SmallTest;
 

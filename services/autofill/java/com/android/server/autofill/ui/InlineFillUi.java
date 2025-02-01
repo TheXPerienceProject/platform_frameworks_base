@@ -47,6 +47,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
+
 /**
  * UI for a particular field (i.e. {@link AutofillId}) based on an inline autofill response from
  * the autofill service or the augmented autofill service. It wraps multiple inline suggestions.

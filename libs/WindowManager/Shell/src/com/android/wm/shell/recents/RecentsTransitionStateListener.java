@@ -16,6 +16,7 @@
 
 package com.android.wm.shell.recents;
 
+import android.os.IBinder;
 
 /** The listener for the events from {@link RecentsTransitionHandler}. */
 public interface RecentsTransitionStateListener {

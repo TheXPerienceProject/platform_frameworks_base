@@ -27,8 +27,8 @@ import android.filterfw.core.MutableFrameFormat;
 import android.filterfw.format.PrimitiveFormat;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
+import java.io.IOException;
 import java.nio.ByteBuffer;
 
 /**

@@ -22,6 +22,7 @@ import android.test.InstrumentationTestSuite;
 
 import junit.framework.TestSuite;
 
+
 /**
  * Instrumentation test runner for Companion tests.
  */

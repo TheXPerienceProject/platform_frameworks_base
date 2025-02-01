@@ -16,6 +16,8 @@
 
 package com.android.server;
 
+import java.util.Calendar;
+
 import android.app.ActivityManager;
 import android.app.job.JobInfo;
 import android.app.job.JobParameters;
@@ -25,8 +27,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.os.RemoteException;
 import android.util.Slog;
-
-import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
 public class MountServiceIdler extends JobService {

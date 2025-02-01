@@ -17,9 +17,9 @@
 package com.android.wm.shell;
 
 import com.android.internal.protolog.LegacyProtoLogImpl;
-import com.android.internal.protolog.ProtoLog;
 import com.android.internal.protolog.common.ILogger;
 import com.android.internal.protolog.common.IProtoLog;
+import com.android.internal.protolog.ProtoLog;
 import com.android.wm.shell.sysui.ShellCommandHandler;
 import com.android.wm.shell.sysui.ShellInit;
 

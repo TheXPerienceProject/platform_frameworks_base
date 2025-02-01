@@ -16,10 +16,13 @@
 
 package android.hardware.camera2;
 
+import android.annotation.FlaggedApi;
 import android.annotation.IntRange;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.hardware.camera2.utils.HashCodeHelpers;
+
+import com.android.internal.camera.flags.Flags;
 
 import java.util.concurrent.Executor;
 

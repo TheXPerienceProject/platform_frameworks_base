@@ -26,6 +26,7 @@ import android.widget.ArrayAdapter;
 
 import com.android.frameworks.coretests.R;
 
+
 /**
  * Tests using an empty view with a list */
 public class ListWithEmptyView extends ListActivity {

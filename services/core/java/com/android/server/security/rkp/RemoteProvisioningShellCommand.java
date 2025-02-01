@@ -31,16 +31,6 @@ import android.security.rkp.service.RegistrationProxy;
 import android.security.rkp.service.RemotelyProvisionedKey;
 import android.util.IndentingPrintWriter;
 
-import co.nstant.in.cbor.CborDecoder;
-import co.nstant.in.cbor.CborEncoder;
-import co.nstant.in.cbor.CborException;
-import co.nstant.in.cbor.model.Array;
-import co.nstant.in.cbor.model.ByteString;
-import co.nstant.in.cbor.model.DataItem;
-import co.nstant.in.cbor.model.Map;
-import co.nstant.in.cbor.model.SimpleValue;
-import co.nstant.in.cbor.model.UnsignedInteger;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintWriter;
@@ -50,6 +40,16 @@ import java.time.Duration;
 import java.util.Base64;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
+
+import co.nstant.in.cbor.CborDecoder;
+import co.nstant.in.cbor.CborEncoder;
+import co.nstant.in.cbor.CborException;
+import co.nstant.in.cbor.model.Array;
+import co.nstant.in.cbor.model.ByteString;
+import co.nstant.in.cbor.model.DataItem;
+import co.nstant.in.cbor.model.Map;
+import co.nstant.in.cbor.model.SimpleValue;
+import co.nstant.in.cbor.model.UnsignedInteger;
 
 class RemoteProvisioningShellCommand extends ShellCommand {
     private static final String USAGE = "usage: cmd remote_provisioning SUBCOMMAND [ARGS]\n"

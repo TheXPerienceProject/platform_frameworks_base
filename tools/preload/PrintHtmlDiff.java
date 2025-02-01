@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.FileReader;
+import java.io.BufferedReader;
 import java.io.PrintStream;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  * Prints HTML containing removed and added files.

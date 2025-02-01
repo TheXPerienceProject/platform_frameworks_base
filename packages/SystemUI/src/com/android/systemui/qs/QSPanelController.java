@@ -52,6 +52,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Provider;
 
+
 /**
  * Controller for {@link QSPanel}.
  */

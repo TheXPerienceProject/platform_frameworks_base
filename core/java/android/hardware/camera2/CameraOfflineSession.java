@@ -16,6 +16,8 @@
 
 package android.hardware.camera2;
 
+import android.hardware.camera2.CameraCaptureSession;
+import android.hardware.camera2.CameraDevice;
 
 import android.annotation.IntDef;
 import android.annotation.NonNull;

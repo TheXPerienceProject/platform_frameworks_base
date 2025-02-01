@@ -18,6 +18,7 @@ package com.android.settingslib.widget;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.res.Resources;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -29,6 +30,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
 import com.android.settingslib.widget.preference.usage.R;

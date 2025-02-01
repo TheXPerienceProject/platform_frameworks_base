@@ -21,10 +21,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.AsyncTask;
+import androidx.collection.LruCache;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
-
-import androidx.collection.LruCache;
 
 /**
  * This class simulates a typical Bitmap memory cache with up to 1.5 times of screen pixels.

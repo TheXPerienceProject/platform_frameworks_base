@@ -41,6 +41,7 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+
 /**
  * Verify that Hardware apis cannot be called without required permissions.
  */

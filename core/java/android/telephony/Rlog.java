@@ -25,6 +25,7 @@ import android.util.Log;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+
 /**
  * A class to log strings to the RADIO LOG.
  *

@@ -18,6 +18,7 @@ package android.content.om;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.annotation.SystemApi;
 
 /**
  * A subset of {@link OverlayInfo} fields that when changed cause the overlay's settings to be

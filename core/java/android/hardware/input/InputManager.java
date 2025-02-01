@@ -16,10 +16,10 @@
 
 package android.hardware.input;
 
-import static com.android.hardware.input.Flags.keyboardGlyphMap;
-import static com.android.hardware.input.Flags.keyboardLayoutPreviewFlag;
-import static com.android.input.flags.Flags.FLAG_DEVICE_ASSOCIATIONS;
 import static com.android.input.flags.Flags.FLAG_INPUT_DEVICE_VIEW_BEHAVIOR_API;
+import static com.android.input.flags.Flags.FLAG_DEVICE_ASSOCIATIONS;
+import static com.android.hardware.input.Flags.keyboardLayoutPreviewFlag;
+import static com.android.hardware.input.Flags.keyboardGlyphMap;
 
 import android.Manifest;
 import android.annotation.FlaggedApi;

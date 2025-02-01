@@ -19,7 +19,6 @@ package com.android.server.cpu;
 import static com.android.dx.mockito.inline.extended.ExtendedMockito.doNothing;
 import static com.android.dx.mockito.inline.extended.ExtendedMockito.doReturn;
 import static com.android.dx.mockito.inline.extended.ExtendedMockito.verify;
-import static com.android.server.SystemService.PHASE_BOOT_COMPLETED;
 import static com.android.server.cpu.CpuAvailabilityInfo.MISSING_CPU_AVAILABILITY_PERCENT;
 import static com.android.server.cpu.CpuAvailabilityMonitoringConfig.CPUSET_ALL;
 import static com.android.server.cpu.CpuAvailabilityMonitoringConfig.CPUSET_BACKGROUND;
@@ -27,6 +26,7 @@ import static com.android.server.cpu.CpuInfoReader.CpuInfo.MISSING_FREQUENCY;
 import static com.android.server.cpu.CpuInfoReader.FLAG_CPUSET_CATEGORY_BACKGROUND;
 import static com.android.server.cpu.CpuInfoReader.FLAG_CPUSET_CATEGORY_TOP_APP;
 import static com.android.server.cpu.CpuMonitorService.DEFAULT_MONITORING_INTERVAL_MILLISECONDS;
+import static com.android.server.SystemService.PHASE_BOOT_COMPLETED;
 
 import static com.google.common.truth.Truth.assertWithMessage;
 

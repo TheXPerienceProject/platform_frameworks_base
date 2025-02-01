@@ -16,6 +16,9 @@
 
 package com.android.accessorydisplay.source.presentation;
 
+import com.android.accessorydisplay.common.Logger;
+import com.android.accessorydisplay.source.R;
+
 import android.app.Presentation;
 import android.content.Context;
 import android.content.res.Resources;
@@ -25,9 +28,6 @@ import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-
-import com.android.accessorydisplay.common.Logger;
-import com.android.accessorydisplay.source.R;
 
 /**
  * The presentation to show on the accessory display.

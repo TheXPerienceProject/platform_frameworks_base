@@ -174,9 +174,6 @@ import org.mockito.MockitoSession;
 import org.mockito.internal.util.reflection.FieldSetter;
 import org.mockito.quality.Strictness;
 
-import platform.test.runner.parameterized.ParameterizedAndroidJunit4;
-import platform.test.runner.parameterized.Parameters;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -185,6 +182,9 @@ import java.util.Random;
 import java.util.concurrent.Executor;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import platform.test.runner.parameterized.ParameterizedAndroidJunit4;
+import platform.test.runner.parameterized.Parameters;
 
 @SmallTest
 @RunWith(ParameterizedAndroidJunit4.class)

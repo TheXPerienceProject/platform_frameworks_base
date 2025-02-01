@@ -23,11 +23,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class BitmapUploadActivity extends AppCompatActivity {
     public static class UploadView extends View {

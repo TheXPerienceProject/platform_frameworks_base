@@ -15,6 +15,7 @@
  */
 package com.android.server.usb.hal.port;
 
+import static android.hardware.usb.UsbManager.USB_HAL_NOT_SUPPORTED;
 import static android.hardware.usb.UsbManager.USB_HAL_V1_0;
 import static android.hardware.usb.UsbManager.USB_HAL_V1_1;
 import static android.hardware.usb.UsbManager.USB_HAL_V1_2;
@@ -24,38 +25,49 @@ import static android.hardware.usb.UsbOperationInternal.USB_OPERATION_ERROR_NOT_
 import static android.hardware.usb.UsbOperationInternal.USB_OPERATION_SUCCESS;
 import static android.hardware.usb.UsbPortStatus.CONTAMINANT_DETECTION_NOT_SUPPORTED;
 import static android.hardware.usb.UsbPortStatus.CONTAMINANT_PROTECTION_NONE;
+import static android.hardware.usb.UsbPortStatus.DATA_ROLE_DEVICE;
+import static android.hardware.usb.UsbPortStatus.DATA_ROLE_HOST;
+import static android.hardware.usb.UsbPortStatus.MODE_DFP;
+import static android.hardware.usb.UsbPortStatus.MODE_DUAL;
+import static android.hardware.usb.UsbPortStatus.MODE_UFP;
+import static android.hardware.usb.UsbPortStatus.POWER_BRICK_STATUS_UNKNOWN;
+import static android.hardware.usb.UsbPortStatus.POWER_ROLE_SINK;
+import static android.hardware.usb.UsbPortStatus.POWER_ROLE_SOURCE;
 import static android.hardware.usb.UsbPortStatus.DATA_STATUS_DISABLED_FORCE;
 import static android.hardware.usb.UsbPortStatus.DATA_STATUS_UNKNOWN;
 import static android.hardware.usb.UsbPortStatus.PLUG_STATE_UNKNOWN;
-import static android.hardware.usb.UsbPortStatus.POWER_BRICK_STATUS_UNKNOWN;
+import static android.hardware.usb.DisplayPortAltModeInfo.DISPLAYPORT_ALT_MODE_STATUS_UNKNOWN;
 
 import static com.android.server.usb.UsbPortManager.logAndPrint;
 import static com.android.server.usb.UsbPortManager.logAndPrintException;
 
+import android.annotation.Nullable;
 import android.hardware.usb.IUsbOperationInternal;
 import android.hardware.usb.UsbManager.UsbHalVersion;
 import android.hardware.usb.UsbPort;
+import android.hardware.usb.UsbPortStatus;
 import android.hardware.usb.V1_0.IUsb;
-import android.hardware.usb.V1_0.PortRole;
 import android.hardware.usb.V1_0.PortRoleType;
 import android.hardware.usb.V1_0.Status;
 import android.hardware.usb.V1_1.PortStatus_1_1;
 import android.hardware.usb.V1_2.IUsbCallback;
+import android.hardware.usb.V1_0.PortRole;
 import android.hardware.usb.V1_2.PortStatus;
 import android.hidl.manager.V1_0.IServiceManager;
 import android.hidl.manager.V1_0.IServiceNotification;
 import android.os.IHwBinder;
 import android.os.RemoteException;
 import android.util.Log;
+import android.util.Slog;
 
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.util.IndentingPrintWriter;
 import com.android.server.usb.UsbPortManager;
+import com.android.server.usb.hal.port.RawPortInfo;
 
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Objects;
-
 /**
  *
  */

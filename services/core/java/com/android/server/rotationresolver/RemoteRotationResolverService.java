@@ -47,6 +47,7 @@ import com.android.internal.infra.ServiceConnector;
 
 import java.lang.ref.WeakReference;
 
+
 /** Manages the connection to the remote rotation resolver service. */
 class RemoteRotationResolverService extends ServiceConnector.Impl<IRotationResolverService> {
     private static final String TAG = RemoteRotationResolverService.class.getSimpleName();

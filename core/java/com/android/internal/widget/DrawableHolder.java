@@ -16,16 +16,16 @@
 
 package com.android.internal.widget;
 
+import java.util.ArrayList;
+
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.animation.Animator.AnimatorListener;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.Log;
 import android.view.animation.DecelerateInterpolator;
-
-import java.util.ArrayList;
 
 /**
  * This class is a container for a Drawable with multiple animated properties.

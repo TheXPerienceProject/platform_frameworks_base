@@ -17,7 +17,6 @@
 package android.test.suitebuilder;
 
 import com.android.internal.util.Predicate;
-
 import junit.framework.TestCase;
 
 import java.lang.annotation.ElementType;

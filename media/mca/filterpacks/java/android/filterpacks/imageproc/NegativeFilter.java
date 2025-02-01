@@ -25,6 +25,7 @@ import android.filterfw.core.Program;
 import android.filterfw.core.ShaderProgram;
 import android.filterfw.format.ImageFormat;
 
+
 public class NegativeFilter extends Filter {
 
     @GenerateFieldPort(name = "tile_size", hasDefault = true)

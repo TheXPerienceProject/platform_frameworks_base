@@ -20,8 +20,8 @@ import android.app.ondeviceintelligence.InferenceInfo;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.service.ondeviceintelligence.OnDeviceSandboxedInferenceService;
-import android.util.Base64;
 import android.util.Slog;
+import android.util.Base64;
 
 import java.io.IOException;
 import java.util.Comparator;

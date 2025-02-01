@@ -29,7 +29,6 @@ import android.hardware.tv.tuner.FrontendIsdbtTimeInterleaveMode;
 import android.media.tv.tuner.TunerVersionChecker;
 import android.media.tv.tuner.frontend.DvbtFrontendSettings.CodeRate;
 import android.util.Log;
-
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 

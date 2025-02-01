@@ -21,9 +21,9 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.DataOutputStream;
+import java.io.DataInputStream;
 import java.util.ArrayList;
 
 /**

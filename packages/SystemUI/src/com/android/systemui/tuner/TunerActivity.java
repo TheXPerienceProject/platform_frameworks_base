@@ -21,14 +21,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 
-import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.core.graphics.Insets;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceScreen;
 
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
+
 import com.android.systemui.Dependency;
 import com.android.systemui.demomode.DemoModeController;
 import com.android.systemui.fragments.FragmentService;

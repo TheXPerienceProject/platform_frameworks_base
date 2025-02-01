@@ -26,7 +26,6 @@ import androidx.annotation.NonNull;
 import org.junit.Test;
 
 import java.util.List;
-
 public final class AdditionalSubtypeMapTest {
 
     private static final String TEST_IME1_ID = "com.android.test.inputmethod/.TestIme1";

@@ -18,7 +18,6 @@
 package androidx.media.filterfw.samples.simplecamera;
 
 import android.util.Log;
-
 import androidx.media.filterfw.Filter;
 import androidx.media.filterfw.FrameType;
 import androidx.media.filterfw.FrameValue;

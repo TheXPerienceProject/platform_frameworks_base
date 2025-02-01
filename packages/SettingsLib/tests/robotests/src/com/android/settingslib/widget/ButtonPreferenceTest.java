@@ -28,6 +28,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import androidx.preference.PreferenceViewHolder;
+import androidx.preference.R;
 import androidx.test.core.app.ApplicationProvider;
 
 import org.junit.Before;

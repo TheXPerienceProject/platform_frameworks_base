@@ -62,6 +62,7 @@ import android.view.Window;
 import android.view.WindowManagerGlobal;
 
 import com.android.internal.content.ReferrerIntent;
+
 import com.android.internal.gmscompat.AttestationHooks;
 
 import java.io.File;

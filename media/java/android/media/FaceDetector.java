@@ -20,6 +20,8 @@ import android.graphics.Bitmap;
 import android.graphics.PointF;
 import android.util.Log;
 
+import java.lang.IllegalArgumentException;
+
 /**
  * Identifies the faces of people in a 
  * {@link android.graphics.Bitmap} graphic object.

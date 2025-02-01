@@ -25,10 +25,12 @@ import static android.hardware.biometrics.BiometricFaceConstants.FACE_ACQUIRED_V
 import android.annotation.NonNull;
 import android.content.Context;
 import android.content.res.Resources;
+import android.hardware.SensorPrivacyManager;
 import android.hardware.biometrics.BiometricAuthenticator;
 import android.hardware.biometrics.BiometricConstants;
 import android.hardware.biometrics.BiometricFaceConstants;
 import android.hardware.biometrics.BiometricManager.Authenticators;
+import android.hardware.biometrics.face.V1_0.IBiometricsFace;
 import android.hardware.face.FaceAuthenticateOptions;
 import android.os.IBinder;
 import android.os.RemoteException;
@@ -47,10 +49,10 @@ import com.android.server.biometrics.sensors.LockoutTracker;
 import com.android.server.biometrics.sensors.PerformanceTracker;
 import com.android.server.biometrics.sensors.face.UsageStats;
 
-import vendor.aospa.biometrics.face.ISenseService;
-
 import java.util.ArrayList;
 import java.util.function.Supplier;
+
+import vendor.aospa.biometrics.face.ISenseService;
 
 /**
  * Face-specific authentication client supporting the {@link android.hardware.biometrics.face.V1_0}

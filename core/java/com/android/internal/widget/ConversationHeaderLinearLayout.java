@@ -24,6 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.RemoteViews;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**

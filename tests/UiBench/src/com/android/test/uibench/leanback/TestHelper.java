@@ -19,9 +19,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
-
 import androidx.leanback.app.BackgroundManager;
 import androidx.leanback.widget.ArrayObjectAdapter;
 import androidx.leanback.widget.HeaderItem;
@@ -29,6 +26,8 @@ import androidx.leanback.widget.ListRow;
 import androidx.leanback.widget.ListRowPresenter;
 import androidx.leanback.widget.ObjectAdapter;
 import androidx.leanback.widget.Presenter;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 
 public class TestHelper {
 

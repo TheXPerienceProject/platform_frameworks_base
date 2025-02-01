@@ -50,7 +50,6 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
-
 import com.android.internal.R;
 import com.android.internal.view.menu.ActionMenuItem;
 import com.android.internal.view.menu.MenuBuilder;

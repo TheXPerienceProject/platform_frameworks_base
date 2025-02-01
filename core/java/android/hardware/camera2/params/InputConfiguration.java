@@ -16,14 +16,16 @@
 
 package android.hardware.camera2.params;
 
-import static com.android.internal.util.Preconditions.*;
-
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.graphics.ImageFormat.Format;
+import android.hardware.camera2.params.MultiResolutionStreamInfo;
 import android.hardware.camera2.utils.HashCodeHelpers;
 
 import java.util.Collection;
+import java.util.List;
+
+import static com.android.internal.util.Preconditions.*;
 
 /**
  * Immutable class to store an input configuration that is used to create a reprocessable capture

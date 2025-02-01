@@ -22,6 +22,7 @@ import android.os.Parcelable;
 
 import java.util.Objects;
 
+
 /**
  * Class that stores information specific to voice network registration.
  * @hide

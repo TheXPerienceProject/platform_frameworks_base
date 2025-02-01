@@ -68,11 +68,11 @@ import com.android.systemui.res.R;
 import com.android.systemui.statusbar.phone.AlertDialogWithDelegate;
 import com.android.systemui.statusbar.phone.SystemUIDialog;
 
-import dagger.Lazy;
-
 import java.util.function.Consumer;
 
 import javax.inject.Inject;
+
+import dagger.Lazy;
 
 public class MediaProjectionPermissionActivity extends Activity {
     private static final String TAG = "MediaProjectionPermissionActivity";

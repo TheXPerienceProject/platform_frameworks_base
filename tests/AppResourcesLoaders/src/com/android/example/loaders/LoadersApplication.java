@@ -21,6 +21,7 @@ import android.content.res.Resources;
 import android.content.res.loader.ResourcesLoader;
 import android.content.res.loader.ResourcesProvider;
 import android.os.ParcelFileDescriptor;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;

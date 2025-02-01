@@ -16,6 +16,7 @@
 
 package android.hardware.camera2.params;
 
+import android.util.Size;
 import static com.android.internal.util.Preconditions.*;
 
 import android.graphics.Point;
@@ -23,7 +24,6 @@ import android.graphics.Rect;
 import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CaptureRequest;
 import android.hardware.camera2.utils.HashCodeHelpers;
-import android.util.Size;
 
 /**
  * An immutable class to represent a rectangle {@code (x, y, width, height)} with an additional

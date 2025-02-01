@@ -22,8 +22,8 @@ import static android.media.AudioAttributes.USAGE_EMERGENCY;
 import static android.media.AudioAttributes.USAGE_GAME;
 import static android.media.AudioAttributes.USAGE_MEDIA;
 import static android.media.AudioPlaybackConfiguration.PLAYER_TYPE_AAUDIO;
-import static android.media.AudioPlaybackConfiguration.PLAYER_TYPE_JAM_AUDIOTRACK;
 import static android.media.AudioPlaybackConfiguration.PLAYER_TYPE_JAM_SOUNDPOOL;
+import static android.media.AudioPlaybackConfiguration.PLAYER_TYPE_JAM_AUDIOTRACK;
 import static android.media.AudioPlaybackConfiguration.PLAYER_TYPE_UNKNOWN;
 import static android.media.audiopolicy.Flags.FLAG_ENABLE_FADE_MANAGER_CONFIGURATION;
 

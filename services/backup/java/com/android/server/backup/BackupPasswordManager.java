@@ -19,8 +19,8 @@ package com.android.server.backup;
 import android.content.Context;
 import android.util.Slog;
 
-import com.android.server.backup.utils.DataStreamCodec;
 import com.android.server.backup.utils.DataStreamFileCodec;
+import com.android.server.backup.utils.DataStreamCodec;
 import com.android.server.backup.utils.PasswordUtils;
 
 import java.io.DataInputStream;

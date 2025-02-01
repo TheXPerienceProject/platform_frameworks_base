@@ -34,9 +34,7 @@ import android.os.UserHandle;
 import android.os.UserManager;
 import android.util.Log;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-
 import com.android.packageinstaller.common.EventResultPersister;
 import com.android.packageinstaller.common.UninstallEventReceiver;
 

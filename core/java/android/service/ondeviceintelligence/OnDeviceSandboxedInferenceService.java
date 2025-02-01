@@ -21,8 +21,8 @@ import static android.app.ondeviceintelligence.flags.Flags.FLAG_ENABLE_ON_DEVICE
 
 import static com.android.internal.util.function.pooled.PooledLambda.obtainMessage;
 
-import android.annotation.CallSuper;
 import android.annotation.CallbackExecutor;
+import android.annotation.CallSuper;
 import android.annotation.FlaggedApi;
 import android.annotation.NonNull;
 import android.annotation.Nullable;

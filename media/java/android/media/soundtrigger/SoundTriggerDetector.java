@@ -42,6 +42,7 @@ import com.android.internal.app.ISoundTriggerSession;
 import java.io.PrintWriter;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.util.UUID;
 
 /**
  * A class that allows interaction with the actual sound trigger detection on the system.

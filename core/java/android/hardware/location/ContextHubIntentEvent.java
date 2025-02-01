@@ -18,6 +18,7 @@ package android.hardware.location;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.SystemApi;
+import android.app.PendingIntent;
 import android.chre.flags.Flags;
 import android.content.Intent;
 

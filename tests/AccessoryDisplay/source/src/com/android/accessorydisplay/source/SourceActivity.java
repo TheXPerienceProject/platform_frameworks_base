@@ -16,6 +16,9 @@
 
 package com.android.accessorydisplay.source;
 
+import com.android.accessorydisplay.common.Logger;
+import com.android.accessorydisplay.source.presentation.DemoPresentation;
+
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -30,9 +33,6 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Display;
 import android.widget.TextView;
-
-import com.android.accessorydisplay.common.Logger;
-import com.android.accessorydisplay.source.presentation.DemoPresentation;
 
 public class SourceActivity extends Activity {
     private static final String TAG = "SourceActivity";

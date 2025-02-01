@@ -34,10 +34,10 @@ import android.view.contentcapture.ViewNode.ViewStructureImpl;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.common.collect.ImmutableMap;
+
 import libcore.junit.util.compat.CoreCompatChangeRule.DisableCompatChanges;
 import libcore.junit.util.compat.CoreCompatChangeRule.EnableCompatChanges;
-
-import com.google.common.collect.ImmutableMap;
 
 import org.junit.Ignore;
 import org.junit.Rule;

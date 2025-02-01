@@ -37,6 +37,7 @@ import org.junit.runner.RunWith;
 
 import java.util.List;
 
+
 /**
  * Tests for {@link HandwritingInitiator.HandwritingAreaTracker}
  *

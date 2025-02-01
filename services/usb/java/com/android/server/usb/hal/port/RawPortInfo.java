@@ -15,9 +15,9 @@
  */
 package com.android.server.usb.hal.port;
 
-import android.hardware.usb.DisplayPortAltModeInfo;
 import android.hardware.usb.UsbPort;
 import android.hardware.usb.UsbPortStatus;
+import android.hardware.usb.DisplayPortAltModeInfo;
 import android.os.Parcel;
 import android.os.Parcelable;
 

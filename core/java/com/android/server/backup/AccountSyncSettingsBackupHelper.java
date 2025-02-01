@@ -20,6 +20,7 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.backup.BackupDataInputStream;
 import android.app.backup.BackupDataOutput;
+import android.app.backup.BackupHelper;
 import android.app.backup.BackupHelperWithLogger;
 import android.content.ContentResolver;
 import android.content.Context;

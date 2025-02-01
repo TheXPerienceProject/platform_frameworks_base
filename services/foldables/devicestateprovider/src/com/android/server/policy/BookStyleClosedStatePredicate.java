@@ -19,11 +19,11 @@ package com.android.server.policy;
 import static android.hardware.SensorManager.SENSOR_DELAY_NORMAL;
 import static android.view.Display.DEFAULT_DISPLAY;
 
+import static com.android.server.policy.BookStylePreferredScreenCalculator.PreferredScreen.OUTER;
 import static com.android.server.policy.BookStylePreferredScreenCalculator.HingeAngle.ANGLE_0;
 import static com.android.server.policy.BookStylePreferredScreenCalculator.HingeAngle.ANGLE_0_TO_45;
 import static com.android.server.policy.BookStylePreferredScreenCalculator.HingeAngle.ANGLE_45_TO_90;
 import static com.android.server.policy.BookStylePreferredScreenCalculator.HingeAngle.ANGLE_90_TO_180;
-import static com.android.server.policy.BookStylePreferredScreenCalculator.PreferredScreen.OUTER;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
@@ -40,10 +40,10 @@ import android.view.Display;
 import android.view.DisplayInfo;
 import android.view.Surface;
 
-import com.android.server.policy.BookStyleClosedStatePredicate.ConditionSensorListener.SensorSubscription;
-import com.android.server.policy.BookStylePreferredScreenCalculator.HingeAngle;
 import com.android.server.policy.BookStylePreferredScreenCalculator.PreferredScreen;
+import com.android.server.policy.BookStylePreferredScreenCalculator.HingeAngle;
 import com.android.server.policy.BookStylePreferredScreenCalculator.StateTransition;
+import com.android.server.policy.BookStyleClosedStatePredicate.ConditionSensorListener.SensorSubscription;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;

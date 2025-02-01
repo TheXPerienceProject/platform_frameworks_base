@@ -17,8 +17,8 @@
 package android.security.keymaster;
 
 import android.os.Parcel;
-import android.os.ParcelFormatException;
 import android.os.Parcelable;
+import android.os.ParcelFormatException;
 
 /**
  * Base class for the Java side of a Keymaster tagged argument.

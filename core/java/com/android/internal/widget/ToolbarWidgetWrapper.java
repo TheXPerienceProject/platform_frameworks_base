@@ -39,7 +39,6 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.Toolbar;
-
 import com.android.internal.R;
 import com.android.internal.view.menu.ActionMenuItem;
 import com.android.internal.view.menu.MenuBuilder;

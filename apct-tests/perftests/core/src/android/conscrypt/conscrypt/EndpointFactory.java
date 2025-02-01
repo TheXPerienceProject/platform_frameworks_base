@@ -18,10 +18,8 @@ package android.conscrypt;
 
 import org.conscrypt.ChannelType;
 import org.conscrypt.TestUtils;
-
 import java.io.IOException;
 import java.security.Provider;
-
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.SSLSocketFactory;

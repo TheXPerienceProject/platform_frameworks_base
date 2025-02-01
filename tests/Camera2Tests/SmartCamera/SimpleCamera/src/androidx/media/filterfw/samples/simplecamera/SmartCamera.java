@@ -35,7 +35,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import androidx.media.filterfw.FilterGraph;
 import androidx.media.filterfw.GraphReader;
 import androidx.media.filterfw.GraphRunner;
@@ -45,6 +44,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+
 
 public class SmartCamera extends Activity {
 

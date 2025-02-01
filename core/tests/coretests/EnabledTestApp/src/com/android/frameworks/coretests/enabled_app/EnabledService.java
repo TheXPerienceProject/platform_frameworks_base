@@ -17,8 +17,8 @@
 package com.android.frameworks.coretests.enabled_app;
 
 import android.app.Service;
-import android.content.Intent;
 import android.os.IBinder;
+import android.content.Intent;
 
 /**
  * Empty Service for testing

@@ -40,6 +40,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+
 /**
  * Tests for DisplayModeDirector.SkinThermalStatusObserver. Comply with changes described in
  * b/266789924

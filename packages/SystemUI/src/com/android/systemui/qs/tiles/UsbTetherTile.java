@@ -25,9 +25,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.hardware.usb.UsbManager;
-import android.net.TetheringManager;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.Settings;
+import android.net.TetheringManager;
 import android.service.quicksettings.Tile;
 
 import androidx.annotation.Nullable;

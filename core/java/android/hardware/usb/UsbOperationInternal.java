@@ -15,17 +15,19 @@
  */
 package android.hardware.usb;
 
+import android.annotation.CallbackExecutor;
 import android.annotation.IntDef;
+import android.hardware.usb.IUsbOperationInternal;
+import android.hardware.usb.UsbPort;
 import android.util.Log;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
-
 /**
  * UsbOperationInternal allows UsbPort to support both synchronous and
  * asynchronous function irrespective of whether the underlying hal

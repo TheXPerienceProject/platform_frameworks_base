@@ -16,15 +16,16 @@
 
 package com.android.powermodel;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import org.junit.Test;
+import org.junit.Assert;
+
 import com.android.powermodel.component.ModemAppActivity;
 import com.android.powermodel.component.ModemGlobalActivity;
 import com.android.powermodel.component.ModemRemainderActivity;
-
-import org.junit.Assert;
-import org.junit.Test;
-
-import java.io.InputStream;
-import java.util.List;
 
 /**
  * Tests {@link BatteryStatsReader}.

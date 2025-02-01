@@ -20,7 +20,6 @@ import static android.content.res.AssetFileDescriptor.UNKNOWN_LENGTH;
 
 import static com.android.packageinstaller.PackageInstallerActivity.EXTRA_STAGED_SESSION_ID;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -31,6 +30,7 @@ import android.content.Intent;
 import android.content.pm.PackageInstaller;
 import android.content.pm.PackageManager;
 import android.content.res.AssetFileDescriptor;
+import android.Manifest;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;

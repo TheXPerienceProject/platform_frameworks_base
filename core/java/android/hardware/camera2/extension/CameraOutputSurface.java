@@ -16,6 +16,7 @@
 
 package android.hardware.camera2.extension;
 
+import android.annotation.FlaggedApi;
 import android.annotation.NonNull;
 import android.annotation.SuppressLint;
 import android.annotation.SystemApi;
@@ -25,6 +26,9 @@ import android.hardware.camera2.params.DynamicRangeProfiles;
 import android.hardware.camera2.utils.SurfaceUtils;
 import android.util.Size;
 import android.view.Surface;
+
+import com.android.internal.camera.flags.Flags;
+
 
 /**
  * Helper method used to describe a single camera output

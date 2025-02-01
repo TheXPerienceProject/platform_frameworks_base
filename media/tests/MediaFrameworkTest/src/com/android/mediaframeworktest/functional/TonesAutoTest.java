@@ -18,9 +18,10 @@ package com.android.mediaframeworktest.functional;
 
 
 //import android.content.Resources;
-import android.media.AudioManager;
-import android.media.ToneGenerator;
 import android.util.Log;
+
+import android.media.ToneGenerator;
+import android.media.AudioManager;
 
 /**
  * Junit / Instrumentation test case for the Sim tones tests

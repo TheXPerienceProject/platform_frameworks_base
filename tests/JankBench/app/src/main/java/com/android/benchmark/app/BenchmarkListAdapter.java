@@ -24,9 +24,9 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.android.benchmark.R;
 import com.android.benchmark.registry.BenchmarkGroup;
 import com.android.benchmark.registry.BenchmarkRegistry;
+import com.android.benchmark.R;
 
 /**
  *

@@ -15,17 +15,17 @@
  */
 package com.android.transitiontests;
 
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.transition.ChangeBounds;
+import android.transition.TransitionManager;
+import android.widget.Button;
+
 import static android.widget.RelativeLayout.ALIGN_PARENT_LEFT;
 import static android.widget.RelativeLayout.ALIGN_PARENT_RIGHT;
 import static android.widget.RelativeLayout.LayoutParams;
-
-import android.app.Activity;
-import android.os.Bundle;
-import android.transition.ChangeBounds;
-import android.transition.TransitionManager;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 
 public class InstanceTargets extends Activity {
 

@@ -17,6 +17,11 @@
 
 package com.android.internal.app;
 
+import com.android.internal.view.menu.MenuBuilder;
+import com.android.internal.view.menu.MenuPresenter;
+import com.android.internal.widget.DecorToolbar;
+import com.android.internal.widget.ToolbarWidgetWrapper;
+
 import android.annotation.Nullable;
 import android.app.ActionBar;
 import android.content.Context;
@@ -33,11 +38,6 @@ import android.view.Window;
 import android.view.WindowCallbackWrapper;
 import android.widget.SpinnerAdapter;
 import android.widget.Toolbar;
-
-import com.android.internal.view.menu.MenuBuilder;
-import com.android.internal.view.menu.MenuPresenter;
-import com.android.internal.widget.DecorToolbar;
-import com.android.internal.widget.ToolbarWidgetWrapper;
 
 import java.util.ArrayList;
 

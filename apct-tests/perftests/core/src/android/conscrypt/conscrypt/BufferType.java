@@ -16,7 +16,6 @@
 package android.conscrypt;
 
 import java.nio.ByteBuffer;
-
 import javax.net.ssl.SSLEngine;
 
 /**

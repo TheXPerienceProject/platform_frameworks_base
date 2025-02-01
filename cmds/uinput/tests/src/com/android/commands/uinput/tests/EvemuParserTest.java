@@ -34,10 +34,10 @@ import com.android.commands.uinput.Event.UinputControlCode;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import src.com.android.commands.uinput.InputAbsInfo;
-
 import java.io.IOException;
 import java.io.StringReader;
+
+import src.com.android.commands.uinput.InputAbsInfo;
 
 @RunWith(AndroidJUnit4.class)
 @SmallTest

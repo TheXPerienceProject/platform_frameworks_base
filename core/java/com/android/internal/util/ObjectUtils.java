@@ -19,7 +19,6 @@ package com.android.internal.util;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
-
 import java.util.Objects;
 
 /** @hide */

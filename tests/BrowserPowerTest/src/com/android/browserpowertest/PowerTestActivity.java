@@ -17,6 +17,7 @@
 package com.android.browserpowertest;
 
 import android.app.Activity;
+import android.app.ActivityThread;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,9 +26,9 @@ import android.os.Message;
 import android.util.Log;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
-import android.webkit.WebSettings.LayoutAlgorithm;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.webkit.WebSettings.LayoutAlgorithm;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 

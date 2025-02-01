@@ -16,15 +16,6 @@
 
 package com.android.test.layout;
 
-import static android.widget.GridLayout.BASELINE;
-import static android.widget.GridLayout.BOTTOM;
-import static android.widget.GridLayout.CENTER;
-import static android.widget.GridLayout.FILL;
-import static android.widget.GridLayout.LEFT;
-import static android.widget.GridLayout.RIGHT;
-import static android.widget.GridLayout.TOP;
-import static android.widget.GridLayout.spec;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -37,6 +28,15 @@ import android.widget.GridLayout;
 import android.widget.GridLayout.Alignment;
 import android.widget.GridLayout.LayoutParams;
 import android.widget.TextView;
+
+import static android.widget.GridLayout.BASELINE;
+import static android.widget.GridLayout.BOTTOM;
+import static android.widget.GridLayout.CENTER;
+import static android.widget.GridLayout.FILL;
+import static android.widget.GridLayout.LEFT;
+import static android.widget.GridLayout.RIGHT;
+import static android.widget.GridLayout.TOP;
+import static android.widget.GridLayout.spec;
 
 public class AlignmentTest extends Activity {
 

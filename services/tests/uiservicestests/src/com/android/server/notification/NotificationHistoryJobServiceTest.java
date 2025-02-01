@@ -24,6 +24,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.timeout;
 import static org.mockito.Mockito.times;
@@ -33,6 +34,8 @@ import static org.mockito.Mockito.when;
 import android.app.job.JobInfo;
 import android.app.job.JobParameters;
 import android.app.job.JobScheduler;
+import android.app.job.JobService;
+import android.app.job.JobServiceEngine;
 import android.testing.AndroidTestingRunner;
 
 import androidx.test.rule.ServiceTestRule;
@@ -47,6 +50,8 @@ import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
+
+import java.lang.reflect.Field;
 
 @RunWith(AndroidTestingRunner.class)
 public class NotificationHistoryJobServiceTest extends UiServiceTestCase {

@@ -17,12 +17,13 @@ package com.android.transitiontests;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.transition.Scene;
-import android.transition.TransitionInflater;
-import android.transition.TransitionManager;
 import android.view.View;
 import android.view.ViewGroup;
+import android.transition.Scene;
+import android.transition.TransitionInflater;
 import android.widget.TextView;
+import android.transition.TransitionManager;
+
 
 public class LoginActivityFromResources extends Activity {
     ViewGroup mSceneRoot;

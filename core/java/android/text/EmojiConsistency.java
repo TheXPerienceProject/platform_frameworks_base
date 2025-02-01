@@ -21,6 +21,7 @@ import android.annotation.NonNull;
 import java.util.Collections;
 import java.util.Set;
 
+
 /**
  * The set of emoji that should be drawn by the system with the default font for device consistency.
  *

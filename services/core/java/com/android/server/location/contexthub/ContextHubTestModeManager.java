@@ -21,8 +21,8 @@ import android.hardware.location.ContextHubTransaction;
 import android.hardware.location.NanoAppMessage;
 import android.util.Log;
 
-import java.util.concurrent.Callable;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.Callable;
 
 /**
  * A class to manage behaviors during test mode. This is used for testing.

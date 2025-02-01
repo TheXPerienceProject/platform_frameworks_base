@@ -24,7 +24,6 @@ import android.os.Process;
 import android.os.SystemProperties;
 import android.util.Log;
 import android.util.Printer;
-
 import java.util.ArrayList;
 
 /**

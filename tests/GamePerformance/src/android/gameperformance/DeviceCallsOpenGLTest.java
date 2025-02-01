@@ -15,10 +15,10 @@
  */
 package android.gameperformance;
 
-import android.annotation.NonNull;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import android.annotation.NonNull;
 
 /**
  * Tests that verifies maximum number of device calls to render the geometry to keep FPS close to

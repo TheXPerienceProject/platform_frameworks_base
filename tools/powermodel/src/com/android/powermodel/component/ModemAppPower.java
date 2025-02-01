@@ -16,6 +16,7 @@
 
 package com.android.powermodel.component;
 
+import com.android.powermodel.Component;
 import com.android.powermodel.ComponentPower;
 
 public class ModemAppPower extends ComponentPower<ModemAppActivity> {

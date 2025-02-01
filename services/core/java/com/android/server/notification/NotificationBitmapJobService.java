@@ -23,6 +23,7 @@ import android.app.job.JobScheduler;
 import android.app.job.JobService;
 import android.content.ComponentName;
 import android.content.Context;
+import android.os.CancellationSignal;
 import android.util.Slog;
 
 import com.android.internal.annotations.VisibleForTesting;
@@ -32,8 +33,8 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.ZoneId;
 
 /**
  * This service runs everyday at 2am local time to remove expired bitmaps.

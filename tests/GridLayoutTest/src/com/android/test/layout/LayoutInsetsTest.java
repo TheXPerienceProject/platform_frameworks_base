@@ -1,8 +1,5 @@
 package com.android.test.layout;
 
-import static android.widget.GridLayout.LAYOUT_MODE_OPTICAL_BOUNDS;
-import static android.widget.GridLayout.LayoutParams;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
@@ -12,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TextView;
+
+import static android.widget.GridLayout.LayoutParams;
+import static android.widget.GridLayout.LAYOUT_MODE_OPTICAL_BOUNDS;
 
 public class LayoutInsetsTest extends Activity {
     static int[] GRAVITIES = {Gravity.LEFT, Gravity.LEFT, Gravity.CENTER_HORIZONTAL, Gravity.RIGHT, Gravity.RIGHT};

@@ -19,12 +19,19 @@ package androidx.media.filterfw.samples.simplecamera;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-
+import android.net.Uri;
+import android.provider.MediaStore;
 import androidx.media.filterfw.Filter;
 import androidx.media.filterfw.FrameImage2D;
 import androidx.media.filterfw.FrameType;
 import androidx.media.filterfw.MffContext;
 import androidx.media.filterfw.MffFilterTestCase;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
+
 
 public class ExposureFilterTest extends MffFilterTestCase {
 

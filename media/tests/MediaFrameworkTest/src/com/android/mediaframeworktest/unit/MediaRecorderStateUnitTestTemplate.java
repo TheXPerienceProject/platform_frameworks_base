@@ -16,9 +16,9 @@
 
 package com.android.mediaframeworktest.unit;
 
+import android.util.Log;
 import android.media.MediaRecorder;
 import android.test.AndroidTestCase;
-import android.util.Log;
 
 /**
  * A template class for running a method under test in all possible

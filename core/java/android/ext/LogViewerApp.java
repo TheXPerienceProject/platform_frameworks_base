@@ -1,13 +1,13 @@
 package android.ext;
 
-import static java.nio.charset.StandardCharsets.UTF_8;
-
 import android.content.Intent;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.UUID;
 import java.util.zip.GZIPOutputStream;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 /** @hide */
 public class LogViewerApp {

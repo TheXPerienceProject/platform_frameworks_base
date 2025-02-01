@@ -18,11 +18,11 @@ package com.android.server.cpu;
 
 import static android.os.IServiceManager.DUMP_FLAG_PRIORITY_CRITICAL;
 
-import static com.android.server.SystemService.PHASE_BOOT_COMPLETED;
 import static com.android.server.cpu.CpuAvailabilityMonitoringConfig.CPUSET_ALL;
 import static com.android.server.cpu.CpuAvailabilityMonitoringConfig.CPUSET_BACKGROUND;
 import static com.android.server.cpu.CpuInfoReader.FLAG_CPUSET_CATEGORY_BACKGROUND;
 import static com.android.server.cpu.CpuInfoReader.FLAG_CPUSET_CATEGORY_TOP_APP;
+import static com.android.server.SystemService.PHASE_BOOT_COMPLETED;
 
 import android.annotation.Nullable;
 import android.content.Context;

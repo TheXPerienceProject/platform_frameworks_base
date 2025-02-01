@@ -22,11 +22,6 @@ import android.system.Os;
 import android.system.OsConstants;
 
 import dalvik.system.CloseGuard;
-
-import libcore.io.IoBridge;
-import libcore.io.IoUtils;
-import libcore.io.Streams;
-
 import java.io.FileDescriptor;
 import java.io.FilterInputStream;
 import java.io.IOException;
@@ -39,6 +34,9 @@ import java.util.jar.JarFile;
 import java.util.zip.Inflater;
 import java.util.zip.InflaterInputStream;
 import java.util.zip.ZipEntry;
+import libcore.io.IoBridge;
+import libcore.io.IoUtils;
+import libcore.io.Streams;
 
 /**
  * A subset of the JarFile API implemented as a thin wrapper over

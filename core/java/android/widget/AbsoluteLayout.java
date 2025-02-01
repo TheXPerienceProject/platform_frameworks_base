@@ -24,6 +24,7 @@ import android.view.ViewGroup;
 import android.view.inspector.InspectableProperty;
 import android.widget.RemoteViews.RemoteView;
 
+
 /**
  * A layout that lets you specify exact locations (x/y coordinates) of its
  * children. Absolute layouts are less flexible and harder to maintain than

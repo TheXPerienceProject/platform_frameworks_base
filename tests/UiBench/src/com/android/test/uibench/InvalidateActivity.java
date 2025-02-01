@@ -21,12 +21,11 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Bundle;
+import androidx.annotation.ColorInt;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-
-import androidx.annotation.ColorInt;
-import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Tests invalidation performance by invalidating a large number of easily rendered views,

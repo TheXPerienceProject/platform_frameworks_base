@@ -16,12 +16,16 @@
 
 package android.hardware.camera2.extension;
 
+import android.annotation.FlaggedApi;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.SystemApi;
 import android.hardware.camera2.CameraDevice;
 import android.hardware.camera2.CaptureRequest;
 import android.hardware.camera2.params.ColorSpaceProfiles;
+import android.os.IBinder;
+
+import com.android.internal.camera.flags.Flags;
 
 import java.util.ArrayList;
 import java.util.List;

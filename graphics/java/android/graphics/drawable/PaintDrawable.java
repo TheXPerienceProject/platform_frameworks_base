@@ -16,9 +16,9 @@
 
 package android.graphics.drawable;
 
+import android.graphics.drawable.shapes.RoundRectShape;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.graphics.drawable.shapes.RoundRectShape;
 import android.util.AttributeSet;
 
 import org.xmlpull.v1.XmlPullParser;

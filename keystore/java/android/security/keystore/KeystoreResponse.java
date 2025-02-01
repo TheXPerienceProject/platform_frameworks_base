@@ -18,6 +18,7 @@ package android.security.keystore;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.ParcelFormatException;
 
 /**
  * The Java side of the KeystoreResponse.

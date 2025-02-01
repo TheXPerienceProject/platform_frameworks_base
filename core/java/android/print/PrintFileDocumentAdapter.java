@@ -28,6 +28,8 @@ import android.util.Log;
 
 import com.android.internal.R;
 
+import libcore.io.IoUtils;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

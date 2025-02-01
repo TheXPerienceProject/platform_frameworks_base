@@ -36,7 +36,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 
 import com.android.internal.R;
-
 /**
  *  This class is used to show of magnification thumbnail
  *  from FullScreenMagnification. It is responsible for

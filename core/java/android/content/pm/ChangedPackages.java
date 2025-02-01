@@ -16,6 +16,9 @@
 package android.content.pm;
 
 import android.annotation.NonNull;
+import android.annotation.Nullable;
+import android.annotation.TestApi;
+import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
 

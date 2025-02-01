@@ -16,6 +16,14 @@
 
 package com.android.test.soundtrigger;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
 import android.Manifest;
 import android.app.Activity;
 import android.content.ComponentName;
@@ -42,14 +50,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.test.soundtrigger.SoundTriggerTestService.SoundTriggerTestBinder;
-
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
 public class SoundTriggerTestActivity extends Activity implements SoundTriggerTestService.UserActivity {
     private static final String TAG = "SoundTriggerTest";

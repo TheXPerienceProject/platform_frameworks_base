@@ -23,9 +23,6 @@ import android.content.Context;
 import android.os.Build;
 import android.util.Slog;
 
-import libcore.io.IoUtils;
-import libcore.io.Streams;
-
 import com.google.security.cryptauth.lib.securegcm.ukey2.AlertException;
 import com.google.security.cryptauth.lib.securegcm.ukey2.BadHandleException;
 import com.google.security.cryptauth.lib.securegcm.ukey2.CryptoException;
@@ -33,6 +30,9 @@ import com.google.security.cryptauth.lib.securegcm.ukey2.D2DConnectionContextV1;
 import com.google.security.cryptauth.lib.securegcm.ukey2.D2DHandshakeContext;
 import com.google.security.cryptauth.lib.securegcm.ukey2.D2DHandshakeContext.Role;
 import com.google.security.cryptauth.lib.securegcm.ukey2.HandshakeException;
+
+import libcore.io.IoUtils;
+import libcore.io.Streams;
 
 import java.io.IOException;
 import java.io.InputStream;

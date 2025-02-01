@@ -30,6 +30,8 @@ import java.io.Closeable;
 import java.io.FileDescriptor;
 import java.io.IOException;
 
+import java.util.HashSet;
+
 /**
  * This class is used for sending and receiving data to and from a MIDI device
  * Instances of this class are created by {@link MidiManager#openDevice}.

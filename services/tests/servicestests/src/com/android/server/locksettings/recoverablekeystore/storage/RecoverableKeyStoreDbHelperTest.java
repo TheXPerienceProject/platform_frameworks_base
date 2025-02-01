@@ -18,8 +18,6 @@ package com.android.server.locksettings.recoverablekeystore.storage;
 
 import static com.google.common.truth.Truth.assertThat;
 
-import static java.nio.charset.StandardCharsets.UTF_8;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -37,6 +35,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 @SmallTest
 @RunWith(AndroidJUnit4.class)

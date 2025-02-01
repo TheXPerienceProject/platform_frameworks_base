@@ -16,6 +16,7 @@
 
 package android.content;
 
+import com.android.internal.R;
 import android.accounts.Account;
 import android.app.Activity;
 import android.os.Bundle;
@@ -27,8 +28,6 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.android.internal.R;
 
 /**
  * Presents multiple options for handling the case where a sync was aborted because there

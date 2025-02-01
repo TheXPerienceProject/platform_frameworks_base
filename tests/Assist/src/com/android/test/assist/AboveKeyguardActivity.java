@@ -21,6 +21,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.WindowManager;
 
+import com.android.test.assist.R;
+
 /**
  * An activity which can be shown above the keyguard.
  */

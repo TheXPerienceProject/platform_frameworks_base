@@ -24,6 +24,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 import android.os.Trace;
+import android.text.TextUtils;
 import android.text.format.TimeMigrationUtils;
 import android.util.ArrayMap;
 import android.util.CloseGuard;
@@ -37,9 +38,10 @@ import com.android.internal.annotations.Keep;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.util.RingBuffer;
 
-import java.io.PrintWriter;
 import java.lang.ref.WeakReference;
+import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Objects;
 

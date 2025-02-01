@@ -16,14 +16,14 @@
 
 package com.android.media.remotedisplay.test;
 
+import com.android.media.remotedisplay.RemoteDisplay;
+import com.android.media.remotedisplay.RemoteDisplayProvider;
+
 import android.app.Service;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
-
-import com.android.media.remotedisplay.RemoteDisplay;
-import com.android.media.remotedisplay.RemoteDisplayProvider;
 
 /**
  * Remote display provider implementation that publishes working routes.

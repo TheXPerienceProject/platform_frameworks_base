@@ -15,14 +15,14 @@
  */
 package android.surfacecomposition;
 
+import java.util.Random;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-
-import java.util.Random;
 
 /**
  * This provides functionality to measure Surface update frame rate. The idea is to

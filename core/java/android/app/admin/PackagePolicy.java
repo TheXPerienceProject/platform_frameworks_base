@@ -28,6 +28,7 @@ import java.util.Collections;
 import java.util.Objects;
 import java.util.Set;
 
+
 /**
  * A generic class that defines which APK packages are in scope for some device policy.
  * <p>

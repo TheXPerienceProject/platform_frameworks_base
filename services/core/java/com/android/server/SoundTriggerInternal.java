@@ -29,6 +29,8 @@ import android.hardware.soundtrigger.SoundTrigger.RecognitionConfig;
 import android.media.permission.Identity;
 import android.os.IBinder;
 
+import java.io.FileDescriptor;
+import java.io.PrintWriter;
 import java.util.List;
 
 /**

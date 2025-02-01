@@ -19,10 +19,12 @@ package com.android.benchmark.synthetic;
 import android.view.View;
 import android.widget.TextView;
 
+import org.apache.commons.math.stat.StatUtils;
 import org.apache.commons.math.stat.descriptive.SummaryStatistics;
 
 import java.util.LinkedList;
 import java.util.Queue;
+
 
 public class TestInterface {
     native long nInit(long options);

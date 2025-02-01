@@ -30,6 +30,7 @@ import com.android.internal.annotations.VisibleForTesting;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * Contains the information of the template of vertical list content view for Biometric Prompt.
  * <p>

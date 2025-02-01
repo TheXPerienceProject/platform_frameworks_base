@@ -16,9 +16,12 @@
 
 package com.android.server.notification;
 
+import android.annotation.NonNull;
 import android.app.NotificationHistory;
 import android.app.NotificationHistory.HistoricalNotification;
 import android.text.TextUtils;
+
+import com.android.internal.util.Preconditions;
 
 public final class NotificationHistoryFilter {
     private String mPackage;

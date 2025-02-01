@@ -28,6 +28,7 @@ import android.util.Log;
 
 import java.util.concurrent.Executor;
 
+
 /**
  * The class inherits CameraInjectionSession. Use CameraManager#injectCamera to instantiate.
  */

@@ -19,6 +19,7 @@ package android.service.notification;
 import android.annotation.Nullable;
 import android.app.NotificationChannel;
 import android.content.pm.ShortcutInfo;
+import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 

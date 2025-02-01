@@ -15,26 +15,26 @@
  */
 package com.android.transitiontests;
 
-import static android.widget.LinearLayout.LayoutParams;
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.SurfaceTexture;
 import android.os.Bundle;
-import android.transition.ChangeBounds;
-import android.transition.Crossfade;
-import android.transition.Scene;
-import android.transition.TransitionManager;
-import android.transition.TransitionSet;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.transition.Crossfade;
+import android.transition.ChangeBounds;
+import android.transition.Scene;
+import android.transition.TransitionSet;
+import android.transition.TransitionManager;
 import android.widget.Button;
+
+import static android.widget.LinearLayout.LayoutParams;
 
 public class SurfaceAndTextureViews extends Activity {
 

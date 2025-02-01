@@ -16,6 +16,8 @@
 
 package com.android.mediaframeworktest.helpers;
 
+import junit.framework.Assert;
+
 import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
 import android.hardware.Camera.PictureCallback;
@@ -24,8 +26,6 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 
 import androidx.test.InstrumentationRegistry;
-
-import junit.framework.Assert;
 
 import java.io.File;
 import java.io.FileNotFoundException;

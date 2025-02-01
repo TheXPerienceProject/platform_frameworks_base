@@ -22,8 +22,8 @@ import static android.view.WindowManager.TRANSIT_CHANGE;
 import static android.window.TransitionInfo.AnimationOptions.DEFAULT_ANIMATION_RESOURCES_ID;
 
 import static com.android.internal.policy.TransitionAnimation.WALLPAPER_TRANSITION_NONE;
-import static com.android.wm.shell.transition.TransitionAnimationHelper.getTransitionTypeFromInfo;
 import static com.android.wm.shell.transition.TransitionAnimationHelper.loadAttributeAnimation;
+import static com.android.wm.shell.transition.TransitionAnimationHelper.getTransitionTypeFromInfo;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;

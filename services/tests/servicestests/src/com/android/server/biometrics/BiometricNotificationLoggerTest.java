@@ -16,25 +16,26 @@
 
 package com.android.server.biometrics;
 
+import android.hardware.biometrics.BiometricsProtoEnums;
+import android.platform.test.annotations.Presubmit;
+import android.service.notification.NotificationListenerService;
+import android.service.notification.StatusBarNotification;
+
+import com.android.server.biometrics.log.BiometricFrameworkStatsLogger;
+import com.android.server.biometrics.sensors.BiometricNotificationUtils;
+
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import android.hardware.biometrics.BiometricsProtoEnums;
-import android.platform.test.annotations.Presubmit;
-import android.service.notification.NotificationListenerService;
-import android.service.notification.StatusBarNotification;
-
 import androidx.test.filters.SmallTest;
-
-import com.android.server.biometrics.log.BiometricFrameworkStatsLogger;
-import com.android.server.biometrics.sensors.BiometricNotificationUtils;
 
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;

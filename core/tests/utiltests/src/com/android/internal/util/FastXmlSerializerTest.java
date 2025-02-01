@@ -22,6 +22,7 @@ import static org.junit.Assert.assertTrue;
 
 import android.platform.test.annotations.IgnoreUnderRavenwood;
 import android.platform.test.ravenwood.RavenwoodRule;
+import android.provider.DeviceConfig;
 import android.util.Log;
 import android.util.Xml;
 

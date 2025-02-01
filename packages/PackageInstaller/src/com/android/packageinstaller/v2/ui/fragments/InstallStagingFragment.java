@@ -23,11 +23,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-
 import com.android.packageinstaller.R;
 
 public class InstallStagingFragment extends DialogFragment {

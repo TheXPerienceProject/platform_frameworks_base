@@ -17,11 +17,14 @@
 package com.android.internal.util.android;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.PowerManager;
 import android.os.SystemClock;
 import android.os.SystemProperties;
+
+import java.util.List;
 
 public class Utils {
 

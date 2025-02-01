@@ -24,6 +24,7 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.PixelCopy;
+import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;

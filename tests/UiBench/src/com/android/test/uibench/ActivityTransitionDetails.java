@@ -21,10 +21,13 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.android.test.uibench.ActivityTransition;
+import com.android.test.uibench.R;
+
 
 public class ActivityTransitionDetails extends AppCompatActivity {
     private static final String KEY_ID = "ViewTransitionValues:id";

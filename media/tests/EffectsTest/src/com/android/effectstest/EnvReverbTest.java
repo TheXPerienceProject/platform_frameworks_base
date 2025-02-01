@@ -17,18 +17,29 @@
 package com.android.effectstest;
 
 import android.app.Activity;
-import android.media.AudioManager;
-import android.media.audiofx.EnvironmentalReverb;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.View.OnClickListener;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.SeekBar;
+import android.widget.ToggleButton;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import android.widget.ToggleButton;
-
 import java.util.HashMap;
+import java.util.Map;
+
+import android.media.audiofx.EnvironmentalReverb;
+import android.media.audiofx.AudioEffect;
+import android.media.AudioManager;
 
 public class EnvReverbTest extends Activity implements OnCheckedChangeListener, SeekBar.OnSeekBarChangeListener {
 

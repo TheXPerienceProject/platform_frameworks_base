@@ -16,10 +16,6 @@
 
 package android.hardware.usb;
 
-import static android.hardware.usb.DisplayPortAltModeInfo.DISPLAYPORT_ALT_MODE_STATUS_CAPABLE_DISABLED;
-import static android.hardware.usb.DisplayPortAltModeInfo.DISPLAYPORT_ALT_MODE_STATUS_ENABLED;
-import static android.hardware.usb.DisplayPortAltModeInfo.DISPLAYPORT_ALT_MODE_STATUS_NOT_CAPABLE;
-import static android.hardware.usb.DisplayPortAltModeInfo.DISPLAYPORT_ALT_MODE_STATUS_UNKNOWN;
 import static android.hardware.usb.UsbOperationInternal.USB_OPERATION_ERROR_INTERNAL;
 import static android.hardware.usb.UsbOperationInternal.USB_OPERATION_ERROR_NOT_SUPPORTED;
 import static android.hardware.usb.UsbOperationInternal.USB_OPERATION_ERROR_PORT_MISMATCH;
@@ -31,27 +27,40 @@ import static android.hardware.usb.UsbPortStatus.CONTAMINANT_DETECTION_NOT_SUPPO
 import static android.hardware.usb.UsbPortStatus.DATA_ROLE_DEVICE;
 import static android.hardware.usb.UsbPortStatus.DATA_ROLE_HOST;
 import static android.hardware.usb.UsbPortStatus.DATA_ROLE_NONE;
-import static android.hardware.usb.UsbPortStatus.DATA_STATUS_DISABLED_CONTAMINANT;
-import static android.hardware.usb.UsbPortStatus.DATA_STATUS_DISABLED_DEBUG;
-import static android.hardware.usb.UsbPortStatus.DATA_STATUS_DISABLED_DOCK;
-import static android.hardware.usb.UsbPortStatus.DATA_STATUS_DISABLED_DOCK_DEVICE_MODE;
-import static android.hardware.usb.UsbPortStatus.DATA_STATUS_DISABLED_DOCK_HOST_MODE;
-import static android.hardware.usb.UsbPortStatus.DATA_STATUS_DISABLED_FORCE;
-import static android.hardware.usb.UsbPortStatus.DATA_STATUS_DISABLED_OVERHEAT;
-import static android.hardware.usb.UsbPortStatus.DATA_STATUS_ENABLED;
-import static android.hardware.usb.UsbPortStatus.DATA_STATUS_UNKNOWN;
 import static android.hardware.usb.UsbPortStatus.MODE_AUDIO_ACCESSORY;
 import static android.hardware.usb.UsbPortStatus.MODE_DEBUG_ACCESSORY;
 import static android.hardware.usb.UsbPortStatus.MODE_DFP;
 import static android.hardware.usb.UsbPortStatus.MODE_DUAL;
 import static android.hardware.usb.UsbPortStatus.MODE_NONE;
 import static android.hardware.usb.UsbPortStatus.MODE_UFP;
-import static android.hardware.usb.UsbPortStatus.POWER_BRICK_STATUS_CONNECTED;
 import static android.hardware.usb.UsbPortStatus.POWER_BRICK_STATUS_DISCONNECTED;
 import static android.hardware.usb.UsbPortStatus.POWER_BRICK_STATUS_UNKNOWN;
+import static android.hardware.usb.UsbPortStatus.POWER_BRICK_STATUS_CONNECTED;
 import static android.hardware.usb.UsbPortStatus.POWER_ROLE_NONE;
 import static android.hardware.usb.UsbPortStatus.POWER_ROLE_SINK;
 import static android.hardware.usb.UsbPortStatus.POWER_ROLE_SOURCE;
+import static android.hardware.usb.UsbPortStatus.DATA_STATUS_UNKNOWN;
+import static android.hardware.usb.UsbPortStatus.DATA_STATUS_ENABLED;
+import static android.hardware.usb.UsbPortStatus.DATA_STATUS_DISABLED_OVERHEAT;
+import static android.hardware.usb.UsbPortStatus.DATA_STATUS_DISABLED_CONTAMINANT;
+import static android.hardware.usb.UsbPortStatus.DATA_STATUS_DISABLED_DOCK;
+import static android.hardware.usb.UsbPortStatus.DATA_STATUS_DISABLED_FORCE;
+import static android.hardware.usb.UsbPortStatus.DATA_STATUS_DISABLED_DEBUG;
+import static android.hardware.usb.UsbPortStatus.DATA_STATUS_DISABLED_DOCK_HOST_MODE;
+import static android.hardware.usb.UsbPortStatus.DATA_STATUS_DISABLED_DOCK_DEVICE_MODE;
+import static android.hardware.usb.UsbPortStatus.COMPLIANCE_WARNING_DEBUG_ACCESSORY;
+import static android.hardware.usb.UsbPortStatus.COMPLIANCE_WARNING_BC_1_2;
+import static android.hardware.usb.UsbPortStatus.COMPLIANCE_WARNING_MISSING_RP;
+import static android.hardware.usb.UsbPortStatus.COMPLIANCE_WARNING_OTHER;
+import static android.hardware.usb.UsbPortStatus.COMPLIANCE_WARNING_INPUT_POWER_LIMITED;
+import static android.hardware.usb.UsbPortStatus.COMPLIANCE_WARNING_MISSING_DATA_LINES;
+import static android.hardware.usb.UsbPortStatus.COMPLIANCE_WARNING_ENUMERATION_FAIL;
+import static android.hardware.usb.UsbPortStatus.COMPLIANCE_WARNING_FLAKY_CONNECTION;
+import static android.hardware.usb.UsbPortStatus.COMPLIANCE_WARNING_UNRELIABLE_IO;
+import static android.hardware.usb.DisplayPortAltModeInfo.DISPLAYPORT_ALT_MODE_STATUS_UNKNOWN;
+import static android.hardware.usb.DisplayPortAltModeInfo.DISPLAYPORT_ALT_MODE_STATUS_NOT_CAPABLE;
+import static android.hardware.usb.DisplayPortAltModeInfo.DISPLAYPORT_ALT_MODE_STATUS_CAPABLE_DISABLED;
+import static android.hardware.usb.DisplayPortAltModeInfo.DISPLAYPORT_ALT_MODE_STATUS_ENABLED;
 
 import android.Manifest;
 import android.annotation.CallbackExecutor;
@@ -63,8 +72,9 @@ import android.annotation.Nullable;
 import android.annotation.RequiresPermission;
 import android.annotation.SystemApi;
 import android.annotation.TestApi;
-import android.hardware.usb.V1_0.Constants;
 import android.hardware.usb.flags.Flags;
+import android.hardware.usb.UsbOperationInternal;
+import android.hardware.usb.V1_0.Constants;
 import android.os.Binder;
 import android.util.Log;
 
@@ -73,8 +83,8 @@ import com.android.internal.util.Preconditions;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.Objects;
-import java.util.concurrent.Executor;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.Executor;
 import java.util.function.Consumer;
 
 /**

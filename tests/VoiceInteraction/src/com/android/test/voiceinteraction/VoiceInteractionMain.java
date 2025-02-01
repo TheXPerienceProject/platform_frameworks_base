@@ -17,6 +17,7 @@
 package com.android.test.voiceinteraction;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;

@@ -16,16 +16,17 @@
 package com.android.internal.widget;
 
 import android.content.Context;
-import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewTreeObserver;
-import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.FrameLayout;
 
 import java.util.ArrayList;
+
 
 /**
  * Layout for the decor for ListViews on watch-type devices with small screens.

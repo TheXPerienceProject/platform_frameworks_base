@@ -16,16 +16,16 @@
 
 package android.hardware.camera2.impl;
 
-import android.annotation.NonNull;
 import android.annotation.SuppressLint;
 import android.hardware.camera2.CameraExtensionCharacteristics;
-import android.hardware.camera2.TotalCaptureResult;
 import android.hardware.camera2.extension.IPreviewImageProcessorImpl;
 import android.hardware.camera2.extension.IProcessResultImpl;
 import android.hardware.camera2.extension.ParcelImage;
+import android.hardware.camera2.TotalCaptureResult;
 import android.media.Image;
 import android.media.ImageReader;
 import android.media.ImageWriter;
+import android.annotation.NonNull;
 import android.os.Handler;
 import android.os.RemoteException;
 import android.util.Log;

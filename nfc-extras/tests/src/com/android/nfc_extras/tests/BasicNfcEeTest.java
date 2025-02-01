@@ -19,6 +19,7 @@ package com.android.nfc_extras.tests;
 import android.content.Context;
 import android.nfc.NfcAdapter;
 import android.test.InstrumentationTestCase;
+import android.util.Log;
 
 import com.android.nfc_extras.NfcAdapterExtras;
 import com.android.nfc_extras.NfcAdapterExtras.CardEmulationRoute;

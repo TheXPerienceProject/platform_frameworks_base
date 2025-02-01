@@ -51,6 +51,7 @@ import com.android.internal.util.IndentingPrintWriter;
 import com.android.server.EventLogTags;
 import com.android.server.LocalServices;
 import com.android.server.SystemService;
+import com.android.server.pm.PackageManagerService;
 
 import java.io.File;
 import java.io.FileDescriptor;

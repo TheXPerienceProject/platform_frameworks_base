@@ -37,6 +37,7 @@ import android.os.Trace;
 import android.os.UserHandle;
 import android.util.ArraySet;
 import android.util.IntArray;
+import android.util.Slog;
 
 import com.android.internal.annotations.GuardedBy;
 import com.android.media.permission.INativePermissionController;

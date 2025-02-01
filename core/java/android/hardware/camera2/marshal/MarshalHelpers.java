@@ -16,7 +16,6 @@
 package android.hardware.camera2.marshal;
 
 import static android.hardware.camera2.impl.CameraMetadataNative.*;
-
 import static com.android.internal.util.Preconditions.*;
 
 import android.hardware.camera2.impl.CameraMetadataNative;

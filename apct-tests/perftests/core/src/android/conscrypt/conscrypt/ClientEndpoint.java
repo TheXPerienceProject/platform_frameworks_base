@@ -16,8 +16,6 @@
 
 package android.conscrypt;
 
-import org.conscrypt.ChannelType;
-
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,10 +23,11 @@ import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.nio.channels.ClosedChannelException;
-
 import javax.net.ssl.SSLException;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
+
+import org.conscrypt.ChannelType;
 
 /**
  * Client-side endpoint. Provides basic services for sending/receiving messages from the client

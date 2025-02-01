@@ -22,9 +22,9 @@ import android.filterfw.core.FilterContext;
 import android.filterfw.core.Frame;
 import android.filterfw.core.FrameFormat;
 import android.filterfw.core.ShaderProgram;
+import android.filterfw.geometry.Quad;
 import android.filterfw.format.ImageFormat;
 import android.filterfw.format.ObjectFormat;
-import android.filterfw.geometry.Quad;
 
 /**
  * @hide

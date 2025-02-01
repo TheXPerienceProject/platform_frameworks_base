@@ -37,6 +37,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+
 /**
  * Animation related tests for the {@link ActivityRecord} class.
  *

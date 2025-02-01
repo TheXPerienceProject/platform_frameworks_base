@@ -18,8 +18,8 @@ package com.android.server.am;
 
 import android.annotation.IntDef;
 import android.annotation.UptimeMillisLong;
-import android.app.ActivityManagerInternal.FrozenProcessListener;
 import android.app.ActivityManagerInternal.OomAdjReason;
+import android.app.ActivityManagerInternal.FrozenProcessListener;
 import android.util.Pair;
 import android.util.TimeUtils;
 

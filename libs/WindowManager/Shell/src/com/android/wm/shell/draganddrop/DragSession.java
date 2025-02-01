@@ -28,6 +28,7 @@ import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.os.PersistableBundle;
 
 import androidx.annotation.Nullable;
 

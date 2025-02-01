@@ -77,8 +77,6 @@ import com.android.server.wm.ActivityTaskManagerInternal;
 import dalvik.system.DexFile;
 import dalvik.system.VMRuntime;
 
-import sun.misc.Unsafe;
-
 import java.io.Closeable;
 import java.io.DataInputStream;
 import java.io.FileDescriptor;
@@ -95,6 +93,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
+
+import sun.misc.Unsafe;
 
 /**
  * <p>PinnerService pins important files for key processes in memory.</p>

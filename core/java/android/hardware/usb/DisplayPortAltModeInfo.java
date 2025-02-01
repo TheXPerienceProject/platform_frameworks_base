@@ -16,8 +16,11 @@
 
 package android.hardware.usb;
 
+import android.Manifest;
+import android.annotation.CheckResult;
 import android.annotation.IntDef;
 import android.annotation.NonNull;
+import android.annotation.RequiresPermission;
 import android.annotation.SystemApi;
 import android.os.Parcel;
 import android.os.Parcelable;

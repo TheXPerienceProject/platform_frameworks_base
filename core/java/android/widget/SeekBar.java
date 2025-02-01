@@ -22,6 +22,7 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.view.accessibility.AccessibilityNodeInfo;
 
+
 /**
  * A SeekBar is an extension of ProgressBar that adds a draggable thumb. The user can touch
  * the thumb and drag left or right to set the current progress level or use the arrow keys.

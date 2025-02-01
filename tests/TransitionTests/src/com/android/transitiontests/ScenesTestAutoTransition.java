@@ -18,12 +18,13 @@ package com.android.transitiontests;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
 import android.transition.AutoTransition;
 import android.transition.Scene;
 import android.transition.Transition;
 import android.transition.TransitionManager;
-import android.view.View;
-import android.view.ViewGroup;
+
 
 public class ScenesTestAutoTransition extends Activity {
     ViewGroup mSceneRoot;

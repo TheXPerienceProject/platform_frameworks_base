@@ -15,8 +15,8 @@
  */
 package com.android.server.notification;
 
-import static android.app.Flags.FLAG_LIFETIME_EXTENSION_REFACTOR;
 import static android.content.Context.DEVICE_POLICY_SERVICE;
+import static android.app.Flags.FLAG_LIFETIME_EXTENSION_REFACTOR;
 import static android.os.UserManager.USER_TYPE_FULL_SECONDARY;
 import static android.os.UserManager.USER_TYPE_PROFILE_CLONE;
 import static android.os.UserManager.USER_TYPE_PROFILE_MANAGED;

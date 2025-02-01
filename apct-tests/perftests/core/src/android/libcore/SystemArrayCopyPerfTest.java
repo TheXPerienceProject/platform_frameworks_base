@@ -18,6 +18,8 @@ package android.libcore;
 
 import androidx.benchmark.BenchmarkState;
 import androidx.benchmark.junit4.BenchmarkRule;
+import android.perftests.utils.PerfStatusReporter;
+
 import androidx.test.filters.LargeTest;
 
 import junitparams.JUnitParamsRunner;

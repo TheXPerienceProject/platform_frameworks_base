@@ -44,9 +44,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import org.mockito.InOrder;
+
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.InOrder;
 import org.mockito.MockitoAnnotations;
 
 @RunWith(JUnit4.class)

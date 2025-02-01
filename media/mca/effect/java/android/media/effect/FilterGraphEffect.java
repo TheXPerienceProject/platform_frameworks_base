@@ -20,6 +20,8 @@ import android.filterfw.core.Filter;
 import android.filterfw.core.FilterGraph;
 import android.filterfw.core.GraphRunner;
 import android.filterfw.core.SyncRunner;
+import android.media.effect.FilterEffect;
+import android.media.effect.EffectContext;
 import android.filterfw.io.GraphIOException;
 import android.filterfw.io.GraphReader;
 import android.filterfw.io.TextGraphReader;

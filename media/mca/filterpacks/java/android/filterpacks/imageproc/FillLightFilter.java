@@ -24,6 +24,7 @@ import android.filterfw.core.GenerateFieldPort;
 import android.filterfw.core.Program;
 import android.filterfw.core.ShaderProgram;
 import android.filterfw.format.ImageFormat;
+
 import android.util.Log;
 
 public class FillLightFilter extends Filter {

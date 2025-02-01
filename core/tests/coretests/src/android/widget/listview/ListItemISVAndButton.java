@@ -17,12 +17,12 @@
 package android.widget.listview;
 
 import android.content.Context;
+import android.widget.InternalSelectionView;
+import android.widget.ListScenario;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.InternalSelectionView;
 import android.widget.LinearLayout;
-import android.widget.ListScenario;
 import android.widget.TextView;
 
 /**

@@ -18,9 +18,7 @@ package android.test.suitebuilder;
 
 import android.test.ClassPathPackageInfoSource;
 import android.util.Log;
-
 import com.android.internal.util.Predicate;
-
 import junit.framework.TestCase;
 
 import java.io.Serializable;

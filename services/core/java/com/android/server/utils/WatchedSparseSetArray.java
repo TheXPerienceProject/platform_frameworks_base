@@ -20,6 +20,7 @@ import android.annotation.NonNull;
 import android.util.ArraySet;
 import android.util.SparseSetArray;
 
+
 /**
  * A watched variant of SparseSetArray.  Changes to the array are notified to
  * registered {@link Watcher}s.

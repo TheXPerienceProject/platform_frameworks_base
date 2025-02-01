@@ -16,9 +16,10 @@
 
 package com.android.powermodel;
 
-import com.google.common.collect.ImmutableSet;
-
 import java.util.Set;
+import java.util.HashSet;
+
+import com.google.common.collect.ImmutableSet;
 
 public class AttributionKey {
     private final int mUid;

@@ -29,7 +29,6 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
-
 /**
  * Adapter for the list of "found" devices.
  */

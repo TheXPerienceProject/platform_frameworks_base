@@ -16,9 +16,9 @@
 
 package com.android.locationtracker.data;
 
-import android.location.Location;
-
 import com.android.locationtracker.data.TrackerEntry.EntryType;
+
+import android.location.Location;
 
 /**
  * Formats tracker data as KML output

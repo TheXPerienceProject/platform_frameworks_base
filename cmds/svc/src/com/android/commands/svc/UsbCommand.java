@@ -26,10 +26,10 @@ import android.os.Looper;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 
-import java.util.List;
-import java.util.concurrent.Executor;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
+import java.util.concurrent.Executor;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class UsbCommand extends Svc.Command {
     public UsbCommand() {

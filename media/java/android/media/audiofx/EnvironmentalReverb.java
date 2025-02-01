@@ -16,6 +16,7 @@
 
 package android.media.audiofx;
 
+import android.media.audiofx.AudioEffect;
 import java.util.StringTokenizer;
 
 /**
