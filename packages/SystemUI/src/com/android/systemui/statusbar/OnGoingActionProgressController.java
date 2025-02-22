@@ -291,5 +291,10 @@ public class OnGoingActionProgressController implements NotificationListener.Not
 
     public void destroy() {
         mSettingsObserver.unregister();
+        mIsTrackingProgress = false;
+        mCurrentDrawable = null;
+        mCurrentProgress = 0;
+        mCurrentProgressMax = 0;
+        mTrackedNotificationKey = null;
     }
 }
