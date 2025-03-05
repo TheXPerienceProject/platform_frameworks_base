@@ -95,6 +95,8 @@ public class Clock extends TextView implements
     private boolean mClockVisibleByPolicy = true;
     private boolean mClockVisibleByUser = true;
     private boolean mClockBgOn;
+    private boolean mClockBgStyleIsTwo;
+    private boolean mClockBgStyleIsEight;
 
     private boolean mAttached;
     private boolean mScreenReceiverRegistered;
@@ -345,8 +347,10 @@ public class Clock extends TextView implements
                 updateClockVisibility();
             }
         } else if (STATUSBAR_CLOCK_CHIP.equals(key)) {
-             mClockBgOn =
-                        TunerService.parseIntegerSwitch(newValue, false);
+                int sbClockBgStyle = TunerService.parseInteger(newValue, 0);
+                mClockBgOn = sbClockBgStyle != 0;
+                mClockBgStyleIsTwo = sbClockBgStyle == 2;
+                mClockBgStyleIsEight = sbClockBgStyle == 8;
         }
     }
 
@@ -368,7 +372,7 @@ public class Clock extends TextView implements
     @Override
     public void onDarkChanged(ArrayList<Rect> areas, float darkIntensity, int tint) {
         mNonAdaptedColor = DarkIconDispatcher.getTint(areas, this, tint);
-        setTextColor(mClockBgOn ? Color.WHITE : mNonAdaptedColor);
+        setTextColor(mClockBgOn && !mClockBgStyleIsTwo && !mClockBgStyleIsEight ? Color.WHITE : mNonAdaptedColor);
     }
 
     // Update text color based when shade scrim changes color.
