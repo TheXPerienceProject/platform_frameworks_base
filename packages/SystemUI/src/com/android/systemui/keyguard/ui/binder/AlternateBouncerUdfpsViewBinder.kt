@@ -24,7 +24,7 @@ import android.view.View
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.repeatOnLifecycle
 import com.android.app.tracing.coroutines.launch
-import com.android.internal.util.evolution.Utils
+import com.android.internal.util.voltage.VoltageUtils
 import com.android.systemui.Dependency
 import com.android.systemui.biometrics.UdfpsIconDrawable
 import com.android.systemui.deviceentry.shared.DeviceEntryUdfpsRefactor
@@ -62,7 +62,7 @@ object AlternateBouncerUdfpsViewBinder {
         val bgView = view.bgView
 
         val packageInstalled = Utils.isPackageInstalled(
-            view.context, "org.evolution.udfps.icons"
+            view.context, "mx.xperience.udfps.animations"
         )
 
         val shouldUseCustomUdfpsIcon: StateFlow<Boolean> = callbackFlow {

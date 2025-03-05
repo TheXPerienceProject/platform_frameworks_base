@@ -54,7 +54,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.launch
 import android.provider.Settings
 import android.os.UserHandle
-import com.android.internal.util.evolution.Utils
+import com.android.internal.util.voltage.VoltageUtils
 
 @ExperimentalCoroutinesApi
 object DeviceEntryIconViewBinder {
@@ -83,7 +83,7 @@ object DeviceEntryIconViewBinder {
         overrideColor: Color? = null,
     ): DisposableHandle {
         val packageInstalled = Utils.isPackageInstalled(
-            view.context, "org.evolution.udfps.icons"
+            view.context, "mx.xperience.udfps.animations"
         )
 
         val shouldUseCustomUdfpsIcon: StateFlow<Boolean> = callbackFlow {
