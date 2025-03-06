@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2011-2024 The XPerience Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Pocket Lock -->
+    <string name="pocket_lock_message_long_press">长按电源键以解锁</string>
+    <string name="pocket_view_title">防误触模式已打开</string>
+</resources>

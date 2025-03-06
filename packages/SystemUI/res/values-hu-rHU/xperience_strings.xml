@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2024 The XPerience Project
+     Copyright (C) 2025 The XPerience Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Name of the clock in status bar [CHAR LIMIT=30] -->
     <!-- Custom QS tiles -->
     <!-- Ambient display QS tile -->
     <string name="quick_settings_ambient_display_label">Környezeti kijelző</string>
     <string name="accessibility_quick_settings_ambient_display_off">Környezeti kijelző ki.</string>
     <string name="accessibility_quick_settings_ambient_display_on">Környezeti kijelző be.</string>
     <!-- AOD QS tile -->
+    <string name="quick_settings_aod_label">Mindig bekapcsolva (AOD)</string>
+    <string name="quick_settings_aod_off_powersave_label">AOD ki\nAkkukímélő</string>
     <!-- Caffeine QS tile -->
     <string name="quick_settings_caffeine_label">Koffein</string>
     <string name="accessibility_quick_settings_caffeine_off">Koffein ki.</string>
@@ -25,17 +26,39 @@
     <string name="quick_settings_powershare_off_low_battery_label">Akkumegosztás ki\nAlacsony akkuszint</string>
     <string name="quick_settings_powershare_enabled_label">Az Akkumegosztás engedélyezett</string>
     <!-- Sync QS tile -->
+    <string name="quick_settings_sync_label">Szinkronizálás</string>
+    <string name="accessibility_quick_settings_sync_off">Szinkronizálás ki.</string>
+    <string name="accessibility_quick_settings_sync_on">Szinkronizálás be.</string>
     <!-- USB tethering QS tile -->
     <string name="quick_settings_usb_tether_label">USB-megosztás</string>
     <!-- Name of the nfc status bar icon. -->
     <!-- Accessibility label for nfc icon (not shown on screen) [CHAR LIMIT=NONE] -->
+    <string name="accessibility_status_bar_nfc">NFC</string>
     <!-- Status bar -->
+    <string name="status_bar_icons_title">Állapotsori ikonok</string>
     <!-- Label for area where tiles can be added to the qs panel -->
+    <string name="drag_or_tap_to_add_tiles">Tartsa nyomva és húzza, vagy érintse meg a csempék hozzáadásához</string>
     <!-- Label for the area where tiles can be dragged in to remove -->
+    <string name="drag_or_tap_to_remove_tiles">Tartsa nyomva és húzza, vagy érintse meg a csempék eltávolításához</string>
+    <!-- Status bar network traffic monitor strings -->
+    <!-- Notification counter -->
+    <!-- WiFi standard numbering on statusbar -->
+    <string name="status_bar_wifi_standard">A Wi-Fi-szabvány száma</string>
+    <!-- Data usage info in QS footer -->
+    <string name="usage_data">ma felhasználva</string>
+    <string name="usage_data_default_suffix">Mobiladat</string>
+    <string name="usage_wifi_default_suffix">Wi-Fi</string>
+    <!-- Text while recognizing face -->
+    <string name="face_unlock_recognizing">Arcfelismerés...</string>
+    <!-- Name of the roaming status bar icon. -->
+    <string name="status_bar_roaming">Barangoláskijelző</string>
+    <!-- Name of the HD calling status bar icon. -->
+    <string name="status_bar_hd_calling">HD-hívás (VoLTE/VoNR)</string>
+    <!-- Name of the VoWiFi status bar icon. -->
+    <string name="status_bar_vowifi">WiFi-hívás (VoWiFi)</string>
+    <!-- Screenshot chip -->
     <!-- Label for UI element which allows deleting the screenshot [CHAR LIMIT=30] -->
     <string name="screenshot_delete_label">Törlés</string>
     <!-- Content description indicating that tapping the element will allow deleting the screenshot [CHAR LIMIT=NONE] -->
     <string name="screenshot_delete_description">Képernyőkép-törlés</string>
-    <!-- Status bar network traffic monitor strings -->
-    <!-- Text to use when the number in a notification info is too large -->
 </resources>
