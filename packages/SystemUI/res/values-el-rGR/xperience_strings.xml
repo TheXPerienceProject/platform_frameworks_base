@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2024 The XPerience Project
+     Copyright (C) 2025 The XPerience Project
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Name of the clock in status bar [CHAR LIMIT=30] -->
     <!-- Custom QS tiles -->
     <!-- Ambient display QS tile -->
     <!-- AOD QS tile -->
@@ -18,8 +17,16 @@
     <!-- Status bar -->
     <!-- Label for area where tiles can be added to the qs panel -->
     <!-- Label for the area where tiles can be dragged in to remove -->
+    <!-- Status bar network traffic monitor strings -->
+    <!-- Notification counter -->
+    <!-- WiFi standard numbering on statusbar -->
+    <!-- Data usage info in QS footer -->
+    <!-- Text while recognizing face -->
+    <string name="face_unlock_recognizing">Αναγνώριση προσώπου...</string>
+    <!-- Name of the roaming status bar icon. -->
+    <!-- Name of the HD calling status bar icon. -->
+    <!-- Name of the VoWiFi status bar icon. -->
+    <!-- Screenshot chip -->
     <!-- Label for UI element which allows deleting the screenshot [CHAR LIMIT=30] -->
     <!-- Content description indicating that tapping the element will allow deleting the screenshot [CHAR LIMIT=NONE] -->
-    <!-- Status bar network traffic monitor strings -->
-    <!-- Text to use when the number in a notification info is too large -->
 </resources>
