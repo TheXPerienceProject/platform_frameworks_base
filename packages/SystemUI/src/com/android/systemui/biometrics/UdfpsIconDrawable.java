@@ -29,7 +29,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 
-import com.android.internal.util.xperience.Utils;
+import com.android.internal.util.voltage.VoltageUtils;
 import com.android.systemui.Dependency;
 import com.android.systemui.res.R;
 import com.android.systemui.tuner.TunerService;
@@ -65,7 +65,7 @@ public abstract class UdfpsIconDrawable extends Drawable {
     }
 
     private void init() {
-        if (Utils.isPackageInstalled(mContext, udfpsResourcesPackage)) {
+        if (VoltageUtils.isPackageInstalled(mContext, udfpsResourcesPackage)) {
             try {
                 PackageManager pm = mContext.getPackageManager();
                 udfpsRes = pm.getResourcesForApplication(udfpsResourcesPackage);

@@ -61,7 +61,7 @@ object AlternateBouncerUdfpsViewBinder {
         val fgIconView = view.iconView
         val bgView = view.bgView
 
-        val packageInstalled = Utils.isPackageInstalled(
+        val packageInstalled = VoltageUtils.isPackageInstalled(
             view.context, "mx.xperience.udfps.animations"
         )
 
