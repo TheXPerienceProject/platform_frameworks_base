@@ -49,4 +49,5 @@
     <string name="screenshot_delete_label">Hapus</string>
     <!-- Content description indicating that tapping the element will allow deleting the screenshot [CHAR LIMIT=NONE] -->
     <string name="screenshot_delete_description">Hapus tangkapan layar</string>
+    <!-- Alert slide extras -->
 </resources>
