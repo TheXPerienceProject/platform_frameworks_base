@@ -7,4 +7,5 @@
     <!-- Pocket Lock -->
     <string name="pocket_lock_message_long_press">Tartsa lenyomva a bekapcsoló gombot a feloldáshoz</string>
     <string name="pocket_view_title">A Zsebmód bekapcsolva</string>
+    <string name="pocket_view_title_cancel">Vagy törölje le a készülék kiemelt felső részét, vagy nyomja meg hosszan a bekapcsológombot a zsebmódból való kilépéshez</string>
 </resources>

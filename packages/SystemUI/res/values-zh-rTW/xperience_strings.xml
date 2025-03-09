@@ -6,17 +6,31 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Custom QS tiles -->
     <!-- Ambient display QS tile -->
+    <string name="quick_settings_ambient_display_label">微光螢幕</string>
+    <string name="accessibility_quick_settings_ambient_display_off">微光螢幕關閉。</string>
+    <string name="accessibility_quick_settings_ambient_display_on">微光螢幕開啟。</string>
     <!-- AOD QS tile -->
     <string name="quick_settings_aod_label">微光螢幕AOD</string>
     <string name="quick_settings_aod_off_powersave_label">AOD 關閉\n省電模式</string>
     <!-- Caffeine QS tile -->
+    <string name="quick_settings_caffeine_label">暫停休眠</string>
+    <string name="accessibility_quick_settings_caffeine_off">關閉暫停休眠。</string>
+    <string name="accessibility_quick_settings_caffeine_on">開啟暫停休眠。</string>
     <!-- Heads up QS tile -->
+    <string name="quick_settings_heads_up_label">浮動通知</string>
+    <string name="accessibility_quick_settings_heads_up_off">浮動通知關閉。</string>
+    <string name="accessibility_quick_settings_heads_up_on">開啟浮動通知。</string>
     <!-- PowerShare QS tile -->
+    <string name="quick_settings_powershare_label">電力分享</string>
+    <string name="quick_settings_powershare_off_powersave_label">電力分享關閉\n省電模式</string>
+    <string name="quick_settings_powershare_off_low_battery_label">電力分享關閉\n電池電量過低</string>
+    <string name="quick_settings_powershare_enabled_label">電力分享已開啟</string>
     <!-- Sync QS tile -->
     <string name="quick_settings_sync_label">同步更新</string>
     <string name="accessibility_quick_settings_sync_off">關閉同步處理。</string>
     <string name="accessibility_quick_settings_sync_on">同步處理開啟。</string>
     <!-- USB tethering QS tile -->
+    <string name="quick_settings_usb_tether_label">USB 網路分享</string>
     <!-- Name of the nfc status bar icon. -->
     <!-- Accessibility label for nfc icon (not shown on screen) [CHAR LIMIT=NONE] -->
     <string name="accessibility_status_bar_nfc">NFC</string>
@@ -31,13 +45,20 @@
     <!-- WiFi standard numbering on statusbar -->
     <string name="status_bar_wifi_standard">Wi-Fi 規格號碼</string>
     <!-- Data usage info in QS footer -->
+    <string name="usage_data">今日已用</string>
+    <string name="usage_data_default_suffix">網路</string>
+    <string name="usage_wifi_default_suffix">Wi-Fi</string>
     <!-- Text while recognizing face -->
+    <string name="face_unlock_recognizing">臉部辨識中</string>
     <!-- Name of the roaming status bar icon. -->
+    <string name="status_bar_roaming">漫遊指示</string>
     <!-- Name of the HD calling status bar icon. -->
     <string name="status_bar_hd_calling">高品質通話 (VoLTE/VoNR)</string>
     <!-- Name of the VoWiFi status bar icon. -->
     <string name="status_bar_vowifi">Wi-Fi 通話 (VoWiFi)</string>
     <!-- Screenshot chip -->
     <!-- Label for UI element which allows deleting the screenshot [CHAR LIMIT=30] -->
+    <string name="screenshot_delete_label">刪除</string>
     <!-- Content description indicating that tapping the element will allow deleting the screenshot [CHAR LIMIT=NONE] -->
+    <string name="screenshot_delete_description">刪除螢幕截圖</string>
 </resources>

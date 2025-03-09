@@ -5,4 +5,6 @@
 -->
 <resources>
     <!-- Pocket Lock -->
+    <string name="pocket_lock_message_long_press">長按電源鍵以解鎖</string>
+    <string name="pocket_view_title">口袋防誤觸模式已開啟</string>
 </resources>
