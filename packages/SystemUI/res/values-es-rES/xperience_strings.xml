@@ -62,4 +62,19 @@
     <string name="screenshot_delete_label">Eliminar</string>
     <!-- Content description indicating that tapping the element will allow deleting the screenshot [CHAR LIMIT=NONE] -->
     <string name="screenshot_delete_description">Eliminar captura de pantalla</string>
+    <!-- Alert slide extras -->
+    <string name="volume_ringer_priority_only">Prioridad</string>
+    <string name="volume_ringer_alarms_only">Alarmas</string>
+    <string name="volume_ringer_dnd">No Molestar</string>
+    <string name="tristate_flashlight">Linterna</string>
+    <string name="tristate_flashlight_on">Linterna encendida</string>
+    <string name="tristate_flashlight_off">Linterna desactivada</string>
+    <string name="tristate_flashlight_blink">Parpadeo de linterna</string>
+    <string name="tristate_brightness_bright">Brillo máximo</string>
+    <string name="tristate_brightness_dark">Brillo mínimo</string>
+    <string name="tristate_brightness_auto">Brillo automático</string>
+    <string name="tristate_rotation_auto">Auto-rotar</string>
+    <string name="tristate_rotation_0">Vertical</string>
+    <string name="tristate_rotation_90">Apaisado (90°)</string>
+    <string name="tristate_rotation_270">Apaisado (270°)</string>
 </resources>
