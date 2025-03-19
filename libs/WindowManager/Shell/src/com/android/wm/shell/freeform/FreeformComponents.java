@@ -22,6 +22,7 @@ import android.content.Context;
 import android.provider.Settings;
 
 import com.android.wm.shell.ShellTaskOrganizer;
+import com.android.wm.shell.shared.desktopmode.DesktopModeStatus;
 import com.android.wm.shell.transition.Transitions;
 
 import java.util.Optional;
@@ -34,6 +35,7 @@ public class FreeformComponents {
     public final ShellTaskOrganizer.TaskListener mTaskListener;
     public final Optional<Transitions.TransitionHandler> mTransitionHandler;
     public final Optional<Transitions.TransitionObserver> mTransitionObserver;
+    public final Optional<FreeformTaskTransitionStarterInitializer> mTransitionStarterInitializer;
 
     /**
      * Creates an instance with the given components.
@@ -41,10 +43,12 @@ public class FreeformComponents {
     public FreeformComponents(
             ShellTaskOrganizer.TaskListener taskListener,
             Optional<Transitions.TransitionHandler> transitionHandler,
-            Optional<Transitions.TransitionObserver> transitionObserver) {
+            Optional<Transitions.TransitionObserver> transitionObserver,
+            Optional<FreeformTaskTransitionStarterInitializer> transitionStarterInitializer) {
         mTaskListener = taskListener;
         mTransitionHandler = transitionHandler;
         mTransitionObserver = transitionObserver;
+        mTransitionStarterInitializer = transitionStarterInitializer;
     }
 
     /**
@@ -52,5 +56,13 @@ public class FreeformComponents {
      */
     public static boolean isFreeformEnabled(Context context) {
         return true;
+    }
+
+    /**
+     * Freeform is enabled or we need the components to enable the app handle when desktop mode is
+     * not enabled
+     */
+    public static boolean requiresFreeformComponents(Context context) {
+        return isFreeformEnabled(context) || DesktopModeStatus.overridesShowAppHandle(context);
     }
 }

@@ -28,6 +28,7 @@ import com.android.internal.util.voltage.VoltageUtils
 import com.android.systemui.Dependency
 import com.android.systemui.biometrics.UdfpsIconDrawable
 import com.android.systemui.deviceentry.shared.DeviceEntryUdfpsRefactor
+import com.android.app.tracing.coroutines.launchTraced as launch
 import com.android.systemui.keyguard.ui.view.DeviceEntryIconView
 import com.android.systemui.keyguard.ui.viewmodel.AlternateBouncerUdfpsIconViewModel
 import com.android.systemui.lifecycle.repeatWhenAttached
@@ -50,14 +51,7 @@ object AlternateBouncerUdfpsViewBinder {
 
     /** Updates UI for the UDFPS icon on the alternate bouncer. */
     @JvmStatic
-    fun bind(
-        applicationScope: CoroutineScope,
-        view: DeviceEntryIconView,
-        viewModel: AlternateBouncerUdfpsIconViewModel,
-    ) {
-        if (DeviceEntryUdfpsRefactor.isUnexpectedlyInLegacyMode()) {
-            return
-        }
+    fun bind(view: DeviceEntryIconView, viewModel: AlternateBouncerUdfpsIconViewModel) {
         val fgIconView = view.iconView
         val bgView = view.bgView
 
@@ -104,7 +98,7 @@ object AlternateBouncerUdfpsViewBinder {
                 viewModel.fgViewModel.collect { fgViewModel ->
                     fgIconView.setImageState(
                         view.getIconState(fgViewModel.type, fgViewModel.useAodVariant),
-                        /* merge */ false
+                        /* merge */ false,
                     )
                     fgIconView.imageTintList = ColorStateList.valueOf(fgViewModel.tint)
                     if (fgIconView.drawable.current !is UdfpsIconDrawable) {

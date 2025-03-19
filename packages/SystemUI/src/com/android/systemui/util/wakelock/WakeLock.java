@@ -18,13 +18,8 @@ package com.android.systemui.util.wakelock;
 
 import android.content.Context;
 import android.os.PowerManager;
-import android.util.Log;
 
 import androidx.annotation.VisibleForTesting;
-
-import com.android.systemui.Flags;
-
-import java.util.HashMap;
 
 import javax.inject.Inject;
 
@@ -114,6 +109,7 @@ public interface WakeLock {
     @VisibleForTesting
     static WakeLock wrap(
             final PowerManager.WakeLock inner, WakeLockLogger logger, long maxTimeout) {
+<<<<<<< HEAD
         if (Flags.delayedWakelockReleaseOnBackgroundThread()) {
             return new ClientTrackingWakeLock(inner, logger, maxTimeout);
         }
@@ -169,6 +165,9 @@ public interface WakeLock {
                 return "active clients= " + mActiveClients;
             }
         };
+=======
+        return new ClientTrackingWakeLock(inner, logger, maxTimeout);
+>>>>>>> android-15.0.0_r20
     }
 
     /**

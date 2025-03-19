@@ -16,19 +16,11 @@
 
 package com.android.systemui.qs;
 
-import static android.provider.Settings.Global.MULTI_SIM_DATA_CALL_SUBSCRIPTION;
-import static android.provider.Settings.Secure.QS_TILES;
+import static com.android.systemui.Flags.gsfQuickSettings;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.ClipData;
 import android.content.ClipboardManager;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.database.ContentObserver;
-import android.net.wifi.WifiManager;
-import android.os.Handler;
-import android.telephony.SubscriptionManager;
+import android.graphics.Typeface;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
@@ -117,12 +109,10 @@ public class QSFooterViewController extends ViewController<QSFooterView>
         mFalsingManager = falsingManager;
         mActivityStarter = activityStarter;
         mRetailModeInteractor = retailModeInteractor;
-        mNetworkController = networkController;
-        mContext = context;
-        mTunerService = tunerService;
-        mGlobalSettings = globalSettings;
-        mSubManager = context.getSystemService(SubscriptionManager.class);
-        mWifiTracker = trackerFactory.createTracker(this::onWifiStatusUpdated, null);
+        mBuildText = mView.findViewById(R.id.build);
+        if (gsfQuickSettings()) {
+            mBuildText.setTypeface(Typeface.create("gsf-body-medium", Typeface.NORMAL));
+        }
         mPageIndicator = mView.findViewById(R.id.footer_page_indicator);
         mEditButton = mView.findViewById(android.R.id.edit);
         mUsageText = mView.findViewById(R.id.build);

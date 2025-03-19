@@ -18,6 +18,7 @@ package com.android.systemui.navigationbar.gestural;
 import static android.content.pm.ActivityInfo.CONFIG_FONT_SCALE;
 import static android.view.InputDevice.SOURCE_MOUSE;
 import static android.view.InputDevice.SOURCE_TOUCHPAD;
+import static android.view.MotionEvent.TOOL_TYPE_FINGER;
 import static android.view.WindowManager.LayoutParams.PRIVATE_FLAG_EXCLUDE_FROM_SCREEN_MAGNIFICATION;
 
 import static com.android.systemui.Flags.edgebackGestureHandlerGetRunningTasksBackground;
@@ -64,10 +65,10 @@ import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.Surface;
-import android.view.VelocityTracker;
 import android.view.ViewConfiguration;
 import android.view.WindowInsets;
 import android.view.WindowManager;
+import android.view.WindowManagerGlobal;
 import android.window.BackEvent;
 
 import androidx.annotation.DimenRes;
@@ -104,6 +105,10 @@ import com.android.wm.shell.back.BackAnimation;
 import com.android.wm.shell.desktopmode.DesktopMode;
 import com.android.wm.shell.pip.Pip;
 
+import dagger.assisted.Assisted;
+import dagger.assisted.AssistedFactory;
+import dagger.assisted.AssistedInject;
+
 import kotlinx.coroutines.Job;
 
 import java.io.PrintWriter;
@@ -118,7 +123,6 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
 
-import javax.inject.Inject;
 import javax.inject.Provider;
 
 /**
@@ -191,7 +195,6 @@ public class EdgeBackGestureHandler implements PluginListener<NavigationEdgeBack
                 }
             };
 
-    private final VelocityTracker mVelocityTracker = VelocityTracker.obtain();
     private final Context mContext;
     private final UserTracker mUserTracker;
     private final OverviewProxyService mOverviewProxyService;
@@ -215,6 +218,7 @@ public class EdgeBackGestureHandler implements PluginListener<NavigationEdgeBack
     private final int mDisplayId;
 
     private final UiThreadContext mUiThreadContext;
+    private final Handler mBgHandler;
     private final Executor mBackgroundExecutor;
 
     private final Rect mPipExcludedBounds = new Rect();
@@ -328,6 +332,11 @@ public class EdgeBackGestureHandler implements PluginListener<NavigationEdgeBack
                     logGesture(mInRejectedExclusion
                             ? SysUiStatsLog.BACK_GESTURE__TYPE__COMPLETED_REJECTED
                             : SysUiStatsLog.BACK_GESTURE__TYPE__COMPLETED);
+                    if (!mInRejectedExclusion) {
+                        // Log successful back gesture to contextual edu stats
+                        mOverviewProxyService.updateContextualEduStats(mIsTrackpadThreeFingerSwipe,
+                                GestureType.BACK);
+                    }
                 }
 
                 @Override
@@ -374,11 +383,14 @@ public class EdgeBackGestureHandler implements PluginListener<NavigationEdgeBack
         @Override
         public void onInputDeviceAdded(int deviceId) {
             if (isTrackpadDevice(deviceId)) {
-                boolean wasEmpty = mTrackpadsConnected.isEmpty();
-                mTrackpadsConnected.add(deviceId);
-                if (wasEmpty) {
-                    update();
-                }
+                // This updates the gesture handler state and should be running on the main thread.
+                mUiThreadContext.getHandler().post(() -> {
+                    boolean wasEmpty = mTrackpadsConnected.isEmpty();
+                    mTrackpadsConnected.add(deviceId);
+                    if (wasEmpty) {
+                        update();
+                    }
+                });
             }
         }
 
@@ -387,10 +399,13 @@ public class EdgeBackGestureHandler implements PluginListener<NavigationEdgeBack
 
         @Override
         public void onInputDeviceRemoved(int deviceId) {
-            mTrackpadsConnected.remove(deviceId);
-            if (mTrackpadsConnected.isEmpty()) {
-                update();
-            }
+            // This updates the gesture handler state and should be running on the main thread.
+            mUiThreadContext.getHandler().post(() -> {
+                mTrackpadsConnected.remove(deviceId);
+                if (mTrackpadsConnected.isEmpty()) {
+                    update();
+                }
+            });
         }
 
         private void update() {
@@ -404,17 +419,30 @@ public class EdgeBackGestureHandler implements PluginListener<NavigationEdgeBack
         }
 
         private boolean isTrackpadDevice(int deviceId) {
+            // This is a blocking binder call that should run on a bg thread.
             InputDevice inputDevice = mInputManager.getInputDevice(deviceId);
             if (inputDevice == null) {
                 return false;
             }
-            return inputDevice.getSources() == (InputDevice.SOURCE_MOUSE
-                    | InputDevice.SOURCE_TOUCHPAD);
+            return inputDevice.getSources() == (SOURCE_MOUSE | SOURCE_TOUCHPAD);
         }
     };
 
+    /**
+     * Factory for EdgeBackGestureHandler. Necessary because per-display contexts can't be injected.
+     * With this, you can pass in a specific context that knows what display it is in.
+     */
+    @AssistedFactory
+    public interface Factory {
+        /**
+         * Creates a new EdgeBackGestureHandler with the given context.
+         */
+        EdgeBackGestureHandler create(Context context);
+    }
+
+    @AssistedInject
     EdgeBackGestureHandler(
-            Context context,
+            @Assisted Context context,
             OverviewProxyService overviewProxyService,
             SysUiState sysUiState,
             PluginManager pluginManager,
@@ -440,6 +468,7 @@ public class EdgeBackGestureHandler implements PluginListener<NavigationEdgeBack
         mDisplayId = context.getDisplayId();
         mUiThreadContext = uiThreadContext;
         mBackgroundExecutor = backgroundExecutor;
+        mBgHandler = bgHandler;
         mUserTracker = userTracker;
         mOverviewProxyService = overviewProxyService;
         mSysUiState = sysUiState;
@@ -559,6 +588,7 @@ public class EdgeBackGestureHandler implements PluginListener<NavigationEdgeBack
         mNonLinearFactor = getDimenFloat(res,
                 com.android.internal.R.dimen.back_progress_non_linear_factor);
         updateBackAnimationThresholds();
+        mBackgroundExecutor.execute(this::disableNavBarVirtualKeyHapticFeedback);
     }
 
     private float getDimenFloat(Resources res, @DimenRes int resId) {
@@ -594,9 +624,7 @@ public class EdgeBackGestureHandler implements PluginListener<NavigationEdgeBack
         mIsAttached = true;
         mOverviewProxyService.addCallback(mQuickSwitchListener);
         mSysUiState.addCallback(mSysUiStateCallback);
-        mInputManager.registerInputDeviceListener(
-                mInputDeviceListener,
-                mUiThreadContext.getHandler());
+        mInputManager.registerInputDeviceListener(mInputDeviceListener, mBgHandler);
         int[] inputDevices = mInputManager.getInputDeviceIds();
         for (int inputDeviceId : inputDevices) {
             mInputDeviceListener.onInputDeviceAdded(inputDeviceId);
@@ -683,7 +711,8 @@ public class EdgeBackGestureHandler implements PluginListener<NavigationEdgeBack
                 TaskStackChangeListeners.getInstance().unregisterTaskStackListener(
                         mTaskStackListener);
                 DeviceConfig.removeOnPropertiesChangedListener(mOnPropertiesChangedListener);
-                mPipOptional.ifPresent(pip -> pip.setOnIsInPipStateChangedListener(null));
+                mPipOptional.ifPresent(pip -> pip.removeOnIsInPipStateChangedListener(
+                        mOnIsInPipStateChangedListener));
 
                 try {
                     mWindowManagerService.unregisterSystemGestureExclusionListener(
@@ -707,7 +736,7 @@ public class EdgeBackGestureHandler implements PluginListener<NavigationEdgeBack
                         mTaskStackListener);
                 DeviceConfig.addOnPropertiesChangedListener(DeviceConfig.NAMESPACE_SYSTEMUI,
                         mUiThreadContext.getExecutor()::execute, mOnPropertiesChangedListener);
-                mPipOptional.ifPresent(pip -> pip.setOnIsInPipStateChangedListener(
+                mPipOptional.ifPresent(pip -> pip.addOnIsInPipStateChangedListener(
                         mOnIsInPipStateChangedListener));
                 mDesktopModeOptional.ifPresent(
                         dm -> dm.addDesktopGestureExclusionRegionListener(
@@ -758,7 +787,10 @@ public class EdgeBackGestureHandler implements PluginListener<NavigationEdgeBack
     }
 
     private void resetEdgeBackPlugin() {
-        setEdgeBackPlugin(mBackPanelControllerFactory.create(mContext));
+        BackPanelController backPanelController = mBackPanelControllerFactory.create(mContext,
+                mUiThreadContext.getHandler());
+        backPanelController.init();
+        setEdgeBackPlugin(backPanelController);
     }
 
     private void setEdgeBackPlugin(NavigationEdgeBackPlugin edgeBackPlugin) {
@@ -1047,10 +1079,6 @@ public class EdgeBackGestureHandler implements PluginListener<NavigationEdgeBack
 
             mIsTrackpadThreeFingerSwipe = isTrackpadThreeFingerSwipe(ev);
 
-            // ACTION_UP or ACTION_CANCEL is not guaranteed to be called before a new
-            // ACTION_DOWN, in that case we should just reuse the old instance.
-            mVelocityTracker.clear();
-
             // Verify if this is in within the touch region and we aren't in immersive mode, and
             // either the bouncer is showing or the notification panel is hidden
             mInputEventReceiver.setBatchingEnabled(false);
@@ -1080,8 +1108,8 @@ public class EdgeBackGestureHandler implements PluginListener<NavigationEdgeBack
                         && isValidTrackpadBackGesture(true /* isTrackpadEvent */);
             } else {
                 mAllowGesture = isBackAllowedCommon && !mUsingThreeButtonNav && isWithinInsets
-                    && isWithinTouchRegion((int) ev.getX(), (int) ev.getY())
-                    && !isButtonPressFromTrackpad(ev);
+                        && isWithinTouchRegion((int) ev.getX(), (int) ev.getY())
+                        && !isButtonPressFromTrackpad(ev);
             }
             if (mAllowGesture) {
                 mEdgeBackPlugin.setIsLeftPanel(mIsOnLeftEdge);
@@ -1163,8 +1191,6 @@ public class EdgeBackGestureHandler implements PluginListener<NavigationEdgeBack
                         if (mAllowGesture) {
                             if (mBackAnimation != null) {
                                 mBackAnimation.onThresholdCrossed();
-                                mOverviewProxyService.updateContextualEduStats(
-                                        mIsTrackpadThreeFingerSwipe, GestureType.BACK);
                             } else {
                                 pilferPointers();
                             }
@@ -1185,44 +1211,25 @@ public class EdgeBackGestureHandler implements PluginListener<NavigationEdgeBack
     }
 
     private void pilferPointers() {
-        // Capture inputs
-        mInputMonitor.pilferPointers();
-        // Notify FalsingManager that an intentional gesture has occurred.
-        mFalsingManager.isFalseTouch(BACK_GESTURE);
-        mInputEventReceiver.setBatchingEnabled(true);
+        if (mInputMonitor != null) {
+            // Capture inputs
+            mInputMonitor.pilferPointers();
+            // Notify FalsingManager that an intentional gesture has occurred.
+            mFalsingManager.isFalseTouch(BACK_GESTURE);
+            mInputEventReceiver.setBatchingEnabled(true);
+        }
     }
 
     private boolean isButtonPressFromTrackpad(MotionEvent ev) {
-        // We don't allow back for button press from the trackpad, and yet we do with a mouse.
-        int sources = InputManager.getInstance().getInputDevice(ev.getDeviceId()).getSources();
-        int sourceTrackpad = (SOURCE_MOUSE | SOURCE_TOUCHPAD);
-        return (sources & sourceTrackpad) == sourceTrackpad && ev.getButtonState() != 0;
+        return ev.getSource() == (SOURCE_MOUSE | SOURCE_TOUCHPAD)
+                && ev.getToolType(ev.getActionIndex()) == TOOL_TYPE_FINGER;
     }
 
     private void dispatchToBackAnimation(MotionEvent event) {
         if (mBackAnimation != null) {
-            mVelocityTracker.addMovement(event);
-
-            final float velocityX;
-            final float velocityY;
-            if (event.getAction() == MotionEvent.ACTION_UP) {
-                // Compute the current velocity is expensive (see computeCurrentVelocity), so we
-                // are only doing it when the user completes the gesture.
-                int unitPixelPerSecond = 1000;
-                int maxVelocity = mViewConfiguration.getScaledMaximumFlingVelocity();
-                mVelocityTracker.computeCurrentVelocity(unitPixelPerSecond, maxVelocity);
-                velocityX = mVelocityTracker.getXVelocity();
-                velocityY = mVelocityTracker.getYVelocity();
-            } else {
-                velocityX = Float.NaN;
-                velocityY = Float.NaN;
-            }
-
             mBackAnimation.onBackMotion(
                     /* touchX = */ event.getX(),
                     /* touchY = */ event.getY(),
-                    /* velocityX = */ velocityX,
-                    /* velocityY = */ velocityY,
                     /* keyAction = */ event.getActionMasked(),
                     /* swipeEdge = */ mIsOnLeftEdge ? BackEvent.EDGE_LEFT : BackEvent.EDGE_RIGHT);
         }
@@ -1292,6 +1299,15 @@ public class EdgeBackGestureHandler implements PluginListener<NavigationEdgeBack
         }
     }
 
+    private void disableNavBarVirtualKeyHapticFeedback() {
+        try {
+            WindowManagerGlobal.getWindowManagerService()
+                    .setNavBarVirtualKeyHapticFeedbackEnabled(false);
+        } catch (RemoteException e) {
+            Log.w(TAG, "Failed to disable navigation bar button haptics: ", e);
+        }
+    }
+
     public void dump(PrintWriter pw) {
         pw.println("EdgeBackGestureHandler:");
         pw.println("  mIsEnabled=" + mIsEnabled);
@@ -1358,113 +1374,6 @@ public class EdgeBackGestureHandler implements PluginListener<NavigationEdgeBack
                             mLightBarControllerProvider.get()
                                     .customizeStatusBarAppearance(appearance)));
             }
-        }
-    }
-
-    /**
-     * Injectable instance to create a new EdgeBackGestureHandler.
-     *
-     * Necessary because we don't have good handling of per-display contexts at the moment. With
-     * this, you can pass in a specific context that knows what display it is in.
-     */
-    public static class Factory {
-        private final OverviewProxyService mOverviewProxyService;
-        private final SysUiState mSysUiState;
-        private final PluginManager mPluginManager;
-        private final UiThreadContext mUiThreadContext;
-        private final Executor mBackgroundExecutor;
-        private final Handler mBgHandler;
-        private final UserTracker mUserTracker;
-        private final NavigationModeController mNavigationModeController;
-        private final BackPanelController.Factory mBackPanelControllerFactory;
-        private final ViewConfiguration mViewConfiguration;
-        private final WindowManager mWindowManager;
-        private final IWindowManager mWindowManagerService;
-        private final InputManager mInputManager;
-        private final Optional<Pip> mPipOptional;
-        private final Optional<DesktopMode> mDesktopModeOptional;
-        private final FalsingManager mFalsingManager;
-        private final Provider<BackGestureTfClassifierProvider>
-                mBackGestureTfClassifierProviderProvider;
-        private final Provider<LightBarController> mLightBarControllerProvider;
-        private final NotificationShadeWindowController mNotificationShadeWindowController;
-
-        private final GestureInteractor mGestureInteractor;
-
-        private final JavaAdapter mJavaAdapter;
-
-        @Inject
-        public Factory(OverviewProxyService overviewProxyService,
-                        SysUiState sysUiState,
-                        PluginManager pluginManager,
-                        @BackPanelUiThread UiThreadContext uiThreadContext,
-                        @Background Executor backgroundExecutor,
-                        @Background Handler bgHandler,
-                        UserTracker userTracker,
-                        NavigationModeController navigationModeController,
-                        BackPanelController.Factory backPanelControllerFactory,
-                        ViewConfiguration viewConfiguration,
-                        WindowManager windowManager,
-                        IWindowManager windowManagerService,
-                        InputManager inputManager,
-                        Optional<Pip> pipOptional,
-                        Optional<DesktopMode> desktopModeOptional,
-                        FalsingManager falsingManager,
-                        Provider<BackGestureTfClassifierProvider>
-                                backGestureTfClassifierProviderProvider,
-                        Provider<LightBarController> lightBarControllerProvider,
-                        NotificationShadeWindowController notificationShadeWindowController,
-                        GestureInteractor gestureInteractor,
-                        JavaAdapter javaAdapter) {
-            mOverviewProxyService = overviewProxyService;
-            mSysUiState = sysUiState;
-            mPluginManager = pluginManager;
-            mUiThreadContext = uiThreadContext;
-            mBackgroundExecutor = backgroundExecutor;
-            mBgHandler = bgHandler;
-            mUserTracker = userTracker;
-            mNavigationModeController = navigationModeController;
-            mBackPanelControllerFactory = backPanelControllerFactory;
-            mViewConfiguration = viewConfiguration;
-            mWindowManager = windowManager;
-            mWindowManagerService = windowManagerService;
-            mInputManager = inputManager;
-            mPipOptional = pipOptional;
-            mDesktopModeOptional = desktopModeOptional;
-            mFalsingManager = falsingManager;
-            mBackGestureTfClassifierProviderProvider = backGestureTfClassifierProviderProvider;
-            mLightBarControllerProvider = lightBarControllerProvider;
-            mNotificationShadeWindowController = notificationShadeWindowController;
-            mGestureInteractor = gestureInteractor;
-            mJavaAdapter = javaAdapter;
-        }
-
-        /** Construct a {@link EdgeBackGestureHandler}. */
-        public EdgeBackGestureHandler create(Context context) {
-            return mUiThreadContext.runWithScissors(
-                    () -> new EdgeBackGestureHandler(
-                            context,
-                            mOverviewProxyService,
-                            mSysUiState,
-                            mPluginManager,
-                            mUiThreadContext,
-                            mBackgroundExecutor,
-                            mBgHandler,
-                            mUserTracker,
-                            mNavigationModeController,
-                            mBackPanelControllerFactory,
-                            mViewConfiguration,
-                            mWindowManager,
-                            mWindowManagerService,
-                            mInputManager,
-                            mPipOptional,
-                            mDesktopModeOptional,
-                            mFalsingManager,
-                            mBackGestureTfClassifierProviderProvider,
-                            mLightBarControllerProvider,
-                            mNotificationShadeWindowController,
-                            mGestureInteractor,
-                            mJavaAdapter));
         }
     }
 

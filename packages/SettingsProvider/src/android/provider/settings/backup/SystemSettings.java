@@ -78,6 +78,7 @@ public class SystemSettings {
                 Settings.System.SHOW_WEB_SUGGESTIONS,
                 Settings.System.SIP_CALL_OPTIONS,
                 Settings.System.SIP_RECEIVE_CALLS,
+                Settings.System.TOUCHPAD_THREE_FINGER_TAP_CUSTOMIZATION,
                 Settings.System.POINTER_SPEED,
                 Settings.System.POINTER_FILL_STYLE,
                 Settings.System.POINTER_STROKE_STYLE,
@@ -106,6 +107,8 @@ public class SystemSettings {
                 Settings.System.UNREAD_NOTIFICATION_DOT_INDICATOR,
                 Settings.System.AUTO_LAUNCH_MEDIA_CONTROLS,
                 Settings.System.LOCALE_PREFERENCES,
+                Settings.System.MOUSE_REVERSE_VERTICAL_SCROLLING,
+                Settings.System.MOUSE_SWAP_PRIMARY_BUTTON,
                 Settings.System.TOUCHPAD_POINTER_SPEED,
                 Settings.System.TOUCHPAD_NATURAL_SCROLLING,
                 Settings.System.TOUCHPAD_TAP_TO_CLICK,
@@ -121,6 +124,7 @@ public class SystemSettings {
                 Settings.System.QS_SHOW_BATTERY_ESTIMATE,
                 Settings.System.STATUS_BAR_BATTERY_STYLE,
                 Settings.System.SHOW_BATTERY_PERCENT_INSIDE
+                Settings.System.PREFERRED_REGION
         ));
         if (Flags.backUpSmoothDisplayAndForcePeakRefreshRate()) {
             settings.add(Settings.System.PEAK_REFRESH_RATE);

@@ -18,16 +18,18 @@ package com.android.systemui.screenshot
 
 import android.app.assist.AssistContent
 import android.content.Context
+import android.net.Uri
 import android.util.Log
 import androidx.appcompat.content.res.AppCompatResources
 import com.android.internal.logging.UiEventLogger
+import com.android.systemui.Flags.screenshotContextUrl
 import com.android.systemui.log.DebugLogger.debugLog
 import com.android.systemui.res.R
 import com.android.systemui.screenshot.ActionIntentCreator.createDelete
 import com.android.systemui.screenshot.ActionIntentCreator.createEdit
 import com.android.systemui.screenshot.ActionIntentCreator.createLens
 import com.android.systemui.screenshot.ActionIntentCreator.createShareWithSubject
-import com.android.systemui.screenshot.ScreenshotEvent.SCREENSHOT_DELETE_TAPPED
+import com.android.systemui.screenshot.ActionIntentCreator.createShareWithText
 import com.android.systemui.screenshot.ScreenshotEvent.SCREENSHOT_EDIT_TAPPED
 import com.android.systemui.screenshot.ScreenshotEvent.SCREENSHOT_LENS_TAPPED
 import com.android.systemui.screenshot.ScreenshotEvent.SCREENSHOT_PREVIEW_TAPPED
@@ -80,6 +82,7 @@ constructor(
     private var onScrollClick: Runnable? = null
     private var pendingAction: ((ScreenshotSavedResult) -> Unit)? = null
     private var result: ScreenshotSavedResult? = null
+    private var webUri: Uri? = null
 
     init {
         actionsCallback.providePreviewAction(
@@ -90,7 +93,7 @@ constructor(
                     actionExecutor.startSharedTransition(
                         createEdit(result.uri, context),
                         result.user,
-                        true
+                        true,
                     )
                 }
             }
@@ -107,11 +110,14 @@ constructor(
             debugLog(LogConfig.DEBUG_ACTIONS) { "Share tapped" }
             uiEventLogger.log(SCREENSHOT_SHARE_TAPPED, 0, request.packageNameString)
             onDeferrableActionTapped { result ->
-                actionExecutor.startSharedTransition(
-                    createShareWithSubject(result.uri, result.subject),
-                    result.user,
-                    false
-                )
+                val uri = webUri
+                val shareIntent =
+                    if (screenshotContextUrl() && uri != null) {
+                        createShareWithText(result.uri, extraText = uri.toString())
+                    } else {
+                        createShareWithSubject(result.uri, result.subject)
+                    }
+                actionExecutor.startSharedTransition(shareIntent, result.user, false)
             }
         }
 
@@ -129,7 +135,7 @@ constructor(
                 actionExecutor.startSharedTransition(
                     createEdit(result.uri, context),
                     result.user,
-                    true
+                    true,
                 )
             }
         }
@@ -197,6 +203,10 @@ constructor(
         }
         this.result = result
         pendingAction?.invoke(result)
+    }
+
+    override fun onAssistContent(assistContent: AssistContent?) {
+        webUri = assistContent?.webUri
     }
 
     private fun onDeferrableActionTapped(onResult: (ScreenshotSavedResult) -> Unit) {

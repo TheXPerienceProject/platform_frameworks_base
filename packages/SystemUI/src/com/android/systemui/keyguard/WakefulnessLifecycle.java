@@ -35,6 +35,7 @@ import com.android.systemui.dagger.SysUISingleton;
 import com.android.systemui.dump.DumpManager;
 import com.android.systemui.power.domain.interactor.PowerInteractor;
 import com.android.systemui.res.R;
+import com.android.systemui.shade.ShadeDisplayAware;
 import com.android.systemui.util.time.SystemClock;
 
 import java.io.PrintWriter;
@@ -92,7 +93,7 @@ public class WakefulnessLifecycle extends Lifecycle<WakefulnessLifecycle.Observe
 
     @Inject
     public WakefulnessLifecycle(
-            Context context,
+            @ShadeDisplayAware Context context,
             @Nullable IWallpaperManager wallpaperManagerService,
             SystemClock systemClock,
             DumpManager dumpManager) {

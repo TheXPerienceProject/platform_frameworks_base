@@ -16,6 +16,7 @@
 
 package com.android.systemui.settings.brightness;
 
+import android.annotation.StringRes;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 
@@ -38,6 +39,7 @@ public interface ToggleSlider {
 
     void showView();
     void hideView();
+    void showToast(@StringRes int resId);
     boolean isVisible();
 
     ImageView getIcon();

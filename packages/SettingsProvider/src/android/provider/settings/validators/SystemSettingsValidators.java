@@ -213,6 +213,8 @@ public class SystemSettingsValidators {
         VALIDATORS.put(System.SIP_ADDRESS_ONLY, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.SIP_ASK_ME_EACH_TIME, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.POINTER_SPEED, new InclusiveFloatRangeValidator(-7, 7));
+        VALIDATORS.put(System.TOUCHPAD_THREE_FINGER_TAP_CUSTOMIZATION,
+                NON_NEGATIVE_INTEGER_VALIDATOR);
         VALIDATORS.put(System.POINTER_FILL_STYLE,
                 new InclusiveIntegerRangeValidator(POINTER_ICON_VECTOR_STYLE_FILL_BEGIN,
                         POINTER_ICON_VECTOR_STYLE_FILL_END));
@@ -221,11 +223,14 @@ public class SystemSettingsValidators {
                         POINTER_ICON_VECTOR_STYLE_STROKE_END));
         VALIDATORS.put(System.POINTER_SCALE,
                 new InclusiveFloatRangeValidator(DEFAULT_POINTER_SCALE, LARGE_POINTER_SCALE));
+        VALIDATORS.put(System.MOUSE_REVERSE_VERTICAL_SCROLLING, BOOLEAN_VALIDATOR);
+        VALIDATORS.put(System.MOUSE_SWAP_PRIMARY_BUTTON, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.TOUCHPAD_POINTER_SPEED, new InclusiveIntegerRangeValidator(-7, 7));
         VALIDATORS.put(System.TOUCHPAD_NATURAL_SCROLLING, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.TOUCHPAD_TAP_TO_CLICK, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.TOUCHPAD_TAP_DRAGGING, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.TOUCHPAD_RIGHT_CLICK_ZONE, BOOLEAN_VALIDATOR);
+        VALIDATORS.put(System.TOUCHPAD_SYSTEM_GESTURES, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.LOCK_TO_APP_ENABLED, BOOLEAN_VALIDATOR);
         VALIDATORS.put(
                 System.EGG_MODE,
@@ -273,5 +278,6 @@ public class SystemSettingsValidators {
         VALIDATORS.put(System.STATUS_BAR_BATTERY_STYLE, new InclusiveIntegerRangeValidator(0, 27));
         VALIDATORS.put(System.SHOW_BATTERY_PERCENT_INSIDE, BOOLEAN_VALIDATOR);
         VALIDATORS.put(System.SWIPE_TO_SCREENSHOT, BOOLEAN_VALIDATOR);
+        VALIDATORS.put(System.PREFERRED_REGION, ANY_STRING_VALIDATOR);
     }
 }

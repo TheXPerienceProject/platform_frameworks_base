@@ -91,7 +91,7 @@ class CarrierMergedConnectionRepository(
                         TAG,
                         "Connection repo subId=$subId " +
                             "does not equal wifi repo subId=${network.subscriptionId}; " +
-                            "not showing carrier merged"
+                            "not showing carrier merged",
                     )
                     null
                 }
@@ -150,7 +150,7 @@ class CarrierMergedConnectionRepository(
             .stateIn(
                 scope,
                 SharingStarted.WhileSubscribed(),
-                ResolvedNetworkType.UnknownNetworkType
+                ResolvedNetworkType.UnknownNetworkType,
             )
 
     override val dataConnectionState =
@@ -174,7 +174,11 @@ class CarrierMergedConnectionRepository(
     override val isNonTerrestrial = MutableStateFlow(false).asStateFlow()
     override val isGsm = MutableStateFlow(false).asStateFlow()
     override val carrierNetworkChangeActive = MutableStateFlow(false).asStateFlow()
+<<<<<<< HEAD
     override val imsState = MutableStateFlow(ImsStateModel()).asStateFlow()
+=======
+    override val satelliteLevel = MutableStateFlow(0)
+>>>>>>> android-15.0.0_r20
 
     /**
      * Carrier merged connections happen over wifi but are displayed as a mobile triangle. Because
@@ -209,10 +213,7 @@ class CarrierMergedConnectionRepository(
         @Application private val scope: CoroutineScope,
         private val wifiRepository: WifiRepository,
     ) {
-        fun build(
-            subId: Int,
-            mobileLogger: TableLogBuffer,
-        ): MobileConnectionRepository {
+        fun build(subId: Int, mobileLogger: TableLogBuffer): MobileConnectionRepository {
             return CarrierMergedConnectionRepository(
                 subId,
                 mobileLogger,

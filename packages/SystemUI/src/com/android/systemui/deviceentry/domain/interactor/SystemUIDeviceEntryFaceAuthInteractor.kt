@@ -131,7 +131,7 @@ constructor(
                 faceAuthenticationLogger.bouncerVisibilityChanged()
                 runFaceAuth(
                     FaceAuthUiEvent.FACE_AUTH_UPDATED_PRIMARY_BOUNCER_SHOWN,
-                    fallbackToDetect = false
+                    fallbackToDetect = false,
                 )
             }
             .launchIn(applicationScope)
@@ -142,7 +142,7 @@ constructor(
                 faceAuthenticationLogger.alternateBouncerVisibilityChanged()
                 runFaceAuth(
                     FaceAuthUiEvent.FACE_AUTH_TRIGGERED_ALTERNATE_BIOMETRIC_BOUNCER_SHOWN,
-                    fallbackToDetect = false
+                    fallbackToDetect = false,
                 )
             }
             .launchIn(applicationScope)
@@ -170,7 +170,7 @@ constructor(
                     it.lastWakeReason.powerManagerWakeReason
                 runFaceAuth(
                     FaceAuthUiEvent.FACE_AUTH_UPDATED_KEYGUARD_VISIBILITY_CHANGED,
-                    fallbackToDetect = true
+                    fallbackToDetect = true,
                 )
             }
             .launchIn(applicationScope)
@@ -210,13 +210,16 @@ constructor(
             .map { (_, curr) -> curr.userInfo.id }
             .sample(isBouncerVisible, ::Pair)
             .onEach { (userId, isBouncerCurrentlyVisible) ->
+                if (!isFaceAuthEnabledAndEnrolled()) {
+                    return@onEach
+                }
                 resetLockedOutState(userId)
                 yield()
                 runFaceAuth(
                     FaceAuthUiEvent.FACE_AUTH_UPDATED_USER_SWITCHING,
                     // Fallback to detection if bouncer is not showing so that we can detect a
                     // face and then show the bouncer to the user if face auth can't run
-                    fallbackToDetect = !isBouncerCurrentlyVisible
+                    fallbackToDetect = !isBouncerCurrentlyVisible,
                 )
             }
             .launchIn(applicationScope)
@@ -227,7 +230,7 @@ constructor(
                     repository.cancel()
                     runFaceAuth(
                         FaceAuthUiEvent.FACE_AUTH_CAMERA_AVAILABLE_CHANGED,
-                        fallbackToDetect = true
+                        fallbackToDetect = true,
                     )
                 }
             }
@@ -334,10 +337,17 @@ constructor(
     override val isBypassEnabled: Flow<Boolean> = repository.isBypassEnabled
 
     private fun runFaceAuth(uiEvent: FaceAuthUiEvent, fallbackToDetect: Boolean) {
-        if (isDeviceInPocket) return
-        faceAuthenticationStatusOverride.value = null
-        faceAuthenticationLogger.authRequested(uiEvent)
-        repository.requestAuthenticate(uiEvent, fallbackToDetection = fallbackToDetect)
+        if (repository.isLockedOut.value) {
+            faceAuthenticationStatusOverride.value =
+                ErrorFaceAuthenticationStatus(
+                    BiometricFaceConstants.FACE_ERROR_LOCKOUT_PERMANENT,
+                    context.resources.getString(R.string.keyguard_face_unlock_unavailable),
+                )
+        } else {
+            faceAuthenticationStatusOverride.value = null
+            faceAuthenticationLogger.authRequested(uiEvent)
+            repository.requestAuthenticate(uiEvent, fallbackToDetection = fallbackToDetect)
+        }
     }
 
     override fun isFaceAuthEnabledAndEnrolled(): Boolean =
