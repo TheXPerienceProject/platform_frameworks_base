@@ -569,13 +569,10 @@ android_library {
         "kairos",
         "displaylib",
         "aconfig_settings_flags_lib",
-<<<<<<< HEAD
         "SurfaceEffectsComposeLib",
         "uilatencystats_flags_core_java_lib",
         "personalcontext_ace_visualizer",
-=======
-        "vendor.lineage.powershare-V1.0-java",
->>>>>>> 03563e95242a (SystemUI: Add powershare QS tile)
+        "vendor.lineage.powershare-V1-java",
     ],
     enable_ksp: true,
     annotation_processor_flags: [
@@ -784,12 +781,9 @@ android_library {
         "aconfig_settings_flags_lib",
         "kairos",
         "displaylib",
-<<<<<<< HEAD
         "dynamiccolors",
         "SurfaceEffectsComposeLib",
-=======
-        "vendor.lineage.powershare-V1.0-java",
->>>>>>> 03563e95242a (SystemUI: Add powershare QS tile)
+        "vendor.lineage.powershare-V1-java",
     ],
 }
 
