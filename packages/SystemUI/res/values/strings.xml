@@ -3775,7 +3775,7 @@
     <!-- [CHAR LIMIT=30] Text shown in button used to prevent app from showing Live Updates, for this notification and all future ones -->
 <!-- QTI_BEGIN: 2022-03-27: Telephony: Add conditions to prevent disabling of mobile data-->
 <!-- QTI_END: 2022-03-27: Telephony: Add conditions to prevent disabling of mobile data-->
-    <string name="notification_inline_disable_promotion">Don\'t show as pinned</string>
+    <string name="notification_inline_disable_promotion">Turn off</string>
 
     <!-- [CHAR LIMIT=30] Text shown in button used to prevent app from showing Live Updates, for this notification and all future ones -->
 <!-- QTI_BEGIN: 2022-03-27: Telephony: Add conditions to prevent disabling of mobile data-->
@@ -3785,12 +3785,12 @@
     <!-- Text accompanying the "Show live updates" switch explaining the purpose of the setting -->
 <!-- QTI_BEGIN: 2022-03-27: Telephony: Add conditions to prevent disabling of mobile data-->
 <!-- QTI_END: 2022-03-27: Telephony: Add conditions to prevent disabling of mobile data-->
-    <string name="live_notifications_title">Showing Live Updates</string>
+    <string name="live_notifications_title">Live Updates</string>
 
     <!-- Text accompanying the "Show live updates" switch explaining the purpose of the setting -->
 <!-- QTI_BEGIN: 2022-03-27: Telephony: Add conditions to prevent disabling of mobile data-->
 <!-- QTI_END: 2022-03-27: Telephony: Add conditions to prevent disabling of mobile data-->
-    <string name="live_notifications_desc">Pinned notifications display live info from apps, and always appear on the status bar and lock screen</string>
+    <string name="live_notifications_desc">When turned off, ongoing notifications from this app won\'t be promoted on your lock screen and status bar</string>
 
     <!-- Notification: Control panel: Label that displays when the app's notifications cannot be blocked. -->
 <!-- QTI_BEGIN: 2022-03-27: Telephony: Add conditions to prevent disabling of mobile data-->
