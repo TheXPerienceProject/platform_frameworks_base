@@ -31,6 +31,12 @@ import com.android.systemui.keyguard.ui.view.layout.sections.DefaultSettingsPopu
 import com.android.systemui.keyguard.ui.view.layout.sections.DefaultShortcutsSection
 import com.android.systemui.keyguard.ui.view.layout.sections.DefaultStatusBarSection
 import com.android.systemui.keyguard.ui.view.layout.sections.KeyguardSectionsModule
+import com.android.systemui.keyguard.ui.view.layout.sections.NowBarSection
+import com.android.systemui.keyguard.ui.view.layout.sections.InfoWidgetsSection
+import com.android.systemui.keyguard.ui.view.layout.sections.KeyguardClockStyleSection
+import com.android.systemui.keyguard.ui.view.layout.sections.KeyguardPeekDisplaySection
+import com.android.systemui.keyguard.ui.view.layout.sections.AODStyleSection
+import com.android.systemui.keyguard.ui.view.layout.sections.KeyguardSliceViewSection
 import com.android.systemui.keyguard.ui.view.layout.sections.SmartspaceSection
 import com.android.systemui.keyguard.ui.view.layout.sections.SplitShadeGuidelines
 import com.android.systemui.keyguard.ui.view.layout.sections.SplitShadeMediaSection
@@ -64,6 +70,11 @@ constructor(
     aodBurnInSection: AodBurnInSection,
     clockSection: ClockSection,
     smartspaceSection: SmartspaceSection,
+    nowBarSection: NowBarSection,
+    infoWidgetsSection: InfoWidgetsSection,
+    keyguardClockStyleSection: KeyguardClockStyleSection,
+    keyguardPeekDisplaySection: KeyguardPeekDisplaySection,
+    aODStyleSection: AODStyleSection,
     mediaSection: SplitShadeMediaSection,
 ) : KeyguardBlueprint {
     override val id: String = ID
@@ -83,6 +94,12 @@ constructor(
             smartspaceSection,
             aodBurnInSection,
             clockSection,
+            keyguardSliceViewSection,
+            nowBarSection,
+            infoWidgetsSection,
+            keyguardClockStyleSection,
+            keyguardPeekDisplaySection,
+            aODStyleSection,
             mediaSection,
             defaultDeviceEntrySection, // Add LAST: Intentionally has z-order above other views.
         )

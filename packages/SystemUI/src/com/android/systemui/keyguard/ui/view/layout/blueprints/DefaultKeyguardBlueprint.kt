@@ -46,6 +46,13 @@ import com.android.systemui.keyguard.ui.view.layout.sections.DefaultStatusBarSec
 import com.android.systemui.keyguard.ui.view.layout.sections.DefaultUdfpsAccessibilityOverlaySection
 import com.android.systemui.keyguard.ui.view.layout.sections.KeyguardSectionsModule.Companion.KEYGUARD_AMBIENT_INDICATION_AREA_SECTION
 import com.android.systemui.keyguard.ui.view.layout.sections.KeyguardSliceViewSection
+import com.android.systemui.keyguard.ui.view.layout.sections.KeyguardWidgetViewSection
+import com.android.systemui.keyguard.ui.view.layout.sections.NowBarSection
+import com.android.systemui.keyguard.ui.view.layout.sections.InfoWidgetsSection
+import com.android.systemui.keyguard.ui.view.layout.sections.KeyguardClockStyleSection
+import com.android.systemui.keyguard.ui.view.layout.sections.KeyguardPeekDisplaySection
+import com.android.systemui.keyguard.ui.view.layout.sections.AODStyleSection
+import com.android.systemui.keyguard.ui.view.layout.sections.KeyguardWeatherViewSection
 import com.android.systemui.keyguard.ui.view.layout.sections.SmartspaceSection
 import java.util.Optional
 import javax.inject.Inject
@@ -77,6 +84,13 @@ constructor(
     clockSection: ClockSection,
     smartspaceSection: SmartspaceSection,
     keyguardSliceViewSection: KeyguardSliceViewSection,
+    keyguardWidgetViewSection: KeyguardWidgetViewSection,
+    nowBarSection: NowBarSection,
+    infoWidgetsSection: InfoWidgetsSection,
+    keyguardClockStyleSection: KeyguardClockStyleSection,
+    keyguardPeekDisplaySection: KeyguardPeekDisplaySection,
+    aODStyleSection: AODStyleSection,
+    keyguardWeatherViewSection: KeyguardWeatherViewSection,
     udfpsAccessibilityOverlaySection: DefaultUdfpsAccessibilityOverlaySection,
 // QTI_BEGIN: 2025-02-09: Android_UI: SystemUI: Refactor Emergency button on keyguard
     defaultEmergencyButtonSection: DefaultEmergencyButtonSection,
@@ -101,6 +115,13 @@ constructor(
             aodBurnInSection,
             clockSection,
             keyguardSliceViewSection,
+            keyguardWidgetViewSection,
+            nowBarSection,
+            infoWidgetsSection,
+            keyguardClockStyleSection,
+            keyguardPeekDisplaySection,
+	    aODStyleSection,
+            keyguardWeatherViewSection,
             defaultDeviceEntrySection,
 // QTI_BEGIN: 2025-02-09: Android_UI: SystemUI: Refactor Emergency button on keyguard
             defaultEmergencyButtonSection,
