@@ -7,4 +7,5 @@
     <!-- Pocket Lock -->
     <string name="pocket_lock_message_long_press">Kilidi açmak için güç tuşuna basılı tutun</string>
     <string name="pocket_view_title">Cep modu açık</string>
+    <string name="pocket_view_title_cancel">Cihazın vurgulanan üst bölümünü temizleyin veya cep modundan çıkmak için güç düğmesine uzun basın</string>
 </resources>
