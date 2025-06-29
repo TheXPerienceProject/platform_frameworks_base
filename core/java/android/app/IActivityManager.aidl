@@ -1043,4 +1043,15 @@ interface IActivityManager {
      *  Should disable touch if three fingers to screen shot is active?
      */
     boolean isSwipeToScreenshotGestureActive();
+
+    /**
+     * Boost framework
+     */
+    void releaseMemory(int minAdj, int maxKillCount, boolean includeUIProcesses, boolean skipCamera);
+    void executeAdjustCpusetCpus(String path, String cpuset);
+    void adjustCpusetCpus(String path, String cpuset, long durationMillis);
+    void animationBoost(int pid, boolean enabled);
+    void setThreadAffinity(int pid, int affinity);
+    void setPerformanceMode(boolean enabled);
+    boolean isBoostingAnimation();
 }
