@@ -10,7 +10,7 @@ import android.app.KeyguardManager;
 import android.content.Context;
 import android.os.UserHandle;
 
-import android.providers.Settings;
+import android.provider.Settings;
 
 public final class PowerMenuUtils {
     public static boolean isAdvancedRestartPossible(final Context context) {
