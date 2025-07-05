@@ -38,6 +38,7 @@ import android.app.ActivityManager;
 import android.app.Dialog;
 import android.app.IActivityManager;
 import android.app.StatusBarManager;
+import android.app.UiModeManager;
 import android.app.WallpaperManager;
 import android.app.trust.TrustManager;
 import android.content.BroadcastReceiver;
