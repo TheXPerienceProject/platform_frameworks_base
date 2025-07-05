@@ -185,6 +185,26 @@ public class GlobalActionsDialogLite implements DialogInterface.OnDismissListene
 
     private static final boolean SHOW_SILENT_TOGGLE = true;
 
+    /* Valid settings for global actions keys.
+     * see config.xml config_globalActionList */
+    @VisibleForTesting
+    static final String GLOBAL_ACTION_KEY_POWER = "power";
+    private static final String GLOBAL_ACTION_KEY_AIRPLANE = "airplane";
+    static final String GLOBAL_ACTION_KEY_BUGREPORT = "bugreport";
+    private static final String GLOBAL_ACTION_KEY_SILENT = "silent";
+    private static final String GLOBAL_ACTION_KEY_USERS = "users";
+    private static final String GLOBAL_ACTION_KEY_SETTINGS = "settings";
+    static final String GLOBAL_ACTION_KEY_LOCKDOWN = "lockdown";
+    private static final String GLOBAL_ACTION_KEY_VOICEASSIST = "voiceassist";
+    private static final String GLOBAL_ACTION_KEY_ASSIST = "assist";
+    static final String GLOBAL_ACTION_KEY_RESTART = "restart";
+    private static final String GLOBAL_ACTION_KEY_LOGOUT = "logout";
+    static final String GLOBAL_ACTION_KEY_EMERGENCY = "emergency";
+    static final String GLOBAL_ACTION_KEY_SCREENSHOT = "screenshot";
+    static final String GLOBAL_ACTION_KEY_SYSTEM_UPDATE = "system_update";
+    static final String GLOBAL_ACTION_KEY_STANDBY = "standby";
+    public static final String GLOBAL_ACTION_KEY_ONTHEGO = "onthego";
+
     /* Valid settings for restart actions keys.
      * see config.xml config_restartActionsList */
     private static final String RESTART_ACTION_KEY_RESTART = "restart";
@@ -638,7 +658,7 @@ public class GlobalActionsDialogLite implements DialogInterface.OnDismissListene
 
     @VisibleForTesting
     protected String[] getRestartActions() {
-        return mResources.getStringArray(R.array.config_restartActionsList);
+        return mResources.getStringArray(com.android.internal.R.array.config_restartActionsList);
     }
 
     @VisibleForTesting
