@@ -6522,13 +6522,6 @@ public final class Settings {
         public static final String LOCKSCREEN_BATTERY_INFO = "lockscreen_battery_info";
 
         /**
-         * Whether to control brightness from status bar
-         * 0 = 0ff, 1 = on
-         * @hide
-         */
-        public static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
-
-        /**
          * Whether to disable qs on secure lockscreen.
          * @hide
          */
