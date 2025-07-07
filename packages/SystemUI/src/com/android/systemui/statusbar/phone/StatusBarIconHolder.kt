@@ -20,8 +20,14 @@ import com.android.internal.statusbar.StatusBarIcon
 import com.android.systemui.statusbar.pipeline.icons.shared.model.ModernStatusBarViewCreator
 
 /** Wraps [com.android.internal.statusbar.StatusBarIcon] so we can still have a uniform list */
-open class StatusBarIconHolder private constructor() {
-    @IntDef(TYPE_ICON, TYPE_MOBILE_NEW, TYPE_WIFI_NEW, TYPE_BINDABLE)
+open class StatusBarIconHolder protected constructor() {
+    @IntDef(
+        TYPE_ICON,
+        TYPE_MOBILE_NEW,
+        TYPE_WIFI_NEW,
+        TYPE_BINDABLE,
+        TYPE_NETWORK_SPEED,
+    )
     @Retention(AnnotationRetention.SOURCE)
     internal annotation class IconType
 
@@ -42,6 +48,7 @@ open class StatusBarIconHolder private constructor() {
                 // The new pipeline controls visibilities via the view model and
                 // view binder, so
                 // this is effectively an unused return value.
+                TYPE_NETWORK_SPEED,
                 TYPE_BINDABLE,
                 TYPE_MOBILE_NEW,
                 TYPE_WIFI_NEW -> true
@@ -53,6 +60,7 @@ open class StatusBarIconHolder private constructor() {
             }
             when (type) {
                 TYPE_ICON -> icon!!.visible = visible
+                TYPE_NETWORK_SPEED,
                 TYPE_BINDABLE,
                 TYPE_MOBILE_NEW,
                 TYPE_WIFI_NEW -> {}
@@ -96,12 +104,16 @@ open class StatusBarIconHolder private constructor() {
         /** Only applicable to [BindableIconHolder] */
         const val TYPE_BINDABLE = 5
 
+        /** Custom status bar network speed indicator. */
+        const val TYPE_NETWORK_SPEED = 7
+
         /** Returns a human-readable string representing the given type. */
         fun getTypeString(@IconType type: Int): String {
             return when (type) {
                 TYPE_ICON -> "ICON"
                 TYPE_MOBILE_NEW -> "MOBILE_NEW"
                 TYPE_WIFI_NEW -> "WIFI_NEW"
+                TYPE_NETWORK_SPEED -> "NETWORK_SPEED"
                 else -> "UNKNOWN"
             }
         }
