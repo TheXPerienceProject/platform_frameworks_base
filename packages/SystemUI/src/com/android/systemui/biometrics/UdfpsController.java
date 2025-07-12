@@ -37,6 +37,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.ContentObserver;
+import android.content.res.Configuration;
 import android.content.pm.PackageManager;
 import android.graphics.Rect;
 import android.hardware.biometrics.BiometricFingerprintConstants;
@@ -82,6 +83,7 @@ import com.android.keyguard.UserActivityNotifier;
 import com.android.systemui.Dumpable;
 import com.android.systemui.Flags;
 import com.android.systemui.animation.ActivityTransitionAnimator;
+import com.android.systemui.biometrics.AuthController;
 import com.android.systemui.biometrics.dagger.BiometricsBackground;
 import com.android.systemui.biometrics.domain.interactor.UdfpsOverlayInteractor;
 import com.android.systemui.biometrics.shared.model.UdfpsOverlayParams;
@@ -238,6 +240,7 @@ public class UdfpsController implements DozeReceiver, Dumpable {
     private boolean mScreenOffFod;
 
     private UdfpsAnimation mUdfpsAnimation;
+    @NonNull private final AuthController mAuthController;
 
     @VisibleForTesting
     public static final VibrationAttributes UDFPS_VIBRATION_ATTRIBUTES =
@@ -270,6 +273,24 @@ public class UdfpsController implements DozeReceiver, Dumpable {
         @Override
         public void onScreenTurnedOff() {
             mScreenOn = false;
+        }
+    };
+
+    private ConfigurationController.ConfigurationListener mConfigurationListener =
+            new ConfigurationController.ConfigurationListener() {
+        @Override
+        public void onThemeChanged() {
+            updateUdfpsAnimation();
+        }
+
+        @Override
+        public void onUiModeChanged() {
+            updateUdfpsAnimation();
+        }
+
+        @Override
+        public void onConfigChanged(Configuration newConfig) {
+            updateUdfpsAnimation();
         }
     };
 
@@ -731,6 +752,7 @@ public class UdfpsController implements DozeReceiver, Dumpable {
             @NonNull UdfpsOverlayInteractor udfpsOverlayInteractor,
             @NonNull PowerInteractor powerInteractor,
             @Application CoroutineScope scope,
+            @NonNull AuthController authController,
             UserActivityNotifier userActivityNotifier) {
         mContext = context;
         mExecution = execution;
@@ -780,6 +802,8 @@ public class UdfpsController implements DozeReceiver, Dumpable {
 
         mDumpManager.registerDumpable(TAG, this);
 
+        mAuthController = authController;
+
         mOrientationListener = new BiometricDisplayListener(
                 context,
                 displayManager,
@@ -828,8 +852,11 @@ public class UdfpsController implements DozeReceiver, Dumpable {
         }
 
         if (isAnimationPackageInstalled()) {
-            mUdfpsAnimation = new UdfpsAnimation(mContext, mWindowManager, mSensorProps);
+            mUdfpsAnimation = new UdfpsAnimation(mContext, mWindowManager, mSensorProps, mAuthController);
         }
+
+        updateUdfpsAnimation();
+        mConfigurationController.addCallback(mConfigurationListener);
     }
 
     /**
@@ -863,7 +890,9 @@ public class UdfpsController implements DozeReceiver, Dumpable {
 
     @Override
     public void dozeTimeTick() {
-
+        if (mUdfpsAnimation != null) {
+            mUdfpsAnimation.dozeTimeTick();
+        }
     }
 
     private void redrawOverlay() {
@@ -1230,6 +1259,19 @@ public class UdfpsController implements DozeReceiver, Dumpable {
 
     public boolean isAnimationEnabled() {
         return mUdfpsAnimation != null && mUdfpsAnimation.isAnimationEnabled();
+    }
+
+    private void updateUdfpsAnimation() {
+        if (isAnimationPackageInstalled()) {
+            if (mUdfpsAnimation != null) {
+                mUdfpsAnimation.removeAnimation();
+                mUdfpsAnimation = null;
+            }
+            mUdfpsAnimation = new UdfpsAnimation(mContext, mWindowManager, mSensorProps, mAuthController);
+            if (mUdfpsAnimation != null) {
+                mUdfpsAnimation.updatePosition();
+            }
+        }
     }
 
     private void hideUdfpsAnimation() {
