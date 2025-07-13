@@ -42,18 +42,20 @@ interface XPerienceModule {
     @StringKey(OnTheGoTile.TILE_SPEC)
     fun bindOnTheGoTile(onTheGoTile: OnTheGoTile): QSTileImpl<*>
 
-    @Provides
-    @IntoMap
-    @StringKey(NfcTile.TILE_SPEC)
-    fun provideNfcConfig(uiEventLogger: QsEventLogger): QSTileConfig {
-       return QSTileConfig(
-           tileSpec = TileSpec.create(NfcTile.TILE_SPEC),
-           uiConfig = QSTileUIConfig.Resource(
-               iconRes = R.drawable.ic_qs_nfc,
-               labelRes = R.string.quick_settings_nfc_label
-            ),
-            instanceId = uiEventLogger.getNewInstanceId(),
-            category = TileCategory.CONNECTIVITY
-        )
+    companion object {
+        @Provides
+        @IntoMap
+        @StringKey(NfcTile.TILE_SPEC)
+        fun provideNfcConfig(uiEventLogger: QsEventLogger): QSTileConfig {
+            return QSTileConfig(
+                tileSpec = TileSpec.create(NfcTile.TILE_SPEC),
+                uiConfig = QSTileUIConfig.Resource(
+                    iconRes = R.drawable.ic_qs_nfc,
+                    labelRes = R.string.quick_settings_nfc_label
+                ),
+                instanceId = uiEventLogger.getNewInstanceId(),
+                category = TileCategory.CONNECTIVITY
+            )
+        }
     }
 }
