@@ -16,11 +16,20 @@
 
 package com.android.systemui.xperience
 
+import com.android.systemui.qs.QsEventLogger
+import com.android.systemui.qs.pipeline.shared.TileSpec
+import com.android.systemui.qs.shared.model.TileCategory
 import com.android.systemui.qs.tileimpl.QSTileImpl
 import com.android.systemui.qs.tiles.OnTheGoTile
+import com.android.systemui.qs.tiles.NfcTile
+import com.android.systemui.qs.tiles.base.shared.model.QSTileConfig;
+import com.android.systemui.qs.tiles.base.shared.model.QSTilePolicy;
+import com.android.systemui.qs.tiles.base.shared.model.QSTileUIConfig;
+import com.android.systemui.res.R
 
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.multibindings.IntoMap
 import dagger.multibindings.StringKey
 
