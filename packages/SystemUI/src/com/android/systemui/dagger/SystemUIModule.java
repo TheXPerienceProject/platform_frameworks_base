@@ -173,6 +173,7 @@ import com.android.systemui.util.time.SystemClock;
 import com.android.systemui.util.time.SystemClockImpl;
 import com.android.systemui.wallet.dagger.WalletModule;
 import com.android.systemui.wmshell.BubblesManager;
+import com.android.systemui.xperience.XPerienceModule;
 import com.android.wm.shell.bubbles.Bubbles;
 
 import dagger.Binds;
@@ -243,6 +244,7 @@ import javax.inject.Named;
         KeyboardModule.class,
         KeyguardDataQuickAffordanceModule.class,
         LetterboxModule.class,
+        XPerienceModule.class,
         LogModule.class,
         MediaProjectionActivitiesModule.class,
         MediaProjectionModule.class,
