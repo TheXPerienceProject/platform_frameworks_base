@@ -59,6 +59,7 @@
 
     <!-- nfc -->
     <com.android.systemui.tuner.StatusBarSwitch
+        android:icon="@drawable/stat_sys_nfc.xml"
         android:key="nfc"
         android:persistent="true"
         android:title="@string/status_bar_nfc_st" />
