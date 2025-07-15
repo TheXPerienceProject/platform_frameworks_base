@@ -35,4 +35,7 @@
     <string name="global_action_restart_download_progress">İndirme modunda başlatılıyor\u2026</string>
     <!-- Restart to fastboot mode progress dialog. This is shown if the user chooses to restart the device. -->
     <string name="global_action_restart_fastboot_progress">Fastboot modunda başlatılıyor\u2026</string>
+    <!-- Status bar - icons -->
+    <string name="status_bar_icons_title">Durum çubuğu simgeleri</string>
+    <!-- AI Assistant affordance [CHAR LIMIT=32] -->
 </resources>
