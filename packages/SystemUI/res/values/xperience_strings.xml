@@ -147,4 +147,6 @@
     <!-- Sleep Mode -->
     <string name="quick_settings_sleep_mode_label">Sleep Mode</string>
 
+    <!-- QS button to enable adaptive brightness -->
+    <string name="accessibility_adaptive_brightness">Adaptive brightness</string>
 </resources>
