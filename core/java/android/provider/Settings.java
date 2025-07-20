@@ -14207,12 +14207,6 @@ public final class Settings {
         public static final String SLEEP_MODE_RINGER_MODE = "sleep_mode_ringer_mode";
 
         /**
-         * Whether to show QS auto brightness toggle button
-         * @hide
-         */
-        public static final String QS_SHOW_AUTO_BRIGHTNESS = "qs_show_auto_brightness";
-
-        /**
          * These entries are considered common between the personal and the managed profile,
          * since the managed profile doesn't get to change them.
          */
@@ -14373,11 +14367,31 @@ public final class Settings {
         public static final String IDENTITY_CHECK_NOTIFICATION_VIEW_DETAILS_CLICKED =
                 "identity_check_notification_view_details_clicked";
 
-	/**
+        /**
          * Whether to use black theme for dark mode
          * @hide
          */
         public static final String BERRY_BLACK_THEME = "berry_black_theme";
+
+        /**
+         * Whether to show the brightness slider in quick settings panel.
+         * @hide
+         */
+        public static final String QS_SHOW_BRIGHTNESS_SLIDER = "qs_show_brightness_slider";
+
+        /**
+         * Brightness slider position in the quick settings panel
+         * 0 = Top
+         * 1 = Bottom
+         * @hide
+         */
+        public static final String QS_BRIGHTNESS_SLIDER_POSITION = "qs_brightness_slider_position";
+
+        /**
+         * Whether to show the auto brightness icon in quick settings panel.
+         * @hide
+         */
+        public static final String QS_SHOW_AUTO_BRIGHTNESS = "qs_show_auto_brightness";
     }
 
     /**
