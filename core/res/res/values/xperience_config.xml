@@ -178,4 +178,8 @@
     </string>
     <string name="config_batterymeterRLandErrorPerimeterPath" translatable="false">@string/config_batterymeterRLandPerimeterPath</string>
 
+    <!-- X path for SignalDrawable as defined on a 24x24 canvas. -->
+    <string name="config_signalXPath" translatable="false">
+        M22,16.41L20.59,15l-2.09,2.09L16.41,15L15,16.41l2.09,2.09L15,20.59L16.41,22l2.09-2.08L20.59,22L22,20.59l-2.08-2.09   L22,16.41z
+    </string>
 </resources>
