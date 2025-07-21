@@ -132,6 +132,7 @@ import com.android.systemui.dagger.qualifiers.UiBackground;
 import com.android.systemui.demomode.DemoMode;
 import com.android.systemui.demomode.DemoModeController;
 import com.android.systemui.display.dagger.SystemUIDisplaySubcomponent;
+import com.android.systemui.edgelight.EdgeLightViewController;
 import com.android.systemui.emergency.EmergencyGesture;
 import com.android.systemui.emergency.EmergencyGestureModule.EmergencyGestureIntentFactory;
 import com.android.systemui.flags.FeatureFlags;
@@ -486,6 +487,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
     private final WallpaperManager mWallpaperManager;
     private final UserTracker mUserTracker;
     private final ActivityStarter mActivityStarter;
+    private final EdgeLightViewController mEdgeLightViewController;
 
     private final DisplayMetrics mDisplayMetrics;
 
@@ -751,7 +753,8 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
             QuickAccessWalletController walletController,
             WindowManager windowManager,
             WindowManagerProvider windowManagerProvider,
-            BurnInProtectionController burnInProtectionController
+            BurnInProtectionController burnInProtectionController,
+            EdgeLightViewController edgeLightViewController
     ) {
         mContext = context;
         mNotificationsController = notificationsController;
@@ -901,6 +904,8 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
         mWindowManagerProvider = windowManagerProvider;
 
         ScreenAnimationController.INSTANCE().init(new AmbientDisplayConfiguration(mContext));
+
+        mEdgeLightViewController = edgeLightViewController;
     }
 
     private void initBubbles(Bubbles bubbles) {
@@ -1170,6 +1175,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
                 (requestTopUi, componentTag) -> mMainExecutor.execute(
                         () -> mTopUiController.setRequestTopUi(requestTopUi, componentTag)
                 )));
+        getNotifContainerParentView().addView(mEdgeLightViewController.getEdgeLightView(), 2);
     }
 
     public void destroy() {

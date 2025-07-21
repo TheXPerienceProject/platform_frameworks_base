@@ -25,6 +25,7 @@ import com.android.systemui.controls.dagger.StartControlsStartableModule;
 import com.android.systemui.dagger.qualifiers.Main;
 import com.android.systemui.dagger.qualifiers.PerUser;
 import com.android.systemui.dump.DumpManager;
+import com.android.systemui.edgelight.EdgeLightViewController;
 import com.android.systemui.keyguard.KeyguardSliceProvider;
 import com.android.systemui.people.PeopleProvider;
 import com.android.systemui.settings.MultiUserUtilsModule;
@@ -208,4 +209,7 @@ public interface SysUIComponent {
      * Member injection into the supplied argument.
      */
     void inject(PeopleProvider peopleProvider);
+
+    @SysUISingleton
+    EdgeLightViewController edgeLightViewController();
 }
