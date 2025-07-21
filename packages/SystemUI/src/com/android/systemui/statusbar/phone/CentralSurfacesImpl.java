@@ -125,6 +125,7 @@ import com.android.systemui.dagger.qualifiers.UiBackground;
 import com.android.systemui.demomode.DemoMode;
 import com.android.systemui.demomode.DemoModeController;
 import com.android.systemui.xperience.RebootSuggestion;
+import com.android.systemui.edgelight.EdgeLightViewController;
 import com.android.systemui.emergency.EmergencyGesture;
 import com.android.systemui.emergency.EmergencyGestureModule.EmergencyGestureIntentFactory;
 import com.android.systemui.fragments.ExtensionFragmentListener;
@@ -413,6 +414,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
     private final WallpaperManager mWallpaperManager;
     private final UserTracker mUserTracker;
     private final ActivityStarter mActivityStarter;
+    private final EdgeLightViewController mEdgeLightViewController;
 
     private final DisplayMetrics mDisplayMetrics;
 
@@ -628,7 +630,8 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
             WindowManager windowManager,
             WindowManagerProvider windowManagerProvider,
             SessionTracker sessionTracker,
-	    BurnInProtectionController burnInProtectionController
+	    BurnInProtectionController burnInProtectionController,
+            EdgeLightViewController edgeLightViewController
     ) {
         mContext = context;
         mNotificationsController = notificationsController;
@@ -755,6 +758,8 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
 	mBurnInProtectionController = burnInProtectionController;
 
         mRebootSuggestion = new RebootSuggestion(mContext);
+
+        mEdgeLightViewController = edgeLightViewController;
     }
 
     private void initBubbles(Bubbles bubbles) {
@@ -924,6 +929,12 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
     private void attachCustomOverlays() {
         ViewGroup overlay = getScrimOverlayContainer();
 
+        detachFromParent(mEdgeLightViewController.getEdgeLightView());
+
+        overlay.addView(mEdgeLightViewController.getEdgeLightView(),
+                new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
     }
 
     private static void detachFromParent(View v) {
