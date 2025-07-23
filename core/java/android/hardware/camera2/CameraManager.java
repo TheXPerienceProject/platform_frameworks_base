@@ -2421,7 +2421,17 @@ public final class CameraManager {
                         "connectCameraServiceLocked(E): tid(%d): mDeviceStatus size %d",
                         Thread.currentThread().getId(), mDeviceStatus.size()));
 
-                CameraStatus[] cameraStatuses = cameraService.addListener(this);
+                CameraStatus[] cameraStatuses;
+                try {
+                    cameraStatuses = cameraService.addListener(this);
+                } catch (ServiceSpecificException e) {
+                    if (e.errorCode == 2 ) {
+                        Log.w(TAG, "Listener already registered, skipping duplicate registration");
+                        return; //Already registered
+                    } else {
+                        throw e;
+                    }
+                }
                 for (CameraStatus cameraStatus : cameraStatuses) {
                     DeviceCameraInfo info = new DeviceCameraInfo(cameraStatus.cameraId,
                             cameraStatus.deviceId);
