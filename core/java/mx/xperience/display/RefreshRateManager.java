@@ -10,8 +10,8 @@ import android.content.Context;
 import android.os.RemoteException;
 import android.util.Slog;
 
-import com.android.internal.util.voltage.VoltageUtils;
-import com.android.internal.util.voltage.DisplayRefreshRateHelper;
+import com.android.internal.util.xperience.XPerienceUtils;
+import com.android.internal.util.xperience.DisplayRefreshRateHelper;
 
 /** @hide */
 @SystemService(Context.REFRESH_RATE_MANAGER_SERVICE)
