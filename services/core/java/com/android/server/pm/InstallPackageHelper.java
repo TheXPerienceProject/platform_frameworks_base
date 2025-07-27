@@ -195,6 +195,7 @@ import com.android.server.rollback.RollbackManagerInternal;
 // QTI_BEGIN: 2024-11-13: Telephony: Add provision to prevent installation of some apps
 import com.android.server.utils.TimingsTraceAndSlog;
 // QTI_END: 2024-11-13: Telephony: Add provision to prevent installation of some apps
+import com.android.server.utils.Slogf;
 import com.android.server.utils.WatchedArrayMap;
 import com.android.server.utils.WatchedLongSparseArray;
 
@@ -221,6 +222,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
@@ -1040,6 +1042,11 @@ final class InstallPackageHelper {
         return false;
     }
 
+    private static final String TAG_BUSY_PACKAGES = "BusyPackages";
+
+    @GuardedBy("mBusyPackages")
+    private final ArraySet<String> mBusyPackages = new ArraySet<>();
+
     /**
      * Installs one or more packages atomically. This operation is broken up into four phases:
      * <ul>
@@ -1066,10 +1073,41 @@ final class InstallPackageHelper {
         final Map<String, Boolean> createdAppId = new ArrayMap<>(requests.size());
         final Map<String, Settings.VersionInfo> versionInfos = new ArrayMap<>(requests.size());
         final long acquireTime = acquireWakeLock(requests.size());
+        boolean shouldRemoveFromBusyPackages = false;
         try {
             CriticalEventLog.getInstance().logInstallPackagesStarted();
-            if (prepareInstallPackages(requests)
-                    && scanInstallPackages(requests, createdAppId, versionInfos)) {
+            boolean shouldProceed = prepareInstallPackages(requests);
+
+            if (shouldProceed) {
+                for (InstallRequest request : requests) {
+                    // getName() returns the package name. It should never be null after
+                    // prepareInstallPackages() returns true.
+                    Objects.requireNonNull(request.getName());
+                }
+                synchronized (mBusyPackages) {
+                    for (InstallRequest request : requests) {
+                        String pkgName = request.getName();
+                        if (mBusyPackages.contains(pkgName)) {
+                            Slogf.d(TAG_BUSY_PACKAGES, "%s is already being installed, calling InstallRequest.setError(INSTALL_FAILED_INTERNAL_ERROR)", pkgName);
+                            request.setError(PackageManager.INSTALL_FAILED_INTERNAL_ERROR, pkgName + " is already being installed");
+                            shouldProceed = false;
+                            break;
+                        }
+                    }
+                    if (shouldProceed) {
+                        for (InstallRequest request : requests) {
+                            String pkgName = request.getName();
+                            Slogf.d(TAG_BUSY_PACKAGES, "adding %s to mBusyPackages", pkgName);
+                            if (!mBusyPackages.add(pkgName)) {
+                                throw new IllegalStateException(pkgName + " is already present in mBusyPackages");
+                            }
+                        }
+                        shouldRemoveFromBusyPackages = true;
+                    }
+                }
+            }
+
+            if (shouldProceed && scanInstallPackages(requests, createdAppId, versionInfos)) {
                 List<ReconciledPackage> reconciledPackages =
                         reconcileInstallPackages(requests, versionInfos);
                 if (reconciledPackages == null) {
@@ -1080,10 +1118,17 @@ final class InstallPackageHelper {
                     // rename before dexopt because art will encoded the path in the odex/vdex file
                     if (Flags.improveInstallFreeze()) {
                         pendingForDexopt = true;
-                        final Runnable actionsAfterDexopt = () ->
+                        final Runnable actionsAfterDexopt = () -> {
+                            try {
                                 doPostDexopt(reconciledPackages, requests,
                                         createdAppId, moveInfo, acquireTime);
+                            } finally {
+                                Slog.d(TAG_BUSY_PACKAGES, "calling removeFromBusyPackages() from actionsAfterDexopt");
+                                removeFromBusyPackages(requests);
+                            }
+                        };
                         prepPerformDexoptIfNeeded(reconciledPackages, actionsAfterDexopt);
+                        shouldRemoveFromBusyPackages = false;
                     } else {
                         if (commitInstallPackages(reconciledPackages)) {
                             success = true;
@@ -1092,11 +1137,30 @@ final class InstallPackageHelper {
                 }
             }
         } finally {
-            if (!pendingForDexopt) {
-                completeInstallProcess(requests, createdAppId, success);
-                Trace.traceEnd(TRACE_TAG_PACKAGE_MANAGER);
-                doPostInstall(requests, moveInfo);
-                releaseWakeLock(acquireTime, requests.size());
+            try {
+                if (!pendingForDexopt) {
+                    completeInstallProcess(requests, createdAppId, success);
+                    Trace.traceEnd(TRACE_TAG_PACKAGE_MANAGER);
+                    doPostInstall(requests, moveInfo);
+                    releaseWakeLock(acquireTime, requests.size());
+                }
+            } finally {
+                if (shouldRemoveFromBusyPackages) {
+                    Slog.d(TAG_BUSY_PACKAGES, "calling removeFromBusyPackages() from installPackagesTraced()");
+                    removeFromBusyPackages(requests);
+                }
+            }
+        }
+    }
+
+    private void removeFromBusyPackages(List<InstallRequest> requests) {
+        synchronized (mBusyPackages) {
+            for (InstallRequest request : requests) {
+                String pkgName = Objects.requireNonNull(request.getName());
+                Slogf.d(TAG_BUSY_PACKAGES, "removing %s from mBusyPackages", pkgName);
+                if (!mBusyPackages.remove(pkgName)) {
+                    throw new IllegalStateException(pkgName + " is missing from mBusyPackages");
+                }
             }
         }
     }
