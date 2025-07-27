@@ -10,7 +10,7 @@ import android.content.Context;
 import android.os.RemoteException;
 import android.util.Slog;
 
-import com.android.internal.util.xperience.XPerienceUtils;
+import com.android.internal.util.xperience.XperienceUtils;
 import com.android.internal.util.xperience.DisplayRefreshRateHelper;
 
 /** @hide */
@@ -63,7 +63,7 @@ public class RefreshRateManager {
             Slog.e(TAG, "Failed to get refresh rate for package. Service is null");
             return -1;
         }
-        if (!VoltageUtils.isPackageInstalled(mContext, packageName)) {
+        if (!XperienceUtils.isPackageInstalled(mContext, packageName)) {
             Slog.e(TAG, "Failed to get refresh rate for package. Package " + packageName + " is unavailable");
             return -1;
         }
@@ -79,7 +79,7 @@ public class RefreshRateManager {
             Slog.e(TAG, "Failed to set refresh rate for package. Service is null");
             return;
         }
-        if (!VoltageUtils.isPackageInstalled(mContext, packageName)) {
+        if (!XperienceUtils.isPackageInstalled(mContext, packageName)) {
             Slog.e(TAG, "Failed to set refresh rate for package. Package " + packageName + " is unavailable");
             return;
         }
@@ -100,7 +100,7 @@ public class RefreshRateManager {
             Slog.e(TAG, "Failed to unset refresh rate for package. Service is null");
             return;
         }
-        if (!VoltageUtils.isPackageInstalled(mContext, packageName)) {
+        if (!XperienceUtils.isPackageInstalled(mContext, packageName)) {
             Slog.e(TAG, "Failed to unset refresh rate for package. Package " + packageName + " is unavailable");
             return;
         }
