@@ -313,13 +313,21 @@ public class ThemeOverlayApplier implements Dumpable {
             final List<OverlayInfo> infos =
                     mOverlayManager.getOverlayInfosForTarget(pkgName, UserHandle.CURRENT);
             for (OverlayInfo info : infos) {
-                if (overlayName.equals(info.getOverlayName()))
+                if (overlayName.equals(info.getOverlayName())) {
                     return info.getOverlayIdentifier();
+                }
             }
             throw new IllegalStateException("No overlay found for " + name);
         }
-        return mOverlayManager.getOverlayInfo(name, UserHandle.CURRENT).getOverlayIdentifier();
+
+        OverlayInfo info = mOverlayManager.getOverlayInfo(name, UserHandle.CURRENT);
+        if (info != null) {
+             return info.getOverlayIdentifier();
+        } else {
+             throw new IllegalStateException("No overlay info found for " + name);
+        }
     }
+
 
     @VisibleForTesting
     protected OverlayManagerTransaction.Builder getTransactionBuilder() {
