@@ -15,7 +15,7 @@ object RuntimeFlags {
     fun newStatusBarIcons(): Boolean {
         val context = ActivityThread.currentApplication() ?: return false
         val enabled = Settings.System.getIntForUser(
-                context.contentResolver, NEW_STATUS_BAR_ICONS, 0, UserHandle.USER_CURRENT
+                context.contentResolver, NEW_STATUS_BAR_ICONS, 1, UserHandle.USER_CURRENT
         )
         return enabled == 1
     }
