@@ -2,7 +2,7 @@
  * SPDX-FileCopyrightText: 2024-2025 The LineageOS Project
  * SPDX-License-Identifier: Apache-2.0
  */
-package com.android.internal.custom.health;
+package com.android.internal.xperience.health;
 
 import android.content.Context;
 import android.text.format.DateFormat;

@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package com.android.server.custom.health.ccprovider;
+package com.android.server.xperience.health.ccprovider;
 
-import static com.android.internal.custom.health.HealthInterface.MODE_AUTO;
-import static com.android.internal.custom.health.HealthInterface.MODE_MANUAL;
-import static com.android.internal.custom.health.HealthInterface.MODE_LIMIT;
+import static com.android.internal.xperience.health.HealthInterface.MODE_AUTO;
+import static com.android.internal.xperience.health.HealthInterface.MODE_MANUAL;
+import static com.android.internal.xperience.health.HealthInterface.MODE_LIMIT;
 
-import static com.android.internal.custom.health.Util.msToString;
-import static com.android.internal.custom.health.Util.msToHMSString;
+import static com.android.internal.xperience.health.Util.msToString;
+import static com.android.internal.xperience.health.Util.msToHMSString;
 
 import android.content.Context;
 import android.content.Intent;
