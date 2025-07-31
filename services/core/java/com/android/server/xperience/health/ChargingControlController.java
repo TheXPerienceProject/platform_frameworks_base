@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.android.server.custom.health;
+package com.android.server.xperience.health;
 
-import static com.android.internal.custom.health.Util.getTimeMillisFromSecondOfDay;
-import static com.android.internal.custom.health.Util.msToString;
+import static com.android.internal.xperience.health.Util.getTimeMillisFromSecondOfDay;
+import static com.android.internal.xperience.health.Util.msToString;
 
 import android.app.AlarmManager;
 import android.content.BroadcastReceiver;
@@ -37,19 +37,19 @@ import com.android.internal.R;
 
 import java.io.PrintWriter;
 
-import com.android.server.custom.health.ccprovider.ChargingControlProvider;
-import com.android.server.custom.health.ccprovider.Deadline;
-import com.android.server.custom.health.ccprovider.Limit;
-import com.android.server.custom.health.ccprovider.Toggle;
+import com.android.server.xperience.health.ccprovider.ChargingControlProvider;
+import com.android.server.xperience.health.ccprovider.Deadline;
+import com.android.server.xperience.health.ccprovider.Limit;
+import com.android.server.xperience.health.ccprovider.Toggle;
 
 import android.provider.Settings;
 
 import vendor.lineage.health.IChargingControl;
 
-import static com.android.internal.custom.health.HealthInterface.MODE_NONE;
-import static com.android.internal.custom.health.HealthInterface.MODE_AUTO;
-import static com.android.internal.custom.health.HealthInterface.MODE_MANUAL;
-import static com.android.internal.custom.health.HealthInterface.MODE_LIMIT;
+import static com.android.internal.xperience.health.HealthInterface.MODE_NONE;
+import static com.android.internal.xperience.health.HealthInterface.MODE_AUTO;
+import static com.android.internal.xperience.health.HealthInterface.MODE_MANUAL;
+import static com.android.internal.xperience.health.HealthInterface.MODE_LIMIT;
 
 public class ChargingControlController extends LineageHealthFeature {
     private final IChargingControl mChargingControl;

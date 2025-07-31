@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.server.custom.health;
+package com.android.server.xperience.health;
 
 import android.Manifest;
 import android.content.Context;
@@ -27,8 +27,8 @@ import com.android.server.ServiceThread;
 
 import com.android.server.SystemService;
 
-import com.android.internal.custom.app.LineageContextConstants;
-import com.android.internal.custom.health.IHealthInterface;
+import com.android.internal.xperience.app.LineageContextConstants;
+import com.android.internal.xperience.health.IHealthInterface;
 import vendor.lineage.health.ChargingControlSupportedMode;
 
 import java.io.FileDescriptor;

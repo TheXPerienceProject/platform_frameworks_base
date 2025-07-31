@@ -314,7 +314,7 @@ import com.android.server.webkit.WebViewUpdateService;
 import com.android.server.wm.ActivityTaskManagerService;
 import com.android.server.wm.WindowManagerGlobalLock;
 import com.android.server.wm.WindowManagerService;
-import com.android.server.custom.health.HealthInterfaceService;
+import com.android.server.xperience.health.HealthInterfaceService;
 
 import dalvik.system.VMRuntime;
 // QTI_BEGIN: 2018-02-17: Wigig: frameworks/base: Add WiGig support

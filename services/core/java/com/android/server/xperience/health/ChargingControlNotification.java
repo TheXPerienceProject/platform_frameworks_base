@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package com.android.server.custom.health;
+package com.android.server.xperience.health;
 
-import static com.android.internal.custom.health.Util.msToString;
+import static com.android.internal.xperience.health.Util.msToString;
 
 import android.app.Notification;
 import android.app.NotificationChannel;

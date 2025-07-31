@@ -228,7 +228,7 @@ import com.android.internal.R;
 import com.android.internal.accessibility.AccessibilityShortcutController;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.app.AssistUtils;
-import com.android.internal.custom.hardware.LineageHardwareManager;
+import com.android.internal.xperience.hardware.LineageHardwareManager;
 import com.android.internal.display.BrightnessUtils;
 import com.android.internal.inputmethod.SoftInputShowHideReason;
 import com.android.internal.logging.MetricsLogger;

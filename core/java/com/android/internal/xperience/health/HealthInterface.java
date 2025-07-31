@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.internal.custom.health;
+package com.android.internal.xperience.health;
 
 import android.content.Context;
 import android.os.IBinder;
@@ -22,7 +22,7 @@ import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.util.Log;
 
-import com.android.internal.custom.app.LineageContextConstants;
+import com.android.internal.xperience.app.LineageContextConstants;
 
 public class HealthInterface {
     /**
