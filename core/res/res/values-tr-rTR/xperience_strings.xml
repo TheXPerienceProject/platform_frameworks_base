@@ -7,7 +7,26 @@
     <!-- Name of the nfc status bar icon. -->
     <!-- Accessibility label for nfc icon (not shown on screen) [CHAR LIMIT=NONE] -->
     <!-- Settings Restart -->
+    <string name="settings_restart_title">Ayarların yeniden başlatılması gerekir</string>
+    <string name="settings_restart_message">Tüm değişikliklerin etkin olabilmesi için ayarların yeniden başlatılması gerekiyor. Ayarlar şimdi yeniden başlatılsın mı?</string>
     <!-- System Reboot -->
+    <string name="system_restart_title">Sistemin yeniden başlatılması gerekiyor</string>
+    <string name="system_restart_message">Tüm değişikliklerin etkili olması için sistemin yeniden başlatılması gerekir. Sistem yeniden başlatılsın mı?</string>
     <!-- SystemUI Restart -->
+    <string name="systemui_restart_title">Sistem arayüzünü yeniden başlatma gerekli</string>
+    <string name="systemui_restart_message">Tüm değişikliklerin etkili olabilmesi için, sistem arayüzü yeniden başlatılmalı. Yeniden başlatmak ister misiniz?</string>
     <!-- Launcher Restart -->
+    <string name="launcher_restart_title">Başlatıcının yeniden başlatılması gerekiyor</string>
+    <string name="launcher_restart_message">Tüm değişikliklerin etkili olması için başlatıcının yeniden başlatılması gerekiyor. Başlatıcıyı şimdi yeniden başlatmak ister misiniz?</string>
+    <!-- Pocket Lock -->
+    <!-- Lock gesture -->
+    <!-- GameSpace -->
+    <!-- Health interface -->
+    <string name="charging_control_notification_channel">Şarj kontrolü</string>
+    <string name="charging_control_notification_title">Şarj kontrolü</string>
+    <string name="charging_control_notification_cancel_once">İptal</string>
+    <string name="charging_control_notification_content_limit">Pil %1$d%% seviyesine kadar şarj edilecek</string>
+    <string name="charging_control_notification_content_limit_reached">Pil %1$d%% seviyesine kadar şarj edildi</string>
+    <string name="charging_control_notification_content_target">Batarya %1$s%% saatinde şarj edilmiş olacak</string>
+    <string name="charging_control_notification_content_target_reached">Batarya şarj oldu</string>
 </resources>

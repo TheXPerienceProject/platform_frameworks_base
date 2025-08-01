@@ -25,4 +25,17 @@
     <!-- Restart to fastboot mode progress dialog. This is shown if the user chooses to restart the device. -->
     <!-- Status bar - icons -->
     <!-- AI Assistant affordance [CHAR LIMIT=32] -->
+    <!-- Refresh rate QS tile -->
+    <!-- Status bar network traffic monitor strings -->
+    <!-- Alert slide extras -->
+    <!-- Screen record -->
+    <!-- Text while recognizing face -->
+    <string name="face_unlock_recognizing">Riconoscimento faccia...</string>
+    <!-- CPUInfo tile -->
+    <!-- Compass QS Tile -->
+    <!-- Label for UI element which allows deleting the screenshot [CHAR LIMIT=30] -->
+    <string name="screenshot_delete_label">Elimina</string>
+    <!-- Content description indicating that tapping the element will allow deleting the screenshot [CHAR LIMIT=NONE] -->
+    <string name="screenshot_delete_description">Elimina screenshot</string>
+    <!-- PowerShare QS tile -->
 </resources>
