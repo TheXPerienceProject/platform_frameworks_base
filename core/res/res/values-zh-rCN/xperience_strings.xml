@@ -10,4 +10,15 @@
     <!-- System Reboot -->
     <!-- SystemUI Restart -->
     <!-- Launcher Restart -->
+    <!-- Pocket Lock -->
+    <!-- Lock gesture -->
+    <!-- GameSpace -->
+    <!-- Health interface -->
+    <string name="charging_control_notification_channel">充电控制</string>
+    <string name="charging_control_notification_title">充电控制</string>
+    <string name="charging_control_notification_cancel_once">取消</string>
+    <string name="charging_control_notification_content_limit">电池将充电至 %1$d%%</string>
+    <string name="charging_control_notification_content_limit_reached">电池已充电至 %1$d%%</string>
+    <string name="charging_control_notification_content_target">电池将在 %1$s 完全充满</string>
+    <string name="charging_control_notification_content_target_reached">电池已充满</string>
 </resources>

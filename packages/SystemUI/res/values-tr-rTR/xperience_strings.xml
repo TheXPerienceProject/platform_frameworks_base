@@ -5,15 +5,32 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_dash_charging_time"><xliff:g id="percentage">%2$s</xliff:g> • Dash Şarj Oluyor (tam dolmasına <xliff:g id="charging_time_left" example="4 hours and 2 minutes">%s</xliff:g> kaldı)</string>
+    <string name="keyguard_plugged_in_dash_charging"><xliff:g id="percentage">%s</xliff:g> • Dash Şarj Oluyor</string>
     <!-- Indication on the keyguard that is shown when the device is charging with a warp charger. Should match keyguard_plugged_in_warp_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_warp_charging_time"><xliff:g id="percentage">%2$s</xliff:g> Warp şarj oluyor(<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> sonra dolacak)</string>
     <string name="keyguard_plugged_in_warp_charging"><xliff:g id="percentage">%s</xliff:g> • Warp Şarj Oluyor</string>
     <!-- Indication on the keyguard that is shown when the device is charging with a VOOC charger. Should match keyguard_plugged_in_vooc_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_vooc_charging_time"><xliff:g id="percentage">%2$s</xliff:g> • WOOC Şarj oluyor (tam dolmasına <xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> kaldı)</string>
     <string name="keyguard_plugged_in_vooc_charging"><xliff:g id="percentage">%s</xliff:g> • VOOC Şarj oluyor</string>
     <!-- Indication on the keyguard that is shown when the device is charging with a turbo power charger. Should match keyguard_plugged_in_turbo_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_turbo_power_time"><xliff:g id="percentage">%2$s</xliff:g> • Turbo Şarj oluyor (tam dolmasına <xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> kaldı)</string>
     <string name="keyguard_plugged_in_turbo_charging"><xliff:g id="percentage">%s</xliff:g> • Turbo Şarj Oluyor</string>
     <!-- Name of the nfc status bar icon. -->
     <!-- Accessibility label for nfc icon (not shown on screen) [CHAR LIMIT=NONE] -->
     <!-- On The Go -->
+    <string name="onthego_notif_ticker">Yürüme modu etkinleştirildi</string>
+    <string name="onthego_notif_title">Yürüme modu etkin</string>
+    <string name="onthego_notif_stop">Dur</string>
+    <string name="onthego_notif_options">Şeçenekler</string>
+    <string name="onthego_notif_error">Yürüme modu başlatılamıyor</string>
+    <string name="onthego_notif_restart">Yürüme modunu yeniden başlat</string>
+    <string name="onthego_notif_camera_changed">Kamera modu değiştirildi</string>
+    <string name="onthego_transparency">Şeffaflık</string>
+    <string name="onthego_front_camera">Ön kamerayı kullan</string>
+    <string name="onthego_service_toggle">Servisi otomatik olarak yeniden başlat</string>
+    <string name="onthego_channel_name">Ana</string>
+    <string name="global_action_onthego">Yürüme modu</string>
     <!-- Advanced restart menu -->
     <!-- Button to indicate more options -->
     <string name="global_action_restart_more">Yeniden başlatılıyor\u2026</string>
@@ -38,4 +55,51 @@
     <!-- Status bar - icons -->
     <string name="status_bar_icons_title">Durum çubuğu simgeleri</string>
     <!-- AI Assistant affordance [CHAR LIMIT=32] -->
+    <string name="accessibility_assistant_button">Yapay Zeka Asistanı</string>
+    <!-- Refresh rate QS tile -->
+    <!-- Status bar network traffic monitor strings -->
+    <!-- Alert slide extras -->
+    <string name="volume_ringer_priority_only">Öncelik</string>
+    <string name="volume_ringer_alarms_only">Alarmlar</string>
+    <string name="volume_ringer_dnd">Rahatsız etmeyin</string>
+    <string name="tristate_flashlight">El feneri</string>
+    <string name="tristate_flashlight_on">El feneri açık</string>
+    <string name="tristate_flashlight_off">El feneri kapalı</string>
+    <string name="tristate_flashlight_blink">El fenerini yakıp söndür</string>
+    <string name="tristate_brightness_bright">Maksimum parlaklık</string>
+    <string name="tristate_brightness_dark">Minimum parlaklık</string>
+    <string name="tristate_brightness_auto">Otomatik parlaklık</string>
+    <string name="tristate_rotation_auto">Otomatik Döndür</string>
+    <string name="tristate_rotation_0">Dikey</string>
+    <string name="tristate_rotation_90">Yatay (90°)</string>
+    <string name="tristate_rotation_270">Yatay (270°)</string>
+    <!-- Screen record -->
+    <string name="screenrecord_lowquality_label">Daha küçük kalite</string>
+    <string name="screenrecord_lowquality_summary">Daha küçük dosya boyutu için</string>
+    <string name="screenrecord_longer_timeout_switch_label">Daha büyük dosya boyutu sınırı</string>
+    <string name="screenrecord_longer_timeout_switch_summary">Kayıt boyutunu 15 GB ile sınırlayın</string>
+    <string name="screenrecord_skip_time_label">Zamanlayıcıyı atla</string>
+    <string name="screenrecord_skip_time_summary">3 saniyelik beklemeyi kaldırın</string>
+    <string name="screenrecord_hevc_switch_label">HEVC kodlayıcı</string>
+    <string name="screenrecord_hevc_switch_summary">Daha verimli HEVC kodlayıcıyı kullanın</string>
+    <!-- Text while recognizing face -->
+    <string name="face_unlock_recognizing">Yüz algılanıyor...</string>
+    <!-- CPUInfo tile -->
+    <!-- Compass QS Tile -->
+    <string name="quick_settings_compass_label">Pusula</string>
+    <string name="quick_settings_compass_value"><xliff:g id="degrees">%1$.0f</xliff:g>\u00b0 <xliff:g id="direction">%2$s</xliff:g></string>
+    <string name="quick_settings_compass_init">Başlatılıyor\u2026</string>
+    <string name="quick_settings_compass_N">N</string>
+    <string name="quick_settings_compass_NE">NE</string>
+    <string name="quick_settings_compass_E">E</string>
+    <string name="quick_settings_compass_SE">SE</string>
+    <string name="quick_settings_compass_S">S</string>
+    <string name="quick_settings_compass_SW">SW</string>
+    <string name="quick_settings_compass_W">W</string>
+    <string name="quick_settings_compass_NW">NW</string>
+    <!-- Label for UI element which allows deleting the screenshot [CHAR LIMIT=30] -->
+    <string name="screenshot_delete_label">Sil</string>
+    <!-- Content description indicating that tapping the element will allow deleting the screenshot [CHAR LIMIT=NONE] -->
+    <string name="screenshot_delete_description">Ekran görüntüsünü sil</string>
+    <!-- PowerShare QS tile -->
 </resources>

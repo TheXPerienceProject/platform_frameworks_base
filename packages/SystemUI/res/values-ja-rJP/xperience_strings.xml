@@ -28,4 +28,27 @@
     <!-- Restart to fastboot mode progress dialog. This is shown if the user chooses to restart the device. -->
     <!-- Status bar - icons -->
     <!-- AI Assistant affordance [CHAR LIMIT=32] -->
+    <!-- Refresh rate QS tile -->
+    <!-- Status bar network traffic monitor strings -->
+    <!-- Alert slide extras -->
+    <!-- Screen record -->
+    <!-- Text while recognizing face -->
+    <!-- CPUInfo tile -->
+    <!-- Compass QS Tile -->
+    <string name="quick_settings_compass_label">コンパス</string>
+    <string name="quick_settings_compass_value"><xliff:g id="degrees">%1$.0f</xliff:g>\u00b0 <xliff:g id="direction">%2$s</xliff:g></string>
+    <string name="quick_settings_compass_init">初期化中...</string>
+    <string name="quick_settings_compass_N">北</string>
+    <string name="quick_settings_compass_NE">北東</string>
+    <string name="quick_settings_compass_E">東</string>
+    <string name="quick_settings_compass_SE">南東</string>
+    <string name="quick_settings_compass_S">南</string>
+    <string name="quick_settings_compass_SW">南西</string>
+    <string name="quick_settings_compass_W">西</string>
+    <string name="quick_settings_compass_NW">北西</string>
+    <!-- Label for UI element which allows deleting the screenshot [CHAR LIMIT=30] -->
+    <string name="screenshot_delete_label">削除</string>
+    <!-- Content description indicating that tapping the element will allow deleting the screenshot [CHAR LIMIT=NONE] -->
+    <string name="screenshot_delete_description">スクリーンショットを削除する</string>
+    <!-- PowerShare QS tile -->
 </resources>

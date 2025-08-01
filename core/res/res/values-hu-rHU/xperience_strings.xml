@@ -7,7 +7,33 @@
     <!-- Name of the nfc status bar icon. -->
     <!-- Accessibility label for nfc icon (not shown on screen) [CHAR LIMIT=NONE] -->
     <!-- Settings Restart -->
+    <string name="settings_restart_title">Újra kell indítani a Beállításokat</string>
+    <string name="settings_restart_message">Az összes módosítás érvényesítéséhez szükséges a Beállítások újraindítása. Újraindítja most?</string>
     <!-- System Reboot -->
+    <string name="system_restart_title">Újra kell indítani a rendszert</string>
+    <string name="system_restart_message">Az összes módosítás érvényesítéséhez Rendszer-újraindítás szükséges. Újraindítja most?</string>
     <!-- SystemUI Restart -->
+    <string name="systemui_restart_title">Újra kell indítani a rendszerfelületet</string>
+    <string name="systemui_restart_message">Az összes módosítás érvényesítéséhez szükséges a rendszerfelület újraindítása. Újraindítja most?</string>
     <!-- Launcher Restart -->
+    <string name="launcher_restart_title">Újra kell indítani a Launcher-t</string>
+    <string name="launcher_restart_message">Az összes módosítás érvényesítéséhez Launcher-újraindítás szükséges. Újraindítja most?</string>
+    <!-- Pocket Lock -->
+    <string name="pocket_mode_title">A Zsebmód aktív</string>
+    <string name="pocket_mode_illustration_description">A zsebben lévő telefon illusztrációja</string>
+    <string name="pocket_mode_instructions_header">A telefon használatához:</string>
+    <string name="pocket_mode_instruction_step1">1. Győződjön meg arról, hogy a közelségérzékelő fent látható piros területe nincs takarva illetve por- és szennyeződésmentes.</string>
+    <string name="pocket_mode_instruction_step2">2. Tartsa lenyomva a bekapcsológombot a Zsebmódból való lkilépéshez.</string>
+    <!-- Lock gesture -->
+    <string name="gesture_locked_warning">A vezérlők feloldásához csúsztasson újból</string>
+    <!-- GameSpace -->
+    <string name="gamespace_new_game_added">A Játéktérhez adta a következőt: <xliff:g id="name" example="MyApp">%s</xliff:g></string>
+    <!-- Health interface -->
+    <string name="charging_control_notification_channel">Kontrollált töltés</string>
+    <string name="charging_control_notification_title">Kontrollált töltés</string>
+    <string name="charging_control_notification_cancel_once">Elutasítás</string>
+    <string name="charging_control_notification_content_limit">Az akkumulátor %1$d%% -ig lesz feltöltve</string>
+    <string name="charging_control_notification_content_limit_reached">Az akkumulátor feltöltődött %1$d%% -ig</string>
+    <string name="charging_control_notification_content_target">Az akkumulátor teljesen feltöltődik ekkorra %1$s</string>
+    <string name="charging_control_notification_content_target_reached">Az akku feltöltve</string>
 </resources>
