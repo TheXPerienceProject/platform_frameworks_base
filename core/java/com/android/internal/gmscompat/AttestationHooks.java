@@ -20,6 +20,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.Process;
 import android.os.SystemProperties;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -29,8 +30,13 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.reflect.Field;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -43,6 +49,9 @@ public final class AttestationHooks {
     private static final String PROCESS_UNSTABLE = "com.google.android.gms.unstable";
     private static final String SAMSUNG = "com.samsung.android.";
     private static final String DATA_FILE = "pif.json";
+    
+    // Default API endpoint for fetching from our host
+    private static final String API = "https://klozz.dev/attest/pif.json";
 
     private static final boolean SPOOF_GMS =
             SystemProperties.getBoolean("persist.sys.spoof.gms", true);
@@ -97,7 +106,7 @@ public final class AttestationHooks {
             if (PROCESS_UNSTABLE.equals(processName)) {
                 sProcessName = processName;
                 sIsGms = true;
-                setGmsCertifiedProps();
+                setGmsCertifiedProps(context);
             }
         }
 
@@ -109,9 +118,26 @@ public final class AttestationHooks {
         }
     }
 
-    private static void setGmsCertifiedProps() {
-        File dataFile = new File(Environment.getDataSystemDirectory(), DATA_FILE);
-        String savedProps = readFromFile(dataFile);
+    private static void setGmsCertifiedProps(Context context) {
+        // Check for user-provided PIF data first (from file chooser)
+        String userProvidedProps = Settings.Secure.getString(context.getContentResolver(), 
+                Settings.Secure.PIF_DATA);
+        
+        String savedProps = null;
+        if (userProvidedProps != null && !userProvidedProps.isEmpty()) {
+            dlog("Using user-provided PIF data from file chooser");
+            savedProps = userProvidedProps;
+        } else {
+            // Fallback to fetched data from Settings
+            savedProps = Settings.Secure.getString(context.getContentResolver(), 
+                    Settings.Secure.FETCHED_PIF);
+            
+            if (savedProps == null || TextUtils.isEmpty(savedProps)) {
+                // Final fallback to file system
+                File dataFile = new File(Environment.getDataSystemDirectory(), DATA_FILE);
+                savedProps = readFromFile(dataFile);
+            }
+        }
 
         if (TextUtils.isEmpty(savedProps)) {
             Log.e(TAG, "No props found to spoof");
@@ -215,6 +241,79 @@ public final class AttestationHooks {
             }
         }
         return content.toString();
+    }
+
+    private static void writeToFile(File file, String data) {
+        try (FileWriter writer = new FileWriter(file)) {
+            writer.write(data);
+            // Set -rw-r--r-- (644) permission to make it readable by others.
+            file.setReadable(true, false);
+        } catch (IOException e) {
+            Log.e(TAG, "Error writing to file", e);
+        }
+    }
+
+    private static String fetchProps() {
+        try {
+            URL url = new URI(API).toURL();
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+
+            try {
+                urlConnection.setConnectTimeout(10000);
+                urlConnection.setReadTimeout(10000);
+
+                try (BufferedReader reader =
+                        new BufferedReader(new InputStreamReader(urlConnection.getInputStream()))) {
+                    StringBuilder response = new StringBuilder();
+                    String line;
+
+                    while ((line = reader.readLine()) != null) {
+                        response.append(line);
+                    }
+
+                    return response.toString();
+                }
+            } finally {
+                urlConnection.disconnect();
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error making an API request", e);
+            return null;
+        }
+    }
+
+    public static void updateCertifiedProps(Context context) {
+        try {
+            dlog("Updating certified props");
+
+            // Check for user-provided PIF data first (from file chooser)
+            String userProvidedProps = Settings.Secure.getString(context.getContentResolver(), 
+                    Settings.Secure.PIF_DATA);
+            
+            if (userProvidedProps != null && !userProvidedProps.isEmpty()) {
+                dlog("Using user-provided PIF data from file chooser");
+                File dataFile = new File(Environment.getDataSystemDirectory(), DATA_FILE);
+                writeToFile(dataFile, userProvidedProps);
+                return;
+            }
+
+            // Fallback to fetched data from GitHub
+            String props = fetchProps();
+
+            if (props != null) {
+                dlog("Found new props from GitHub");
+                File dataFile = new File(Environment.getDataSystemDirectory(), DATA_FILE);
+                writeToFile(dataFile, props);
+                // Also store in Settings for compatibility
+                Settings.Secure.putString(context.getContentResolver(), 
+                        Settings.Secure.FETCHED_PIF, props);
+                dlog("Certified props updated successfully");
+            } else {
+                dlog("Failed to fetch props from GitHub");
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error updating certified props", e);
+        }
     }
 
     private static void dlog(String message) {
