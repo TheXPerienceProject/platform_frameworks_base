@@ -19588,6 +19588,7 @@ public class ActivityManagerService extends IActivityManager.Stub
         public void onChange(boolean selfChange) {
             update();
         }
+    }
     
     public ProcessRecord getProcessRecord(String str) {
         ProcessRecord processRecordLocked = null;
@@ -19601,7 +19602,6 @@ public class ActivityManagerService extends IActivityManager.Stub
         }
         return processRecordLocked;
     }
-}
 
     @Override
     public void releaseMemory(int minAdj, int maxKillCount, boolean includeUIProcesses, boolean skipCamera) {
