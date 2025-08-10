@@ -146,7 +146,6 @@ public class InternetDialogDelegateLegacy implements
     private TextView mAirplaneModeSummaryText;
     private CompoundButton mMobileDataToggle;
     private View mMobileToggleDivider;
-    private Switch mWiFiToggle;
     private CompoundButton mWiFiToggle;
     private Button mDoneButton;
 
