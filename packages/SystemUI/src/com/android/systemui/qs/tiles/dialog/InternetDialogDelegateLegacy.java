@@ -175,7 +175,6 @@ public class InternetDialogDelegateLegacy implements
     private CompoundButton mMobileDataToggle;
     private Switch mSecondaryMobileDataToggle;
     private View mMobileToggleDivider;
-    private Switch mWiFiToggle;
     private CompoundButton mWiFiToggle;
     private Button mDoneButton;
 
