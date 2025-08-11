@@ -3547,6 +3547,66 @@ public final class SystemServer implements Dumpable {
         t.traceEnd();
 
         t.traceEnd(); // startOtherServices
+
+        // Bootanimation performance boost
+        boostBootAnimation();
+
+        // Watch when bootanimation ends to remove boost
+        new Thread(() -> {
+            try {
+                while (true) {
+                    String animExit = SystemProperties.get("service.bootanim.exit", "");
+                    if ("1".equals(animExit)) {
+                        int pid = findProcessPid("bootanimation");
+                        if (pid > 0) {
+                            ActivityManager.getService().animationBoost(pid, false);
+                            Slog.i("SystemServer", "Boot animation boost disabled (pid=" + pid + ")");
+                        }
+                        break;
+                    }
+                    Thread.sleep(500);
+                }
+            } catch (Exception e) {
+                Slog.e("SystemServer", "Error disabling bootanimation boost", e);
+            }
+        }, "BootAnimBoostEnd").start();
+    }
+
+    /**
+     * Attempts to find the bootanimation process and apply a performance “boost”
+     * so that the boot animation runs smoothly.
+     */
+    private void boostBootAnimation() {
+        try {
+            int pid = findProcessPid("bootanimation");
+            if (pid > 0) {
+                ActivityManager.getService().animationBoost(pid, true);
+                Slog.i("SystemServer", "Boot animation boost enabled (pid=" + pid + ")");
+            } else {
+                Slog.w("SystemServer", "Boot animation process not found for boost");
+            }
+        } catch (Exception e) {
+            Slog.e("SystemServer", "Failed to boost boot animation", e);
+        }
+    }
+
+    /**
+     * Searches for the PID of a process given its name.
+     *
+     * @param processName Name of the process to search for (e.g., “bootanimation”)
+     * @return The PID if found, or -1 if it does not exist
+     */
+    private int findProcessPid(String processName) {
+        ActivityManager am = (ActivityManager) mSystemContext.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningAppProcessInfo> procs = am.getRunningAppProcesses();
+        if (procs != null) {
+            for (ActivityManager.RunningAppProcessInfo proc : procs) {
+                if (processName.equals(proc.processName)) {
+                    return proc.pid;
+                }
+            }
+        }
+        return -1;
     }
 
     private void startOnDeviceIntelligenceService(TimingsTraceAndSlog t) {
