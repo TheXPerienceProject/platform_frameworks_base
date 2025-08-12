@@ -696,12 +696,7 @@ public abstract class LayoutInflater {
             Trace.traceBegin(Trace.TRACE_TAG_VIEW, name);
 
             // Opportunistically create view directly instead of using reflection
-            View view;
-            try {
-                view = tryCreateViewDirect(prefixedName, viewContext, attrs);
-            } catch (Exception e) {
-                view = null;
-            }
+            View view = tryCreateViewDirect(prefixedName, viewContext, attrs);
             if (view == null) {
                 Constructor<? extends View> constructor = sConstructorMap.get(name);
                 if (constructor != null && !verifyClassLoader(constructor)) {
