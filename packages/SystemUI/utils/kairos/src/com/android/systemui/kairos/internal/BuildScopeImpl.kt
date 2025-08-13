@@ -49,10 +49,13 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.DisposableHandle
+import kotlinx.coroutines.NonDisposableHandle
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.job
+
+import android.util.Log
 
 internal class BuildScopeImpl(val stateScope: StateScopeImpl, val coroutineScope: CoroutineScope) :
     InternalBuildScope, InternalStateScope by stateScope {
@@ -115,15 +118,29 @@ internal class BuildScopeImpl(val stateScope: StateScopeImpl, val coroutineScope
         deferAction { block() }
     }
 
+    private object NoOpDisposableHandle : DisposableHandle {
+        override fun dispose() {
+            // No-op
+        }
+    }
+
     override fun <A> Events<A>.observe(
         coroutineContext: CoroutineContext,
         block: EffectScope.(A) -> Unit,
     ): DisposableHandle {
         val subRef = AtomicReference<Maybe<Output<A>>>(null)
         val childScope = coroutineScope.childScope()
-        lateinit var cancelHandle: DisposableHandle
+        // Initialize with a safe no-op handle to avoid NullPointerException
+        var cancelHandle: DisposableHandle = NoOpDisposableHandle
+
         val handle = DisposableHandle {
-            cancelHandle.dispose()
+            if (cancelHandle === NoOpDisposableHandle) {
+                android.util.Log.w(
+                    "KairosDebug",
+                    "dispose() called before cancelHandle was reassigned — possible early cancellation."
+                )
+            }
+        cancelHandle.dispose()
             subRef.getAndSet(Absent)?.let { output ->
                 if (output is Present) {
                     @Suppress("DeferredResultUnused")
@@ -134,7 +151,7 @@ internal class BuildScopeImpl(val stateScope: StateScopeImpl, val coroutineScope
             }
         }
         // When our scope is cancelled, deactivate this observer.
-        cancelHandle = childScope.coroutineContext.job.invokeOnCompletion { handle.dispose() }
+        cancelHandle = childScope.coroutineContext.job.invokeOnCompletion { handle?.dispose() }
         val localNetwork = LocalNetwork(network, childScope, endSignal)
         val outputNode =
             Output<A>(
