@@ -13351,11 +13351,25 @@ public final class Settings {
                 "com.android.server.display.HBM_SETTING_KEY";
 
         /**
+         * User selectable PIF data.
+         * @hide
+         */
+        @Readable
+        public static final String PIF_DATA_TIMESTAMP = "pif_data_timestamp";
+
+        /**
          * User selectable keybox data.
          * @hide
          */
         @Readable
         public static final String KEYBOX_DATA = "keybox_data";
+
+	/**
+         * User selectable keybox data.
+         * @hide
+         */
+        @Readable
+        public static final String KEYBOX_DATA_TIMESTAMP = "keybox_data_timestamp";
 
         /**
          * Whether to include options in power menu for rebooting into recovery or bootloader
