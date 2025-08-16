@@ -157,6 +157,4 @@
     <java-symbol type="dimen" format="float" name="presentation_clock_text_size" />
     <java-symbol type="dimen" format="float" name="large_clock_text_size" />
     <java-symbol type="dimen" format="float" name="small_clock_text_size" />
-=======
->>>>>>> parent of 4b38e83a9415 (Introduce PixelPropsUtils)
 </resources>
