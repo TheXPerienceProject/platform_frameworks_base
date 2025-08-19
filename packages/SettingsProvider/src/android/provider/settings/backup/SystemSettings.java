@@ -128,7 +128,8 @@ public class SystemSettings {
                 Settings.System.CV_ENABLED,
                 Settings.System.QS_SHOW_BATTERY_ESTIMATE,
                 Settings.System.STATUS_BAR_BATTERY_STYLE,
-                Settings.System.SHOW_BATTERY_PERCENT_INSIDE
+                Settings.System.SHOW_BATTERY_PERCENT_INSIDE,
+                Settings.System.DC_DIM_ENABLED
         ));
         if (Flags.backUpSmoothDisplayAndForcePeakRefreshRate()) {
             settings.add(Settings.System.PEAK_REFRESH_RATE);
