@@ -28,6 +28,7 @@ import com.android.systemui.qs.shared.model.TileCategory
 import com.android.systemui.qs.tileimpl.QSTileImpl
 import com.android.systemui.qs.tiles.AlarmTile
 import com.android.systemui.qs.tiles.CameraToggleTile
+import com.android.systemui.qs.tiles.DcDimTile
 import com.android.systemui.qs.tiles.DndTile
 import com.android.systemui.qs.tiles.FlashlightTile
 import com.android.systemui.qs.tiles.LocationTile
@@ -528,4 +529,9 @@ interface PolicyModule {
     @IntoMap
     @StringKey(UiModeNightTile.TILE_SPEC)
     fun bindUiModeNightTile(uiModeNightTile: UiModeNightTile): QSTileImpl<*>
+
+    @Binds
+    @IntoMap
+    @StringKey(DcDimTile.TILE_SPEC)
+    fun bindDcDimTile(dcDimTile: DcDimTile): QSTileImpl<*>
 }
