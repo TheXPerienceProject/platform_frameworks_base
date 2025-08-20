@@ -173,7 +173,7 @@ public class InternetDialogDelegateLegacy implements
     private TextView mMobileSummaryText;
     private TextView mAirplaneModeSummaryText;
     private CompoundButton mMobileDataToggle;
-    private Switch mSecondaryMobileDataToggle;
+    private CompoundButton mSecondaryMobileDataToggle;
     private View mMobileToggleDivider;
     private CompoundButton mWiFiToggle;
     private Button mDoneButton;
@@ -1129,7 +1129,7 @@ public class InternetDialogDelegateLegacy implements
                     context.getString(R.string.data_disable_ciwlan_call_might_drop_message);
         }
 
-        final Switch mobileDataToggle = (subId == mDefaultDataSubId)
+        final CompoundButton mobileDataToggle = (subId == mDefaultDataSubId)
                 ? mMobileDataToggle : mSecondaryMobileDataToggle;
         mAlertDialog = new AlertDialog.Builder(context)
                 .setTitle(R.string.mobile_data_disable_title)
