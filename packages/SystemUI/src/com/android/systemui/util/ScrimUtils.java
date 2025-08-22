@@ -40,7 +40,6 @@ public class ScrimUtils {
     private final ScrimController mScrimController;
     private final StatusBarStateController mStatusBarStateController;
     private final WallpaperDepthUtils mWallpaperDepthUtils;
-    private final MediaArtUtils mMediaArtUtils;
     private final PeekDisplayViewController mPeekDisplayViewController;
     private final NowBarController mNowBarController;
 
@@ -78,7 +77,6 @@ public class ScrimUtils {
         mScrimController = Dependency.get(ScrimController.class);
         mStatusBarStateController = Dependency.get(StatusBarStateController.class);
         mWallpaperDepthUtils = WallpaperDepthUtils.getInstance(mContext);
-        mMediaArtUtils = MediaArtUtils.getInstance(mContext);
         mPeekDisplayViewController = PeekDisplayViewController.Companion.getInstance();
         mNowBarController = NowBarController.getInstance(mContext);
         mStatusBarStateController.addCallback(mStatusBarStateListener);
@@ -103,7 +101,6 @@ public class ScrimUtils {
 
     public void setViewAlpha(float subjectAlpha) {
         mWallpaperDepthUtils.setSubjectAlpha(subjectAlpha);
-        mMediaArtUtils.setSubjectAlpha(subjectAlpha);
         mPeekDisplayViewController.setAlpha(subjectAlpha);
         mNowBarController.setAlpha(subjectAlpha);
     }
@@ -118,11 +115,9 @@ public class ScrimUtils {
         mExpansionState = state;
         if (mExpansionState == ExpansionState.QS_NOT_EXPANDED) {
             mWallpaperDepthUtils.updateDepthWallpaper();
-            mMediaArtUtils.updateMediaArtVisibility();
             mPeekDisplayViewController.showPeekDisplayView();
             mNowBarController.show();
         } else if (mExpansionState == ExpansionState.QS_FULLY_EXPANDED) {
-            mMediaArtUtils.hideMediaArt();
             mWallpaperDepthUtils.hideDepthWallpaper();
             mPeekDisplayViewController.hidePeekDisplayView();
             mNowBarController.hide();
@@ -138,27 +133,22 @@ public class ScrimUtils {
     }
 
     private void updateNotifContainerElements() {
-        mMediaArtUtils.updateMediaArtVisibility();
         mWallpaperDepthUtils.updateDepthWallpaperVisibility();
     }
 
     public void onScrimDispatched() {
-        mMediaArtUtils.updateMediaArtVisibility();
         mWallpaperDepthUtils.updateDepthWallpaper();
     }
 
     private void onDozeChanged(boolean dozing) {
-        mMediaArtUtils.onDozingChanged(dozing);
         mWallpaperDepthUtils.onDozingChanged(dozing);
     }
 
     private void onKgFadingAwayChanged() {
-        mMediaArtUtils.hideMediaArt();
         mWallpaperDepthUtils.hideDepthWallpaper();
     }
 
     private void onKgGoingAwayChanged() {
-        mMediaArtUtils.hideMediaArt();
         mWallpaperDepthUtils.hideDepthWallpaper();
     }
 
