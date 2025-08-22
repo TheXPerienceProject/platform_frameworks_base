@@ -198,6 +198,26 @@ public class ImageWallpaper extends WallpaperService {
                     ? mWallpaperManager.peekBitmapDimensions(getSourceFlag(), true)
                     : mWallpaperManager.peekBitmapDimensionsAsUser(getSourceFlag(), true,
                     mUserTracker.getUserId());
+            // HANDLE NULL DIMENSIONS - FIX FOR UNCOMPRESSED/CORRUPTED WALLPAPERS
+            if (dimensions == null) {
+                Log.w(TAG, "Failed to get wallpaper dimensions, attempting fallback...");
+                try {
+                    // Fallback: Load the actual bitmap to get dimensions
+                    Bitmap tempBitmap = mWallpaperManager.getBitmapAsUser(
+                            mUserTracker.getUserId(), false, getSourceFlag(), true);
+                    if (tempBitmap != null) {
+                        dimensions = new Rect(0, 0, tempBitmap.getWidth(), tempBitmap.getHeight());
+                        tempBitmap.recycle();
+                        Log.i(TAG, "Fallback successful: dimensions=" + dimensions.width() + "x" + dimensions.height());
+                    } else {
+                        throw new RuntimeException("Fallback also failed");
+                    }
+                } catch (Exception e) {
+                    Log.e(TAG, "Complete failure to get wallpaper dimensions, using defaults", e);
+                    dimensions = new Rect(0, 0, MIN_SURFACE_WIDTH, MIN_SURFACE_HEIGHT);
+                }
+            }
+
             int width = Math.max(MIN_SURFACE_WIDTH, dimensions.width());
             int height = Math.max(MIN_SURFACE_HEIGHT, dimensions.height());
             mSurfaceHolder.setFixedSize(width, height);
