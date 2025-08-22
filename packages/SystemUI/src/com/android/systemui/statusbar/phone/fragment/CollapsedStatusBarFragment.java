@@ -139,7 +139,6 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     private View mPrimaryOngoingActivityChip;
     private View mSecondaryOngoingActivityChip;
     private View mNotificationIconAreaInner;
-    private View mClockView;
     private View mCenterClockView;
     private View mRightClockView;
     // Visibilities come in from external system callers via disable flags, but we also sometimes
@@ -412,7 +411,6 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         mPrimaryOngoingActivityChip = mStatusBar.findViewById(R.id.ongoing_activity_chip_primary);
         mSecondaryOngoingActivityChip =
                 mStatusBar.findViewById(R.id.ongoing_activity_chip_secondary);
-        mClockView = mStatusBar.findViewById(R.id.clock);
         mCenterClockView = mStatusBar.findViewById(R.id.clock_center);
         mRightClockView = mStatusBar.findViewById(R.id.clock_right);
         if (!StatusBarRootModernization.isEnabled()) {
