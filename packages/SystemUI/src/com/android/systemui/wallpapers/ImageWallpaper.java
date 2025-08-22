@@ -436,6 +436,10 @@ public class ImageWallpaper extends WallpaperService {
                 mBitmapUsages += 2;
                 Trace.beginSection("WPMS.recomputeColorExtractorMiniBitmap");
                 recomputeColorExtractorMiniBitmap();
+
+                // force notify colors
+                notifyColorsChanged();
+
                 Trace.endSection();
                 Trace.beginSection("WPMS.drawFrameInternal");
                 drawFrameInternal();
@@ -484,8 +488,14 @@ public class ImageWallpaper extends WallpaperService {
 
         @Override
         public @Nullable WallpaperColors onComputeColors() {
-            if (!offloadColorExtraction()) return null;
-            return mWallpaperLocalColorExtractor.onComputeColors();
+            if (!offloadColorExtraction()) {
+                Log.w(TAG, "offloadColorExtraction is disabled, returning null");
+                return null;
+            }
+    
+            WallpaperColors colors = mWallpaperLocalColorExtractor.onComputeColors();
+            Log.i(TAG, "onComputeColors returned: " + colors);
+            return colors;
         }
 
         @Override
