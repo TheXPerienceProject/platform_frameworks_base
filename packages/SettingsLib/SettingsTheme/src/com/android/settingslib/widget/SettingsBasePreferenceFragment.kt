@@ -43,6 +43,7 @@ abstract class SettingsBasePreferenceFragment : PreferenceFragmentCompat() {
         if (SettingsThemeHelper.isExpressiveTheme(requireContext())) {
             // Don't allow any divider in between the preferences in expressive design.
             setDivider(null)
+            setDividerHeight(0)
         }
     }
 
