@@ -41,4 +41,8 @@
     <!-- Content description indicating that tapping the element will allow deleting the screenshot [CHAR LIMIT=NONE] -->
     <string name="screenshot_delete_description">删除屏幕截图</string>
     <!-- PowerShare QS tile -->
+    <!-- QS DC Dim -->
+    <!-- USB function dialog - copied from Settings -->
+    <!-- Clock Weather -->
+    <!-- Now bar -->
 </resources>

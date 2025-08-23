@@ -43,4 +43,8 @@
     <!-- Content description indicating that tapping the element will allow deleting the screenshot [CHAR LIMIT=NONE] -->
     <string name="screenshot_delete_description">Xóa ảnh chụp màn hình</string>
     <!-- PowerShare QS tile -->
+    <!-- QS DC Dim -->
+    <!-- USB function dialog - copied from Settings -->
+    <!-- Clock Weather -->
+    <!-- Now bar -->
 </resources>
