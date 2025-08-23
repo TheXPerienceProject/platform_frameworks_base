@@ -351,6 +351,7 @@ public class Clock extends TextView implements
                 mClockBgOn = sbClockBgStyle != 0;
                 mClockBgStyleIsTwo = sbClockBgStyle == 2;
                 mClockBgStyleIsEight = sbClockBgStyle == 8;
+                updateClockVisibility();
         }
     }
 
