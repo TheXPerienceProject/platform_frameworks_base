@@ -27,4 +27,7 @@
     <color name="holo_green_light_chip">@android:color/system_accent3_600</color>
     <color name="colorAccent">@android:color/system_accent1_600</color>
     <color name="colorAccentVariant">@android:color/system_accent3_600</color>
+
+    <!-- Notification counter -->
+    <color name="notification_number_text_color">#ff000000</color>
 </resources>
