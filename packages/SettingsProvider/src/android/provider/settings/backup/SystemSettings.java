@@ -126,6 +126,7 @@ public class SystemSettings {
                 Settings.System.NOTIFICATION_COOLDOWN_VIBRATE_UNLOCKED,
                 Settings.System.PREFERRED_REGION,
                 Settings.System.CV_ENABLED,
+                Settings.System.GAMING_MODE_LTPO_FEATURES,
                 Settings.System.QS_SHOW_BATTERY_ESTIMATE,
                 Settings.System.STATUS_BAR_BATTERY_STYLE,
                 Settings.System.SHOW_BATTERY_PERCENT_INSIDE,
