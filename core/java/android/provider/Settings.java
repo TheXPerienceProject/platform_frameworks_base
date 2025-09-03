@@ -6575,7 +6575,14 @@ public final class Settings {
          * 0 = 0ff, 1 = on
          * @hide
          */
-        public static final String DOUBLE_TAP_SLEEP_GESTURE = "double_tap_sleep_gesture";
+         public static final String DOUBLE_TAP_SLEEP_GESTURE = "double_tap_sleep_gesture";
+
+        /**
+         * Whether gaming mode toggles ltpo features
+         * @hide
+         */
+        @Readable
+        public static final String GAMING_MODE_LTPO_FEATURES = "gaming_mode_ltpo_features";
 
         /**
          * Whether charging control should be enabled.
@@ -13708,6 +13715,12 @@ public final class Settings {
          * @hide
          */
         public static final String UDFPS_ANIM_STYLE = "udfps_anim_style";
+
+        /**
+         * Whether to enable ltpo features
+         * @hide
+         */
+        public static final String LTPO_FEATURES_ENABLED = "ltpo_features_enabled";
 
         /**
          * These entries are considered common between the personal and the managed profile,

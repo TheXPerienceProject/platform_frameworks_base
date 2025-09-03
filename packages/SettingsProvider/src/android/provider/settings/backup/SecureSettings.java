@@ -311,5 +311,6 @@ public class SecureSettings {
         Settings.Secure.DC_DIM_AUTO_TIME,
         Settings.Secure.EXTRA_DIM_AUTO_MODE,
         Settings.Secure.EXTRA_DIM_AUTO_TIME
+        Settings.Secure.LTPO_FEATURES_ENABLED,
     };
 }
