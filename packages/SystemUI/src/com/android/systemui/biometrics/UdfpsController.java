@@ -312,6 +312,7 @@ public class UdfpsController implements DozeReceiver, Dumpable {
             mUdfpsOverlayInteractor.setRequestId(requestId);
             mFgExecutor.execute(() -> UdfpsController.this.showUdfpsOverlay(
                     new UdfpsControllerOverlay(
+                        mContext,
                         mInflater,
                         mWindowManager,
                         mAccessibilityManager,
@@ -329,6 +330,7 @@ public class UdfpsController implements DozeReceiver, Dumpable {
                         mDeviceEntryUdfpsTouchOverlayViewModel,
                         mDefaultUdfpsTouchOverlayViewModel,
                         mPromptUdfpsTouchOverlayViewModel,
+                        mShadeInteractor,
                         mUdfpsOverlayInteractor,
                         mPowerInteractor,
                         mScope
