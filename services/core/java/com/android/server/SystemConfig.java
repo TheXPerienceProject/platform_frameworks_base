@@ -836,6 +836,36 @@ public class SystemConfig {
         if (platformFile != null) {
             readPermissionsFromXml(parser, platformFile, permissionFlag);
         }
+
+	//enforce those google features
+	addForcedGoogleFeatures();
+    }
+
+
+    private void addForcedGoogleFeatures() {
+        final String[] googleFeatures = {
+            "com.google.android.apps.dialer.call_recording_audio",
+            "com.google.android.apps.dialer.SUPPORTED",
+            "com.google.android.feature.ANDROID_ONE_EXPERIENCE",
+            "com.google.android.feature.ASI",
+            "com.google.android.feature.CONTEXTUAL_SEARCH",
+            "com.google.android.feature.EXCHANGE_6_2",
+            "com.google.android.feature.NEXT_GENERATION_ASSISTANT",
+            "com.google.android.feature.TURBO_PRELOAD",
+            "android.software.game_service",
+        };
+
+        for (String feature : googleFeatures) {
+            if (!mAvailableFeatures.containsKey(feature)) {
+                FeatureInfo fi = new FeatureInfo();
+                fi.name = feature;
+                fi.flags = 0;
+                mAvailableFeatures.put(feature, fi);
+                if (false) { // DEBUG
+                    Slog.d(TAG, "Added Google feature: " + feature);
+                }
+            }
+        }
     }
 
     private void logNotAllowedInPartition(String name, File permFile, XmlPullParser parser) {
