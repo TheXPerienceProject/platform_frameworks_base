@@ -107,8 +107,6 @@ public class UdfpsAnimation extends ImageView {
                 | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS;
         mAnimParams.gravity = Gravity.TOP | Gravity.CENTER;
 
-        // updatePosition(); // We move it so that it is called after ContentObserver
-
         try {
             PackageManager pm = mContext.getPackageManager();
             mApkResources = pm.getResourcesForApplication(mUdfpsAnimationPackage);
@@ -147,8 +145,10 @@ public class UdfpsAnimation extends ImageView {
                 });
             }
         };
+
         mContext.getContentResolver().registerContentObserver(
             udfpsOffsetUri, false, offsetObserver, UserHandle.USER_CURRENT);
+
         // Initial call to set the position
         updatePosition();
     }
@@ -190,11 +190,10 @@ public class UdfpsAnimation extends ImageView {
         float udfpsRadius = isFullResolution ? mAuthController.getUdfpsRadius() : mProps.getLocation().sensorRadius;
         float udfpsLocationY = isFullResolution && udfpsLocation != null ? udfpsLocation.y : mProps.getLocation().sensorLocationY;
 
-        // Read from Settings.System
+        // Read from Settings.System, and use the integer resource as default
+        int defaultOffset = mContext.getResources().getInteger(R.integer.udfps_animation_offset);
         int animationOffset = Settings.System.getIntForUser(mContext.getContentResolver(),
-                UDFPS_ANIMATION_OFFSET_CUSTOM,
-                mContext.getResources().getDimensionPixelSize(R.dimen.udfps_animation_offset),
-                UserHandle.USER_CURRENT);
+            UDFPS_ANIMATION_OFFSET_CUSTOM, defaultOffset, UserHandle.USER_CURRENT);
 
         mAnimParams.y = (int) (udfpsLocationY * scaleFactor) - (int) (udfpsRadius * scaleFactor)
                 - (mAnimationSize / 2) + (int) (animationOffset * scaleFactor);

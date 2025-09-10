@@ -102,7 +102,7 @@
 
     <!-- Udfps fingerprint animation -->
     <dimen name="udfps_animation_size">280dp</dimen>
-    <dimen name="udfps_animation_offset">0dp</dimen>
+    <integer name="udfps_animation_offset">0</integer>
 
     <!-- Island notification -->
     <dimen name="island_icon_size">48dp</dimen>
