@@ -73,6 +73,9 @@ public class UdfpsAnimation extends ImageView {
     private final AuthController mAuthController;
     private final FingerprintSensorPropertiesInternal mProps;
 
+    // Debug offset
+    private static final String UDFPS_ANIMATION_OFFSET_CUSTOM = "udfps_animation_offset_custom";
+
     public UdfpsAnimation(Context context, WindowManager windowManager,
            FingerprintSensorPropertiesInternal props, AuthController authController,
            KeyguardStateController keyguardStateController) {
@@ -104,7 +107,7 @@ public class UdfpsAnimation extends ImageView {
                 | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS;
         mAnimParams.gravity = Gravity.TOP | Gravity.CENTER;
 
-        updatePosition();
+        // updatePosition(); // We move it so that it is called after ContentObserver
 
         try {
             PackageManager pm = mContext.getPackageManager();
@@ -133,6 +136,21 @@ public class UdfpsAnimation extends ImageView {
         mContext.getContentResolver().registerContentObserver(
                 udfpsAnimStyle, false, contentObserver, UserHandle.USER_CURRENT);
         contentObserver.onChange(true, udfpsAnimStyle);
+
+        // Debug udfps offset
+        Uri udfpsOffsetUri = Settings.System.getUriFor(UDFPS_ANIMATION_OFFSET_CUSTOM);
+        ContentObserver offsetObserver = new ContentObserver(null) {
+            @Override
+            public void onChange(boolean selfChange, Uri uri) {
+                mContext.getMainExecutor().execute(() -> {
+                    updatePosition();
+                });
+            }
+        };
+        mContext.getContentResolver().registerContentObserver(
+            udfpsOffsetUri, false, offsetObserver, UserHandle.USER_CURRENT);
+        // Initial call to set the position
+        updatePosition();
     }
 
     private void updateAnimationStyle(int styleIdx) {
@@ -171,9 +189,15 @@ public class UdfpsAnimation extends ImageView {
         float scaleFactor = getDisplayFactor();
         float udfpsRadius = isFullResolution ? mAuthController.getUdfpsRadius() : mProps.getLocation().sensorRadius;
         float udfpsLocationY = isFullResolution && udfpsLocation != null ? udfpsLocation.y : mProps.getLocation().sensorLocationY;
-        int animationOffset = (int) (mContext.getResources().getDimensionPixelSize(R.dimen.udfps_animation_offset) * scaleFactor);
+
+        // Read from Settings.System
+        int animationOffset = Settings.System.getIntForUser(mContext.getContentResolver(),
+                UDFPS_ANIMATION_OFFSET_CUSTOM,
+                mContext.getResources().getDimensionPixelSize(R.dimen.udfps_animation_offset),
+                UserHandle.USER_CURRENT);
+
         mAnimParams.y = (int) (udfpsLocationY * scaleFactor) - (int) (udfpsRadius * scaleFactor)
-                - (mAnimationSize / 2) + animationOffset;
+                - (mAnimationSize / 2) + (int) (animationOffset * scaleFactor);
         if (DEBUG) {
             Log.d(LOG_TAG, "updatePosition: displaySize=" + displaySize
                     + ", isFullResolution=" + isFullResolution
