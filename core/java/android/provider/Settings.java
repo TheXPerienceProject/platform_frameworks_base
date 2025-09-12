@@ -6890,6 +6890,11 @@ public final class Settings {
         /**
          * @hide
          */
+        public static final String SHOW_REFRESH_RATE = "show_refresh_rate";
+
+        /**
+         * @hide
+         */
         public static final String ISLAND_NOTIFICATION_NOW_PLAYING = "island_notification_now_playing";
 
         /**

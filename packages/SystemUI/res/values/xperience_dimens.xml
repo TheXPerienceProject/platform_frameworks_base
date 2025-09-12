@@ -107,5 +107,9 @@
     <!-- Island notification -->
     <dimen name="island_icon_size">48dp</dimen>
     <dimen name="island_side_margin">12dp</dimen>
+
+    <!-- Refresh rate in statusbar -->
+    <dimen name="status_bar_refresh_rate_padding">6dp</dimen>
+
 </resources>
 
