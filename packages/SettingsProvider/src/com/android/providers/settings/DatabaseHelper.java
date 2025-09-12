@@ -2158,6 +2158,7 @@ class DatabaseHelper extends SQLiteOpenHelper {
 
         loadIntegerSetting(stmt, Settings.System.LOCKSCREEN_SOUNDS_ENABLED,
             R.integer.def_lockscreen_sounds_enabled);
+        loadSetting(stmt, Settings.System.SHOW_REFRESH_RATE, 0);
     }
 
     private void loadDefaultAnimationSettings(SQLiteStatement stmt) {

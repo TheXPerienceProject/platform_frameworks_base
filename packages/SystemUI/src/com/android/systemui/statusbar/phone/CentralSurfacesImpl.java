@@ -49,6 +49,7 @@ import android.app.TaskInfo;
 import android.app.UiModeManager;
 import android.app.WallpaperManager;
 import android.content.BroadcastReceiver;
+import android.content.ComponentCallbacks2;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -223,6 +224,7 @@ import com.android.systemui.statusbar.notification.stack.NotificationStackScroll
 import com.android.systemui.statusbar.notification.stack.NotificationStackScrollLayoutController;
 import com.android.systemui.statusbar.NTForbiddenSwipeDownQSController;
 import com.android.systemui.statusbar.phone.dagger.StatusBarPhoneModule;
+import com.android.systemui.statusbar.phone.IconManager;
 import com.android.systemui.statusbar.policy.BatteryController;
 import com.android.systemui.statusbar.policy.BrightnessMirrorController;
 import com.android.systemui.statusbar.policy.BurnInProtectionController;
@@ -234,6 +236,7 @@ import com.android.systemui.statusbar.policy.ExtensionController;
 import com.android.systemui.statusbar.policy.FlashlightController;
 import com.android.systemui.statusbar.policy.GameSpaceManager;
 import com.android.systemui.statusbar.policy.KeyguardStateController;
+import com.android.systemui.statusbar.policy.RefreshRateIndicatorController;
 import com.android.systemui.statusbar.policy.UserInfoControllerImpl;
 import com.android.systemui.statusbar.window.StatusBarWindowControllerStore;
 import com.android.systemui.statusbar.window.StatusBarWindowStateController;
@@ -290,6 +293,8 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces,
     private static final String PULSE_ON_NEW_TRACKS =
             Settings.Secure.PULSE_ON_NEW_TRACKS;
 
+    private float mCurrentRefreshRate = 0;
+
     private static final int MSG_LAUNCH_TRANSITION_TIMEOUT = 1003;
     // 1020-1040 reserved for BaseStatusBar
 
@@ -302,6 +307,9 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces,
     private CentralSurfacesCommandQueueCallbacks mCommandQueueCallbacks;
     private float mTransitionToFullShadeProgress = 0f;
     private final NotificationListContainer mNotifListContainer;
+
+    private RefreshRateIndicatorController mRefreshRateController;
+    private final IconManager mIconManager;
 
     private final KeyguardStateController.Callback mKeyguardStateControllerCallback =
             new KeyguardStateController.Callback() {
@@ -721,6 +729,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces,
             ShadeController shadeController,
             WindowRootViewVisibilityInteractor windowRootViewVisibilityInteractor,
             StatusBarKeyguardViewManager statusBarKeyguardViewManager,
+            IconManager iconManager,
             ViewMediatorCallback viewMediatorCallback,
             InitController initController,
             @Named(TIME_TICK_HANDLER_NAME) Handler timeTickHandler,
@@ -808,7 +817,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces,
         mNavigationBarController = navigationBarController;
         mAccessibilityFloatingMenuController = accessibilityFloatingMenuController;
         mAssistManagerLazy = assistManagerLazy;
-	mFlashlightController = flashlightController;
+	    mFlashlightController = flashlightController;
         mConfigurationController = configurationController;
         mNotificationShadeWindowController = notificationShadeWindowController;
         mNotificationShadeWindowViewControllerLazy = notificationShadeWindowViewControllerLazy;
@@ -873,6 +882,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces,
         }
         mScreenOffAnimationController = screenOffAnimationController;
         mBurnInProtectionController = burnInProtectionController;
+        mIconManager = iconManager;
 
         ShadeExpansionListener shadeExpansionListener = this::onPanelExpansionChanged;
         ShadeExpansionChangeEvent currentState =
@@ -922,6 +932,22 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces,
         bubbles.setExpandListener(listener);
     }
 
+    private final ComponentCallbacks2 mConfigurationCallback = new ComponentCallbacks2() {
+        @Override
+        public void onConfigurationChanged(Configuration newConfig) {
+            if (mRefreshRateController != null && mRefreshRateController.isListening()) {
+                int roundedRate = Math.round(mCurrentRefreshRate);
+                mIconManager.setRefreshRateIndicator(roundedRate);
+            }
+        }
+
+        @Override
+        public void onLowMemory() {}
+
+        @Override
+        public void onTrimMemory(int level) {}
+    };
+
     @Override
     public void start() {
         mScreenLifecycle.addObserver(mScreenObserver);
@@ -944,6 +970,15 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces,
         mStatusBarHideIconsForBouncerManager.setDisplayId(mDisplayId);
 
         initShadeVisibilityListener();
+
+        mRefreshRateController = new RefreshRateIndicatorController(mContext);
+        mRefreshRateController.setCallback(refreshRate -> {
+            mCurrentRefreshRate = refreshRate;
+            int roundedRate = Math.round(refreshRate);
+            mIconManager.setRefreshRateIndicator(roundedRate);
+        });
+        mRefreshRateController.startListening();
+        mContext.registerComponentCallbacks(mConfigurationCallback);
 
         // start old BaseStatusBar.start().
         mWindowManagerService = WindowManagerGlobal.getWindowManagerService();
@@ -1164,7 +1199,14 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces,
             parentView.addView(depthWallpaperView, index);
         }
     }
-    
+
+    public void destroy() {
+        if (mRefreshRateController != null) {
+            mRefreshRateController.stopListening();
+        }
+        mContext.unregisterComponentCallbacks(mConfigurationCallback);
+    }
+
     private ViewGroup getNotifContainerParentView() {
         ViewGroup rootView = (ViewGroup) getNotificationShadeWindowView().findViewById(R.id.scrim_behind).getParent();
         ViewGroup targetView = rootView.findViewById(R.id.notification_container_parent);
@@ -3187,6 +3229,12 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces,
 
             if (DEBUG) {
                 Log.v(TAG, "configuration changed: " + mContext.getResources().getConfiguration());
+            }
+
+            // Update the refresh rate icon when configuration changes to update the theme
+            if (mCurrentRefreshRate != 0) {
+                int roundedRate = Math.round(mCurrentRefreshRate);
+                mIconManager.setRefreshRateIndicator(roundedRate);
             }
         }
 

@@ -69,6 +69,7 @@ import com.android.systemui.res.R;
 import com.android.systemui.statusbar.notification.NotificationContentDescription;
 import com.android.systemui.statusbar.notification.NotificationDozeHelper;
 import com.android.systemui.statusbar.notification.NotificationUtils;
+import com.android.systemui.statusbar.phone.ui.StatusBarIconController;
 import com.android.systemui.util.drawable.DrawableSize;
 
 import java.lang.annotation.Retention;
@@ -1108,6 +1109,18 @@ public class StatusBarIconView extends AnimatedImageView implements StatusIconDi
         if (mLayoutRunnable != null) {
             mLayoutRunnable.run();
             mLayoutRunnable = null;
+        }
+
+        if (mSlot != null && mSlot.equals(StatusBarIconController.SLOT_REFRESH_RATE)) {
+            int extraPadding = getResources().getDimensionPixelSize(
+                    R.dimen.status_bar_refresh_rate_padding);
+
+            setPadding(
+                    getPaddingLeft() + extraPadding, // left only
+                    getPaddingTop(),
+                    getPaddingRight(),
+                    getPaddingBottom()
+            );
         }
         updatePivot();
     }
