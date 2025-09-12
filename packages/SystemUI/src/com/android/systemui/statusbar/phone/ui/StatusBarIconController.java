@@ -117,4 +117,7 @@ public interface StatusBarIconController {
         return ret;
     }
 
+    /* show hz on statusbar like redmagic */
+    public static final String SLOT_REFRESH_RATE = "refresh_rate";
+
 }

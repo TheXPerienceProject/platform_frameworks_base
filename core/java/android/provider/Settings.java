@@ -7003,6 +7003,12 @@ public final class Settings {
         public static final String DISPLAY_AUTO_CONTRAST = "display_auto_contrast";
 
         /**
+         * @hide
+         */
+        public static final String SHOW_REFRESH_RATE = "show_refresh_rate";
+
+
+        /**
          * Manual display color adjustments (RGB values as floats, separated by spaces)
          * @hide
          */

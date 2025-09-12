@@ -30,4 +30,7 @@
     <!-- Maximum vertical offset of statusbar for burn-in protection -->
     <dimen name="status_bar_offset_max_y">4dp</dimen>
 
+    <!-- Refresh rate in statusbar -->
+    <dimen name="status_bar_refresh_rate_padding">6dp</dimen>
+
 </resources>
