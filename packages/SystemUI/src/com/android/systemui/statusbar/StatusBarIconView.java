@@ -1116,7 +1116,7 @@ public class StatusBarIconView extends AnimatedImageView implements StatusIconDi
                     R.dimen.status_bar_refresh_rate_padding);
 
             setPadding(
-                    getPaddingLeft() + extraPadding, // left only
+                    extraPadding,
                     getPaddingTop(),
                     getPaddingRight(),
                     getPaddingBottom()
