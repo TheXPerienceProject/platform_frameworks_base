@@ -122,4 +122,13 @@
     <!-- Now bar -->
     <string name="nowbar_no_media">No hay medios en reproducción</string>
     <string name="nowbar_unknown_title">Título desconocido</string>
+    <!-- Auto reboot Suggestion/Reminder -->
+    <string name="notification_channel_reboot_suggestion">Sugerencia de reinicio</string>
+    <string name="notification_channel_reboot_suggestion_description">Notificaciones para sugerencia de reinicio</string>
+    <string name="reboot_suggestion_title">Recordatorio de reinicio</string>
+    <string name="reboot_suggestion_description">Tu dispositivo lleva más de una semana encendido. Se recomienda reiniciarlo.</string>
+    <string name="reboot_suggestion_now">Reiniciar</string>
+    <!-- Island notification -->
+    <string name="now_playing_on">Está Sonando en %1$s</string>
+    <string name="by_artist">%1$s por %2$s</string>
 </resources>

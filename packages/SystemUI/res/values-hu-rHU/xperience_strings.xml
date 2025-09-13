@@ -122,4 +122,6 @@
     <!-- Now bar -->
     <string name="nowbar_no_media">Épp nincs lejátszás</string>
     <string name="nowbar_unknown_title">Ismeretlen cím</string>
+    <!-- Auto reboot Suggestion/Reminder -->
+    <!-- Island notification -->
 </resources>
