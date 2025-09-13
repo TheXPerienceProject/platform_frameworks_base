@@ -919,7 +919,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces,
 
         mWallpaperDepthUtils = WallpaperDepthUtils.getInstance(mContext);
 
-	mRebootSuggestion = new RebootSuggestion(mContext);
+	    mRebootSuggestion = new RebootSuggestion(mContext);
 
     }
 
@@ -973,9 +973,15 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces,
 
         mRefreshRateController = new RefreshRateIndicatorController(mContext);
         mRefreshRateController.setCallback(refreshRate -> {
-            mCurrentRefreshRate = refreshRate;
-            int roundedRate = Math.round(refreshRate);
-            mIconManager.setRefreshRateIndicator(roundedRate);
+            if (refreshRate > 0) {
+                mCurrentRefreshRate = refreshRate;
+                int roundedRate = Math.round(refreshRate);
+                mIconManager.setRefreshRateIndicator(roundedRate);
+            } else {
+                // hide indicator
+                mCurrentRefreshRate = 0;
+                mIconManager.hideRefreshRateIndicator();
+            }
         });
         mRefreshRateController.startListening();
         mContext.registerComponentCallbacks(mConfigurationCallback);
