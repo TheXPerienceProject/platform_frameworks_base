@@ -352,7 +352,6 @@ public class LocalBluetoothProfileManager {
         }
 
         public void onReceive(Context context, Intent intent, BluetoothDevice device) {
-// QTI_BEGIN: 2018-03-22: Bluetooth: Sync Preference in UI for new cached device
             if (device == null) {
                 Log.w(TAG, "StateChangedHandler receives state-change for invalid device");
                 return;
@@ -712,9 +711,7 @@ public class LocalBluetoothProfileManager {
             profiles.add(mA2dpProfile);
             removedProfiles.remove(mA2dpProfile);
         }
-// QTI_BEGIN: 2023-10-19: Bluetooth: Enable AOSP BT APEX
 /*
-// QTI_END: 2023-10-19: Bluetooth: Enable AOSP BT APEX
 // QTI_BEGIN: 2021-05-05: Bluetooth: Remove usage of adv audio mask property
         if (mHeadsetProfile != null) {
             if (ArrayUtils.contains(uuids, BluetoothUuid.ADVANCE_VOICE_P_UUID)
@@ -757,9 +754,7 @@ public class LocalBluetoothProfileManager {
             }
         }
 // QTI_END: 2021-01-17: Bluetooth: GAP Adv Audio: Adding new Advance Audio UUID's
-// QTI_BEGIN: 2023-10-19: Bluetooth: Enable AOSP BT APEX
 */
-// QTI_END: 2023-10-19: Bluetooth: Enable AOSP BT APEX
         if (BluetoothUuid.containsAnyUuid(uuids, A2dpSinkProfile.SRC_UUIDS)
                 && mA2dpSinkProfile != null) {
                 profiles.add(mA2dpSinkProfile);
