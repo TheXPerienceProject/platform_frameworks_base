@@ -132,6 +132,8 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
 
     private static final String NOTIFICATION_ROW_TRANSPARENCY =
             Settings.Secure.NOTIFICATION_ROW_TRANSPARENCY;
+    private static final String NOTIFICATION_ROW_TRANSPARENCY_LOCKSCREEN =
+            Settings.Secure.NOTIFICATION_ROW_TRANSPARENCY_LOCKSCREEN;
 
     private QS mQs;
     private final Lazy<NotificationPanelViewController> mPanelViewControllerLazy;
@@ -2293,6 +2295,7 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
             }
             mQs.setScrollListener(mQsScrollListener);
             mTunerService.addTunable(this, NOTIFICATION_ROW_TRANSPARENCY);
+            mTunerService.addTunable(this, NOTIFICATION_ROW_TRANSPARENCY_LOCKSCREEN);
             updateExpansion();
         }
 
@@ -2319,7 +2322,8 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
 
         @Override
         public void onTuningChanged(String key, String newValue) {
-            if (NOTIFICATION_ROW_TRANSPARENCY.equals(key)) {
+            if (NOTIFICATION_ROW_TRANSPARENCY.equals(key) ||
+                    NOTIFICATION_ROW_TRANSPARENCY_LOCKSCREEN.equals(key)) {
                 updateTransparencyIfNeeded();
             }
         }
