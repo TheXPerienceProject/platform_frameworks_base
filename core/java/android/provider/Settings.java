@@ -13777,6 +13777,13 @@ public final class Settings {
         public static final String EXTRA_DIM_AUTO_TIME = "extra_dim_auto_time";
 
         /**
+         * Whether to restrict keybox spoofing to Play Integrity packages only
+         * The value 1 - enable restriction (default), 0 - allow all packages
+         * @hide
+         */
+        public static final String PI_RESTRICT_TO_GMS = "pi_restrict_to_gms";
+
+        /**
          * @hide
          */
         public static final String UDFPS_ANIM = "udfps_anim";
