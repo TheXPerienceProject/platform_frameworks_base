@@ -13,6 +13,7 @@ import android.hardware.security.keymint.KeyParameter;
 import android.hardware.security.keymint.KeyParameterValue;
 import android.hardware.security.keymint.Tag;
 import android.os.Binder;
+import android.provider.Settings;
 import android.security.KeyChain;
 import android.system.keystore2.Authorization;
 import android.system.keystore2.IKeystoreSecurityLevel;
@@ -101,6 +102,12 @@ public class KeyboxImitationHooks {
         try {
             final Context ctx = ActivityThread.currentApplication();
             if (ctx == null) return response;
+
+            // If restriction is disabled, don't apply fallback logic
+            if (Settings.Secure.getInt(ctx.getContentResolver(),
+                    Settings.Secure.PI_RESTRICT_TO_GMS, 1) != 1) {
+                return response;
+            }
 
             final int uid = Binder.getCallingUid();
             final String[] packages = ctx.getPackageManager().getPackagesForUid(uid);
@@ -231,12 +238,17 @@ public class KeyboxImitationHooks {
             if (ctx == null) return null;
 
             final int uid = Binder.getCallingUid();
-            final String[] packages = ctx.getPackageManager().getPackagesForUid(uid);
-            if (packages == null) return null;
 
-            if (!Arrays.stream(packages)
-                    .anyMatch(pkg -> ALLOWED_PACKAGES.contains(pkg))) {
-                return null;
+            // If restriction is enabled, only allow spoofing for Play Integrity packages
+            if (Settings.Secure.getInt(ctx.getContentResolver(),
+                    Settings.Secure.PI_RESTRICT_TO_GMS, 1) == 1) {
+                final String[] packages = ctx.getPackageManager().getPackagesForUid(uid);
+                if (packages == null) return null;
+
+                if (!Arrays.stream(packages)
+                        .anyMatch(pkg -> ALLOWED_PACKAGES.contains(pkg))) {
+                    return null;
+                }
             }
 
             List<Certificate> chain = KeyboxChainGenerator.generateCertChain(uid, descriptor, params);
