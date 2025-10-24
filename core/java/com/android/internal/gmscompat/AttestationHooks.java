@@ -19,6 +19,7 @@ package com.android.internal.gmscompat;
 import android.app.Application;
 import android.content.Context;
 import android.os.Build;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -52,6 +53,22 @@ public final class AttestationHooks {
         }
     }
 
+    private static void setVersionField(String key, Integer value) {
+        try {
+            // Unlock
+            Field field = Build.VERSION.class.getDeclaredField(key);
+            field.setAccessible(true);
+
+            // Edit
+            field.set(null, value);
+
+            // Lock
+            field.setAccessible(false);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            Log.e(TAG, "Failed to spoof Build." + key, e);
+        }
+    }
+
     public static void initApplicationBeforeOnCreate(Context context) {
         final String packageName = context.getPackageName();
         final String processName = Application.getProcessName();
@@ -69,6 +86,7 @@ public final class AttestationHooks {
               setBuildField("PRODUCT", "marlin");
               setBuildField("DEVICE", "marlin");
               setBuildField("MODEL", "Pixel XL");
+              setVersionField("DEVICE_INITIAL_SDK_INT", Build.VERSION_CODES.N_MR1);
             }
         }
 
