@@ -13299,13 +13299,6 @@ public final class Settings {
         public static final String SCREEN_OFF_UDFPS_ENABLED = "screen_off_udfps_enabled";
 
         /**
-         * User selectable keybox data.
-         * @hide
-         */
-        @Readable
-        public static final String KEYBOX_DATA = "keybox_data";
-
-        /**
          * Whether to pulse ambient on new music tracks
          * @hide
          */
