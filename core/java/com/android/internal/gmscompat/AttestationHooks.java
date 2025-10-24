@@ -17,10 +17,8 @@
 package com.android.internal.gmscompat;
 
 import android.app.Application;
-import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
-import android.text.TextUtils;
 import android.util.Log;
 
 import java.lang.reflect.Field;
@@ -69,14 +67,9 @@ public final class AttestationHooks {
         }
     }
 
-    public static void initApplicationBeforeOnCreate(Context context) {
-        final String packageName = context.getPackageName();
-        final String processName = Application.getProcessName();
-
-        if (TextUtils.isEmpty(packageName) || TextUtils.isEmpty(processName)) {
-            Log.e(TAG, "Null package or process name");
-            return;
-        }
+    public static void initApplicationBeforeOnCreate(Application app) {
+        String packageName = app.getPackageName();
+        String processName = Application.getProcessName();
 
         if (PACKAGE_GMS.equals(packageName)) {
             setBuildField("TIME", System.currentTimeMillis());
