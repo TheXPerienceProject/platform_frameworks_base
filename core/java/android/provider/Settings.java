@@ -13299,20 +13299,6 @@ public final class Settings {
         public static final String SCREEN_OFF_UDFPS_ENABLED = "screen_off_udfps_enabled";
 
         /**
-         * User selectable PIF data.
-         * @hide
-         */
-        @Readable
-        public static final String PIF_DATA = "pif_data";
-
-        /**
-         * PIF data fetched from our repo.
-         * @hide
-         */
-        @Readable
-        public static final String FETCHED_PIF = "fetched_pif";
-
-        /**
          * User selectable keybox data.
          * @hide
          */
