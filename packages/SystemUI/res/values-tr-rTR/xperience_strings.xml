@@ -82,6 +82,8 @@
     <string name="screenrecord_skip_time_summary">3 saniyelik beklemeyi kaldırın</string>
     <string name="screenrecord_hevc_switch_label">HEVC kodlayıcı</string>
     <string name="screenrecord_hevc_switch_summary">Daha verimli HEVC kodlayıcıyı kullanın</string>
+    <string name="screenrecord_delete_label">Sil</string>
+    <string name="screenrecord_delete_description">Ekran kaydı silindi</string>
     <!-- Text while recognizing face -->
     <string name="face_unlock_recognizing">Yüz algılanıyor...</string>
     <!-- CPUInfo tile -->

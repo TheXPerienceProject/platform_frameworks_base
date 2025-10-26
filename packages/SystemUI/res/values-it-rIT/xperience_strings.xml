@@ -29,6 +29,8 @@
     <!-- Status bar network traffic monitor strings -->
     <!-- Alert slide extras -->
     <!-- Screen record -->
+    <string name="screenrecord_delete_label">Elimina</string>
+    <string name="screenrecord_delete_description">Registrazione eliminata</string>
     <!-- Text while recognizing face -->
     <string name="face_unlock_recognizing">Riconoscimento faccia...</string>
     <!-- CPUInfo tile -->

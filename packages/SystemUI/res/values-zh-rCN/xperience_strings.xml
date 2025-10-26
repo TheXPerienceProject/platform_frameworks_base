@@ -32,6 +32,8 @@
     <!-- Status bar network traffic monitor strings -->
     <!-- Alert slide extras -->
     <!-- Screen record -->
+    <string name="screenrecord_delete_label">删除</string>
+    <string name="screenrecord_delete_description">屏幕录像已删除</string>
     <!-- Text while recognizing face -->
     <string name="face_unlock_recognizing">正在识别面部...</string>
     <!-- CPUInfo tile -->

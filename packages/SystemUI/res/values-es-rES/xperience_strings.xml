@@ -84,6 +84,9 @@
     <string name="screenrecord_skip_time_summary">Elimina la espera de 3 segundos</string>
     <string name="screenrecord_hevc_switch_label">Codificación HEVC</string>
     <string name="screenrecord_hevc_switch_summary">Usa el codificador HEVC más eficiente</string>
+    <string name="screenrecord_delete_label">Eliminar</string>
+    <string name="screenrecord_delete_description">Grabacion de pantalla borrada</string>
+    <string name="screenrecord_keep_screen_awake_label">Mantener la pantalla activa</string>
     <!-- Text while recognizing face -->
     <string name="face_unlock_recognizing">Reconociendo rostro...</string>
     <!-- CPUInfo tile -->

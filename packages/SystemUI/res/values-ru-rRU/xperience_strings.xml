@@ -32,6 +32,8 @@
     <!-- Status bar network traffic monitor strings -->
     <!-- Alert slide extras -->
     <!-- Screen record -->
+    <string name="screenrecord_delete_label">Удалить</string>
+    <string name="screenrecord_delete_description">Запись экрана удалена</string>
     <!-- Text while recognizing face -->
     <string name="face_unlock_recognizing">Распознавание лица...</string>
     <!-- CPUInfo tile -->
