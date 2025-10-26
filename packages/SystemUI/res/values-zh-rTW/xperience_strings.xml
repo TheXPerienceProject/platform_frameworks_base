@@ -38,7 +38,6 @@
     <!-- Status bar - icons -->
     <string name="status_bar_icons_title">狀態欄圖示</string>
     <!-- AI Assistant affordance [CHAR LIMIT=32] -->
-    <!-- Refresh rate QS tile -->
     <!-- Status bar network traffic monitor strings -->
     <!-- Alert slide extras -->
     <!-- Screen record -->
@@ -50,6 +49,8 @@
     <string name="screenrecord_skip_time_summary">跳過三秒的倒數時間</string>
     <string name="screenrecord_hevc_switch_label">HEVC 編碼</string>
     <string name="screenrecord_hevc_switch_summary">使用效率更高的 HEVC 編碼</string>
+    <string name="screenrecord_delete_label">刪除</string>
+    <string name="screenrecord_delete_description">螢幕錄影已刪除</string>
     <!-- Text while recognizing face -->
     <string name="face_unlock_recognizing">臉部辨識中</string>
     <!-- CPUInfo tile -->

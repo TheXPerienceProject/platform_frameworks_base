@@ -28,10 +28,11 @@
     <!-- Restart to fastboot mode progress dialog. This is shown if the user chooses to restart the device. -->
     <!-- Status bar - icons -->
     <!-- AI Assistant affordance [CHAR LIMIT=32] -->
-    <!-- Refresh rate QS tile -->
     <!-- Status bar network traffic monitor strings -->
     <!-- Alert slide extras -->
     <!-- Screen record -->
+    <string name="screenrecord_delete_label">Hapus</string>
+    <string name="screenrecord_delete_description">Rekaman layar dihapus</string>
     <!-- Text while recognizing face -->
     <string name="face_unlock_recognizing">Mengenali wajah...</string>
     <!-- CPUInfo tile -->

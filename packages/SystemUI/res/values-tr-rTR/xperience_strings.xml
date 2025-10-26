@@ -56,7 +56,6 @@
     <string name="status_bar_icons_title">Durum çubuğu simgeleri</string>
     <!-- AI Assistant affordance [CHAR LIMIT=32] -->
     <string name="accessibility_assistant_button">Yapay Zeka Asistanı</string>
-    <!-- Refresh rate QS tile -->
     <!-- Status bar network traffic monitor strings -->
     <!-- Alert slide extras -->
     <string name="volume_ringer_priority_only">Öncelik</string>
@@ -82,6 +81,8 @@
     <string name="screenrecord_skip_time_summary">3 saniyelik beklemeyi kaldırın</string>
     <string name="screenrecord_hevc_switch_label">HEVC kodlayıcı</string>
     <string name="screenrecord_hevc_switch_summary">Daha verimli HEVC kodlayıcıyı kullanın</string>
+    <string name="screenrecord_delete_label">Sil</string>
+    <string name="screenrecord_delete_description">Ekran kaydı silindi</string>
     <!-- Text while recognizing face -->
     <string name="face_unlock_recognizing">Yüz algılanıyor...</string>
     <!-- CPUInfo tile -->

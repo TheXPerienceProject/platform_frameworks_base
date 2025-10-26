@@ -56,9 +56,6 @@
     <string name="status_bar_icons_title">Állapotsori ikonok</string>
     <!-- AI Assistant affordance [CHAR LIMIT=32] -->
     <string name="accessibility_assistant_button">AI-asszisztens</string>
-    <!-- Refresh rate QS tile -->
-    <string name="refresh_rate_tile_label">Frissítési gyakoriság</string>
-    <string name="refresh_rate_unknown">Ismeretlen</string>
     <!-- Status bar network traffic monitor strings -->
     <!-- Alert slide extras -->
     <string name="volume_ringer_priority_only">Fontos</string>
@@ -84,6 +81,8 @@
     <string name="screenrecord_skip_time_summary">Eltávolítja a 3 másodperces várakozást</string>
     <string name="screenrecord_hevc_switch_label">HEVC-kódolás</string>
     <string name="screenrecord_hevc_switch_summary">Használja a hatékonyabb HEVC-kódolót</string>
+    <string name="screenrecord_delete_label">Törlés</string>
+    <string name="screenrecord_delete_description">A képernyővideó törölve</string>
     <!-- Text while recognizing face -->
     <string name="face_unlock_recognizing">Arcfelismerés...</string>
     <!-- CPUInfo tile -->
@@ -123,5 +122,12 @@
     <string name="nowbar_no_media">Épp nincs lejátszás</string>
     <string name="nowbar_unknown_title">Ismeretlen cím</string>
     <!-- Auto reboot Suggestion/Reminder -->
+    <string name="notification_channel_reboot_suggestion">Újraindítási javaslat</string>
+    <string name="notification_channel_reboot_suggestion_description">Az \'Újraindítási javaslat\' értesítései</string>
+    <string name="reboot_suggestion_title">Újraindítási emlékeztető</string>
+    <string name="reboot_suggestion_description">Az Ön készüléke több mint egy hete folyamatosan be van kapcsolva. Újraindítás ajánlott.</string>
+    <string name="reboot_suggestion_now">Újraindítás</string>
     <!-- Island notification -->
+    <string name="now_playing_on">Most %1$s hallható</string>
+    <string name="by_artist">%1$s - %2$s szerzeménye</string>
 </resources>
