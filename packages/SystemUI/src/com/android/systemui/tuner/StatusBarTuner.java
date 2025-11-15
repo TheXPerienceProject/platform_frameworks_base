@@ -15,10 +15,14 @@
  */
 package com.android.systemui.tuner;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 
 import androidx.annotation.Nullable;
 import androidx.preference.PreferenceFragment;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceScreen;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
@@ -30,7 +34,35 @@ public class StatusBarTuner extends PreferenceFragment {
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        addPreferencesFromResource(R.xml.status_bar_prefs);
+        setPreferencesFromResource(R.xml.status_bar_prefs, rootKey);
+        if (!isVoiceCapable(requireContext())) {
+            removeMobilePreferences();
+        }
+    }
+
+    public static boolean isVoiceCapable(Context context) {
+        TelephonyManager telephony =
+                (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        return telephony != null && telephony.isVoiceCapable();
+    }
+
+    private void removeMobilePreferences() {
+        String[] mobileKeys = new String[] {
+                "mobile",
+                "system:data_disabled_icon",
+                "call_strength",
+                "roaming",
+                "status_bar_show_hd_calling",
+                "status_bar_show_vowifi"
+        };
+
+        PreferenceScreen screen = getPreferenceScreen();
+        for (String key : mobileKeys) {
+            Preference pref = findPreference(key);
+            if (pref != null) {
+                screen.removePreference(pref);
+            }
+        }
     }
 
     @Override
