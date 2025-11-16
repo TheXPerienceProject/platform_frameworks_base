@@ -121,6 +121,7 @@ import com.android.systemui.dagger.qualifiers.UiBackground;
 import com.android.systemui.demomode.DemoMode;
 import com.android.systemui.demomode.DemoModeController;
 import com.android.systemui.xperience.RebootSuggestion;
+import com.android.systemui.nowplaying.NowPlayingViewController;
 import com.android.systemui.emergency.EmergencyGesture;
 import com.android.systemui.emergency.EmergencyGestureModule.EmergencyGestureIntentFactory;
 import com.android.systemui.fragments.ExtensionFragmentListener;
@@ -410,6 +411,8 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
     private final UserTracker mUserTracker;
     private final ActivityStarter mActivityStarter;
 
+    private final NowPlayingViewController mNowPlayingViewController;
+
     private final DisplayMetrics mDisplayMetrics;
 
     // XXX: gesture research
@@ -622,7 +625,8 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
             WindowManager windowManager,
             WindowManagerProvider windowManagerProvider,
             SessionTracker sessionTracker,
-	    BurnInProtectionController burnInProtectionController
+	    BurnInProtectionController burnInProtectionController,
+            NowPlayingViewController nowPlayingViewController
     ) {
         mContext = context;
         mNotificationsController = notificationsController;
@@ -748,6 +752,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
 	mBurnInProtectionController = burnInProtectionController;
 
         mRebootSuggestion = new RebootSuggestion(mContext);
+        mNowPlayingViewController = nowPlayingViewController;
     }
 
     private void initBubbles(Bubbles bubbles) {
@@ -889,6 +894,56 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
                 (requestTopUi, componentTag) -> mMainExecutor.execute(
                         () -> mTopUiController.setRequestTopUi(requestTopUi, componentTag)
                 )));
+
+        attachCustomOverlays();
+    }
+
+    private ViewGroup getScrimOverlayContainer() {
+        ViewGroup root = (ViewGroup) getNotificationShadeWindowView();
+
+        FrameLayout container = root.findViewById(R.id.custom_overlay_container);
+        if (container != null) {
+            return container;
+        }
+
+        container = new FrameLayout(mContext);
+        container.setId(R.id.custom_overlay_container);
+        container.setLayoutParams(new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
+
+        View scrimInFront = root.findViewById(R.id.scrim_in_front);
+        int scrimIndex = Math.max(root.indexOfChild(scrimInFront) - 3, 0);
+        root.addView(container, scrimIndex);
+
+        return container;
+    }
+
+    private void attachCustomOverlays() {
+        ViewGroup overlay = getScrimOverlayContainer();
+
+        detachFromParent(mNowPlayingViewController.getNowPlayingView());
+
+        overlay.addView(mMediaViewController.getMediaArtScrim(),
+                new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
+        overlay.addView(mPulseViewController.getPulseView(),
+                new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
+        overlay.addView(mNowPlayingViewController.getNowPlayingView(),
+                new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
+    }
+
+    private static void detachFromParent(View v) {
+        if (v == null) return;
+        final ViewParent p = v.getParent();
+        if (p instanceof ViewGroup) {
+            ((ViewGroup) p).removeView(v);
+        }
     }
 
     @VisibleForTesting
