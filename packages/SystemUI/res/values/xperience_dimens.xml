@@ -33,4 +33,8 @@
     <!-- Refresh rate in statusbar -->
     <dimen name="status_bar_refresh_rate_padding">6dp</dimen>
 
+    <!-- Now Playing spacing values -->
+    <dimen name="nowplaying_icon_padding_compact">8dp</dimen>
+    <dimen name="nowplaying_icon_padding_normal">16dp</dimen>
+    <dimen name="nowplaying_title_artist_gap">6dp</dimen>
 </resources>
