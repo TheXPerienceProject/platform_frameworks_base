@@ -226,7 +226,9 @@ import android.sysprop.DisplayProperties;
 import android.telecom.TelecomManager;
 import android.util.ArrayMap;
 import android.util.ArraySet;
+// QTI_BEGIN: 2025-06-12: Performance: Perf: Enable UI perf mode automatically according to pid
 import android.util.BoostFramework;
+// QTI_END: 2025-06-12: Performance: Perf: Enable UI perf mode automatically according to pid
 import android.util.IntArray;
 import android.util.Log;
 import android.util.Slog;
@@ -380,9 +382,11 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
     private PowerManagerInternal mPowerManagerInternal;
     private UsageStatsManagerInternal mUsageStatsInternal;
 
+// QTI_BEGIN: 2025-06-12: Performance: Perf: Enable UI perf mode automatically according to pid
     private BoostFramework mPerf = new BoostFramework();
     private int mLegacyUiPerfHandler = -1;
 
+// QTI_END: 2025-06-12: Performance: Perf: Enable UI perf mode automatically according to pid
     GrammaticalInflectionManagerInternal mGrammaticalManagerInternal;
     PendingIntentController mPendingIntentController;
     IntentFirewall mIntentFirewall;
@@ -780,10 +784,10 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
     @Nullable
     private ActivityRecord mTracedResumedActivity;
 
-// QTI_BEGIN: 2023-06-08: Core: DSR: Fix DSR when we have toast window
+// QTI_BEGIN: 2023-06-08: Performance: DSR: Fix DSR when we have toast window
     boolean toastWindow = false;
 
-// QTI_END: 2023-06-08: Core: DSR: Fix DSR when we have toast window
+// QTI_END: 2023-06-08: Performance: DSR: Fix DSR when we have toast window
     /** If non-null, we are tracking the time the user spends in the currently focused app. */
     AppTimeTracker mCurAppTimeTracker;
 
@@ -5288,6 +5292,7 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
                 // If there is no resumed activity, it will choose the pausing or focused activity.
                 : mRootWindowContainer.getTopResumedActivity();
         mTopApp = top != null ? top.app : null;
+// QTI_BEGIN: 2025-06-12: Performance: Perf: Enable UI perf mode automatically according to pid
 
         if (mPerf != null) {
             if (mTopApp != null && mTopApp.mInfo != null) {
@@ -5317,6 +5322,7 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
             }
         }
 
+// QTI_END: 2025-06-12: Performance: Perf: Enable UI perf mode automatically according to pid
         if (mTopApp == mPreviousProcess) mPreviousProcess = null;
 
         final int demoteReasons = mDemoteTopAppReasons;
@@ -5589,7 +5595,7 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
         return mCompatModePackages.compatibilityInfoForPackageLocked(ai);
     }
 
-// QTI_BEGIN: 2023-06-08: Core: DSR: Fix DSR when we have toast window
+// QTI_BEGIN: 2023-06-08: Performance: DSR: Fix DSR when we have toast window
     void setToastWindow() {
         toastWindow = true;
     }
@@ -5602,7 +5608,7 @@ public class ActivityTaskManagerService extends IActivityTaskManager.Stub {
         return toastWindow;
     }
 
-// QTI_END: 2023-06-08: Core: DSR: Fix DSR when we have toast window
+// QTI_END: 2023-06-08: Performance: DSR: Fix DSR when we have toast window
     /**
      * Returns the PackageManager. Used by classes hosted by {@link ActivityTaskManagerService}. The
      * PackageManager could be unavailable at construction time and therefore needs to be accessed
