@@ -479,7 +479,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     DisplayManagerInternal mDisplayManagerInternal;
     UserManagerInternal mUserManagerInternal;
     DockObserverInternal mDockObserverInternal;
-    KeyGestureController mKeyGestureController;
 
     private WallpaperManagerInternal mWallpaperManagerInternal;
 
@@ -2993,12 +2992,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 mRingerToggleChord = VOLUME_HUSH_OFF;
             }
 
-            // Three Finger Gesture
-            boolean threeFingerGesture = Settings.System.getIntForUser(resolver,
-                    Settings.System.SWIPE_TO_SCREENSHOT, 0, UserHandle.USER_CURRENT) == 1;
-            if (mKeyGestureController != null) {
-                mKeyGestureController.enableSwipeThreeFingerGesture(threeFingerGesture);
-            }
 
             // Configure wake gesture.
             boolean wakeGestureEnabledSetting = Settings.Secure.getIntForUser(resolver,
