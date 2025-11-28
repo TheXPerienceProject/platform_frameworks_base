@@ -21,9 +21,6 @@
     <!-- Whether to allow process with media UID to access CameraServiceProxy -->
     <bool name="config_allowMediaUidForCameraServiceProxy">false</bool>
 
-    <!-- Whether to force enable multi resolution configuration for camera -->
-    <bool name="config_forceMultiResolution">false</bool>
-
     <!-- Define device configs on boot -->
     <string-array name="global_device_configs_override" translatable="false">
     </string-array>

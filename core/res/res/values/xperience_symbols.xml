@@ -22,9 +22,6 @@
     <!-- Default line spacing multiplier between hours and minutes of the keyguard clock-->
     <java-symbol type="dimen" format="float" name="keyguard_clock_line_spacing_scale" />
 
-    <!-- Whether to force enable multi resolution configuration for camera -->
-    <java-symbol type="bool" name="config_forceMultiResolution" />
-
     <!-- Define device configs on boot -->
     <java-symbol type="array" name="global_device_configs_override" />
     <java-symbol type="array" name="device_configs_override" />

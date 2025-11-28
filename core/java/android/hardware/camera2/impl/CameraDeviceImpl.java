@@ -187,8 +187,6 @@ public class CameraDeviceImpl extends CameraDevice
     private final int mTotalPartialCount;
     private final Context mContext;
 
-    private final boolean mForceMultiResolution;
-
     private static final long NANO_PER_SECOND = 1000000000; //ns
 
     /**
@@ -471,9 +469,6 @@ public class CameraDeviceImpl extends CameraDevice
 // QTI_BEGIN: 2018-03-10: Camera: Skip stream size check for whitelisted apps..
         mIsPrivilegedApp = checkPrivilegedAppList();
 // QTI_END: 2018-03-10: Camera: Skip stream size check for whitelisted apps..
-
-        mForceMultiResolution = mContext.getResources().getBoolean(
-                com.android.internal.R.bool.config_forceMultiResolution);
     }
 
     /**
@@ -1941,7 +1936,7 @@ public class CameraDeviceImpl extends CameraDevice
             return;
         }
         int inputFormat = inputConfig.getFormat();
-        if (inputConfig.isMultiResolution() || mForceMultiResolution) {
+        if (inputConfig.isMultiResolution()) {
             MultiResolutionStreamConfigurationMap configMap = mCharacteristics.get(
                     CameraCharacteristics.SCALER_MULTI_RESOLUTION_STREAM_CONFIGURATION_MAP);
 
