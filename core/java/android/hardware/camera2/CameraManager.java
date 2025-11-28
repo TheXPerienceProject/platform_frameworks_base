@@ -35,7 +35,6 @@ import android.app.ActivityThread;
 import android.app.ActivityManager;
 import android.app.CameraCompatTaskInfo;
 import android.app.TaskInfo;
-import android.app.ActivityThread;
 import android.app.compat.CompatChanges;
 import android.companion.virtual.VirtualDeviceManager;
 import android.compat.annotation.ChangeId;
