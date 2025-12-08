@@ -56,6 +56,7 @@ import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.graphics.Point;
 import android.hardware.devicestate.DeviceStateManager;
+import android.media.MediaMetadata;
 import android.metrics.LogMaker;
 import android.net.Uri;
 import android.os.Binder;
@@ -78,6 +79,7 @@ import android.util.EventLog;
 import android.util.IndentingPrintWriter;
 import android.util.Log;
 import android.view.Display;
+import android.view.Gravity;
 import android.view.IRemoteAnimationRunner;
 import android.view.IWindowManager;
 import android.view.MotionEvent;
@@ -90,6 +92,7 @@ import android.view.WindowManager;
 import android.view.WindowManagerGlobal;
 import android.view.accessibility.AccessibilityManager;
 import android.widget.DateTimeView;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.Lifecycle;
@@ -271,6 +274,8 @@ import java.util.function.Consumer;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import com.android.systemui.res.R;
 
 /**
  * A class handling initialization and coordination between some of the key central surfaces in
@@ -992,9 +997,6 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces,
         mRefreshRateController.startListening();
         mContext.registerComponentCallbacks(mConfigurationCallback);
 
-        // DYNAMIC ISLAND
-        initializeDynamicIsland();
-
         // start old BaseStatusBar.start().
         mWindowManagerService = WindowManagerGlobal.getWindowManagerService();
 
@@ -1213,6 +1215,10 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces,
             parentView.removeView(placeholder);
             parentView.addView(depthWallpaperView, index);
         }
+
+        // Registrar el Broadcast Receiver para pruebas ADB
+        IntentFilter filter = new IntentFilter(DynamicIslandManager.ACTION_TOGGLE_DYNAMIC_ISLAND);
+        mContext.registerReceiver(mDynamicIslandTestReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
     }
 
     public void destroy() {
@@ -1225,6 +1231,8 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces,
             mDynamicIslandManager = null;
         }
         mContext.unregisterComponentCallbacks(mConfigurationCallback);
+        // Desregistrar el Broadcast Receiver
+        mContext.unregisterReceiver(mDynamicIslandTestReceiver);
     }
 
     private ViewGroup getNotifContainerParentView() {
@@ -1349,6 +1357,10 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces,
             // Set up CollapsedStatusBarFragment and PhoneStatusBarView
             mStatusBarInitializer.setStatusBarViewUpdatedListener(
                     (statusBarViewController, statusBarTransitions) -> {
+
+                        Log.e("DynamicIsland", "🎯 StatusBar lista - Creando Dynamic Island...");
+                        //createDynamicIslandProgrammatically();
+                        createDynamicIslandForModernStatusBar();
 
                         mPhoneStatusBarViewController = statusBarViewController;
                         mStatusBarTransitions = statusBarTransitions;
@@ -1527,6 +1539,148 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces,
 
         // Private API call to make the shadows look better for Recents
         ThreadedRenderer.overrideProperty("ambientRatio", String.valueOf(1.5f));
+    }
+
+    /*private void createDynamicIslandProgrammatically() {
+        Log.e("DynamicIsland", "🚀 CREANDO DYNAMIC ISLAND 100% PROGRAMÁTICA...");
+        
+        try {
+            View root = getNotificationShadeWindowView();
+            if (root instanceof ViewGroup) {
+                ViewGroup rootView = (ViewGroup) root;
+                
+                // Verificar si ya existe
+                for (int i = 0; i < rootView.getChildCount(); i++) {
+                    if (rootView.getChildAt(i) instanceof DynamicIslandView) {
+                        Log.e("DynamicIsland", "⚠️ Ya existe, omitiendo...");
+                        return;
+                    }
+                }
+                
+                // 1. Crear Dynamic Island
+                DynamicIslandView dynamicIsland = new DynamicIslandView(mContext);
+                
+                // 2. Configurar layout - CENTRADA
+                FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                    FrameLayout.LayoutParams.WRAP_CONTENT,
+                    FrameLayout.LayoutParams.WRAP_CONTENT
+                );
+                params.gravity = Gravity.CENTER;
+                
+                // 3. Agregar a la vista raíz
+                rootView.addView(dynamicIsland, params);
+                
+                // 4. Inicializar manager
+                if (mDynamicIslandManager == null) {
+                    mDynamicIslandManager = new DynamicIslandManager(mContext);
+                }
+                mDynamicIslandManager.setView(dynamicIsland);
+                mDynamicIslandManager.start();
+                mDynamicIslandView = dynamicIsland;
+                
+                Log.e("DynamicIsland", "✅✅✅ DYNAMIC ISLAND 100% PROGRAMÁTICA - LISTA!");
+                Log.e("DynamicIsland", "   - Posición: CENTRO");
+                Log.e("DynamicIsland", "   - Vista padre: " + rootView.getClass().getSimpleName());
+                
+            } else {
+                Log.e("DynamicIsland", "❌ Root view no es ViewGroup");
+            }
+            
+        } catch (Exception e) {
+            Log.e("DynamicIsland", "❌ ERROR: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }*//*works*/
+
+    private void createDynamicIslandForModernStatusBar() {
+        Log.e("DynamicIsland", "🎯 AGREGANDO A MODERN STATUS BAR...");
+        
+        try {
+            View windowRootView = getNotificationShadeWindowView();
+            if (!(windowRootView instanceof ViewGroup)) {
+                Log.e("DynamicIsland", "❌ Root view no es ViewGroup");
+                return;
+            }
+            
+            ViewGroup root = (ViewGroup) windowRootView;
+            
+            // Buscar contenedores del Modern StatusBar
+            int[] modernContainers = {
+                com.android.systemui.res.R.id.status_bar_start_side_content,  // Lado izquierdo
+                com.android.systemui.res.R.id.status_bar_end_side_content,    // Lado derecho (iconos del sistema)
+                com.android.systemui.res.R.id.status_bar_contents,            // Contenido principal
+                com.android.systemui.res.R.id.system_icons,                   // Iconos del sistema
+                com.android.systemui.res.R.id.notification_icon_area          // Área de notificaciones
+            };
+            
+            for (int containerId : modernContainers) {
+                View container = root.findViewById(containerId);
+                if (container instanceof ViewGroup) {
+                    Log.e("DynamicIsland", "✅ Contenedor moderno encontrado: " + Integer.toHexString(containerId));
+                    addToModernContainer((ViewGroup) container, containerId);
+                    return;
+                }
+            }
+            
+            Log.e("DynamicIsland", "❌ No se encontraron contenedores modernos");
+            
+        } catch (Exception e) {
+            Log.e("DynamicIsland", "❌ ERROR: " + e.getMessage());
+        }
+    }
+
+    private void addToModernContainer(ViewGroup container, int containerId) {
+        Log.e("DynamicIsland", "🎯 Agregando a contenedor moderno...");
+        
+        try {
+            DynamicIslandView dynamicIsland = new DynamicIslandView(mContext);
+            
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.WRAP_CONTENT,
+                FrameLayout.LayoutParams.WRAP_CONTENT
+            );
+            
+            // Posición según el contenedor
+            if (containerId == com.android.systemui.res.R.id.status_bar_start_side_content) {
+                // Lado izquierdo - poner al inicio
+                params.gravity = Gravity.START | Gravity.CENTER_VERTICAL;
+            } else if (containerId == com.android.systemui.res.R.id.status_bar_end_side_content) {
+                // Lado derecho - poner al final  
+                params.gravity = Gravity.END | Gravity.CENTER_VERTICAL;
+            } else {
+                // Centro arriba para punchhole
+                params.gravity = Gravity.TOP | Gravity.CENTER_HORIZONTAL;
+                params.topMargin = 10;
+            }
+            
+            container.addView(dynamicIsland, params);
+            
+            // Inicializar
+            if (mDynamicIslandManager == null) {
+                mDynamicIslandManager = new DynamicIslandManager(mContext);
+            }
+            mDynamicIslandManager.setView(dynamicIsland);
+            mDynamicIslandManager.start();
+            mDynamicIslandView = dynamicIsland;
+            
+            Log.e("DynamicIsland", "✅✅✅ DYNAMIC ISLAND EN MODERN STATUS BAR!");
+            
+        } catch (Exception e) {
+            Log.e("DynamicIsland", "❌ Error: " + e.getMessage());
+        }
+    }
+
+    // Método que puedes llamar desde cualquier lugar para verificar
+    public void debugDynamicIsland() {
+        Log.e("DynamicIsland", "🔍 DEBUG INSTANTÁNEO:");
+        Log.e("DynamicIsland", "   - Manager: " + mDynamicIslandManager);
+        Log.e("DynamicIsland", "   - View: " + mDynamicIslandView);
+        Log.e("DynamicIsland", "   - Context: " + mContext);
+        
+        if (mDynamicIslandView != null) {
+            Log.e("DynamicIsland", "   - View visible: " + (mDynamicIslandView.getVisibility() == View.VISIBLE));
+            Log.e("DynamicIsland", "   - View parent: " + mDynamicIslandView.getParent());
+        }
     }
 
     private void setBrightnessMirrorShowing(boolean showing) {
@@ -3492,22 +3646,33 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces,
         return mNotificationAnimationProvider.getAnimatorController(associatedView);
     }
 
-    private void initializeDynamicIsland() {
-        Log.d("CentralSurfaces", "Initializing Dynamic Island");
-        //remove
-        Log.d("CentralSurfaces", "Initializing Dynamic Island - Display: " + mDisplayId);
 
-        mDynamicIslandManager = new DynamicIslandManager(mContext);
+    private BroadcastReceiver mDynamicIslandTestReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (mDynamicIslandManager == null) {
+                Log.e("DynamicIsland", "Manager is null, cannot process command.");
+                return;
+            }
 
-        // Buscar la vista en el layout del status bar
-        mDynamicIslandView = getNotificationShadeWindowView().findViewById(com.android.systemui.res.R.id.dynamic_island);
-        if (mDynamicIslandView != null) {
-            Log.d("CentralSurfaces", "Dynamic Island view found: " + mDynamicIslandView.hashCode());
-            mDynamicIslandManager.setView(mDynamicIslandView);
-            mDynamicIslandManager.start();
-            Log.d("CentralSurfaces", "Dynamic Island initialized successfully");
-        } else {
-            Log.w("CentralSurfaces", "Dynamic Island view not found in layout");
+            if (DynamicIslandManager.ACTION_TOGGLE_DYNAMIC_ISLAND.equals(intent.getAction())) {
+                boolean isVisible = intent.getBooleanExtra(
+                    DynamicIslandManager.EXTRA_ISLAND_VISIBLE, false);
+
+                Log.d("DynamicIsland", "Received ADB command: isVisible=" + isVisible);
+
+                if (isVisible) {
+                    // Usar un placeholder de metadata para forzar la expansión
+                    MediaMetadata dummyMetadata = new MediaMetadata.Builder()
+                        .putString(MediaMetadata.METADATA_KEY_TITLE, "ADB Test")
+                        .putString(MediaMetadata.METADATA_KEY_ARTIST, "Manual Command")
+                        .build();
+
+                    mDynamicIslandManager.show(dummyMetadata);
+                } else {
+                    mDynamicIslandManager.hide();
+                }
+            }
         }
-    }
+    };
 }
