@@ -111,19 +111,5 @@
     <!-- Refresh rate in statusbar -->
     <dimen name="status_bar_refresh_rate_padding">6dp</dimen>
 
-    <!-- Dynamic Island dimensions -->
-    <dimen name="dynamic_island_width_collapsed">80dp</dimen>
-    <dimen name="dynamic_island_width_expanded">280dp</dimen>
-    <dimen name="dynamic_island_height_collapsed">35dp</dimen>
-    <dimen name="dynamic_island_height_expanded">60dp</dimen>
-
-    <!-- Content dimensions -->
-    <dimen name="dynamic_island_album_size">40dp</dimen>
-    <dimen name="dynamic_island_content_padding">12dp</dimen>
-    <dimen name="dynamic_island_content_spacing">8dp</dimen>
-
-    <!-- Text sizes -->
-    <dimen name="dynamic_island_title_text_size">14sp</dimen>
-    <dimen name="dynamic_island_artist_text_size">12sp</dimen>
 </resources>
 

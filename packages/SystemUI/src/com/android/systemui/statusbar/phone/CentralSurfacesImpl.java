@@ -252,8 +252,6 @@ import com.android.systemui.utils.windowmanager.WindowManagerProvider;
 import com.android.systemui.volume.VolumeComponent;
 import com.android.systemui.wallet.controller.QuickAccessWalletController;
 import com.android.systemui.xperience.RebootSuggestion;
-import com.android.systemui.xperience.dynamicisland.DynamicIslandManager;
-import com.android.systemui.xperience.dynamicisland.DynamicIslandView;
 import com.android.wm.shell.bubbles.Bubbles;
 import com.android.wm.shell.startingsurface.SplashscreenContentDrawer;
 import com.android.wm.shell.startingsurface.StartingSurface;
@@ -503,10 +501,6 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces,
     private GameSpaceManager mGameSpaceManager;
 
     private final DisplayMetrics mDisplayMetrics;
-
-    //Dynamic Island
-    private DynamicIslandManager mDynamicIslandManager;
-    private DynamicIslandView mDynamicIslandView;
 
     // XXX: gesture research
     private final GestureRecorder mGestureRec = DEBUG_GESTURES
@@ -992,9 +986,6 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces,
         mRefreshRateController.startListening();
         mContext.registerComponentCallbacks(mConfigurationCallback);
 
-        // DYNAMIC ISLAND
-        initializeDynamicIsland();
-
         // start old BaseStatusBar.start().
         mWindowManagerService = WindowManagerGlobal.getWindowManagerService();
 
@@ -1218,11 +1209,6 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces,
     public void destroy() {
         if (mRefreshRateController != null) {
             mRefreshRateController.stopListening();
-        }
-        //clear Dynamic Island
-        if (mDynamicIslandManager != null) {
-            mDynamicIslandManager.destroy();
-            mDynamicIslandManager = null;
         }
         mContext.unregisterComponentCallbacks(mConfigurationCallback);
     }
@@ -3490,24 +3476,5 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces,
     public ActivityTransitionAnimator.Controller getAnimatorControllerFromNotification(
             ExpandableNotificationRow associatedView) {
         return mNotificationAnimationProvider.getAnimatorController(associatedView);
-    }
-
-    private void initializeDynamicIsland() {
-        Log.d("CentralSurfaces", "Initializing Dynamic Island");
-        //remove
-        Log.d("CentralSurfaces", "Initializing Dynamic Island - Display: " + mDisplayId);
-
-        mDynamicIslandManager = new DynamicIslandManager(mContext);
-
-        // Buscar la vista en el layout del status bar
-        mDynamicIslandView = getNotificationShadeWindowView().findViewById(com.android.systemui.res.R.id.dynamic_island);
-        if (mDynamicIslandView != null) {
-            Log.d("CentralSurfaces", "Dynamic Island view found: " + mDynamicIslandView.hashCode());
-            mDynamicIslandManager.setView(mDynamicIslandView);
-            mDynamicIslandManager.start();
-            Log.d("CentralSurfaces", "Dynamic Island initialized successfully");
-        } else {
-            Log.w("CentralSurfaces", "Dynamic Island view not found in layout");
-        }
     }
 }

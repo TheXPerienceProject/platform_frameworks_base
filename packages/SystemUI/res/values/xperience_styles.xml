@@ -19,20 +19,4 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">48dp</item>
     </style>
-
-    <style name="TextAppearance.DynamicIsland.Title" parent="@android:style/TextAppearance.Material.Notification.Title">
-        <item name="android:textSize">@dimen/dynamic_island_title_text_size</item>
-        <item name="android:textColor">@android:color/white</item>
-        <item name="android:fontFamily">sans-serif-medium</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:ellipsize">end</item>
-    </style>
-
-    <style name="TextAppearance.DynamicIsland.Subtitle" parent="@android:style/TextAppearance.Material.Notification.Line2">
-        <item name="android:textSize">@dimen/dynamic_island_artist_text_size</item>
-        <item name="android:textColor">#CCFFFFFF</item>
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:ellipsize">end</item>
-    </style>
 </resources>
