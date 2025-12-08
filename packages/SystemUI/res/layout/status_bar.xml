@@ -128,19 +128,19 @@
         </FrameLayout>
 
         <!-- Space should cover the notch (if it exists) and let other views lay out around it -->
-        <!--<android.widget.Space
+        <android.widget.Space
             android:id="@+id/cutout_space_view"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
-        />-->
+        />
 
-        <!--<com.android.systemui.xperience.dynamicisland.DynamicIslandView
+        <com.android.systemui.xperience.dynamicisland.DynamicIslandView
             android:id="@+id/dynamic_island"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:visibility="gone" />-->
+            android:layout_gravity="top|center_horizontal"
+            android:paddingTop="@dimen/status_bar_height" />
 
         <!-- Container for the entire end half of the status bar. It will always use the same
              width, independent of the number of visible children and sub-children. -->

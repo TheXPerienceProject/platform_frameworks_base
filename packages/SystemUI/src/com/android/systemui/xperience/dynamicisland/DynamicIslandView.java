@@ -42,9 +42,6 @@ public class DynamicIslandView extends FrameLayout {
     private int mCollapsedHeight;
     private int mExpandedHeight;
 
-    private OnDynamicIslandClickListener mClickListener;
-    private boolean mIsInteractive = true;
-
     public DynamicIslandView(Context context) {
         this(context, null);
     }
@@ -77,97 +74,30 @@ public class DynamicIslandView extends FrameLayout {
         mCollapsedHeight = getResources().getDimensionPixelSize(com.android.systemui.res.R.dimen.dynamic_island_height_collapsed);
         mExpandedHeight = getResources().getDimensionPixelSize(com.android.systemui.res.R.dimen.dynamic_island_height_expanded);
 
-        mBackground = findViewById(com.android.systemui.res.R.id.dynamic_island_background);
-        mAlbumArt = findViewById(com.android.systemui.res.R.id.dynamic_island_album_art);
-        mTitle = findViewById(com.android.systemui.res.R.id.dynamic_island_title);
-        mArtist = findViewById(com.android.systemui.res.R.id.dynamic_island_artist);
-
-        if (DEBUG) {
-            Log.d(TAG, "Sub-views found (in init): Background=" + (mBackground != null)
-                    + ", Title=" + (mTitle != null)
-                    + ", Artist=" + (mArtist != null)
-                    + ", AlbumArt=" + (mAlbumArt != null));
-        }
-
-        // 4. Set initial state (collapsed) (Movido desde onFinishInflate)
-        setCollapsedState();
-
         setupAnimations();
-    }
-
-    public interface OnDynamicIslandClickListener {
-        void onDynamicIslandClick();
-        void onDynamicIslandLongClick();
     }
 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
+        if (DEBUG) Log.d(TAG, "Dynamic Island view inflated");
 
-        setClickable(true);
-        setFocusable(true);
+        // Find views
+        mBackground = findViewById(com.android.systemui.res.R.id.dynamic_island_background);
+        mAlbumArt = findViewById(com.android.systemui.res.R.id.dynamic_island_album_art);
+        mTitle = findViewById(com.android.systemui.res.R.id.dynamic_island_title);
+        mArtist = findViewById(com.android.systemui.res.R.id.dynamic_island_artist);
 
-        setOnClickListener(v -> {
-            if (DEBUG) Log.d(TAG, "🎯 Dynamic Island clickeada!");
-            if (mClickListener != null) {
-                mClickListener.onDynamicIslandClick();
-            }
-            // O manejar el click directamente aquí
-            handleClick();
-        });
+        if (DEBUG){
+        // DEBUG: Verificar si las vistas se encontraron
+        Log.d(TAG, "Background found: " + (mBackground != null));
+        Log.d(TAG, "AlbumArt found: " + (mAlbumArt != null));
+        Log.d(TAG, "Title found: " + (mTitle != null));
+        Log.d(TAG, "Artist found: " + (mArtist != null));
 
-        setOnLongClickListener(v -> {
-            if (DEBUG) Log.d(TAG, "🎯 Dynamic Island long-clickeada!");
-            if (mClickListener != null) {
-                mClickListener.onDynamicIslandLongClick();
-            }
-            return true;
-        });
-    }
-
-    private void handleClick() {
-            if (DEBUG) Log.d(TAG, "🔄 Manejando click...");
-
-            if (mIsExpanded) {
-                // Si está expandida, colapsar
-                hide();
-            } else {
-                // Si está colapsada, expandir con más información
-                expandWithDetails();
-            }
         }
-
-    public void expandWithDetails() {
-        if (DEBUG) Log.d(TAG, "📱 Expandir con detalles interactivos");
-
-        // Aquí puedes mostrar controles de música, opciones, etc.
-        // Similar a cómo lo hacías en tu app original
-
-        if (!mIsExpanded && mExpandAnimator != null && !mExpandAnimator.isRunning()) {
-            if (mCollapseAnimator != null && mCollapseAnimator.isRunning()) {
-                mCollapseAnimator.cancel();
-            }
-            mExpandAnimator.start();
-        }
-
-        // Opcional: Mostrar controles adicionales al expandir
-        showAdditionalControls();
-    }
-
-    private void showAdditionalControls() {
-        if (DEBUG) Log.d(TAG, "🎛️ Mostrando controles adicionales");
-        // Aquí puedes agregar botones de play/pause, siguiente, anterior, etc.
-        // Similar a los controles que tenías en tu app
-    }
-
-    public void setOnDynamicIslandClickListener(OnDynamicIslandClickListener listener) {
-        mClickListener = listener;
-    }
-
-    public void setInteractive(boolean interactive) {
-        mIsInteractive = interactive;
-        setClickable(interactive);
-        setFocusable(interactive);
+        // Set initial state (collapsed)
+        setCollapsedState();
     }
 
     private void setCollapsedState() {

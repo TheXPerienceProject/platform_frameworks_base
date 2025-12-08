@@ -112,9 +112,9 @@
     <dimen name="status_bar_refresh_rate_padding">6dp</dimen>
 
     <!-- Dynamic Island dimensions -->
-    <dimen name="dynamic_island_width_collapsed">120dp</dimen>
+    <dimen name="dynamic_island_width_collapsed">80dp</dimen>
     <dimen name="dynamic_island_width_expanded">280dp</dimen>
-    <dimen name="dynamic_island_height_collapsed">40dp</dimen>
+    <dimen name="dynamic_island_height_collapsed">35dp</dimen>
     <dimen name="dynamic_island_height_expanded">60dp</dimen>
 
     <!-- Content dimensions -->

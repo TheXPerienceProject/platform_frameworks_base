@@ -82,8 +82,6 @@ public class DynamicIslandController {
         try {
             Log.d(TAG, "Setting up MediaSession listener");
             mMediaSessionManager = mContext.getSystemService(MediaSessionManager.class);
-            List<MediaController> activeSessions = mMediaSessionManager.getActiveSessions(null);
-            Log.e("DynamicIslandDebug", "Sesiones iniciales encontradas: " + (activeSessions != null ? activeSessions.size() : "NULL"));
             MediaSessionManager.OnActiveSessionsChangedListener sessionListener =
                 new MediaSessionManager.OnActiveSessionsChangedListener() {
                     @Override
