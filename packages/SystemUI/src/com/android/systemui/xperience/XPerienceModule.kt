@@ -31,6 +31,9 @@ import com.android.systemui.qs.tiles.base.shared.model.QSTileConfig;
 import com.android.systemui.qs.tiles.base.shared.model.QSTilePolicy;
 import com.android.systemui.qs.tiles.base.shared.model.QSTileUIConfig;
 import com.android.systemui.res.R
+import com.android.systemui.xperience.dynamicisland.DynamicIslandController;
+import com.android.systemui.xperience.dynamicisland.DynamicIslandStartable;
+
 
 import dagger.Binds
 import dagger.Module
@@ -152,6 +155,7 @@ interface XPerienceModule {
                 category = TileCategory.DISPLAY
             )
         }
+
 
     }
 }

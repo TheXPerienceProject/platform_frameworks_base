@@ -173,6 +173,7 @@ import com.android.systemui.util.time.SystemClock;
 import com.android.systemui.util.time.SystemClockImpl;
 import com.android.systemui.wallet.dagger.WalletModule;
 import com.android.systemui.wmshell.BubblesManager;
+import com.android.systemui.xperience.dynamicisland.DynamicIslandStartable;
 import com.android.systemui.xperience.XPerienceModule;
 import com.android.wm.shell.bubbles.Bubbles;
 
@@ -182,6 +183,7 @@ import dagger.Module;
 import dagger.Provides;
 import dagger.multibindings.ClassKey;
 import dagger.multibindings.IntoMap;
+import dagger.multibindings.IntoSet;
 import dagger.multibindings.Multibinds;
 
 import kotlinx.coroutines.CoroutineScope;
@@ -490,4 +492,8 @@ public abstract class SystemUIModule {
     static SettingsProxy.CurrentUserIdProvider provideCurrentUserId(UserTracker userTracker) {
         return userTracker::getUserId;
     }
+
+    @Binds
+    @IntoSet
+    abstract CoreStartable bindDynamicIslandStartable(DynamicIslandStartable startable);
 }
