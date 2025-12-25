@@ -7149,6 +7149,14 @@ public final class Settings {
          * 1: Battery Percentage.
          * 2: Battery Temperature.
          * 3: Battery Percentage & Temperature Together.
+
+	/**
+         * @hide
+         */
+        public static final String MEDIA_WAVEFORM_SEEKBAR = "media_waveform_seekbar";
+
+        /**
+         * Whether to show rotation suggestion
          * @hide
          */
         public static final String AMBIENT_SHOW_SETTINGS = "ambient_show_settings";
