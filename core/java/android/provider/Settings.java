@@ -6765,13 +6765,6 @@ public final class Settings {
                 "screen_flash_notification_color_global";
 
         /**
-         * Enable statusbar double tap gesture on to put device to sleep
-         * 0 = 0ff, 1 = on
-         * @hide
-         */
-        public static final String DOUBLE_TAP_SLEEP_GESTURE = "double_tap_sleep_gesture";
-
-        /**
          * Whether to wake the display when plugging or unplugging the charger
          *
          * @hide
