@@ -39,11 +39,13 @@ import android.content.res.Resources;
 import android.graphics.Insets;
 import android.graphics.Rect;
 import android.graphics.Region;
+import android.provider.Settings;
 import android.util.IndentingPrintWriter;
 import android.util.Log;
 import android.util.MathUtils;
 import android.view.Display;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.VelocityTracker;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
@@ -90,6 +92,7 @@ import com.android.systemui.statusbar.PulseExpansionHandler;
 import com.android.systemui.statusbar.QsFrameTranslateController;
 import com.android.systemui.statusbar.StatusBarState;
 import com.android.systemui.statusbar.notification.domain.interactor.ActiveNotificationsInteractor;
+import com.android.systemui.statusbar.notification.row.ExpandableNotificationRow;
 import com.android.systemui.statusbar.notification.stack.AmbientState;
 import com.android.systemui.statusbar.notification.stack.NotificationStackScrollLayout;
 import com.android.systemui.statusbar.notification.stack.NotificationStackScrollLayoutController;
@@ -126,6 +129,9 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
     public static final String TAG = "QuickSettingsController";
 
     public static final int SHADE_BACK_ANIM_SCALE_MULTIPLIER = 100;
+
+    private static final String NOTIFICATION_ROW_TRANSPARENCY =
+            Settings.Secure.NOTIFICATION_ROW_TRANSPARENCY;
 
     private QS mQs;
     private final Lazy<NotificationPanelViewController> mPanelViewControllerLazy;
@@ -2282,6 +2288,7 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
                 mNotificationStackScrollLayoutController.setQsHeader((ViewGroup) mQs.getHeader());
             }
             mQs.setScrollListener(mQsScrollListener);
+            mTunerService.addTunable(this, NOTIFICATION_ROW_TRANSPARENCY);
             updateExpansion();
         }
 
@@ -2303,6 +2310,29 @@ public class QuickSettingsControllerImpl implements QuickSettingsController, Dum
                     mNotificationStackScrollLayoutController.setQsHeader(null);
                 }
                 mQs = null;
+            }
+        }
+
+        @Override
+        public void onTuningChanged(String key, String newValue) {
+            if (NOTIFICATION_ROW_TRANSPARENCY.equals(key)) {
+                onTransparencyUpdated();
+            }
+        }
+    }
+
+    private void onTransparencyUpdated() {
+        NotificationStackScrollLayoutController controller = mNotificationStackScrollLayoutController;
+        if (controller == null || controller.getView() == null) {
+            return;
+        }
+        NotificationStackScrollLayout view = controller.getView();
+        int childCount = view.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            View child = view.getChildAt(i);
+            if (child instanceof ExpandableNotificationRow) {
+                ExpandableNotificationRow row = (ExpandableNotificationRow) child;
+                child.post(row::updateIfNeeded);
             }
         }
     }
