@@ -194,7 +194,7 @@ public class ThemeOverlayController implements CoreStartable, Dumpable {
             new ConfigurationListener() {
                 @Override
                 public void onThemeChanged() {
-                    setBootColorProps();
+                    // todo
                 }
 
                 @Override

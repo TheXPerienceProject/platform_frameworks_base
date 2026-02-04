@@ -72,6 +72,7 @@ object MobileIconBinder {
         val mobileDrawable = SignalDrawable(view.context)
         val mobileHdView = view.requireViewById<ImageView>(R.id.mobile_hd)
         val mobileHdSpace = view.requireViewById<Space>(R.id.mobile_hd_space)
+        val endSideRoamingView = view.requireViewById<ImageView>(R.id.mobile_roaming_updated)
         val dotView = view.requireViewById<StatusBarIconView>(R.id.status_bar_dot)
 
         view.isVisible = viewModel.isVisible.value
@@ -224,17 +225,16 @@ object MobileIconBinder {
 
                     // Set the mobile HD indicator (VoLTE/VoNR)
                     launch {
-                        viewModel.roaming.distinctUntilChanged().collect { isRoaming ->
-                            if (NewStatusBarIcons.isEnabled) {
-                                endSideRoamingView.isVisible = isRoaming
-                            } else {
-                                roamingView.isVisible = isRoaming
-                                roamingSpace.isVisible = isRoaming
-                            }
-                        }
                         viewModel.showHd.distinctUntilChanged().collect { isHd ->
                             mobileHdView.isVisible = isHd
                             mobileHdSpace.isVisible = isHd
+                        }
+                    }
+
+                    // Set the roaming indicator (single SIM - end side)
+                    launch {
+                        viewModel.isRoamingVisible.distinctUntilChanged().collect { isRoaming ->
+                            endSideRoamingView.isVisible = isRoaming
                         }
                     }
 
@@ -284,6 +284,7 @@ object MobileIconBinder {
                                 networkTypeView.imageTintList = tint
                             }
 
+                            endSideRoamingView.imageTintList = tint
                             mobileHdView.imageTintList = tint
                             activityIn.imageTintList = tint
                             activityOut.imageTintList = tint
