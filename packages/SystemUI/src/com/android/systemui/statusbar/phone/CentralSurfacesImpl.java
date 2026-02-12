@@ -83,11 +83,13 @@ import android.view.ThreadedRenderer;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.view.WindowInsets;
 import android.view.WindowManager;
 import android.view.WindowManagerGlobal;
 import android.view.accessibility.AccessibilityManager;
 import android.widget.DateTimeView;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.Lifecycle;
@@ -1180,14 +1182,52 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
                 (requestTopUi, componentTag) -> mMainExecutor.execute(
                         () -> mTopUiController.setRequestTopUi(requestTopUi, componentTag)
                 )));
-        getNotifContainerParentView().addView(mEdgeLightViewController.getEdgeLightView(), 2);
-        getNotifContainerParentView().addView(mNowPlayingViewController.getNowPlayingView(), 3);
+        attachCustomOverlays();
     }
 
-    private ViewGroup getNotifContainerParentView() {
-        ViewGroup rootView = (ViewGroup) getNotificationShadeWindowView().findViewById(R.id.scrim_behind).getParent();
-        ViewGroup targetView = rootView.findViewById(R.id.notification_container_parent);
-        return targetView;
+     private ViewGroup getScrimOverlayContainer() {
+        ViewGroup root = (ViewGroup) getNotificationShadeWindowView();
+
+        FrameLayout container = root.findViewById(R.id.custom_overlay_container);
+        if (container != null) {
+            return container;
+        }
+
+        container = new FrameLayout(mContext);
+        container.setId(R.id.custom_overlay_container);
+        container.setLayoutParams(new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
+
+        View scrimInFront = root.findViewById(R.id.scrim_in_front);
+        int scrimIndex = Math.max(root.indexOfChild(scrimInFront) - 3, 0);
+        root.addView(container, scrimIndex);
+
+        return container;
+    }
+
+    private void attachCustomOverlays() {
+        ViewGroup overlay = getScrimOverlayContainer();
+
+        detachFromParent(mEdgeLightViewController.getEdgeLightView());
+        detachFromParent(mNowPlayingViewController.getNowPlayingView());
+
+        overlay.addView(mEdgeLightViewController.getEdgeLightView(),
+                new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
+        overlay.addView(mNowPlayingViewController.getNowPlayingView(),
+                new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
+    }
+
+    private static void detachFromParent(View v) {
+        if (v == null) return;
+        final ViewParent p = v.getParent();
+        if (p instanceof ViewGroup) {
+            ((ViewGroup) p).removeView(v);
+        }
     }
 
     public void destroy() {
