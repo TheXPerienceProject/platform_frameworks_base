@@ -2595,20 +2595,33 @@ public class DisplayDeviceConfig {
      * Use the brightness minimum and maximum values to clamp these arrays.
      */
     private void constrainNitsAndBacklightArrays() {
+
+        if (mRawBacklight == null || mRawNits == null || mRawBacklight.length == 0 || mRawNits.length == 0) {
+            Slog.e(TAG, "Critical error: Null or empty brightness arrays. Aborting constraint.");
+            return;
+        }
+
+        if (mRawBacklight.length != mRawNits.length) {
+            Slog.w(TAG, "¡Unequal arrays detected! Backlight: " + mRawBacklight.length + " , Nits: " + mRawNits.length);
+            int minLength = Math.min(mRawBacklight.length, mRawNits.length);
+            mRawBacklight = Arrays.copyOf(mRawBacklight, minLength);
+            mRawNits = Arrays.copyOf(mRawNits, minLength);
+        }
+
         if (mRawBacklight[0] > mBacklightMinimum
                 || mRawBacklight[mRawBacklight.length - 1] < mBacklightMaximum
                 || mBacklightMinimum > mBacklightMaximum) {
-            throw new IllegalStateException("Min or max values are invalid"
-                    + "; raw min=" + mRawBacklight[0]
+            Slog.e(TAG, "Invalid brightness setting detected; raw min=" + mRawBacklight[0]
                     + "; raw max=" + mRawBacklight[mRawBacklight.length - 1]
                     + "; backlight min=" + mBacklightMinimum
                     + "; backlight max=" + mBacklightMaximum);
+            mBacklightMinimum = MathUtils.min(mRawBacklight[0], mBacklightMinimum);
+            mBacklightMaximum = MathUtils.max(mRawBacklight[mRawBacklight.length - 1], mBacklightMaximum);
         }
 
         float[] newNits = new float[mRawBacklight.length];
         float[] newBacklight = new float[mRawBacklight.length];
-        // Find the starting index of the clamped arrays. This may be less than the min so
-        // we'll need to clamp this value still when actually doing the remapping.
+
         int newStart = 0;
         for (int i = 0; i < mRawBacklight.length - 1; i++) {
             if (mRawBacklight[i + 1] > mBacklightMinimum) {
@@ -2625,7 +2638,7 @@ public class DisplayDeviceConfig {
             final float newNitsVal;
             isLastValue = mRawBacklight[i] >= mBacklightMaximum
                     || i >= mRawBacklight.length - 1;
-            // Clamp beginning and end to valid backlight values.
+
             if (newIndex == 0) {
                 newBacklightVal = MathUtils.max(mRawBacklight[i], mBacklightMinimum);
                 newNitsVal = rawBacklightToNits(i, newBacklightVal);
@@ -2634,6 +2647,7 @@ public class DisplayDeviceConfig {
                 newNitsVal = rawBacklightToNits(i - 1, newBacklightVal);
             } else {
                 newBacklightVal = mRawBacklight[i];
+                // Here we use mRawNits with the same index, now secure
                 newNitsVal = mRawNits[i];
             }
             newBacklight[newIndex] = newBacklightVal;
@@ -2642,6 +2656,7 @@ public class DisplayDeviceConfig {
         mBacklight = Arrays.copyOf(newBacklight, newIndex + 1);
         mNits = Arrays.copyOf(newNits, newIndex + 1);
         createBacklightConversionSplines();
+
     }
 
     private float rawBacklightToNits(int i, float backlight) {
