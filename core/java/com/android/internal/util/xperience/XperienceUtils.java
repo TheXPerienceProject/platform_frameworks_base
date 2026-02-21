@@ -26,6 +26,8 @@ import android.app.IActivityManager;
 import android.app.role.RoleManager;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.content.om.IOverlayManager;
 import android.content.om.OverlayInfo;
@@ -72,7 +74,16 @@ import android.os.RemoteException;
 
 import com.android.internal.R;
 import com.android.internal.statusbar.IStatusBarService;
+import com.android.internal.notification.SystemNotificationChannels;
+import com.android.internal.util.ArrayUtils;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -312,7 +323,7 @@ public class XperienceUtils {
         FireActions.toggleCameraFlash();
     }
 
-    public static void sendKeycode(int keycode) {
+    public static void sendKeycode(Context context, int keycode) {
         long when = SystemClock.uptimeMillis();
         final KeyEvent evDown = new KeyEvent(when, when, KeyEvent.ACTION_DOWN, keycode, 0,
                 0, KeyCharacterMap.VIRTUAL_KEYBOARD, 0,
@@ -320,18 +331,19 @@ public class XperienceUtils {
                 InputDevice.SOURCE_KEYBOARD);
         final KeyEvent evUp = KeyEvent.changeAction(evDown, KeyEvent.ACTION_UP);
 
+        final InputManager inputManager = context.getSystemService(InputManager.class);
         final Handler handler = new Handler(Looper.getMainLooper());
         handler.post(new Runnable() {
             @Override
             public void run() {
-                InputManager.getInstance().injectInputEvent(evDown,
+                inputManager.injectInputEvent(evDown,
                         InputManager.INJECT_INPUT_EVENT_MODE_ASYNC);
             }
         });
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                InputManager.getInstance().injectInputEvent(evUp,
+                inputManager.injectInputEvent(evUp,
                         InputManager.INJECT_INPUT_EVENT_MODE_ASYNC);
             }
         }, 20);
