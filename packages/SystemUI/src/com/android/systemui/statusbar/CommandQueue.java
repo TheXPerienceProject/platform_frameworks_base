@@ -2105,13 +2105,12 @@ public class CommandQueue extends IStatusBar.Stub implements
                         callback.moveFocusedTaskToDesktop(displayId);
                     }
                     break;
-
+                }
                 case MSG_TOGGLE_CAMERA_FLASH:
                     for (int i = 0; i < mCallbacks.size(); i++) {
                         mCallbacks.get(i).toggleCameraFlash();
                     }
                     break;
-                }
             }
         }
     }
