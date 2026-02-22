@@ -834,6 +834,7 @@ class AppLockManagerService(
             IntentFilter(ACTION_APP_LOCK_TIMEOUT),
             null /* broadcastPermission */,
             null /* scheduler */,
+            Context.RECEIVER_NOT_EXPORTED
         )
 
         context.registerReceiverForAllUsers(
@@ -843,6 +844,7 @@ class AppLockManagerService(
             },
             null /* broadcastPermission */,
             null /* scheduler */,
+            Context.RECEIVER_NOT_EXPORTED
         )
 
         ActivityTaskManager.getService().registerTaskStackListener(taskStackListener)
