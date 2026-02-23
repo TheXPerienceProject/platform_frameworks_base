@@ -869,9 +869,13 @@ final class DefaultPermissionGrantPolicy {
         Intent homeIntent = new Intent(Intent.ACTION_MAIN)
                 .addCategory(Intent.CATEGORY_HOME)
                 .addCategory(Intent.CATEGORY_LAUNCHER_APP);
-        grantPermissionsToSystemPackage(pm,
-                getDefaultSystemHandlerActivityPackage(pm, homeIntent, userId), userId,
-                ALWAYS_LOCATION_PERMISSIONS, NOTIFICATION_PERMISSIONS);
+        String homePackageName = getDefaultSystemHandlerActivityPackage(pm, homeIntent, userId);
+        if (homePackageName != null) {
+            grantPermissionsToSystemPackage(pm,
+                    getDefaultSystemHandlerActivityPackage(pm, homeIntent, userId), userId,
+                    ALWAYS_LOCATION_PERMISSIONS, NOTIFICATION_PERMISSIONS,
+                    Set.of("android.permission.MANAGE_APP_LOCK"));
+        }
 
         // Watches
         if (mContext.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WATCH, 0)) {
