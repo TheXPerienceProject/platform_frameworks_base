@@ -47,5 +47,6 @@ val Kosmos.statusBarRootFactory by
             statusBarRegionSamplingViewModelFactory = statusBarRegionSamplingViewModelFactory,
             headlineViewModelFactory = displayAwareHeadlineViewModelImplFactory,
             mediaHierarchyManager = mock(),
+            axDynamicBarChipViewModel = mock(),
         )
     }
