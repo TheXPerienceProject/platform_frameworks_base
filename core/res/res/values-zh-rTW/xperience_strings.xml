@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2025 The XPerience Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Accessibility label for nfc icon (not shown on screen) [CHAR LIMIT=NONE] -->
+    <string name="accessibility_status_bar_nfc">NFC</string>
+    <!-- App lock -->
+    <string name="unlock_application">解鎖<xliff:g id="label" example="Telegram">%1$s</xliff:g></string>
+    <!-- Settings Restart -->
+    <!-- System Reboot -->
+    <!-- SystemUI Restart -->
+    <!-- Cycle through ringer modes -->
+    <string name="volume_dialog_ringer_guidance_normal">來電和通知會響起</string>
+</resources>
