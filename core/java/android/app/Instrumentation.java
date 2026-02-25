@@ -80,8 +80,8 @@ import java.util.Objects;
 import java.util.StringJoiner;
 import java.util.concurrent.TimeoutException;
 
-import com.android.internal.util.voltage.AttestationHooks;
-import com.android.internal.util.voltage.PixelPropsUtils;
+import com.android.internal.util.xperience.AttestationHooks;
+import com.android.internal.util.xperience.PixelPropsUtils;
 
 /**
  * Base class for implementing application instrumentation code.  When running
