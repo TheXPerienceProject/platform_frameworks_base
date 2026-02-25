@@ -18,6 +18,9 @@
     <!-- Status bar -->
     <string name="status_bar_icons_title">Status bar icons</string>
 
+    <!-- Name of the roaming status bar icon. -->
+    <string name="status_bar_roaming">Roaming indicator</string>
+
     <!-- Advanced restart menu -->
     <!-- Button to indicate more options -->
     <string name="global_action_restart_more">Restart\u2026</string>

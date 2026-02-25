@@ -54,6 +54,7 @@ import android.database.ContentObserver;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Handler;
+import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.Settings;
@@ -84,6 +85,8 @@ import com.android.systemui.keyguard.shared.model.KeyguardState;
 import com.android.systemui.monet.ColorScheme;
 import com.android.systemui.monet.DynamicColors;
 import com.android.systemui.settings.UserTracker;
+import com.android.systemui.statusbar.policy.ConfigurationController;
+import com.android.systemui.statusbar.policy.ConfigurationController.ConfigurationListener;
 import com.android.systemui.statusbar.policy.DeviceProvisionedController;
 import com.android.systemui.statusbar.policy.DeviceProvisionedController.DeviceProvisionedListener;
 import com.android.systemui.user.utils.UserScopedService;
@@ -140,6 +143,7 @@ public class ThemeOverlayController implements CoreStartable, Dumpable {
     private final Context mContext;
     private final boolean mIsMonetEnabled;
     private final UserTracker mUserTracker;
+    private final ConfigurationController mConfigurationController;
     private final DeviceProvisionedController mDeviceProvisionedController;
     private final Resources mResources;
     // Current wallpaper colors associated to a user.
@@ -466,10 +470,12 @@ public class ThemeOverlayController implements CoreStartable, Dumpable {
             UiModeManager uiModeManager, // TODO(b/362682063) legacy argument, remove
             UserScopedService<UiModeManager> uiModeManagerProvider,
             ActivityManager activityManager,
-            SystemPropertiesHelper systemPropertiesHelper
+            SystemPropertiesHelper systemPropertiesHelper,
+            ConfigurationController configurationController
     ) {
         mContext = context;
         mIsMonetEnabled = featureFlags.isEnabled(Flags.MONET);
+        mConfigurationController = configurationController;
         mDeviceProvisionedController = deviceProvisionedController;
         mBroadcastDispatcher = broadcastDispatcher;
         mUserManager = userManager;
@@ -543,6 +549,7 @@ public class ThemeOverlayController implements CoreStartable, Dumpable {
         }
 
         mUserTracker.addCallback(mUserTrackerCallback, mMainExecutor);
+        mConfigurationController.addCallback(mConfigurationListener);
         mDeviceProvisionedController.addCallback(mDeviceProvisionedListener);
 
 

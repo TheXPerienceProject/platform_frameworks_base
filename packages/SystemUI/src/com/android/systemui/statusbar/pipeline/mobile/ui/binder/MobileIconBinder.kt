@@ -231,6 +231,7 @@ object MobileIconBinder {
                                 roamingView.isVisible = isRoaming
                                 roamingSpace.isVisible = isRoaming
                             }
+                        }
                         viewModel.showHd.distinctUntilChanged().collect { isHd ->
                             mobileHdView.isVisible = isHd
                             mobileHdSpace.isVisible = isHd

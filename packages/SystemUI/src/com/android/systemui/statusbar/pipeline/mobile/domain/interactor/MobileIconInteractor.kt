@@ -124,6 +124,9 @@ interface MobileIconInteractor {
      */
     val isRoaming: Flow<Boolean>
 
+    /** See [MobileIconsInteractor.isRoamingForceHidden]. */
+    val isRoamingForceHidden: Flow<Boolean>
+
     /** See [MobileIconsInteractor.isForceHidden]. */
     val isForceHidden: Flow<Boolean>
 
