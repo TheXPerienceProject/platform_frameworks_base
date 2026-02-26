@@ -12,4 +12,5 @@
     <!-- SystemUI Restart -->
     <!-- Cycle through ringer modes -->
     <string name="volume_dialog_ringer_guidance_normal">Звук в звонках и уведомлениях включён</string>
+    <!-- Pocket Lock -->
 </resources>
