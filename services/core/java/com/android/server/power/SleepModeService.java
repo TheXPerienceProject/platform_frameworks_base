@@ -33,7 +33,7 @@ import android.os.UserHandle;
 import android.provider.Settings;
 import android.util.Slog;
 
-import com.android.internal.util.voltage.VoltageUtils.SleepModeController;
+import com.android.internal.util.xperience.XperienceUtils.SleepModeController;
 import com.android.server.SystemService;
 import com.android.server.twilight.TwilightListener;
 import com.android.server.twilight.TwilightManager;
