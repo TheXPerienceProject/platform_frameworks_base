@@ -25,4 +25,14 @@
     <string name="pocket_mode_instructions_header">Para usar tu teléfono:</string>
     <string name="pocket_mode_instruction_step1">1. Asegúrate de que el área roja (sensor de proximidad) mostrada arriba esté despejada y libre de suciedad o polvo.</string>
     <string name="pocket_mode_instruction_step2">2. Mantén presionado el botón de encendido para salir del modo bolsillo.</string>
+    <!-- Charging speed strings -->
+    <!-- LiveDisplay strings -->
+    <!-- Health interface -->
+    <string name="charging_control_notification_channel">Control de carga</string>
+    <string name="charging_control_notification_title">Control de carga</string>
+    <string name="charging_control_notification_cancel_once">Cancelar</string>
+    <string name="charging_control_notification_content_limit">La batería se cargará hasta %1$d%%</string>
+    <string name="charging_control_notification_content_limit_reached">La batería se cargó al %1$d%%</string>
+    <string name="charging_control_notification_content_target">La batería estará completamente cargada en %1$s</string>
+    <string name="charging_control_notification_content_target_reached">La batería está cargada</string>
 </resources>
