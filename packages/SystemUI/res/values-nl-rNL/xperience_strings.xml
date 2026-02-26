@@ -32,4 +32,22 @@
     <!-- Indication on the keyguard that is shown when the device is charging with a warp charger. Should match keyguard_plugged_in_warp_charging [CHAR LIMIT=40]-->
     <!-- Indication on the keyguard that is shown when the device is charging with a VOOC charger. Should match keyguard_plugged_in_vooc_charging [CHAR LIMIT=40]-->
     <!-- Indication on the keyguard that is shown when the device is charging with a turbo power charger. Should match keyguard_plugged_in_turbo_charging [CHAR LIMIT=40]-->
+    <!-- Heads up QS tile -->
+    <!-- Sync QS tile -->
+    <!-- Ambient display QS tile -->
+    <string name="quick_settings_ambient_display_label">Actieve display</string>
+    <string name="accessibility_quick_settings_ambient_display_off">Actieve display uit.</string>
+    <string name="accessibility_quick_settings_ambient_display_on">Actieve display uit.</string>
+    <!-- Sound QS Tile -->
+    <!-- USB tethering QS tile -->
+    <!-- AOD QS tile -->
+    <!-- Caffeine QS tile -->
+    <string name="quick_settings_caffeine_label">Cafeïne</string>
+    <string name="accessibility_quick_settings_caffeine_off">Cafeïne uit.</string>
+    <string name="accessibility_quick_settings_caffeine_on">Cafeïne aan.</string>
+    <!-- CPUInfo tile -->
+    <!-- FPS Info tile -->
+    <!-- FPS view text placeholder -->
+    <!-- USB function dialog - copied from Settings -->
+    <!-- PowerShare QS tile -->
 </resources>
