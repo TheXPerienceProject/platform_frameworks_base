@@ -100,4 +100,15 @@
     <string name="quick_settings_powershare_off_powersave_label">Transferencia de energía inalámbrica apagada\nAhorro de batería</string>
     <string name="quick_settings_powershare_off_low_battery_label">Transferencia de energía inalámbrica apagada\nBatería demasiado baja</string>
     <string name="quick_settings_powershare_enabled_label">Transferencia de energía inalámbrica está activada</string>
+    <!-- Sleep Mode -->
+    <!-- QS button to enable adaptive brightness -->
+    <!-- Screen record -->
+    <string name="screenrecord_lowquality_label">Baja calidad</string>
+    <string name="screenrecord_lowquality_summary">Para archivo más pequeño</string>
+    <string name="screenrecord_longer_timeout_switch_label">Límite de tamaño de archivo mayor</string>
+    <string name="screenrecord_longer_timeout_switch_summary">Limitar tamaño de grabación a 15 GB</string>
+    <string name="screenrecord_skip_time_label">Saltar temporizador</string>
+    <string name="screenrecord_skip_time_summary">Elimina la espera de 3 segundos</string>
+    <string name="screenrecord_hevc_switch_label">Codificación HEVC</string>
+    <string name="screenrecord_hevc_switch_summary">Usa el codificador HEVC más eficiente</string>
 </resources>
