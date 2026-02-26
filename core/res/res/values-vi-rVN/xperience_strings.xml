@@ -11,4 +11,5 @@
     <!-- SystemUI Restart -->
     <!-- Cycle through ringer modes -->
     <string name="volume_dialog_ringer_guidance_normal">Cuộc gọi và thông báo sẽ rung</string>
+    <!-- Pocket Lock -->
 </resources>
