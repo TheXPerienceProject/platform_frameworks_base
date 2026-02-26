@@ -38,4 +38,26 @@
     <string name="keyguard_plugged_in_vooc_charging"><xliff:g id="percentage">%s</xliff:g> • VOOC 充電中</string>
     <!-- Indication on the keyguard that is shown when the device is charging with a turbo power charger. Should match keyguard_plugged_in_turbo_charging [CHAR LIMIT=40]-->
     <string name="keyguard_plugged_in_turbo_charging"><xliff:g id="percentage">%s</xliff:g> • Turbo Charging</string>
+    <!-- Heads up QS tile -->
+    <string name="quick_settings_heads_up_label">Heads Up</string>
+    <string name="accessibility_quick_settings_heads_up_off">Heads Up オフ</string>
+    <string name="accessibility_quick_settings_heads_up_on">Heads Up オン</string>
+    <!-- Sync QS tile -->
+    <!-- Ambient display QS tile -->
+    <string name="quick_settings_ambient_display_label">アンビエント表示</string>
+    <string name="accessibility_quick_settings_ambient_display_off">アンビエント表示 オフ</string>
+    <string name="accessibility_quick_settings_ambient_display_on">アンビエント表示 オン</string>
+    <!-- Sound QS Tile -->
+    <!-- USB tethering QS tile -->
+    <string name="quick_settings_usb_tether_label">USB テザリング</string>
+    <!-- AOD QS tile -->
+    <!-- Caffeine QS tile -->
+    <string name="quick_settings_caffeine_label">カフェイン</string>
+    <string name="accessibility_quick_settings_caffeine_off">カフェイン オフ</string>
+    <string name="accessibility_quick_settings_caffeine_on">カフェイン オン</string>
+    <!-- CPUInfo tile -->
+    <!-- FPS Info tile -->
+    <!-- FPS view text placeholder -->
+    <!-- USB function dialog - copied from Settings -->
+    <!-- PowerShare QS tile -->
 </resources>
