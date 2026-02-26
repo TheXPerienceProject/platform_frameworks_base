@@ -19,4 +19,5 @@
     <string name="systemui_restart_message">Tüm değişikliklerin etkili olabilmesi için, sistem arayüzü yeniden başlatılmalı. Yeniden başlatmak ister misiniz?</string>
     <!-- Cycle through ringer modes -->
     <string name="volume_dialog_ringer_guidance_normal">Çağrılar ve bildirimler için zil sesi</string>
+    <!-- Pocket Lock -->
 </resources>
