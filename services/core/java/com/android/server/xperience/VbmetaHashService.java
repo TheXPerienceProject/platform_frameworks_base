@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  *
  */
-package com.android.server.voltage;
+package com.android.server.xperience;
 
 import android.annotation.Nullable;
 import android.content.Context;
