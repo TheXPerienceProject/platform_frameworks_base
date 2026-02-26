@@ -89,4 +89,15 @@
     <!-- FPS view text placeholder -->
     <!-- USB function dialog - copied from Settings -->
     <!-- PowerShare QS tile -->
+    <!-- Sleep Mode -->
+    <!-- QS button to enable adaptive brightness -->
+    <!-- Screen record -->
+    <string name="screenrecord_lowquality_label">Daha küçük kalite</string>
+    <string name="screenrecord_lowquality_summary">Daha küçük dosya boyutu için</string>
+    <string name="screenrecord_longer_timeout_switch_label">Daha büyük dosya boyutu sınırı</string>
+    <string name="screenrecord_longer_timeout_switch_summary">Kayıt boyutunu 15 GB ile sınırlayın</string>
+    <string name="screenrecord_skip_time_label">Zamanlayıcıyı atla</string>
+    <string name="screenrecord_skip_time_summary">3 saniyelik beklemeyi kaldırın</string>
+    <string name="screenrecord_hevc_switch_label">HEVC kodlayıcı</string>
+    <string name="screenrecord_hevc_switch_summary">Daha verimli HEVC kodlayıcıyı kullanın</string>
 </resources>
