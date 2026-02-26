@@ -16,10 +16,15 @@
 
 package com.android.systemui.qs.dagger.xperience
 
+import android.content.Context
+import com.android.systemui.qs.QsEventLogger
+import com.android.systemui.qs.pipeline.shared.TileSpec
+import com.android.systemui.qs.shared.model.TileCategory
 import com.android.systemui.qs.tileimpl.QSTileImpl
 
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.multibindings.IntoMap
 import dagger.multibindings.StringKey
 
@@ -191,8 +196,10 @@ interface XperienceModule {
                 ),
                 instanceId = uiEventLogger.getNewInstanceId(),
                 category = TileCategory.CONNECTIVITY
+            )
+        }
 
-       @Provides
+        @Provides
         @IntoMap
         @StringKey(PowerShareTile.TILE_SPEC)
         fun providePowerShareConfig(uiEventLogger: QsEventLogger): QSTileConfig {
@@ -207,7 +214,7 @@ interface XperienceModule {
             )
         }
 
-       @Provides
+        @Provides
         @IntoMap
         @StringKey(UsbTetherTile.TILE_SPEC)
         fun provideUsbTetherConfig(uiEventLogger: QsEventLogger): QSTileConfig {
@@ -222,7 +229,7 @@ interface XperienceModule {
             )
         }
 
-       @Provides
+        @Provides
         @IntoMap
         @StringKey(CPUInfoTile.TILE_SPEC)
         fun provideCPUInfoConfig(uiEventLogger: QsEventLogger): QSTileConfig {
@@ -237,7 +244,7 @@ interface XperienceModule {
             )
         }
 
-       @Provides
+        @Provides
         @IntoMap
         @StringKey(FPSInfoTile.TILE_SPEC)
         fun provideFPSInfoConfig(uiEventLogger: QsEventLogger): QSTileConfig {
