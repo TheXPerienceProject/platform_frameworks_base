@@ -26,7 +26,15 @@
     <string name="pocket_mode_instruction_step1">1. Asegúrate de que el área roja (sensor de proximidad) mostrada arriba esté despejada y libre de suciedad o polvo.</string>
     <string name="pocket_mode_instruction_step2">2. Mantén presionado el botón de encendido para salir del modo bolsillo.</string>
     <!-- Charging speed strings -->
+    <string name="charging_speed">Velocidad de carga</string>
+    <string name="charging_speed_slow">Lenta</string>
+    <string name="charging_speed_fast">Rápido</string>
+    <string name="charging_speed_super_fast">Super rapido</string>
     <!-- LiveDisplay strings -->
+    <string name="live_display_auto">Automatico</string>
+    <string name="live_display_auto_summary">Ajustar automáticamente la temperatura del color de la pantalla después del atardecer y el amanecer</string>
+    <string name="live_display_off">Apagar</string>
+    <string name="live_display_off_summary">Desactivar todos los ajustes</string>
     <!-- Health interface -->
     <string name="charging_control_notification_channel">Control de carga</string>
     <string name="charging_control_notification_title">Control de carga</string>
@@ -35,4 +43,5 @@
     <string name="charging_control_notification_content_limit_reached">La batería se cargó al %1$d%%</string>
     <string name="charging_control_notification_content_target">La batería estará completamente cargada en %1$s</string>
     <string name="charging_control_notification_content_target_reached">La batería está cargada</string>
+    <!-- Sleep Mode -->
 </resources>
