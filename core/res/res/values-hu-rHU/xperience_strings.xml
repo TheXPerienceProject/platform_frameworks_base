@@ -25,4 +25,14 @@
     <string name="pocket_mode_instructions_header">A telefon használatához:</string>
     <string name="pocket_mode_instruction_step1">1. Győződjön meg arról, hogy a közelségérzékelő fent látható piros területe nincs takarva illetve por- és szennyeződésmentes.</string>
     <string name="pocket_mode_instruction_step2">2. Tartsa lenyomva a bekapcsológombot a Zsebmódból való lkilépéshez.</string>
+    <!-- Charging speed strings -->
+    <!-- LiveDisplay strings -->
+    <!-- Health interface -->
+    <string name="charging_control_notification_channel">Kontrollált töltés</string>
+    <string name="charging_control_notification_title">Kontrollált töltés</string>
+    <string name="charging_control_notification_cancel_once">Elutasítás</string>
+    <string name="charging_control_notification_content_limit">Az akkumulátor %1$d%% -ig lesz feltöltve</string>
+    <string name="charging_control_notification_content_limit_reached">Az akkumulátor feltöltődött %1$d%% -ig</string>
+    <string name="charging_control_notification_content_target">Az akkumulátor teljesen feltöltődik ekkorra %1$s</string>
+    <string name="charging_control_notification_content_target_reached">Az akku feltöltve</string>
 </resources>
