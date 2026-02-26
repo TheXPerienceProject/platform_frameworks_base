@@ -13,4 +13,5 @@
     <!-- SystemUI Restart -->
     <!-- Cycle through ringer modes -->
     <string name="volume_dialog_ringer_guidance_normal">來電和通知會響起</string>
+    <!-- Pocket Lock -->
 </resources>
