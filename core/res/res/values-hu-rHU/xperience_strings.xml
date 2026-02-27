@@ -61,4 +61,9 @@
     <string name="charging_control_notification_content_target">Az akkumulátor teljesen feltöltődik ekkorra %1$s</string>
     <string name="charging_control_notification_content_target_reached">Az akku feltöltve</string>
     <!-- Sleep Mode -->
+    <string name="notification_channel_sleep">Alvómód</string>
+    <string name="sleep_mode_notification_title">Az Alvómód engedélyezve</string>
+    <string name="sleep_mode_notification_content">Érintse meg az Alvómód kikapcsolásához</string>
+    <string name="sleep_mode_enabled_toast">Az Alvómód bekapcsolva</string>
+    <string name="sleep_mode_disabled_toast">Az Alvómód kikapcsolva</string>
 </resources>
