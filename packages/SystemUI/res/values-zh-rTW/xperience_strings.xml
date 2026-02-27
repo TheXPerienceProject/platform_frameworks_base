@@ -46,4 +46,49 @@
     <!-- Name of the VoWiFi status bar icon. -->
     <string name="status_bar_vowifi">Wi-Fi 通話 (VoWiFi)</string>
     <!-- Status bar network traffic monitor strings -->
+    <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+    <!-- Indication on the keyguard that is shown when the device is charging with a warp charger. Should match keyguard_plugged_in_warp_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_plugged_in_warp_charging"><xliff:g id="percentage">%s</xliff:g> Warp充電</string>
+    <!-- Indication on the keyguard that is shown when the device is charging with a VOOC charger. Should match keyguard_plugged_in_vooc_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_plugged_in_vooc_charging"><xliff:g id="percentage">%s</xliff:g> • VOOC 快速充電中</string>
+    <!-- Indication on the keyguard that is shown when the device is charging with a turbo power charger. Should match keyguard_plugged_in_turbo_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_plugged_in_turbo_charging"><xliff:g id="percentage">%s</xliff:g> • Turbo 快速充電中</string>
+    <!-- Heads up QS tile -->
+    <string name="quick_settings_heads_up_label">浮動通知</string>
+    <string name="accessibility_quick_settings_heads_up_off">浮動通知關閉。</string>
+    <string name="accessibility_quick_settings_heads_up_on">開啟浮動通知。</string>
+    <!-- Sync QS tile -->
+    <string name="quick_settings_sync_label">同步更新</string>
+    <string name="accessibility_quick_settings_sync_off">關閉同步處理。</string>
+    <string name="accessibility_quick_settings_sync_on">同步處理開啟。</string>
+    <!-- Ambient display QS tile -->
+    <string name="quick_settings_ambient_display_label">微光螢幕</string>
+    <string name="accessibility_quick_settings_ambient_display_off">微光螢幕關閉。</string>
+    <string name="accessibility_quick_settings_ambient_display_on">微光螢幕開啟。</string>
+    <!-- Sound QS Tile -->
+    <!-- USB tethering QS tile -->
+    <string name="quick_settings_usb_tether_label">USB 網路分享</string>
+    <!-- AOD QS tile -->
+    <string name="quick_settings_aod_label">微光螢幕AOD</string>
+    <string name="quick_settings_aod_off_powersave_label">AOD 關閉\n省電模式</string>
+    <!-- Caffeine QS tile -->
+    <string name="quick_settings_caffeine_label">暫停休眠</string>
+    <string name="accessibility_quick_settings_caffeine_off">關閉暫停休眠。</string>
+    <string name="accessibility_quick_settings_caffeine_on">開啟暫停休眠。</string>
+    <!-- CPUInfo tile -->
+    <!-- FPS Info tile -->
+    <!-- FPS view text placeholder -->
+    <!-- USB function dialog - copied from Settings -->
+    <!-- PowerShare QS tile -->
+    <!-- Sleep Mode -->
+    <!-- QS button to enable adaptive brightness -->
+    <!-- Screen record -->
+    <string name="screenrecord_lowquality_label">降低畫質</string>
+    <string name="screenrecord_lowquality_summary">降低檔案大小</string>
+    <string name="screenrecord_longer_timeout_switch_label">更大的檔案大小限制</string>
+    <string name="screenrecord_longer_timeout_switch_summary">錄影大小限制 15 GB</string>
+    <string name="screenrecord_skip_time_label">跳過倒數計時</string>
+    <string name="screenrecord_skip_time_summary">跳過三秒的倒數時間</string>
+    <string name="screenrecord_hevc_switch_label">HEVC 編碼</string>
+    <string name="screenrecord_hevc_switch_summary">使用效率更高的 HEVC 編碼</string>
 </resources>

@@ -38,6 +38,7 @@
     <string name="global_action_current_user">Actual</string>
     <string name="global_action_users">Usuarios</string>
     <!-- Button to restart SystemUI, within the Restart Options dialog -->
+    <string name="global_action_restart_systemui">SystemUI</string>
     <!-- Label for UI element which allows deleting the screenshot [CHAR LIMIT=30] -->
     <string name="screenshot_delete_label">Eliminar</string>
     <!-- Content description indicating that tapping the element will allow deleting the screenshot [CHAR LIMIT=NONE] -->
@@ -47,4 +48,74 @@
     <!-- Name of the VoWiFi status bar icon. -->
     <string name="status_bar_vowifi">Llamada Wi-Fi (VoWiFi)</string>
     <!-- Status bar network traffic monitor strings -->
+    <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_dash_charging_time"><xliff:g id="percentage">%2$s</xliff:g> • Carga Dash (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> para carga completa)</string>
+    <string name="keyguard_plugged_in_dash_charging"><xliff:g id="percentage">%s</xliff:g> • Carga Dash</string>
+    <!-- Indication on the keyguard that is shown when the device is charging with a warp charger. Should match keyguard_plugged_in_warp_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_warp_charging_time"><xliff:g id="percentage">%2$s</xliff:g> • Carga Warp (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> para carga completa)</string>
+    <string name="keyguard_plugged_in_warp_charging"><xliff:g id="percentage">%s</xliff:g> • Carga Warp</string>
+    <!-- Indication on the keyguard that is shown when the device is charging with a VOOC charger. Should match keyguard_plugged_in_vooc_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_vooc_charging_time"><xliff:g id="percentage">%2$s</xliff:g> • Carga VOOC (<xliff:g id="charging_time_left" example="4 horas y 2 minutes">%1$s</xliff:g> para carga completa)</string>
+    <string name="keyguard_plugged_in_vooc_charging"><xliff:g id="percentage">%s</xliff:g> • Carga VOOC</string>
+    <string name="keyguard_indication_supervooc_charging_time"><xliff:g id="percentage">%2$s</xliff:g> • Carga SUPERVOOC (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> hasta completar)</string>
+    <string name="keyguard_plugged_in_supervooc_charging"><xliff:g id="percentage">%s</xliff:g> • Carga SUPERVOOC</string>
+    <!-- Indication on the keyguard that is shown when the device is charging with a turbo power charger. Should match keyguard_plugged_in_turbo_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_turbo_power_time"><xliff:g id="percentage">%2$s</xliff:g> • Carga Turbo (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> para completar)</string>
+    <string name="keyguard_plugged_in_turbo_charging"><xliff:g id="percentage">%s</xliff:g> • Carga Turbo</string>
+    <!-- Heads up QS tile -->
+    <string name="quick_settings_heads_up_label">Notificaciones emergentes</string>
+    <string name="accessibility_quick_settings_heads_up_off">Notificaciones emergentes desactivadas.</string>
+    <string name="accessibility_quick_settings_heads_up_on">Notificaciones emergentes activadas.</string>
+    <!-- Sync QS tile -->
+    <string name="quick_settings_sync_label">Sincronizar</string>
+    <string name="accessibility_quick_settings_sync_off">Sincronización desactivada.</string>
+    <string name="accessibility_quick_settings_sync_on">Sincronización activada.</string>
+    <!-- Ambient display QS tile -->
+    <string name="quick_settings_ambient_display_label">Pantalla ambiente</string>
+    <string name="accessibility_quick_settings_ambient_display_off">Pantalla ambiente desactivada.</string>
+    <string name="accessibility_quick_settings_ambient_display_on">Pantalla ambiente activada.</string>
+    <!-- Sound QS Tile -->
+    <string name="quick_settings_sound_label">Sonido</string>
+    <string name="quick_settings_sound_ring">Tonos</string>
+    <string name="quick_settings_sound_vibrate">Vibrar</string>
+    <string name="quick_settings_sound_mute">Silenciar</string>
+    <!-- USB tethering QS tile -->
+    <string name="quick_settings_usb_tether_label">Anclaje de red por USB</string>
+    <!-- AOD QS tile -->
+    <string name="quick_settings_aod_label">AOD</string>
+    <string name="quick_settings_aod_off_powersave_label">AOD apagado\nAhorro de Batería</string>
+    <!-- Caffeine QS tile -->
+    <string name="quick_settings_caffeine_label">Cafeína</string>
+    <string name="accessibility_quick_settings_caffeine_off">Cafeína desactivada.</string>
+    <string name="accessibility_quick_settings_caffeine_on">Cafeína activada.</string>
+    <!-- CPUInfo tile -->
+    <string name="quick_settings_cpuinfo_label">Info de CPU</string>
+    <!-- FPS Info tile -->
+    <string name="quick_settings_fpsinfo_label">Info de FPS</string>
+    <!-- FPS view text placeholder -->
+    <string name="fps_text_placeholder">FPS: <xliff:g id="fps" example="90">%1$d</xliff:g></string>
+    <!-- USB function dialog - copied from Settings -->
+    <string name="usb_use_charging_only">No transferir datos</string>
+    <string name="usb_use_file_transfers">Transferencia de Archivos</string>
+    <string name="usb_use_uvc_webcam">Cámara web</string>
+    <string name="usb_use_tethering">Anclaje a internet vía USB</string>
+    <string name="usb_use">Utilizar USB para</string>
+    <!-- PowerShare QS tile -->
+    <string name="quick_settings_powershare_label">Transferencia de energía inalámbrica</string>
+    <string name="quick_settings_powershare_off_powersave_label">Transferencia de energía inalámbrica apagada\nAhorro de batería</string>
+    <string name="quick_settings_powershare_off_low_battery_label">Transferencia de energía inalámbrica apagada\nBatería demasiado baja</string>
+    <string name="quick_settings_powershare_enabled_label">Transferencia de energía inalámbrica está activada</string>
+    <!-- Sleep Mode -->
+    <string name="quick_settings_sleep_mode_label">Modo Sueño</string>
+    <!-- QS button to enable adaptive brightness -->
+    <string name="accessibility_adaptive_brightness">Brillo adaptativo</string>
+    <!-- Screen record -->
+    <string name="screenrecord_lowquality_label">Baja calidad</string>
+    <string name="screenrecord_lowquality_summary">Para archivo más pequeño</string>
+    <string name="screenrecord_longer_timeout_switch_label">Límite de tamaño de archivo mayor</string>
+    <string name="screenrecord_longer_timeout_switch_summary">Limitar tamaño de grabación a 15 GB</string>
+    <string name="screenrecord_skip_time_label">Saltar temporizador</string>
+    <string name="screenrecord_skip_time_summary">Elimina la espera de 3 segundos</string>
+    <string name="screenrecord_hevc_switch_label">Codificación HEVC</string>
+    <string name="screenrecord_hevc_switch_summary">Usa el codificador HEVC más eficiente</string>
 </resources>

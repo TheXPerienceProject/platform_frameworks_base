@@ -32,4 +32,35 @@
     <!-- Name of the HD calling status bar icon. -->
     <!-- Name of the VoWiFi status bar icon. -->
     <!-- Status bar network traffic monitor strings -->
+    <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+    <!-- Indication on the keyguard that is shown when the device is charging with a warp charger. Should match keyguard_plugged_in_warp_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_plugged_in_warp_charging">Đang sạc nhanh Warp</string>
+    <!-- Indication on the keyguard that is shown when the device is charging with a VOOC charger. Should match keyguard_plugged_in_vooc_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_plugged_in_vooc_charging">Đang sạc nhanh VOOC</string>
+    <!-- Indication on the keyguard that is shown when the device is charging with a turbo power charger. Should match keyguard_plugged_in_turbo_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_plugged_in_turbo_charging">Đang sạc nhanh Turbo</string>
+    <!-- Heads up QS tile -->
+    <string name="quick_settings_heads_up_label">Thông báo nổi</string>
+    <string name="accessibility_quick_settings_heads_up_off">Tắt thông báo nổi.</string>
+    <string name="accessibility_quick_settings_heads_up_on">Bật thông báo nổi.</string>
+    <!-- Sync QS tile -->
+    <!-- Ambient display QS tile -->
+    <string name="quick_settings_ambient_display_label">Màn hình xem nhanh</string>
+    <string name="accessibility_quick_settings_ambient_display_off">Màn hình xem nhanh tắt.</string>
+    <string name="accessibility_quick_settings_ambient_display_on">Màn hình xem nhanh bật.</string>
+    <!-- Sound QS Tile -->
+    <!-- USB tethering QS tile -->
+    <string name="quick_settings_usb_tether_label">Chia sẻ kết nối qua USB</string>
+    <!-- AOD QS tile -->
+    <!-- Caffeine QS tile -->
+    <string name="accessibility_quick_settings_caffeine_off">Đã tắt Cafein.</string>
+    <string name="accessibility_quick_settings_caffeine_on">Đã bật Cafein.</string>
+    <!-- CPUInfo tile -->
+    <!-- FPS Info tile -->
+    <!-- FPS view text placeholder -->
+    <!-- USB function dialog - copied from Settings -->
+    <!-- PowerShare QS tile -->
+    <!-- Sleep Mode -->
+    <!-- QS button to enable adaptive brightness -->
+    <!-- Screen record -->
 </resources>

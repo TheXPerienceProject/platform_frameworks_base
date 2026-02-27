@@ -38,6 +38,7 @@
     <string name="global_action_current_user">Jelenlegi</string>
     <string name="global_action_users">Felhasználók</string>
     <!-- Button to restart SystemUI, within the Restart Options dialog -->
+    <string name="global_action_restart_systemui">Rendszerfelület</string>
     <!-- Label for UI element which allows deleting the screenshot [CHAR LIMIT=30] -->
     <string name="screenshot_delete_label">Törlés</string>
     <!-- Content description indicating that tapping the element will allow deleting the screenshot [CHAR LIMIT=NONE] -->
@@ -47,4 +48,74 @@
     <!-- Name of the VoWiFi status bar icon. -->
     <string name="status_bar_vowifi">WiFi-hívás (VoWiFi)</string>
     <!-- Status bar network traffic monitor strings -->
+    <!-- Indication on the keyguard that is shown when the device is charging with a dash charger. Should match keyguard_plugged_in_dash_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_dash_charging_time"><xliff:g id="percentage">%2$s</xliff:g> • Dash töltés (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> a teljes feltöltésig)</string>
+    <string name="keyguard_plugged_in_dash_charging"><xliff:g id="percentage">%s</xliff:g> • Dash töltés</string>
+    <!-- Indication on the keyguard that is shown when the device is charging with a warp charger. Should match keyguard_plugged_in_warp_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_warp_charging_time"><xliff:g id="percentage">%2$s</xliff:g> • Lánctöltés (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> a teljes feltöltésig)</string>
+    <string name="keyguard_plugged_in_warp_charging"><xliff:g id="percentage">%s</xliff:g> • Warp töltés</string>
+    <!-- Indication on the keyguard that is shown when the device is charging with a VOOC charger. Should match keyguard_plugged_in_vooc_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_vooc_charging_time"><xliff:g id="percentage">%2$s</xliff:g> • VOOC Töltés (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> a teljes feltöltésig)</string>
+    <string name="keyguard_plugged_in_vooc_charging"><xliff:g id="percentage">%s</xliff:g> • VOOC Töltés</string>
+    <string name="keyguard_indication_supervooc_charging_time"><xliff:g id="percentage">%2$s</xliff:g> • SUPERVOOC Töltés (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> a teljes feltöltésig)</string>
+    <string name="keyguard_plugged_in_supervooc_charging"><xliff:g id="percentage">%s</xliff:g> • SUPERVOOC Töltés</string>
+    <!-- Indication on the keyguard that is shown when the device is charging with a turbo power charger. Should match keyguard_plugged_in_turbo_charging [CHAR LIMIT=40]-->
+    <string name="keyguard_indication_turbo_power_time"><xliff:g id="percentage">%2$s</xliff:g> • Turbó töltés (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> a teljes feltöltésig)</string>
+    <string name="keyguard_plugged_in_turbo_charging"><xliff:g id="percentage">%s</xliff:g> • Turbótöltés</string>
+    <!-- Heads up QS tile -->
+    <string name="quick_settings_heads_up_label">Lebegő értesítések</string>
+    <string name="accessibility_quick_settings_heads_up_off">Lebegő értesítések ki.</string>
+    <string name="accessibility_quick_settings_heads_up_on">Lebegő értesítések be.</string>
+    <!-- Sync QS tile -->
+    <string name="quick_settings_sync_label">Szinkronizálás</string>
+    <string name="accessibility_quick_settings_sync_off">Szinkronizálás ki.</string>
+    <string name="accessibility_quick_settings_sync_on">Szinkronizálás be.</string>
+    <!-- Ambient display QS tile -->
+    <string name="quick_settings_ambient_display_label">Környezeti kijelző</string>
+    <string name="accessibility_quick_settings_ambient_display_off">Környezeti kijelző ki.</string>
+    <string name="accessibility_quick_settings_ambient_display_on">Környezeti kijelző be.</string>
+    <!-- Sound QS Tile -->
+    <string name="quick_settings_sound_label">Hangok</string>
+    <string name="quick_settings_sound_ring">Csengés</string>
+    <string name="quick_settings_sound_vibrate">Rezgés</string>
+    <string name="quick_settings_sound_mute">Némítás</string>
+    <!-- USB tethering QS tile -->
+    <string name="quick_settings_usb_tether_label">USB-megosztás</string>
+    <!-- AOD QS tile -->
+    <string name="quick_settings_aod_label">Mindig bekapcsolva (AOD)</string>
+    <string name="quick_settings_aod_off_powersave_label">AOD ki\nAkkukímélő</string>
+    <!-- Caffeine QS tile -->
+    <string name="quick_settings_caffeine_label">Koffein</string>
+    <string name="accessibility_quick_settings_caffeine_off">Koffein ki.</string>
+    <string name="accessibility_quick_settings_caffeine_on">Koffein be.</string>
+    <!-- CPUInfo tile -->
+    <string name="quick_settings_cpuinfo_label">CPU-adatok</string>
+    <!-- FPS Info tile -->
+    <string name="quick_settings_fpsinfo_label">FPS-adatok</string>
+    <!-- FPS view text placeholder -->
+    <string name="fps_text_placeholder"><xliff:g id="fps" example="90">%1$d</xliff:g> FPS</string>
+    <!-- USB function dialog - copied from Settings -->
+    <string name="usb_use_charging_only">Nincs adatátvitel</string>
+    <string name="usb_use_file_transfers">Fájlátvitel</string>
+    <string name="usb_use_uvc_webcam">Webkamera</string>
+    <string name="usb_use_tethering">USB-megosztás</string>
+    <string name="usb_use">USB használata a következő célra:</string>
+    <!-- PowerShare QS tile -->
+    <string name="quick_settings_powershare_label">Vezetéknélküli PowerShare</string>
+    <string name="quick_settings_powershare_off_powersave_label">PowerShare (vezetéknélküli) ki\nAkkukímélő</string>
+    <string name="quick_settings_powershare_off_low_battery_label">PowerShare (vezetéknélküli) ki\nAlacsony akkuszint</string>
+    <string name="quick_settings_powershare_enabled_label">A vezetéknélküli PowerShare engedélyezve van</string>
+    <!-- Sleep Mode -->
+    <string name="quick_settings_sleep_mode_label">Alvómód</string>
+    <!-- QS button to enable adaptive brightness -->
+    <string name="accessibility_adaptive_brightness">Alkalmazkodó fényerő</string>
+    <!-- Screen record -->
+    <string name="screenrecord_lowquality_label">Gyengébb minőség</string>
+    <string name="screenrecord_lowquality_summary">...a kisebb fájlméretért</string>
+    <string name="screenrecord_longer_timeout_switch_label">Nagyobb felső határ</string>
+    <string name="screenrecord_longer_timeout_switch_summary">Max.15GB felvételi fájlméret</string>
+    <string name="screenrecord_skip_time_label">Nincs késleltetés</string>
+    <string name="screenrecord_skip_time_summary">Eltávolítja a 3 másodperces várakozást</string>
+    <string name="screenrecord_hevc_switch_label">HEVC-kódolás</string>
+    <string name="screenrecord_hevc_switch_summary">Használja a hatékonyabb HEVC-kódolót</string>
 </resources>
