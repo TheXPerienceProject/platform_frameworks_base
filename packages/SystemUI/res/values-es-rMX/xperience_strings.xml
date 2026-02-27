@@ -57,6 +57,8 @@
     <!-- Indication on the keyguard that is shown when the device is charging with a VOOC charger. Should match keyguard_plugged_in_vooc_charging [CHAR LIMIT=40]-->
     <string name="keyguard_indication_vooc_charging_time"><xliff:g id="percentage">%2$s</xliff:g> • Carga VOOC (<xliff:g id="charging_time_left" example="4 horas y 2 minutes">%1$s</xliff:g> para carga completa)</string>
     <string name="keyguard_plugged_in_vooc_charging"><xliff:g id="percentage">%s</xliff:g> • Carga VOOC</string>
+    <string name="keyguard_indication_supervooc_charging_time"><xliff:g id="percentage">%2$s</xliff:g> • Carga SUPERVOOC (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> hasta completar)</string>
+    <string name="keyguard_plugged_in_supervooc_charging"><xliff:g id="percentage">%s</xliff:g> • Carga SUPERVOOC</string>
     <!-- Indication on the keyguard that is shown when the device is charging with a turbo power charger. Should match keyguard_plugged_in_turbo_charging [CHAR LIMIT=40]-->
     <string name="keyguard_indication_turbo_power_time"><xliff:g id="percentage">%2$s</xliff:g> • Carga Turbo (<xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g> para completar)</string>
     <string name="keyguard_plugged_in_turbo_charging"><xliff:g id="percentage">%s</xliff:g> • Carga Turbo</string>
@@ -76,6 +78,7 @@
     <string name="quick_settings_sound_label">Sonido</string>
     <string name="quick_settings_sound_ring">Tonos</string>
     <string name="quick_settings_sound_vibrate">Vibrar</string>
+    <string name="quick_settings_sound_mute">Silenciar</string>
     <!-- USB tethering QS tile -->
     <string name="quick_settings_usb_tether_label">Anclaje de red por USB</string>
     <!-- AOD QS tile -->
@@ -88,7 +91,9 @@
     <!-- CPUInfo tile -->
     <string name="quick_settings_cpuinfo_label">Info de CPU</string>
     <!-- FPS Info tile -->
+    <string name="quick_settings_fpsinfo_label">Info de FPS</string>
     <!-- FPS view text placeholder -->
+    <string name="fps_text_placeholder">FPS: <xliff:g id="fps" example="90">%1$d</xliff:g></string>
     <!-- USB function dialog - copied from Settings -->
     <string name="usb_use_charging_only">No transferir datos</string>
     <string name="usb_use_file_transfers">Transferencia de Archivos</string>
@@ -101,7 +106,9 @@
     <string name="quick_settings_powershare_off_low_battery_label">Transferencia de energía inalámbrica apagada\nBatería demasiado baja</string>
     <string name="quick_settings_powershare_enabled_label">Transferencia de energía inalámbrica está activada</string>
     <!-- Sleep Mode -->
+    <string name="quick_settings_sleep_mode_label">Modo Sueño</string>
     <!-- QS button to enable adaptive brightness -->
+    <string name="accessibility_adaptive_brightness">Brillo adaptativo</string>
     <!-- Screen record -->
     <string name="screenrecord_lowquality_label">Baja calidad</string>
     <string name="screenrecord_lowquality_summary">Para archivo más pequeño</string>
