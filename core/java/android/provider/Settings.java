@@ -7037,6 +7037,7 @@ public final class Settings {
          */
         public static final String LIVE_DISPLAY_HINTED = "live_display_hinted";
 
+
         /**
          * Keys we no longer back up under the current schema, but want to continue to
          * process when restoring historical backup datasets.
@@ -13835,6 +13836,32 @@ public final class Settings {
          * @hide
          */
         public static final String BERRY_BLACK_THEME = "berry_black_theme";
+
+        /**
+         * Per-apps device spoofing
+         * @hide
+         */
+        @Readable
+        public static final String PER_APPS_DEVICE_SPOOF = "per_apps_device_spoof";
+
+        /**
+         * Custom device spoof profiles for per-app spoofing
+         * @hide
+         */
+        @Readable
+        public static final String CUSTOM_SPOOF_PROFILES = "custom_spoof_profiles";
+
+        /**
+         * @hide
+         */
+        @Readable
+        public static final String PER_APPS_DEVICE_SPOOF_ENABLED = "per_apps_device_spoof_enabled";
+
+        /**
+         * @hide
+         */
+        @Readable
+        public static final String PER_APPS_DEVICE_SPOOF_CACHE = "per_apps_device_spoof_cache";
 
         /**
          * Keys we no longer back up under the current schema, but want to continue to
