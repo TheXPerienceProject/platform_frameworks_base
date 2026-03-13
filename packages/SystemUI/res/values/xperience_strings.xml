@@ -159,4 +159,12 @@
     <string name="screenrecord_skip_time_summary">Remove the 3 second wait</string>
     <string name="screenrecord_hevc_switch_label">HEVC encoding</string>
     <string name="screenrecord_hevc_switch_summary">Use the more efficient HEVC encoder</string>
+
+    <!-- Name of the VoLTE status bar tuner toggle. -->
+    <string name="status_bar_volte_icon_title">VoLTE</string>
+    <!-- Name of the VoNR status bar tuner toggle. -->
+    <string name="status_bar_vonr_icon_title">VoNR</string>
+    <!-- Name of the VoWiFi status bar tuner toggle. -->
+    <string name="status_bar_vowifi_icon_title">VoWiFi</string>
+
 </resources>
