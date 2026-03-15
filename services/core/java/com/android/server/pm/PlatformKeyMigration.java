@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2021 The Android Open Source Project
+ * Copyright (C) 2026 The XPerience Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +21,7 @@ import android.content.pm.Signature;
 import android.os.Build;
 import android.os.SystemProperties;
 import android.util.Base64;
-
+import android.util.Slog;
 import com.android.internal.util.HexDump;
 
 import java.security.cert.CertificateException;
@@ -30,6 +31,9 @@ import java.util.List;
 import java.util.Map;
 
 final class PlatformKeyMigration {
+
+    private static final String TAG = "PlatformKeyMigration";
+
     // We spoof tags for SafetyNet, but not the display build ID
     private static final boolean IS_RELEASE = !Build.DISPLAY.contains("test-keys");
 
@@ -48,12 +52,16 @@ final class PlatformKeyMigration {
         Map<String, Signature> certs = new HashMap<>();
         for (String name : KEY_NAMES) {
             String encodedCert = SystemProperties.get("ro.build.certs." + group + "." + name);
-            if (encodedCert == null || encodedCert.equals("")) {
+            if (encodedCert == null || encodedCert.isEmpty()) {
                 continue;
             }
 
-            Signature cert = new Signature(encodedCert);
-            certs.put(name, cert);
+            try {
+                Signature cert = new Signature(encodedCert);
+                certs.put(name, cert);
+            } catch (Exception e) {
+                Slog.e(TAG, "Error loading cert for group " + group + " name " + name, e);
+            }
         }
 
         return certs;
@@ -63,36 +71,40 @@ final class PlatformKeyMigration {
         return Base64.encodeToString(cert.getPublicKey().getEncoded(), Base64.NO_WRAP);
     }
 
-    private static Map<String, String> buildMappings(Map<String, Signature> from, Map<String, Signature> to)
+    private static void buildMappings(Map<String, String> masterMap, Map<String, Signature> from, Map<String, Signature> to)
             throws CertificateException {
-        Map<String, String> replacementMap = new HashMap<>();
         for (Map.Entry<String, Signature> fromEntry : from.entrySet()) {
             String name = fromEntry.getKey();
             Signature fromCert = fromEntry.getValue();
             Signature toCert = to.get(name);
 
-            // Forward mapping only, since this is directional
-            replacementMap.put(fromCert.toCharsString(), toCert.toCharsString());
-            replacementMap.put(certToPublicKey(fromCert), certToPublicKey(toCert));
+            if (toCert == null) continue;
+            //map the cert
+            masterMap.put(fromCert.toCharsString(), toCert.toCharsString());
+            //map public key
+            masterMap.put(certToPublicKey(fromCert), certToPublicKey(toCert));
         }
-
-        return replacementMap;
     }
 
     private static Map<String, String> createReplacementMap() {
+        Map<String, String> masterMap = new HashMap<>();
         Map<String, Signature> releaseCerts = loadCertsFromProps("release");
+        Map<String, Signature> legacyCerts = loadCertsFromProps("legacy");
         Map<String, Signature> testCerts = loadCertsFromProps("test");
 
         try {
-            if (IS_RELEASE) {
-                // User test -> release migration
-                return buildMappings(testCerts, releaseCerts);
-            } else {
-                // Dev release -> test migration
-                return buildMappings(releaseCerts, testCerts);
+            //always migrate from test to release
+            if (!testCerts.isEmpty() && !releaseCerts.isEmpty()) {
+                buildMappings(masterMap, testCerts, releaseCerts);
             }
+            if (!legacyCerts.isEmpty() && !releaseCerts.isEmpty()) {
+                buildMappings(masterMap, legacyCerts, releaseCerts);
+                Slog.i(TAG, "Legacy XPe certificates loaded for migration.");
+            }
+            return masterMap;
         } catch (CertificateException e) {
-            throw new RuntimeException(e);
+            Slog.e(TAG, "Failed to create replacement map", e);
+            return masterMap;
         }
     }
 
