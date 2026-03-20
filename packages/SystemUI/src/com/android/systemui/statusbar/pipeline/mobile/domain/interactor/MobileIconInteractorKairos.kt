@@ -160,6 +160,7 @@ class MobileIconInteractorKairosImpl(
     override val isMobileHdForceHidden: State<Boolean>,
     override val isVoWifiForceHidden: State<Boolean>,
     private val connectionRepository: MobileConnectionRepositoryKairos,
+    private val isDedicatedImsIconStyle: State<Boolean>,
     private val context: Context,
     private val carrierIdOverrides: MobileIconCarrierIdOverrides =
         MobileIconCarrierIdOverridesImpl(),
@@ -427,10 +428,19 @@ class MobileIconInteractorKairosImpl(
             }
 
     override val isMobileHd: State<Boolean> =
-        connectionRepository.imsState
-            .map { it.isHdVoiceCapable() }
+        combine(
+            connectionRepository.imsState.map { it.isHdVoiceCapable() },
+            isDedicatedImsIconStyle,
+        ) { hdCapable, dedicated ->
+            !dedicated && hdCapable
+        }
 
     override val isVoWifi: State<Boolean> =
-        connectionRepository.imsState
-            .map { it.isVoWifiAvailable() }
+        combine(
+            connectionRepository.imsState.map { it.isVoWifiAvailable() },
+            isDedicatedImsIconStyle,
+        ) { voWifi, dedicated ->
+            !dedicated && voWifi
+        }
+
 }
