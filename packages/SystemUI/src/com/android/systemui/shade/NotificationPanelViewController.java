@@ -204,6 +204,8 @@ import com.android.systemui.statusbar.policy.ConfigurationController;
 import com.android.systemui.statusbar.policy.KeyguardStateController;
 import com.android.systemui.statusbar.policy.SplitShadeStateController;
 import com.android.systemui.unfold.SysUIUnfoldComponent;
+import com.android.systemui.util.ScrimUtils;
+import com.android.systemui.util.TapPositionUtil;
 import com.android.systemui.util.Utils;
 import com.android.systemui.util.time.SystemClock;
 import com.android.systemui.window.domain.interactor.WindowRootViewBlurInteractor;
@@ -792,6 +794,7 @@ public final class NotificationPanelViewController implements
             @Override
             public boolean onDoubleTap(MotionEvent e) {
                 if (mPowerManager != null) {
+                    TapPositionUtil.INSTANCE().setTapPos((int) e.getX(), (int) e.getY());
                     mPowerManager.goToSleep(e.getEventTime());
                 }
                 return true;
