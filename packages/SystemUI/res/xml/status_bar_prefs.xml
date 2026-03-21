@@ -23,6 +23,12 @@
         android:key="rotate"
         android:title="@string/status_bar_settings_auto_rotation" />
 
+    <com.android.systemui.tuner.TunerSwitch
+        android:icon="@drawable/ic_wifi_standard_4"
+        android:key="wifi_standard_icon"
+        android:title="@string/status_bar_wifi_standard"
+        sysui:defValue="true" />
+
     <com.android.systemui.tuner.StatusBarSwitch
         android:icon="@drawable/ic_statusbar_headset"
         android:key="headset"

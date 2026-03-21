@@ -167,4 +167,6 @@
     <!-- Name of the VoWiFi status bar tuner toggle. -->
     <string name="status_bar_vowifi_icon_title">VoWiFi</string>
 
+    <!-- Wifi Standard. -->
+    <string name="status_bar_wifi_standard">Wifi Standard</string>
 </resources>

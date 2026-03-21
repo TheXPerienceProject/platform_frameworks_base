@@ -37,6 +37,8 @@ import com.android.systemui.statusbar.pipeline.shared.ui.binder.StatusBarViewBin
 import com.android.systemui.statusbar.pipeline.shared.ui.binder.StatusBarViewBinderConstants.ALPHA_INACTIVE
 import com.android.systemui.statusbar.pipeline.wifi.ui.model.VoWifiIcon
 import com.android.systemui.statusbar.pipeline.wifi.ui.model.WifiIcon
+import com.android.systemui.statusbar.WifiStandardImageView
+import com.android.systemui.statusbar.WifiStandardViewController
 import com.android.systemui.statusbar.pipeline.wifi.ui.viewmodel.LocationBasedWifiViewModel
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.awaitCancellation
@@ -56,7 +58,11 @@ object WifiViewBinder {
 
     /** Binds the view to the view-model, continuing to update the former based on the latter. */
     @JvmStatic
-    fun bind(view: ViewGroup, viewModel: LocationBasedWifiViewModel): ModernStatusBarViewBinding {
+    fun bind(
+        view: ViewGroup,
+        viewModel: LocationBasedWifiViewModel,
+        wifiStandardFactory: WifiStandardViewController.Factory
+    ): ModernStatusBarViewBinding {
         val groupView = view.requireViewById<ViewGroup>(R.id.wifi_group)
         val iconView = view.requireViewById<ImageView>(R.id.wifi_signal)
         val dotView = view.requireViewById<StatusBarIconView>(R.id.status_bar_dot)
@@ -66,6 +72,8 @@ object WifiViewBinder {
         val airplaneSpacer = view.requireViewById<View>(R.id.wifi_airplane_spacer)
         val signalSpacer = view.requireViewById<View>(R.id.wifi_signal_spacer)
         val voWifiView = view.requireViewById<ImageView>(R.id.vowifi)
+        val wifiStandardView = view.requireViewById<WifiStandardImageView>(R.id.wifi_standard)
+        wifiStandardView.setFactory(wifiStandardFactory)
 
         view.isVisible = true
         iconView.isVisible = true
@@ -116,6 +124,7 @@ object WifiViewBinder {
                         activityInView.imageTintList = tintList
                         activityOutView.imageTintList = tintList
                         voWifiView.imageTintList = tintList
+                        wifiStandardView.imageTintList = tintList
                         dotView.setDecorColor(tint)
                     }
                 }
