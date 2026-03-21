@@ -18,4 +18,7 @@
 
     <!-- Status bar -->
     <string name="status_bar_icons_title">Status bar icons</string>
+
+    <!-- Wifi Standard. -->
+    <string name="status_bar_wifi_standard">Wifi Standard</string>
 </resources>
