@@ -145,6 +145,7 @@ import com.android.systemui.qs.flags.QSComposeFragment
 import com.android.systemui.qs.footer.ui.compose.FooterActions
 import com.android.systemui.qs.panels.shared.model.QSFragmentComposeClippingTableLog
 import com.android.systemui.qs.panels.ui.compose.EditMode
+import com.android.systemui.qs.panels.ui.compose.IosControlPanel
 import com.android.systemui.qs.panels.ui.compose.QuickQuickSettings
 import com.android.systemui.qs.panels.ui.compose.TileGrid
 import com.android.systemui.qs.shared.ui.QuickSettings.Elements
@@ -859,6 +860,15 @@ constructor(
                         Spacer(
                             modifier = Modifier.height { qqsPadding + qsExtraPadding.roundToPx() }
                         )
+                        IosControlPanel(
+                              modifier = Modifier
+                                  .fillMaxWidth()
+                                  .padding(
+                                      horizontal = qsHorizontalMargin(),
+                                      vertical = 4.dp,
+                                  )
+                          )
+
                         val BrightnessSlider =
                             @Composable {
                                 Box(
