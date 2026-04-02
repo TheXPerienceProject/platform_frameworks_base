@@ -81,6 +81,8 @@ import android.view.IWindowManager;
 import android.view.MotionEvent;
 import android.view.ThreadedRenderer;
 import android.view.View;
+import android.view.ViewConfiguration;
+import android.view.ViewGroup;
 import android.view.WindowInsets;
 import android.view.WindowManager;
 import android.view.WindowManagerGlobal;
@@ -487,12 +489,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
     private final WallpaperManager mWallpaperManager;
     private final UserTracker mUserTracker;
     private final ActivityStarter mActivityStarter;
-<<<<<<< HEAD
-=======
-    private final MediaViewController mMediaViewController;
-    private final PulseViewController mPulseViewController;
     private final EdgeLightViewController mEdgeLightViewController;
->>>>>>> 7630a1e185eb (SystemUI: Add edge light feature)
 
     private final DisplayMetrics mDisplayMetrics;
 
@@ -758,13 +755,8 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
             QuickAccessWalletController walletController,
             WindowManager windowManager,
             WindowManagerProvider windowManagerProvider,
-<<<<<<< HEAD
-            BurnInProtectionController burnInProtectionController
-=======
-            MediaViewController mediaViewController,
-            PulseViewController pulseViewController,
+            BurnInProtectionController burnInProtectionController,
             EdgeLightViewController edgeLightViewController
->>>>>>> 7630a1e185eb (SystemUI: Add edge light feature)
     ) {
         mContext = context;
         mNotificationsController = notificationsController;
@@ -912,14 +904,9 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
 
         mWindowManager = windowManager;
         mWindowManagerProvider = windowManagerProvider;
-<<<<<<< HEAD
 
         ScreenAnimationController.INSTANCE().init(new AmbientDisplayConfiguration(mContext));
-=======
-        mMediaViewController = mediaViewController;
-        mPulseViewController = pulseViewController;
         mEdgeLightViewController = edgeLightViewController;
->>>>>>> 7630a1e185eb (SystemUI: Add edge light feature)
     }
 
     private void initBubbles(Bubbles bubbles) {
@@ -1189,12 +1176,13 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
                 (requestTopUi, componentTag) -> mMainExecutor.execute(
                         () -> mTopUiController.setRequestTopUi(requestTopUi, componentTag)
                 )));
-<<<<<<< HEAD
-=======
-        getNotifContainerParentView().addView(mMediaViewController.getMediaArtScrim(), 0);
-        getNotifContainerParentView().addView(mPulseViewController.getPulseView(), 1);
         getNotifContainerParentView().addView(mEdgeLightViewController.getEdgeLightView(), 2);
->>>>>>> 7630a1e185eb (SystemUI: Add edge light feature)
+    }
+
+    private ViewGroup getNotifContainerParentView() {
+        ViewGroup rootView = (ViewGroup) getNotificationShadeWindowView().findViewById(R.id.scrim_behind).getParent();
+        ViewGroup targetView = rootView.findViewById(R.id.notification_container_parent);
+        return targetView;
     }
 
     public void destroy() {
