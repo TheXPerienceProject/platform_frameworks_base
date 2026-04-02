@@ -81,6 +81,8 @@ import android.view.IWindowManager;
 import android.view.MotionEvent;
 import android.view.ThreadedRenderer;
 import android.view.View;
+import android.view.ViewConfiguration;
+import android.view.ViewGroup;
 import android.view.WindowInsets;
 import android.view.WindowManager;
 import android.view.WindowManagerGlobal;
@@ -1176,6 +1178,12 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
                         () -> mTopUiController.setRequestTopUi(requestTopUi, componentTag)
                 )));
         getNotifContainerParentView().addView(mEdgeLightViewController.getEdgeLightView(), 2);
+    }
+
+    private ViewGroup getNotifContainerParentView() {
+        ViewGroup rootView = (ViewGroup) getNotificationShadeWindowView().findViewById(R.id.scrim_behind).getParent();
+        ViewGroup targetView = rootView.findViewById(R.id.notification_container_parent);
+        return targetView;
     }
 
     public void destroy() {
