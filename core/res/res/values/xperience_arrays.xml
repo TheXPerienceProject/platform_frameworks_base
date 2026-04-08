@@ -14,15 +14,6 @@
         <item>com.android.launcher3</item>
     </string-array>
 
-    <!-- Whitelist of package names to bypass foreground service type validation -->
-    <string-array name="config_fgsTypeValidationBypassPackages" translatable="false"/>
-
-    <!-- Whitelist of package names to bypass alarm manager validation -->
-    <string-array name="config_alarmManagerValidationBypassPackages" translatable="false"/>
-
-    <!-- Whitelist of package names to bypass broadcast reciever validation -->
-    <string-array name="config_broadcaseReceiverValidationBypassPackages" translatable="false"/>
-
     <!-- Fast charge -->
     <string-array name="charging_speed_entries" translatable="false">
         <item>@string/charging_speed_slow</item>
@@ -104,6 +95,6 @@
     <!-- Whitelist of package names to bypass alarm manager validation -->
     <string-array name="config_alarmManagerValidationBypassPackages" translatable="false"/>
 
-    <!-- Whitelist of package names to bypass broadcast reciever validation -->
-    <string-array name="config_broadcaseReceiverValidationBypassPackages" translatable="false"/>
+    <!-- Whitelist of package names to bypass broadcast receiver validation -->
+    <string-array name="config_broadcastReceiverValidationBypassPackages" translatable="false"/>
 </resources>
