@@ -97,7 +97,7 @@ public final class MusicProgressTracker {
     }
 
     private void handleMetadataChanged() {
-        MediaMetadata md = mHelper.getCurrentMediaMetadata();
+        MediaMetadata md = mHelper.getMediaMetadata();
 
         long dur  = md != null ? md.getLong(MediaMetadata.METADATA_KEY_DURATION) : -1L;
         mDurationMs = dur > 0 ? dur : -1L;
