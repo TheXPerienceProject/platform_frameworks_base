@@ -503,6 +503,12 @@ constructor(
             settingsObserver,
             UserHandle.USER_ALL,
         )
+        contentResolver.registerContentObserver(
+            secureSettings.getUriFor(NOWPLAYING_ENABLED),
+            true,
+            settingsObserver,
+            UserHandle.USER_ALL,
+        )
         configurationController.addCallback(configChangeListener)
         statusBarStateController.addCallback(statusBarStateListener)
         bypassController.registerOnBypassStateChangedListener(bypassStateChangedListener)
@@ -584,6 +590,14 @@ constructor(
     }
 
     private fun filterSmartspaceTarget(t: SmartspaceTarget): Boolean {
+         val isNowPlayingEnabled = secureSettings.getIntForUser(
+            NOWPLAYING_ENABLED, 0, userTracker.userId) == 1
+
+        // disable the media if we have nowplaying
+        if (isNowPlayingEnabled && t.featureType == SmartspaceTarget.FEATURE_MEDIA) {
+            return false
+        }
+
         if (isDateWeatherDecoupled && t.featureType == SmartspaceTarget.FEATURE_WEATHER) {
             return false
         }
