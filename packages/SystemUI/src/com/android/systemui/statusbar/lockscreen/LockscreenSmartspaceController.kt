@@ -598,9 +598,14 @@ constructor(
             return false
         }
 
+        if (t.featureType == SmartspaceTarget.FEATURE_WEATHER) {
+            return true
+        }
+
         if (isDateWeatherDecoupled && t.featureType == SmartspaceTarget.FEATURE_WEATHER) {
             return false
         }
+
         if (!showNotifications) {
             return t.featureType == SmartspaceTarget.FEATURE_WEATHER
         }
