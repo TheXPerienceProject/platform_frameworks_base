@@ -295,17 +295,39 @@ public class ThemeUtils {
 
     public static String getCPUTemp(Context context) {
         String value;
-        if (fileExists(context.getResources().getString(
-            com.android.internal.R.string.config_cpu_temp_path))) {
-               value = readOneLine(context.getResources().getString(
-                  com.android.internal.R.string.config_cpu_temp_path));
+        String path = context.getResources().getString(com.android.internal.R.string.config_cpu_temp_path);
+
+        if (fileExists(path)) {
+            value = readOneLine(path);
         } else {
             value = "Error";
         }
-        int cpuTempMultiplier = context.getResources().getInteger(
-                com.android.internal.R.integer.config_sysCPUTempMultiplier);
-        return value == "Error" ? "N/A" : String.format("%s", Integer.parseInt(value) / cpuTempMultiplier) + "°C";
+
+        if (value.equals("Error") || value.isEmpty()) return "N/A";
+
+        try {
+            double temp = Double.parseDouble(value);
+
+            // If the temperature is higher than 1000, it is almost certainly in milligrams (38000).
+            // If it is higher than 150 (and not in milligrams), the phone would have already exploded.
+            if (Math.abs(temp) >= 1000) {
+                temp /= 1000;
+            } else if (Math.abs(temp) > 150) {
+                // Just in case some crazy kernel uses a multiplier of 10 or 100
+                temp /= 100;
+            }
+
+            // Final formatting
+            if (temp == (long) temp) {
+                return String.format("%d°C", (long) temp);
+            } else {
+                return String.format("%.1f°C", temp);
+            }
+        } catch (NumberFormatException e) {
+            return "N/A";
+        }
     }
+
     public static boolean fileExists(String filename) {
         if (filename == null) {
             return false;
