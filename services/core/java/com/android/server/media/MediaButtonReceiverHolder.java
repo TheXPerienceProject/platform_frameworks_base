@@ -137,9 +137,6 @@ final class MediaButtonReceiverHolder {
     }
 
     public static MediaButtonReceiverHolder create(int userId, ComponentName broadcastReceiver) {
-        if (componentNameTooLong(broadcastReceiver)) {
-            throw new IllegalArgumentException("receiver name too long");
-        }
         return new MediaButtonReceiverHolder(userId, null, broadcastReceiver,
                 COMPONENT_TYPE_BROADCAST);
     }
@@ -406,25 +403,18 @@ final class MediaButtonReceiverHolder {
             if (componentInfo != null && TextUtils.equals(componentInfo.packageName,
                     pendingIntent.getCreatorPackage())
                     && componentInfo.packageName != null && componentInfo.name != null) {
-                ComponentName componentName =
-                    new ComponentName(componentInfo.packageName, componentInfo.name);
-                if (componentNameTooLong(componentName)) {
+                int componentNameLength =
+                        componentInfo.packageName.length() + componentInfo.name.length() + 1;
+                if (componentNameLength > MAX_COMPONENT_NAME_LENGTH) {
                     Log.w(TAG, "detected and ignored component name with overly long package"
                             + " or name, pi=" + pendingIntent);
                     continue;
                 }
-                return componentName;
+                return new ComponentName(componentInfo.packageName, componentInfo.name);
             }
         }
 
         return null;
-    }
-
-    private static boolean componentNameTooLong(ComponentName componentName) {
-        return componentName.getPackageName().length()
-                + componentName.getClassName().length()
-                + 1
-            > MAX_COMPONENT_NAME_LENGTH;
     }
 
     /**

@@ -3079,8 +3079,7 @@ public class ApplicationPackageManager extends PackageManager {
     public void clearApplicationUserData(String packageName,
                                          IPackageDataObserver observer) {
         try {
-            mPM.clearApplicationUserData(packageName, observer, getUserId(),
-                    /* restorePregrantedPermissions */ true);
+            mPM.clearApplicationUserData(packageName, observer, getUserId());
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }

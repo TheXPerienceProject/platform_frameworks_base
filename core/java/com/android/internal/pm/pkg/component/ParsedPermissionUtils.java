@@ -172,8 +172,6 @@ public class ParsedPermissionUtils {
             }
         }
 
-        permission.setName(permission.getName().trim());
-
         permission.setProtectionLevel(
                 PermissionInfo.fixProtectionLevel(permission.getProtectionLevel()));
 
@@ -238,8 +236,6 @@ public class ParsedPermissionUtils {
             sa.recycle();
         }
 
-        permission.setName(permission.getName().trim());
-
         int index = permission.getName().indexOf('.');
         if (index > 0) {
             index = permission.getName().indexOf('.', index + 1);
@@ -289,8 +285,7 @@ public class ParsedPermissionUtils {
                     .setBackgroundRequestDetailRes(sa.getResourceId(R.styleable.AndroidManifestPermissionGroup_backgroundRequestDetail, 0))
                     .setRequestRes(sa.getResourceId(R.styleable.AndroidManifestPermissionGroup_request, 0))
                     .setPriority(sa.getInt(R.styleable.AndroidManifestPermissionGroup_priority, 0))
-                    .setFlags(sa.getInt(R.styleable.AndroidManifestPermissionGroup_permissionGroupFlags,0))
-                    .setName(permissionGroup.getName().trim());
+                    .setFlags(sa.getInt(R.styleable.AndroidManifestPermissionGroup_permissionGroupFlags,0));
             // @formatter:on
         } finally {
             sa.recycle();

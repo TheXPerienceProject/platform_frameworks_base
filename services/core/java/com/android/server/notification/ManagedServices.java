@@ -978,7 +978,8 @@ abstract public class ManagedServices {
             if (approvedItem != null) {
                 int uid = getUidForPackageOrComponent(pkgOrComponent, userId);
                 if (enabled) {
-                    if (approved.size() < MAX_SERVICE_ENTRIES) {
+                    if (!Flags.limitManagedServicesCount()
+                            || approved.size() < MAX_SERVICE_ENTRIES) {
                         approved.add(approvedItem);
                         if (uid != Process.INVALID_UID) {
                             approvedUids.add(uid);
@@ -1005,7 +1006,8 @@ abstract public class ManagedServices {
                     mUserSetServices.put(userId, userSetServices);
                 }
                 if (userSet) {
-                    if (userSetServices.size() < MAX_SERVICE_ENTRIES) {
+                    if (!Flags.limitManagedServicesCount()
+                            || userSetServices.size() < MAX_SERVICE_ENTRIES) {
                         userSetServices.add(pkgOrComponent);
                     }
                 } else {
@@ -1014,7 +1016,7 @@ abstract public class ManagedServices {
             }
         }
 
-        if (changed) {
+        if (!Flags.limitManagedServicesCount() || changed) {
             rebindServices(false, userId);
         }
 

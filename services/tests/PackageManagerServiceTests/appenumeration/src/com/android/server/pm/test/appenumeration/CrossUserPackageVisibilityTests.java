@@ -298,8 +298,7 @@ public class CrossUserPackageVisibilityTests {
                 }
             }
         };
-        mIPackageManager.clearApplicationUserData(packageName, localObserver, mCurrentUser.id(),
-                true);
+        mIPackageManager.clearApplicationUserData(packageName, localObserver, mCurrentUser.id());
         TestUtils.waitOn(result, () -> result.get() != -1, DEFAULT_TIMEOUT_MS,
                 "clearApplicationUserData: " + packageName);
         return result.get() == 1;

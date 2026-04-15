@@ -473,12 +473,8 @@ public final class DeviceAdminInfo implements Parcelable {
      */
     public CharSequence loadDescription(PackageManager pm) throws NotFoundException {
         if (mActivityInfo.descriptionRes != 0) {
-            try {
-                return pm.getText(mActivityInfo.packageName,
+            return pm.getText(mActivityInfo.packageName,
                     mActivityInfo.descriptionRes, mActivityInfo.applicationInfo);
-            } catch (OutOfMemoryError e) {
-                throw new NotFoundException();
-            }
         }
         throw new NotFoundException();
     }

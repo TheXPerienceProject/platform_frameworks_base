@@ -22,7 +22,6 @@ import static com.google.common.truth.Truth.assertThat;
 
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 import android.app.IApplicationThread;
 import android.app.WindowConfiguration;
@@ -30,7 +29,6 @@ import android.content.pm.ApplicationInfo;
 import android.platform.test.annotations.Presubmit;
 
 import androidx.test.filters.SmallTest;
-
 
 import org.junit.Before;
 import org.junit.Test;
@@ -47,10 +45,6 @@ import org.junit.runner.RunWith;
 @Presubmit
 @RunWith(WindowTestRunner.class)
 public class VisibleActivityProcessTrackerTests extends WindowTestsBase {
-
-    enum Visibility { VISIBLE, INVISIBLE, REQUESTED }
-    private static final boolean PINNED = true;
-    private static final boolean UNPINNED = false;
 
     private VisibleActivityProcessTracker mTracker;
 
@@ -70,42 +64,26 @@ public class VisibleActivityProcessTrackerTests extends WindowTestsBase {
     }
 
     @Test
-    public void hasVisibleNotPinnedActivity_whenProcessHasNoActivities_returnsFalse() {
+    public void testVisibleNotPinnedActivity() {
         WindowProcessController wpc = createWindowProcessController();
-        assertThat(mTracker.hasVisibleActivity(wpc.mUid)).isFalse();
         assertThat(mTracker.hasVisibleNotPinnedActivity(wpc.mUid)).isFalse();
-    }
-
-    @Test
-    public void hasVisibleNotPinnedActivity_whenProcessHasOnlyInvisibleActivities_returnsFalse() {
-        WindowProcessController wpc = createWindowProcessController();
-        addActivity(wpc, Visibility.INVISIBLE, UNPINNED);
-        assertThat(mTracker.hasVisibleActivity(wpc.mUid)).isFalse();
-        assertThat(mTracker.hasVisibleNotPinnedActivity(wpc.mUid)).isFalse();
-    }
-
-    @Test
-    public void hasVisibleNotPinnedActivity_whenProcessHasOnlyPinnedActivities_returnsFalse() {
-        WindowProcessController wpc = createWindowProcessController();
-        addActivity(wpc, Visibility.VISIBLE, PINNED);
-        assertThat(mTracker.hasVisibleActivity(wpc.mUid)).isTrue();
-        assertThat(mTracker.hasVisibleNotPinnedActivity(wpc.mUid)).isFalse();
-    }
-
-    @Test
-    public void hasVisibleNotPinnedActivity_whenProcessHasUnpinnedVisibleActivity_returnsTrue() {
-        WindowProcessController wpc = createWindowProcessController();
-        addActivity(wpc, Visibility.VISIBLE, UNPINNED);
-        assertThat(mTracker.hasVisibleActivity(wpc.mUid)).isTrue();
+        mTracker.onAnyActivityVisible(wpc);
         assertThat(mTracker.hasVisibleNotPinnedActivity(wpc.mUid)).isTrue();
+        mTracker.onAllActivitiesInvisible(wpc);
+        assertThat(mTracker.hasVisibleNotPinnedActivity(wpc.mUid)).isFalse();
     }
 
     @Test
-    public void hasVisibleNotPinnedActivity_whenProcessHasUnpinnedVisReqActivity_returnsTrue() {
+    public void testVisiblePinnedActivity() {
         WindowProcessController wpc = createWindowProcessController();
-        addActivity(wpc, Visibility.REQUESTED, UNPINNED);
+        wpc.getConfiguration().windowConfiguration.setWindowingMode(
+                WindowConfiguration.WINDOWING_MODE_PINNED);
+        assertThat(mTracker.hasVisibleNotPinnedActivity(wpc.mUid)).isFalse();
+        mTracker.onAnyActivityVisible(wpc);
         assertThat(mTracker.hasVisibleActivity(wpc.mUid)).isTrue();
-        assertThat(mTracker.hasVisibleNotPinnedActivity(wpc.mUid)).isTrue();
+        assertThat(mTracker.hasVisibleNotPinnedActivity(wpc.mUid)).isFalse();
+        mTracker.onAllActivitiesInvisible(wpc);
+        assertThat(mTracker.hasVisibleNotPinnedActivity(wpc.mUid)).isFalse();
     }
 
     WindowProcessController createWindowProcessController() {
@@ -117,31 +95,5 @@ public class VisibleActivityProcessTrackerTests extends WindowTestsBase {
                 mAtm, info, null, 0, -1, null, mMockListener);
         mWpc.setThread(mock(IApplicationThread.class));
         return mWpc;
-    }
-
-    private static ActivityRecord addActivity(WindowProcessController wpc, Visibility visible,
-            boolean pinned) {
-        ActivityRecord ar = mock(ActivityRecord.class);
-        Task task = mock(Task.class);
-        doReturn(task).when(ar).getTask();
-        switch (visible) {
-            case VISIBLE:
-                doReturn(true).when(ar).isVisible();
-                doReturn(true).when(ar).isVisibleRequested();
-                break;
-            case INVISIBLE:
-                doReturn(false).when(ar).isVisible();
-                doReturn(false).when(ar).isVisibleRequested();
-                break;
-            case REQUESTED:
-                doReturn(false).when(ar).isVisible();
-                doReturn(true).when(ar).isVisibleRequested();
-                break;
-        }
-        doReturn(pinned).when(ar).inPinnedWindowingMode();
-        when(ar.toString()).thenReturn("ar visible=" + visible + ", pinned=" + pinned);
-        wpc.addActivityIfNeeded(ar);
-        wpc.computeProcessActivityState();
-        return ar;
     }
 }
