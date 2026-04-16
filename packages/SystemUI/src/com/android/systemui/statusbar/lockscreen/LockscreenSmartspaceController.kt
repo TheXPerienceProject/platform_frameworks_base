@@ -31,7 +31,7 @@ import android.graphics.Rect
 import android.net.Uri
 import android.os.Handler
 import android.os.UserHandle
-import android.provider.Settings.Secure.NOWPLAYING_ENABLED
+import android.provider.Settings.System.NOWPLAYING_ENABLED
 import android.provider.Settings.Secure.LOCK_SCREEN_ALLOW_PRIVATE_NOTIFICATIONS
 import android.provider.Settings.Secure.LOCK_SCREEN_SHOW_NOTIFICATIONS
 import android.provider.Settings.Secure.LOCK_SCREEN_WEATHER_ENABLED
