@@ -258,6 +258,7 @@ import android.util.SparseArray;
 import android.util.SparseIntArray;
 import android.view.Display;
 import android.view.KeyEvent;
+import android.view.Surface;
 import android.view.accessibility.AccessibilityManager;
 import android.widget.Toast;
 
@@ -4150,6 +4151,7 @@ public class AudioService extends IAudioService.Stub
         if (mUseFixedVolume) {
             return;
         }
+
         streamType = replaceBtScoStreamWithVoiceCall(streamType, "adjustStreamVolume");
 
         if (DEBUG_VOL) Log.d(TAG, "adjustStreamVolume() stream=" + streamType + ", dir=" + direction
@@ -4309,6 +4311,25 @@ public class AudioService extends IAudioService.Stub
         if (adjustVolume && (direction != AudioManager.ADJUST_SAME)
                 && (keyEventMode != AudioDeviceVolumeManager.ADJUST_MODE_END)) {
             mAudioHandler.removeMessages(MSG_UNMUTE_STREAM_ON_SINGLE_VOL_DEVICE);
+
+            // Prevent STREAM_MUSIC from being muted by SystemUI when the screen is off
+            // and the device is in portrait orientation
+            if (direction == AudioManager.ADJUST_MUTE && streamType == AudioSystem.STREAM_MUSIC
+                    && "com.android.systemui".equals(callingPackage)) {
+                PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
+                if (pm != null && !pm.isInteractive()) {
+                    Display display = mContext.getDisplay();
+                    if (display != null) {
+                        int rotation = display.getRotation();
+                        boolean isPortrait = (rotation == Surface.ROTATION_0
+                                || rotation == Surface.ROTATION_180);
+                        if (isPortrait) {
+                            Slog.i(TAG, "Ignoring mute request from SystemUI when screen off and portrait");
+                            return; // Salir sin aplicar el mute
+                        }
+                    }
+                }
+            }
 
             if (isMuteAdjust && !mFullVolumeDevices.contains(deviceType)) {
                 boolean state;
