@@ -100,4 +100,5 @@
     <string name="screenrecord_skip_time_summary">3 saniyelik beklemeyi kaldırın</string>
     <string name="screenrecord_hevc_switch_label">HEVC kodlayıcı</string>
     <string name="screenrecord_hevc_switch_summary">Daha verimli HEVC kodlayıcıyı kullanın</string>
+    <!-- Wifi Standard. -->
 </resources>
