@@ -118,4 +118,5 @@
     <string name="screenrecord_skip_time_summary">Eltávolítja a 3 másodperces várakozást</string>
     <string name="screenrecord_hevc_switch_label">HEVC-kódolás</string>
     <string name="screenrecord_hevc_switch_summary">Használja a hatékonyabb HEVC-kódolót</string>
+    <!-- Wifi Standard. -->
 </resources>
