@@ -72,4 +72,5 @@
     <!-- QS button to enable adaptive brightness -->
     <string name="accessibility_adaptive_brightness">Kecerahan adaptif</string>
     <!-- Screen record -->
+    <!-- Wifi Standard. -->
 </resources>
