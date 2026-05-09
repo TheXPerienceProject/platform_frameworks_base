@@ -89,7 +89,7 @@ void ShaderCache::initShaderDiskCache(const void* identity, ssize_t size) {
     // or snapshot migration. Also, program binaries may not work well on some
     // desktop / laptop GPUs. Thus, disable the shader disk cache for emulator builds.
     if (!Properties::runningInEmulator && mFilename.length() > 0) {
-        mBlobCache.reset(new FileBlobCache(maxKeySize, maxValueSize, maxTotalSize, mFilename));
+        mBlobCache.reset(new FileBlobCache(kMaxKeySize, kMaxValueSize, kMaxValueSize, mFilename));
         validateCache(identity, size);
         mInitialized = true;
         if (identity != nullptr && size > 0 && mIDHash.size()) {
@@ -120,7 +120,7 @@ sk_sp<SkData> ShaderCache::load(const SkData& key) {
     size_t valueSize = mBlobCache->get(key.data(), keySize, valueBuffer, mObservedBlobValueSize);
     int maxTries = 3;
     while (valueSize > mObservedBlobValueSize && maxTries > 0) {
-        mObservedBlobValueSize = std::min(valueSize, maxValueSize);
+        mObservedBlobValueSize = std::min(valueSize, kMaxValueSize);
         void* newValueBuffer = realloc(valueBuffer, mObservedBlobValueSize);
         if (!newValueBuffer) {
             free(valueBuffer);
@@ -199,7 +199,7 @@ void ShaderCache::store(const SkData& key, const SkData& data, const SkString& /
 
     size_t valueSize = data.size();
     size_t keySize = key.size();
-    if (keySize == 0 || valueSize == 0 || valueSize >= maxValueSize) {
+    if (keySize == 0 || valueSize == 0 || valueSize >= kMaxValueSize) {
         ALOGW("ShaderCache::store: sizes %d %d not allowed", (int)keySize, (int)valueSize);
         return;
     }
