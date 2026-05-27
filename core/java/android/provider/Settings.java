@@ -6916,12 +6916,6 @@ public final class Settings {
         public static final String RECENTS_LOCKED_TASKS = "recents_locked_tasks";
 
         /**
-         * Stores the array name of the values currently used for SpoofBuildGms
-         * @hide
-         */
-        public static final String PPU_SPOOF_BUILD_GMS_ARRAY = "ppu_spoof_build_gms_array";
-
-        /**
           * Whether to take partial screenshot with volume down + power click.
           * @hide
           */

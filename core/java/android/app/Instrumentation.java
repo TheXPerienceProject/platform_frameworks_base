@@ -81,7 +81,6 @@ import java.util.StringJoiner;
 import java.util.concurrent.TimeoutException;
 
 import com.android.internal.util.xperience.AttestationHooks;
-import com.android.internal.util.xperience.PixelPropsUtils;
 
 /**
  * Base class for implementing application instrumentation code.  When running
@@ -1362,8 +1361,6 @@ public class Instrumentation {
         Application app = getFactory(context.getPackageName())
                 .instantiateApplication(cl, className);
         app.attach(context);
-        AttestationHooks.setProps(context);
-        PixelPropsUtils.setProps(context);
         return app;
     }
     
@@ -1382,8 +1379,6 @@ public class Instrumentation {
             ClassNotFoundException {
         Application app = (Application)clazz.newInstance();
         app.attach(context);
-        AttestationHooks.setProps(context);
-        PixelPropsUtils.setProps(context);
         return app;
     }
 
