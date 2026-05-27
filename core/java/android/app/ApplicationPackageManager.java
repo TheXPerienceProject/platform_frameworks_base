@@ -936,7 +936,7 @@ public class ApplicationPackageManager extends PackageManager {
                 "com.google.android.apps.pixel.creativeassistant"
         );
 
-        final String device = SystemProperties.get("ro.evolution.device");
+        final String device = SystemProperties.get("ro.xpe.device");
         IS_TENSOR_DEVICE = TENSOR_CODENAMES.contains(device);
     }
 

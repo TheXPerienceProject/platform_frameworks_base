@@ -42,7 +42,7 @@ import android.util.Log;
 
 import com.android.internal.R;
 import com.android.internal.util.evolution.PixelDeviceRepository;
-import com.android.internal.util.evolution.Utils;
+import com.android.internal.util.xperience.Utils;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -172,7 +172,7 @@ public final class PixelPropsUtils {
         String[] props = {
             SystemProperties.get("ro.build.display.id", ""),
             SystemProperties.get("ro.modversion", ""),
-            SystemProperties.get("ro.evolution.version", ""),
+            SystemProperties.get("ro.xpe.version", ""),
             SystemProperties.get("ro.build.flavor", "")
         };
 
