@@ -1034,7 +1034,11 @@ final class DisplayPowerController implements AutomaticBrightnessController.Call
                     return ScreenStateAnimator.MODE_FADE;
                 }
             default:
-                return ScreenStateAnimator.MODE_FADE;
+		 if (displayState == Display.STATE_OFF) {
+                    return ScreenStateAnimator.MODE_COOL_DOWN;
+                } else {
+                    return ScreenStateAnimator.MODE_FADE;
+                }
         }
     }
 
