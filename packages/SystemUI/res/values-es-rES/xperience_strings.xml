@@ -118,4 +118,6 @@
     <string name="screenrecord_skip_time_summary">Elimina la espera de 3 segundos</string>
     <string name="screenrecord_hevc_switch_label">Codificación HEVC</string>
     <string name="screenrecord_hevc_switch_summary">Usa el codificador HEVC más eficiente</string>
+    <!-- Wifi Standard. -->
+    <string name="status_bar_wifi_standard">Estándar WiFi</string>
 </resources>
