@@ -285,6 +285,18 @@ constructor(
         combinedBlur = max(combinedBlur, blurUtils.blurRadiusOfRatio(transitionToFullShadeProgress))
         var shadeRadius = max(combinedBlur, wakeAndUnlockBlurRadius)
 
+        // --- XPE Mod: Apply base blur for the lockscreen ---
+        // Apply a static blur when on the Keyguard, ensuring it doesn't conflict with unlock animations
+        if (statusBarStateController.state == StatusBarState.KEYGUARD &&
+            !keyguardStateController.isKeyguardFadingAway) {
+
+            // Adjust this ratio (0.0f to 1.0f) to set how strong the blur is on the lockscreen.
+            // 0.6f is usually a good balance to keep the wallpaper visible but softly blurred.
+            val lockscreenBaseBlur = blurUtils.blurRadiusOfRatio(0.5f)
+            shadeRadius = max(shadeRadius, lockscreenBaseBlur)
+        }
+        // ---------------------------------------------------
+
         if (areBlursDisabledForAppLaunch || blursDisabledForUnlock) {
             shadeRadius = 0f
         }
