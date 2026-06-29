@@ -876,6 +876,9 @@
     <protected-broadcast android:name="android.app.action.DYNAMIC_BUNDLE_MODIFIED" />
     <protected-broadcast android:name="android.app.action.BRIDGED_NOTIFICATION_PREFERENCES" />
 
+    <!--Display state -->
+    <protected-broadcast android:name="android.intent.action.DISPLAY_STATE_CHANGED" />
+
     <!-- ====================================================================== -->
     <!--                          RUNTIME PERMISSIONS                           -->
     <!-- ====================================================================== -->
