@@ -868,6 +868,9 @@
     <!-- Sleep Mode -->
     <protected-broadcast android:name="android.intent.action.SLEEP_MODE_TURN_OFF" />
 
+    <!--Display state -->
+    <protected-broadcast android:name="android.intent.action.DISPLAY_STATE_CHANGED" />
+
     <!-- ====================================================================== -->
     <!--                          RUNTIME PERMISSIONS                           -->
     <!-- ====================================================================== -->
