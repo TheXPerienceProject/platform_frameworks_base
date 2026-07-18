@@ -187,6 +187,7 @@ import com.android.systemui.statusbar.notification.stack.NotificationStackScroll
 import com.android.systemui.statusbar.notification.stack.NotificationStackScrollLayoutController;
 import com.android.systemui.statusbar.phone.dagger.StatusBarPhoneModule;
 import com.android.systemui.statusbar.policy.BatteryController;
+import com.android.systemui.statusbar.policy.BurnInProtectionController;
 import com.android.systemui.statusbar.policy.ConfigurationController;
 import com.android.systemui.statusbar.policy.ConfigurationController.ConfigurationListener;
 import com.android.systemui.statusbar.policy.DeviceProvisionedController;
@@ -508,6 +509,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
     private final EmergencyGestureIntentFactory mEmergencyGestureIntentFactory;
 
     private final QuickAccessWalletController mWalletController;
+    private final BurnInProtectionController mBurnInProtectionController;
     private final RefreshRateIndicatorController mRefreshRateIndicatorController;
 
     /**
@@ -617,7 +619,8 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
             QuickAccessWalletController walletController,
             WindowManager windowManager,
             WindowManagerProvider windowManagerProvider,
-            SessionTracker sessionTracker
+            SessionTracker sessionTracker,
+	    BurnInProtectionController burnInProtectionController
     ) {
         mContext = context;
         mNotificationsController = notificationsController;
@@ -740,6 +743,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
         mWindowManager = windowManager;
         mWindowManagerProvider = windowManagerProvider;
         mSessionTracker = sessionTracker;
+	mBurnInProtectionController = burnInProtectionController;
 
         mRebootSuggestion = new RebootSuggestion(mContext);
     }
@@ -2096,6 +2100,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
 
             updateNotificationPanelTouchState();
             getNotificationShadeWindowViewController().cancelCurrentTouch();
+	    mBurnInProtectionController.stopShiftTimer();
             if (mLaunchCameraOnFinishedGoingToSleep) {
                 mLaunchCameraOnFinishedGoingToSleep = false;
 
@@ -2230,6 +2235,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
                 }
             }
             updateScrimController();
+	    mBurnInProtectionController.startShiftTimer();
         }
     };
 
