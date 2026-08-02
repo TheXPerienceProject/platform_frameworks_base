@@ -1,6 +1,4 @@
 // Baseline format: 1.0
-
-
 BroadcastBehavior: android.app.AlarmManager#ACTION_NEXT_ALARM_CLOCK_CHANGED:
     Field 'ACTION_NEXT_ALARM_CLOCK_CHANGED' is missing @BroadcastBehavior
 BroadcastBehavior: android.app.AlarmManager#ACTION_SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED:
@@ -443,6 +441,34 @@ MissingGetterMatchingBuilder: android.content.AttributionSource.Builder#setNextA
     android.content.AttributionSource does not declare a `getNextAttributionSource()` method matching method android.content.AttributionSource.Builder.setNextAttributionSource(android.content.AttributionSource)
 MissingGetterMatchingBuilder: android.os.RemoteCallbackList.Builder#setInterfaceDiedCallback(android.os.RemoteCallbackList.Builder.InterfaceDiedCallback<E>):
     android.os.RemoteCallbackList does not declare a `getInterfaceDiedCallback()` method matching method android.os.RemoteCallbackList.Builder.setInterfaceDiedCallback(android.os.RemoteCallbackList.Builder.InterfaceDiedCallback<E>)
+
+
+MissingNullability: mx.xperience.optimizer.IOptimizerService#compilePackage(String, String) parameter #0:
+    Missing nullability on parameter `packageName` in method `compilePackage`
+MissingNullability: mx.xperience.optimizer.IOptimizerService#compilePackage(String, String) parameter #1:
+    Missing nullability on parameter `compilerFilter` in method `compilePackage`
+MissingNullability: mx.xperience.optimizer.IOptimizerService.Default#asBinder():
+    Missing nullability on method `asBinder` return
+MissingNullability: mx.xperience.optimizer.IOptimizerService.Default#compilePackage(String, String) parameter #0:
+    Missing nullability on parameter `packageName` in method `compilePackage`
+MissingNullability: mx.xperience.optimizer.IOptimizerService.Default#compilePackage(String, String) parameter #1:
+    Missing nullability on parameter `compilerFilter` in method `compilePackage`
+MissingNullability: mx.xperience.optimizer.IOptimizerService.Stub#asBinder():
+    Missing nullability on method `asBinder` return
+MissingNullability: mx.xperience.optimizer.IOptimizerService.Stub#asInterface(android.os.IBinder):
+    Missing nullability on method `asInterface` return
+MissingNullability: mx.xperience.optimizer.IOptimizerService.Stub#asInterface(android.os.IBinder) parameter #0:
+    Missing nullability on parameter `obj` in method `asInterface`
+MissingNullability: mx.xperience.optimizer.IOptimizerService.Stub#onTransact(int, android.os.Parcel, android.os.Parcel, int) parameter #1:
+    Missing nullability on parameter `data` in method `onTransact`
+MissingNullability: mx.xperience.optimizer.IOptimizerService.Stub#onTransact(int, android.os.Parcel, android.os.Parcel, int) parameter #2:
+    Missing nullability on parameter `reply` in method `onTransact`
+
+
+RawAidl: mx.xperience.optimizer.IOptimizerService:
+    Raw AIDL interfaces must not be exposed: IOptimizerService implements IInterface
+RawAidl: mx.xperience.optimizer.IOptimizerService.Stub:
+    Raw AIDL interfaces must not be exposed: Stub extends Binder
 
 
 RequiresPermission: android.accounts.AccountManager#addAccount(String, String, String[], android.os.Bundle, android.app.Activity, android.accounts.AccountManagerCallback<android.os.Bundle>, android.os.Handler):
@@ -1181,6 +1207,14 @@ RequiresPermission: android.webkit.WebSettings#setGeolocationEnabled(boolean):
     Method 'setGeolocationEnabled' documentation mentions permissions without declaring @RequiresPermission
 
 
+RethrowRemoteException: mx.xperience.optimizer.IOptimizerService#compilePackage(String, String):
+    Methods calling system APIs should rethrow `RemoteException` as `RuntimeException` (but do not list it in the throws clause)
+RethrowRemoteException: mx.xperience.optimizer.IOptimizerService.Default#compilePackage(String, String):
+    Methods calling system APIs should rethrow `RemoteException` as `RuntimeException` (but do not list it in the throws clause)
+RethrowRemoteException: mx.xperience.optimizer.IOptimizerService.Stub#onTransact(int, android.os.Parcel, android.os.Parcel, int):
+    Methods calling system APIs should rethrow `RemoteException` as `RuntimeException` (but do not list it in the throws clause)
+
+
 Todo: android.hardware.camera2.params.StreamConfigurationMap:
     Documentation mentions 'TODO'
 Todo: android.provider.ContactsContract.RawContacts#newEntityIterator(android.database.Cursor):
@@ -1691,3 +1725,24 @@ UnflaggedApi: android.view.inputmethod.InlineSuggestionsRequest.Builder#setClien
     New API must be flagged with @FlaggedApi: method android.view.inputmethod.InlineSuggestionsRequest.Builder.setClientSupported(boolean)
 UnflaggedApi: android.view.inputmethod.InlineSuggestionsRequest.Builder#setServiceSupported(boolean):
     New API must be flagged with @FlaggedApi: method android.view.inputmethod.InlineSuggestionsRequest.Builder.setServiceSupported(boolean)
+UnflaggedApi: mx.xperience.optimizer.IOptimizerService:
+    New API must be flagged with @FlaggedApi: class mx.xperience.optimizer.IOptimizerService
+UnflaggedApi: mx.xperience.optimizer.IOptimizerService#compilePackage(String, String):
+    New API must be flagged with @FlaggedApi: method mx.xperience.optimizer.IOptimizerService.compilePackage(String,String)
+UnflaggedApi: mx.xperience.optimizer.IOptimizerService.Default:
+    New API must be flagged with @FlaggedApi: class mx.xperience.optimizer.IOptimizerService.Default
+UnflaggedApi: mx.xperience.optimizer.IOptimizerService.Default#asBinder():
+    New API must be flagged with @FlaggedApi: method mx.xperience.optimizer.IOptimizerService.Default.asBinder()
+UnflaggedApi: mx.xperience.optimizer.IOptimizerService.Default#compilePackage(String, String):
+    New API must be flagged with @FlaggedApi: method mx.xperience.optimizer.IOptimizerService.Default.compilePackage(String,String)
+UnflaggedApi: mx.xperience.optimizer.IOptimizerService.Stub:
+    New API must be flagged with @FlaggedApi: class mx.xperience.optimizer.IOptimizerService.Stub
+UnflaggedApi: mx.xperience.optimizer.IOptimizerService.Stub#Stub():
+    New API must be flagged with @FlaggedApi: constructor mx.xperience.optimizer.IOptimizerService.Stub()
+UnflaggedApi: mx.xperience.optimizer.IOptimizerService.Stub#asBinder():
+    New API must be flagged with @FlaggedApi: method mx.xperience.optimizer.IOptimizerService.Stub.asBinder()
+UnflaggedApi: mx.xperience.optimizer.IOptimizerService.Stub#asInterface(android.os.IBinder):
+    New API must be flagged with @FlaggedApi: method mx.xperience.optimizer.IOptimizerService.Stub.asInterface(android.os.IBinder)
+UnflaggedApi: mx.xperience.optimizer.IOptimizerService.Stub#onTransact(int, android.os.Parcel, android.os.Parcel, int):
+    New API must be flagged with @FlaggedApi: method mx.xperience.optimizer.IOptimizerService.Stub.onTransact(int,android.os.Parcel,android.os.Parcel,int)
+

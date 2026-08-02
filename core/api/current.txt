@@ -64844,6 +64844,27 @@ package javax.microedition.khronos.opengles {
 
 }
 
+package mx.xperience.optimizer {
+
+  public interface IOptimizerService extends android.os.IInterface {
+    method public boolean compilePackage(String, String) throws android.os.RemoteException;
+  }
+
+  public static class IOptimizerService.Default implements mx.xperience.optimizer.IOptimizerService {
+    ctor public IOptimizerService.Default();
+    method public android.os.IBinder asBinder();
+    method public boolean compilePackage(String, String) throws android.os.RemoteException;
+  }
+
+  public abstract static class IOptimizerService.Stub extends android.os.Binder implements mx.xperience.optimizer.IOptimizerService {
+    ctor public IOptimizerService.Stub();
+    method public android.os.IBinder asBinder();
+    method public static mx.xperience.optimizer.IOptimizerService asInterface(android.os.IBinder);
+    method public boolean onTransact(int, android.os.Parcel, android.os.Parcel, int) throws android.os.RemoteException;
+  }
+
+}
+
 package org.apache.http.conn {
 
   @Deprecated public class ConnectTimeoutException extends java.io.InterruptedIOException {
