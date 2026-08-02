@@ -231,6 +231,7 @@ import com.android.server.pm.DynamicCodeLoggingService;
 import com.android.server.pm.HsumBootUserInitializer;
 import com.android.server.pm.Installer;
 import com.android.server.pm.LauncherAppsService;
+import com.android.server.pm.PackageManagerLocal;
 import com.android.server.pm.PackageManagerService;
 import com.android.server.pm.ShortcutService;
 import com.android.server.pm.UserManagerService;
@@ -1480,6 +1481,7 @@ public final class SystemServer implements Dumpable {
         mSystemServiceManager.startService(SensorService.class);
         t.traceEnd();
         t.traceEnd(); // startBootstrapServices
+
     }
 
     /**
@@ -3599,6 +3601,12 @@ public final class SystemServer implements Dumpable {
             } catch (Throwable e) {
                 reportWtf("starting Tethering", e);
             }
+            t.traceEnd();
+
+            t.traceBegin("StartOptimizerService");
+            ServiceManager.addService("optimizer",
+                new com.android.server.pm.OptimizerService(mSystemContext,
+                    LocalManagerRegistry.getManager(PackageManagerLocal.class)));
             t.traceEnd();
 
             t.traceBegin("MakeCountryDetectionServiceReady");
