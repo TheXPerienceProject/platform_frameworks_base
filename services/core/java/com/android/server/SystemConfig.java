@@ -898,7 +898,6 @@ public class SystemConfig {
             "com.google.android.feature.EXCHANGE_6_2",
             "com.google.android.feature.NEXT_GENERATION_ASSISTANT",
             "com.google.android.feature.TURBO_PRELOAD",
-            "android.software.game_service",
         };
 
         for (String feature : googleFeatures) {
