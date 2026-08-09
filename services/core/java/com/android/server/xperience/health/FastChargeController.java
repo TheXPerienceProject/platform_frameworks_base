@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package com.android.server.custom.health;
+package com.android.server.xperience.health;
 
 import android.content.res.Resources;
 import android.content.ContentResolver;
