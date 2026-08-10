@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The XPerience Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Name of the nfc status bar icon. -->
+    <!-- Accessibility label for nfc icon (not shown on screen) [CHAR LIMIT=NONE] -->
+    <!-- Flashlight Strength -->
+    <!-- Status bar -->
+    <!-- Wifi Standard. -->
+    <!-- Custom QS tiles -->
+    <!-- Caffeine QS tile -->
+    <string name="accessibility_quick_settings_caffeine_off">Đã tắt Cafein.</string>
+    <string name="accessibility_quick_settings_caffeine_on">Đã bật Cafein.</string>
+    <!-- Heads up QS tile -->
+    <string name="quick_settings_heads_up_label">Thông báo nổi</string>
+    <string name="accessibility_quick_settings_heads_up_off">Tắt thông báo nổi.</string>
+    <string name="accessibility_quick_settings_heads_up_on">Bật thông báo nổi.</string>
+    <!-- Ambient display QS tile -->
+    <string name="quick_settings_ambient_display_label">Màn hình xem nhanh</string>
+    <string name="accessibility_quick_settings_ambient_display_off">Màn hình xem nhanh tắt.</string>
+    <string name="accessibility_quick_settings_ambient_display_on">Màn hình xem nhanh bật.</string>
+    <!-- USB tethering QS tile -->
+    <string name="quick_settings_usb_tether_label">Chia sẻ kết nối qua USB</string>
+    <!-- AOD QS tile -->
+    <!-- PowerShare QS tile -->
+</resources>
