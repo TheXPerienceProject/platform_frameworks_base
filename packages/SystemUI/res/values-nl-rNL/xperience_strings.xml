@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The XPerience Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Name of the nfc status bar icon. -->
+    <!-- Accessibility label for nfc icon (not shown on screen) [CHAR LIMIT=NONE] -->
+    <!-- Flashlight Strength -->
+    <!-- Status bar -->
+    <!-- Wifi Standard. -->
+    <!-- Custom QS tiles -->
+    <!-- Caffeine QS tile -->
+    <string name="quick_settings_caffeine_label">Cafeïne</string>
+    <string name="accessibility_quick_settings_caffeine_off">Cafeïne uit.</string>
+    <string name="accessibility_quick_settings_caffeine_on">Cafeïne aan.</string>
+    <!-- Heads up QS tile -->
+    <!-- Ambient display QS tile -->
+    <string name="quick_settings_ambient_display_label">Actieve display</string>
+    <string name="accessibility_quick_settings_ambient_display_off">Actieve display uit.</string>
+    <string name="accessibility_quick_settings_ambient_display_on">Actieve display uit.</string>
+    <!-- USB tethering QS tile -->
+    <!-- AOD QS tile -->
+    <!-- PowerShare QS tile -->
+</resources>
