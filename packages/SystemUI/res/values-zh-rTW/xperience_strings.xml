@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The XPerience Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Name of the nfc status bar icon. -->
+    <!-- Accessibility label for nfc icon (not shown on screen) [CHAR LIMIT=NONE] -->
+    <!-- Flashlight Strength -->
+    <!-- Status bar -->
+    <string name="status_bar_icons_title">狀態欄圖示</string>
+    <!-- Wifi Standard. -->
+    <!-- Custom QS tiles -->
+    <!-- Caffeine QS tile -->
+    <string name="quick_settings_caffeine_label">暫停休眠</string>
+    <string name="accessibility_quick_settings_caffeine_off">關閉暫停休眠。</string>
+    <string name="accessibility_quick_settings_caffeine_on">開啟暫停休眠。</string>
+    <!-- Heads up QS tile -->
+    <string name="quick_settings_heads_up_label">浮動通知</string>
+    <string name="accessibility_quick_settings_heads_up_off">浮動通知關閉。</string>
+    <string name="accessibility_quick_settings_heads_up_on">開啟浮動通知。</string>
+    <!-- Ambient display QS tile -->
+    <string name="quick_settings_ambient_display_label">微光螢幕</string>
+    <string name="accessibility_quick_settings_ambient_display_off">微光螢幕關閉。</string>
+    <string name="accessibility_quick_settings_ambient_display_on">微光螢幕開啟。</string>
+    <!-- USB tethering QS tile -->
+    <string name="quick_settings_usb_tether_label">USB 網路分享</string>
+    <!-- AOD QS tile -->
+    <string name="quick_settings_aod_label">微光螢幕AOD</string>
+    <string name="quick_settings_aod_off_powersave_label">AOD 關閉\n省電模式</string>
+    <!-- PowerShare QS tile -->
+</resources>
