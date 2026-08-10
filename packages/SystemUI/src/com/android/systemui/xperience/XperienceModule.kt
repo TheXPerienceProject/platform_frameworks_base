@@ -78,7 +78,7 @@ interface XperienceModule {
         const val AMBIENT_DISPLAY_TILE_SPEC = "ambient_display"
         const val AOD_TILE_SPEC = "aod"
         const val CAFFEINE_TILE_SPEC = "caffeine"
-	const val HEADS_UP_TILE_SPEC = "heads_up"
+	    const val HEADS_UP_TILE_SPEC = "heads_up"
         const val USB_TETHER_TILE_SPEC = "usb_tether"
         const val POWER_SHARE_TILE_SPEC = "power_share"
 
@@ -127,14 +127,15 @@ interface XperienceModule {
                 instanceId = uiEventLogger.getNewInstanceId(),
                 category = TileCategory.DISPLAY,
             )
+
         @Provides
         @IntoMap
         @StringKey(HEADS_UP_TILE_SPEC)
         fun provideHeadsUpTileConfig(uiEventLogger: QsEventLogger): QSTileConfig =
             QSTileConfig(
-                tileSpec = TileSpec.create(HEADS_UP_TILE_SPEC),
+            tileSpec = TileSpec.create(HEADS_UP_TILE_SPEC),
                 uiConfig =
-                    QSTileUIConfig.Resource(
+                        QSTileUIConfig.Resource(
                         iconRes = R.drawable.ic_qs_heads_up,
                         labelRes = R.string.quick_settings_heads_up_label
                     ),
@@ -142,7 +143,7 @@ interface XperienceModule {
                 category = TileCategory.ACCESSIBILITY,
             )
 
-	@Provides
+        @Provides
         @IntoMap
         @StringKey(POWER_SHARE_TILE_SPEC)
         fun providePowerShareConfig(uiEventLogger: QsEventLogger): QSTileConfig  =
@@ -156,7 +157,6 @@ interface XperienceModule {
                 instanceId = uiEventLogger.getNewInstanceId(),
                 category = TileCategory.UTILITIES
             )
-        }
 
         @Provides
         @IntoMap
