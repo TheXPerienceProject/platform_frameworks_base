@@ -161,7 +161,6 @@ java_library_static {
         "device_policy_aconfig_flags_lib",
         "error_prone_annotations",
         "framework-tethering.stubs.module_lib",
-        "oplus-fwk-vibrator-lib",
         "keepanno-annotations",
         "monet",
         "power_hint_flags_lib",
