@@ -94,11 +94,6 @@ class HomeStatusBarViewBinderImpl @Inject constructor() : HomeStatusBarViewBinde
         clockView.hideInitially()
         notificationIconsArea.hideInitially()
 
-<<<<<<< HEAD
-=======
-        val batteryBar: BatteryBarController = view.requireViewById(R.id.battery_bar)
-        val leftLogo: LogoImage = view.requireViewById(R.id.statusbar_logo)
-
         val leftSideArea: View =
             view.requireViewById(R.id.status_bar_start_side_except_heads_up)
         val centeredArea: View? = view.findViewById(R.id.centered_area)
@@ -139,7 +134,6 @@ class HomeStatusBarViewBinderImpl @Inject constructor() : HomeStatusBarViewBinde
             }
         lyricView.view.hideInitially()
 
->>>>>>> 75c0a79b37ba ([SQUASHED] base: Add status bar lyric for Android 17)
         view.repeatWhenAttached {
             repeatOnLifecycle(Lifecycle.State.CREATED) {
                 val context = view.context
@@ -237,31 +231,9 @@ class HomeStatusBarViewBinderImpl @Inject constructor() : HomeStatusBarViewBinde
                 }
 
                 launch {
-<<<<<<< HEAD
                     viewModel.isNotificationIconContainerVisible.collect {
                         notificationIconsArea.adjustVisibility(it)
-=======
-                    viewModel.isNotificationIconContainerVisible.collect { vis ->
-                        notificationIconsArea.adjustVisibility(vis)
-                        batteryBar.adjustVisibility(vis)
-                        leftLogo.adjustVisibility(vis)
                     }
-                }
-
-                launch {
-                    combine(
-                        viewModel.isNotificationIconContainerVisible,
-                        viewModel.hideStartSideContentForHeadsUp,
-                    ) { isNotifIconsVisible, hideForHun ->
-                        isNotifIconsVisible to hideForHun
-                    }
-                        .collect { (isNotifIconsVisible, hideForHun) ->
-                            lyricView.updateConditions(
-                                isNotificationIconsVisible =
-                                    isNotifIconsVisible.visibility == View.VISIBLE,
-                                hideForHun = hideForHun,
-                            )
-                        }
                 }
 
                 val lyricEnabledUri: Uri =
@@ -286,10 +258,9 @@ class HomeStatusBarViewBinderImpl @Inject constructor() : HomeStatusBarViewBinde
                     UserHandle.USER_ALL,
                 )
                 lyricContentObserver.onChange(false, lyricEnabledUri)
-                job?.invokeOnCompletion {
+                coroutineContext[Job]?.invokeOnCompletion {
                     runCatching {
                         context.contentResolver.unregisterContentObserver(lyricContentObserver)
->>>>>>> 75c0a79b37ba ([SQUASHED] base: Add status bar lyric for Android 17)
                     }
                 }
 

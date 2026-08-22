@@ -125,7 +125,6 @@ import com.android.systemui.dagger.qualifiers.UiBackground;
 import com.android.systemui.demomode.DemoMode;
 import com.android.systemui.demomode.DemoModeController;
 import com.android.systemui.xperience.RebootSuggestion;
-import com.android.systemui.nowplaying.NowPlayingViewController;
 import com.android.systemui.emergency.EmergencyGesture;
 import com.android.systemui.emergency.EmergencyGestureModule.EmergencyGestureIntentFactory;
 import com.android.systemui.fragments.ExtensionFragmentListener;
@@ -415,8 +414,6 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
     private final UserTracker mUserTracker;
     private final ActivityStarter mActivityStarter;
 
-    private final NowPlayingViewController mNowPlayingViewController;
-
     private final DisplayMetrics mDisplayMetrics;
 
     // XXX: gesture research
@@ -631,8 +628,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
             WindowManager windowManager,
             WindowManagerProvider windowManagerProvider,
             SessionTracker sessionTracker,
-	    BurnInProtectionController burnInProtectionController,
-            NowPlayingViewController nowPlayingViewController
+	    BurnInProtectionController burnInProtectionController
     ) {
         mContext = context;
         mNotificationsController = notificationsController;
@@ -759,7 +755,6 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
 	mBurnInProtectionController = burnInProtectionController;
 
         mRebootSuggestion = new RebootSuggestion(mContext);
-        mNowPlayingViewController = nowPlayingViewController;
     }
 
     private void initBubbles(Bubbles bubbles) {
@@ -929,12 +924,6 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
     private void attachCustomOverlays() {
         ViewGroup overlay = getScrimOverlayContainer();
 
-        detachFromParent(mNowPlayingViewController.getNowPlayingView());
-
-        overlay.addView(mNowPlayingViewController.getNowPlayingView(),
-                new FrameLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT));
     }
 
     private static void detachFromParent(View v) {

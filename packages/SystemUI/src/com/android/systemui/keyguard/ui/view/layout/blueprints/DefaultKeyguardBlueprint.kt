@@ -35,6 +35,7 @@ import com.android.systemui.keyguard.ui.view.layout.sections.DefaultUdfpsAccessi
 import com.android.systemui.keyguard.ui.view.layout.sections.AxDynamicBarKeyguardChipSection
 import com.android.systemui.keyguard.ui.view.layout.sections.KeyguardSectionsModule.Companion.KEYGUARD_AMBIENT_INDICATION_AREA_SECTION
 import com.android.systemui.keyguard.ui.view.layout.sections.KeyguardSectionsModule.Companion.KEYGUARD_BATTERY_CHARGING_SECTION
+import com.android.systemui.keyguard.ui.view.layout.sections.KeyguardSectionsModule.Companion.KEYGUARD_NOW_PLAYING_SECTION
 import com.android.systemui.keyguard.ui.view.layout.sections.KeyguardSliceViewSection
 import com.android.systemui.keyguard.ui.view.layout.sections.SmartspaceSection
 import java.util.Optional
@@ -61,6 +62,8 @@ constructor(
     defaultSettingsPopupMenuSection: DefaultSettingsPopupMenuSection,
     @Named(KEYGUARD_BATTERY_CHARGING_SECTION)
     batteryChargingPopupMenuSection: Optional<KeyguardSection>,
+    @Named(KEYGUARD_NOW_PLAYING_SECTION)
+    nowPlayingSection: Optional<KeyguardSection>,
     defaultStatusBarSection: DefaultStatusBarSection,
     defaultNotificationStackScrollLayoutSection: DefaultNotificationStackScrollLayoutSection,
     aodPromotedNotificationSection: AodPromotedNotificationSection,
@@ -83,6 +86,7 @@ constructor(
             defaultAmbientIndicationAreaSection.getOrNull(),
             defaultSettingsPopupMenuSection,
             batteryChargingPopupMenuSection.getOrNull(),
+            nowPlayingSection.getOrNull(),
             defaultStatusBarSection,
             defaultNotificationStackScrollLayoutSection,
             aodNotificationIconsSection,
