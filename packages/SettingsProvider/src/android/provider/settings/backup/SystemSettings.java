@@ -133,7 +133,13 @@ public class SystemSettings {
                 Settings.System.PEAK_REFRESH_RATE,
                 Settings.System.MIN_REFRESH_RATE,
                 Settings.System.ACCESSIBILITY_FORCE_INVERT_COLOR_OVERRIDE_PACKAGES_TO_DISABLE,
-                Settings.System.STATUS_BAR_SHOW_DYNAMIC_ISLAND
+                Settings.System.STATUS_BAR_SHOW_DYNAMIC_ISLAND,
+                Settings.System.STATUS_BAR_DYNAMIC_ISLAND_MEDIA_CONTROLS,
+                Settings.System.STATUS_BAR_DYNAMIC_ISLAND_SCREEN_RECORDING,
+                Settings.System.STATUS_BAR_DYNAMIC_ISLAND_ALARMS,
+                Settings.System.STATUS_BAR_DYNAMIC_ISLAND_FLASHLIGHT,
+                Settings.System.STATUS_BAR_DYNAMIC_ISLAND_STOPWATCH,
+                Settings.System.STATUS_BAR_DYNAMIC_ISLAND_LIVE_SCORES
         ));
         return settings.toArray(new String[0]);
     }
