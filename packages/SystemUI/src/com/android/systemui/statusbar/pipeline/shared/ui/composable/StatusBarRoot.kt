@@ -31,6 +31,7 @@ import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
@@ -39,6 +40,7 @@ import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.MutableIntState
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -103,6 +105,7 @@ import com.android.systemui.statusbar.notification.icon.ui.viewbinder.Notificati
 import com.android.systemui.statusbar.notification.icon.ui.viewbinder.NotificationIconContainerViewBinder
 import com.android.systemui.statusbar.notification.shared.StatusBarHeadline
 import com.android.systemui.statusbar.phone.NotificationIconContainer
+import com.android.systemui.media.controls.ui.controller.MediaHierarchyManager
 import com.android.systemui.statusbar.phone.PhoneStatusBarView
 import com.android.systemui.statusbar.phone.StatusBarLocation
 import com.android.systemui.statusbar.phone.StatusIconContainer
@@ -118,6 +121,8 @@ import com.android.systemui.statusbar.pipeline.shared.ui.binder.HomeStatusBarVie
 import com.android.systemui.statusbar.pipeline.shared.ui.view.SystemStatusIconsLayoutHelper
 import com.android.systemui.statusbar.pipeline.shared.ui.viewmodel.HomeStatusBarViewModel
 import com.android.systemui.statusbar.pipeline.shared.ui.viewmodel.HomeStatusBarViewModel.HomeStatusBarViewModelFactory
+import com.android.systemui.statusbar.quickactions.island.ui.compose.StatusBarDynamicIslandContainer
+import com.android.systemui.statusbar.quickactions.island.ui.model.PopupChipId
 import com.android.systemui.statusbar.policy.Clock
 import com.android.systemui.statusbar.systemstatusicons.SystemStatusIconsInCompose
 import com.android.systemui.statusbar.systemstatusicons.domain.interactor.SystemStatusIconBlocklistInteractor
@@ -149,6 +154,7 @@ constructor(
     @DisplayAware private val headlineViewModelFactory: HeadlineViewModel.Factory,
     private val statusBarRegionSamplingViewModelFactory: StatusBarRegionSamplingViewModel.Factory,
     private val shadeWindowRootView: WindowRootView,
+    private val mediaHierarchyManager: MediaHierarchyManager,
 ) {
     fun create(root: ViewGroup, andThen: (ViewGroup) -> Unit): ComposeView {
         val composeView = ComposeView(root.context)
@@ -172,6 +178,7 @@ constructor(
                         eventAnimationInteractor = eventAnimationInteractor,
                         statusBarRegionSamplingViewModelFactory =
                             statusBarRegionSamplingViewModelFactory,
+                        mediaHierarchyManager = mediaHierarchyManager,
                         onViewCreated = andThen,
                         modifier = Modifier.sysUiResTagContainer(),
                     )
@@ -210,6 +217,7 @@ fun StatusBarRoot(
     darkIconDispatcher: DarkIconDispatcher,
     eventAnimationInteractor: SystemStatusEventAnimationInteractor,
     statusBarRegionSamplingViewModelFactory: StatusBarRegionSamplingViewModel.Factory,
+    mediaHierarchyManager: MediaHierarchyManager? = null,
     onViewCreated: (ViewGroup) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -255,7 +263,7 @@ fun StatusBarRoot(
         return
     }
 
-    Box {
+    Box(modifier = Modifier.fillMaxWidth()) {
         AndroidView(
             factory = { context ->
                 val inflater = LayoutInflater.from(context)
@@ -380,6 +388,19 @@ fun StatusBarRoot(
                     },
             onRelease = { touchableExclusionRegionDisposableHandle?.dispose() },
         )
+
+        // Scene container hides the home status bar on lockscreen/shade. The island is a Compose
+        // sibling of PhoneStatusBarView, so it must follow the same allowed state.
+        val isHomeStatusBarAllowed by statusBarViewModel.isHomeStatusBarAllowed.collectAsState()
+        if (isHomeStatusBarAllowed && statusBarViewModel.dynamicIslandChips.isNotEmpty()) {
+            StatusBarDynamicIslandContainer(
+                chips = statusBarViewModel.dynamicIslandChips,
+                onMediaControlPopupVisibilityChanged = { popupShowing ->
+                    mediaHierarchyManager?.isMediaControlPopupShowing = popupShowing
+                },
+                modifier = Modifier.align(Alignment.Center),
+            )
+        }
 
         if (StatusBarHeadline.isEnabled && headlineViewModel != null) {
             val lifecycle = LocalLifecycleOwner.current.lifecycle
@@ -510,7 +531,9 @@ private fun addStartSideComposable(
                     }
 
                 val chipsVisibilityModel = statusBarViewModel.ongoingActivityChips
-                if (chipsVisibilityModel.areChipsAllowed) {
+                val shouldHideLegacyScreenRecordChip =
+                    statusBarViewModel.dynamicIslandChips.any { it.chipId == PopupChipId.ScreenRecord }
+                if (chipsVisibilityModel.areChipsAllowed && !shouldHideLegacyScreenRecordChip) {
                     OngoingActivityChips(
                         chips = chipsVisibilityModel.chips,
                         iconViewStore = iconViewStore,

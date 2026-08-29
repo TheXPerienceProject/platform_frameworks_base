@@ -6942,6 +6942,13 @@ public final class Settings {
         public static final String POCKET_JUDGE = "pocket_judge";
 
         /**
+         * Whether to show the phone dynamic island in the status bar.
+         * @hide
+         */
+        public static final String STATUS_BAR_SHOW_DYNAMIC_ISLAND =
+                "status_bar_show_dynamic_island";
+
+        /**
          * Defines the screen-off animation to display
          * @hide
          */
