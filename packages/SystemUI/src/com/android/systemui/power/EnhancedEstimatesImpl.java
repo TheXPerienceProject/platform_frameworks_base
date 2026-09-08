@@ -7,7 +7,7 @@ import android.net.Uri;
 import android.util.KeyValueListParser;
 import android.util.Log;
 
-import com.android.internal.util.xperience.Utils;
+import com.android.internal.util.xperience.XperienceUtils;
 import com.android.settingslib.fuelgauge.Estimate;
 import com.android.settingslib.fuelgauge.EstimateKt;
 import com.android.settingslib.utils.PowerUtil;
@@ -51,7 +51,7 @@ public final class EnhancedEstimatesImpl implements EnhancedEstimates {
 
     @Override
     public boolean isHybridNotificationEnabled() {
-        final boolean isTurboInstalled = Utils.isPackageInstalled(
+        final boolean isTurboInstalled = XperienceUtils.isPackageInstalled(
                 mContext,
                 TURBO_PACKAGE,
                 false /* ignoreState */);
