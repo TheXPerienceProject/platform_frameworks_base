@@ -16,4 +16,5 @@
     <string name="charging_control_notification_content_limit_reached">電池將會充電至 %1$d%%</string>
     <string name="charging_control_notification_content_target">電池將會在 %1$s 完全充飽</string>
     <string name="charging_control_notification_content_target_reached">電池已完成充電</string>
+    <!-- USB Mode Picker -->
 </resources>
