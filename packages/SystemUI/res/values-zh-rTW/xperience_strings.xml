@@ -29,4 +29,5 @@
     <string name="quick_settings_aod_label">微光螢幕AOD</string>
     <string name="quick_settings_aod_off_powersave_label">AOD 關閉\n省電模式</string>
     <!-- PowerShare QS tile -->
+    <!-- USB Mode Picker -->
 </resources>
