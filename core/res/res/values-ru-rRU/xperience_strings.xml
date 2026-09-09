@@ -15,4 +15,5 @@
     <string name="charging_control_notification_content_limit_reached">Батарея заряжена до %1$d%%</string>
     <string name="charging_control_notification_content_target">Батарея будет полностью заряжена в %1$s</string>
     <string name="charging_control_notification_content_target_reached">Батарея заряжена</string>
+    <!-- USB Mode Picker -->
 </resources>
