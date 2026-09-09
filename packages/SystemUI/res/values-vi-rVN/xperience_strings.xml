@@ -25,4 +25,5 @@
     <string name="quick_settings_usb_tether_label">Chia sẻ kết nối qua USB</string>
     <!-- AOD QS tile -->
     <!-- PowerShare QS tile -->
+    <!-- USB Mode Picker -->
 </resources>
