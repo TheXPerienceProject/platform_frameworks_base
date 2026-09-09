@@ -41,4 +41,5 @@
     <string name="charging_control_notification_content_limit_reached">Az akkumulátor feltöltődött %1$d%% -ig</string>
     <string name="charging_control_notification_content_target">Az akkumulátor teljesen feltöltődik ekkorra %1$s</string>
     <string name="charging_control_notification_content_target_reached">Az akku feltöltve</string>
+    <!-- USB Mode Picker -->
 </resources>
