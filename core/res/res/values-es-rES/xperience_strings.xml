@@ -41,4 +41,5 @@
     <string name="charging_control_notification_content_limit_reached">La batería se cargó al %1$d%%</string>
     <string name="charging_control_notification_content_target">La batería estará completamente cargada en %1$s</string>
     <string name="charging_control_notification_content_target_reached">La batería está cargada</string>
+    <!-- USB Mode Picker -->
 </resources>
