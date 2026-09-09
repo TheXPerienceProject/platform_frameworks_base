@@ -16,4 +16,5 @@
     <string name="charging_control_notification_content_limit_reached">Pil %1$d%% seviyesine kadar şarj edildi</string>
     <string name="charging_control_notification_content_target">Batarya %1$s%% saatinde şarj edilmiş olacak</string>
     <string name="charging_control_notification_content_target_reached">Batarya şarj oldu</string>
+    <!-- USB Mode Picker -->
 </resources>
