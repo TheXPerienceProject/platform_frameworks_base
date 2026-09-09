@@ -29,4 +29,5 @@
     <string name="quick_settings_aod_label">Her zaman açık ekran</string>
     <string name="quick_settings_aod_off_powersave_label">AOD kapalı\nPil tasarrufu</string>
     <!-- PowerShare QS tile -->
+    <!-- USB Mode Picker -->
 </resources>
