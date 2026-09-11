@@ -610,21 +610,19 @@ constructor(
                                 }
                             }
                         Dual ->
-                            headsUpNotificationInteractor
-                                .get()
-                                .isHeadsUpOrAnimatingAway
-                                .transformLatestConflated { isHeadsUpOrAnimatingAway ->
-                                    if (isHeadsUpOrAnimatingAway) {
-                                        // Ensure HUNs will be visible in QS shade (at least
-                                        // while unlocked)
-                                        emit(1f)
-                                    } else {
-                                        // On a narrow screen, the QS shade overlaps with
-                                        // lockscreen notifications. Fade them out as the QS
-                                        // shade expands.
-                                        emitAll(shadeInteractor.qsExpansion.map { 1f - it })
-                                    }
+                            combineTransform(
+                                headsUpNotificationInteractor.get().isHeadsUpOrAnimatingAway,
+                                shadeInteractor.shadeExpansion,
+                                shadeInteractor.qsExpansion,
+                            ) { isHeadsUpOrAnimatingAway, shadeExpansion, qsExpansion ->
+                                if (isHeadsUpOrAnimatingAway) {
+                                    // Ensure HUNs will be visible in QS shade (at least while unlocked)
+                                    emit(1f)
+                                } else if (shadeExpansion > 0f || qsExpansion > 0f) {
+                                    // Fade out as QS shade expands
+                                    emit(1f - qsExpansion)
                                 }
+                            }
                     }
                 }
             } else {
