@@ -192,6 +192,7 @@ import com.android.systemui.statusbar.policy.DeviceProvisionedController;
 import com.android.systemui.statusbar.policy.DeviceProvisionedController.DeviceProvisionedListener;
 import com.android.systemui.statusbar.policy.ExtensionController;
 import com.android.systemui.statusbar.policy.KeyguardStateController;
+import com.android.systemui.statusbar.policy.RefreshRateIndicatorController;
 import com.android.systemui.statusbar.policy.UserInfoControllerImpl;
 import com.android.systemui.surfaceeffects.core.ripple.RippleShader.RippleShape;
 import com.android.systemui.topui.TopUiController;
@@ -505,6 +506,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
     private final EmergencyGestureIntentFactory mEmergencyGestureIntentFactory;
 
     private final QuickAccessWalletController mWalletController;
+    private final RefreshRateIndicatorController mRefreshRateIndicatorController;
 
     /**
      * Public constructor for CentralSurfaces.
@@ -543,6 +545,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
             NotificationRemoteInputManager remoteInputManager,
             QuickSettingsController quickSettingsController,
             BatteryController batteryController,
+            RefreshRateIndicatorController refreshRateIndicatorController,
             SysuiColorExtractor colorExtractor,
             ScreenLifecycle screenLifecycle,
             WakefulnessLifecycle wakefulnessLifecycle,
@@ -644,6 +647,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
         mRemoteInputManager = remoteInputManager;
         mQsController = quickSettingsController;
         mBatteryController = batteryController;
+        mRefreshRateIndicatorController = refreshRateIndicatorController;
         mColorExtractor = colorExtractor;
         mScreenLifecycle = screenLifecycle;
         mWakefulnessLifecycle = wakefulnessLifecycle;
@@ -761,6 +765,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
         mDisplayId = mDisplay.getDisplayId();
         updateDisplaySize();
         mStatusBarHideIconsForBouncerManager.setDisplayId(mDisplayId);
+        mRefreshRateIndicatorController.startListening();
 
         initShadeVisibilityListener();
 
@@ -2568,6 +2573,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
         public void onConfigChanged(Configuration newConfig) {
             updateResources();
             updateDisplaySize(); // populates mDisplayMetrics
+            mRefreshRateIndicatorController.onConfigurationChanged();
 
             if (DEBUG) {
                 Log.v(TAG, "configuration changed: " + mContext.getResources().getConfiguration());

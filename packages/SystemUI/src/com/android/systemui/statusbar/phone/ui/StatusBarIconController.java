@@ -100,6 +100,9 @@ public interface StatusBarIconController {
      */
     void removeIcon(String slot, int tag);
 
+    /** Slot used by the XPerience refresh-rate indicator. */
+    String SLOT_REFRESH_RATE = "refresh_rate";
+
     // TODO: See if we can rename this tunable name.
     String ICON_HIDE_LIST = "icon_blacklist";
 

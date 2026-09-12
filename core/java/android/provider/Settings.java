@@ -7037,6 +7037,13 @@ public final class Settings {
          */
         public static final String LIVE_DISPLAY_HINTED = "live_display_hinted";
 
+       /**
+         * Whether to show the current display refresh rate in the status bar.
+         *
+         * @hide
+         */
+        @Readable
+        public static final String SHOW_REFRESH_RATE = "show_refresh_rate";
 
         /**
          * Keys we no longer back up under the current schema, but want to continue to
