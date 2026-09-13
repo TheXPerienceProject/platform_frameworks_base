@@ -34,7 +34,6 @@ import com.android.systemui.keyguard.domain.interactor.KeyguardInteractor
 import com.android.systemui.keyguard.domain.interactor.KeyguardTransitionInteractor
 import com.android.systemui.keyguard.domain.interactor.PulseExpansionInteractor
 import com.android.systemui.keyguard.shared.model.Edge
-import com.android.systemui.keyguard.shared.model.BurnInModel
 import com.android.systemui.keyguard.shared.model.KeyguardState.AOD
 import com.android.systemui.keyguard.shared.model.KeyguardState.GONE
 import com.android.systemui.keyguard.shared.model.KeyguardState.LOCKSCREEN
@@ -411,9 +410,6 @@ constructor(
     fun updateBurnInParams(params: BurnInParameters) {
         aodBurnInViewModel.updateBurnInParams(params)
     }
-
-    val currentMovement: BurnInModel
-        get() = aodBurnInViewModel.movement.value
 
     val scale: Flow<BurnInScaleViewModel> =
         aodBurnInViewModel.movement
