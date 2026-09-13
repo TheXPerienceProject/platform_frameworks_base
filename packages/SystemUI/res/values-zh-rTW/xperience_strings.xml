@@ -30,4 +30,19 @@
     <string name="quick_settings_aod_off_powersave_label">AOD 關閉\n省電模式</string>
     <!-- PowerShare QS tile -->
     <!-- USB Mode Picker -->
+    <!-- Auto reboot Suggestion/Reminder -->
+    <!-- Face unlock -->
+    <string name="face_unlock_recognizing">臉部辨識中</string>
+    <!-- Internet speed -->
+    <!-- QuickSettings: InternetDialog: Summary for how many devices are connected to the hotspot [CHAR LIMIT=NONE] -->
+    <plurals name="quick_settings_internet_hotspot_summary_num_devices">
+        <item quantity="other">%d 台裝置已連線</item>
+    </plurals>
+    <!-- Name of the roaming status bar icon. -->
+    <string name="status_bar_roaming">漫遊指示</string>
+    <!-- Name of the HD calling status bar icon. -->
+    <string name="status_bar_hd_calling">高品質通話 (VoLTE/VoNR)</string>
+    <!-- Name of the VoWiFi status bar icon. -->
+    <string name="status_bar_vowifi">Wi-Fi 通話 (VoWiFi)</string>
+    <!-- QS button to enable adaptive brightness -->
 </resources>
