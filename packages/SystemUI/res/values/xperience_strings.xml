@@ -59,4 +59,36 @@
     <string name="usb_mode_charging_only">Charging only</string>
     <string name="usb_charging_status">USB charging is on</string>
 
+    <!-- Auto reboot Suggestion/Reminder -->
+    <string name="notification_channel_reboot_suggestion">Reboot Suggestion</string>
+    <string name="notification_channel_reboot_suggestion_description">Notifications for Reboot Suggestion</string>
+    <string name="reboot_suggestion_title">Reboot Reminder</string>
+    <string name="reboot_suggestion_description">Your device has been on for over a week. Rebooting is recommended.</string>
+    <string name="reboot_suggestion_now">Reboot</string>
+
+    <!-- Face unlock -->
+    <string name="face_unlock_recognizing">Recognizing face...</string>
+
+    <!-- Internet speed -->
+    <string name="status_bar_settings_network_speed">Internet speed</string>
+    <string name="status_bar_network_speed">network_speed</string>
+
+    <!-- QuickSettings: InternetDialog: Summary for how many devices are connected to the hotspot [CHAR LIMIT=NONE] -->
+    <plurals name="quick_settings_internet_hotspot_summary_num_devices">
+        <item quantity="one">%d device connected</item>
+        <item quantity="other">%d devices connected</item>
+    </plurals>
+
+    <!-- Name of the roaming status bar icon. -->
+    <string name="status_bar_roaming">Roaming indicator</string>
+
+    <!-- Name of the HD calling status bar icon. -->
+    <string name="status_bar_hd_calling">HD calling (VoLTE/VoNR)</string>
+
+    <!-- Name of the VoWiFi status bar icon. -->
+    <string name="status_bar_vowifi">Wi-Fi calling (VoWiFi)</string>
+
+    <!-- QS button to enable adaptive brightness -->
+    <string name="accessibility_adaptive_brightness">Adaptive brightness</string>
 </resources>
+
