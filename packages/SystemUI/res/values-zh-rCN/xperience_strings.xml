@@ -26,4 +26,17 @@
     <!-- AOD QS tile -->
     <!-- PowerShare QS tile -->
     <!-- USB Mode Picker -->
+    <!-- Auto reboot Suggestion/Reminder -->
+    <!-- Face unlock -->
+    <string name="face_unlock_recognizing">正在识别面部...</string>
+    <!-- Internet speed -->
+    <!-- QuickSettings: InternetDialog: Summary for how many devices are connected to the hotspot [CHAR LIMIT=NONE] -->
+    <plurals name="quick_settings_internet_hotspot_summary_num_devices">
+        <item quantity="other">已连接 %d 台设备</item>
+    </plurals>
+    <!-- Name of the roaming status bar icon. -->
+    <string name="status_bar_roaming">漫游指示器</string>
+    <!-- Name of the HD calling status bar icon. -->
+    <!-- Name of the VoWiFi status bar icon. -->
+    <!-- QS button to enable adaptive brightness -->
 </resources>
