@@ -30,4 +30,20 @@
     <string name="quick_settings_aod_off_powersave_label">AOD kapalı\nPil tasarrufu</string>
     <!-- PowerShare QS tile -->
     <!-- USB Mode Picker -->
+    <!-- Auto reboot Suggestion/Reminder -->
+    <!-- Face unlock -->
+    <string name="face_unlock_recognizing">Yüz algılanıyor...</string>
+    <!-- Internet speed -->
+    <!-- QuickSettings: InternetDialog: Summary for how many devices are connected to the hotspot [CHAR LIMIT=NONE] -->
+    <plurals name="quick_settings_internet_hotspot_summary_num_devices">
+        <item quantity="one">%d cihaz bağlandı</item>
+        <item quantity="other">%d cihazlar bağlandı</item>
+    </plurals>
+    <!-- Name of the roaming status bar icon. -->
+    <string name="status_bar_roaming">Dolaşım göstergesi</string>
+    <!-- Name of the HD calling status bar icon. -->
+    <string name="status_bar_hd_calling">HD arama (VoLTE/VoNR)</string>
+    <!-- Name of the VoWiFi status bar icon. -->
+    <string name="status_bar_vowifi">Wi-Fi arama (VoWiFi)</string>
+    <!-- QS button to enable adaptive brightness -->
 </resources>
