@@ -107,8 +107,8 @@ class NetworkSpeedController @Inject constructor(
 
     private fun readSwitchState(): Boolean {
         val iconHideList = secureSettings.getString(ICON_HIDE_LIST)
-        val hideList = StatusBarIconController.getIconHideList(context, iconHideList)
-        return !hideList.contains(SLOT_NETWORK_SPEED)
+        return iconHideList.isNullOrEmpty() ||
+            !iconHideList.contains(SLOT_NETWORK_SPEED)
     }
 
     private fun hasValidatedInternet(
