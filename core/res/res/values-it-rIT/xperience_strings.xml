@@ -9,4 +9,6 @@
     <!-- LiveDisplay strings -->
     <!-- Health interface -->
     <!-- USB Mode Picker -->
+    <!-- Pocket Lock -->
+    <string name="pocket_view_title">Modalità tascabile attiva</string>
 </resources>
