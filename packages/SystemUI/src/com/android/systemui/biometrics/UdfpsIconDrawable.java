@@ -43,7 +43,7 @@ import com.android.systemui.res.R;
  */
 public abstract class UdfpsIconDrawable extends Drawable {
 
-    private final String udfpsResourcesPackage = "mx.xperience.udfps.icons";
+    private final String udfpsResourcesPackage = "mx.xperience.udfps.animations";
 
     @NonNull private final Context mContext;
     private Drawable mUdfpsDrawable;

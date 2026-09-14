@@ -77,7 +77,7 @@ constructor(
     private val fingerprintDrawable: UdfpsIconDrawable = UdfpsFpIconDrawable(context)
 
     private val packageInstalled = com.android.internal.util.xperience.XperienceUtils.isPackageInstalled(
-        context, "mx.xperience.udfps.icons"
+        context, "mx.xperience.udfps.animations"
     )
 
     init {

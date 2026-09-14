@@ -52,7 +52,7 @@ object AlternateBouncerUdfpsViewBinder {
         val bgView = view.bgView
 
         val packageInstalled = XperienceUtils.isPackageInstalled(
-            view.context, "mx.xperience.udfps.icons"
+            view.context, "mx.xperience.udfps.animations"
         )
 
         val shouldUseCustomUdfpsIcon: StateFlow<Boolean> = callbackFlow {

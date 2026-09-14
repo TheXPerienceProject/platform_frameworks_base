@@ -91,7 +91,7 @@ object DeviceEntryIconViewBinder {
         overrideColor: Color? = null,
     ): DisposableHandle {
         val packageInstalled = XperienceUtils.isPackageInstalled(
-            view.context, "mx.xperience.udfps.icons"
+            view.context, "mx.xperience.udfps.animations"
         )
 
         val shouldUseCustomUdfpsIcon: StateFlow<Boolean> = callbackFlow {
