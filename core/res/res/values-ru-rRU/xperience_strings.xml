@@ -16,4 +16,7 @@
     <string name="charging_control_notification_content_target">Батарея будет полностью заряжена в %1$s</string>
     <string name="charging_control_notification_content_target_reached">Батарея заряжена</string>
     <!-- USB Mode Picker -->
+    <!-- Pocket Lock -->
+    <string name="pocket_lock_message_long_press">Нажмите и удерживайте кнопку питания для разблокировки</string>
+    <string name="pocket_view_title">Режим \"В кармане\" включен</string>
 </resources>
