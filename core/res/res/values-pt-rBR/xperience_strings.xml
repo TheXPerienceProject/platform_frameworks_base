@@ -9,4 +9,7 @@
     <!-- LiveDisplay strings -->
     <!-- Health interface -->
     <!-- USB Mode Picker -->
+    <!-- Pocket Lock -->
+    <string name="pocket_lock_message_long_press">Segure o botão de ligar pra desbloquear</string>
+    <string name="pocket_view_title">Modo bolso está ativado</string>
 </resources>
