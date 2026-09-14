@@ -83,6 +83,7 @@ import com.android.systemui.biometrics.AuthController;
 import com.android.systemui.biometrics.dagger.BiometricsBackground;
 import com.android.systemui.biometrics.domain.interactor.UdfpsOverlayInteractor;
 import com.android.systemui.biometrics.shared.model.UdfpsOverlayParams;
+import com.android.systemui.statusbar.policy.KeyguardStateController;
 import com.android.systemui.biometrics.udfps.InteractionEvent;
 import com.android.systemui.biometrics.udfps.NormalizedTouchData;
 import com.android.systemui.biometrics.udfps.SinglePointerTouchProcessor;
@@ -886,7 +887,10 @@ public class UdfpsController implements DozeReceiver, Dumpable {
             mUdfpsAnimation.removeAnimation();
             mUdfpsAnimation = null;
         }
-        mUdfpsAnimation = new UdfpsAnimation(mContext, mWindowManager, mSensorProps, mAuthController);
+
+        mUdfpsAnimation = new UdfpsAnimation(
+                mContext, mWindowManager, mSensorProps, mAuthController,
+                mKeyguardStateController);
         if (mUdfpsAnimation != null) {
             mUdfpsAnimation.updatePosition();
         }

@@ -41,7 +41,6 @@ import android.view.Gravity;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-import com.android.systemui.Dependency;
 import com.android.systemui.res.R;
 import com.android.systemui.biometrics.AuthController;
 import com.android.systemui.statusbar.policy.KeyguardStateController;
@@ -102,7 +101,8 @@ public class UdfpsAnimation extends ImageView {
     };
 
     public UdfpsAnimation(Context context, WindowManager windowManager,
-           FingerprintSensorPropertiesInternal props, AuthController authController) {
+      	    FingerprintSensorPropertiesInternal props, AuthController authController,
+            KeyguardStateController keyguardStateController) {
         super(context);
         mContext = context;
         mAuthController = authController;
@@ -110,7 +110,7 @@ public class UdfpsAnimation extends ImageView {
 
         mWindowManager = windowManager;
 
-        mKeyguardStateController = Dependency.get(KeyguardStateController.class);
+	mKeyguardStateController = keyguardStateController;
 
         float scaleFactor = getDisplayFactor();
 
