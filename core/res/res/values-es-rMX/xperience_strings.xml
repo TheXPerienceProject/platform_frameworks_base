@@ -42,4 +42,8 @@
     <string name="charging_control_notification_content_target">La batería estará completamente cargada en %1$s</string>
     <string name="charging_control_notification_content_target_reached">La batería está cargada</string>
     <!-- USB Mode Picker -->
+    <!-- Pocket Lock -->
+    <string name="pocket_lock_message_long_press">Pulse y mantenga el botón de encendido para desbloquear</string>
+    <string name="pocket_view_title">Modo bolsillo activado</string>
+    <string name="pocket_view_title_cancel">Despeja la sección superior resaltada del dispositivo o pulsa prolongadamente el botón de encendido para forzar la salida del modo bolsillo</string>
 </resources>
