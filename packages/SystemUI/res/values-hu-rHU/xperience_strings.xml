@@ -57,4 +57,13 @@
     <string name="status_bar_vowifi">WiFi-hívás (VoWiFi)</string>
     <!-- QS button to enable adaptive brightness -->
     <string name="accessibility_adaptive_brightness">Alkalmazkodó fényerő</string>
+    <!-- Screen record -->
+    <string name="screenrecord_lowquality_label">Gyengébb minőség</string>
+    <string name="screenrecord_lowquality_summary">...a kisebb fájlméretért</string>
+    <string name="screenrecord_longer_timeout_switch_label">Nagyobb felső határ</string>
+    <string name="screenrecord_longer_timeout_switch_summary">Max.15GB felvételi fájlméret</string>
+    <string name="screenrecord_skip_time_label">Nincs késleltetés</string>
+    <string name="screenrecord_skip_time_summary">Eltávolítja a 3 másodperces várakozást</string>
+    <string name="screenrecord_hevc_switch_label">HEVC-kódolás</string>
+    <string name="screenrecord_hevc_switch_summary">Használja a hatékonyabb HEVC-kódolót</string>
 </resources>
