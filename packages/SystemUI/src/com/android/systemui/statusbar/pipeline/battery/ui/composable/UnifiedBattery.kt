@@ -19,6 +19,7 @@ package com.android.systemui.statusbar.pipeline.battery.ui.composable
 import android.graphics.Rect
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxSize
@@ -34,12 +35,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.RoundRect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.CompositingStrategy
+import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathEffect
+import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.graphics.drawscope.inset
 import androidx.compose.ui.graphics.drawscope.scale
@@ -71,8 +76,11 @@ import com.android.systemui.statusbar.pipeline.battery.shared.ui.BatteryFrame
 import com.android.systemui.statusbar.pipeline.battery.shared.ui.BatteryGlyph
 import com.android.systemui.statusbar.pipeline.battery.shared.ui.PathSpec
 import com.android.systemui.statusbar.pipeline.battery.ui.viewmodel.BatteryViewModel
+import java.text.NumberFormat
 import kotlin.math.ceil
 import kotlin.math.roundToInt
+import kotlin.math.PI
+import kotlin.math.sin
 
 /**
  * Draws a battery directly on to a [Canvas]. The canvas is scaled to fill its container, and the
@@ -242,6 +250,21 @@ fun BatteryLayout(
                     levelProvider = levelProvider,
                     colorsProvider = colorsProvider,
                     modifier = Modifier.layoutId(BatteryMeasurePolicy.LayoutId.FrameCircle),
+                    contentDescription = contentDescription,
+                )
+            } else if (
+                iconStyle == BatteryRepository.ICON_STYLE_CAPSULE ||
+                    iconStyle == BatteryRepository.ICON_STYLE_PILL ||
+                    iconStyle == BatteryRepository.ICON_STYLE_HEX ||
+                    iconStyle == BatteryRepository.ICON_STYLE_WAVE
+            ) {
+                CustomBatteryBody(
+                    attr = attribution,
+                    iconStyleProvider = iconStyleProvider,
+                    levelProvider = levelProvider,
+                    showLevelProvider = showLevelProvider,
+                    colorsProvider = colorsProvider,
+                    modifier = Modifier.layoutId(BatteryMeasurePolicy.LayoutId.Frame),
                     contentDescription = contentDescription,
                 )
             } else if (iconStyle == BatteryRepository.ICON_STYLE_TEXT) {
@@ -632,6 +655,359 @@ fun AospaBatteryBody(
             radius = dotRadius,
             center = center,
         )
+    }
+}
+
+
+@Composable
+fun CustomBatteryBody(
+    attr: BatteryGlyph?,
+    iconStyleProvider: () -> Int,
+    levelProvider: () -> Int?,
+    showLevelProvider: () -> Boolean,
+    colorsProvider: () -> BatteryColors,
+    modifier: Modifier = Modifier,
+    contentDescription: String = "",
+) {
+    val colorError = MaterialTheme.colorScheme.error
+    val textMeasurer = rememberTextMeasurer()
+
+    val iconStyle = iconStyleProvider()
+    val level = levelProvider()
+    val shouldAnimateWave =
+        iconStyle == BatteryRepository.ICON_STYLE_WAVE &&
+            attr is BatteryGlyph.Bolt &&
+            level != null &&
+            level < 100
+
+    val wavePhase = remember { Animatable(0f) }
+    LaunchedEffect(shouldAnimateWave) {
+        if (shouldAnimateWave) {
+            while (true) {
+                wavePhase.snapTo(0f)
+                wavePhase.animateTo(
+                    targetValue = 1f,
+                    animationSpec = tween(durationMillis = 1250, easing = LinearEasing),
+                )
+            }
+        } else {
+            wavePhase.snapTo(0f)
+        }
+    }
+
+    Canvas(modifier = modifier, contentDescription = contentDescription) {
+        val currentStyle = iconStyleProvider()
+        val currentLevel = levelProvider()?.coerceIn(0, 100)
+        val showLevel = showLevelProvider()
+        val colors = colorsProvider()
+        val safeLevel = currentLevel ?: 0
+
+        val activeColor =
+            when {
+                attr is BatteryGlyph.Bolt || attr is BatteryGlyph.Defend ->
+                    BatteryColors.DarkTheme.Charging.fill
+                attr is BatteryGlyph.Plus ->
+                    BatteryColors.DarkTheme.PowerSave.fill
+                safeLevel <= 20 ->
+                    colorError
+                else ->
+                    colors.fill
+            }
+
+        when (currentStyle) {
+            BatteryRepository.ICON_STYLE_CAPSULE ->
+                drawCapsuleBattery(
+                    level = safeLevel,
+                    activeColor = activeColor,
+                    inactiveColor = colors.backgroundOnly,
+                    frameColor = colors.attribution,
+                )
+            BatteryRepository.ICON_STYLE_PILL ->
+                drawPillBattery(
+                    level = safeLevel,
+                    activeColor = activeColor,
+                    inactiveColor = colors.backgroundOnly,
+                    frameColor = colors.attribution,
+                )
+            BatteryRepository.ICON_STYLE_HEX ->
+                drawHexBattery(
+                    level = safeLevel,
+                    activeColor = activeColor,
+                    inactiveColor = colors.backgroundOnly,
+                    frameColor = colors.attribution,
+                )
+            BatteryRepository.ICON_STYLE_WAVE ->
+                drawWaveBattery(
+                    level = safeLevel,
+                    phase = wavePhase.value,
+                    activeColor = activeColor,
+                    inactiveColor = colors.backgroundOnly,
+                    frameColor = colors.attribution,
+                )
+        }
+
+        if (currentLevel != null) {
+            val centerIsFilled = currentLevel >= 50
+            val foregroundColor =
+                if (centerIsFilled) colors.backgroundOnly else colors.attribution
+
+            if (attr != null) {
+                drawCustomBatteryAttribution(attr = attr, color = foregroundColor)
+            } else if (showLevel && currentLevel < 100) {
+                val textLayoutResult =
+                    textMeasurer.measure(
+                        text = currentLevel.toString(),
+                        style =
+                            TextStyle(
+                                color = foregroundColor,
+                                fontSize = 6.sp,
+                                fontWeight = FontWeight.Bold,
+                            ),
+                    )
+
+                drawText(
+                    textLayoutResult = textLayoutResult,
+                    topLeft =
+                        Offset(
+                            size.width / 2f - textLayoutResult.size.width / 2f,
+                            size.height / 2f - textLayoutResult.size.height / 2f,
+                        ),
+                )
+            }
+        }
+    }
+}
+
+private fun DrawScope.drawCapsuleBattery(
+    level: Int,
+    activeColor: Color,
+    inactiveColor: Color,
+    frameColor: Color,
+) {
+    val strokeWidth = size.height * 0.085f
+    val terminalWidth = size.width * 0.075f
+    val terminalGap = size.width * 0.025f
+    val bodyLeft = strokeWidth / 2f
+    val bodyTop = strokeWidth / 2f
+    val bodyRight = size.width - terminalWidth - terminalGap - strokeWidth / 2f
+    val bodyBottom = size.height - strokeWidth / 2f
+    val bodyWidth = bodyRight - bodyLeft
+    val bodyHeight = bodyBottom - bodyTop
+    val cornerRadius = CornerRadius(bodyHeight / 2f)
+    val fillRight = bodyLeft + bodyWidth * (level / 100f)
+
+    drawRoundRect(
+        color = inactiveColor,
+        topLeft = Offset(bodyLeft, bodyTop),
+        size = Size(bodyWidth, bodyHeight),
+        cornerRadius = cornerRadius,
+    )
+
+    if (level > 0) {
+        clipRect(
+            left = if (layoutDirection == LayoutDirection.Rtl) {
+                bodyRight - bodyWidth * (level / 100f)
+            } else {
+                bodyLeft
+            },
+            right = if (layoutDirection == LayoutDirection.Rtl) bodyRight else fillRight,
+        ) {
+            drawRoundRect(
+                color = activeColor,
+                topLeft = Offset(bodyLeft, bodyTop),
+                size = Size(bodyWidth, bodyHeight),
+                cornerRadius = cornerRadius,
+            )
+        }
+    }
+
+    drawRoundRect(
+        color = frameColor,
+        topLeft = Offset(bodyLeft, bodyTop),
+        size = Size(bodyWidth, bodyHeight),
+        cornerRadius = cornerRadius,
+        style = Stroke(strokeWidth),
+    )
+
+    val terminalHeight = size.height * 0.36f
+    drawRoundRect(
+        color = frameColor,
+        topLeft = Offset(bodyRight + terminalGap, (size.height - terminalHeight) / 2f),
+        size = Size(terminalWidth, terminalHeight),
+        cornerRadius = CornerRadius(terminalWidth * 0.35f),
+    )
+}
+
+private fun DrawScope.drawPillBattery(
+    level: Int,
+    activeColor: Color,
+    inactiveColor: Color,
+    frameColor: Color,
+) {
+    val strokeWidth = size.height * 0.085f
+    val inset = strokeWidth / 2f
+    val bodyWidth = size.width - strokeWidth
+    val bodyHeight = size.height - strokeWidth
+    val cornerRadius = CornerRadius(bodyHeight / 2f)
+
+    drawRoundRect(
+        color = inactiveColor,
+        topLeft = Offset(inset, inset),
+        size = Size(bodyWidth, bodyHeight),
+        cornerRadius = cornerRadius,
+    )
+
+    if (level > 0) {
+        val fillWidth = bodyWidth * (level / 100f)
+        clipRect(
+            left = if (layoutDirection == LayoutDirection.Rtl) inset + bodyWidth - fillWidth else inset,
+            right = if (layoutDirection == LayoutDirection.Rtl) inset + bodyWidth else inset + fillWidth,
+        ) {
+            drawRoundRect(
+                color = activeColor,
+                topLeft = Offset(inset, inset),
+                size = Size(bodyWidth, bodyHeight),
+                cornerRadius = cornerRadius,
+            )
+        }
+    }
+
+    drawRoundRect(
+        color = frameColor,
+        topLeft = Offset(inset, inset),
+        size = Size(bodyWidth, bodyHeight),
+        cornerRadius = cornerRadius,
+        style = Stroke(strokeWidth),
+    )
+}
+
+private fun DrawScope.drawHexBattery(
+    level: Int,
+    activeColor: Color,
+    inactiveColor: Color,
+    frameColor: Color,
+) {
+    val strokeWidth = size.height * 0.08f
+    val inset = strokeWidth / 2f
+    val bevel = size.height * 0.26f
+    val path =
+        Path().apply {
+            moveTo(inset + bevel, inset)
+            lineTo(size.width - inset - bevel, inset)
+            lineTo(size.width - inset, size.height / 2f)
+            lineTo(size.width - inset - bevel, size.height - inset)
+            lineTo(inset + bevel, size.height - inset)
+            lineTo(inset, size.height / 2f)
+            close()
+        }
+
+    drawPath(path = path, color = inactiveColor)
+
+    if (level > 0) {
+        val fillWidth = size.width * (level / 100f)
+        clipRect(
+            left = if (layoutDirection == LayoutDirection.Rtl) size.width - fillWidth else 0f,
+            right = if (layoutDirection == LayoutDirection.Rtl) size.width else fillWidth,
+        ) {
+            drawPath(path = path, color = activeColor)
+        }
+    }
+
+    drawPath(path = path, color = frameColor, style = Stroke(strokeWidth))
+}
+
+private fun DrawScope.drawWaveBattery(
+    level: Int,
+    phase: Float,
+    activeColor: Color,
+    inactiveColor: Color,
+    frameColor: Color,
+) {
+    val strokeWidth = size.height * 0.08f
+    val terminalWidth = size.width * 0.07f
+    val terminalGap = size.width * 0.025f
+    val bodyLeft = strokeWidth / 2f
+    val bodyTop = strokeWidth / 2f
+    val bodyRight = size.width - terminalWidth - terminalGap - strokeWidth / 2f
+    val bodyBottom = size.height - strokeWidth / 2f
+    val bodyWidth = bodyRight - bodyLeft
+    val bodyHeight = bodyBottom - bodyTop
+    val radius = size.height * 0.18f
+    val bodyPath =
+        Path().apply {
+            addRoundRect(
+                RoundRect(
+                    left = bodyLeft,
+                    top = bodyTop,
+                    right = bodyRight,
+                    bottom = bodyBottom,
+                    radiusX = radius,
+                    radiusY = radius,
+                )
+            )
+        }
+
+    drawPath(path = bodyPath, color = inactiveColor)
+
+    if (level > 0) {
+        val fraction = level / 100f
+        val fillTop = bodyBottom - bodyHeight * fraction
+        val amplitude =
+            minOf(
+                bodyHeight * 0.075f,
+                (bodyBottom - fillTop) * 0.20f,
+                (fillTop - bodyTop).coerceAtLeast(0f) * 0.20f + 0.5f,
+            )
+        val wavePath = Path()
+        val samples = 28
+
+        for (i in 0..samples) {
+            val x = bodyLeft + bodyWidth * i / samples.toFloat()
+            val radians =
+                (i / samples.toFloat() * 2f * PI + phase * 2f * PI).toFloat()
+            val y = fillTop + sin(radians) * amplitude
+
+            if (i == 0) {
+                wavePath.moveTo(x, y)
+            } else {
+                wavePath.lineTo(x, y)
+            }
+        }
+
+        wavePath.lineTo(bodyRight, bodyBottom)
+        wavePath.lineTo(bodyLeft, bodyBottom)
+        wavePath.close()
+
+        clipPath(bodyPath) {
+            drawPath(path = wavePath, color = activeColor)
+        }
+    }
+
+    drawPath(path = bodyPath, color = frameColor, style = Stroke(strokeWidth))
+
+    val terminalHeight = size.height * 0.36f
+    drawRoundRect(
+        color = frameColor,
+        topLeft = Offset(bodyRight + terminalGap, (size.height - terminalHeight) / 2f),
+        size = Size(terminalWidth, terminalHeight),
+        cornerRadius = CornerRadius(terminalWidth * 0.35f),
+    )
+}
+
+private fun DrawScope.drawCustomBatteryAttribution(attr: BatteryGlyph, color: Color) {
+    inset(size.height * 0.19f) {
+        val attrScale = attr.scaleTo(size.width, size.height)
+        val pathBounds = attr.path.getBounds()
+
+        withTransform({
+            scale(attrScale, Offset.Zero)
+            translate(
+                (size.width - pathBounds.width * attrScale) / 2f,
+                (size.height - pathBounds.height * attrScale) / 2f,
+            )
+        }) {
+            drawPath(path = attr.path, color = color)
+        }
     }
 }
 

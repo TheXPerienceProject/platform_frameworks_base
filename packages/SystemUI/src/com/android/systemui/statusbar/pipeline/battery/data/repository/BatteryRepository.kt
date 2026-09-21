@@ -92,6 +92,10 @@ interface BatteryRepository {
         const val ICON_STYLE_TEXT = 2
         const val ICON_STYLE_CIRCLE_DOTTED = 3
         const val ICON_STYLE_AOSPA = 4
+        const val ICON_STYLE_CAPSULE = 5
+        const val ICON_STYLE_PILL = 6
+        const val ICON_STYLE_HEX = 7
+        const val ICON_STYLE_WAVE = 8
 
         const val DEFAULT_ICON_STYLE = ICON_STYLE_AOSPA
 
