@@ -20,6 +20,7 @@ import android.security.Flags.secureLockDevice
 import com.android.compose.animation.scene.ObservableTransitionState
 import com.android.keyguard.logging.DeviceEntryIconLogger
 import com.android.systemui.bouncer.domain.interactor.AlternateBouncerInteractor
+import com.android.systemui.keyguard.domain.interactor.KeyguardInteractor
 import com.android.systemui.keyguard.ui.viewmodel.DeviceEntryIconViewModel
 import com.android.systemui.scene.domain.interactor.SceneInteractor
 import com.android.systemui.scene.shared.flag.SceneContainerFlag
@@ -50,6 +51,7 @@ constructor(
     secureLockDeviceInteractor: Lazy<SecureLockDeviceInteractor>,
     systemUIDialogManager: SystemUIDialogManager,
     sceneInteractor: Lazy<SceneInteractor>,
+    keyguardInteractor: KeyguardInteractor,
     logger: DeviceEntryIconLogger,
 ) : UdfpsTouchOverlayViewModel {
     private val deviceEntryViewAlphaIsMostlyVisible: Flow<Boolean> =
@@ -90,15 +92,52 @@ constructor(
                 .distinctUntilChanged()
         }
 
+    /*
+    * An activity using SHOW_WHEN_LOCKED can occlude the keyguard while
+    * device-entry fingerprint authentication is still active. In that state
+    * the lockscreen affordance itself is no longer visible, but UDFPS must
+    * continue accepting touches until the keyguard is actually dismissed.
+    *
+    * Once device entry succeeds, isKeyguardShowing becomes false, preventing
+    * an occluding activity from keeping UDFPS touch handling active.
+    */
+    private val keyguardOccluded: Flow<Boolean> =
+        if (SceneContainerFlag.isEnabled) {
+            sceneInteractor
+                .get()
+                .currentScene
+                .map { it == Scenes.Occluded }
+                .distinctUntilChanged()
+        } else {
+            keyguardInteractor.isKeyguardOccluded
+        }
+
+    private val keyguardOccludedAndShowing: Flow<Boolean> =
+        combine(
+                keyguardOccluded,
+                keyguardInteractor.isKeyguardShowing,
+            ) { occluded, showing ->
+                occluded && showing
+            }
+            .distinctUntilChanged()
+
+    private val deviceEntryViewCanHandleTouches: Flow<Boolean> =
+        combine(deviceEntryViewAlphaIsMostlyVisible, keyguardOccludedAndShowing) {
+                visible,
+                occluded ->
+                visible || occluded
+            }
+            .distinctUntilChanged()
+
     override val shouldHandleTouches: Flow<Boolean> =
         combine(
-                deviceEntryViewAlphaIsMostlyVisible,
+                deviceEntryViewCanHandleTouches,
                 alternateBouncerInteractor.isVisible,
                 systemUIDialogManager.hideAffordancesRequest,
                 deviceEntryIconViewModel.transitioningToDozing,
                 secureLockDeviceInteractor.get().shouldListenForBiometricAuth,
             ) {
-                canTouchDeviceEntryViewAlpha,
+                canTouchDeviceEntryView,
                 alternateBouncerVisible,
                 hideAffordancesRequest,
                 toDozing,
@@ -106,13 +145,13 @@ constructor(
                 val handleTouchesForSecureLockDeviceBiometricAuth =
                     (secureLockDevice() && shouldListenForBiometricAuthDuringSecureLockDevice)
                 val shouldHandleTouches =
-                    (canTouchDeviceEntryViewAlpha && !hideAffordancesRequest) ||
+                    (canTouchDeviceEntryView && !hideAffordancesRequest) ||
                         alternateBouncerVisible ||
                         toDozing ||
                         handleTouchesForSecureLockDeviceBiometricAuth
                 logger.logDeviceEntryUdfpsTouchOverlayShouldHandleTouches(
                     shouldHandleTouches,
-                    canTouchDeviceEntryViewAlpha,
+                    canTouchDeviceEntryView,
                     handleTouchesForSecureLockDeviceBiometricAuth,
                     alternateBouncerVisible,
                     hideAffordancesRequest,
