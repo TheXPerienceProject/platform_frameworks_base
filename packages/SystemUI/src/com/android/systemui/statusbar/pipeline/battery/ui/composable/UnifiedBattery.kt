@@ -17,11 +17,15 @@
 package com.android.systemui.statusbar.pipeline.battery.ui.composable
 
 import android.graphics.Rect
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -537,9 +541,44 @@ fun AospaBatteryBody(
     contentDescription: String = "",
 ) {
     val colorError = MaterialTheme.colorScheme.error
+    val level = levelProvider()
+
+    // Only pulse while actively charging and below 100%.
+    // BatteryGlyph.Defend intentionally stays static since charging may
+    // be limited/paused by battery protection.
+    val shouldPulse =
+        attr is BatteryGlyph.Bolt &&
+            level != null &&
+            level < 100
+
+    val dotAlpha = remember { Animatable(1f) }
+
+    LaunchedEffect(shouldPulse) {
+        if (shouldPulse) {
+            while (true) {
+                dotAlpha.animateTo(
+                    targetValue = 0.4f,
+                    animationSpec =
+                        tween(
+                            durationMillis = 550,
+                            easing = FastOutSlowInEasing,
+                        ),
+                )
+                dotAlpha.animateTo(
+                    targetValue = 1f,
+                    animationSpec =
+                        tween(
+                            durationMillis = 550,
+                            easing = FastOutSlowInEasing,
+                        ),
+                )
+            }
+        } else {
+            dotAlpha.snapTo(1f)
+        }
+    }
 
     Canvas(modifier = modifier, contentDescription = contentDescription) {
-        val level = levelProvider()
         val colors = colorsProvider()
 
         val strokeWidth = size.height / 6.5f
@@ -550,9 +589,12 @@ fun AospaBatteryBody(
             when {
                 attr is BatteryGlyph.Bolt || attr is BatteryGlyph.Defend ->
                     BatteryColors.DarkTheme.Charging.fill
-                attr is BatteryGlyph.Plus -> BatteryColors.DarkTheme.PowerSave.fill
-                level != null && level <= 20 -> colorError
-                else -> colors.attribution
+                attr is BatteryGlyph.Plus ->
+                    BatteryColors.DarkTheme.PowerSave.fill
+                level != null && level <= 20 ->
+                    colorError
+                else ->
+                    colors.attribution
             }
 
         // Outer inactive ring.
@@ -576,13 +618,17 @@ fun AospaBatteryBody(
             )
         }
 
-        // Paranoid Android "eye": a large solid center with a narrow transparent gap.
+        // Paranoid Android "eye": a large solid center with a narrow
+        // transparent gap. Pulse only the center while charging.
         val innerEdge = radius - strokeWidth / 2f
         val gap = size.height * 0.055f
         val dotRadius = (innerEdge - gap).coerceAtLeast(0f)
 
         drawCircle(
-            color = activeColor,
+            color =
+                activeColor.copy(
+                    alpha = activeColor.alpha * dotAlpha.value,
+                ),
             radius = dotRadius,
             center = center,
         )
