@@ -74,6 +74,7 @@ class HomeStatusBarViewBinderImpl @Inject constructor() : HomeStatusBarViewBinde
         val systemInfoView = view.requireViewById<View>(R.id.status_bar_end_side_content)
         val clockView = view.requireViewById<View>(R.id.clock)
         val notificationIconsArea = view.requireViewById<View>(R.id.notificationIcons)
+        val batteryView = view.findViewById<View>(R.id.battery_composable_view)
 
         // GONE because this shouldn't take space in the layout
         systemInfoView.hideInitially()
@@ -82,6 +83,38 @@ class HomeStatusBarViewBinderImpl @Inject constructor() : HomeStatusBarViewBinde
 
         view.repeatWhenAttached {
             repeatOnLifecycle(Lifecycle.State.CREATED) {
+                val context = view.context
+                val iconHideListUri =
+                    Settings.Secure.getUriFor(StatusBarIconController.ICON_HIDE_LIST)
+
+                val iconHideListObserver =
+                    object : ContentObserver(Handler(Looper.getMainLooper())) {
+                        override fun onChange(selfChange: Boolean) {
+                            batteryView.isVisible =
+                                !StatusBarIconController.getIconHideList(
+                                        context,
+                                        Settings.Secure.getString(
+                                            context.contentResolver,
+                                            StatusBarIconController.ICON_HIDE_LIST,
+                                        ),
+                                    )
+                                    .contains("battery")
+                        }
+                    }
+
+                context.contentResolver.registerContentObserver(
+                    iconHideListUri,
+                    false,
+                    iconHideListObserver,
+                    UserHandle.USER_ALL,
+                )
+                iconHideListObserver.onChange(false)
+
+                coroutineContext[Job]?.invokeOnCompletion {
+                    runCatching {
+                        context.contentResolver.unregisterContentObserver(iconHideListObserver)
+                    }
+                }
                 listener?.let { listener ->
                     launch {
                         viewModel.isTransitioningFromLockscreenToOccluded.collect {
