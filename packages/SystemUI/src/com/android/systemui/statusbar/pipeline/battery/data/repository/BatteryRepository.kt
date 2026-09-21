@@ -91,6 +91,10 @@ interface BatteryRepository {
         const val ICON_STYLE_CIRCLE = 1
         const val ICON_STYLE_TEXT = 2
         const val ICON_STYLE_CIRCLE_DOTTED = 3
+        const val ICON_STYLE_AOSPA = 4
+
+        const val DEFAULT_ICON_STYLE = ICON_STYLE_AOSPA
+
         const val SHOW_PERCENT_HIDDEN = 0
         const val SHOW_PERCENT_INSIDE = 1
         const val SHOW_PERCENT_NEXT_TO = 2
@@ -276,7 +280,7 @@ constructor(
                     return Settings.System.getIntForUser(
                         resolver,
                         Settings.System.STATUS_BAR_BATTERY_STYLE,
-                        BatteryRepository.ICON_STYLE_DEFAULT,
+                        BatteryRepository.DEFAULT_ICON_STYLE,
                         UserHandle.USER_CURRENT,
                     )
                 }
@@ -305,7 +309,7 @@ constructor(
             .stateIn(
                 scope = scope,
                 started = SharingStarted.Lazily,
-                initialValue = BatteryRepository.ICON_STYLE_DEFAULT,
+                initialValue = BatteryRepository.DEFAULT_ICON_STYLE,
             )
 
     override val showBatteryPercentMode =
@@ -326,7 +330,7 @@ constructor(
                         Settings.System.getIntForUser(
                             resolver,
                             Settings.System.STATUS_BAR_BATTERY_STYLE,
-                            BatteryRepository.ICON_STYLE_DEFAULT,
+                            BatteryRepository.DEFAULT_ICON_STYLE,
                             UserHandle.USER_CURRENT,
                         )
                     return if (iconStyle == BatteryRepository.ICON_STYLE_TEXT) {

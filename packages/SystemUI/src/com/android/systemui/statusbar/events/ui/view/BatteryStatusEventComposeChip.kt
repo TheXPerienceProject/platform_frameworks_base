@@ -109,7 +109,7 @@ private fun UnifiedBatteryChip(level: Int) {
         }
     BatteryLayout(
         attribution = BatteryGlyph.Bolt, // Always charging
-        iconStyleProvider = { BatteryRepository.ICON_STYLE_DEFAULT },
+        iconStyleProvider = { BatteryRepository.DEFAULT_ICON_STYLE },
         levelProvider = { level },
         showLevelProvider = { false },
         isFullProvider = { isFull },

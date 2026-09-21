@@ -232,6 +232,14 @@ fun BatteryLayout(
                     modifier = Modifier.layoutId(BatteryMeasurePolicy.LayoutId.FrameCircle),
                     contentDescription = contentDescription,
                 )
+            } else if (iconStyle == BatteryRepository.ICON_STYLE_AOSPA) {
+                AospaBatteryBody(
+                    attr = attribution,
+                    levelProvider = levelProvider,
+                    colorsProvider = colorsProvider,
+                    modifier = Modifier.layoutId(BatteryMeasurePolicy.LayoutId.FrameCircle),
+                    contentDescription = contentDescription,
+                )
             } else if (iconStyle == BatteryRepository.ICON_STYLE_TEXT) {
                 // Empty on purpose
             } else {
@@ -517,6 +525,67 @@ fun CircleBatteryBody(
                     ),
             )
         }
+    }
+}
+
+@Composable
+fun AospaBatteryBody(
+    attr: BatteryGlyph?,
+    levelProvider: () -> Int?,
+    colorsProvider: () -> BatteryColors,
+    modifier: Modifier = Modifier,
+    contentDescription: String = "",
+) {
+    val colorError = MaterialTheme.colorScheme.error
+
+    Canvas(modifier = modifier, contentDescription = contentDescription) {
+        val level = levelProvider()
+        val colors = colorsProvider()
+
+        val strokeWidth = size.height / 6.5f
+        val radius = size.height / 2f - strokeWidth / 2f
+        val center = Offset(size.width / 2f, size.height / 2f)
+
+        val activeColor =
+            when {
+                attr is BatteryGlyph.Bolt || attr is BatteryGlyph.Defend ->
+                    BatteryColors.DarkTheme.Charging.fill
+                attr is BatteryGlyph.Plus -> BatteryColors.DarkTheme.PowerSave.fill
+                level != null && level <= 20 -> colorError
+                else -> colors.attribution
+            }
+
+        // Outer inactive ring.
+        drawCircle(
+            color = colors.backgroundOnly,
+            radius = radius,
+            center = center,
+            style = Stroke(strokeWidth),
+        )
+
+        // Active ring, starting at twelve o'clock.
+        if (level != null && level > 0) {
+            drawArc(
+                color = activeColor,
+                startAngle = 270f,
+                sweepAngle = 3.6f * level,
+                useCenter = false,
+                topLeft = Offset(center.x - radius, center.y - radius),
+                size = Size(radius * 2f, radius * 2f),
+                style = Stroke(strokeWidth),
+            )
+        }
+
+        // Paranoid Android "eye": a large solid center with a narrow transparent gap.
+        val innerEdge = radius - strokeWidth / 2f
+        val gap = size.height * 0.055f
+        val dotRadius = (innerEdge - gap).coerceAtLeast(0f)
+
+        drawCircle(
+            color = activeColor,
+            radius = dotRadius,
+            center = center,
+        )
     }
 }
 

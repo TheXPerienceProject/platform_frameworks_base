@@ -178,7 +178,7 @@ sealed class BatteryViewModel(
             .hydratedStateOf(initialValue = ContentDescription.Loaded(null))
 
     val batteryIconStyle: Int by
-        interactor.batteryIconStyle.hydratedStateOf(initialValue = BatteryRepository.ICON_STYLE_DEFAULT)
+        interactor.batteryIconStyle.hydratedStateOf(initialValue = BatteryRepository.DEFAULT_ICON_STYLE)
 
     /** For use in the shade, where we might need to show an estimate */
     val batteryTimeRemainingEstimate: String? by
