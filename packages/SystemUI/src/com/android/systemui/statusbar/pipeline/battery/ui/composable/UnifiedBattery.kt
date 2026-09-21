@@ -676,7 +676,6 @@ fun CustomBatteryBody(
     val level = levelProvider()
     val shouldAnimateWave =
         iconStyle == BatteryRepository.ICON_STYLE_WAVE &&
-            attr is BatteryGlyph.Bolt &&
             level != null &&
             level < 100
 
@@ -710,6 +709,8 @@ fun CustomBatteryBody(
                     BatteryColors.DarkTheme.PowerSave.fill
                 safeLevel <= 20 ->
                     colorError
+                currentStyle == BatteryRepository.ICON_STYLE_WAVE ->
+                    Color(0xFF448AFF)
                 else ->
                     colors.fill
             }
@@ -753,7 +754,8 @@ fun CustomBatteryBody(
 
             if (attr != null) {
                 drawCustomBatteryAttribution(attr = attr, color = foregroundColor)
-            } else if (showLevel && currentLevel < 100) {
+            } else if (currentStyle == BatteryRepository.ICON_STYLE_CAPSULE &&
+                        showLevel && currentLevel < 100) {
                 val textLayoutResult =
                     textMeasurer.measure(
                         text = currentLevel.toString(),
