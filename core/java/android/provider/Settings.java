@@ -6787,12 +6787,20 @@ public final class Settings {
 
         /**
          * Setting to determine whether or not to show the battery percentage in the status bar.
-         *    0 - Don't show percentage
-         *    1 - Show percentage
+         * 0 - Don't show percentage
+         * 1 - Show percentage inside the battery icon
+         * 2 - Show percentage next to the battery icon
          * @hide
          */
         @Readable
         public static final String SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
+
+        /**
+         * Battery icon style shown in the status bar.
+         * @hide
+         */
+        @Readable
+        public static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
 
         /**
          * Whether or not to enable multiple audio focus.
@@ -7216,6 +7224,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(LOCK_TO_APP_ENABLED);
             PRIVATE_SETTINGS.add(EGG_MODE);
             PRIVATE_SETTINGS.add(SHOW_BATTERY_PERCENT);
+            PRIVATE_SETTINGS.add(STATUS_BAR_BATTERY_STYLE);
             PRIVATE_SETTINGS.add(DISPLAY_COLOR_MODE);
             PRIVATE_SETTINGS.add(DISPLAY_COLOR_MODE_VENDOR_HINT);
             PRIVATE_SETTINGS.add(LOCALE_PREFERENCES);
