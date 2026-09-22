@@ -904,8 +904,6 @@ public class MediaControlPanel {
                 }
             }
 
-            MediaSessionManager.Companion.get().onMediaColorsChanged(mutableColorScheme.getAccent1().getS100());
-
             final ColorScheme colorScheme = mutableColorScheme;
             mMainExecutor.execute(() -> {
                 // Cancel the request if a later one arrived first
