@@ -9,6 +9,7 @@
     <!-- Flashlight Strength -->
     <!-- Status bar -->
     <!-- Wifi Standard. -->
+    <string name="status_bar_wifi_standard">Padrão Wi-Fi</string>
     <!-- Custom QS tiles -->
     <!-- Caffeine QS tile -->
     <string name="quick_settings_caffeine_label">Modo cafeína</string>
@@ -42,6 +43,7 @@
     <!-- Name of the VoWiFi status bar icon. -->
     <!-- IMS / voice indicator tuner category -->
     <!-- QS button to enable adaptive brightness -->
+    <string name="accessibility_adaptive_brightness">Brilho adaptável</string>
     <!-- Screen record -->
     <!-- AxDynamicBar strings [CHAR LIMIT=NONE] -->
 </resources>
