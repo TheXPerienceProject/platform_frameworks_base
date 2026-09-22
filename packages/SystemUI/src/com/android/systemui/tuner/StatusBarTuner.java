@@ -47,7 +47,7 @@ public class StatusBarTuner extends PreferenceFragment {
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.status_bar_prefs, rootKey);
-        if (!isVoiceCapable(requireContext())) {
+        if (!isVoiceCapable(getContext())) {
             removeMobilePreferences();
         } else {
             setupImsIndicatorCategory();
@@ -61,7 +61,7 @@ public class StatusBarTuner extends PreferenceFragment {
         }
         int current =
                 Settings.System.getIntForUser(
-                        requireContext().getContentResolver(),
+                        getContext().getContentResolver(),
                         KEY_STATUS_BAR_IMS_INDICATOR_STYLE,
                         IMS_STYLE_INTEGRATED,
                         UserHandle.USER_CURRENT);
@@ -70,7 +70,7 @@ public class StatusBarTuner extends PreferenceFragment {
                 (preference, newValue) -> {
                     int v = Integer.parseInt((String) newValue);
                     Settings.System.putIntForUser(
-                            requireContext().getContentResolver(),
+                            getContext().getContentResolver(),
                             KEY_STATUS_BAR_IMS_INDICATOR_STYLE,
                             v,
                             UserHandle.USER_CURRENT);
@@ -83,7 +83,7 @@ public class StatusBarTuner extends PreferenceFragment {
     private void updateImsToggleVisibility() {
         boolean dedicated =
                 Settings.System.getIntForUser(
-                                requireContext().getContentResolver(),
+                                getContext().getContentResolver(),
                                 KEY_STATUS_BAR_IMS_INDICATOR_STYLE,
                                 IMS_STYLE_INTEGRATED,
                                 UserHandle.USER_CURRENT)
@@ -120,12 +120,12 @@ public class StatusBarTuner extends PreferenceFragment {
 
     /** Same tint as {@link StatusBarSwitch#setupTheme()} so icons stay visible after style changes. */
     private void applyThemedPreferenceIcon(Preference preference, int drawableResId) {
-        Drawable icon = requireContext().getDrawable(drawableResId);
+        Drawable icon = getContext().getDrawable(drawableResId);
         if (icon == null) {
             return;
         }
         TypedArray a =
-                requireContext()
+                getContext()
                         .obtainStyledAttributes(new int[] {android.R.attr.textColorPrimary});
         int color = a.getColor(0, 0);
         a.recycle();
@@ -168,12 +168,12 @@ public class StatusBarTuner extends PreferenceFragment {
     public void onResume() {
         super.onResume();
         mMetricsLogger.visibility(MetricsEvent.TUNER, true);
-        if (isVoiceCapable(requireContext())) {
+        if (isVoiceCapable(getContext())) {
             ListPreference stylePref = findPreference("status_bar_ims_indicator_style");
             if (stylePref != null) {
                 int current =
                         Settings.System.getIntForUser(
-                                requireContext().getContentResolver(),
+                                getContext().getContentResolver(),
                                 KEY_STATUS_BAR_IMS_INDICATOR_STYLE,
                                 IMS_STYLE_INTEGRATED,
                                 UserHandle.USER_CURRENT);
