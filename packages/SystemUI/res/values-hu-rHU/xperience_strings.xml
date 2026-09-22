@@ -55,6 +55,7 @@
     <string name="status_bar_hd_calling">HD-hívás (VoLTE/VoNR)</string>
     <!-- Name of the VoWiFi status bar icon. -->
     <string name="status_bar_vowifi">WiFi-hívás (VoWiFi)</string>
+    <!-- IMS / voice indicator tuner category -->
     <!-- QS button to enable adaptive brightness -->
     <string name="accessibility_adaptive_brightness">Alkalmazkodó fényerő</string>
     <!-- Screen record -->
@@ -66,4 +67,5 @@
     <string name="screenrecord_skip_time_summary">Eltávolítja a 3 másodperces várakozást</string>
     <string name="screenrecord_hevc_switch_label">HEVC-kódolás</string>
     <string name="screenrecord_hevc_switch_summary">Használja a hatékonyabb HEVC-kódolót</string>
+    <!-- AxDynamicBar strings [CHAR LIMIT=NONE] -->
 </resources>
