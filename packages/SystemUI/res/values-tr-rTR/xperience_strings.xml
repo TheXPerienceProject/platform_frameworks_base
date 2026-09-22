@@ -45,6 +45,7 @@
     <string name="status_bar_hd_calling">HD arama (VoLTE/VoNR)</string>
     <!-- Name of the VoWiFi status bar icon. -->
     <string name="status_bar_vowifi">Wi-Fi arama (VoWiFi)</string>
+    <!-- IMS / voice indicator tuner category -->
     <!-- QS button to enable adaptive brightness -->
     <!-- Screen record -->
     <string name="screenrecord_lowquality_label">Daha küçük kalite</string>
@@ -55,4 +56,5 @@
     <string name="screenrecord_skip_time_summary">3 saniyelik beklemeyi kaldırın</string>
     <string name="screenrecord_hevc_switch_label">HEVC kodlayıcı</string>
     <string name="screenrecord_hevc_switch_summary">Daha verimli HEVC kodlayıcıyı kullanın</string>
+    <!-- AxDynamicBar strings [CHAR LIMIT=NONE] -->
 </resources>
