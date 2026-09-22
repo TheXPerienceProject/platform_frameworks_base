@@ -98,11 +98,6 @@ fun StatusBarDynamicIslandChip(
         view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
         mediaOpenApp?.invoke()
     }
-    val chipBackgroundColor =
-        colors.chipBackground(
-            isPopupShown = viewModel.isPopupShown,
-            colorScheme = MaterialTheme.colorScheme,
-        )
     val chipContentColor =
         colors.chipContent(
             isPopupShown = viewModel.isPopupShown,
@@ -119,7 +114,6 @@ fun StatusBarDynamicIslandChip(
             onTap = hapticOnTap,
             cutoutSpec = cutoutSpec,
             heightScale = heightScale,
-            chipBackgroundColor = chipBackgroundColor,
             chipContentColor = chipContentColor,
             chipOutline = chipOutline,
             modifier = modifier,
@@ -167,7 +161,7 @@ fun StatusBarDynamicIslandChip(
                 )
                 .graphicsLayer { scaleX = collapseState.scale }
                 .clip(chipShape)
-                .background(chipBackgroundColor)
+                .background(Color.Black)
                 .border(width = 1.dp, color = chipOutline, shape = chipShape)
                 .combinedClickable(
                     onClick = hapticOnTap,
@@ -272,7 +266,6 @@ private fun UtilityStatusIslandChip(
     onTap: () -> Unit,
     cutoutSpec: DynamicIslandCutoutSpec,
     heightScale: Float = 1f,
-    chipBackgroundColor: Color,
     chipContentColor: Color,
     chipOutline: Color,
     modifier: Modifier = Modifier,
@@ -315,7 +308,7 @@ private fun UtilityStatusIslandChip(
                 .defaultMinSize(minHeight = 32.dp * heightScale)
                 .width(connectedIslandWidth)
                 .clip(RoundedCornerShape(50))
-                .background(chipBackgroundColor)
+                .background(Color.Black)
                 .border(width = 1.dp, color = chipOutline, shape = RoundedCornerShape(50))
                 .clickable(onClick = onTap)
                 .graphicsLayer { alpha = collapseState.contentAlpha },
