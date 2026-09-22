@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The XPerience Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Name of the nfc status bar icon. -->
+    <!-- Accessibility label for nfc icon (not shown on screen) [CHAR LIMIT=NONE] -->
+    <!-- Flashlight Strength -->
+    <!-- Status bar -->
+    <string name="status_bar_icons_title">Durum çubuğu simgeleri</string>
+    <!-- Wifi Standard. -->
+    <!-- Custom QS tiles -->
+    <!-- Caffeine QS tile -->
+    <string name="quick_settings_caffeine_label">Kafein</string>
+    <string name="accessibility_quick_settings_caffeine_off">Kafein kapalı.</string>
+    <string name="accessibility_quick_settings_caffeine_on">Kafein açık.</string>
+    <!-- Heads up QS tile -->
+    <string name="quick_settings_heads_up_label">Bildirim pencereleri</string>
+    <string name="accessibility_quick_settings_heads_up_off">Bildirim pencereleri kapalı.</string>
+    <string name="accessibility_quick_settings_heads_up_on">Bildirim pencereleri açık.</string>
+    <!-- Ambient display QS tile -->
+    <string name="quick_settings_ambient_display_label">Ortam ekranı</string>
+    <string name="accessibility_quick_settings_ambient_display_off">Ortam ekranı kapalı.</string>
+    <string name="accessibility_quick_settings_ambient_display_on">Ortam ekranı açık.</string>
+    <!-- USB tethering QS tile -->
+    <string name="quick_settings_usb_tether_label">USB internet paylaşımı</string>
+    <!-- AOD QS tile -->
+    <string name="quick_settings_aod_label">Her zaman açık ekran</string>
+    <string name="quick_settings_aod_off_powersave_label">AOD kapalı\nPil tasarrufu</string>
+    <!-- PowerShare QS tile -->
+    <!-- USB Mode Picker -->
+    <!-- Auto reboot Suggestion/Reminder -->
+    <!-- Face unlock -->
+    <string name="face_unlock_recognizing">Yüz algılanıyor...</string>
+    <!-- Internet speed -->
+    <!-- QuickSettings: InternetDialog: Summary for how many devices are connected to the hotspot [CHAR LIMIT=NONE] -->
+    <plurals name="quick_settings_internet_hotspot_summary_num_devices">
+        <item quantity="one">%d cihaz bağlandı</item>
+        <item quantity="other">%d cihazlar bağlandı</item>
+    </plurals>
+    <!-- Name of the roaming status bar icon. -->
+    <string name="status_bar_roaming">Dolaşım göstergesi</string>
+    <!-- Name of the HD calling status bar icon. -->
+    <string name="status_bar_hd_calling">HD arama (VoLTE/VoNR)</string>
+    <!-- Name of the VoWiFi status bar icon. -->
+    <string name="status_bar_vowifi">Wi-Fi arama (VoWiFi)</string>
+    <!-- IMS / voice indicator tuner category -->
+    <!-- QS button to enable adaptive brightness -->
+    <!-- Screen record -->
+    <string name="screenrecord_lowquality_label">Daha küçük kalite</string>
+    <string name="screenrecord_lowquality_summary">Daha küçük dosya boyutu için</string>
+    <string name="screenrecord_longer_timeout_switch_label">Daha büyük dosya boyutu sınırı</string>
+    <string name="screenrecord_longer_timeout_switch_summary">Kayıt boyutunu 15 GB ile sınırlayın</string>
+    <string name="screenrecord_skip_time_label">Zamanlayıcıyı atla</string>
+    <string name="screenrecord_skip_time_summary">3 saniyelik beklemeyi kaldırın</string>
+    <string name="screenrecord_hevc_switch_label">HEVC kodlayıcı</string>
+    <string name="screenrecord_hevc_switch_summary">Daha verimli HEVC kodlayıcıyı kullanın</string>
+    <!-- AxDynamicBar strings [CHAR LIMIT=NONE] -->
+</resources>
