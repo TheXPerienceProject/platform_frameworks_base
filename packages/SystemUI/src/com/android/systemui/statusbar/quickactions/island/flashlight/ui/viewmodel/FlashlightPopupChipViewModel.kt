@@ -67,6 +67,10 @@ constructor(
                                 override fun onFlashlightAvailabilityChanged(available: Boolean) {
                                     trySend(readFlashlightState())
                                 }
+				
+				override fun onFlashlightStrengthChanged(level: Int) {
+            				trySend(readFlashlightState())
+        			}
                             }
 
                         flashlightController.addCallback(callback)
