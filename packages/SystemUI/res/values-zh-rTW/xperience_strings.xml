@@ -44,6 +44,7 @@
     <string name="status_bar_hd_calling">高品質通話 (VoLTE/VoNR)</string>
     <!-- Name of the VoWiFi status bar icon. -->
     <string name="status_bar_vowifi">Wi-Fi 通話 (VoWiFi)</string>
+    <!-- IMS / voice indicator tuner category -->
     <!-- QS button to enable adaptive brightness -->
     <!-- Screen record -->
     <string name="screenrecord_lowquality_label">降低畫質</string>
@@ -54,4 +55,5 @@
     <string name="screenrecord_skip_time_summary">跳過三秒的倒數時間</string>
     <string name="screenrecord_hevc_switch_label">HEVC 編碼</string>
     <string name="screenrecord_hevc_switch_summary">使用效率更高的 HEVC 編碼</string>
+    <!-- AxDynamicBar strings [CHAR LIMIT=NONE] -->
 </resources>
