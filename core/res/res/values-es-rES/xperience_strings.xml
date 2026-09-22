@@ -42,6 +42,14 @@
     <string name="charging_control_notification_content_target">La batería estará completamente cargada en %1$s</string>
     <string name="charging_control_notification_content_target_reached">La batería está cargada</string>
     <!-- USB Mode Picker -->
+    <string name="usb_mode_picker_title">Seleccionar modo USB</string>
+    <string name="usb_mode_file_transfer">Transferencia de archivos</string>
+    <string name="usb_mode_tethering">Anclaje de red por USB</string>
+    <string name="usb_mode_midi">MIDI</string>
+    <string name="usb_mode_photo_transfer">Foto &amp; transferencia de vídeo</string>
+    <string name="usb_mode_webcam">Cámara web USB</string>
+    <string name="usb_mode_charging_only">Solo carga</string>
+    <string name="usb_charging_status">Carga USB activada</string>
     <!-- Pocket Lock -->
     <string name="pocket_lock_message_long_press">Pulse y mantenga el botón de encendido para desbloquear</string>
     <string name="pocket_view_title">Modo bolsillo activado</string>
