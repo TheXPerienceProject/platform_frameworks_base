@@ -174,6 +174,7 @@ public class InternetDialogDelegateLegacy implements
     protected Button mShareWifiButton;
     private Button mAirplaneModeButton;
     private Drawable mBackgroundOn;
+    private Drawable mSecondaryBackgroundOn;
     private final KeyguardStateController mKeyguard;
     @Nullable
     private Drawable mBackgroundOff = null;
@@ -346,6 +347,7 @@ public class InternetDialogDelegateLegacy implements
         mInternetDialogTitle.setText(getDialogTitleText());
         mInternetDialogTitle.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
         mBackgroundOff = context.getDrawable(R.drawable.internet_dialog_selected_effect);
+        mSecondaryBackgroundOn = mBackgroundOn.getConstantState().newDrawable().mutate();
         setOnClickListener(dialog);
         mTurnWifiOnLayout.setBackground(null);
         mAirplaneModeButton.setVisibility(
@@ -390,12 +392,14 @@ public class InternetDialogDelegateLegacy implements
         mMobileNetworkLayout.setOnClickListener(null);
         mHotspotLayout.setOnClickListener(null);
         mHotspotToggle.setOnClickListener(null);
+        mMobileNetworkLayout.setOnLongClickListener(null);
+        mMobileDataToggle.setOnClickListener(null);
         mConnectedWifListLayout.setOnClickListener(null);
         if (mSecondaryMobileNetworkLayout != null) {
             mSecondaryMobileNetworkLayout.setOnClickListener(null);
         }
         mSeeAllLayout.setOnClickListener(null);
-        mWiFiToggle.setOnCheckedChangeListener(null);
+        mWiFiToggle.setOnClickListener(null);
         mDoneButton.setOnClickListener(null);
         mShareWifiButton.setOnClickListener(null);
         mAirplaneModeButton.setOnClickListener(null);
@@ -527,6 +531,13 @@ public class InternetDialogDelegateLegacy implements
             }
             mInternetDetailsContentController.connectCarrierNetwork();
         });
+        mMobileNetworkLayout.setOnLongClickListener(v -> {
+            if (!mInternetDetailsContentController.isDeviceLocked()) {
+                mInternetDetailsContentController.launchMobileNetworkSettings(v, mDefaultDataSubId);
+                return true;
+            }
+            return false;
+        });
         mMobileDataToggle.setOnClickListener(v -> {
             boolean isChecked = mMobileDataToggle.isChecked();
             if (!isChecked && shouldShowMobileDialog()) {
@@ -611,8 +622,8 @@ public class InternetDialogDelegateLegacy implements
         if (mMobileTitleText.getText().isEmpty()) {
             mMobileNetworkLayout.setVisibility(View.GONE);
         }
-        if (!internetContent.mHasActiveSubIdOnDds && (!internetContent.mIsWifiEnabled
-                || !internetContent.mIsCarrierNetworkActive)) {
+        if ((!internetContent.mHasActiveSubIdOnDds && (!internetContent.mIsWifiEnabled
+                || !internetContent.mIsCarrierNetworkActive)) || !mCanConfigMobileData) {
             mMobileNetworkLayout.setVisibility(View.GONE);
             if (mSecondaryMobileNetworkLayout != null) {
                 mSecondaryMobileNetworkLayout.setVisibility(View.GONE);
@@ -709,7 +720,7 @@ public class InternetDialogDelegateLegacy implements
                         mSecondaryMobileNetworkLayout.setOnClickListener(
                                 this::onClickConnectedSecondarySub);
                     }
-                    mSecondaryMobileNetworkLayout.setBackground(mBackgroundOn);
+                    mSecondaryMobileNetworkLayout.setBackground(mSecondaryBackgroundOn);
 
                     TextView mSecondaryMobileTitleText = mDialogView.requireViewById(
                             R.id.secondary_mobile_title);
@@ -938,7 +949,7 @@ public class InternetDialogDelegateLegacy implements
     }
 
     CharSequence getDialogTitleText() {
-        return mInternetDetailsContentController.getDialogTitleText();
+        return mInternetDetailsContentController.getDialogTitleText(mCanConfigMobileData);
     }
 
     @Nullable

@@ -14051,6 +14051,12 @@ public final class Settings {
         public static final String PI_SNAPCHAT_SPOOF = "pi_snapchat_spoof";
 
         /**
+         * Show navigation space below IME
+         * @hide
+         */
+        public static final String NAVBAR_IME_SPACE = "navbar_ime_space";
+
+        /**
          * Keys we no longer back up under the current schema, but want to continue to
          * process when restoring historical backup datasets.
          *
