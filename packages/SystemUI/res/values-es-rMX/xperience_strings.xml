@@ -187,4 +187,8 @@
     <string name="ax_dynamic_bar_sports_upcoming">Próximamente</string>
     <string name="ax_dynamic_bar_call">Llamada</string>
     <string name="ax_dynamic_bar_kill_app">Finalizar aplicación</string>
+    <!-- Advanced restart menu -->
+    <string name="global_action_restart_system">Sistema</string>
+    <string name="global_action_restart_download">Download</string>
+    <string name="global_action_restart_fastboot">Fastbootd</string>
 </resources>
