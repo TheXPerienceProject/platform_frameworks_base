@@ -518,9 +518,12 @@ public class InternetDetailsContentController implements AccessPointController.A
         return WifiUtils.getWifiDetailsSettingsIntent(key);
     }
 
-    CharSequence getDialogTitleText() {
+    CharSequence getDialogTitleText(boolean canConfigMobileData) {
         if (isAirplaneModeEnabled()) {
             return mContext.getText(R.string.airplane_mode);
+        }
+        if (!canConfigMobileData) {
+            return mContext.getText(R.string.quick_settings_wifi_label);
         }
         return mContext.getText(R.string.quick_settings_internet_label);
     }
@@ -991,6 +994,10 @@ public class InternetDetailsContentController implements AccessPointController.A
 
     void launchMobileNetworkSettings(View view) {
         final int subId = getActiveAutoSwitchNonDdsSubId();
+        launchMobileNetworkSettings(view, subId);
+    }
+
+    void launchMobileNetworkSettings(View view, int subId) {
         if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
             Log.w(TAG, "launchMobileNetworkSettings fail, invalid subId:" + subId);
             return;
