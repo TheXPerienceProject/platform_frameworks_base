@@ -60,6 +60,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.android.systemui.common.shared.model.Icon as IconModel
 import com.android.systemui.common.ui.compose.Icon
 import com.android.systemui.statusbar.quickactions.island.shared.DynamicIslandFeatureSettings
 import com.android.systemui.statusbar.quickactions.island.shared.DynamicIslandFeatureSettings.observeDynamicIslandScale
@@ -97,11 +98,6 @@ fun StatusBarDynamicIslandChip(
         view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
         mediaOpenApp?.invoke()
     }
-    val chipBackgroundColor =
-        colors.chipBackground(
-            isPopupShown = viewModel.isPopupShown,
-            colorScheme = MaterialTheme.colorScheme,
-        )
     val chipContentColor =
         colors.chipContent(
             isPopupShown = viewModel.isPopupShown,
@@ -118,7 +114,6 @@ fun StatusBarDynamicIslandChip(
             onTap = hapticOnTap,
             cutoutSpec = cutoutSpec,
             heightScale = heightScale,
-            chipBackgroundColor = chipBackgroundColor,
             chipContentColor = chipContentColor,
             chipOutline = chipOutline,
             modifier = modifier,
@@ -166,7 +161,7 @@ fun StatusBarDynamicIslandChip(
                 )
                 .graphicsLayer { scaleX = collapseState.scale }
                 .clip(chipShape)
-                .background(chipBackgroundColor)
+                .background(Color.Black)
                 .border(width = 1.dp, color = chipOutline, shape = chipShape)
                 .combinedClickable(
                     onClick = hapticOnTap,
@@ -185,15 +180,15 @@ fun StatusBarDynamicIslandChip(
                         viewModel.popupContent is PopupContentModel.LiveScore)
             Icon(
                 icon = chipIcon.icon,
-                modifier =
-                    Modifier.size(if (isArtworkLike) 18.dp else 16.dp)
-                        .then(
-                            if (isArtworkLike) {
-                                Modifier.clip(RoundedCornerShape(5.dp))
-                            } else {
-                                Modifier
-                            }
-                        ),
+                modifier = Modifier
+                    .size(if (isArtworkLike) 18.dp else 16.dp)
+                    .then(
+                        if (isArtworkLike) {
+                            Modifier.clip(CircleShape)
+                        } else {
+                            Modifier
+                        }
+                    ),
                 tint = if (isArtworkLike) Color.Unspecified else chipContentColor,
             )
         }
@@ -217,15 +212,20 @@ fun StatusBarDynamicIslandChip(
             }
 
         when (val popupContent = viewModel.popupContent) {
-            is PopupContentModel.Media ->
+            is PopupContentModel.Media -> {
+                val artworkDrawable = remember(popupContent.model.artworkIcon) {
+                    (popupContent.model.artworkIcon as? IconModel.Loaded)?.drawable
+                }
                 if (popupContent.model.isPlaying) {
                     AudioReactiveBars(
                         isPlaying = true,
                         color = chipContentColor,
+                        artworkDrawable = artworkDrawable,
                     )
                 } else if (pageCount > 1) {
                     SwipeHint(color = chipContentColor.copy(alpha = 0.72f))
                 }
+            }
             is PopupContentModel.ScreenRecord ->
                 when (val model = popupContent.model) {
                     is ScreenRecordPopupModel.Starting ->
@@ -266,7 +266,6 @@ private fun UtilityStatusIslandChip(
     onTap: () -> Unit,
     cutoutSpec: DynamicIslandCutoutSpec,
     heightScale: Float = 1f,
-    chipBackgroundColor: Color,
     chipContentColor: Color,
     chipOutline: Color,
     modifier: Modifier = Modifier,
@@ -309,7 +308,7 @@ private fun UtilityStatusIslandChip(
                 .defaultMinSize(minHeight = 32.dp * heightScale)
                 .width(connectedIslandWidth)
                 .clip(RoundedCornerShape(50))
-                .background(chipBackgroundColor)
+                .background(Color.Black)
                 .border(width = 1.dp, color = chipOutline, shape = RoundedCornerShape(50))
                 .clickable(onClick = onTap)
                 .graphicsLayer { alpha = collapseState.contentAlpha },
