@@ -7177,6 +7177,7 @@ public final class Settings {
          */
         public static final String UDFPS_ICON = "udfps_icon";
 
+        /**
          * @hide
          */
         public static final String NOWPLAYING_ENABLED = "nowplaying_enabled";
