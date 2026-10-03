@@ -30,7 +30,10 @@ import com.android.systemui.communal.domain.interactor.CommunalSettingsInteracto
 import com.android.systemui.communal.shared.model.CommunalBackgroundType
 import com.android.systemui.deviceentry.domain.interactor.DeviceEntryInteractor
 import com.android.systemui.keyguard.domain.interactor.KeyguardTransitionInteractor
+import com.android.systemui.keyguard.shared.model.KeyguardState
 import com.android.systemui.keyguard.shared.model.KeyguardState.AOD
+import com.android.systemui.keyguard.shared.model.KeyguardState.DOZING
+import com.android.systemui.keyguard.shared.model.KeyguardState.OFF
 import com.android.systemui.keyguard.ui.transitions.BlurConfig
 import com.android.systemui.lifecycle.HydratedActivatable
 import com.android.systemui.scene.shared.model.Overlays
@@ -78,6 +81,14 @@ constructor(
 
     private val ambientModeSupported: Boolean by
         wallpaperInteractor.wallpaperSupportsAmbientMode.hydratedStateOf(false)
+
+    private val currentKeyguardState: KeyguardState by
+        keyguardTransitionInteractor.currentKeyguardState.hydratedStateOf()
+
+    private val isDozingOrOff: Boolean by
+        keyguardTransitionInteractor.startedKeyguardTransitionStep
+            .map { it.to == DOZING || it.to == AOD || it.to == OFF }
+            .hydratedStateOf(false)
 
     override suspend fun onActivated() {
         blurChoreographer.registerOnBlurAppliedListener { blurEffect ->
@@ -154,11 +165,19 @@ constructor(
                     Scenes.Lockscreen ->
                         if (
                             ambientModeSupported &&
-                                keyguardTransitionInteractor.currentKeyguardState.value == AOD
+                                (currentKeyguardState == AOD ||
+                                    keyguardTransitionInteractor.startedKeyguardTransitionStep.value.to == AOD)
                         ) {
                             blurConfig.maxBlurRadiusPx / 2
-                        } else {
+                        } else if (
+                            isDozingOrOff ||
+                                currentKeyguardState == AOD ||
+                                currentKeyguardState == DOZING ||
+                                currentKeyguardState == OFF
+                        ) {
                             blurConfig.minBlurRadiusPx
+                        } else {
+                            blurConfig.maxBlurRadiusPx * 0.5f
                         }
                     Scenes.QuickSettings -> blurConfig.maxBlurRadiusPx
                     Scenes.Shade -> blurConfig.maxBlurRadiusPx

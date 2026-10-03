@@ -76,12 +76,12 @@ class SceneTransitionBlurViewModelTest : SysuiTestCase() {
     }
 
     @Test
-    fun idleOnLockscreen_mapsToMinBlur() =
+    fun idleOnLockscreen_mapsToLockscreenBlur() =
         kosmos.runTest {
             underTest.requestWindowBackgroundBlur(TransitionState.Idle(Scenes.Lockscreen), 1f)
 
             assertThat(fakeBlurChoreographer.lastAppliedBlurEffect)
-                .isEqualTo(BlurEffect(blurConfig.minBlurRadiusPx, 1f))
+                .isEqualTo(BlurEffect(blurConfig.maxBlurRadiusPx * 0.5f, 1f))
         }
 
     @Test
@@ -400,7 +400,7 @@ class SceneTransitionBlurViewModelTest : SysuiTestCase() {
             underTest.requestWindowBackgroundBlur(transition, transitionProgress)
 
             assertThat(fakeBlurChoreographer.lastAppliedBlurEffect)
-                .isEqualTo(BlurEffect(blurConfig.minBlurRadiusPx, 1f))
+                .isEqualTo(BlurEffect(blurConfig.maxBlurRadiusPx * 0.5f, 1f))
         }
 
     @Test
