@@ -65,6 +65,7 @@ constructor(
         INSTANCE = this
 
         ScrimUtils.get().addListener(this)
+        listener.addNotificationHandler(this)
         updateView()
     }
 
@@ -167,7 +168,9 @@ constructor(
     }
 
     override fun setPulsing(pulsing: Boolean) {
-        if (!currentSettings.isEnabled || !pulsing || !isDozing) return
+        if (!currentSettings.isEnabled || !pulsing || (!isDozing && !ScrimUtils.get().isDozing())) return
+        (edgeLightView.parent as? android.view.View)?.bringToFront()
+        edgeLightView.bringToFront()
         edgeLightView.apply {
             visible = true
             pulseRunning = true

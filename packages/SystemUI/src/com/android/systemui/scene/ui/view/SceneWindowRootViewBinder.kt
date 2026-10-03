@@ -210,6 +210,13 @@ object SceneWindowRootViewBinder {
                         )
                     )
 
+                    val customOverlayContainer =
+                        view.findViewById<View>(R.id.custom_overlay_container)
+                    if (customOverlayContainer != null && customOverlayContainer.parent === view) {
+                        view.removeView(customOverlayContainer)
+                        view.addView(customOverlayContainer)
+                    }
+
                     view.setSnapshotBinding { onVisibilityChangedInternal(viewModel.isVisible) }
                     awaitCancellation()
                 } finally {

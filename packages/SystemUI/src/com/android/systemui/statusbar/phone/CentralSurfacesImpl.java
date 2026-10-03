@@ -910,6 +910,25 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
     }
 
     private ViewGroup getScrimOverlayContainer() {
+        if (SceneContainerFlag.isEnabled()) {
+            ViewGroup windowRoot = mNotificationShadeWindowController.getWindowRootView();
+            if (windowRoot != null) {
+                FrameLayout container = windowRoot.findViewById(R.id.custom_overlay_container);
+                if (container != null) {
+                    return container;
+                }
+
+                container = new FrameLayout(mContext);
+                container.setId(R.id.custom_overlay_container);
+                container.setLayoutParams(new FrameLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT));
+
+                windowRoot.addView(container);
+                return container;
+            }
+        }
+
         ViewGroup root = (ViewGroup) getNotificationShadeWindowView();
 
         FrameLayout container = root.findViewById(R.id.custom_overlay_container);
