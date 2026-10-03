@@ -26,6 +26,7 @@ import com.android.systemui.dagger.qualifiers.Application
 import com.android.systemui.keyguard.shared.model.KeyguardSection
 import com.android.systemui.nowplaying.NowPlayingViewController
 import com.android.systemui.res.R
+import com.android.systemui.scene.shared.flag.SceneContainerFlag
 import javax.inject.Inject
 
 @SysUISingleton
@@ -41,15 +42,16 @@ constructor(
         .shouldUseNativeAmbientIndication(context)
 
     override fun addViews(constraintLayout: ConstraintLayout) {
-        if (isPixel) return
-        if (constraintLayout.findViewById<View>(R.id.now_playing_view) != null) return
+        if (isPixel || SceneContainerFlag.isEnabled) return
         val view = nowPlayingViewController.getNowPlayingView()
+        if (view.parent != null) return
+        if (constraintLayout.findViewById<View>(R.id.now_playing_view) != null) return
         view.id = R.id.now_playing_view
         constraintLayout.addView(view)
     }
 
     override fun applyConstraints(constraintSet: ConstraintSet) {
-        if (isPixel) return
+        if (isPixel || SceneContainerFlag.isEnabled) return
         constraintSet.constrainWidth(
             R.id.now_playing_view,
             ConstraintLayout.LayoutParams.MATCH_PARENT,
@@ -116,7 +118,7 @@ constructor(
     }
 
     override fun removeViews(constraintLayout: ConstraintLayout) {
-        if (isPixel) return
+        if (isPixel || SceneContainerFlag.isEnabled) return
         constraintLayout.findViewById<View>(R.id.now_playing_view)
             ?.let { constraintLayout.removeView(it) }
     }

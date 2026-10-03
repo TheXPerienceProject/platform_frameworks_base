@@ -126,6 +126,7 @@ import com.android.systemui.demomode.DemoMode;
 import com.android.systemui.demomode.DemoModeController;
 import com.android.systemui.xperience.RebootSuggestion;
 import com.android.systemui.edgelight.EdgeLightViewController;
+import com.android.systemui.nowplaying.NowPlayingViewController;
 import com.android.systemui.emergency.EmergencyGesture;
 import com.android.systemui.emergency.EmergencyGestureModule.EmergencyGestureIntentFactory;
 import com.android.systemui.fragments.ExtensionFragmentListener;
@@ -415,6 +416,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
     private final UserTracker mUserTracker;
     private final ActivityStarter mActivityStarter;
     private final EdgeLightViewController mEdgeLightViewController;
+    private final NowPlayingViewController mNowPlayingViewController;
 
     private final DisplayMetrics mDisplayMetrics;
 
@@ -631,7 +633,8 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
             WindowManagerProvider windowManagerProvider,
             SessionTracker sessionTracker,
 	    BurnInProtectionController burnInProtectionController,
-            EdgeLightViewController edgeLightViewController
+            EdgeLightViewController edgeLightViewController,
+            NowPlayingViewController nowPlayingViewController
     ) {
         mContext = context;
         mNotificationsController = notificationsController;
@@ -760,6 +763,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
         mRebootSuggestion = new RebootSuggestion(mContext);
 
         mEdgeLightViewController = edgeLightViewController;
+        mNowPlayingViewController = nowPlayingViewController;
     }
 
     private void initBubbles(Bubbles bubbles) {

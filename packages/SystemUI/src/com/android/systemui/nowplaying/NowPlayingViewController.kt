@@ -168,6 +168,7 @@ constructor(
 
     init {
         INSTANCE = this
+        Log.d(TAG, "Initialized: nativeAmbientIndicationAvailable=$nativeAmbientIndicationAvailable isEnabled=${currentSettings.isEnabled}")
 
         if (!nativeAmbientIndicationAvailable) {
             try {
@@ -380,6 +381,7 @@ constructor(
 
     private fun updatePlaybackState(state: PlaybackState?) {
         isPlaying = state?.state == PlaybackState.STATE_PLAYING
+        Log.d(TAG, "updatePlaybackState: state=${state?.state} isPlaying=$isPlaying title=$currentTrackTitle artist=$currentArtist")
         updateState()
     }
 
@@ -405,6 +407,8 @@ constructor(
                 && ((isKeyguardShowing && !isDozing && currentSettings.showOnLockscreen)
                         || (isDozing && currentSettings.showOnAod))
 
+        Log.d(TAG, "updateState: shouldShow=$shouldShow isPlaying=$isPlaying title='$currentTrackTitle' keyguardShowing=$isKeyguardShowing dozing=$isDozing panelCollapsed=$isPanelCollapsed screenOff=$isScreenOff")
+
         if (shouldShow) {
             hideDelayJob?.cancel()
             hideDelayJob = null
@@ -422,6 +426,7 @@ constructor(
                         && !isScreenOff
                         && ((isKeyguardShowing && !isDozing && currentSettings.showOnLockscreen)
                                 || (isDozing && currentSettings.showOnAod))) {
+                    Log.d(TAG, "Showing ambient Now Playing")
                     ambientContainer.showAmbient()
                 }
                 showDelayJob = null
@@ -443,6 +448,7 @@ constructor(
                             && !isScreenOff
                             && ((isKeyguardShowing && !isDozing && currentSettings.showOnLockscreen)
                                     || (isDozing && currentSettings.showOnAod)))) {
+                    Log.d(TAG, "Hiding ambient Now Playing")
                     ambientContainer.hideAmbient()
                 }
                 hideDelayJob = null

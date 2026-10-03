@@ -139,7 +139,7 @@ class NowPlayingAmbientContainer(context: Context, attrs: AttributeSet?) :
         applyRoundedOutline(iconView, 12)
 
         alpha = 0f
-        visibility = View.INVISIBLE
+        visibility = View.GONE
         initialized = true
 
         collapsedContainer.setOnClickListener { onCollapsedContainerClick() }
@@ -309,7 +309,7 @@ class NowPlayingAmbientContainer(context: Context, attrs: AttributeSet?) :
             this,
             0f,
             null,
-            Runnable { visibility = View.INVISIBLE },
+            Runnable { visibility = View.GONE },
             NowPlayingAmbientAnimationUtils.fastEffectsSpec,
         )
     }

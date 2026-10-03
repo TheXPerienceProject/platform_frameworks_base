@@ -15,22 +15,33 @@
 package com.android.systemui.keyguard.ui.composable.elements
 
 import android.content.Context
+import android.view.ViewGroup
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.viewinterop.AndroidView
 import com.android.compose.animation.scene.ElementContentScope
 import com.android.compose.animation.scene.ElementKey
 import com.android.systemui.dagger.SysUISingleton
+import com.android.systemui.nowplaying.NowPlayingViewController
+import com.android.systemui.nowplaying.ambient.PixelAmbientIndicationDetector
 import com.android.systemui.plugins.keyguard.ui.composable.elements.BaseLockscreenElement.ElementSource
 import com.android.systemui.plugins.keyguard.ui.composable.elements.LockscreenElement
 import com.android.systemui.plugins.keyguard.ui.composable.elements.LockscreenElementKeys
 import com.android.systemui.plugins.keyguard.ui.composable.elements.LockscreenElementProvider
 import com.android.systemui.plugins.keyguard.ui.composable.elements.LockscreenScope
 import com.android.systemui.shade.ShadeDisplayAware
+import dagger.Lazy
 import javax.inject.Inject
 
 @SysUISingleton
 class AmbientIndicationAreaProvider
 @Inject
-constructor(@ShadeDisplayAware private val context: Context) : LockscreenElementProvider {
+constructor(
+    @ShadeDisplayAware private val context: Context,
+    private val nowPlayingViewControllerLazy: Lazy<NowPlayingViewController>? = null,
+) : LockscreenElementProvider {
 
     override val elements: List<LockscreenElement> by lazy {
         listOf(AmbientIndicationAreaElement())
@@ -40,12 +51,31 @@ constructor(@ShadeDisplayAware private val context: Context) : LockscreenElement
 
         override val key: ElementKey = LockscreenElementKeys.AmbientIndicationArea
 
+        private val isPixel by lazy {
+            PixelAmbientIndicationDetector.shouldUseNativeAmbientIndication(this@AmbientIndicationAreaProvider.context)
+        }
+
         @Composable
         override fun LockscreenScope<ElementContentScope>.LockscreenElement() {
-            // This is the AOSP implementation, this is intentionally empty.
+            if (isPixel) {
+                return
+            }
+            val controller = nowPlayingViewControllerLazy?.get() ?: return
+            AndroidView(
+                factory = {
+                    val view = controller.getNowPlayingView()
+                    (view.parent as? ViewGroup)?.removeView(view)
+                    view
+                },
+                onRelease = { view ->
+                    (view.parent as? ViewGroup)?.removeView(view)
+                },
+                modifier = Modifier.fillMaxWidth().wrapContentHeight(),
+            )
         }
 
         override val context = this@AmbientIndicationAreaProvider.context
         override val source = ElementSource.STANDARD
     }
 }
+
