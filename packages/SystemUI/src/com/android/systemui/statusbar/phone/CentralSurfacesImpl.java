@@ -74,10 +74,14 @@ import android.view.MotionEvent;
 import android.view.SurfaceControl;
 import android.view.ThreadedRenderer;
 import android.view.View;
+import android.view.ViewConfiguration;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.view.WindowManager;
 import android.view.WindowManagerGlobal;
 import android.view.accessibility.AccessibilityManager;
 import android.widget.DateTimeView;
+import android.widget.FrameLayout;
 import android.window.IRemoteTransition;
 
 import androidx.annotation.NonNull;
@@ -927,14 +931,6 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
 
         detachFromParent(mNowPlayingViewController.getNowPlayingView());
 
-        overlay.addView(mMediaViewController.getMediaArtScrim(),
-                new FrameLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT));
-        overlay.addView(mPulseViewController.getPulseView(),
-                new FrameLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT));
         overlay.addView(mNowPlayingViewController.getNowPlayingView(),
                 new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
