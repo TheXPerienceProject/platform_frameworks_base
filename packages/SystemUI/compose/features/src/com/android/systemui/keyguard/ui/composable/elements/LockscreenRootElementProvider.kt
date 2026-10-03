@@ -26,6 +26,7 @@ import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.VerticalAlignmentLine
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.IntRect
+import androidx.compose.ui.unit.dp
 import com.android.compose.animation.scene.BaseContentScope
 import com.android.compose.animation.scene.ContentScope
 import com.android.compose.animation.scene.ElementContentScope
@@ -238,11 +239,21 @@ private fun LockscreenScope<ContentScope>.LockscreenSceneLayout(
                 constraints = Constraints.fixedWidth(constraints.maxWidth)
             )
 
+        val spaceBelowIcon = constraints.maxHeight - lockIconBounds.bottom
+        val minSpaceBelowForAmbient = 180.dp.roundToPx()
+        val placeAmbientBelow = isUdfpsSupported && (spaceBelowIcon >= minSpaceBelowForAmbient)
+        val ambientMarginAboveIcon =
+            if (!placeAmbientBelow && isUdfpsSupported && ambientIndicationPlaceable.measuredHeight > 0) {
+                16.dp.roundToPx()
+            } else {
+                0
+            }
+
         var upperRegionMaxHeight = lockIconBounds.top - statusBarPlaceable.measuredHeight
         var lowerRegionMaxHeight = constraints.maxHeight - lockIconBounds.bottom
 
-        if (!isUdfpsSupported) {
-            upperRegionMaxHeight -= ambientIndicationPlaceable.measuredHeight
+        if (!placeAmbientBelow) {
+            upperRegionMaxHeight -= (ambientIndicationPlaceable.measuredHeight + ambientMarginAboveIcon)
         } else {
             lowerRegionMaxHeight -= ambientIndicationPlaceable.measuredHeight
         }
@@ -274,7 +285,7 @@ private fun LockscreenScope<ContentScope>.LockscreenSceneLayout(
             upperRegionPlaceable.placeRelative(0, statusBarPlaceable.measuredHeight)
             lockIconPlaceable.place(lockIconBounds.left, lockIconBounds.top)
 
-            if (isUdfpsSupported) {
+            if (placeAmbientBelow) {
                 // Place below UDFPS icon.
                 ambientIndicationPlaceable.placeRelative(
                     0,
@@ -284,7 +295,7 @@ private fun LockscreenScope<ContentScope>.LockscreenSceneLayout(
                 // Place above lock icon.
                 ambientIndicationPlaceable.placeRelative(
                     0,
-                    lockIconBounds.top - ambientIndicationPlaceable.measuredHeight,
+                    lockIconBounds.top - ambientIndicationPlaceable.measuredHeight - ambientMarginAboveIcon,
                 )
             }
 
