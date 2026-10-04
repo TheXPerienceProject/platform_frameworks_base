@@ -71,6 +71,89 @@ class ChargingAnimationView @JvmOverloads constructor(
         private const val MAX_VORTEX_PARTICLES = 36
         private const val MAX_STARS = 45
         private const val MAX_FIBER_PARTICLES = 28
+
+        @JvmStatic
+        fun getOverlayWattage(context: Context?): Int {
+            if (context == null) return 0
+            // 1. Try config_chargingWattageSupported (string or integer)
+            try {
+                val resId = context.resources.getIdentifier("config_chargingWattageSupported", "string", context.packageName)
+                if (resId != 0) {
+                    val str = context.resources.getString(resId).trim()
+                    val w = str.replace(Regex("""[^\d]"""), "").toIntOrNull()
+                    if (w != null && w in 10..300) return w
+                }
+            } catch (_: Exception) {}
+
+            try {
+                val resId = context.resources.getIdentifier("config_chargingWattageSupported", "integer", context.packageName)
+                if (resId != 0) {
+                    val w = context.resources.getInteger(resId)
+                    if (w in 10..300) return w
+                }
+            } catch (_: Exception) {}
+
+            // 2. Try battery_wattage_supported (string or integer)
+            try {
+                val resId = context.resources.getIdentifier("battery_wattage_supported", "string", context.packageName)
+                if (resId != 0) {
+                    val str = context.resources.getString(resId).trim()
+                    val w = str.replace(Regex("""[^\d]"""), "").toIntOrNull()
+                    if (w != null && w in 10..300) return w
+                }
+            } catch (_: Exception) {}
+
+            try {
+                val resId = context.resources.getIdentifier("battery_wattage_supported", "integer", context.packageName)
+                if (resId != 0) {
+                    val w = context.resources.getInteger(resId)
+                    if (w in 10..300) return w
+                }
+            } catch (_: Exception) {}
+
+            return 0
+        }
+
+        @JvmStatic
+        fun detectDeviceWattage(context: Context? = null): Int {
+            val overlay = getOverlayWattage(context)
+            if (overlay > 0) return overlay
+
+            try {
+                val modelFile = java.io.File("/sys/class/power_supply/battery/model_name")
+                if (modelFile.exists() && modelFile.canRead()) {
+                    val content = modelFile.readText().trim()
+                    val match = Regex("""(\d+)\s*[wW]""").find(content)
+                    if (match != null) {
+                        val watts = match.groupValues[1].toIntOrNull()
+                        if (watts != null && watts in 10..300) {
+                            return watts
+                        }
+                    }
+                }
+            } catch (_: Exception) {}
+
+            try {
+                val ueventFile = java.io.File("/sys/class/power_supply/battery/uevent")
+                if (ueventFile.exists() && ueventFile.canRead()) {
+                    ueventFile.useLines { lines ->
+                        for (line in lines) {
+                            if (line.startsWith("POWER_SUPPLY_MODEL_NAME=")) {
+                                val match = Regex("""(\d+)\s*[wW]""").find(line)
+                                if (match != null) {
+                                    val watts = match.groupValues[1].toIntOrNull()
+                                    if (watts != null && watts in 10..300) {
+                                        return watts
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch (_: Exception) {}
+
+            return 67
+        }
     }
 
     // Shared paints
@@ -180,6 +263,12 @@ class ChargingAnimationView @JvmOverloads constructor(
     var arcCount: Int = 3
         set(value) {
             field = value.coerceIn(1, 6)
+            invalidate()
+        }
+
+    var chargingWattage: Int = detectDeviceWattage(context)
+        set(value) {
+            field = if (value > 0) value else detectDeviceWattage(context)
             invalidate()
         }
 
@@ -318,7 +407,7 @@ class ChargingAnimationView @JvmOverloads constructor(
                 VortexParticle(
                     angle = Random.nextFloat() * 360f,
                     radius = 120f + Random.nextFloat() * 140f,
-                    speed = 1.2f + Random.nextFloat() * 2.5f,
+                    speed = 0.5f + Random.nextFloat() * 1.0f,
                     size = 2f + Random.nextFloat() * 4f,
                     alpha = 0.3f + Random.nextFloat() * 0.7f,
                     active = true
@@ -339,7 +428,7 @@ class ChargingAnimationView @JvmOverloads constructor(
                     normY = sin(theta) * r,
                     size = 1f + Random.nextFloat() * 2.2f,
                     alpha = 0.3f + Random.nextFloat() * 0.7f,
-                    twinkleSpeed = 0.04f + Random.nextFloat() * 0.08f,
+                    twinkleSpeed = 0.02f + Random.nextFloat() * 0.04f,
                     twinklePhase = Random.nextFloat() * 2f * PI.toFloat()
                 )
             )
@@ -353,7 +442,7 @@ class ChargingAnimationView @JvmOverloads constructor(
                 FiberParticle(
                     lane = Random.nextInt(-9, 10),
                     progress = Random.nextFloat(),
-                    speed = 0.015f + Random.nextFloat() * 0.025f,
+                    speed = 0.005f + Random.nextFloat() * 0.007f,
                     size = 1.5f + Random.nextFloat() * 2.5f,
                     alpha = 0.4f + Random.nextFloat() * 0.6f
                 )
@@ -458,12 +547,12 @@ class ChargingAnimationView @JvmOverloads constructor(
         }
 
         mainAnimator = ValueAnimator.ofFloat(0f, 1f).apply {
-            duration = 1600L
+            duration = 3200L
             repeatCount = ValueAnimator.INFINITE
             interpolator = LinearInterpolator()
             addUpdateListener { animator ->
                 animProgress = animator.animatedValue as Float
-                rotationAngle = (rotationAngle + 2.5f) % 360f
+                rotationAngle = animProgress * 360f
                 updateParticles()
                 invalidate()
             }
@@ -486,8 +575,8 @@ class ChargingAnimationView @JvmOverloads constructor(
         when (animationStyle) {
             STYLE_XPERIENCE -> {
                 vortexParticles.forEach { p ->
-                    p.angle = (p.angle + p.speed) % 360f
-                    p.radius -= 1.2f
+                    p.angle = (p.angle + p.speed * 0.4f) % 360f
+                    p.radius -= 0.5f
                     if (p.radius < 80f) {
                         p.radius = 120f + Random.nextFloat() * 120f
                         p.angle = Random.nextFloat() * 360f
@@ -535,17 +624,17 @@ class ChargingAnimationView @JvmOverloads constructor(
                 }
             }
             STYLE_BUBBLE_STREAM -> {
-                if (Random.nextFloat() < 0.2f && bubbles.size < MAX_BUBBLES) {
+                if (Random.nextFloat() < 0.15f && bubbles.size < MAX_BUBBLES) {
                     bubbles.add(
                         Bubble(
                             x = centerX + (Random.nextFloat() - 0.5f) * 60f,
                             y = usbY,
-                            velocityY = -4f - Random.nextFloat() * 4f,
-                            velocityX = (Random.nextFloat() - 0.5f) * 1.5f,
+                            velocityY = -1.2f - Random.nextFloat() * 1.4f,
+                            velocityX = (Random.nextFloat() - 0.5f) * 0.8f,
                             life = 1f,
                             size = 12f + Random.nextFloat() * 18f,
                             wobblePhase = Random.nextFloat() * 360f,
-                            wobbleSpeed = 0.05f + Random.nextFloat() * 0.05f,
+                            wobbleSpeed = 0.02f + Random.nextFloat() * 0.03f,
                             active = true
                         )
                     )
@@ -554,10 +643,10 @@ class ChargingAnimationView @JvmOverloads constructor(
                 while (iter.hasNext()) {
                     val b = iter.next()
                     b.wobblePhase += b.wobbleSpeed
-                    b.x += b.velocityX + sin(b.wobblePhase) * 2f
+                    b.x += b.velocityX + sin(b.wobblePhase) * 1f
                     b.y += b.velocityY
-                    b.life -= 0.008f
-                    if (b.life <= 0f || b.y < height * 0.4f) iter.remove()
+                    b.life -= 0.003f
+                    if (b.life <= 0f || b.y < height * 0.35f) iter.remove()
                 }
             }
             STYLE_DIGITAL_MATRIX -> {
@@ -669,7 +758,7 @@ class ChargingAnimationView @JvmOverloads constructor(
         val rayPaint = sparkPaint
         val numRays = 32
         for (i in 0 until numRays) {
-            val angle = Math.toRadians((i * (360f / numRays) + rotationAngle * 0.4f).toDouble())
+            val angle = Math.toRadians((i * (360f / numRays) + rotationAngle * 0.25f).toDouble())
             val innerR = baseRadius * 0.95f
             val rayLength = (baseRadius * (1.18f + 0.22f * sin(animProgress * 2f * PI.toFloat() + i))).toFloat()
             val startX = cx + (cos(angle) * innerR).toFloat()
@@ -708,7 +797,7 @@ class ChargingAnimationView @JvmOverloads constructor(
         glowRingPaint.alpha = (220 * currentAlpha).toInt().coerceIn(0, 255)
         val rimRect = RectF(cx - baseRadius, cy - baseRadius, cx + baseRadius, cy + baseRadius)
         canvas.save()
-        canvas.rotate(rotationAngle * 1.6f, cx, cy)
+        canvas.rotate(rotationAngle * 0.8f, cx, cy)
         canvas.drawArc(rimRect, 0f, 120f, false, glowRingPaint)
         canvas.drawArc(rimRect, 180f, 120f, false, glowRingPaint)
         canvas.restore()
@@ -722,7 +811,7 @@ class ChargingAnimationView @JvmOverloads constructor(
         thinDecimalPaint.alpha = (235 * currentAlpha).toInt().coerceIn(0, 255)
 
         val intStr = "$batteryLevel"
-        val fastDecimal = ((SystemClock.uptimeMillis() / 25) % 100).toInt()
+        val fastDecimal = ((SystemClock.uptimeMillis() / 60) % 100).toInt()
         val decStr = String.format(".%02d%%", fastDecimal)
 
         val intW = thinNumberPaint.measureText(intStr)
@@ -734,12 +823,12 @@ class ChargingAnimationView @JvmOverloads constructor(
         canvas.drawText(intStr, textStartX, textY, thinNumberPaint)
         canvas.drawText(decStr, textStartX + 3f * density, textY - (bigSize * 0.28f), thinDecimalPaint)
 
-        // 7. Gold / Yellow "67W MAX" + Lightning Bolt
+        // 7. Gold / Yellow "${chargingWattage}W MAX" + Lightning Bolt
         val goldColor = 0xFFFFD600.toInt()
         badgePaint.textSize = 15f * density
         badgePaint.color = goldColor
         badgePaint.alpha = (255 * currentAlpha).toInt().coerceIn(0, 255)
-        canvas.drawText("67W MAX", cx, cy + (34f * density), badgePaint)
+        canvas.drawText("${chargingWattage}W MAX", cx, cy + (34f * density), badgePaint)
 
         canvas.save()
         canvas.translate(cx, cy + (50f * density))
@@ -835,7 +924,7 @@ class ChargingAnimationView @JvmOverloads constructor(
         textDecimalPaint.alpha = (240 * currentAlpha).toInt().coerceIn(0, 255)
 
         val intStr = "$batteryLevel"
-        val fastDecimal = ((SystemClock.uptimeMillis() / 30) % 100).toInt()
+        val fastDecimal = ((SystemClock.uptimeMillis() / 60) % 100).toInt()
         val decStr = String.format(".%02d%%", fastDecimal)
 
         val intW = textNumberPaint.measureText(intStr)
@@ -847,9 +936,9 @@ class ChargingAnimationView @JvmOverloads constructor(
         canvas.drawText(intStr, textStartX, textY, textNumberPaint)
         canvas.drawText(decStr, textStartX + 2f * density, textY - (bigSize * 0.05f), textDecimalPaint)
 
-        // 6. Pill Badge with ⚡ SUPERVOOC™ and 100W
+        // 6. Pill Badge with ⚡ SUPERVOOC™ and dynamic wattage
         val badgeY = cy + (36f * density)
-        val pillWidth = 110f * density
+        val pillWidth = 115f * density
         val pillHeight = 22f * density
         val pillRect = RectF(cx - pillWidth / 2f, badgeY - pillHeight / 2f,
                              cx + pillWidth / 2f, badgeY + pillHeight / 2f)
@@ -871,7 +960,7 @@ class ChargingAnimationView @JvmOverloads constructor(
         badgePaint.textSize = 10f * density
         badgePaint.color = Color.WHITE
         badgePaint.alpha = (255 * currentAlpha).toInt().coerceIn(0, 255)
-        canvas.drawText("SUPERVOOC™ 100W", cx + (6f * density), badgeY + (3.5f * density), badgePaint)
+        canvas.drawText("SUPERVOOC™ ${chargingWattage}W", cx + (6f * density), badgeY + (3.5f * density), badgePaint)
     }
 
     /**
@@ -911,7 +1000,7 @@ class ChargingAnimationView @JvmOverloads constructor(
         val outerRect = RectF(cx - baseRadius, cy - baseRadius, cx + baseRadius, cy + baseRadius)
 
         canvas.save()
-        canvas.rotate(rotationAngle, cx, cy)
+        canvas.rotate(rotationAngle * 0.7f, cx, cy)
         canvas.drawArc(outerRect, 0f, 110f, false, ringPaint)
         canvas.drawArc(outerRect, 180f, 110f, false, ringPaint)
         canvas.restore()
@@ -924,7 +1013,7 @@ class ChargingAnimationView @JvmOverloads constructor(
         glowRingPaint.alpha = (180 * currentAlpha).toInt().coerceIn(0, 255)
 
         canvas.save()
-        canvas.rotate(-rotationAngle * 1.4f, cx, cy)
+        canvas.rotate(-rotationAngle * 0.8f, cx, cy)
         canvas.drawArc(innerRect, 45f, 60f, false, glowRingPaint)
         canvas.drawArc(innerRect, 165f, 60f, false, glowRingPaint)
         canvas.drawArc(innerRect, 285f, 60f, false, glowRingPaint)
@@ -939,7 +1028,7 @@ class ChargingAnimationView @JvmOverloads constructor(
         textDecimalPaint.alpha = (230 * currentAlpha).toInt().coerceIn(0, 255)
 
         val intStr = "$batteryLevel"
-        val fastDecimal = ((SystemClock.uptimeMillis() / 25) % 100).toInt()
+        val fastDecimal = ((SystemClock.uptimeMillis() / 60) % 100).toInt()
         val decStr = String.format(".%02d%%", fastDecimal)
 
         val intWidth = textNumberPaint.measureText(intStr)

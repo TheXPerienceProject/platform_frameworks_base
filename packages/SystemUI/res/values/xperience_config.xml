@@ -75,4 +75,9 @@
         <item>restart_recovery</item>
         <item>restart_bootloader</item>
     </string-array>
+
+    <!-- Maximum charging wattage supported by the device (e.g. 67, 80, 90, 100, 120).
+         Can be overlaid per-device via RRO. If "0", sysfs model_name and real-time charging status will be probed. -->
+    <string name="config_chargingWattageSupported" translatable="false">0</string>
+    <string name="battery_wattage_supported" translatable="false">0</string>
 </resources>

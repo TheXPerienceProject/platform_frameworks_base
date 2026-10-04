@@ -104,6 +104,30 @@ class ChargingAnimationViewController @Inject constructor(
         }
     }
 
+    private fun detectChargingWattage(): Int {
+        try {
+            val intent = context.registerReceiver(
+                null,
+                android.content.IntentFilter(android.content.Intent.ACTION_BATTERY_CHANGED)
+            )
+            if (intent != null) {
+                val maxCurrent = intent.getIntExtra(android.os.BatteryManager.EXTRA_MAX_CHARGING_CURRENT, -1)
+                val maxVolt = intent.getIntExtra(android.os.BatteryManager.EXTRA_MAX_CHARGING_VOLTAGE, -1)
+                if (maxCurrent > 0) {
+                    val volt = if (maxVolt > 0) maxVolt else 5_000_000
+                    val negotiated = Math.round((maxCurrent.toDouble() / 1_000_000.0) * (volt.toDouble() / 1_000_000.0)).toInt()
+                    if (negotiated >= 10) {
+                        return negotiated
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Error checking charging wattage", e)
+        }
+
+        return ChargingAnimationView.detectDeviceWattage()
+    }
+
     private fun updateViewWithSettings(settings: ChargingAnimationSettings) {
         val accent = Utils.getColorAccentDefaultColor(context)
         chargingView.apply {
@@ -113,6 +137,7 @@ class ChargingAnimationViewController @Inject constructor(
             rippleOpacity = settings.rippleOpacity
             glowIntensity = settings.glowIntensity
             arcCount = settings.arcCount
+            chargingWattage = detectChargingWattage()
         }
     }
 
@@ -166,18 +191,22 @@ class ChargingAnimationViewController @Inject constructor(
         override fun execute(pw: PrintWriter, args: List<String>) {
             val level = args.getOrNull(0)?.toIntOrNull() ?: 86
             val styleOverride = args.getOrNull(1)?.toIntOrNull()
+            val wattOverride = args.getOrNull(2)?.toIntOrNull()
             chargingView.post {
                 updateViewWithSettings(currentSettings)
                 if (styleOverride != null) {
                     chargingView.animationStyle = styleOverride
                 }
+                if (wattOverride != null) {
+                    chargingView.chargingWattage = wattOverride
+                }
                 chargingView.show(level)
             }
-            pw.println("Showing charging animation (level: $level, style: ${styleOverride ?: currentSettings.animationStyle})")
+            pw.println("Showing charging animation (level: $level, style: ${styleOverride ?: currentSettings.animationStyle}, wattage: ${wattOverride ?: chargingView.chargingWattage}W)")
         }
 
         override fun help(pw: PrintWriter) {
-            pw.println("Usage: adb shell cmd statusbar charging-animation [batteryLevel] [style]")
+            pw.println("Usage: adb shell cmd statusbar charging-animation [batteryLevel] [style] [wattage]")
         }
     }
 
