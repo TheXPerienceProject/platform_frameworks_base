@@ -68,4 +68,23 @@
     <string name="screenrecord_hevc_switch_label">HEVC-kódolás</string>
     <string name="screenrecord_hevc_switch_summary">Használja a hatékonyabb HEVC-kódolót</string>
     <!-- AxDynamicBar strings [CHAR LIMIT=NONE] -->
+    <!-- Advanced restart menu -->
+    <string name="global_action_restart_system">Rendszer</string>
+    <string name="global_action_restart_download">Download-mód</string>
+    <string name="global_action_restart_fastboot">Fastboot-mód</string>
+    <!-- Alert slide extras -->
+    <string name="volume_ringer_priority_only">Fontos</string>
+    <string name="volume_ringer_alarms_only">Ébresztők</string>
+    <string name="volume_ringer_dnd">Ne zavarjanak</string>
+    <string name="tristate_flashlight">Zseblámpa</string>
+    <string name="tristate_flashlight_on">Zseblámpa be</string>
+    <string name="tristate_flashlight_off">Zseblámpa ki</string>
+    <string name="tristate_flashlight_blink">Zseblámpa-villogás</string>
+    <string name="tristate_brightness_bright">Teljes fényerő</string>
+    <string name="tristate_brightness_dark">Alacsony fényerő</string>
+    <string name="tristate_brightness_auto">Automatikus fényerő</string>
+    <string name="tristate_rotation_auto">Automatikus elforgatás</string>
+    <string name="tristate_rotation_0">Álló (Portré)</string>
+    <string name="tristate_rotation_90">Fekvő (90°)</string>
+    <string name="tristate_rotation_270">Fekvő (270°)</string>
 </resources>
