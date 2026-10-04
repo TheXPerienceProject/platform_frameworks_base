@@ -125,6 +125,7 @@ import com.android.systemui.dagger.qualifiers.UiBackground;
 import com.android.systemui.demomode.DemoMode;
 import com.android.systemui.demomode.DemoModeController;
 import com.android.systemui.xperience.RebootSuggestion;
+import com.android.systemui.charging.ChargingAnimationViewController;
 import com.android.systemui.edgelight.EdgeLightViewController;
 import com.android.systemui.nowplaying.NowPlayingViewController;
 import com.android.systemui.emergency.EmergencyGesture;
@@ -417,6 +418,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
     private final ActivityStarter mActivityStarter;
     private final EdgeLightViewController mEdgeLightViewController;
     private final NowPlayingViewController mNowPlayingViewController;
+    private final ChargingAnimationViewController mChargingAnimationViewController;
 
     private final DisplayMetrics mDisplayMetrics;
 
@@ -634,7 +636,8 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
             SessionTracker sessionTracker,
 	    BurnInProtectionController burnInProtectionController,
             EdgeLightViewController edgeLightViewController,
-            NowPlayingViewController nowPlayingViewController
+            NowPlayingViewController nowPlayingViewController,
+            ChargingAnimationViewController chargingAnimationViewController
     ) {
         mContext = context;
         mNotificationsController = notificationsController;
@@ -764,6 +767,7 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
 
         mEdgeLightViewController = edgeLightViewController;
         mNowPlayingViewController = nowPlayingViewController;
+        mChargingAnimationViewController = chargingAnimationViewController;
     }
 
     private void initBubbles(Bubbles bubbles) {
@@ -955,6 +959,13 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
         detachFromParent(mEdgeLightViewController.getEdgeLightView());
 
         overlay.addView(mEdgeLightViewController.getEdgeLightView(),
+                new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
+
+        detachFromParent(mChargingAnimationViewController.getChargingView());
+
+        overlay.addView(mChargingAnimationViewController.getChargingView(),
                 new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
@@ -1463,6 +1474,12 @@ public class CentralSurfacesImpl implements CoreStartable, CentralSurfaces {
 
     protected void showChargingAnimation(int batteryLevel, int transmittingBatteryLevel,
             long animationDelay) {
+        if (mChargingAnimationViewController != null
+                && mChargingAnimationViewController.isCustomAnimationActive()) {
+            mChargingAnimationViewController.showAnimation(batteryLevel);
+            return;
+        }
+
         WirelessChargingAnimation.makeWirelessChargingAnimation(mContext, null,
                 transmittingBatteryLevel, batteryLevel,
                 new WirelessChargingAnimation.Callback() {

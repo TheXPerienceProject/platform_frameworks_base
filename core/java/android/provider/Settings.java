@@ -7298,6 +7298,54 @@ public final class Settings {
         public static final String EDGE_LIGHT_ANIMATION_EFFECT = "edge_light_animation_effect";
 
         /**
+         * Whether charging animation is enabled
+         * @hide
+         */
+        public static final String CHARGING_ANIMATION_ENABLED = "charging_animation_enabled";
+
+        /**
+         * Style of charging animation
+         * @hide
+         */
+        public static final String CHARGING_ANIMATION_STYLE = "charging_animation_style";
+
+        /**
+         * Charging animation ripple opacity
+         * @hide
+         */
+        public static final String CHARGING_RIPPLE_OPACITY = "charging_ripple_opacity";
+
+        /**
+         * Charging animation glow intensity
+         * @hide
+         */
+        public static final String CHARGING_GLOW_INTENSITY = "charging_glow_intensity";
+
+        /**
+         * Charging animation arc count
+         * @hide
+         */
+        public static final String CHARGING_ARC_COUNT = "charging_arc_count";
+
+        /**
+         * Charging animation color mode
+         * @hide
+         */
+        public static final String CHARGING_COLOR_MODE = "charging_color_mode";
+
+        /**
+         * Whether to show charging animation on AOD
+         * @hide
+         */
+        public static final String CHARGING_SHOW_ON_AOD = "charging_show_on_aod";
+
+        /**
+         * Whether to show charging animation on lockscreen
+         * @hide
+         */
+        public static final String CHARGING_SHOW_ON_LOCKSCREEN = "charging_show_on_lockscreen";
+
+        /**
          * Keys we no longer back up under the current schema, but want to continue to
          * process when restoring historical backup datasets.
          *
