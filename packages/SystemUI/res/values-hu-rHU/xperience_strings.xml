@@ -68,4 +68,8 @@
     <string name="screenrecord_hevc_switch_label">HEVC-kódolás</string>
     <string name="screenrecord_hevc_switch_summary">Használja a hatékonyabb HEVC-kódolót</string>
     <!-- AxDynamicBar strings [CHAR LIMIT=NONE] -->
+    <!-- Advanced restart menu -->
+    <string name="global_action_restart_system">Rendszer</string>
+    <string name="global_action_restart_download">Download-mód</string>
+    <string name="global_action_restart_fastboot">Fastboot-mód</string>
 </resources>
