@@ -60,4 +60,5 @@
     <string name="global_action_restart_system">系統</string>
     <string name="global_action_restart_download">下載</string>
     <string name="global_action_restart_fastboot">Fastbootd 模式</string>
+    <!-- Alert slide extras -->
 </resources>
