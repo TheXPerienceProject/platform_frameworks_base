@@ -192,6 +192,11 @@
     <string name="global_action_restart_system">Sistema</string>
     <string name="global_action_restart_download">Download</string>
     <string name="global_action_restart_fastboot">Fastbootd</string>
+    <string name="global_action_restart_progress">Reiniciando…</string>
+    <string name="global_action_restart_recovery_progress">Reiniciando en modo de recuperación…</string>
+    <string name="global_action_restart_bootloader_progress">Reiniciando en modo bootloader…</string>
+    <string name="global_action_restart_download_progress">Reiniciando en modo de descarga…</string>
+    <string name="global_action_restart_fastboot_progress">Reiniciando en modo fastbootd…</string>
     <!-- Alert slide extras -->
     <string name="volume_ringer_priority_only">Prioridad</string>
     <string name="volume_ringer_alarms_only">Alarmas</string>
