@@ -355,4 +355,7 @@
 
     <!-- Default for Settings.Global.AIRPLANE_MODE_SYNC -->
     <bool name="def_airplane_mode_sync_enabled">true</bool>
+
+    <!-- Default theme customization overlay packages (JSON) -->
+    <string name="def_theme_customization_overlay_packages" translatable="false"><![CDATA[{"android.theme.customization.font":"com.android.theme.font.oneplusslate","android.theme.customization.color_both":"1","android.theme.customization.color_index":"1","android.theme.customization.color_source":"home_wallpaper","android.theme.customization.theme_style":"VIBRANT"}]]></string>
 </resources>

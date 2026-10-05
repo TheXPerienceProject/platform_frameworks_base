@@ -138,6 +138,8 @@ import com.google.android.collect.Sets;
 
 import libcore.util.HexEncoding;
 
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileDescriptor;
@@ -4411,7 +4413,7 @@ public class SettingsProvider extends ContentProvider {
 
         @VisibleForTesting
         final class UpgradeController {
-            private static final int SETTINGS_VERSION = 236;
+            private static final int SETTINGS_VERSION = 237;
 
             private final int mUserId;
             private final int mDeviceId;
@@ -7091,6 +7093,61 @@ public class SettingsProvider extends ContentProvider {
                         }
                     }
                     currentVersion = 236;
+                }
+
+                if (currentVersion == 236) {
+                    // Version 237: Update default theme customization to VIBRANT red and OnePlusSlate font
+                    final SettingsState secureSettings = getSecureSettingsLocked(mUserId, mDeviceId);
+                    final String defaultTheme = getContext().getResources()
+                            .getString(R.string.def_theme_customization_overlay_packages);
+                    if (!TextUtils.isEmpty(defaultTheme)) {
+                        Setting currentSetting = secureSettings.getSettingLocked(
+                                Settings.Secure.THEME_CUSTOMIZATION_OVERLAY_PACKAGES);
+                        if (currentSetting == null || currentSetting.isNull()
+                                || TextUtils.isEmpty(currentSetting.getValue())) {
+                            secureSettings.insertSettingOverrideableByRestoreLocked(
+                                    Settings.Secure.THEME_CUSTOMIZATION_OVERLAY_PACKAGES,
+                                    defaultTheme,
+                                    null,
+                                    true,
+                                    SettingsState.SYSTEM_PACKAGE_NAME);
+                        } else {
+                            try {
+                                JSONObject json = new JSONObject(currentSetting.getValue());
+                                String colorSource = json.optString("android.theme.customization.color_source");
+                                if (TextUtils.isEmpty(colorSource) || "home_wallpaper".equals(colorSource)) {
+                                    json.put("android.theme.customization.theme_style", "VIBRANT");
+                                    json.put("android.theme.customization.color_index", "1");
+                                    json.put("android.theme.customization.color_both", "1");
+                                    json.put("android.theme.customization.color_source", "home_wallpaper");
+                                    if (!json.has("android.theme.customization.font")) {
+                                        json.put("android.theme.customization.font", "com.android.theme.font.oneplusslate");
+                                    }
+                                    secureSettings.insertSettingOverrideableByRestoreLocked(
+                                            Settings.Secure.THEME_CUSTOMIZATION_OVERLAY_PACKAGES,
+                                            json.toString(),
+                                            null,
+                                            true,
+                                            SettingsState.SYSTEM_PACKAGE_NAME);
+                                }
+                            } catch (Exception ignored) {
+                            }
+                        }
+                    }
+
+                    // Reset wallpaper_info.xml on upgrade IF the user was using default wallpaper
+                    // (so the new default wallpaper colors get freshly extracted on A17)
+                    final File userSystemDir = Environment.getUserSystemDirectory(mUserId);
+                    final File wpFile = new File(userSystemDir, "wallpaper");
+                    final File wpOrig = new File(userSystemDir, "wallpaper_orig");
+                    if (!wpFile.exists() && !wpOrig.exists()) {
+                        final File wpInfo = new File(userSystemDir, "wallpaper_info.xml");
+                        if (wpInfo.exists()) {
+                            wpInfo.delete();
+                        }
+                    }
+
+                    currentVersion = 237;
                 }
 
                 // vXXX: Add new settings above this point.
