@@ -7097,8 +7097,7 @@ public class SettingsProvider extends ContentProvider {
 
                 if (currentVersion == 236) {
                     // Version 237: Update default theme customization to VIBRANT red and OnePlusSlate font
-                    final SettingsState secureSettings = getSecureSettingsLocked(mUserId, mDeviceId);
-                    final String defaultTheme = getContext().getResources()
+                    final String defaultTheme = resources
                             .getString(R.string.def_theme_customization_overlay_packages);
                     if (!TextUtils.isEmpty(defaultTheme)) {
                         Setting currentSetting = secureSettings.getSettingLocked(
@@ -7137,7 +7136,7 @@ public class SettingsProvider extends ContentProvider {
 
                     // Reset wallpaper_info.xml on upgrade IF the user was using default wallpaper
                     // (so the new default wallpaper colors get freshly extracted on A17)
-                    final File userSystemDir = Environment.getUserSystemDirectory(mUserId);
+                    final File userSystemDir = Environment.getUserSystemDirectory(userId);
                     final File wpFile = new File(userSystemDir, "wallpaper");
                     final File wpOrig = new File(userSystemDir, "wallpaper_orig");
                     if (!wpFile.exists() && !wpOrig.exists()) {
@@ -7149,7 +7148,6 @@ public class SettingsProvider extends ContentProvider {
 
                     // Default battery style to XPerience (4: circle with center dot)
                     // on A17 upgrade if unset or set to stock 0 (AOSP).
-                    final SettingsState systemSettings = getSystemSettingsLocked(mUserId, mDeviceId);
                     Setting currentBatteryStyle = systemSettings.getSettingLocked(
                             Settings.System.STATUS_BAR_BATTERY_STYLE);
                     if (currentBatteryStyle == null || currentBatteryStyle.isNull()
