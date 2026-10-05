@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2022 The Nameless-AOSP Project
+ * Copyright (C) 2026 The XPerience Project
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -37,6 +38,20 @@ public class LinearmotorVibrator {
         }
         try {
             mService.vibrate(effect);
+        } catch (RemoteException e) {
+            throw e.rethrowFromSystemServer();
+        }
+    }
+
+    /**
+     * @hide
+     */
+    public void cancelVibrate(WaveformEffect effect) {
+        if (mService == null) {
+            return;
+        }
+        try {
+            mService.cancelVibrate(effect);
         } catch (RemoteException e) {
             throw e.rethrowFromSystemServer();
         }

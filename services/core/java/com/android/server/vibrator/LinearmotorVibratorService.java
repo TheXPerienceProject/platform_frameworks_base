@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2022 The Nameless-AOSP Project
+ * Copyright (C) 2026 The XPerience Project
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -36,6 +37,18 @@ public class LinearmotorVibratorService extends SystemService {
                     Slog.d(TAG, "WaveformEffect: " + effect);
                     // Currently maps all incoming effects to a standard EFFECT_CLICK
                     mVibrator.vibrate(EFFECT_CLICK);
+                } finally {
+                    Binder.restoreCallingIdentity(ident);
+                }
+            }
+        }
+
+        @Override
+        public void cancelVibrate(WaveformEffect effect) {
+            synchronized (mLock) {
+                final long ident = Binder.clearCallingIdentity();
+                try {
+                    mVibrator.cancel();
                 } finally {
                     Binder.restoreCallingIdentity(ident);
                 }
