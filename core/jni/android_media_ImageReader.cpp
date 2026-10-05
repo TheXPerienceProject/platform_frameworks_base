@@ -1041,6 +1041,21 @@ static jobject Image_getOplusHardwareBuffer(JNIEnv* env, jobject thiz) {
     return env->NewObject(sHbClass, sHbHolderCtor,
             reinterpret_cast<jlong>(holder), JNI_TRUE);
 }
+
+// OnePlus camera (APS) extension. Returns the native IGraphicBufferConsumer pointer
+// needed by libNativeWinBuffExchange for attaching/releasing hardware buffers during
+// fast-video / time-lapse recording.
+static jlong ImageReader_getConsumer(JNIEnv* env, jobject thiz) {
+    BufferItemConsumer* consumer = ImageReader_getBufferConsumer(env, thiz);
+    if (consumer == nullptr) {
+        return 0;
+    }
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    sp<IGraphicBufferConsumer> gbc = consumer->getIGraphicBufferConsumer();
+#pragma clang diagnostic pop
+    return reinterpret_cast<jlong>(gbc.get());
+}
 #endif
 
 } // extern "C"
@@ -1056,6 +1071,7 @@ static const JNINativeMethod gImageReaderMethods[] =
          {"nativeGetSurface", "()Landroid/view/Surface;", (void*)ImageReader_getSurface},
          {"nativeDetachImage", "(Landroid/media/Image;Z)I", (void*)ImageReader_detachImage},
 #ifdef __ANDROID__
+         {"nativeGetConsumer", "()J", (void*)ImageReader_getConsumer},
          {"nativeCreateImagePlanes",
           "(ILandroid/graphics/GraphicBuffer;IIIIII)[Landroid/media/ImageReader$ImagePlane;",
           (void*)ImageReader_createImagePlanes},

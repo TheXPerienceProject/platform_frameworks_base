@@ -1467,6 +1467,10 @@ public class ImageReader implements AutoCloseable {
     private synchronized native int nativeDetachImage(Image i, boolean throwISEOnly);
     private synchronized native void nativeDiscardFreeBuffers();
 
+    // OnePlus camera (APS) extension: returns native IGraphicBufferConsumer pointer
+    // for hardware buffer exchange during fast-video / time-lapse recording.
+    private synchronized native long nativeGetConsumer();
+
     /**
      * @return A return code {@code ACQUIRE_*}
      *
