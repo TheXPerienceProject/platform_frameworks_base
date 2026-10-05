@@ -7147,6 +7147,22 @@ public class SettingsProvider extends ContentProvider {
                         }
                     }
 
+                    // Default battery style to XPerience (4: circle with center dot)
+                    // on A17 upgrade if unset or set to stock 0 (AOSP).
+                    final SettingsState systemSettings = getSystemSettingsLocked(mUserId, mDeviceId);
+                    Setting currentBatteryStyle = systemSettings.getSettingLocked(
+                            Settings.System.STATUS_BAR_BATTERY_STYLE);
+                    if (currentBatteryStyle == null || currentBatteryStyle.isNull()
+                            || TextUtils.isEmpty(currentBatteryStyle.getValue())
+                            || "0".equals(currentBatteryStyle.getValue())) {
+                        systemSettings.insertSettingOverrideableByRestoreLocked(
+                                Settings.System.STATUS_BAR_BATTERY_STYLE,
+                                "4",
+                                null,
+                                true,
+                                SettingsState.SYSTEM_PACKAGE_NAME);
+                    }
+
                     currentVersion = 237;
                 }
 
