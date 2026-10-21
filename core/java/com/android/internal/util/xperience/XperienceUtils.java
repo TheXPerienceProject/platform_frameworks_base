@@ -115,7 +115,7 @@ public class XperienceUtils {
     public static void switchScreenOff(Context ctx) {
         PowerManager pm = (PowerManager) ctx.getSystemService(Context.POWER_SERVICE);
         if (pm!= null) {
-            pm.goToSleep(SystemClock.uptimeMillis());
+            pm.goToSleep(SystemClock.uptimeMillis(), PowerManager.GO_TO_SLEEP_REASON_POWER_BUTTON, 0);
         }
     }
 

@@ -308,7 +308,8 @@ constructor(
             return false
         }
 
-        if (wakefulness.lastSleepReason == WakeSleepReason.TIMEOUT) {
+        if (wakefulness.lastSleepReason == WakeSleepReason.TIMEOUT ||
+            wakefulness.lastSleepReason == WakeSleepReason.OTHER) {
             return true
         }
 

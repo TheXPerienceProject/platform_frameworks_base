@@ -65,7 +65,7 @@ class QQSGestureListener @Inject constructor(
                 !falsingManager.isFalseDoubleTap
         ) {
             if (e.y < quickQsOffsetHeight || statusBarStateController.state == StatusBarState.KEYGUARD) {
-                powerManager.goToSleep(e.eventTime)
+                powerManager.goToSleep(e.eventTime, PowerManager.GO_TO_SLEEP_REASON_POWER_BUTTON, 0)
                 return true
             }
         }
