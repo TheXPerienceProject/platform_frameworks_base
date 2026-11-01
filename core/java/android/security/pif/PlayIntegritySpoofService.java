@@ -17,7 +17,7 @@ import android.util.Base64;
 import android.util.JsonReader;
 import android.util.Log;
 
-import com.android.internal.util.evolution.PixelDeviceRepository;
+import com.android.internal.util.xperience.PixelDeviceRepository;
 
 import java.io.IOException;
 import java.io.StringReader;
